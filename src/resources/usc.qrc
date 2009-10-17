@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>player/next.png</file>
+        <file>player/pause.png</file>
+        <file>player/play.png</file>
+        <file>player/prev.png</file>
+        <file>player/stop.png</file>
+        <file>player/shuffle.png</file>
+        <file>player/loop.png</file>
+    </qresource>
+    <qresource prefix="/types" >
+        <file>music.png</file>
+        <file>text.png</file>
+        <file>text_stack.png</file>
+    </qresource>
+    <qresource prefix="/marks" >
+        <file>accept.png</file>
+        <file>cancel.png</file>
+        <file>error.png</file>
+        <file>help.png</file>
+        <file>information.png</file>
+        <file>chart.png</file>
+        <file>clock.png</file>
+    </qresource>
+    <qresource prefix="/control" >
+        <file>database.png</file>
+        <file>eye.png</file>
+        <file>playlist.png</file>
+    </qresource>
+</RCC>
