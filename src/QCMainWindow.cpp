@@ -1,6 +1,9 @@
+#include "main.h"
+
 #include "QCMainWindow.h"
 #include "QULogService.h"
-#include "support/QUMessageBox.h"
+#include "QUMessageBox.h"
+#include "QUAboutDialog.h"
 
 #include <QFileDialog>
 #include <QTextStream>
@@ -22,8 +25,9 @@ qint32 currentSyllableGlobalIndex = 0;
 qint32 currentCharacterIndex = 0;
 QString filename_MP3;
 
-QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent) {
-    setupUi(this);
+QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
+
+    ui->setupUi(this);
     setWindowTitle(tr("UltraStar Song Creator 0.1"));
     //(void*)statusBar();
     //statusBar()->showMessage(tr("USC ready."));
@@ -79,15 +83,19 @@ void QCMainWindow::on_pushButton_Start_clicked()
     ui->pushButton_Stop->setEnabled(true);
     if (ui->lineEdit_Title->text().isEmpty()) {
         ui->lineEdit_Title->setText(tr("Title"));
+        ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
     if (ui->lineEdit_Artist->text().isEmpty()) {
         ui->lineEdit_Artist->setText(tr("Artist"));
+        ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
     if (ui->lineEdit_Cover->text().isEmpty()) {
         ui->lineEdit_Cover->setText(tr("%1 - %2 [CO].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
+        ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
     if (ui->lineEdit_Background->text().isEmpty()) {
         ui->lineEdit_Background->setText(tr("%1 - %2 [BG].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
+        ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
 
     ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#TITLE:%1").arg(ui->lineEdit_Title->text()));
@@ -121,12 +129,13 @@ void QCMainWindow::on_pushButton_Start_clicked()
 
     numSyllables = lyricsStringList.length();
 
-    if (numSyllables > 4) {
+    if (numSyllables > 5) {
         ui->pushButton_Tap->setText(lyricsStringList[currentSyllableGlobalIndex]);
-        ui->label_NextSyllable1->setText(lyricsStringList[currentSyllableGlobalIndex+1]);
-        ui->label_NextSyllable2->setText(lyricsStringList[currentSyllableGlobalIndex+2]);
-        ui->label_NextSyllable3->setText(lyricsStringList[currentSyllableGlobalIndex+3]);
-        ui->label_NextSyllable4->setText(lyricsStringList[currentSyllableGlobalIndex+4]);
+        ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableGlobalIndex+1]);
+        ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableGlobalIndex+2]);
+        ui->pushButton_NextSyllable3->setText(lyricsStringList[currentSyllableGlobalIndex+3]);
+        ui->pushButton_NextSyllable4->setText(lyricsStringList[currentSyllableGlobalIndex+4]);
+        ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableGlobalIndex+5]);
     }
 
     // start mp3..
@@ -161,28 +170,34 @@ void QCMainWindow::on_pushButton_Tap_released()
 
         ui->pushButton_Tap->setText(lyricsStringList[currentSyllableGlobalIndex]);
         if (currentSyllableGlobalIndex+1 < numSyllables) {
-            ui->label_NextSyllable1->setText(lyricsStringList[currentSyllableGlobalIndex+1]);
+            ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableGlobalIndex+1]);
         }
         else {
-            ui->label_NextSyllable1->setText("");
+            ui->pushButton_NextSyllable1->setText("");
         }
         if (currentSyllableGlobalIndex+2 < numSyllables) {
-            ui->label_NextSyllable2->setText(lyricsStringList[currentSyllableGlobalIndex+2]);
+            ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableGlobalIndex+2]);
         }
         else {
-            ui->label_NextSyllable2->setText("");
+            ui->pushButton_NextSyllable2->setText("");
         }
         if (currentSyllableGlobalIndex+3 < numSyllables) {
-            ui->label_NextSyllable3->setText(lyricsStringList[currentSyllableGlobalIndex+3]);
+            ui->pushButton_NextSyllable3->setText(lyricsStringList[currentSyllableGlobalIndex+3]);
         }
         else {
-            ui->label_NextSyllable3->setText("");
+            ui->pushButton_NextSyllable3->setText("");
         }
         if (currentSyllableGlobalIndex+4 < numSyllables) {
-            ui->label_NextSyllable4->setText(lyricsStringList[currentSyllableGlobalIndex+4]);
+            ui->pushButton_NextSyllable4->setText(lyricsStringList[currentSyllableGlobalIndex+4]);
         }
         else {
-            ui->label_NextSyllable4->setText("");
+            ui->pushButton_NextSyllable4->setText("");
+        }
+        if (currentSyllableGlobalIndex+5 < numSyllables) {
+            ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableGlobalIndex+5]);
+        }
+        else {
+            ui->pushButton_NextSyllable5->setText("");
         }
     }
     else {
@@ -226,45 +241,50 @@ void QCMainWindow::on_pushButton_Stop_clicked()
 
 void QCMainWindow::on_pushButton_BrowseMP3_clicked()
 {
-    filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose MP3 file"), QDir::homePath(), tr("*.mp3"));
+    filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose MP3 file"), QDir::homePath(), tr("Audio files (*.mp3 *.ogg)"));
     QFileInfo *fileInfo_MP3 = new QFileInfo(filename_MP3);
     if (!fileInfo_MP3->fileName().isEmpty()) {
         ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
+        ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
         ui->pushButton_Start->setEnabled(true);
     }
 }
 
 void QCMainWindow::on_pushButton_BrowseCover_clicked()
 {
-    QString filename_Cover = QFileDialog::getOpenFileName ( 0, tr("Please choose cover image file"), QDir::homePath(), tr("*.jpg"));
+    QString filename_Cover = QFileDialog::getOpenFileName ( 0, tr("Please choose cover image file"), QDir::homePath(), tr("Image files (*.jpg)"));
     QFileInfo *fileInfo_Cover = new QFileInfo(filename_Cover);
     if (!fileInfo_Cover->fileName().isEmpty()) {
         ui->lineEdit_Cover->setText(fileInfo_Cover->fileName());
+        ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
 }
 
 void QCMainWindow::on_pushButton_BrowseBackground_clicked()
 {
-    QString filename_Background = QFileDialog::getOpenFileName ( 0, tr("Please choose background image file"), QDir::homePath(), tr("*.jpg"));
+    QString filename_Background = QFileDialog::getOpenFileName ( 0, tr("Please choose background image file"), QDir::homePath(), tr("Image files (*.jpg)"));
     QFileInfo *fileInfo_Background = new QFileInfo(filename_Background);
     if (!fileInfo_Background->fileName().isEmpty()) {
         ui->lineEdit_Background->setText(fileInfo_Background->fileName());
+        ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
 }
 
 void QCMainWindow::on_pushButton_BrowseVideo_clicked()
 {
-    QString filename_Video = QFileDialog::getOpenFileName ( 0, tr("Please choose video file"), QDir::homePath(), tr("*.*"));
+    QString filename_Video = QFileDialog::getOpenFileName ( 0, tr("Please choose video file"), QDir::homePath(), tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4"));
     QFileInfo *fileInfo_Video = new QFileInfo(filename_Video);
     if (!fileInfo_Video->fileName().isEmpty()) {
         ui->lineEdit_Video->setText(fileInfo_Video->fileName());
+        ui->label_VideoSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
 }
 
 void QCMainWindow::on_actionAbout_triggered()
 {
-    QMessageBox::information(this, tr("About UltraStar Song Creator"),
-                      tr("<b>UltraStar Song Creator 0.1</b><br><br> by:saiya_mg & bohning"));
+    //QMessageBox::information(this, tr("About UltraStar Song Creator"),
+    //                  tr("<b>UltraStar Song Creator 0.1</b><br><br> by:saiya_mg & bohning"));
+    QUAboutDialog(this).exec();
 }
 
 void QCMainWindow::on_actionQuit_USC_triggered()
@@ -297,6 +317,7 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                     QFileInfo *fileInfo_MP3 = new QFileInfo(fileName);
                     if (!fileInfo_MP3->fileName().isEmpty()) {
                         ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
+                        ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
                         ui->pushButton_Start->setEnabled(true);
                     }
                 }
@@ -310,12 +331,14 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                         QFileInfo *fileInfo_Cover = new QFileInfo(fileName);
                         if (!fileInfo_Cover->fileName().isEmpty()) {
                             ui->lineEdit_Cover->setText(fileInfo_Cover->fileName());
+                            ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
                         }
                     }
                     else if (msg.clickedButton() == backgroundButton) {
                         QFileInfo *fileInfo_Background = new QFileInfo(fileName);
                         if (!fileInfo_Background->fileName().isEmpty()) {
                             ui->lineEdit_Background->setText(fileInfo_Background->fileName());
+                            ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
                         }
                     }
                 }
@@ -326,6 +349,7 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                     QFileInfo *fileInfo_Video = new QFileInfo(fileName);
                     if (!fileInfo_Video->fileName().isEmpty()) {
                         ui->lineEdit_Video->setText(fileInfo_Video->fileName());
+                        ui->label_VideoSet->setPixmap(QPixmap(":/marks/path_ok.png"));
                     }
                 }
             }
@@ -336,4 +360,73 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
 void QCMainWindow::on_actionAbout_Qt_triggered()
 {
     QApplication::aboutQt();
+}
+
+void QCMainWindow::on_lineEdit_Title_editingFinished()
+{
+    if(!ui->lineEdit_Title->text().isEmpty()) {
+        ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->lineEdit_Artist->setFocus();
+    }
+}
+
+void QCMainWindow::on_lineEdit_Artist_editingFinished()
+{
+    if(!ui->lineEdit_Artist->text().isEmpty()) {
+        ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->comboBox_Language->setFocus();
+    }
+}
+
+void QCMainWindow::on_comboBox_Language_currentIndexChanged(QString language)
+{
+    if(!language.isEmpty()) {
+        ui->label_LanguageSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+    }
+    else {
+        ui->label_LanguageSet->setPixmap(QPixmap(":/marks/path_error.png"));
+    }
+}
+
+void QCMainWindow::on_comboBox_Edition_currentIndexChanged(QString edition)
+{
+    if(!edition.isEmpty()) {
+        ui->label_EditionSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+    }
+    else {
+        ui->label_EditionSet->setPixmap(QPixmap(":/marks/path_error.png"));
+    }
+}
+
+void QCMainWindow::on_comboBox_Genre_currentIndexChanged(QString genre)
+{
+    if(!genre.isEmpty()) {
+        ui->label_GenreSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+    }
+    else {
+        ui->label_GenreSet->setPixmap(QPixmap(":/marks/path_error.png"));
+    }
+}
+
+void QCMainWindow::on_comboBox_Year_currentIndexChanged(QString year)
+{
+    if(!year.isEmpty()) {
+        ui->label_YearSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+    }
+    else {
+        ui->label_YearSet->setPixmap(QPixmap(":/marks/path_error.png"));
+    }
+}
+
+void QCMainWindow::on_lineEdit_Creator_editingFinished()
+{
+    if(!ui->lineEdit_Creator->text().isEmpty()) {
+        ui->label_CreatorSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->doubleSpinBox_BPM->setFocus();
+    }
+}
+
+void QCMainWindow::on_doubleSpinBox_BPM_editingFinished()
+{
+     ui->pushButton_BrowseMP3->setFocus();
 }

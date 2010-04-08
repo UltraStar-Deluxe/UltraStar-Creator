@@ -20,35 +20,39 @@ HEADERS += main.h \
     support/QUMessageBox.h \
     support/QUProgressDialog.h \
     support/QUMetaphoneString.h \
-    QCMainWindow.h
+    QCMainWindow.h \
+    QUAboutDialog.h
 SOURCES += main.cpp \
-	QCMainWindow.cpp \
-	QU.cpp \
-	QUStringSupport.cpp \
-	QUSongSupport.cpp \
-	mediaplayer/QUAutoCue.cpp \
-	mediaplayer/QUMediaPlayer.cpp \
-	support/QULogService.cpp \
-	support/QUProgressDialog.cpp \
-	support/QUMessageBox.cpp \
-	support/QUMetaphoneString.cpp \
-	song/QUSongFile.cpp \
-	song/QUSongLine.cpp
+    QCMainWindow.cpp \
+    QU.cpp \
+    QUStringSupport.cpp \
+    QUSongSupport.cpp \
+    mediaplayer/QUAutoCue.cpp \
+    mediaplayer/QUMediaPlayer.cpp \
+    support/QULogService.cpp \
+    support/QUProgressDialog.cpp \
+    support/QUMessageBox.cpp \
+    support/QUMetaphoneString.cpp \
+    song/QUSongFile.cpp \
+    song/QUSongLine.cpp \
+    QUAboutDialog.cpp
 FORMS += mediaplayer/QUMediaPlayer.ui \
     support/QUMessageBox.ui \
     support/QUProgressDialog.ui \
-    QCMainWindow.ui
+    QCMainWindow.ui \
+    QUAboutDialog.ui
 RESOURCES += resources/usc.qrc
 TRANSLATIONS = resources/usc.de.ts
 INCLUDEPATH += . \
-	../include/taglib \
-	../include/bass \
+    ../include/taglib \
+    ../include/bass \
     song \
     mediaplayer \
     support \
     ui
 LIBS += -L"../lib" \
-	-ltag \
-	-lbass
-CONFIG -= debug-and-release release
+    -ltag \
+    -lbass
+CONFIG -= debug-and-release \
+    release
 CONFIG += debug

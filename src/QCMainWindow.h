@@ -1,9 +1,14 @@
 #ifndef QCMAINWINDOW_H
 #define QCMAINWINDOW_H
 
+#include "ui_QCMainWindow.h"
+
 #include <QMainWindow>
 #include <QTime>
-#include "ui_QCMainWindow.h"
+
+namespace Ui {
+    class QCMainWindow;
+}
 
 class QCMainWindow: public QMainWindow, private Ui::QCMainWindow {
     Q_OBJECT
@@ -22,6 +27,14 @@ private:
     QTime currentNoteTimer;
 
 private slots:
+    void on_comboBox_Genre_currentIndexChanged(QString );
+    void on_doubleSpinBox_BPM_editingFinished();
+    void on_lineEdit_Creator_editingFinished();
+    void on_comboBox_Year_currentIndexChanged(QString );
+    void on_comboBox_Edition_currentIndexChanged(QString );
+    void on_comboBox_Language_currentIndexChanged(QString );
+    void on_lineEdit_Title_editingFinished();
+    void on_lineEdit_Artist_editingFinished();
     void on_actionAbout_Qt_triggered();
     void on_actionQuit_USC_triggered();
     void on_actionAbout_triggered();

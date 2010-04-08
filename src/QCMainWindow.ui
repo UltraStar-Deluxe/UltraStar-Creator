@@ -29,7 +29,7 @@
    <string>usc</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources/usc.qrc">
+   <iconset>
     <normaloff>:/icons/bean.png</normaloff>:/icons/bean.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -66,7 +66,7 @@
        <height>561</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout" rowstretch="100,0" columnstretch="50,0">
+     <layout class="QGridLayout" name="gridLayout_InputLyrics" rowstretch="100,0" columnstretch="50,0">
       <property name="sizeConstraint">
        <enum>QLayout::SetNoConstraint</enum>
       </property>
@@ -85,7 +85,7 @@
          <string>Load from File...</string>
         </property>
         <property name="icon">
-         <iconset resource="resources/usc.qrc">
+         <iconset>
           <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
         </property>
        </widget>
@@ -99,7 +99,7 @@
          <string>Paste from Clipboard</string>
         </property>
         <property name="icon">
-         <iconset resource="resources/usc.qrc">
+         <iconset>
           <normaloff>:/control/tasks.png</normaloff>:/control/tasks.png</iconset>
         </property>
        </widget>
@@ -165,7 +165,7 @@ p, li { white-space: pre-wrap; }
        <height>230</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_3" columnminimumwidth="16,88,0">
+     <layout class="QGridLayout" name="gridLayout_SongMetaInformationTags" columnminimumwidth="16,88,0,16">
       <item row="0" column="1">
        <widget class="QLabel" name="label_Title">
         <property name="sizePolicy">
@@ -1154,7 +1154,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/font.png</pixmap>
+         <pixmap>:/types/font.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1164,7 +1164,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/user.png</pixmap>
+         <pixmap>:/types/user.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1174,7 +1174,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/language.png</pixmap>
+         <pixmap>:/types/language.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1184,7 +1184,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/edition.png</pixmap>
+         <pixmap>:/types/edition.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1194,7 +1194,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/genre.png</pixmap>
+         <pixmap>:/types/genre.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1204,7 +1204,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/date.png</pixmap>
+         <pixmap>:/types/calendar.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1214,7 +1214,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/creator.png</pixmap>
+         <pixmap>:/types/users.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1224,7 +1224,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/bullets/bullet_black.png</pixmap>
+         <pixmap>:/types/auction-hammer-gavel.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1234,7 +1234,97 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/bullets/bullet_black.png</pixmap>
+         <pixmap>:/types/balloon--arrow.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_TitleSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_ArtistSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_LanguageSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLabel" name="label_EditionSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QLabel" name="label_GenreSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QLabel" name="label_YearSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="3">
+       <widget class="QLabel" name="label_CreatorSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="3">
+       <widget class="QLabel" name="label_BPMSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_ok.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="3">
+       <widget class="QLabel" name="label_GAPSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_ok.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1262,7 +1352,7 @@ p, li { white-space: pre-wrap; }
        <height>83</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_4" columnminimumwidth="16,88,0,0">
+     <layout class="QGridLayout" name="gridLayout_MP3ArtworkTags" columnminimumwidth="16,88,0,0,0">
       <item row="0" column="1">
        <widget class="QLabel" name="label_MP3">
         <property name="text">
@@ -1416,7 +1506,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/music.png</pixmap>
+         <pixmap>:/types/music.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1426,7 +1516,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/cover.png</pixmap>
+         <pixmap>:/types/cover.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1436,7 +1526,37 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/background.png</pixmap>
+         <pixmap>:/types/background.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="label_MP3Set">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QLabel" name="label_CoverSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLabel" name="label_BackgroundSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1464,7 +1584,7 @@ p, li { white-space: pre-wrap; }
        <height>31</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_5" columnstretch="0,0,100" columnminimumwidth="16,88,0">
+     <layout class="QGridLayout" name="gridLayout_MiscSettings" columnstretch="0,0,100,0" columnminimumwidth="16,88,0,0">
       <item row="0" column="1">
        <widget class="QLabel" name="label_DefaultPitch">
         <property name="text">
@@ -1513,7 +1633,17 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/midi.png</pixmap>
+         <pixmap>:/types/equalizer.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_DefaultPitchSet_2">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_ok.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1541,7 +1671,7 @@ p, li { white-space: pre-wrap; }
        <height>26</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout_Control">
       <item>
        <widget class="QPushButton" name="pushButton_Start">
         <property name="enabled">
@@ -1560,7 +1690,7 @@ p, li { white-space: pre-wrap; }
          <string>&amp;Play</string>
         </property>
         <property name="icon">
-         <iconset resource="resources/usc.qrc">
+         <iconset>
           <normaloff>:/control/play.png</normaloff>:/control/play.png</iconset>
         </property>
        </widget>
@@ -1577,7 +1707,7 @@ p, li { white-space: pre-wrap; }
          <string>Stop</string>
         </property>
         <property name="icon">
-         <iconset resource="resources/usc.qrc">
+         <iconset>
           <normaloff>:/marks/delete.png</normaloff>:/marks/delete.png</iconset>
         </property>
        </widget>
@@ -1615,7 +1745,7 @@ p, li { white-space: pre-wrap; }
        <height>54</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_6" columnminimumwidth="16,88,0,0">
+     <layout class="QGridLayout" name="gridLayout_VideoTags" columnminimumwidth="16,88,0,0,0">
       <item row="0" column="1">
        <widget class="QLabel" name="label_Video">
         <property name="text">
@@ -1700,7 +1830,7 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/film.png</pixmap>
+         <pixmap>:/types/film.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1710,7 +1840,27 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/videogap.png</pixmap>
+         <pixmap>:/types/videogap.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="label_VideoSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_error.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QLabel" name="label_VideogapSet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/marks/path_ok.png</pixmap>
         </property>
        </widget>
       </item>
@@ -1768,48 +1918,10 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="label_NextSyllable4">
-     <property name="geometry">
-      <rect>
-       <x>790</x>
-       <y>20</y>
-       <width>181</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="toolTip">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field shows the following syllables.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="text">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
     <widget class="Line" name="line4">
      <property name="geometry">
       <rect>
-       <x>770</x>
+       <x>650</x>
        <y>20</y>
        <width>20</width>
        <height>31</height>
@@ -1822,7 +1934,7 @@ p, li { white-space: pre-wrap; }
     <widget class="Line" name="line2">
      <property name="geometry">
       <rect>
-       <x>370</x>
+       <x>330</x>
        <y>20</y>
        <width>20</width>
        <height>31</height>
@@ -1830,88 +1942,12 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_NextSyllable3">
-     <property name="geometry">
-      <rect>
-       <x>590</x>
-       <y>20</y>
-       <width>181</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="toolTip">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field shows the following syllables.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="text">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_NextSyllable2">
-     <property name="geometry">
-      <rect>
-       <x>390</x>
-       <y>20</y>
-       <width>181</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="toolTip">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field shows the following syllables.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="text">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="Line" name="line3">
      <property name="geometry">
       <rect>
-       <x>570</x>
+       <x>490</x>
        <y>20</y>
        <width>20</width>
        <height>31</height>
@@ -1919,44 +1955,6 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_NextSyllable1">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>20</y>
-       <width>181</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="toolTip">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field shows the following syllables.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="text">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="Line" name="line1">
@@ -1970,6 +1968,124 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_NextSyllable1">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>20</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_NextSyllable2">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>20</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_NextSyllable3">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>20</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_NextSyllable4">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>20</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="Line" name="line4_2">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>20</y>
+       <width>20</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_NextSyllable5">
+     <property name="geometry">
+      <rect>
+       <x>830</x>
+       <y>20</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -2002,7 +2118,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <layout class="QGridLayout" name="gridLayout_2" rowstretch="100,0" columnstretch="50,50">
+      <layout class="QGridLayout" name="gridLayout_OutputLyrics" rowstretch="100,0" columnstretch="50,50">
        <property name="sizeConstraint">
         <enum>QLayout::SetNoConstraint</enum>
        </property>
@@ -2018,7 +2134,7 @@ p, li { white-space: pre-wrap; }
           <string>Save to File...</string>
          </property>
          <property name="icon">
-          <iconset resource="resources/usc.qrc">
+          <iconset>
            <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
          </property>
         </widget>
@@ -2035,7 +2151,7 @@ p, li { white-space: pre-wrap; }
           <string>Copy to Clipboard</string>
          </property>
          <property name="icon">
-          <iconset resource="resources/usc.qrc">
+          <iconset>
            <normaloff>:/control/tasks.png</normaloff>:/control/tasks.png</iconset>
          </property>
         </widget>
@@ -2116,7 +2232,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
    <property name="text">
-    <string>About</string>
+    <string>About UltraStar Creator</string>
    </property>
    <property name="shortcut">
     <string>F1</string>
@@ -2166,8 +2282,6 @@ The contents can be saved to a file or be copied to the clipboard.</string>
   <tabstop>pushButton_CopyToClipboard</tabstop>
   <tabstop>plainTextEdit_OutputLyrics</tabstop>
  </tabstops>
- <resources>
-  <include location="resources/usc.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -203,6 +203,11 @@
         <file>midi_kar.png</file>
         <file>duet.png</file>
         <file>page_white_acrobat.png</file>
+        <file>auction-hammer-gavel.png</file>
+        <file>equalizer.png</file>
+        <file>users.png</file>
+        <file>balloon--arrow.png</file>
+        <file>calendar.png</file>
     </qresource>
     <qresource prefix="/big">
         <file>save_big.png</file>
