@@ -272,7 +272,7 @@ void QCMainWindow::on_pushButton_BrowseBackground_clicked()
 
 void QCMainWindow::on_pushButton_BrowseVideo_clicked()
 {
-    QString filename_Video = QFileDialog::getOpenFileName ( 0, tr("Please choose video file"), QDir::homePath(), tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4"));
+    QString filename_Video = QFileDialog::getOpenFileName ( 0, tr("Please choose video file"), QDir::homePath(), tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts"));
     QFileInfo *fileInfo_Video = new QFileInfo(filename_Video);
     if (!fileInfo_Video->fileName().isEmpty()) {
         ui->lineEdit_Video->setText(fileInfo_Video->fileName());
@@ -342,7 +342,7 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                         }
                     }
                 }
-                else if (!fileName.isEmpty() && (fileName.endsWith(tr(".avi")) || fileName.endsWith(tr(".flv")) || fileName.endsWith(".mpg") || fileName.endsWith(tr(".mpeg")) || fileName.endsWith(tr(".mp4")))) {
+                else if (!fileName.isEmpty() && (fileName.endsWith(tr(".avi")) || fileName.endsWith(tr(".flv")) || fileName.endsWith(tr(".mpg")) || fileName.endsWith(tr(".mpeg")) || fileName.endsWith(tr(".mp4")) || fileName.endsWith(tr(".vob")) || fileName.endsWith(tr(".ts")))) {
                     if (!ui->groupBox_VideoTags->isChecked()) {
                         ui->groupBox_VideoTags->setChecked(true);
                     }
