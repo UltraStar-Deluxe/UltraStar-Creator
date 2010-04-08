@@ -1,0 +1,65 @@
+﻿If you double-click the cell where the row of an audio file and the <i>audio column</i> cross, you can immediately set your song to use this audio file in UltraStar.<br><br>This works also für pictures and videos.
+You can edit the value of each tag in the details area. Just double-click the right cell there to enter the edit mode of a specific value.
+You can modify the order in which tags are saved to a song file by drag&drop these tags under <i>Options > Tag Save Order...</i>.
+Did you remark that "tasks area"? Just check the things you want to do, select some songs and then click on the button labeled with "Run".<br><br>You can also hit <i>Ctrl+R</i>.
+You can hide the event log by unchecking <i>View > Event Log</i>.<br><br>This works also for song details and the tasks area.
+Do you want me to say something else? Tell everybody your requests on our <a href="http://uman.sf.net">SourceForge project website</a>.
+Some tags are not editable? Yeah, that's right. Several data stay unchanged because this tool doesn't enable you to modify GAP or BPM a.s.o.<br><br>You can use UltraStar itself very well for that.
+Did I hear you correctly? A missing feature?! Just click <a href="http://uman.sf.net">here</a> and tell it everyone - especially the developers.
+You can also send a mail to <a href="mailto:saiya_mg@users.sourceforge.net">any developer</a> and give feedback.
+The "Songs" menu enables you to expand or collapse the whole song tree. That means you will either see only directories of your songs or all files you can use.
+You are missing a video for your favourite song? Check out <a href="http://www.youtube.com">Youtube</a>!
+Whenever a task could not be done you can see it in the event log. Mostly a file could not be found or invalid characters (e.g. '?') are used to rename something.<br><br>Be aware that <i>UltraStar</i> can display more characters than you can use under <i>Windows</i> for a file.
+Did you notice that there are green and blue ticks for the song tree? Blue ones tell you that your song directory is named correctly after <i>Artist - Title</i> not case-sensitive while green ones are case-sensitive.
+The <i>chain</i> beside a picture, audio or video file signals you that it can be found by UltraStar correctly.<br><br>You can reset chains by double-click the correct column.
+Files are unused by UltraStar whenever they appear gray.
+You want to know how many songs you've got? Well...there are <b>%1 songs</b>. Not bad at all.<br><br>Did you get a cover, a background or a video for each one? No? Then you've got a new task.
+Hmmm...just in case you did not recognized: The last events are located on top of the event log.
+Did you remark these nice tooltips at the heading of each column in the song tree?
+Do you wonder why some tasks want to rename your file into <i>something.*</i>?<br><br>Well, your file suffix is preserved whatever it may be. So don't bother.
+The first *.txt file in any subdirectory of your song folder will be recognized as a song and listed in the song tree.
+There is a song missing which is found by UltraStar instead? That cannot be!<br><br>Well...please report it on the <a href="http://sourceforge.net/projects/uman">project website</a> and include details where that song is located.
+You can turn of these relative paths in the folder column by uncheck <i>View > Relative Song Path</i>.
+What are <b>blue folders</b>? If a tag is found in a song text file that will not be recognized by UltraStar then this song is marked with a blue folder.<br><br>That's not bad at all. These tags will stay untouched.
+The tooltip of a blue folder displays you all unsupported tags that were found.
+Try to click on an audio file and see what appears in the preview window below...
+Did you notice that huge amount of default values for a genre in the song details? These genres originate from the good old ID3v1 specification as well as some custom Winamp extensions.
+I shall be quiet? Then uncheck <i>Help -> Allow Monty to talk</i>.
+The default values for an artist, a title and the year in the song details come from the ID3 tag.
+There is a task that enables you to set up missing files for a song automatically. That task looks for the first proper files (audio, picture, video) and uses that file if the present entry is invalid or missing.
+You can edit some details of many songs at once if you select some and use the <i>details table</i>.
+If you drag&drop a dockable widget (song details, tasks, event log) over another dockable widget these two widgets <i>will melt together</i> to one new widget with tabs at the bottom.
+You can make a dockable widget (song details, tasks, event log) floatable if you double-click its title bar.
+Did you remark that the state of the application window as well as all dockable widgets is saved on exit?
+Unsupported tags will be saved after all other tags in the song file.
+You have a problem with changing the artist tag because the auto completion wants to use the ID3 tag value? (e.g. "abba" -> "Abba")<br><br>Try to check <i>Use case-sensitive auto completion</i> under the details table.
+If you double-click a text file you'll see its contents.
+Did you know that you can drag one or more files from the <i>file explorer</i> onto a song in the tree to <i>copy</i> and use/assign this or these files automatically for that song?
+Files that appear <i>striked-out</i> and <i>gray</i> cannot be used anywhere and are useless to UltraStar.
+Did you know that there is a context-menu in the song tree? Try to click the right mouse button on a file or a song directory and see what happens...
+You can delete a single file by pushing the delete key on your keyboard or choosing <i>Delete</i> in the context menu of that file.<br><br><b>Attention! You can delete song text files!</b>
+If you drag&drop a song text file from your explorer into the song tree (not at an item), a new folder will be created and your file will be copied to that new location.<br><br>So you can easily add new songs to you collection.
+Whenever a folder appears bold there are unsaved changes. Don't forget to save them!
+You can filter the song tree. Just hit <i>Ctrl+F</i> and type some regular expression. Then press the filter button.
+Did you ever create a <i>report</i> of you songs? No?<br><br>Try <i>Songs > New Report ...</i>
+If you double-click a picture file you'll get a preview of it.
+You can delete a rename task by deleting its configuration file in the application directory.
+If you make a double-click on a rename task in the task list you can modify that task.
+There is a context menu in the task list which enables you to add and edit rename tasks.
+Some operations cannot be cancelled because that would lead to an inconsistent state, e.g. applying a filter.
+You can expand and collapse the categories in the database info window by double-clicking their names.
+A cross with an exclamation mark in the song tree indicates that the value for a file-related tag (e.g. #cover) was set but the file does not exist.
+A song is <b>invalid</b> if it has no artist or title or a length of zero. That song will have a <b>light red background</b> in the song tree.
+If you want to integrate new songs via drag&drop in the song tree, it may be helpful to hide all other songs first.<br><br><i>Hide > All</i> (context menu)
+There are two types of context menus in the song tree. One for files and one for folders (whole songs).
+You can negate the regular expression for a filter if you click the plus button in front of the input line.
+If you filter "abba|akon|dido", you will get all items that contain "abba", "akon" or "dido".
+Nearly all icons in the song tree have a tooltip. Just let the mouse cursor alone and wait 1-2 seconds. A hint will appear.
+You can see double songs if you press <i>Duplicates</i> in the filter area. Double songs will be listed together.
+Playlists will be connected to the current song database. Whenever a song will be changed, playlists will be updated automatically.<br><br>Changed playlists need to be saved.
+<i>Amazon Assiciates Web Service:</i><br><br>Covers will only be downloaded for songs that are checked. That applies also to "Copy & Set".
+You can expand a list of all supported file types if you double-click the corresponding headline in <i>File Information</i>.
+Editable tasks can be modified via double-click. Additionally, a context menu is present - hit the right mouse button.
+The event log will be saved on exit in the application path.
+The head of the song tree has a context menu. Here you can show and hide columns. Presets offer a more convenient way to do this.
+You can display the lyrics of the current song via <i>Ctrl + L</i>

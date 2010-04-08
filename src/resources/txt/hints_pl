@@ -1,0 +1,65 @@
+Jeśli masz więcej utworów audio w katalogu i klikniesz dwukrotnie na the miejsce łączenia (rząd z plikiem audio i kolumnę z nutką) przypiszesz ten plik audio do tego utworu.<br><br>To działa także dla grafiki i teledysków.
+Możesz zmienić wartość większości etykiet na szczegółach utworu. Kliknij dwukrotnie na wybranej komórce i wprowadź wybraną wartość.
+Możesz zamieniać kolejność etykiet w jakiej będą one zapisane do pliku TXT utworu. Wystarczy przeciągnąć i opuścić te etykiety w okienku <i>Opcje > Kolejność Zapisu Etykiet...</i>.
+Zauważyłeś "okienko z zadanimi"? Zaznacz co chciałbyś zrobić, wybierz utwory a potem kliknij na przycisk "Uruchom".<br><br>Możesz także nacisnąć  <i>Ctrl+R</i>.
+Możesz ukryć dziennik wydarzeń po prostu odhaczając <i>Widok > Dziennik Wydarzeń</i>.<br><br>To działa także na właściwości utworów i zadania.
+Chcesz mi jeszcze o czymś powiedzieć? Powiedz co Cię gnębi na <a href="http://uman.sf.net">Stronie projektu</a>, a być może zdołamy Ci pomóc.
+Niektóre etykiety ni chcą dać się zmienić? Tak masz rację, Wiele z danych pozostanie niezmieniona, bo to narzędzie nie powinno służyć do zmiany takich rzeczy jak prędkość BPM czy GAP. Do tego celu służy edytor w UltraStarze.
+Dobrze słyszę? Brakująca funkcja?! Kliknij <a href="http://uman.sf.net">tutaj</a> i powiedz o niej wszystkim - zwłaszcza twórcom.
+W razie pytań i sugestii możesz wysłać e-mail który dotrze do <a href="mailto:saiya_mg@users.sourceforge.net">każdego z twórców</a> i czekać na odzew.
+Menu "Utwory" umożliwia rozwinięcie i zwinięcie całego drzewka utworów. Oznacza to, że możesz mieć wgląd we wszystkie pliki które występują we wszystkich utworach, lub widzieć tylko ich nazwy katalogów.
+Brakuje Ci teledysku do ulubionej piosenki? poszukaj go na <a href="http://www.youtube.com">Youtube</a>!
+Jeśli zadanie nie może być wykonane - dowiesz się o tym z dziennika wydarzeń. Większość tego typu problemów wynika ze złych znaków np użycie '?' do zmiany nazwy pliku.
+Zauważyłeś buźki na drzewku utworów? Zielone oznaczają, że wszystko jest w porządku. Żółte sugerują różnicę w wielkości znaków. Czerwone oznaczają, że nazwa katalogu różni się od tej zadeklarowanej na etykietach utworu.
+<i>Łańcuchy</i> pomiędzy grafiką, plikami audio i teledyskami informują o tym, że pliki te będą widziane i użyte w UltraStarze<br><br>Możesz odświeżyć te połączenia klikając na nich dwukrotnie.
+Pliki nieużywane przez UltraStar'a mają szary kolor.
+Tak tylko informacyjnie napomykam, że masz <b>%1 utworów</b>. Całkiem nieźle.<br><br>A masz do każdego z nich okładkę, teledysk lub tło? Nie??? Nooo to już wiesz za co będziesz robił w długie zimowe wieczory.
+Hmmm...w razie gdybyś nie wiedział: Ostatnie wydarzenie zawsze jest ulokowane na górze dziennika zdarzeń.
+Sprawdzałeś podpisy przy nagłówkach kolumn drzewka utworów? Przytryzmaj nad nimi kursor myszki a dowiesz się jakie znaczenie ma każda z tych kolumn.
+Jeśli zastanawiasz się dlaczego niektóre zadania chcą zmienić nazwę pliku na <i>cośtam.*</i>?<br><br>Otóż rozszerzenie pliku jest tutaj najistotniejsze, i będzie on widziany przez utwór jakkolwiek by nie został nazwany (oczywiście jeśli jest on także w takiej formie umieszczony w etykiecie).
+Pierwszy znaleziony plik *.txt w każdym podfolderze wybranego jako katalog utworów miejsca będzie uznany za utwór, i umieszczony na drzewku utworów.
+Masz utwór który widzi UltraStar a nie jest on widoczny w UltraStar Managerze? Niemożliwe!<br><br>No dobrze... sprawdzimy to, jeśli podasz więcej szczegółów  na <a href="http://sourceforge.net/projects/uman">stronie projektu</a> nie zapomnij podać ścieżki gdzie znajduje się ten utwór.
+Możesz podejrzeć pełną ścieżkę do katalogu z utworem. Wystarczy zaznaczyć <i>Widok > Dokładna Ścieżka Utworu</i>.
+Co oznaczają <b>niebieskie<b> katalogi? Nie mniej nie więcej tylko to, że w pliku TXT utworu znajdują się nierozpoznane etykiety.<br><br>Nie są one szkodliwe, Te etykiety pozostaną przez program nietknięte. Chyba, że zażyczysz sobie by je usunąć.
+Jeśli najedziesz kursorem na niebieski katalog (o ile taki masz w swoich zbiorach) po chwili pojawi się informacja o tym jakie etykiety uznane zostały za nierozpoznane. Czasami może to być po prostu błąd/literówka twórcy utworu.
+Spróbuj kliknąć dwukrotnie na pliku audio i patrz co się stanie...
+Zauważyłeś dużą różnorodność rodzajów muzyki w szczegółach utworów? Pochodzą one z etykiety ID3. Można a nawet powinno się je nieco uogólnić dla dobra późniejszego ich filtrowania w UltraStarze.
+Mam być cicho? Odhacz <i>Pomoc -> Dopuść Montiego do głosu</i>.
+Domyślne wartości dla wykonawcy, tytułu i roku w szczegółach utworu pobierane są z etykiety ID3.
+Jedno z zadań pozwala na dołączenie brakujących w utworze plików. To zadanie szuka plików z brakującą zawartością (muzyka, grafika, teledysk) które znajdują się w katalogu utworu.
+Możesz zmieniać szczegółu kilku utworów jednocześnie. W tym celu zaznacz je i wykorzystaj <i>tabelę szczegóły</i>.
+Jeśli przeciągniesz i opuścisz okienko z możliwością dokowania (szczegóły utworu, zadania, dziennik wydarzeń) nad inne okienko, oba okna zostaną połączone. Pod tymi oknami pojawi się pasek zakładek z nazwami tych okien.
+Możesz odłączyć od aplikacji ruchome okna takie jak szczegóły utworu, zadania czy dziennik wydarzeń. Wystarczy kliknąć dwukrotnie w ich tytułowy pasek.
+Czy zauważyłeś, że pozycja wszystkich okien USM jest zapisywana przy wyjściu? Możesz je dowolnie przesuwać i ustawiać według potrzeb.
+Nierozpoznane etykiety będą ulokowane jako ostatnie w pliku TXT utworu.
+Masz problem ze zmianą nazwy wykonawcy, bo automatyczna zmiana za bardzo sugeruje się etykietami ID3 (np. "abba" -> "Abba") a Ty koniecznie chcesz mieć ABBA? <br><br>Spróbuj kliknąć na <i>Uwzględnianie wielkości liter</i> które znajduje się pod tebelą szczegółowych informacji.
+Jeśli klikniesz dwukrotnie na pliku z tekstem zobaczysz ukaże Ci się jego zawartość.
+Czy wiesz, że przeciągając i opuszczając jeden lub więcej plików z <i>eksploratora plików</i> do utworu na drzewku <i>kopiujesz</i> i automatycznie przypisujesz te pliki do utworu nad którym je opuścisz?
+Pliki które pojawiają się jako <i>przekreślone</i> i <i>szare</i> zazwyczaj są plikami nieużywanymi i nieprzydatnymi w programie UltraStar. Mogą być usunięte. Zważ jednak, że niektórzy twórcy celowo zmieniają rozszerzenie plików np z muzyką. Tak więc jeśli nie widzisz pliku *.mp3 natomiast jest jakiś inny "podejrzany" plik - sprawdź najpierw czy nie odpowiada on za muzykę. (etykieta #mp3 w tabelce Szczegóły utworu -> Pliki)
+Czy wiesz, że jest menu kontekstowe na drzewku utworów? Spróbuj kliknąć na katalogu, pliku, lub na szczycie drzewka i zobacz co się stanie...
+Pojedyńcze pliki możesz usuwać naciskając przycisk delete z klawiatury, lub wybierając <i>Usuń</i> z menu kontekstowego tego pliku.ile.<br><br><b>UWAŻAJ by nie usunąć pochopnie ważnych dla siebie plików!</b>
+Jeśli przeciągniesz i opuścisz plik TXT z explorera na drzewko utworów (lecz nie na jakiś istniejący katalog), zostanie utworzony nowy folder a ten plik zostanie w nim umieszczony.<br><br>W ten sposób możesz łatwo dodawaća nowe utwory do swojej kolekcji.
+Jeśli nazwa katalogu jest pogrubiona oznacza to, że są w nim jakieś niezapisane zmiany. Nie zapomnij ich zachować!
+Możesz odfiltrowywać zawartość drzewka utworów. Po prostu naciśnij <i>CTRL+F</i> i wpisz jakieś wyrażenie. Potem kliknij na przycisk filtruj.
+Tworzyłeś już <i>raport</i> swoich utworów? Nie?<br><br>Nie ma na co czekać <i>Utwory > Nowy Raport ...</i>
+Dwukrotne kliknięcie na plik obrazka pozwoli na jego podgląd.
+Możesz usunąć zadanie zmiany nazwy poprzez usunięcie jego pliku konfiguracji w katalogu aplikacji UltraStar Manager.
+Dwókrotne kliknięcie na zadaniu zmiany nazwy spowoduje, że będziesz mógł je zmodyfikować.
+Zadania maja menu  kontekstowe, które pozwala dodawać i modyfikować zadania zmian nazw.
+Niektóre czynności nie mogą być anulowane, by nie doprowadzić do sprzeczności na przykład w zastosowanych filtrach.
+Możesz rozwijać i zwijać kategorie informacji na oknie bazy danych poprzez dwukrotne kliknięcie na ich nazwach.
+Krzyżyk z wykrzyknikiem na drzewku utworów zwraca uwagę na brak któregoś z plików powiązanych z utworem. Na przykład istnieje etykieta <b>#COVER:nazwapliku [CO].jpg</b> ale takiego pliku nie ma w  katalogu utworu.
+Utwór jest uznany za <b>błędny</b> jeśli nie ma wykonawcy, tytułu lub jego długość wynosi zero. Taki utwór ma <b>lekko czerwone tło</b> na drzewku utworów.
+Jeśli zamierzasz dołączyć nowy utwór do drzewka utworów przez przeciąganie i opuszczanie plików, pomocne może być wcześniejsze ukrycie innych utworów.<br><br><i>Ukryj > Wszystko</i> (menu kontekstowe)
+Są dwa rodzaje menu kontekstowego na drzewku utworów. Jedno dla poszczególnych plików i drugie dla katalogów (całych utworów).
+Możesz odwrócić efekt filtrowania. Wystarczy, że na pasku filtrowania klikniesz na ikonkę plus (+).
+Jeśli w pasku filtrowania wpiszesz "abba|akon|dido", i naciśniesz filtruj - wyświetlone zostaną tylko te elementy które zawierają w nazwie "abba", "akon" lub "dido".
+Niemal wszystkie ikony drzewka utworów posiadają własne podpowiedzi. Po prostu przytrzymaj 1-2 sekundy kursor nad wybrana ikonką, a powinna pojawić się informacja.
+Możesz sprawdzić czy masz zduplikowane utwory klikając na <i>Duplikaty</i> na pasku filtrowania. Zduplikowane utwory zostaną natycmiast wyświetlone.
+Listy Odtwarzania połączone są z bazą danych utworów. Za każdym razem, gdy utwór zostanie zmieniony, listy odtwarzania będą automatycznie zaktualizowane.<br><br>Zmienione listy odtwarzanie wymagają zapisania.
+<i>Usługa Pobierania Danych z Amazon:</i><br><br>Okładki będą pobrane jedynie dla zaznaczonych utworów. Dołączenie okładek następuje poprzez kliknięcie na "Kopiuj i Ustaw".
+Możesz rozwinąć listę wszystkich rozpoznawanych typów plików poprzez dwukrotne kliknięcie na katalogu utworu.
+Zadanie które można modyfikować podatne są na podwójny kilk myszki :) Dodatkowo pod prawym przyciskiem myszki znajduje się tam menu kontekstowe.
+Dziennik zdarzeń jest zapisywany przy wyjściu z programu w katalogu UltraStar Manager'a.
+Czubek drzewka utworów ma menu kontekstowe. Znajdziesz tam ustawienia zapewniające dogodny widok dla aktualnie wykonywanej czynności.
+Możesz obejrzeć tekst piosenki po prostu naciskając <i>Ctrl + L</i>

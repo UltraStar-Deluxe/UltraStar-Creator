@@ -19,7 +19,7 @@ HEADERS += main.h \
     support/QULogService.h \
     support/QUMessageBox.h \
     support/QUProgressDialog.h \
-	support/QUMetaphoneString.h \
+    support/QUMetaphoneString.h \
     QCMainWindow.h
 SOURCES += main.cpp \
 	QCMainWindow.cpp \
@@ -50,5 +50,5 @@ INCLUDEPATH += . \
 LIBS += -L"../lib" \
 	-ltag \
 	-lbass
-CONFIG -= debug-and-release debug
-CONFIG += release
+CONFIG -= debug-and-release release
+CONFIG += debug

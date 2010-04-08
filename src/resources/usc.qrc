@@ -1,5 +1,20 @@
 <RCC>
-    <qresource prefix="/" >
+    <qresource prefix="/">
+        <file>monty/back.png</file>
+        <file>monty/happy.png</file>
+        <file>monty/normal.png</file>
+        <file>monty/seated.png</file>
+        <file>txt/genres</file>
+        <file>txt/hints</file>
+        <file>txt/hints_pl</file>
+        <file>txt/hints_de</file>
+        <file>txt/credits</file>
+        <file>txt/languages</file>
+        <file>lang/de.png</file>
+        <file>lang/uman.de.qm</file>
+        <file>lang/uman.pl.qm</file>
+        <file>lang/pl.png</file>
+        <file>lang/us.png</file>
         <file>player/next.png</file>
         <file>player/pause.png</file>
         <file>player/play.png</file>
@@ -7,24 +22,191 @@
         <file>player/stop.png</file>
         <file>player/shuffle.png</file>
         <file>player/loop.png</file>
+        <file>qt.png</file>
+        <file>about_bgr.png</file>
     </qresource>
-    <qresource prefix="/types" >
-        <file>music.png</file>
-        <file>text.png</file>
-        <file>text_stack.png</file>
+    <qresource prefix="/bubble">
+        <file>speech8.png</file>
+        <file>speech1.png</file>
+        <file>speech2.png</file>
+        <file>speech3.png</file>
+        <file>speech4.png</file>
+        <file>speech5.png</file>
+        <file>speech6.png</file>
+        <file>speech7.png</file>
     </qresource>
-    <qresource prefix="/marks" >
+    <qresource prefix="/bullets">
+        <file>arrow_down_small.png</file>
+        <file>bullet_star.png</file>
+        <file>arrow_up_small.png</file>
+        <file>bullet_warning.png</file>
+        <file>bullet_cancel.png</file>
+        <file>minus_small.png</file>
+        <file>plus_small.png</file>
+        <file>bullet_black.png</file>
+        <file>bullet_add.png</file>
+        <file>bullet_remove.png</file>
+    </qresource>
+    <qresource prefix="/control">
+        <file>playlist_to.png</file>
+        <file>text_edit.png</file>
+        <file>duplicates.png</file>
+        <file>quit.png</file>
+        <file>space.png</file>
+        <file>picture_minus.png</file>
+        <file>tasks_add.png</file>
+        <file>filter_log.png</file>
+        <file>empty_syllable.png</file>
+        <file>database.png</file>
+        <file>log.png</file>
+        <file>tag_custom.png</file>
+        <file>image_resize_actual.png</file>
+        <file>cart.png</file>
+        <file>id3.png</file>
+        <file>tree_presets.png</file>
+        <file>image_resize.png</file>
+        <file>broom.png</file>
+        <file>tasks.png</file>
+        <file>eye.png</file>
+        <file>auto_save.png</file>
+        <file>bin.png</file>
+        <file>folder_page.png</file>
+        <file>playlist.png</file>
+        <file>folder_explore.png</file>
+        <file>save_as.png</file>
+        <file>tasks_edit.png</file>
+        <file>pause.png</file>
+        <file>play.png</file>
+        <file>check_tasks.png</file>
+        <file>collapse.png</file>
+        <file>expand.png</file>
+        <file>db_info.png</file>
+        <file>file_info.png</file>
+        <file>filter.png</file>
+        <file>folder_note.png</file>
+        <file>folder_realtive.png</file>
+        <file>zero.png</file>
+        <file>pencil.png</file>
+        <file>house.png</file>
+        <file>play32.png</file>
+        <file>refresh.png</file>
+        <file>websearch.png</file>
+        <file>report.png</file>
+        <file>save.png</file>
+        <file>save_all.png</file>
+        <file>tag_disk.png</file>
+        <file>uncheck_tasks.png</file>
+        <file>merge.png</file>
+        <file>plugin.png</file>
+        <file>mediaplayer.png</file>
+        <file>magnifier.png</file>
+        <file>magnifier_arrow.png</file>
+        <file>convert-1.png</file>
+        <file>convert-2.png</file>
+        <file>images.png</file>
+        <file>picture_go.png</file>
+        <file>arrow_undo.png</file>
+        <file>convert-a.png</file>
+        <file>convert-r.png</file>
+        <file>text_allcaps.png</file>
+        <file>cog.png</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>splash.png</file>
+        <file>cup.png</file>
+        <file>bean.png</file>
+        <file>bean--plus.png</file>
+    </qresource>
+    <qresource prefix="/marks">
         <file>accept.png</file>
+        <file>cross_error.png</file>
+        <file>add.png</file>
+        <file>no_warning.png</file>
+        <file>no_info.png</file>
+        <file>chart.png</file>
+        <file>no_save.png</file>
+        <file>spell_ok.png</file>
+        <file>spell_warn.png</file>
+        <file>spell_error.png</file>
         <file>cancel.png</file>
+        <file>clock.png</file>
+        <file>speed_fast_hamster.png</file>
+        <file>speed_med_cat.png</file>
+        <file>speed_slow_turtle.png</file>
+        <file>cross.png</file>
+        <file>cross_blue.png</file>
+        <file>delete.png</file>
+        <file>disk.png</file>
         <file>error.png</file>
         <file>help.png</file>
         <file>information.png</file>
-        <file>chart.png</file>
-        <file>clock.png</file>
+        <file>link.png</file>
+        <file>minus.png</file>
+        <file>plus.png</file>
+        <file>tag.png</file>
+        <file>tick.png</file>
+        <file>tick_blue.png</file>
+        <file>wand.png</file>
+        <file>link_break.png</file>
+        <file>flag_blue.png</file>
+        <file>flag_green.png</file>
+        <file>flag_red.png</file>
+        <file>flag_yellow.png</file>
+        <file>usdx.png</file>
+        <file>path_error.png</file>
+        <file>path_ok.png</file>
+        <file>path_unknown.png</file>
     </qresource>
-    <qresource prefix="/control" >
-        <file>database.png</file>
-        <file>eye.png</file>
-        <file>playlist.png</file>
+    <qresource prefix="/types">
+        <file>text_stack.png</file>
+        <file>folder_go.png</file>
+        <file>time_song.png</file>
+        <file>film_warn.png</file>
+        <file>music_error.png</file>
+        <file>music_warn.png</file>
+        <file>score.png</file>
+        <file>midi2.png</file>
+        <file>picture_warn.png</file>
+        <file>karaoke.png</file>
+        <file>license.png</file>
+        <file>midi.png</file>
+        <file>time_eff.png</file>
+        <file>time_mp3.png</file>
+        <file>background.png</file>
+        <file>comment.png</file>
+        <file>time.png</file>
+        <file>cover.png</file>
+        <file>creator.png</file>
+        <file>date.png</file>
+        <file>edition.png</file>
+        <file>file_delete.png</file>
+        <file>no_end.png</file>
+        <file>film.png</file>
+        <file>folder.png</file>
+        <file>folder_blue.png</file>
+        <file>font.png</file>
+        <file>genre.png</file>
+        <file>language.png</file>
+        <file>time_warning.png</file>
+        <file>music.png</file>
+        <file>text_plain.png</file>
+        <file>page_code.png</file>
+        <file>videogap.png</file>
+        <file>end.png</file>
+        <file>start.png</file>
+        <file>photo.png</file>
+        <file>picture.png</file>
+        <file>tag_delete.png</file>
+        <file>text.png</file>
+        <file>unused_files.png</file>
+        <file>user.png</file>
+        <file>midi_kar.png</file>
+        <file>duet.png</file>
+        <file>page_white_acrobat.png</file>
+    </qresource>
+    <qresource prefix="/big">
+        <file>save_big.png</file>
+        <file>user_big.png</file>
+        <file>cover_big.png</file>
     </qresource>
 </RCC>
