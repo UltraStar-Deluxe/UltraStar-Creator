@@ -92,21 +92,21 @@ void QCMainWindow::on_pushButton_Start_clicked()
 
     ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#TITLE:%1").arg(ui->lineEdit_Title->text()));
     ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:").arg(ui->comboBox_Language->currentText()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#EDITION:").arg(ui->comboBox_Edition->currentText()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GENRE:").arg(ui->comboBox_Genre->currentText()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#YEAR:").arg(ui->comboBox_Year->currentText()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#CREATOR:").arg(ui->lineEdit_Creator->text()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#MP3:").arg(ui->lineEdit_MP3->text()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#COVER:").arg(ui->lineEdit_Cover->text()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#BACKGROUND:").arg(ui->lineEdit_Background->text()));
+    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->currentText()));
+    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#EDITION:%1").arg(ui->comboBox_Edition->currentText()));
+    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
+    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#YEAR:%1").arg(ui->comboBox_Year->currentText()));
+    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#CREATOR:%1").arg(ui->lineEdit_Creator->text()));
+    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#MP3:%1").arg(ui->lineEdit_MP3->text()));
+    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#COVER:%1").arg(ui->lineEdit_Cover->text()));
+    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#BACKGROUND:%1").arg(ui->lineEdit_Background->text()));
 
     if (ui->groupBox_VideoTags->isChecked()) {
         if (ui->lineEdit_Video->text().isEmpty()) {
             ui->lineEdit_Video->setText(tr("%1 - %2.avi").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
         }
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEO:").arg(ui->lineEdit_Video->text()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEOGAP:").arg(ui->doubleSpinBox_Videogap->text()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEO:%1").arg(ui->lineEdit_Video->text()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEOGAP:%1").arg(ui->doubleSpinBox_Videogap->text()));
     }
     ui->plainTextEdit_OutputLyrics->appendPlainText("#BPM:" + ui->doubleSpinBox_BPM->text());
 
@@ -264,7 +264,7 @@ void QCMainWindow::on_pushButton_BrowseVideo_clicked()
 void QCMainWindow::on_actionAbout_triggered()
 {
     QMessageBox::information(this, tr("About UltraStar Song Creator"),
-                      tr("<b>UltraStar Song Creator 0.1</b><br><br> by: bohning"));
+                      tr("<b>UltraStar Song Creator 0.1</b><br><br> by:saiya_mg & bohning"));
 }
 
 void QCMainWindow::on_actionQuit_USC_triggered()
