@@ -27,6 +27,7 @@ private:
     QTime currentNoteTimer;
 
 private slots:
+    void on_pushButton_LoadFromFile_clicked();
     void on_comboBox_Genre_currentIndexChanged(QString );
     void on_doubleSpinBox_BPM_editingFinished();
     void on_lineEdit_Creator_editingFinished();

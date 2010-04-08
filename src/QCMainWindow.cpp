@@ -368,6 +368,9 @@ void QCMainWindow::on_lineEdit_Title_editingFinished()
         ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_ok.png"));
         ui->lineEdit_Artist->setFocus();
     }
+    else {
+        ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_error.png"));
+    }
 }
 
 void QCMainWindow::on_lineEdit_Artist_editingFinished()
@@ -375,6 +378,9 @@ void QCMainWindow::on_lineEdit_Artist_editingFinished()
     if(!ui->lineEdit_Artist->text().isEmpty()) {
         ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_ok.png"));
         ui->comboBox_Language->setFocus();
+    }
+    else {
+        ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_error.png"));
     }
 }
 
@@ -424,9 +430,24 @@ void QCMainWindow::on_lineEdit_Creator_editingFinished()
         ui->label_CreatorSet->setPixmap(QPixmap(":/marks/path_ok.png"));
         ui->doubleSpinBox_BPM->setFocus();
     }
+    else {
+        ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_error.png"));
+    }
 }
 
 void QCMainWindow::on_doubleSpinBox_BPM_editingFinished()
 {
      ui->pushButton_BrowseMP3->setFocus();
+}
+
+void QCMainWindow::on_pushButton_LoadFromFile_clicked()
+{
+    QString filename_Text = QFileDialog::getOpenFileName ( 0, tr("Please choose text file"), QDir::homePath(), tr("Text files (*.txt)"));
+
+    if (!filename_Text.isEmpty()) {
+        QFile file(filename_Text);
+        if (file.open(QFile::ReadOnly | QFile::Text)) {
+            ui->plainTextEdit_InputLyrics->setPlainText(file.readAll());
+        }
+    }
 }
