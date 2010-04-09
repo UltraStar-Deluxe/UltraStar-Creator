@@ -153,6 +153,9 @@
         <file>path_error.png</file>
         <file>path_ok.png</file>
         <file>path_unknown.png</file>
+        <file>edit-size-down.png</file>
+        <file>edit-size-up.png</file>
+        <file>clipboard-text.png</file>
     </qresource>
     <qresource prefix="/types">
         <file>text_stack.png</file>
@@ -201,10 +204,10 @@
         <file>duet.png</file>
         <file>page_white_acrobat.png</file>
         <file>auction-hammer-gavel.png</file>
-        <file>equalizer.png</file>
         <file>users.png</file>
         <file>balloon--arrow.png</file>
         <file>calendar.png</file>
+        <file>note.png</file>
     </qresource>
     <qresource prefix="/big">
         <file>save_big.png</file>

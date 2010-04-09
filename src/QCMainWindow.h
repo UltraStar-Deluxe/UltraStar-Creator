@@ -27,6 +27,10 @@ private:
     QTime currentNoteTimer;
 
 private slots:
+    void on_pushButton_OutputLyricsDecreaseFontSize_clicked();
+    void on_pushButton_OutputLyricsIncreaseFontSize_clicked();
+    void on_pushButton_InputLyricsDecreaseFontSize_clicked();
+    void on_pushButton_InputLyricsIncreaseFontSize_clicked();
     void on_pushButton_LoadFromFile_clicked();
     void on_comboBox_Genre_currentIndexChanged(QString );
     void on_doubleSpinBox_BPM_editingFinished();

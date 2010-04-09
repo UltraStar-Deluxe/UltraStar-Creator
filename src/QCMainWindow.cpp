@@ -162,7 +162,7 @@ void QCMainWindow::on_pushButton_Tap_released()
         ui->spinBox_Gap->setValue(currentNoteStartTime);
         firstNote = false;
     }
-    currentSyllable = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(QString::number(ui->spinBox_DefaultPitch->value())).arg(lyricsStringList[currentSyllableGlobalIndex]);
+    currentSyllable = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentText().at(0)).arg(lyricsStringList[currentSyllableGlobalIndex]);
     ui->plainTextEdit_OutputLyrics->appendPlainText(currentSyllable);
 
     if ((currentSyllableGlobalIndex+1) < numSyllables) {
@@ -449,5 +449,41 @@ void QCMainWindow::on_pushButton_LoadFromFile_clicked()
         if (file.open(QFile::ReadOnly | QFile::Text)) {
             ui->plainTextEdit_InputLyrics->setPlainText(file.readAll());
         }
+    }
+}
+
+void QCMainWindow::on_pushButton_InputLyricsIncreaseFontSize_clicked()
+{
+    QFont font = ui->plainTextEdit_InputLyrics->font();
+    if (font.pointSize() < 20) {
+        font.setPointSize(font.pointSize()+1);
+        ui->plainTextEdit_InputLyrics->setFont(font);
+    }
+}
+
+void QCMainWindow::on_pushButton_InputLyricsDecreaseFontSize_clicked()
+{
+    QFont font = ui->plainTextEdit_InputLyrics->font();
+    if (font.pointSize() > 5) {
+        font.setPointSize(font.pointSize()-1);
+        ui->plainTextEdit_InputLyrics->setFont(font);
+    }
+}
+
+void QCMainWindow::on_pushButton_OutputLyricsIncreaseFontSize_clicked()
+{
+    QFont font = ui->plainTextEdit_OutputLyrics->font();
+    if (font.pointSize() < 20) {
+        font.setPointSize(font.pointSize()+1);
+        ui->plainTextEdit_OutputLyrics->setFont(font);
+    }
+}
+
+void QCMainWindow::on_pushButton_OutputLyricsDecreaseFontSize_clicked()
+{
+    QFont font = ui->plainTextEdit_OutputLyrics->font();
+    if (font.pointSize() > 5) {
+        font.setPointSize(font.pointSize()-1);
+        ui->plainTextEdit_OutputLyrics->setFont(font);
     }
 }

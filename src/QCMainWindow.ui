@@ -66,45 +66,8 @@
        <height>561</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_InputLyrics" rowstretch="100,0" columnstretch="50,0">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetNoConstraint</enum>
-      </property>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="pushButton_LoadFromFile">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="toolTip">
-         <string>Load input lyrics from a plain text file.</string>
-        </property>
-        <property name="text">
-         <string>Load from File...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="resources/usc.qrc">
-          <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="pushButton_PasteFromClipboard">
-        <property name="toolTip">
-         <string>Paste input lyrics from the clipboard.</string>
-        </property>
-        <property name="text">
-         <string>Paste from Clipboard</string>
-        </property>
-        <property name="icon">
-         <iconset resource="resources/usc.qrc">
-          <normaloff>:/control/tasks.png</normaloff>:/control/tasks.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="2">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0" colspan="5">
        <widget class="QPlainTextEdit" name="plainTextEdit_InputLyrics">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -139,6 +102,87 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;By line+breaks and syl+la+bles with+in a word&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Are se+pa+ra+ted by a spe+cial cha+rac+ter.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
+        <property name="tabChangesFocus">
+         <bool>true</bool>
+        </property>
+        <property name="lineWrapMode">
+         <enum>QPlainTextEdit::NoWrap</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="pushButton_LoadFromFile">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Load input lyrics from a plain text file.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources/usc.qrc">
+          <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="pushButton_PasteFromClipboard">
+        <property name="toolTip">
+         <string>Paste input lyrics from the clipboard.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources/usc.qrc">
+          <normaloff>:/marks/clipboard-text.png</normaloff>:/marks/clipboard-text.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>38</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="3">
+       <widget class="QPushButton" name="pushButton_InputLyricsIncreaseFontSize">
+        <property name="toolTip">
+         <string>Increase font size.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources/usc.qrc">
+          <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QPushButton" name="pushButton_InputLyricsDecreaseFontSize">
+        <property name="toolTip">
+         <string>Decrease font size.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources/usc.qrc">
+          <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
+        </property>
        </widget>
       </item>
      </layout>
@@ -162,7 +206,7 @@ p, li { white-space: pre-wrap; }
        <x>10</x>
        <y>20</y>
        <width>301</width>
-       <height>230</height>
+       <height>234</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_SongMetaInformationTags" columnminimumwidth="16,88,0,16">
@@ -1466,7 +1510,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Browse for the audio file of the song.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string/>
@@ -1671,70 +1715,128 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Misc. Settings</string>
     </property>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>20</y>
        <width>301</width>
-       <height>31</height>
+       <height>22</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_MiscSettings" columnstretch="0,0,100,0" columnminimumwidth="16,88,0,0">
-      <item row="0" column="1">
-       <widget class="QLabel" name="label_DefaultPitch">
-        <property name="text">
-         <string>Default pitch:</string>
-        </property>
-        <property name="buddy">
-         <cstring>spinBox_DefaultPitch</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QSpinBox" name="spinBox_DefaultPitch">
-        <property name="toolTip">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;  0 = C4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;  1 = C#4 / Db4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;  2 = D4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;  3 = D#4 / Eb4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;  4 = E4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;  5 = F4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;  6 = F#4 / Gb4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;  7 = F4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;  8 = G#4 / Ab4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;  9 = A4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;10 = A#4 / Bb4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;11 = B4&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;12 = C5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="prefix">
-         <string/>
-        </property>
-        <property name="minimum">
-         <number>0</number>
-        </property>
-        <property name="maximum">
-         <number>12</number>
-        </property>
-       </widget>
-      </item>
+     <layout class="QGridLayout" name="gridLayout_3" columnminimumwidth="16,88,0,16">
       <item row="0" column="0">
        <widget class="QLabel" name="label_15">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources/usc.qrc">:/types/equalizer.png</pixmap>
+         <pixmap resource="resources/usc.qrc">:/types/note.png</pixmap>
         </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="label_DefaultPitch">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Default pitch:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QComboBox" name="comboBox_DefaultPitch">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>0 (C4)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1 (C#4 | Db4)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2 (D4)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3 (D#4 | Eb4)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4 (E)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5 (F)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6 (F#4 | Gb4)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7 (G4)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8 (G#4 | Ab4)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>9 (A)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>10 (A#4 | Bb4)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11 (B4)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12 (C5)</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item row="0" column="3">
        <widget class="QLabel" name="label_DefaultPitchSet_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -1783,7 +1885,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;A valid audio file and input lyrics must be set.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>&amp;Play</string>
+         <string/>
         </property>
         <property name="icon">
          <iconset resource="resources/usc.qrc">
@@ -1800,7 +1902,7 @@ p, li { white-space: pre-wrap; }
          <string>Stop tapping.</string>
         </property>
         <property name="text">
-         <string>Stop</string>
+         <string/>
         </property>
         <property name="icon">
          <iconset resource="resources/usc.qrc">
@@ -2212,73 +2314,120 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Output Lyrics</string>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <layout class="QGridLayout" name="gridLayout_OutputLyrics" rowstretch="100,0" columnstretch="50,50">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetNoConstraint</enum>
-       </property>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="pushButton_SaveToFile">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="toolTip">
-          <string>Save UltraStar lyrics to a file.</string>
-         </property>
-         <property name="text">
-          <string>Save to File...</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resources/usc.qrc">
-           <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="pushButton_CopyToClipboard">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="toolTip">
-          <string>Copy UltraStar lyrics to the clipboard.</string>
-         </property>
-         <property name="text">
-          <string>Copy to Clipboard</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resources/usc.qrc">
-           <normaloff>:/control/tasks.png</normaloff>:/control/tasks.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QPlainTextEdit" name="plainTextEdit_OutputLyrics">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>50</horstretch>
-           <verstretch>50</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="sizeIncrement">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>This is the field where the resulting UltraStar text file will be created.
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>301</width>
+       <height>561</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QPushButton" name="pushButton_SaveToFile">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Save UltraStar lyrics to a file.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources/usc.qrc">
+          <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="pushButton_CopyToClipboard">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Copy UltraStar lyrics to the clipboard.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources/usc.qrc">
+          <normaloff>:/marks/clipboard-text.png</normaloff>:/marks/clipboard-text.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>28</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="3">
+       <widget class="QPushButton" name="pushButton_OutputLyricsIncreaseFontSize">
+        <property name="toolTip">
+         <string>Increase font size.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources/usc.qrc">
+          <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QPushButton" name="pushButton_OutputLyricsDecreaseFontSize">
+        <property name="toolTip">
+         <string>Decrease font size.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources/usc.qrc">
+          <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="5">
+       <widget class="QPlainTextEdit" name="plainTextEdit_OutputLyrics">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>50</horstretch>
+          <verstretch>50</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="sizeIncrement">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>This is the field where the resulting UltraStar text file will be created.
 
 The contents can be saved to a file or be copied to the clipboard.</string>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+        </property>
+        <property name="lineWrapMode">
+         <enum>QPlainTextEdit::NoWrap</enum>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
@@ -2368,7 +2517,6 @@ The contents can be saved to a file or be copied to the clipboard.</string>
   <tabstop>lineEdit_Video</tabstop>
   <tabstop>pushButton_BrowseVideo</tabstop>
   <tabstop>doubleSpinBox_Videogap</tabstop>
-  <tabstop>spinBox_DefaultPitch</tabstop>
   <tabstop>plainTextEdit_InputLyrics</tabstop>
   <tabstop>pushButton_LoadFromFile</tabstop>
   <tabstop>pushButton_PasteFromClipboard</tabstop>
