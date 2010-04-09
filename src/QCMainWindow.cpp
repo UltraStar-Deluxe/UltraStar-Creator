@@ -162,7 +162,7 @@ void QCMainWindow::on_pushButton_Tap_released()
         ui->spinBox_Gap->setValue(currentNoteStartTime);
         firstNote = false;
     }
-    currentSyllable = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentText().at(0)).arg(lyricsStringList[currentSyllableGlobalIndex]);
+    currentSyllable = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(lyricsStringList[currentSyllableGlobalIndex]);
     ui->plainTextEdit_OutputLyrics->appendPlainText(currentSyllable);
 
     if ((currentSyllableGlobalIndex+1) < numSyllables) {
