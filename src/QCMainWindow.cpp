@@ -10,20 +10,9 @@
 #include <QClipboard>
 #include <QUrl>
 
-// global variables
+// global static variables
 static bool firstNote = true;
-QString currentSyllable;
-qint32 currentNoteStartTime;
-qint32 currentNoteStartBeat;
-qint32 firstNoteStartBeat = 0;
 static double bpm;
-QString lyricsString;
-QStringList lyricsStringList;
-qint32 numSyllables = 0;
-QClipboard *clipboard = QApplication::clipboard();
-qint32 currentSyllableGlobalIndex = 0;
-qint32 currentCharacterIndex = 0;
-// global variables end
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -32,6 +21,11 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     //(void*)statusBar();
     //statusBar()->showMessage(tr("USC ready."));
     logSrv->add(tr("Ready."), QU::Information);
+    numSyllables = 0;
+    firstNoteStartBeat = 0;
+    currentSyllableGlobalIndex = 0;
+    currentCharacterIndex = 0;
+    clipboard = QApplication::clipboard();
 }
 
 void QCMainWindow::changeEvent(QEvent *e)

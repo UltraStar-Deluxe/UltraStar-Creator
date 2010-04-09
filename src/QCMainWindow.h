@@ -26,6 +26,16 @@ private:
     Ui::QCMainWindow *ui;
     QTime currentSongTimer;
     QTime currentNoteTimer;
+    qint32 numSyllables;
+    QString currentSyllable;
+    qint32 currentSyllableGlobalIndex;
+    qint32 currentCharacterIndex;
+    qint32 firstNoteStartBeat;
+    qint32 currentNoteStartTime;
+    qint32 currentNoteStartBeat;
+    QString lyricsString;
+    QStringList lyricsStringList;
+    QClipboard *clipboard;
 
 private slots:
     void on_pushButton_OutputLyricsDecreaseFontSize_clicked();
