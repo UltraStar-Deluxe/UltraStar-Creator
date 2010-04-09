@@ -15,6 +15,7 @@ class QCMainWindow: public QMainWindow, private Ui::QCMainWindow {
 
 public:
     QCMainWindow(QWidget *parent = 0);
+    QString filename_MP3;
 
 protected:
     void changeEvent(QEvent *e);

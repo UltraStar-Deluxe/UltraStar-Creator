@@ -23,7 +23,7 @@ qint32 numSyllables = 0;
 QClipboard *clipboard = QApplication::clipboard();
 qint32 currentSyllableGlobalIndex = 0;
 qint32 currentCharacterIndex = 0;
-QString filename_MP3;
+// global variables end
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -323,18 +323,21 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                 }
                 else if (!fileName.isEmpty() && fileName.endsWith(tr(".jpg"))) {
                     QFileInfo *fileInfo = new QFileInfo(fileName);
-                    QMessageBox msg(QMessageBox::Question, tr("Image file drop"), tr("Use '%1' as...").arg(fileInfo->fileName()));
-                    QPushButton *coverButton = msg.addButton(tr("Cover"), QMessageBox::YesRole);
-                    QPushButton *backgroundButton = msg.addButton(tr("Background"), QMessageBox::NoRole);
-                    msg.exec();
-                    if (msg.clickedButton() == coverButton) {
+
+                    int result = QUMessageBox::question(0,
+                                    QObject::tr("Image file drop detected."),
+                                    QObject::tr("Use <b>%1</b> as...").arg(fileInfo->fileName()),
+                                    BTN	<< ":/types/cover.png"        << QObject::tr("Cover Image File")
+                                        << ":/types/background.png" << QObject::tr("Background Image File"));
+
+                    if(result == 0) {
                         QFileInfo *fileInfo_Cover = new QFileInfo(fileName);
                         if (!fileInfo_Cover->fileName().isEmpty()) {
                             ui->lineEdit_Cover->setText(fileInfo_Cover->fileName());
                             ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
                         }
                     }
-                    else if (msg.clickedButton() == backgroundButton) {
+                    else {
                         QFileInfo *fileInfo_Background = new QFileInfo(fileName);
                         if (!fileInfo_Background->fileName().isEmpty()) {
                             ui->lineEdit_Background->setText(fileInfo_Background->fileName());

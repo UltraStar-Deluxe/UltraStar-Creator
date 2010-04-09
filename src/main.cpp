@@ -73,7 +73,7 @@ void initApplication() {
  * Note that there is no special translation file for english present. That's why all
  * strings in the application source code is in english.
  */
-void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &s) {
+void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &splash) {
         QSettings settings;
         bool settingFound;
         QLocale lang;
@@ -99,7 +99,7 @@ void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &s) {
                 }
         }
 
-        s.showMessage(QString(QObject::tr("%1.%2.%3 is loading...")).arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION), Qt::AlignBottom | Qt::AlignRight, Qt::white);
+        splash.showMessage(QString(QObject::tr("%1.%2.%3 is loading...")).arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION), Qt::AlignBottom | Qt::AlignRight, Qt::white);
 
         // message needs to be here because it can be translated only after installing
         // the translator
@@ -139,9 +139,9 @@ void handlePreviousAppCrash() {
 
         int result = QUMessageBox::critical(0,
                         QObject::tr("Application Crash Detected"),
-                        QObject::tr("The UltraStar Manager did not exit successfully last time. Maybe you've chosen a <b>bad song folder</b>.<br>"
+                        QObject::tr("The UltraStar Creator did not exit successfully last time. <br>"
                                         "<br>"
-                                        "Please report this problem <a href=\"http://uman.sf.net\">here</a>."),
+                                        "Please report this problem <a href=\"http://usc.sf.net\">here</a>."),
                         BTN	<< ":/marks/accept.png"        << QObject::tr("Try again.")
                             << ":/control/folder_note.png" << QObject::tr("Select another song folder."));
         if(result == 1) {
@@ -159,8 +159,15 @@ void handleArguments() {
         foreach(QString arg, qApp->arguments()) {
                 QFileInfo fi(arg);
 
-                if(fi.isFile())
-                        continue; // application file
+                if(fi.isFile() && (fi.fileName().endsWith(".mp3") || fi.fileName().endsWith(".ogg"))) {
+                    // use argument as audio file
+                }
+
+                if(fi.isFile() && fi.fileName().endsWith(".txt")) {
+                    // use argument as input lyrics file
+                }
+
+                // add cover/background and video files here
 
                 if(fi.isDir() && fi.exists()) {
 //			QStringList paths(s.value("songPaths").toStringList());
