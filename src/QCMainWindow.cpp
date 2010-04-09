@@ -12,7 +12,7 @@
 
 // global static variables
 static bool firstNote = true;
-static double bpm;
+//static double bpm;
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -112,7 +112,7 @@ void QCMainWindow::on_pushButton_Start_clicked()
     }
     ui->plainTextEdit_OutputLyrics->appendPlainText("#BPM:" + ui->doubleSpinBox_BPM->text());
 
-    bpm = ui->doubleSpinBox_BPM->value();
+    BPM = ui->doubleSpinBox_BPM->value();
     lyricsString = ui->plainTextEdit_InputLyrics->toPlainText();
     // split string by /n into lines, trim lines, capitalize first word
     // split lines into syllables
@@ -142,14 +142,16 @@ void QCMainWindow::on_pushButton_Tap_pressed()
     currentNoteTimer.start();
     //statusBar()->showMessage(tr("USC Note Start."));
     currentNoteStartTime = currentSongTimer.elapsed();
-    currentNoteStartBeat = currentNoteStartTime * (bpm / 15000);
+    currentNoteStartBeat = currentNoteStartTime * (BPM / 15000);
+    ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
 }
 
 void QCMainWindow::on_pushButton_Tap_released()
 {
     qint32 currentNoteTimeLength = currentNoteTimer.elapsed();
+    ui->pushButton_Tap->setCursor(Qt::OpenHandCursor);
     //statusBar()->showMessage(tr("USC Note End."));
-    qint32 currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (bpm / 15000));
+    qint32 currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPM / 15000));
     if (firstNote){
         firstNoteStartBeat = currentNoteStartBeat;
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GAP:%1").arg(QString::number(currentNoteStartTime)));

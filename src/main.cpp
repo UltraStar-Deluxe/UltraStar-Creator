@@ -1,6 +1,6 @@
 #include "main.h"
 #include "QCMainWindow.h"
-#include "support/QUMessageBox.h"
+#include "QUMessageBox.h"
 
 #include <QApplication>
 #include <QDateTime>
@@ -13,7 +13,6 @@
 #include <QLocale>
 #include <QFileInfo>
 
-void initApplication();
 void initApplication();
 void initLanguage(QApplication&, QTranslator&, QSplashScreen&);
 void handlePreviousAppCrash();

@@ -36,6 +36,7 @@ private:
     QString lyricsString;
     QStringList lyricsStringList;
     QClipboard *clipboard;
+    double BPM;
 
 private slots:
     void on_pushButton_OutputLyricsDecreaseFontSize_clicked();
