@@ -142,6 +142,7 @@ void QCMainWindow::on_pushButton_Tap_pressed()
     currentNoteTimer.start();
     //statusBar()->showMessage(tr("USC Note Start."));
     currentNoteStartTime = currentSongTimer.elapsed();
+    // conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPM [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
     currentNoteStartBeat = currentNoteStartTime * (BPM / 15000);
     ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
 }
