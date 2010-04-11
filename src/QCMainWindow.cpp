@@ -487,3 +487,8 @@ void QCMainWindow::on_pushButton_OutputLyricsDecreaseFontSize_clicked()
         ui->plainTextEdit_OutputLyrics->setFont(font);
     }
 }
+
+void QCMainWindow::on_horizontalSlider_sliderMoved(int position)
+{
+    ui->label_PlaybackSpeedPercentage->setText(tr("%1 \%").arg(QString::number(position)));
+}

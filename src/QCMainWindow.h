@@ -39,6 +39,7 @@ private:
     double BPM;
 
 private slots:
+    void on_horizontalSlider_sliderMoved(int position);
     void on_pushButton_OutputLyricsDecreaseFontSize_clicked();
     void on_pushButton_OutputLyricsIncreaseFontSize_clicked();
     void on_pushButton_InputLyricsDecreaseFontSize_clicked();

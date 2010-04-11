@@ -194,7 +194,7 @@ p, li { white-space: pre-wrap; }
       <x>10</x>
       <y>0</y>
       <width>321</width>
-      <height>261</height>
+      <height>251</height>
      </rect>
     </property>
     <property name="title">
@@ -206,7 +206,7 @@ p, li { white-space: pre-wrap; }
        <x>10</x>
        <y>20</y>
        <width>301</width>
-       <height>234</height>
+       <height>221</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_SongMetaInformationTags" columnminimumwidth="16,88,0,16">
@@ -1289,7 +1289,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="label_TitleIcon">
         <property name="text">
          <string/>
         </property>
@@ -1299,7 +1299,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="label_ArtistIcon">
         <property name="text">
          <string/>
         </property>
@@ -1309,7 +1309,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_LanguageIcon">
         <property name="text">
          <string/>
         </property>
@@ -1319,7 +1319,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="label_EditionIcon">
         <property name="text">
          <string/>
         </property>
@@ -1329,7 +1329,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="label_GenreIcon">
         <property name="text">
          <string/>
         </property>
@@ -1339,7 +1339,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="5" column="0">
-       <widget class="QLabel" name="label_6">
+       <widget class="QLabel" name="label_YearIcon">
         <property name="text">
          <string/>
         </property>
@@ -1349,7 +1349,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="6" column="0">
-       <widget class="QLabel" name="label_7">
+       <widget class="QLabel" name="label_CreatorIcon">
         <property name="text">
          <string/>
         </property>
@@ -1359,7 +1359,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="7" column="0">
-       <widget class="QLabel" name="label_8">
+       <widget class="QLabel" name="label_BPMIcon">
         <property name="text">
          <string/>
         </property>
@@ -1369,7 +1369,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="8" column="0">
-       <widget class="QLabel" name="label_9">
+       <widget class="QLabel" name="label_GapIcon">
         <property name="text">
          <string/>
         </property>
@@ -1475,9 +1475,9 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>270</y>
+      <y>260</y>
       <width>321</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="title">
@@ -1489,7 +1489,7 @@ p, li { white-space: pre-wrap; }
        <x>10</x>
        <y>20</y>
        <width>301</width>
-       <height>83</height>
+       <height>71</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_MP3ArtworkTags" columnminimumwidth="16,88,0,0,0">
@@ -1620,7 +1620,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="label_10">
+       <widget class="QLabel" name="label_MP3Icon">
         <property name="text">
          <string/>
         </property>
@@ -1630,7 +1630,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_11">
+       <widget class="QLabel" name="label_CoverIcon">
         <property name="text">
          <string/>
         </property>
@@ -1640,7 +1640,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_12">
+       <widget class="QLabel" name="label_BackgroundIcon">
         <property name="text">
          <string/>
         </property>
@@ -1686,26 +1686,26 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>480</y>
+      <y>460</y>
       <width>321</width>
-      <height>51</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="title">
      <string>Misc. Settings</string>
     </property>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>20</y>
+       <x>11</x>
+       <y>21</y>
        <width>301</width>
-       <height>22</height>
+       <height>51</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_3" columnminimumwidth="16,88,0,16">
+     <layout class="QGridLayout" name="gridLayout_2" columnminimumwidth="16,88,0,16">
       <item row="0" column="0">
-       <widget class="QLabel" name="label_15">
+       <widget class="QLabel" name="label_DefaultPitchIcon">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -1812,7 +1812,109 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="0" column="3">
-       <widget class="QLabel" name="label_DefaultPitchSet_2">
+       <widget class="QLabel" name="label_DefaultPitchSet">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_PlaybackSpeedIcon">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources/usc.qrc">:/types/time_mp3.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="label_PlaybackSpeed">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Playback speed:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_PlaybackSpeedPercentage">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>100 %</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSlider">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimum">
+           <number>50</number>
+          </property>
+          <property name="maximum">
+           <number>100</number>
+          </property>
+          <property name="singleStep">
+           <number>10</number>
+          </property>
+          <property name="sliderPosition">
+           <number>100</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_PlaybackSpeedSet">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -1842,55 +1944,112 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Control</string>
     </property>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>20</y>
+       <x>11</x>
+       <y>10</y>
        <width>301</width>
-       <height>26</height>
+       <height>41</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_Control">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="pushButton_Start">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="pushButton_Start">
         <property name="enabled">
          <bool>false</bool>
         </property>
-        <property name="toolTip">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Start audio playback and tapping.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;A valid audio file and input lyrics must be set.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="text">
-         <string/>
+         <string>play</string>
         </property>
         <property name="icon">
          <iconset resource="resources/usc.qrc">
-          <normaloff>:/control/play.png</normaloff>:/control/play.png</iconset>
+          <normaloff>:/player/play.png</normaloff>:/player/play.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_Stop">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="pushButton_Stop">
         <property name="enabled">
          <bool>false</bool>
         </property>
-        <property name="toolTip">
-         <string>Stop tapping.</string>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
         <property name="text">
-         <string/>
+         <string>stop</string>
         </property>
         <property name="icon">
          <iconset resource="resources/usc.qrc">
-          <normaloff>:/marks/delete.png</normaloff>:/marks/delete.png</iconset>
+          <normaloff>:/player/stop.png</normaloff>:/player/stop.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
         </property>
        </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -1899,7 +2058,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>390</y>
+      <y>370</y>
       <width>321</width>
       <height>81</height>
      </rect>
@@ -1922,7 +2081,7 @@ p, li { white-space: pre-wrap; }
        <x>10</x>
        <y>20</y>
        <width>301</width>
-       <height>54</height>
+       <height>51</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_VideoTags" columnminimumwidth="16,88,0,0,0">
@@ -2005,7 +2164,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="label_13">
+       <widget class="QLabel" name="label_VideoIcon">
         <property name="text">
          <string/>
         </property>
@@ -2015,7 +2174,7 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_14">
+       <widget class="QLabel" name="label_VideogapIcon">
         <property name="text">
          <string/>
         </property>
@@ -2308,7 +2467,7 @@ p, li { white-space: pre-wrap; }
        <height>561</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_2">
+     <layout class="QGridLayout" name="gridLayout_OutputLyrics">
       <item row="1" column="0">
        <widget class="QPushButton" name="pushButton_SaveToFile">
         <property name="enabled">
@@ -2432,7 +2591,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -2448,7 +2607,15 @@ The contents can be saved to a file or be copied to the clipboard.</string>
     <addaction name="actionAbout"/>
     <addaction name="actionAbout_Qt"/>
    </widget>
+   <widget class="QMenu" name="menuLanguage">
+    <property name="title">
+     <string>Language</string>
+    </property>
+    <addaction name="actionEnglish"/>
+    <addaction name="actionGerman"/>
+   </widget>
    <addaction name="menuHelp"/>
+   <addaction name="menuLanguage"/>
    <addaction name="menuHelp_2"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -2481,6 +2648,30 @@ The contents can be saved to a file or be copied to the clipboard.</string>
     <string>About Qt</string>
    </property>
   </action>
+  <action name="actionEnglish">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/languages/lang/us.png</normaloff>:/languages/lang/us.png</iconset>
+   </property>
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
+  <action name="actionGerman">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/languages/lang/de.png</normaloff>:/languages/lang/de.png</iconset>
+   </property>
+   <property name="text">
+    <string>German</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
@@ -2505,7 +2696,6 @@ The contents can be saved to a file or be copied to the clipboard.</string>
   <tabstop>plainTextEdit_InputLyrics</tabstop>
   <tabstop>pushButton_LoadFromFile</tabstop>
   <tabstop>pushButton_PasteFromClipboard</tabstop>
-  <tabstop>pushButton_Start</tabstop>
   <tabstop>pushButton_Tap</tabstop>
   <tabstop>pushButton_SaveToFile</tabstop>
   <tabstop>pushButton_CopyToClipboard</tabstop>
