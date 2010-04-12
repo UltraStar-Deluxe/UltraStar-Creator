@@ -10,10 +10,6 @@
 #include <QClipboard>
 #include <QUrl>
 
-// global static variables
-static bool firstNote = true;
-//static double bpm;
-
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
     ui->setupUi(this);
@@ -25,6 +21,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     firstNoteStartBeat = 0;
     currentSyllableGlobalIndex = 0;
     currentCharacterIndex = 0;
+    firstNote = true;
     clipboard = QApplication::clipboard();
 }
 
@@ -113,13 +110,12 @@ void QCMainWindow::on_pushButton_Start_clicked()
     ui->plainTextEdit_OutputLyrics->appendPlainText("#BPM:" + ui->doubleSpinBox_BPM->text());
 
     BPM = ui->doubleSpinBox_BPM->value();
+
     lyricsString = ui->plainTextEdit_InputLyrics->toPlainText();
-    // split string by /n into lines, trim lines, capitalize first word
-    // split lines into syllables
-    // ???
-    // starting with first line, iterate over syllables
-    // if last syllable --> add linebreak in output lyrics, go to next line
+
+    // old
     lyricsStringList = lyricsString.split(QRegExp("[ +\\n]"), QString::SkipEmptyParts);
+    //
 
     numSyllables = lyricsStringList.length();
 
@@ -147,6 +143,7 @@ void QCMainWindow::on_pushButton_Tap_pressed()
     ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
 }
 
+
 void QCMainWindow::on_pushButton_Tap_released()
 {
     qint32 currentNoteTimeLength = currentNoteTimer.elapsed();
@@ -159,8 +156,44 @@ void QCMainWindow::on_pushButton_Tap_released()
         ui->spinBox_Gap->setValue(currentNoteStartTime);
         firstNote = false;
     }
-    currentSyllable = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(lyricsStringList[currentSyllableGlobalIndex]);
-    ui->plainTextEdit_OutputLyrics->appendPlainText(currentSyllable);
+
+    int nextSeparatorIndex = lyricsString.mid(1).indexOf(QRegExp("[ +\\n]"));
+    QString currentSyllable;
+    bool addLinebreak = false;
+
+    if (nextSeparatorIndex != -1) {
+        QChar nextSeparator = lyricsString.at(nextSeparatorIndex+1);
+        currentSyllable = lyricsString.mid(0,nextSeparatorIndex+1);
+
+        if (currentSyllable.startsWith('+')) {
+            currentSyllable = currentSyllable.mid(1);
+        }
+
+        if (nextSeparator == ' ') {
+            lyricsString = lyricsString.mid(nextSeparatorIndex+1);
+            addLinebreak = false;
+        }
+        else if (nextSeparator == '+') {
+            lyricsString = lyricsString.mid(nextSeparatorIndex+2);
+            addLinebreak = false;
+        }
+        else if (nextSeparator == '\n') {
+            lyricsString = lyricsString.mid(nextSeparatorIndex+2);
+            addLinebreak = true;
+        }
+    }
+    else { // end of lyrics
+        currentSyllable = lyricsString;
+        addLinebreak = false;
+    }
+
+    currentOutputTextLine = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
+    ui->plainTextEdit_OutputLyrics->appendPlainText(currentOutputTextLine);
+    if (addLinebreak)
+    {
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("- %1").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat + currentNoteBeatLength + 2)));
+    }
+
 
     if ((currentSyllableGlobalIndex+1) < numSyllables) {
         currentSyllableGlobalIndex++;

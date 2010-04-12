@@ -27,7 +27,7 @@ private:
     QTime currentSongTimer;
     QTime currentNoteTimer;
     qint32 numSyllables;
-    QString currentSyllable;
+    QString currentOutputTextLine;
     qint32 currentSyllableGlobalIndex;
     qint32 currentCharacterIndex;
     qint32 firstNoteStartBeat;
@@ -37,6 +37,7 @@ private:
     QStringList lyricsStringList;
     QClipboard *clipboard;
     double BPM;
+    bool firstNote;
 
 private slots:
     void on_horizontalSlider_sliderMoved(int position);
