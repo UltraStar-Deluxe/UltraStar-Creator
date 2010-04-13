@@ -13,7 +13,7 @@
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
     ui->setupUi(this);
-    setWindowTitle(tr("UltraStar Song Creator 0.1"));
+    setWindowTitle(tr("UltraStar Song Creator %1.%2.%3").arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION));
     //(void*)statusBar();
     //statusBar()->showMessage(tr("USC ready."));
     logSrv->add(tr("Ready."), QU::Information);
