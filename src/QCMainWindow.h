@@ -40,6 +40,7 @@ private:
     bool firstNote;
 
 private slots:
+    void on_plainTextEdit_InputLyrics_textChanged();
     void on_horizontalSlider_sliderMoved(int position);
     void on_pushButton_OutputLyricsDecreaseFontSize_clicked();
     void on_pushButton_OutputLyricsIncreaseFontSize_clicked();

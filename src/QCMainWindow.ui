@@ -77,7 +77,7 @@
           <x>10</x>
           <y>20</y>
           <width>301</width>
-          <height>234</height>
+          <height>221</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_SongMetaInformationTags" columnminimumwidth="16,88,0,16">

@@ -276,7 +276,12 @@ void QCMainWindow::on_pushButton_BrowseMP3_clicked()
     if (!fileInfo_MP3->fileName().isEmpty()) {
         ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
         ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
-        ui->pushButton_Start->setEnabled(true);
+        if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
+            ui->pushButton_Start->setEnabled(true);
+        }
+        else {
+            ui->pushButton_Start->setDisabled(true);
+        }
     }
 }
 
@@ -336,53 +341,51 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
             QList<QUrl> urls = data->urls();
             while (!urls.isEmpty()) {
                 QString fileName = urls.takeFirst().toLocalFile();
-                if (!fileName.isEmpty() && fileName.endsWith(tr(".txt"))) {
-                    QFile file(fileName);
-                    if (file.open(QFile::ReadOnly | QFile::Text)) {
-                        ui->plainTextEdit_InputLyrics->setPlainText(file.readAll());
-                    }
-                }
-                else if (!fileName.isEmpty() && (fileName.endsWith(tr(".mp3")) || fileName.endsWith(tr(".ogg")))) {
-                    filename_MP3 = fileName;
-                    QFileInfo *fileInfo_MP3 = new QFileInfo(fileName);
-                    if (!fileInfo_MP3->fileName().isEmpty()) {
-                        ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
-                        ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
-                        ui->pushButton_Start->setEnabled(true);
-                    }
-                }
-                else if (!fileName.isEmpty() && fileName.endsWith(tr(".jpg"))) {
+                if (!fileName.isEmpty()) {
                     QFileInfo *fileInfo = new QFileInfo(fileName);
 
-                    int result = QUMessageBox::question(0,
-                                    QObject::tr("Image file drop detected."),
-                                    QObject::tr("Use <b>%1</b> as...").arg(fileInfo->fileName()),
-                                    BTN	<< ":/types/cover.png"        << QObject::tr("Cover Image File")
-                                        << ":/types/background.png" << QObject::tr("Background Image File"));
+                    if (fileInfo->suffix().toLower() == "txt") {
+                        QFile file(fileName);
+                        if (file.open(QFile::ReadOnly | QFile::Text)) {
+                            ui->plainTextEdit_InputLyrics->setPlainText(file.readAll());
+                        }
+                    }
+                    else if (fileInfo->suffix().toLower() == tr("mp3") || fileInfo->suffix().toLower() == tr("ogg")) {
+                        filename_MP3 = fileName;
+                        ui->lineEdit_MP3->setText(fileInfo->fileName());
+                        ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
+                        if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
+                            ui->pushButton_Start->setEnabled(true);
+                        }
+                    }
+                    else if (fileInfo->suffix().toLower() == tr("jpg")) {
+                        int result = QUMessageBox::question(0,
+                                        QObject::tr("Image file drop detected."),
+                                        QObject::tr("Use <b>%1</b> as...").arg(fileInfo->fileName()),
+                                        BTN	<< ":/types/cover.png"        << QObject::tr("Cover Image File")
+                                            << ":/types/background.png" << QObject::tr("Background Image File"));
 
-                    if(result == 0) {
-                        QFileInfo *fileInfo_Cover = new QFileInfo(fileName);
-                        if (!fileInfo_Cover->fileName().isEmpty()) {
-                            ui->lineEdit_Cover->setText(fileInfo_Cover->fileName());
-                            ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+                        if (result == 0) {
+                            if (!fileInfo->fileName().isEmpty()) {
+                                ui->lineEdit_Cover->setText(fileInfo->fileName());
+                                ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+                            }
+                        }
+                        else {
+                            if (!fileInfo->fileName().isEmpty()) {
+                                ui->lineEdit_Background->setText(fileInfo->fileName());
+                                ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+                            }
                         }
                     }
-                    else {
-                        QFileInfo *fileInfo_Background = new QFileInfo(fileName);
-                        if (!fileInfo_Background->fileName().isEmpty()) {
-                            ui->lineEdit_Background->setText(fileInfo_Background->fileName());
-                            ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+                    else if ((fileInfo->suffix().toLower() == tr("avi")) || fileInfo->suffix().toLower() == tr("flv") || fileInfo->suffix().toLower() == tr("mpg") || fileInfo->suffix().toLower() == tr("mpeg") || fileInfo->suffix().toLower() == tr("mp4") || fileInfo->suffix().toLower() == tr("vob") || fileInfo->suffix().toLower() == tr("ts")) {
+                        if (!ui->groupBox_VideoTags->isChecked()) {
+                            ui->groupBox_VideoTags->setChecked(true);
                         }
-                    }
-                }
-                else if (!fileName.isEmpty() && (fileName.endsWith(tr(".avi")) || fileName.endsWith(tr(".flv")) || fileName.endsWith(tr(".mpg")) || fileName.endsWith(tr(".mpeg")) || fileName.endsWith(tr(".mp4")) || fileName.endsWith(tr(".vob")) || fileName.endsWith(tr(".ts")))) {
-                    if (!ui->groupBox_VideoTags->isChecked()) {
-                        ui->groupBox_VideoTags->setChecked(true);
-                    }
-                    QFileInfo *fileInfo_Video = new QFileInfo(fileName);
-                    if (!fileInfo_Video->fileName().isEmpty()) {
-                        ui->lineEdit_Video->setText(fileInfo_Video->fileName());
-                        ui->label_VideoSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+                        if (!fileInfo->fileName().isEmpty()) {
+                            ui->lineEdit_Video->setText(fileInfo->fileName());
+                            ui->label_VideoSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+                        }
                     }
                 }
             }
@@ -524,4 +527,14 @@ void QCMainWindow::on_pushButton_OutputLyricsDecreaseFontSize_clicked()
 void QCMainWindow::on_horizontalSlider_sliderMoved(int position)
 {
     ui->label_PlaybackSpeedPercentage->setText(tr("%1 \%").arg(QString::number(position)));
+}
+
+void QCMainWindow::on_plainTextEdit_InputLyrics_textChanged()
+{
+    if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty() && !ui->lineEdit_MP3->text().isEmpty()) {
+        ui->pushButton_Start->setEnabled(true);
+    }
+    else {
+        ui->pushButton_Start->setDisabled(true);
+    }
 }
