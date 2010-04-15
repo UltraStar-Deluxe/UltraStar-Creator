@@ -376,8 +376,9 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                         int result = QUMessageBox::question(0,
                                         QObject::tr("Image file drop detected."),
                                         QObject::tr("Use <b>%1</b> as...").arg(fileInfo->fileName()),
-                                        BTN	<< ":/types/cover.png"        << QObject::tr("Cover Image File")
-                                            << ":/types/background.png" << QObject::tr("Background Image File"));
+                                        BTN << ":/types/cover.png"        << QObject::tr("Cover")
+                                            << ":/types/background.png" << QObject::tr("Background")
+                                            << ":/marks/cancel.png" << QObject::tr("Ignore this file"));
 
                         if (result == 0) {
                             if (!fileInfo->fileName().isEmpty()) {
@@ -385,11 +386,14 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                                 ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
                             }
                         }
-                        else {
+                        else if (result == 1) {
                             if (!fileInfo->fileName().isEmpty()) {
                                 ui->lineEdit_Background->setText(fileInfo->fileName());
                                 ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
                             }
+                        }
+                        else {
+                            // user cancelled
                         }
                     }
                     else if ((fileInfo->suffix().toLower() == tr("avi")) || fileInfo->suffix().toLower() == tr("flv") || fileInfo->suffix().toLower() == tr("mpg") || fileInfo->suffix().toLower() == tr("mpeg") || fileInfo->suffix().toLower() == tr("mp4") || fileInfo->suffix().toLower() == tr("vob") || fileInfo->suffix().toLower() == tr("ts")) {
