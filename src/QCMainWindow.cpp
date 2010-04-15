@@ -14,8 +14,6 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
 
     ui->setupUi(this);
     setWindowTitle(tr("UltraStar Song Creator %1.%2.%3").arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION));
-    //(void*)statusBar();
-    //statusBar()->showMessage(tr("USC ready."));
     logSrv->add(tr("Ready."), QU::Information);
     numSyllables = 0;
     firstNoteStartBeat = 0;
@@ -23,6 +21,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     currentCharacterIndex = 0;
     firstNote = true;
     clipboard = QApplication::clipboard();
+    QMainWindow::statusBar()->showMessage(tr("USC ready."));
 }
 
 void QCMainWindow::changeEvent(QEvent *e)
@@ -60,7 +59,7 @@ bool QCMainWindow::on_pushButton_SaveToFile_clicked()
 void QCMainWindow::on_pushButton_Start_clicked()
 {
     QWidget::setAcceptDrops(false);
-    //statusBar()->showMessage(tr("USC Tapping."));
+    QMainWindow::statusBar()->showMessage(tr("USC Tapping."));
     ui->plainTextEdit_OutputLyrics->setPlainText("");
     ui->groupBox_SongMetaInformationTags->setDisabled(true);
     ui->groupBox_MP3ArtworkTags->setDisabled(true);
@@ -136,7 +135,7 @@ void QCMainWindow::on_pushButton_Start_clicked()
 void QCMainWindow::on_pushButton_Tap_pressed()
 {
     currentNoteTimer.start();
-    //statusBar()->showMessage(tr("USC Note Start."));
+    QMainWindow::statusBar()->showMessage(tr("USC Note Start."));
     currentNoteStartTime = currentSongTimer.elapsed();
     // conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPM [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
     currentNoteStartBeat = currentNoteStartTime * (BPM / 15000);
@@ -148,7 +147,7 @@ void QCMainWindow::on_pushButton_Tap_released()
 {
     qint32 currentNoteTimeLength = currentNoteTimer.elapsed();
     ui->pushButton_Tap->setCursor(Qt::OpenHandCursor);
-    //statusBar()->showMessage(tr("USC Note End."));
+    QMainWindow::statusBar()->showMessage(tr("USC Note End."));
     qint32 currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPM / 15000));
     if (firstNote){
         firstNoteStartBeat = currentNoteStartBeat;
@@ -260,7 +259,7 @@ void QCMainWindow::on_pushButton_Stop_clicked()
     ui->plainTextEdit_OutputLyrics->appendPlainText("E");
     ui->plainTextEdit_OutputLyrics->appendPlainText("");
 
-    //statusBar()->showMessage(tr("USC ready."));
+    QMainWindow::statusBar()->showMessage(tr("USC ready."));
 
     ui->pushButton_Stop->setDisabled(true);
     ui->groupBox_TapArea->setDisabled(true);

@@ -2235,7 +2235,7 @@ p, li { white-space: pre-wrap; }
          <item row="1" column="0">
           <widget class="QLabel" name="label_PlaybackSpeedIcon">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2254,7 +2254,7 @@ p, li { white-space: pre-wrap; }
          <item row="1" column="1">
           <widget class="QLabel" name="label_PlaybackSpeed">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2318,7 +2318,7 @@ p, li { white-space: pre-wrap; }
          <item row="1" column="3">
           <widget class="QLabel" name="label_PlaybackSpeedSet">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
