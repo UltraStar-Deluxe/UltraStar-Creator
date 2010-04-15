@@ -29,7 +29,7 @@
    <string>usc</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources/usc.qrc">
+   <iconset>
     <normaloff>:/icons/bean.png</normaloff>:/icons/bean.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -194,7 +194,7 @@ p, li { white-space: pre-wrap; }
              <string>Croatian</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/hr.png</normaloff>:/languages/lang/hr.png</iconset>
             </property>
            </item>
@@ -203,7 +203,7 @@ p, li { white-space: pre-wrap; }
              <string>Czech</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/cz.png</normaloff>:/languages/lang/cz.png</iconset>
             </property>
            </item>
@@ -212,7 +212,7 @@ p, li { white-space: pre-wrap; }
              <string>Danish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/dk.png</normaloff>:/languages/lang/dk.png</iconset>
             </property>
            </item>
@@ -221,7 +221,7 @@ p, li { white-space: pre-wrap; }
              <string>Dutch</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/nl.png</normaloff>:/languages/lang/nl.png</iconset>
             </property>
            </item>
@@ -230,7 +230,7 @@ p, li { white-space: pre-wrap; }
              <string>English</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/us.png</normaloff>:/languages/lang/us.png</iconset>
             </property>
            </item>
@@ -239,7 +239,7 @@ p, li { white-space: pre-wrap; }
              <string>Finnish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/fi.png</normaloff>:/languages/lang/fi.png</iconset>
             </property>
            </item>
@@ -248,7 +248,7 @@ p, li { white-space: pre-wrap; }
              <string>French</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/fr.png</normaloff>:/languages/lang/fr.png</iconset>
             </property>
            </item>
@@ -257,7 +257,7 @@ p, li { white-space: pre-wrap; }
              <string>German</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/de.png</normaloff>:/languages/lang/de.png</iconset>
             </property>
            </item>
@@ -266,7 +266,7 @@ p, li { white-space: pre-wrap; }
              <string>Hindi</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/in.png</normaloff>:/languages/lang/in.png</iconset>
             </property>
            </item>
@@ -275,7 +275,7 @@ p, li { white-space: pre-wrap; }
              <string>Italian</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/it.png</normaloff>:/languages/lang/it.png</iconset>
             </property>
            </item>
@@ -284,7 +284,7 @@ p, li { white-space: pre-wrap; }
              <string>Japanese</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/jp.png</normaloff>:/languages/lang/jp.png</iconset>
             </property>
            </item>
@@ -293,7 +293,7 @@ p, li { white-space: pre-wrap; }
              <string>Korean</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/kr.png</normaloff>:/languages/lang/kr.png</iconset>
             </property>
            </item>
@@ -302,7 +302,7 @@ p, li { white-space: pre-wrap; }
              <string>Latin</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/va.png</normaloff>:/languages/lang/va.png</iconset>
             </property>
            </item>
@@ -311,7 +311,7 @@ p, li { white-space: pre-wrap; }
              <string>Norwegian</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/no.png</normaloff>:/languages/lang/no.png</iconset>
             </property>
            </item>
@@ -320,7 +320,7 @@ p, li { white-space: pre-wrap; }
              <string>Polish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/pl.png</normaloff>:/languages/lang/pl.png</iconset>
             </property>
            </item>
@@ -329,7 +329,7 @@ p, li { white-space: pre-wrap; }
              <string>Portuguese</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/pt.png</normaloff>:/languages/lang/pt.png</iconset>
             </property>
            </item>
@@ -338,7 +338,7 @@ p, li { white-space: pre-wrap; }
              <string>Russian</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/ru.png</normaloff>:/languages/lang/ru.png</iconset>
             </property>
            </item>
@@ -347,7 +347,7 @@ p, li { white-space: pre-wrap; }
              <string>Slovak</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/sk.png</normaloff>:/languages/lang/sk.png</iconset>
             </property>
            </item>
@@ -356,7 +356,7 @@ p, li { white-space: pre-wrap; }
              <string>Slovenian</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/si.png</normaloff>:/languages/lang/si.png</iconset>
             </property>
            </item>
@@ -365,7 +365,7 @@ p, li { white-space: pre-wrap; }
              <string>Spanish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/es.png</normaloff>:/languages/lang/es.png</iconset>
             </property>
            </item>
@@ -374,7 +374,7 @@ p, li { white-space: pre-wrap; }
              <string>Swedish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/se.png</normaloff>:/languages/lang/se.png</iconset>
             </property>
            </item>
@@ -383,7 +383,7 @@ p, li { white-space: pre-wrap; }
              <string>Turkish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/tr.png</normaloff>:/languages/lang/tr.png</iconset>
             </property>
            </item>
@@ -427,7 +427,7 @@ p, li { white-space: pre-wrap; }
              <string>None</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/marks/path_unknown.png</normaloff>:/marks/path_unknown.png</iconset>
             </property>
            </item>
@@ -436,7 +436,7 @@ p, li { white-space: pre-wrap; }
              <string>[SC]-Songs</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/marks/path_ok.png</normaloff>:/marks/path_ok.png</iconset>
             </property>
            </item>
@@ -1165,7 +1165,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/font.png</pixmap>
+            <pixmap>:/types/font.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1175,7 +1175,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/user.png</pixmap>
+            <pixmap>:/types/user.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1185,7 +1185,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/language.png</pixmap>
+            <pixmap>:/types/language.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1195,7 +1195,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/edition.png</pixmap>
+            <pixmap>:/types/edition.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1205,7 +1205,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/genre.png</pixmap>
+            <pixmap>:/types/genre.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1215,7 +1215,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/calendar.png</pixmap>
+            <pixmap>:/types/calendar.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1225,7 +1225,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/users.png</pixmap>
+            <pixmap>:/types/users.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1235,7 +1235,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/auction-hammer-gavel.png</pixmap>
+            <pixmap>:/types/auction-hammer-gavel.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1245,7 +1245,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/balloon--arrow.png</pixmap>
+            <pixmap>:/types/balloon--arrow.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1255,7 +1255,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1265,7 +1265,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1275,7 +1275,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1285,7 +1285,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1295,7 +1295,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1305,7 +1305,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1315,7 +1315,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1325,7 +1325,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+            <pixmap>:/marks/path_ok.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1335,7 +1335,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+            <pixmap>:/marks/path_ok.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1434,7 +1434,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
            </property>
           </widget>
@@ -1454,7 +1454,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/clipboard-text.png</normaloff>:/marks/clipboard-text.png</iconset>
            </property>
           </widget>
@@ -1487,7 +1487,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
            </property>
           </widget>
@@ -1507,7 +1507,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
            </property>
           </widget>
@@ -1597,7 +1597,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
            </property>
           </widget>
@@ -1620,7 +1620,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/clipboard-text.png</normaloff>:/marks/clipboard-text.png</iconset>
            </property>
           </widget>
@@ -1653,7 +1653,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
            </property>
           </widget>
@@ -1673,7 +1673,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
            </property>
           </widget>
@@ -1750,7 +1750,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
            </property>
            <property name="iconSize">
@@ -1805,7 +1805,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
            </property>
           </widget>
@@ -1851,7 +1851,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
            </property>
           </widget>
@@ -1862,7 +1862,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/music.png</pixmap>
+            <pixmap>:/types/music.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1872,7 +1872,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/cover.png</pixmap>
+            <pixmap>:/types/cover.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1882,7 +1882,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/background.png</pixmap>
+            <pixmap>:/types/background.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1892,7 +1892,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1902,7 +1902,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1912,7 +1912,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1998,7 +1998,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
            </property>
           </widget>
@@ -2044,7 +2044,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/film.png</pixmap>
+            <pixmap>:/types/film.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2054,7 +2054,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/videogap.png</pixmap>
+            <pixmap>:/types/videogap.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2064,7 +2064,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2074,7 +2074,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+            <pixmap>:/marks/path_ok.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2121,7 +2121,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/note.png</pixmap>
+            <pixmap>:/types/note.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2228,7 +2228,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+            <pixmap>:/marks/path_ok.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2247,7 +2247,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/time_mp3.png</pixmap>
+            <pixmap>:/types/time_mp3.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2330,7 +2330,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+            <pixmap>:/marks/path_ok.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2393,7 +2393,7 @@ p, li { white-space: pre-wrap; }
             <string>play</string>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/player/play.png</normaloff>:/player/play.png</iconset>
            </property>
            <property name="iconSize">
@@ -2435,7 +2435,7 @@ p, li { white-space: pre-wrap; }
             <string>stop</string>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/player/stop.png</normaloff>:/player/stop.png</iconset>
            </property>
            <property name="iconSize">
@@ -2840,11 +2840,17 @@ p, li { white-space: pre-wrap; }
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/languages/lang/us.png</normaloff>:/languages/lang/us.png</iconset>
    </property>
    <property name="text">
     <string>English</string>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
   </action>
   <action name="actionGerman">
@@ -2855,7 +2861,7 @@ p, li { white-space: pre-wrap; }
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/languages/lang/de.png</normaloff>:/languages/lang/de.png</iconset>
    </property>
    <property name="text">
@@ -2891,8 +2897,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>pushButton_CopyToClipboard</tabstop>
   <tabstop>plainTextEdit_OutputLyrics</tabstop>
  </tabstops>
- <resources>
-  <include location="resources/usc.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

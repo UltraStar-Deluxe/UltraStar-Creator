@@ -9,6 +9,7 @@
 #include <QTextStream>
 #include <QClipboard>
 #include <QUrl>
+#include <QSettings>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -60,7 +61,6 @@ void QCMainWindow::on_pushButton_Start_clicked()
 {
     QWidget::setAcceptDrops(false);
     QMainWindow::statusBar()->showMessage(tr("USC Tapping."));
-    ui->plainTextEdit_OutputLyrics->setPlainText("");
     ui->groupBox_SongMetaInformationTags->setDisabled(true);
     ui->groupBox_MP3ArtworkTags->setDisabled(true);
     ui->groupBox_MiscSettings->setDisabled(true);
@@ -110,11 +110,11 @@ void QCMainWindow::on_pushButton_Start_clicked()
 
     BPM = ui->doubleSpinBox_BPM->value();
 
-    lyricsString = ui->plainTextEdit_InputLyrics->toPlainText();
+    QString rawLyricsString = ui->plainTextEdit_InputLyrics->toPlainText();
 
-    // old
+    lyricsString = cleanLyrics(rawLyricsString);
+
     lyricsStringList = lyricsString.split(QRegExp("[ +\\n]"), QString::SkipEmptyParts);
-    //
 
     numSyllables = lyricsStringList.length();
 
@@ -130,6 +130,30 @@ void QCMainWindow::on_pushButton_Start_clicked()
     // start mp3..
 
     currentSongTimer.start();
+}
+
+QString QCMainWindow::cleanLyrics(QString rawLyricsString) {
+    // delete surplus space characters
+    rawLyricsString = rawLyricsString.replace(QRegExp(" {2,}"), " ");
+
+    // delete leading and trailing whitespace
+    rawLyricsString = rawLyricsString.trimmed();
+
+    // delete surplus blank lines...
+    rawLyricsString = rawLyricsString.replace(QRegExp("\\n{2,}"), "\n");
+
+    // Capitalize each line
+    // ...
+
+    // replace misused accents (´,`) by the correct apostrophe (')
+    rawLyricsString = rawLyricsString.replace("´", "'");
+    rawLyricsString = rawLyricsString.replace("`", "'");
+
+    QString cleanedLyricsString = rawLyricsString;
+
+    ui->plainTextEdit_InputLyrics->setPlainText(cleanedLyricsString);
+
+    return cleanedLyricsString;
 }
 
 void QCMainWindow::on_pushButton_Tap_pressed()
@@ -237,16 +261,7 @@ void QCMainWindow::on_pushButton_Tap_released()
 
 void QCMainWindow::on_pushButton_PasteFromClipboard_clicked()
 {
-    QString inputLyrics = clipboard->text();
-    // delete leading and trailing whitespace
-    inputLyrics = inputLyrics.trimmed();
-    // delete surplus blank lines...
-
-    // replace misused accents by the correct apostrophe
-    inputLyrics = inputLyrics.replace("´", "'");
-    inputLyrics = inputLyrics.replace("`", "'");
-
-    ui->plainTextEdit_InputLyrics->setPlainText(inputLyrics);
+    ui->plainTextEdit_InputLyrics->setPlainText(clipboard->text());
 }
 
 void QCMainWindow::on_pushButton_CopyToClipboard_clicked()
@@ -536,4 +551,52 @@ void QCMainWindow::on_plainTextEdit_InputLyrics_textChanged()
     else {
         ui->pushButton_Start->setDisabled(true);
     }
+}
+
+/*!
+ * Changes the application language to english.
+ */
+void QCMainWindow::on_actionEnglish_triggered()
+{
+    ui->actionGerman->setChecked(false);
+    ui->actionGerman->font().setBold(false);
+    ui->actionEnglish->setChecked(true);
+    ui->actionEnglish->font().setBold(true);
+
+    QSettings settings;
+    settings.setValue("language", QLocale(QLocale::English, QLocale::UnitedStates).name());
+
+    // ---------------
+
+    int result = QUMessageBox::information(this,
+                    tr("Change Language"),
+                    tr("Application language changed to <b>English</b>. You need to restart UltraStar Creator to take effect."),
+                    BTN << ":/control/quit.png" << tr("Quit UltraStar Creator.")
+                        << ":/marks/accept.png" << tr("Continue."));
+    if(result == 0)
+            this->close();
+}
+
+/*!
+ * Changes the application language to german.
+ */
+void QCMainWindow::on_actionGerman_triggered()
+{
+    ui->actionEnglish->setChecked(false);
+    ui->actionEnglish->font().setBold(false);
+    ui->actionGerman->setChecked(true);
+    ui->actionGerman->font().setBold(true);
+
+    QSettings settings;
+    settings.setValue("language", QLocale(QLocale::German, QLocale::Germany).name());
+
+    // ---------------
+
+    int result = QUMessageBox::information(this,
+                    tr("Change Language"),
+                    tr("Application language changed to <b>German</b>. You need to restart UltraStar Creator to take effect."),
+                    BTN << ":/control/quit.png" << tr("Quit UltraStar Creator.")
+                        << ":/marks/accept.png" << tr("Continue."));
+    if(result == 0)
+            this->close();
 }

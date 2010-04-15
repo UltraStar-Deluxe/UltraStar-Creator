@@ -87,12 +87,12 @@ void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &splash) {
         }
 
         if(lang.language() == QLocale::German) {
-                if(t.load(":/lang/uman.de.qm")) {
+                if(t.load(":/lang/usc.de.qm")) {
                         app.installTranslator(&t);
                         //monty->initMessages(":/txt/hints_de");
                 }
         } else if (lang.language() == QLocale::Polish) {
-                if(t.load(":/lang/uman.pl.qm")) {
+                if(t.load(":/lang/usc.pl.qm")) {
                         app.installTranslator(&t);
                         //monty->initMessages(":/txt/hints_pl");
                 }
@@ -105,9 +105,9 @@ void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &splash) {
         if(!settingFound)
                 QUMessageBox::information(0,
                                 QObject::tr("Init Language"),
-                                QObject::tr("There was no configuration setting about your language.Your <b>system language</b> will be used if possible.<br>"
+                                QObject::tr("There was no configuration setting about your language. Your <b>system language</b> will be used if possible.<br>"
                                                 "<br>"
-                                                "See <b>Options > Language</b> to change this."),
+                                                "See <b>Language</b> to change this."),
                                 BTN << ":/marks/accept.png" << QObject::tr("Continue."),
                                 270);
 }

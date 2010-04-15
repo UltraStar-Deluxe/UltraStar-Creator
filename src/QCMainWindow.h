@@ -38,8 +38,11 @@ private:
     QClipboard *clipboard;
     double BPM;
     bool firstNote;
+    QString cleanLyrics(QString);
 
 private slots:
+    void on_actionGerman_triggered();
+    void on_actionEnglish_triggered();
     void on_plainTextEdit_InputLyrics_textChanged();
     void on_horizontalSlider_sliderMoved(int position);
     void on_pushButton_OutputLyricsDecreaseFontSize_clicked();
