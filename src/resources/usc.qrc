@@ -10,8 +10,6 @@
         <file>txt/hints_de</file>
         <file>txt/credits</file>
         <file>txt/languages</file>
-        <file>lang/uman.de.qm</file>
-        <file>lang/uman.pl.qm</file>
         <file>player/next.png</file>
         <file>player/pause.png</file>
         <file>player/play.png</file>
@@ -21,6 +19,8 @@
         <file>player/loop.png</file>
         <file>qt.png</file>
         <file>about_bgr.png</file>
+        <file>lang/usc.de.qm</file>
+        <file>lang/usc.pl.qm</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>
