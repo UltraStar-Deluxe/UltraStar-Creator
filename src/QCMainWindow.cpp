@@ -117,6 +117,7 @@ void QCMainWindow::on_pushButton_Start_clicked()
     lyricsStringList = lyricsString.split(QRegExp("[ +\\n]"), QString::SkipEmptyParts);
 
     numSyllables = lyricsStringList.length();
+    ui->progressBar_Lyrics->setMaximum(numSyllables);
 
     if (numSyllables > 5) {
         ui->pushButton_Tap->setText(lyricsStringList[currentSyllableGlobalIndex]);
@@ -183,6 +184,7 @@ void QCMainWindow::on_pushButton_Tap_released()
     qint32 currentNoteTimeLength = currentNoteTimer.elapsed();
     ui->pushButton_Tap->setCursor(Qt::OpenHandCursor);
     QMainWindow::statusBar()->showMessage(tr("USC Note End."));
+    ui->progressBar_Lyrics->setValue(ui->progressBar_Lyrics->value()+1);
     qint32 currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPM / 15000));
     if (firstNote){
         firstNoteStartBeat = currentNoteStartBeat;
