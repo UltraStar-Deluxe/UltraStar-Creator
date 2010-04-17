@@ -2,6 +2,7 @@
 #define QCMAINWINDOW_H
 
 #include "ui_QCMainWindow.h"
+#include "bass.h"
 
 #include <QMainWindow>
 #include <QTime>
@@ -39,6 +40,7 @@ private:
     double BPM;
     bool firstNote;
     QString cleanLyrics(QString);
+    HSTREAM _mediaStream;
 
 private slots:
     void on_actionGerman_triggered();
