@@ -141,6 +141,8 @@ void QCMainWindow::on_pushButton_Start_clicked()
     }
     */
 
+    ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
+
     currentSongTimer.start();
 }
 
