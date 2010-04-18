@@ -41,6 +41,13 @@ private:
     bool firstNote;
     QString cleanLyrics(QString);
     HSTREAM _mediaStream;
+    void BASS_StopAndFree();
+    void BASS_Play();
+    void BASS_Pause();
+    void BASS_Resume();
+    double BASS_Position();
+    void BASS_SetPosition(int seconds);
+    void handleMP3();
 
 private slots:
     void on_actionGerman_triggered();

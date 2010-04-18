@@ -23,6 +23,9 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     firstNote = true;
     clipboard = QApplication::clipboard();
     QMainWindow::statusBar()->showMessage(tr("USC ready."));
+    if (BASS_Init(-1, 44100, 0, 0, NULL)) {
+        QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
+    }
 }
 
 void QCMainWindow::changeEvent(QEvent *e)
@@ -67,7 +70,6 @@ void QCMainWindow::on_pushButton_Start_clicked()
     ui->groupBox_VideoTags->setDisabled(true);
     ui->groupBox_InputLyrics->setDisabled(true);
     ui->groupBox_OutputLyrics->setEnabled(true);
-    ui->pushButton_Start->setDisabled(true);
     ui->groupBox_TapArea->setEnabled(true);
     ui->pushButton_Tap->setEnabled(true);
     ui->pushButton_Stop->setEnabled(true);
@@ -118,6 +120,7 @@ void QCMainWindow::on_pushButton_Start_clicked()
 
     numSyllables = lyricsStringList.length();
     ui->progressBar_Lyrics->setMaximum(numSyllables);
+    ui->pushButton_Start->setDisabled(true);
 
 if (numSyllables > 5) {
         ui->pushButton_Tap->setText(lyricsStringList[currentSyllableGlobalIndex]);
@@ -128,20 +131,7 @@ if (numSyllables > 5) {
         ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableGlobalIndex+5]);
     }
 
-    // start mp3..
-    //filename_MP3 = "c:/G.mp3";
-    //QString test = "c:/G.mp3";
-    BASS_Init(-1, 44100, 0, 0, NULL);
-    _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_PRESCAN);
-    if(_mediaStream) {
-        BASS_ChannelPlay(_mediaStream, TRUE);
-    }
-    else {
-        QUMessageBox::critical(this,
-                            tr("MP3 Error"),
-                            tr("File cannot be played."),
-                            BTN << ":/marks/cancel.png" << tr("Damn it."));
-    }
+    BASS_Play();
 
     ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
 
@@ -288,6 +278,8 @@ void QCMainWindow::on_pushButton_CopyToClipboard_clicked()
 
 void QCMainWindow::on_pushButton_Stop_clicked()
 {
+    BASS_StopAndFree();
+
     ui->plainTextEdit_OutputLyrics->appendPlainText("E");
     ui->plainTextEdit_OutputLyrics->appendPlainText("");
 
@@ -295,6 +287,7 @@ void QCMainWindow::on_pushButton_Stop_clicked()
 
     ui->pushButton_Stop->setDisabled(true);
     ui->groupBox_TapArea->setDisabled(true);
+    ui->groupBox_Control->setDisabled(true);
     ui->pushButton_SaveToFile->setEnabled(true);
     ui->pushButton_CopyToClipboard->setEnabled(true);
     QWidget::setAcceptDrops(true);
@@ -303,17 +296,7 @@ void QCMainWindow::on_pushButton_Stop_clicked()
 void QCMainWindow::on_pushButton_BrowseMP3_clicked()
 {
     filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose MP3 file"), QDir::homePath(), tr("Audio files (*.mp3 *.ogg)"));
-    QFileInfo *fileInfo_MP3 = new QFileInfo(filename_MP3);
-    if (!fileInfo_MP3->fileName().isEmpty()) {
-        ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
-        ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
-        if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
-            ui->pushButton_Start->setEnabled(true);
-        }
-        else {
-            ui->pushButton_Start->setDisabled(true);
-        }
-    }
+    handleMP3();
 }
 
 void QCMainWindow::on_pushButton_BrowseCover_clicked()
@@ -383,11 +366,7 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                     }
                     else if (fileInfo->suffix().toLower() == tr("mp3") || fileInfo->suffix().toLower() == tr("ogg")) {
                         filename_MP3 = fileName;
-                        ui->lineEdit_MP3->setText(fileInfo->fileName());
-                        ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
-                        if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
-                            ui->pushButton_Start->setEnabled(true);
-                        }
+                        handleMP3();
                     }
                     else if (fileInfo->suffix().toLower() == tr("jpg")) {
                         int result = QUMessageBox::question(0,
@@ -620,4 +599,92 @@ void QCMainWindow::on_actionGerman_triggered()
                         << ":/marks/accept.png" << tr("Continue."));
     if(result == 0)
             this->close();
+}
+
+void QCMainWindow::BASS_StopAndFree() {
+        if(!_mediaStream)
+                return;
+
+        if(!BASS_ChannelStop(_mediaStream)) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
+
+        if(!BASS_StreamFree(_mediaStream)) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
+}
+
+void QCMainWindow::BASS_Play() {
+        if(!_mediaStream) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
+
+        if(!BASS_ChannelPlay(_mediaStream, TRUE)) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
+}
+
+void QCMainWindow::BASS_Pause() {
+        if(!_mediaStream) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
+
+        if(!BASS_ChannelPause(_mediaStream)) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
+}
+
+void QCMainWindow::BASS_Resume() {
+        if(!_mediaStream) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
+
+        if(!BASS_ChannelPlay(_mediaStream, FALSE)) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
+}
+
+/*!
+ * Get current position in seconds of the stream.
+ */
+double QCMainWindow::BASS_Position() {
+        if(!_mediaStream)
+                return -1;
+
+        return BASS_ChannelBytes2Seconds(_mediaStream, BASS_ChannelGetPosition(_mediaStream, BASS_POS_BYTE));
+}
+
+void QCMainWindow::BASS_SetPosition(int seconds) {
+        if(!_mediaStream)
+                return;
+
+        QWORD pos = BASS_ChannelSeconds2Bytes(_mediaStream, (double)seconds);
+
+        if(!BASS_ChannelSetPosition(_mediaStream, pos, BASS_POS_BYTE)) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
+}
+
+void QCMainWindow::handleMP3() {
+    _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_PRESCAN);
+    QFileInfo *fileInfo_MP3 = new QFileInfo(filename_MP3);
+    if (!fileInfo_MP3->fileName().isEmpty()) {
+        ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
+        ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
+        if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
+            ui->pushButton_Start->setEnabled(true);
+        }
+        else {
+            ui->pushButton_Start->setDisabled(true);
+        }
+    }
 }

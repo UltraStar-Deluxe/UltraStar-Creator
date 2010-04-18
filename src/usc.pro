@@ -53,6 +53,4 @@ INCLUDEPATH += . \
 LIBS += -L"../lib" \
     -ltag \
     -lbass
-CONFIG -= debug-and-release \
-    release
-CONFIG += debug
+CONFIG = release
