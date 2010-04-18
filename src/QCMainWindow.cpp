@@ -119,7 +119,7 @@ void QCMainWindow::on_pushButton_Start_clicked()
     numSyllables = lyricsStringList.length();
     ui->progressBar_Lyrics->setMaximum(numSyllables);
 
-    if (numSyllables > 5) {
+if (numSyllables > 5) {
         ui->pushButton_Tap->setText(lyricsStringList[currentSyllableGlobalIndex]);
         ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableGlobalIndex+1]);
         ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableGlobalIndex+2]);
@@ -128,8 +128,11 @@ void QCMainWindow::on_pushButton_Start_clicked()
         ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableGlobalIndex+5]);
     }
 
-    /* start mp3..
-    _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data(), 0, 0, BASS_STREAM_PRESCAN);
+    // start mp3..
+    //filename_MP3 = "c:/G.mp3";
+    //QString test = "c:/G.mp3";
+    BASS_Init(-1, 44100, 0, 0, NULL);
+    _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_PRESCAN);
     if(_mediaStream) {
         BASS_ChannelPlay(_mediaStream, TRUE);
     }
@@ -139,7 +142,6 @@ void QCMainWindow::on_pushButton_Start_clicked()
                             tr("File cannot be played."),
                             BTN << ":/marks/cancel.png" << tr("Damn it."));
     }
-    */
 
     ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
 
