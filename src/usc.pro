@@ -46,11 +46,15 @@ TRANSLATIONS = resources/usc.de.ts
 INCLUDEPATH += . \
     ../include/taglib \
     ../include/bass \
+    ../include/bass_fx \
     song \
     mediaplayer \
     support \
     ui
 LIBS += -L"../lib" \
     -ltag \
-    -lbass
-CONFIG = release
+    -lbass \
+    -lbass_fx
+CONFIG -= debug_and_release \
+    release
+CONFIG += debug

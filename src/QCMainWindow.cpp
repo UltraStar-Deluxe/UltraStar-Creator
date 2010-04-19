@@ -131,6 +131,9 @@ if (numSyllables > 5) {
         ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableGlobalIndex+5]);
     }
 
+    playbackSpeedDecreasePercentage = 100 - ui->horizontalSlider_PlaybackSpeed->value();
+    _mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
+    bool result = BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO, -playbackSpeedDecreasePercentage);
     BASS_Play();
 
     ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
@@ -166,7 +169,7 @@ void QCMainWindow::on_pushButton_Tap_pressed()
 {
     currentNoteTimer.start();
     QMainWindow::statusBar()->showMessage(tr("USC Note Start."));
-    currentNoteStartTime = currentSongTimer.elapsed();
+    currentNoteStartTime = currentSongTimer.elapsed()*(1-playbackSpeedDecreasePercentage/100);
     // conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPM [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
     currentNoteStartBeat = currentNoteStartTime * (BPM / 15000);
     ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
@@ -175,7 +178,7 @@ void QCMainWindow::on_pushButton_Tap_pressed()
 
 void QCMainWindow::on_pushButton_Tap_released()
 {
-    qint32 currentNoteTimeLength = currentNoteTimer.elapsed();
+    qint32 currentNoteTimeLength = currentNoteTimer.elapsed()*(1-playbackSpeedDecreasePercentage/100);
     ui->pushButton_Tap->setCursor(Qt::OpenHandCursor);
     QMainWindow::statusBar()->showMessage(tr("USC Note End."));
     ui->progressBar_Lyrics->setValue(ui->progressBar_Lyrics->value()+1);
@@ -538,11 +541,6 @@ void QCMainWindow::on_pushButton_OutputLyricsDecreaseFontSize_clicked()
     }
 }
 
-void QCMainWindow::on_horizontalSlider_sliderMoved(int position)
-{
-    ui->label_PlaybackSpeedPercentage->setText(tr("%1 \%").arg(QString::number(position)));
-}
-
 void QCMainWindow::on_plainTextEdit_InputLyrics_textChanged()
 {
     if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty() && !ui->lineEdit_MP3->text().isEmpty()) {
@@ -675,7 +673,7 @@ void QCMainWindow::BASS_SetPosition(int seconds) {
 }
 
 void QCMainWindow::handleMP3() {
-    _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_PRESCAN);
+    _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
     QFileInfo *fileInfo_MP3 = new QFileInfo(filename_MP3);
     if (!fileInfo_MP3->fileName().isEmpty()) {
         ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
@@ -687,4 +685,9 @@ void QCMainWindow::handleMP3() {
             ui->pushButton_Start->setDisabled(true);
         }
     }
+}
+
+void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)
+{
+    ui->label_PlaybackSpeedPercentage->setText(tr("%1 \%").arg(QString::number(value)));
 }

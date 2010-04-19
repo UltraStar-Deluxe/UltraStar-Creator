@@ -3,6 +3,7 @@
 
 #include "ui_QCMainWindow.h"
 #include "bass.h"
+#include "bass_fx.h"
 
 #include <QMainWindow>
 #include <QTime>
@@ -48,12 +49,13 @@ private:
     double BASS_Position();
     void BASS_SetPosition(int seconds);
     void handleMP3();
+    float playbackSpeedDecreasePercentage;
 
 private slots:
+    void on_horizontalSlider_PlaybackSpeed_valueChanged(int value);
     void on_actionGerman_triggered();
     void on_actionEnglish_triggered();
     void on_plainTextEdit_InputLyrics_textChanged();
-    void on_horizontalSlider_sliderMoved(int position);
     void on_pushButton_OutputLyricsDecreaseFontSize_clicked();
     void on_pushButton_OutputLyricsIncreaseFontSize_clicked();
     void on_pushButton_InputLyricsDecreaseFontSize_clicked();
