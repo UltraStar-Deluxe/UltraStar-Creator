@@ -44,17 +44,20 @@ FORMS += mediaplayer/QUMediaPlayer.ui \
 RESOURCES += resources/usc.qrc
 TRANSLATIONS = resources/usc.de.ts
 INCLUDEPATH += . \
-    ../include/taglib \
-    ../include/bass \
-    ../include/bass_fx \
     song \
     mediaplayer \
     support \
     ui
-LIBS += -L"../lib" \
-    -ltag \
-    -lbass \
-    -lbass_fx
+win32 {
+    RC_FILE = usc.rc
+    INCLUDEPATH += ../include/taglib \
+    ../include/bass \
+    ../include/bass_fx
+    LIBS += -L"../lib" \
+        -ltag \
+        -lbass \
+        -lbass_fx
+}
 CONFIG -= debug_and_release \
     release
 CONFIG += debug
