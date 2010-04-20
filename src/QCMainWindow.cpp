@@ -29,16 +29,67 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     }
 }
 
-void QCMainWindow::changeEvent(QEvent *e)
-{
-    QMainWindow::changeEvent(e);
-    switch (e->type()) {
-    case QEvent::LanguageChange:
-        ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
+
+
+/*!
+ * Overloaded to ensure that all changes are saved before closing this application.
+ */
+void QCMainWindow::closeEvent(QCloseEvent *event) {
+        int result;
+
+        /*
+        mediaplayer->stop();
+
+        if(songTree->hasUnsavedChanges()) {
+                result = QUMessageBox::information(this,
+                                tr("Quit"),
+                                tr("<b>Songs</b> have been modified."),
+                                BTN << ":/control/save_all.png" << tr("Save all changed songs.")
+                                    << ":/control/bin.png"      << tr("Discard all changes.")
+                                    << ":/marks/cancel.png"     << tr("Cancel this action."));
+                if(result == 0)
+                        songTree->saveUnsavedChanges();
+                else if(result == 2) {
+                        event->ignore();
+                        return;
+                }
+        }
+
+        if(playlistDB->hasUnsavedChanges()) {
+                result = QUMessageBox::information(this,
+                                tr("Quit"),
+                                tr("<b>Playlists</b> have been modified."),
+                                BTN << ":/control/save_all.png" << tr("Save all changed playlists.")
+                                    << ":/control/bin.png"      << tr("Discard all changes.")
+                                    << ":/marks/cancel.png"     << tr("Cancel this action."));
+                if(result == 0)
+                        playlistDB->saveUnsavedChanges();
+                else if(result == 2) {
+                        event->ignore();
+                        return;
+                }
+        }
+
+        QSettings settings;
+
+        settings.setValue("allowMonty", QVariant(_menu->montyBtn->isChecked()));
+        settings.setValue("windowState", QVariant(this->saveState()));
+
+        settings.setValue("showInfoMessages", showInfosBtn->isChecked());
+        settings.setValue("showHelpMessages", showHelpBtn->isChecked());
+        settings.setValue("showSaveMessages", showSaveHintsBtn->isChecked());
+        settings.setValue("showWarningMessages", showWarningsBtn->isChecked());
+        settings.setValue("showErrorMessages", showErrorsBtn->isChecked());
+
+        settings.setValue("autoSave", QVariant(_menu->autoSaveBtn->isChecked()));
+
+        this->saveLog();
+        */
+
+        // everything sould be fine from now on
+        QFile::remove("running.app");
+
+        event->accept();
 }
 
 bool QCMainWindow::on_pushButton_SaveToFile_clicked()
@@ -450,7 +501,7 @@ void QCMainWindow::on_comboBox_Language_currentIndexChanged(QString language)
     }
 }
 
-void QCMainWindow::on_comboBox_Edition_currentIndexChanged(QString edition)
+void QCMainWindow::on_comboBox_Edition_textChanged(QString edition)
 {
     if(!edition.isEmpty()) {
         ui->label_EditionSet->setPixmap(QPixmap(":/marks/path_ok.png"));
@@ -486,7 +537,7 @@ void QCMainWindow::on_lineEdit_Creator_textChanged(QString creator)
         ui->label_CreatorSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
     else {
-        ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_CreatorSet->setPixmap(QPixmap(":/marks/path_error.png"));
     }
 }
 
@@ -553,7 +604,6 @@ void QCMainWindow::on_plainTextEdit_InputLyrics_textChanged()
  */
 void QCMainWindow::on_actionEnglish_triggered()
 {
-    ui->actionGerman->setChecked(false);
     ui->actionGerman->font().setBold(false);
     ui->actionEnglish->setChecked(true);
     ui->actionEnglish->font().setBold(true);
@@ -577,7 +627,6 @@ void QCMainWindow::on_actionEnglish_triggered()
  */
 void QCMainWindow::on_actionGerman_triggered()
 {
-    ui->actionEnglish->setChecked(false);
     ui->actionEnglish->font().setBold(false);
     ui->actionGerman->setChecked(true);
     ui->actionGerman->font().setBold(true);

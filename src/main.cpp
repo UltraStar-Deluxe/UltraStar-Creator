@@ -145,7 +145,7 @@ void handlePreviousAppCrash() {
 }
 
 /*!
- * Read arguments song files to be loaded.
+ * Read arguments: song files to be loaded.
  */
 void handleArguments() {
         QSettings s;

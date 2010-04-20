@@ -26,7 +26,7 @@ public:
     QString filename_MP3;
 
 protected:
-    void changeEvent(QEvent *e);
+    virtual void closeEvent(QCloseEvent *event);
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
 
@@ -73,7 +73,7 @@ private slots:
     void on_comboBox_Genre_textChanged(QString );
     void on_lineEdit_Creator_textChanged(QString );
     void on_comboBox_Year_currentIndexChanged(QString );
-    void on_comboBox_Edition_currentIndexChanged(QString );
+    void on_comboBox_Edition_textChanged(QString );
     void on_comboBox_Language_currentIndexChanged(QString );
     void on_lineEdit_Title_textChanged(QString );
     void on_lineEdit_Artist_textChanged(QString );

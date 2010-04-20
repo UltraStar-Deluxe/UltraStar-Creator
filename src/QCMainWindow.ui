@@ -2938,7 +2938,11 @@ p, li { white-space: pre-wrap; }
      <string>Language</string>
     </property>
     <addaction name="actionEnglish"/>
+    <addaction name="actionFrench"/>
     <addaction name="actionGerman"/>
+    <addaction name="actionItalian"/>
+    <addaction name="actionPolish"/>
+    <addaction name="actionSpanish"/>
    </widget>
    <addaction name="menuHelp"/>
    <addaction name="menuLanguage"/>
@@ -3011,7 +3015,7 @@ p, li { white-space: pre-wrap; }
     <bool>true</bool>
    </property>
    <property name="enabled">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
@@ -3037,6 +3041,54 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>About TagLib</string>
+   </property>
+  </action>
+  <action name="actionFrench">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/languages/lang/fr.png</normaloff>:/languages/lang/fr.png</iconset>
+   </property>
+   <property name="text">
+    <string>French</string>
+   </property>
+  </action>
+  <action name="actionSpanish">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/languages/lang/es.png</normaloff>:/languages/lang/es.png</iconset>
+   </property>
+   <property name="text">
+    <string>Spanish</string>
+   </property>
+  </action>
+  <action name="actionItalian">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/languages/lang/it.png</normaloff>:/languages/lang/it.png</iconset>
+   </property>
+   <property name="text">
+    <string>Italian</string>
+   </property>
+  </action>
+  <action name="actionPolish">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/languages/lang/pl.png</normaloff>:/languages/lang/pl.png</iconset>
+   </property>
+   <property name="text">
+    <string>Polish</string>
    </property>
   </action>
  </widget>
