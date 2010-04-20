@@ -80,7 +80,7 @@
           <x>10</x>
           <y>20</y>
           <width>301</width>
-          <height>232</height>
+          <height>221</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_SongMetaInformationTags" columnminimumwidth="16,88,0,16">
@@ -2557,7 +2557,7 @@ p, li { white-space: pre-wrap; }
           <x>10</x>
           <y>20</y>
           <width>161</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2602,7 +2602,7 @@ p, li { white-space: pre-wrap; }
           <x>650</x>
           <y>20</y>
           <width>20</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2621,7 +2621,7 @@ p, li { white-space: pre-wrap; }
           <x>330</x>
           <y>20</y>
           <width>20</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2640,7 +2640,7 @@ p, li { white-space: pre-wrap; }
           <x>490</x>
           <y>20</y>
           <width>20</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2659,7 +2659,7 @@ p, li { white-space: pre-wrap; }
           <x>170</x>
           <y>20</y>
           <width>20</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2678,7 +2678,7 @@ p, li { white-space: pre-wrap; }
           <x>190</x>
           <y>20</y>
           <width>141</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2705,7 +2705,7 @@ p, li { white-space: pre-wrap; }
           <x>350</x>
           <y>20</y>
           <width>141</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2732,7 +2732,7 @@ p, li { white-space: pre-wrap; }
           <x>510</x>
           <y>20</y>
           <width>141</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2759,7 +2759,7 @@ p, li { white-space: pre-wrap; }
           <x>670</x>
           <y>20</y>
           <width>141</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2786,7 +2786,7 @@ p, li { white-space: pre-wrap; }
           <x>810</x>
           <y>20</y>
           <width>20</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2805,7 +2805,7 @@ p, li { white-space: pre-wrap; }
           <x>830</x>
           <y>20</y>
           <width>141</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="sizePolicy">
