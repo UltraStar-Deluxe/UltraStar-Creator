@@ -1,0 +1,8 @@
+- pause tapping/playback --> resume
+- translations (so far: German)
+- undo last tap (maybe with rightclick on tap-button?)
+- keyboard shortcut for tapping / undo
+- restart tapping (preserve given info, delete tapped lyrics)
+- play mp3 only (to determine needed playback speed adjustment and default pitch for example)
+- visualize current beat
+- visualize note creation (progressbar?)
