@@ -21,6 +21,8 @@
         <file>about_bgr.png</file>
         <file>lang/usc.de.qm</file>
         <file>lang/usc.pl.qm</file>
+        <file>taglib.png</file>
+        <file>logo_bass.png</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>

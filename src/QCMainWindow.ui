@@ -54,6 +54,9 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_4">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMinimumSize</enum>
+     </property>
      <item row="0" column="0" colspan="2">
       <widget class="QGroupBox" name="groupBox_SongMetaInformationTags">
        <property name="sizePolicy">
@@ -77,10 +80,13 @@
           <x>10</x>
           <y>20</y>
           <width>301</width>
-          <height>234</height>
+          <height>232</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_SongMetaInformationTags" columnminimumwidth="16,88,0,16">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
          <item row="0" column="1">
           <widget class="QLabel" name="label_Title">
            <property name="sizePolicy">
@@ -105,6 +111,9 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Enter the title of the song.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="statusTip">
+            <string>Enter the song title.</string>
            </property>
            <property name="inputMask">
             <string/>
@@ -142,6 +151,9 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Enter the artist of the song.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="statusTip">
+            <string>Enter the song artist.</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -171,6 +183,9 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Choose the language of the song's lyrics.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="statusTip">
+            <string>Choose the song language.</string>
            </property>
            <property name="editable">
             <bool>false</bool>
@@ -414,6 +429,9 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Choose or enter the song's edition. This is mainly used for corresponding SingStar Editions, so it may be used for indicating song quality etc.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="statusTip">
+            <string>Enter the song edition.</string>
+           </property>
            <property name="editable">
             <bool>true</bool>
            </property>
@@ -425,19 +443,6 @@ p, li { white-space: pre-wrap; }
            <item>
             <property name="text">
              <string>None</string>
-            </property>
-            <property name="icon">
-             <iconset resource="resources/usc.qrc">
-              <normaloff>:/marks/path_unknown.png</normaloff>:/marks/path_unknown.png</iconset>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>[SC]-Songs</string>
-            </property>
-            <property name="icon">
-             <iconset resource="resources/usc.qrc">
-              <normaloff>:/marks/path_ok.png</normaloff>:/marks/path_ok.png</iconset>
             </property>
            </item>
           </widget>
@@ -466,6 +471,9 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Choose or enter the song's musical genre.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="statusTip">
+            <string>Enter the song genre.</string>
            </property>
            <property name="editable">
             <bool>true</bool>
@@ -576,6 +584,9 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Choose the year the song was first published.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="statusTip">
+            <string>Choose the song year.</string>
            </property>
            <property name="editable">
             <bool>false</bool>
@@ -1069,6 +1080,9 @@ p, li { white-space: pre-wrap; }
            <property name="toolTip">
             <string>Enter your name as the creator of the UltraStar file for this song.</string>
            </property>
+           <property name="statusTip">
+            <string>Enter the song creator.</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -1092,6 +1106,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="7" column="2">
           <widget class="QDoubleSpinBox" name="doubleSpinBox_BPM">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="toolTip">
             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1103,6 +1120,9 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;While a value &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;less than 100&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; may lead to very inexact timings, a value &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;greater than 600&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; may be too much to handle for slower computers, therefore a value around, but less than 400 is desireable.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="statusTip">
+            <string>BPM will be determined automatically from the MP3 file.</string>
+           </property>
            <property name="buttonSymbols">
             <enum>QAbstractSpinBox::UpDownArrows</enum>
            </property>
@@ -1113,13 +1133,13 @@ p, li { white-space: pre-wrap; }
             <number>2</number>
            </property>
            <property name="minimum">
-            <double>100.000000000000000</double>
+            <double>0.000000000000000</double>
            </property>
            <property name="maximum">
             <double>600.000000000000000</double>
            </property>
            <property name="value">
-            <double>300.000000000000000</double>
+            <double>0.000000000000000</double>
            </property>
           </widget>
          </item>
@@ -1150,6 +1170,9 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;The gap will be determined automatically once you start tapping the song.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="statusTip">
+            <string>Gap will be determined automatically when you start tapping.</string>
            </property>
            <property name="suffix">
             <string/>
@@ -1325,17 +1348,17 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
          <item row="8" column="3">
-          <widget class="QLabel" name="label_GAPSet">
+          <widget class="QLabel" name="label_GapSet">
            <property name="text">
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1721,6 +1744,12 @@ The contents can be saved to a file or be copied to the clipboard.</string>
          </item>
          <item row="0" column="2">
           <widget class="QLineEdit" name="lineEdit_MP3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -1744,6 +1773,9 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             </size>
            </property>
            <property name="toolTip">
+            <string>Browse for an song file to tap.</string>
+           </property>
+           <property name="statusTip">
             <string>Browse for an song file to tap.</string>
            </property>
            <property name="text">
@@ -1776,6 +1808,9 @@ The contents can be saved to a file or be copied to the clipboard.</string>
          </item>
          <item row="1" column="2">
           <widget class="QLineEdit" name="lineEdit_Cover">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -1801,6 +1836,9 @@ The contents can be saved to a file or be copied to the clipboard.</string>
            <property name="toolTip">
             <string>Browse for a cover image file.</string>
            </property>
+           <property name="statusTip">
+            <string>Browse for a cover image file.</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -1822,6 +1860,9 @@ The contents can be saved to a file or be copied to the clipboard.</string>
          </item>
          <item row="2" column="2">
           <widget class="QLineEdit" name="lineEdit_Background">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -1845,6 +1886,9 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             </size>
            </property>
            <property name="toolTip">
+            <string>Browse for a background image file.</string>
+           </property>
+           <property name="statusTip">
             <string>Browse for a background image file.</string>
            </property>
            <property name="text">
@@ -1994,6 +2038,9 @@ p, li { white-space: pre-wrap; }
            <property name="toolTip">
             <string>Browse for a video file.</string>
            </property>
+           <property name="statusTip">
+            <string>Browse for a video file.</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -2103,12 +2150,15 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>11</x>
-          <y>21</y>
+          <y>14</y>
           <width>301</width>
-          <height>41</height>
+          <height>54</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_2" columnminimumwidth="16,88,0,16">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
          <item row="0" column="0">
           <widget class="QLabel" name="label_DefaultPitchIcon">
            <property name="sizePolicy">
@@ -2374,6 +2424,9 @@ p, li { white-space: pre-wrap; }
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
          <item>
           <spacer name="horizontalSpacer_6">
            <property name="orientation">
@@ -2784,12 +2837,15 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>15</y>
+          <y>12</y>
           <width>125</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
          <item row="0" column="0">
           <widget class="QLabel" name="label_ProgressMP3">
            <property name="font">
@@ -2874,6 +2930,8 @@ p, li { white-space: pre-wrap; }
     </property>
     <addaction name="actionAbout"/>
     <addaction name="actionAbout_Qt"/>
+    <addaction name="actionAbout_BASS"/>
+    <addaction name="actionAbout_TagLib"/>
    </widget>
    <widget class="QMenu" name="menuLanguage">
     <property name="title">
@@ -2896,6 +2954,10 @@ p, li { white-space: pre-wrap; }
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/icons/bean.png</normaloff>:/icons/bean.png</iconset>
+   </property>
    <property name="text">
     <string>About UltraStar Creator</string>
    </property>
@@ -2912,6 +2974,10 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionAbout_Qt">
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/qt.png</normaloff>:/qt.png</iconset>
+   </property>
    <property name="text">
     <string>About Qt</string>
    </property>
@@ -2953,6 +3019,24 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>German</string>
+   </property>
+  </action>
+  <action name="actionAbout_BASS">
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/logo_bass.png</normaloff>:/logo_bass.png</iconset>
+   </property>
+   <property name="text">
+    <string>About BASS</string>
+   </property>
+  </action>
+  <action name="actionAbout_TagLib">
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/taglib.png</normaloff>:/taglib.png</iconset>
+   </property>
+   <property name="text">
+    <string>About TagLib</string>
    </property>
   </action>
  </widget>

@@ -10,6 +10,7 @@
 #include <QClipboard>
 #include <QUrl>
 #include <QSettings>
+#include <QTimer>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -134,7 +135,10 @@ if (numSyllables > 5) {
     playbackSpeedDecreasePercentage = 100 - ui->horizontalSlider_PlaybackSpeed->value();
     _mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
     bool result = BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO, -playbackSpeedDecreasePercentage);
-    BASS_Play();
+    if (result) {
+        BASS_Play();
+        updateTime();
+    }
 
     ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
 
@@ -187,6 +191,7 @@ void QCMainWindow::on_pushButton_Tap_released()
         firstNoteStartBeat = currentNoteStartBeat;
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GAP:%1").arg(QString::number(currentNoteStartTime)));
         ui->spinBox_Gap->setValue(currentNoteStartTime);
+        ui->label_GapSet->setPixmap(QPixmap(":/marks/path_ok.png"));
         firstNote = false;
     }
 
@@ -415,22 +420,20 @@ void QCMainWindow::on_actionAbout_Qt_triggered()
     QApplication::aboutQt();
 }
 
-void QCMainWindow::on_lineEdit_Title_editingFinished()
+void QCMainWindow::on_lineEdit_Title_textChanged(QString title)
 {
-    if(!ui->lineEdit_Title->text().isEmpty()) {
+    if(!title.isEmpty()) {
         ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_ok.png"));
-        ui->lineEdit_Artist->setFocus();
     }
     else {
         ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_error.png"));
     }
 }
 
-void QCMainWindow::on_lineEdit_Artist_editingFinished()
+void QCMainWindow::on_lineEdit_Artist_textChanged(QString artist)
 {
-    if(!ui->lineEdit_Artist->text().isEmpty()) {
+    if(!artist.isEmpty()) {
         ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_ok.png"));
-        ui->comboBox_Language->setFocus();
     }
     else {
         ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_error.png"));
@@ -457,7 +460,7 @@ void QCMainWindow::on_comboBox_Edition_currentIndexChanged(QString edition)
     }
 }
 
-void QCMainWindow::on_comboBox_Genre_currentIndexChanged(QString genre)
+void QCMainWindow::on_comboBox_Genre_textChanged(QString genre)
 {
     if(!genre.isEmpty()) {
         ui->label_GenreSet->setPixmap(QPixmap(":/marks/path_ok.png"));
@@ -477,20 +480,14 @@ void QCMainWindow::on_comboBox_Year_currentIndexChanged(QString year)
     }
 }
 
-void QCMainWindow::on_lineEdit_Creator_editingFinished()
+void QCMainWindow::on_lineEdit_Creator_textChanged(QString creator)
 {
-    if(!ui->lineEdit_Creator->text().isEmpty()) {
+    if(!creator.isEmpty()) {
         ui->label_CreatorSet->setPixmap(QPixmap(":/marks/path_ok.png"));
-        ui->doubleSpinBox_BPM->setFocus();
     }
     else {
         ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_error.png"));
     }
-}
-
-void QCMainWindow::on_doubleSpinBox_BPM_editingFinished()
-{
-     ui->pushButton_BrowseMP3->setFocus();
 }
 
 void QCMainWindow::on_pushButton_LoadFromFile_clicked()
@@ -673,7 +670,6 @@ void QCMainWindow::BASS_SetPosition(int seconds) {
 }
 
 void QCMainWindow::handleMP3() {
-    _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
     QFileInfo *fileInfo_MP3 = new QFileInfo(filename_MP3);
     if (!fileInfo_MP3->fileName().isEmpty()) {
         ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
@@ -685,9 +681,70 @@ void QCMainWindow::handleMP3() {
             ui->pushButton_Start->setDisabled(true);
         }
     }
+
+    _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
+    QWORD MP3LengthBytes = BASS_ChannelGetLength(_mediaStream, BASS_POS_BYTE); // the length in bytes
+    double MP3LengthTime = BASS_ChannelBytes2Seconds(_mediaStream, MP3LengthBytes); // the length in seconds
+    ui->progressBar_MP3->setRange(0, (int)MP3LengthTime);
+
+    BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, 60, 0, BASS_FX_BPM_BKGRND, 0);
+
+    if (BPMFromMP3 < 50) {
+        BPMFromMP3 = BPMFromMP3*8;
+    }
+    else if (BPMFromMP3 < 100) {
+        BPMFromMP3 = BPMFromMP3*4;
+    }
+    else if (BPMFromMP3 < 200) {
+        BPMFromMP3 = BPMFromMP3*2;
+    }
+
+    ui->doubleSpinBox_BPM->setValue(BPMFromMP3);
+    ui->label_BPMSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+
+    TagLib::FileRef ref(filename_MP3.toLocal8Bit().data());
+    ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
+    ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
+    ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
 }
 
 void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)
 {
     ui->label_PlaybackSpeedPercentage->setText(tr("%1 \%").arg(QString::number(value)));
+}
+
+void QCMainWindow::on_actionAbout_BASS_triggered()
+{
+    QUMessageBox::information(this,
+                            tr("About BASS"),
+                            QString(tr("<b>BASS Audio Library</b><br><br>"
+                                            "BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.<br><br>"
+                                            "Version: <b>%1</b><br><br>"
+                                            "Copyright (c) 1999-2008<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved."))
+                                            .arg(BASSVERSIONTEXT),
+                            QStringList() << ":/marks/accept.png" << "OK",
+                            330);
+}
+
+void QCMainWindow::on_actionAbout_TagLib_triggered()
+{
+    QUMessageBox::information(this,
+                            tr("About TagLib"),
+                            QString(tr("<b>TagLib Audio Meta-Data Library</b><br><br>"
+                                            "TagLib is a library for reading and editing the meta-data of several popular audio formats.<br><br>"
+                                            "Version: <b>%1.%2.%3</b><br><br>"
+                                            "Visit: <a href=\"http://developer.kde.org/~wheeler/taglib.html\">TagLib Homepage</a>"))
+                                            .arg(TAGLIB_MAJOR_VERSION)
+                                            .arg(TAGLIB_MINOR_VERSION)
+                                            .arg(TAGLIB_PATCH_VERSION));
+}
+
+void QCMainWindow::updateTime() {
+        int posSec = (int)BASS_Position();
+
+        ui->progressBar_MP3->setValue(posSec);
+
+        if(posSec != -1) {
+            QTimer::singleShot(1000, this, SLOT(updateTime()));
+        }
 }

@@ -5,6 +5,12 @@
 #include "bass.h"
 #include "bass_fx.h"
 
+#include "taglib.h"
+#include "audioproperties.h"
+#include "fileref.h"
+#include "tag.h"
+#include "tstring.h"
+
 #include <QMainWindow>
 #include <QTime>
 
@@ -50,8 +56,11 @@ private:
     void BASS_SetPosition(int seconds);
     void handleMP3();
     float playbackSpeedDecreasePercentage;
+    float BPMFromMP3;
 
 private slots:
+    void on_actionAbout_TagLib_triggered();
+    void on_actionAbout_BASS_triggered();
     void on_horizontalSlider_PlaybackSpeed_valueChanged(int value);
     void on_actionGerman_triggered();
     void on_actionEnglish_triggered();
@@ -61,14 +70,13 @@ private slots:
     void on_pushButton_InputLyricsDecreaseFontSize_clicked();
     void on_pushButton_InputLyricsIncreaseFontSize_clicked();
     void on_pushButton_LoadFromFile_clicked();
-    void on_comboBox_Genre_currentIndexChanged(QString );
-    void on_doubleSpinBox_BPM_editingFinished();
-    void on_lineEdit_Creator_editingFinished();
+    void on_comboBox_Genre_textChanged(QString );
+    void on_lineEdit_Creator_textChanged(QString );
     void on_comboBox_Year_currentIndexChanged(QString );
     void on_comboBox_Edition_currentIndexChanged(QString );
     void on_comboBox_Language_currentIndexChanged(QString );
-    void on_lineEdit_Title_editingFinished();
-    void on_lineEdit_Artist_editingFinished();
+    void on_lineEdit_Title_textChanged(QString );
+    void on_lineEdit_Artist_textChanged(QString );
     void on_actionAbout_Qt_triggered();
     void on_actionQuit_USC_triggered();
     void on_actionAbout_triggered();
@@ -83,6 +91,7 @@ private slots:
     void on_pushButton_Tap_pressed();
     void on_pushButton_Start_clicked();
     bool on_pushButton_SaveToFile_clicked();
+    void updateTime();
 };
 
 #endif // QCMAINWINDOW_H
