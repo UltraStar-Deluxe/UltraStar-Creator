@@ -6,7 +6,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="29"/>
         <source>usc</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="75"/>
@@ -16,7 +16,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="99"/>
         <source>&lt;b&gt;#&amp;TITLE&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="109"/>
@@ -35,7 +35,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="138"/>
         <source>&lt;b&gt;#&amp;ARTIST:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="148"/>
@@ -54,7 +54,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="171"/>
         <source>&lt;b&gt;#&amp;LANGUAGE:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="181"/>
@@ -186,7 +186,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="416"/>
         <source>&lt;b&gt;#&amp;EDITION:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="426"/>
@@ -205,12 +205,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="445"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="459"/>
         <source>&lt;b&gt;#&amp;GENRE:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="469"/>
@@ -229,77 +229,77 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="488"/>
         <source>Afropop</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="493"/>
         <source>Avant-Garde</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="498"/>
         <source>Country</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="503"/>
         <source>Jazz</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="508"/>
         <source>Blues</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="513"/>
         <source>Easy Listening</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="518"/>
         <source>Electronic</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="523"/>
         <source>Hip-Hop</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="533"/>
         <source>Modern Folk</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="538"/>
         <source>Pop</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="543"/>
         <source>Rap</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="548"/>
         <source>Rhythm &amp; Blues</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="553"/>
         <source>Rock</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="558"/>
         <source>Ska</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="572"/>
         <source>&lt;b&gt;#&amp;YEAR:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="582"/>
@@ -318,462 +318,462 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="607"/>
         <source>2010</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="612"/>
         <source>2009</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="617"/>
         <source>2008</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="622"/>
         <source>2007</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="627"/>
         <source>2006</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="632"/>
         <source>2005</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="637"/>
         <source>2004</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="642"/>
         <source>2003</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="647"/>
         <source>2002</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="652"/>
         <source>2001</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="657"/>
         <source>2000</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="662"/>
         <source>1999</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="667"/>
         <source>1998</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="672"/>
         <source>1997</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="677"/>
         <source>1996</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="682"/>
         <source>1995</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="687"/>
         <source>1994</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="692"/>
         <source>1993</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="697"/>
         <source>1992</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="702"/>
         <source>1991</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="707"/>
         <source>1990</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="712"/>
         <source>1989</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="717"/>
         <source>1988</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="722"/>
         <source>1987</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="727"/>
         <source>1986</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="732"/>
         <source>1985</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="737"/>
         <source>1984</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="742"/>
         <source>1983</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="747"/>
         <source>1982</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="752"/>
         <source>1981</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="757"/>
         <source>1980</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="762"/>
         <source>1979</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="767"/>
         <source>1978</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="772"/>
         <source>1977</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="777"/>
         <source>1976</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="782"/>
         <source>1975</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="787"/>
         <source>1974</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="792"/>
         <source>1973</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="797"/>
         <source>1972</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="802"/>
         <source>1971</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="807"/>
         <source>1970</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="812"/>
         <source>1969</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="817"/>
         <source>1968</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="822"/>
         <source>1967</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="827"/>
         <source>1966</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="832"/>
         <source>1965</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="837"/>
         <source>1964</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="842"/>
         <source>1963</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="847"/>
         <source>1962</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="852"/>
         <source>1961</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="857"/>
         <source>1960</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="862"/>
         <source>1959</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="867"/>
         <source>1958</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="872"/>
         <source>1957</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="877"/>
         <source>1956</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="882"/>
         <source>1955</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="887"/>
         <source>1954</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="892"/>
         <source>1953</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="897"/>
         <source>1952</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="902"/>
         <source>1951</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="907"/>
         <source>1950</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="912"/>
         <source>1949</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="917"/>
         <source>1948</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="922"/>
         <source>1947</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="927"/>
         <source>1946</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="932"/>
         <source>1945</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="937"/>
         <source>1944</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="942"/>
         <source>1943</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="947"/>
         <source>1942</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="952"/>
         <source>1941</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="957"/>
         <source>1940</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="962"/>
         <source>1939</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="967"/>
         <source>1938</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="972"/>
         <source>1937</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="977"/>
         <source>1936</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="982"/>
         <source>1935</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="987"/>
         <source>1934</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="992"/>
         <source>1933</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="997"/>
         <source>1932</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1002"/>
         <source>1931</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1007"/>
         <source>1930</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1012"/>
         <source>1929</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1017"/>
         <source>1928</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1022"/>
         <source>1927</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1027"/>
         <source>1926</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1032"/>
         <source>1925</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1037"/>
         <source>1924</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1042"/>
         <source>1923</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1047"/>
         <source>1922</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1052"/>
         <source>1921</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1057"/>
         <source>1920</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1071"/>
         <source>&lt;b&gt;#&amp;CREATOR:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1081"/>
@@ -788,7 +788,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1100"/>
         <source>&lt;b&gt;#&amp;BPM:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1113"/>
@@ -811,7 +811,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1155"/>
         <source>&lt;b&gt;#GAP:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1168"/>
@@ -830,7 +830,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1390"/>
         <source>Input Lyrics</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabeliedtext</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1420"/>
@@ -877,7 +877,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1566"/>
         <source>Output Lyrics</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabeliedtext</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1593"/>
@@ -904,7 +904,7 @@ The contents can be saved to a file or be copied to the clipboard.</source>
     <message>
         <location filename="../QCMainWindow.ui" line="1738"/>
         <source>&lt;b&gt;#&amp;MP3:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1776"/>
@@ -920,7 +920,7 @@ The contents can be saved to a file or be copied to the clipboard.</source>
     <message>
         <location filename="../QCMainWindow.ui" line="1802"/>
         <source>&lt;b&gt;#&amp;COVER:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1837"/>
@@ -931,7 +931,7 @@ The contents can be saved to a file or be copied to the clipboard.</source>
     <message>
         <location filename="../QCMainWindow.ui" line="1854"/>
         <source>&lt;b&gt;#&amp;BACKGROUND:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1889"/>
@@ -947,12 +947,12 @@ The contents can be saved to a file or be copied to the clipboard.</source>
     <message>
         <location filename="../QCMainWindow.ui" line="1985"/>
         <source>Video Tags</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2006"/>
         <source>&lt;b&gt;#&amp;VIDEO:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2016"/>
@@ -972,7 +972,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="2062"/>
         <source>&lt;b&gt;#V&amp;IDEOGAP:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2072"/>
@@ -982,92 +982,92 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="2147"/>
         <source>Misc. Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonstige Einstellungen</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2187"/>
         <source>Default pitch:</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardtonhöhe:</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2204"/>
         <source>0 (C4)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2209"/>
         <source>1 (C#4 | Db4)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2214"/>
         <source>2 (D4)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2219"/>
         <source>3 (D#4 | Eb4)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2224"/>
         <source>4 (E)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2229"/>
         <source>5 (F)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2234"/>
         <source>6 (F#4 | Gb4)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2239"/>
         <source>7 (G4)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2244"/>
         <source>8 (G#4 | Ab4)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2249"/>
         <source>9 (A)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2254"/>
         <source>10 (A#4 | Bb4)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2259"/>
         <source>11 (B4)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2264"/>
         <source>12 (C5)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2316"/>
         <source>Playback speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abspielgeschwindigkeit:</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2331"/>
         <source>100 %</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2415"/>
         <source>Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Steuerung</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2455"/>
@@ -1082,7 +1082,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="2549"/>
         <source>Tap Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Tapbereich</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2580"/>
@@ -1096,227 +1096,227 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="2834"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Fortschritt</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2857"/>
         <source>MP3:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2885"/>
         <source>Lyrics:</source>
-        <translation type="unfinished"></translation>
+        <translation>Liedtext:</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2923"/>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2929"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2938"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprache</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2962"/>
         <source>About UltraStar Creator</source>
-        <translation type="unfinished"></translation>
+        <translation>Über UltraStar Creator</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2965"/>
         <source>F1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2970"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Schließen</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2973"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2982"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Qt</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3030"/>
         <location filename="../QCMainWindow.cpp" line="719"/>
         <source>About BASS</source>
-        <translation type="unfinished"></translation>
+        <translation>Über BASS</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3039"/>
         <location filename="../QCMainWindow.cpp" line="732"/>
         <source>About TagLib</source>
-        <translation type="unfinished"></translation>
+        <translation>Über TagLib</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="18"/>
         <source>UltraStar Song Creator %1.%2.%3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="19"/>
         <source>Ready.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bereit.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="26"/>
         <location filename="../QCMainWindow.cpp" line="294"/>
         <source>USC ready.</source>
-        <translation type="unfinished"></translation>
+        <translation>USC bereit.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="28"/>
         <source>BASS initialized.</source>
-        <translation type="unfinished"></translation>
+        <translation>BASS initialisiert.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="46"/>
         <source>Please choose file</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei öffnen</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="46"/>
         <location filename="../QCMainWindow.cpp" line="495"/>
         <source>Text files (*.txt)</source>
-        <translation type="unfinished"></translation>
+        <translation>Textdateien (*.txt)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="50"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Anwendung</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="51"/>
         <source>Cannot write file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kann Datei %1 nicht schreiben: %2.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="67"/>
         <source>USC Tapping.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="78"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="82"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="86"/>
         <source>%1 - %2 [CO].jpg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="90"/>
         <source>%1 - %2 [BG].jpg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="94"/>
         <source>#TITLE:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="95"/>
         <source>#ARTIST:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="96"/>
         <source>#LANGUAGE:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="97"/>
         <source>#EDITION:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="98"/>
         <source>#GENRE:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="99"/>
         <source>#YEAR:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="100"/>
         <source>#CREATOR:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="101"/>
         <source>#MP3:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="102"/>
         <source>#COVER:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="103"/>
         <source>#BACKGROUND:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="107"/>
         <source>%1 - %2.avi</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="109"/>
         <source>#VIDEO:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="110"/>
         <source>#VIDEOGAP:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="175"/>
         <source>USC Note Start.</source>
-        <translation type="unfinished"></translation>
+        <translation>USC Notenanfang.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="187"/>
         <source>USC Note End.</source>
-        <translation type="unfinished"></translation>
+        <translation>USC Notenende.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="192"/>
         <source>#GAP:%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="228"/>
         <source>: %1 %2 %3 %4</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="232"/>
         <source>- %1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="306"/>
@@ -1326,7 +1326,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.cpp" line="306"/>
         <source>Audio files (*.mp3 *.ogg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Audiodateien (*.mp3 *.ogg)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="312"/>
@@ -1352,95 +1352,95 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.cpp" line="332"/>
         <source>Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts</source>
-        <translation type="unfinished"></translation>
+        <translation>Videodateien (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="375"/>
         <source>mp3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="375"/>
         <source>ogg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="379"/>
         <source>jpg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="403"/>
         <source>avi</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="403"/>
         <source>flv</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="403"/>
         <source>mpg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="403"/>
         <source>mpeg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="403"/>
         <source>mp4</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="403"/>
         <source>vob</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="403"/>
         <source>ts</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="495"/>
         <source>Please choose text file</source>
-        <translation type="unfinished"></translation>
+        <translation>Textdatei öffnen</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="567"/>
         <location filename="../QCMainWindow.cpp" line="591"/>
         <source>Change Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprachenwechsel</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="568"/>
         <source>Application language changed to &lt;b&gt;English&lt;/b&gt;. You need to restart UltraStar Creator to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anwendungssprache geändert zu &lt;b&gt;Englisch&lt;/b&gt;. Du musst UltraStar Creator neustarten, damit die Änderung wirksam wird.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="569"/>
         <location filename="../QCMainWindow.cpp" line="593"/>
         <source>Quit UltraStar Creator.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verlasse UltraStar Creator.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="570"/>
         <location filename="../QCMainWindow.cpp" line="594"/>
         <source>Continue.</source>
-        <translation type="unfinished"></translation>
+        <translation>Weiter.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="592"/>
         <source>Application language changed to &lt;b&gt;German&lt;/b&gt;. You need to restart UltraStar Creator to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anwendungssprache geändert zu &lt;b&gt;Deutsch&lt;/b&gt;. Du musst UltraStar Creator neustarten, damit die Änderung wirksam wird.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="713"/>
         <source>%1 %</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="720"/>
@@ -1458,97 +1458,92 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.cpp" line="381"/>
         <source>Image file drop detected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine Bilddatei wurde hinzugefügt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="382"/>
         <source>Use &lt;b&gt;%1&lt;/b&gt; as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwende &lt;b&gt;%1&lt;/b&gt; als...</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="383"/>
         <source>Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Cover</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="384"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Hintergrund</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="385"/>
         <source>Ignore this file</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignoriere diese Datei</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="101"/>
         <source>%1.%2.%3 is loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>%1.%2.%3 wird geladen...</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="107"/>
         <source>Init Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprachinitialisierung</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="108"/>
         <source>There was no configuration setting about your language. Your &lt;b&gt;system language&lt;/b&gt; will be used if possible.&lt;br&gt;&lt;br&gt;See &lt;b&gt;Language&lt;/b&gt; to change this.</source>
-        <translation type="unfinished"></translation>
+        <translation>Es wurde keine Einstellung zu Deiner Sprache gefunden. Deine &lt;b&gt;Systemsprache&lt;/b&gt; wird verwendet, falls möglich.&lt;br&gt;&lt;br&gt;Verwende das Menü &lt;b&gt;Sprache&lt;/b&gt; um dies zu ändern.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="111"/>
         <source>Continue.</source>
-        <translation type="unfinished"></translation>
+        <translation>Weiter.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="117"/>
         <source>WIP version detected!</source>
-        <translation type="unfinished"></translation>
+        <translation>WIP Version erkannt!</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="118"/>
         <source>This version is still under development &lt;b&gt;and may not be very stable&lt;/b&gt;. &lt;br&gt;&lt;br&gt;&lt;b&gt;Please&lt;/b&gt; do not distribute this version.</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Version wird noch weiterentwickelt &lt;b&gt;und könnte instabil sein&lt;/b&gt;. &lt;br&gt;&lt;br&gt;&lt;b&gt;Bitte&lt;/b&gt; verbreite diese Version nicht.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="119"/>
         <source>I will be careful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ich bin vorsichtig.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="124"/>
         <source>Release Candidate Information</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="125"/>
         <source>&lt;b&gt;Dear testing person,&lt;/b&gt;&lt;br&gt;&lt;br&gt;this version is meant to be &lt;b&gt;feature-complete and almost bug-free&lt;/b&gt;. Nevertheless, it might be possible that some errors are still remaining.&lt;br&gt; While testing all these cool new features of version 0.1.0, consider the following:&lt;br&gt;&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;&lt;br&gt;Send feedback and bug reports to: &lt;a href=&quot;mailto:xxx@users.sourceforge.net&quot;&gt;xxx@users.sourceforge.net&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Lieber Tester,&lt;/b&gt;&lt;br&gt;&lt;br&gt;diese Version sollte &lt;b&gt;vollständig in Bezug auf Features und fast fehlerfrei&lt;/b&gt; sein. Dennoch ist es möglich, dass Fehler noch vorhanden sind.&lt;br&gt; Beim Testen der Version 1.0.0, beachte insbesondere folgende Features:&lt;br&gt;&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;&lt;br&gt;Feedback und Fehlerberichte an: &lt;a href=&quot;mailto:xxx@users.sourceforge.net&quot;&gt;xxx@users.sourceforge.net&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="126"/>
         <source>Okay!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="140"/>
         <source>Application Crash Detected</source>
-        <translation type="unfinished"></translation>
+        <translation>Programmabsturz festgestellt</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="141"/>
         <source>The UltraStar Creator did not exit successfully last time. &lt;br&gt;&lt;br&gt;Please report this problem &lt;a href=&quot;http://usc.sf.net&quot;&gt;here&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der UltraStar Creator wurde beim letzten Mal nicht richtig geschlossen. &lt;br&gt;&lt;br&gt;Bitte melde dieses Problem &lt;a href=&quot;http://usc.sf.net&quot;&gt;hier&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="144"/>
         <source>Try again.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="145"/>
-        <source>Select another song folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erneut versuchen.</translation>
     </message>
 </context>
 <context>
@@ -1556,23 +1551,23 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QUAboutDialog.ui" line="20"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.ui" line="27"/>
         <source>background-image: url(:/about_bgr.png);</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.ui" line="49"/>
         <source>background-image: url();
 color: rgb(255, 255, 255);</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.ui" line="53"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.ui" line="129"/>
@@ -1581,23 +1576,23 @@ background-color: rgba(255, 255, 255, 20);
 color: rgb(255, 255, 255);
 border-radius: 8px;
 padding: 10px;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.ui" line="185"/>
         <source>color: rgb(255, 255, 255);
 background-image: url();</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.ui" line="189"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Schließen</translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.cpp" line="29"/>
         <source>Version: &lt;b&gt;%1.%2.%3&lt;/b&gt;&lt;br&gt;SVN: #%4, %5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1605,7 +1600,7 @@ background-image: url();</source>
     <message>
         <location filename="../mediaplayer/QUAutoCue.cpp" line="175"/>
         <source>Edit lyrics at line %1...</source>
-        <translation type="unfinished"></translation>
+        <translation>Editiere Liedtext in Zeile %1...</translation>
     </message>
 </context>
 <context>
@@ -1739,7 +1734,7 @@ background-image: url();</source>
     <message>
         <location filename="../support/QUProgressDialog.ui" line="17"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fortschritt</translation>
     </message>
     <message>
         <location filename="../support/QUProgressDialog.ui" line="130"/>

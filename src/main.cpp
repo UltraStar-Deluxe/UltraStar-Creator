@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
     handleReleaseCandidateInformation();
     #endif // RC_VERSION
 
-    //handlePreviousAppCrash();
+    handlePreviousAppCrash();
     handleArguments();
 
     QCMainWindow mainWindow;
@@ -141,17 +141,11 @@ void handlePreviousAppCrash() {
                         QObject::tr("The UltraStar Creator did not exit successfully last time. <br>"
                                         "<br>"
                                         "Please report this problem <a href=\"http://usc.sf.net\">here</a>."),
-                        BTN	<< ":/marks/accept.png"        << QObject::tr("Try again.")
-                            << ":/control/folder_note.png" << QObject::tr("Select another song folder."));
-        if(result == 1) {
-                QSettings settings;
-                settings.remove("songPath");
-                settings.remove("playlistFilePath");
-        }
+                        BTN	<< ":/marks/accept.png"        << QObject::tr("Try again."));
 }
 
 /*!
- * Read arguments as a song path to be loaded.
+ * Read arguments song files to be loaded.
  */
 void handleArguments() {
         QSettings s;

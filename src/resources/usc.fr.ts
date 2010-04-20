@@ -1545,11 +1545,6 @@ p, li { white-space: pre-wrap; }
         <source>Try again.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../main.cpp" line="145"/>
-        <source>Select another song folder.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>QUAboutDialog</name>
