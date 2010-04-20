@@ -42,7 +42,11 @@ FORMS += mediaplayer/QUMediaPlayer.ui \
     QCMainWindow.ui \
     QUAboutDialog.ui
 RESOURCES += resources/usc.qrc
-TRANSLATIONS = resources/usc.de.ts
+TRANSLATIONS = resources/usc.de.ts \
+	resources/usc.es.ts \
+	resources/usc.fr.ts \
+	resources/usc.it.ts \
+	resources/usc.pl.ts
 INCLUDEPATH += . \
     song \
     mediaplayer \
