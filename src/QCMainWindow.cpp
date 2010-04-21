@@ -11,6 +11,7 @@
 #include <QUrl>
 #include <QSettings>
 #include <QTimer>
+#include <QTextCodec>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -35,56 +36,9 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
  * Overloaded to ensure that all changes are saved before closing this application.
  */
 void QCMainWindow::closeEvent(QCloseEvent *event) {
-        int result;
-
-        /*
-        mediaplayer->stop();
-
-        if(songTree->hasUnsavedChanges()) {
-                result = QUMessageBox::information(this,
-                                tr("Quit"),
-                                tr("<b>Songs</b> have been modified."),
-                                BTN << ":/control/save_all.png" << tr("Save all changed songs.")
-                                    << ":/control/bin.png"      << tr("Discard all changes.")
-                                    << ":/marks/cancel.png"     << tr("Cancel this action."));
-                if(result == 0)
-                        songTree->saveUnsavedChanges();
-                else if(result == 2) {
-                        event->ignore();
-                        return;
-                }
-        }
-
-        if(playlistDB->hasUnsavedChanges()) {
-                result = QUMessageBox::information(this,
-                                tr("Quit"),
-                                tr("<b>Playlists</b> have been modified."),
-                                BTN << ":/control/save_all.png" << tr("Save all changed playlists.")
-                                    << ":/control/bin.png"      << tr("Discard all changes.")
-                                    << ":/marks/cancel.png"     << tr("Cancel this action."));
-                if(result == 0)
-                        playlistDB->saveUnsavedChanges();
-                else if(result == 2) {
-                        event->ignore();
-                        return;
-                }
-        }
-
         QSettings settings;
 
-        settings.setValue("allowMonty", QVariant(_menu->montyBtn->isChecked()));
         settings.setValue("windowState", QVariant(this->saveState()));
-
-        settings.setValue("showInfoMessages", showInfosBtn->isChecked());
-        settings.setValue("showHelpMessages", showHelpBtn->isChecked());
-        settings.setValue("showSaveMessages", showSaveHintsBtn->isChecked());
-        settings.setValue("showWarningMessages", showWarningsBtn->isChecked());
-        settings.setValue("showErrorMessages", showErrorsBtn->isChecked());
-
-        settings.setValue("autoSave", QVariant(_menu->autoSaveBtn->isChecked()));
-
-        this->saveLog();
-        */
 
         // everything sould be fine from now on
         QFile::remove("running.app");
@@ -99,13 +53,14 @@ bool QCMainWindow::on_pushButton_SaveToFile_clicked()
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
         QUMessageBox::warning(this, tr("Application"),
-                tr("Cannot write file %1:\n%2.")
-                .arg(fileName)
-                .arg(file.errorString()));
+            tr("Cannot write file %1:\n%2.")
+            .arg(fileName)
+            .arg(file.errorString()));
         return false;
     }
 
     QTextStream out(&file);
+    out.setCodec(QTextCodec::codecForName("UTF-16"));
     QApplication::setOverrideCursor(Qt::WaitCursor);
     out << ui->plainTextEdit_OutputLyrics->toPlainText();
     QApplication::restoreOverrideCursor();
@@ -142,6 +97,7 @@ void QCMainWindow::on_pushButton_Start_clicked()
         ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
 
+    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ENCODING:Auto"));
     ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#TITLE:%1").arg(ui->lineEdit_Title->text()));
     ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
     ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->currentText()));
