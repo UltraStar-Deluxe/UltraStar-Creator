@@ -852,6 +852,8 @@ void QCMainWindow::on_pushButton_Reset_clicked()
     if (state == stopped) {
         state = QCMainWindow::initialized;
         currentSyllableIndex = 0;
+        accumulatedPauseTime = 0;
+        accumulatedPauseBeats = 0;
         firstNote = true;
         ui->plainTextEdit_OutputLyrics->clear();
         ui->pushButton_Tap->setText("");

@@ -6,6 +6,9 @@ notes from bohning:
 * play mp3 only (to determine needed playback speed adjustment and default pitch for example)
 * visualize current beat
 * visualize note creation (progressbar?)
+* fix pausing before first syllable tapped
+* replace b/# in default pitch by proper musical symbol
+* add userdata to combobox_Language so that strings are translatable, but ultrastar file contains english language name
 
 notes from canni:
 =================
