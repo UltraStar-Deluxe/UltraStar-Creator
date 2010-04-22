@@ -1,7 +1,7 @@
 #ifndef QUMESSAGEBOX_H_
 #define QUMESSAGEBOX_H_
 
-// just vor convenience with message boxes
+// just for convenience with message boxes
 #define BTN QStringList()
 
 #include <QDialog>

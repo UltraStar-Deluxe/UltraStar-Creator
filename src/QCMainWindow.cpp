@@ -31,9 +31,14 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
         QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
     }
     State state = QCMainWindow::uninitialized;
+
+    this->show();
+
+    QUMessageBox::information(0,
+        QObject::tr("Welcome to UltraStar Creator!"),
+        QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>The bare <b>minimum</b> of what you need is:<br>* a <b>song file</b> (MP3/OGG format)<br>* the song's <b>lyrics</b><br><br><b>Important information</b> such as BPM and GAP are determined <b>automatically</b>.<br><br><b>Additional meta information</b> is read from the <b>ID3 tags</b>, if available.<br><br>Any <b>further information</b> is <b>desirable</b>, but <b>not necessary</b> for song creation.<br><br><b>Happy creating!</b>"),
+        BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"));
 }
-
-
 
 /*!
  * Overloaded to ensure that all changes are saved before closing this application.
