@@ -798,8 +798,7 @@ void QCMainWindow::handleMP3() {
     ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
     ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
     ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
-
-    ui->doubleSpinBox_Videogap->setValue(0.0);
+    ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString::number(ref.tag()->year())));
 }
 
 void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)
