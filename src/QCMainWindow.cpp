@@ -31,7 +31,6 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
         QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
     }
     State state = QCMainWindow::uninitialized;
-    QMainWindow::statusBar()->showMessage(tr("State: uninitialized."));
 }
 
 
@@ -74,8 +73,8 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
 {
     if (state == initialized) {
         state = QCMainWindow::playing;
-        QMainWindow::statusBar()->showMessage(tr("State: playing."));
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
+        ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
         QWidget::setAcceptDrops(false);
         //QMainWindow::statusBar()->showMessage(tr("USC Tapping."));
         ui->groupBox_SongMetaInformationTags->setDisabled(true);
@@ -156,9 +155,9 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         songTimer.start();
     }
     else if (state == playing) {
-        // only paused
         state = QCMainWindow::paused;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/play.png"));
+        ui->pushButton_PlayPause->setStatusTip(tr("Continue tapping."));
         ui->pushButton_Tap->setDisabled(true);
         BASS_Pause();
         // pause songTimer
@@ -166,6 +165,9 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
 
     }
     else if (state == paused) {
+        state = QCMainWindow::playing;
+        ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
+        ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
         accumulatedPauseTime += pauseTimer.elapsed();
         accumulatedPauseBeats = accumulatedPauseTime * (BPM / 15000);
         state = QCMainWindow::playing;
@@ -479,9 +481,11 @@ void QCMainWindow::on_lineEdit_Title_textChanged(QString title)
 {
     if(!title.isEmpty()) {
         ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_TitleSet->setStatusTip(tr("#TITLE tag is set."));
     }
     else {
         ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_TitleSet->setStatusTip(tr("#TITLE tag is empty."));
     }
 }
 
@@ -489,9 +493,11 @@ void QCMainWindow::on_lineEdit_Artist_textChanged(QString artist)
 {
     if(!artist.isEmpty()) {
         ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_ArtistSet->setStatusTip(tr("#ARTIST tag is set."));
     }
     else {
         ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_ArtistSet->setStatusTip(tr("#ARTIST tag is empty."));
     }
 }
 
@@ -499,9 +505,11 @@ void QCMainWindow::on_comboBox_Language_currentIndexChanged(QString language)
 {
     if(!language.isEmpty()) {
         ui->label_LanguageSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_LanguageSet->setStatusTip(tr("#LANGUAGE tag is set."));
     }
     else {
         ui->label_LanguageSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_LanguageSet->setStatusTip(tr("#LANGUAGE tag is empty."));
     }
 }
 
@@ -509,9 +517,11 @@ void QCMainWindow::on_comboBox_Edition_textChanged(QString edition)
 {
     if(!edition.isEmpty()) {
         ui->label_EditionSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_EditionSet->setStatusTip(tr("#EDITION tag is set."));
     }
     else {
         ui->label_EditionSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_EditionSet->setStatusTip(tr("#EDITION tag is empty."));
     }
 }
 
@@ -519,9 +529,11 @@ void QCMainWindow::on_comboBox_Genre_textChanged(QString genre)
 {
     if(!genre.isEmpty()) {
         ui->label_GenreSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_GenreSet->setStatusTip(tr("#GENRE tag is set."));
     }
     else {
         ui->label_GenreSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_GenreSet->setStatusTip(tr("#GENRE tag is empty."));
     }
 }
 
@@ -529,9 +541,11 @@ void QCMainWindow::on_comboBox_Year_currentIndexChanged(QString year)
 {
     if(!year.isEmpty()) {
         ui->label_YearSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_YearSet->setStatusTip(tr("#YEAR tag is set."));
     }
     else {
         ui->label_YearSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_YearSet->setStatusTip(tr("#YEAR tag is empty."));
     }
 }
 
@@ -539,9 +553,11 @@ void QCMainWindow::on_lineEdit_Creator_textChanged(QString creator)
 {
     if(!creator.isEmpty()) {
         ui->label_CreatorSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_CreatorSet->setStatusTip(tr("#CREATOR tag is set."));
     }
     else {
         ui->label_CreatorSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_CreatorSet->setStatusTip(tr("#CREATOR tag is empty."));
     }
 }
 
@@ -599,12 +615,10 @@ void QCMainWindow::on_plainTextEdit_InputLyrics_textChanged()
         if (state == QCMainWindow::uninitialized) {
             state = QCMainWindow::initialized;
         }
-        QMainWindow::statusBar()->showMessage(tr("State: initialized."));
         ui->pushButton_PlayPause->setEnabled(true);
     }
     else {
         state = QCMainWindow::uninitialized;
-        QMainWindow::statusBar()->showMessage(tr("State: uninitialized."));
         ui->pushButton_PlayPause->setDisabled(true);
     }
 }
@@ -680,48 +694,40 @@ void QCMainWindow::BASS_StopAndFree() {
                 return;
 
         if(!BASS_ChannelStop(_mediaStream)) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
                 return;
         }
 
         if(!BASS_StreamFree(_mediaStream)) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
                 return;
         }
 }
 
 void QCMainWindow::BASS_Play() {
         if(!_mediaStream) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
                 return;
         }
 
         if(!BASS_ChannelPlay(_mediaStream, TRUE)) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
                 return;
         }
 }
 
 void QCMainWindow::BASS_Pause() {
         if(!_mediaStream) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
                 return;
         }
 
         if(!BASS_ChannelPause(_mediaStream)) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
                 return;
         }
 }
 
 void QCMainWindow::BASS_Resume() {
         if(!_mediaStream) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
                 return;
         }
 
         if(!BASS_ChannelPlay(_mediaStream, FALSE)) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
                 return;
         }
 }
@@ -753,6 +759,7 @@ void QCMainWindow::handleMP3() {
     if (!fileInfo_MP3->fileName().isEmpty()) {
         ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
         ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_MP3Set->setStatusTip(tr("#MP3 tag is set."));
         if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
             state = QCMainWindow::initialized;
             QMainWindow::statusBar()->showMessage(tr("State: initialized."));
@@ -785,6 +792,7 @@ void QCMainWindow::handleMP3() {
 
     ui->doubleSpinBox_BPM->setValue(BPMFromMP3);
     ui->label_BPMSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+    ui->label_BPMSet->setStatusTip(tr("#BPM tag set."));
 
     TagLib::FileRef ref(filename_MP3.toLocal8Bit().data());
     ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
