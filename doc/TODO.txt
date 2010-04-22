@@ -1,8 +1,22 @@
-- pause tapping/playback --> resume
-- translations (so far: German)
-- undo last tap (maybe with rightclick on tap-button?)
-- keyboard shortcut for tapping / undo
-- restart tapping (preserve given info, delete tapped lyrics)
-- play mp3 only (to determine needed playback speed adjustment and default pitch for example)
-- visualize current beat
-- visualize note creation (progressbar?)
+notes from bohning:
+===================
+* translations (so far: German)
+* undo last tap (maybe with rightclick on tap-button?)
+* keyboard shortcut for tapping / undo
+* play mp3 only (to determine needed playback speed adjustment and default pitch for example)
+* visualize current beat
+* visualize note creation (progressbar?)
+
+notes from canni:
+=================
+* Lyrics: umlaute werden beim laden aus txt datei nicht angezeigt => utf-8
+  => automatische encoding erkennung und #ENCODING tag einfügung?
+  #ENCODING:CP1250, CP1252, UTF8, LOCALE, AUTO
+	REMARK: true, true... (cannot reproduce for umlauts, but for other special characters, e.g. cyrillic letters)
+* Sprachwechsel geht bei mir nicht
+* leere tags nicht mit in den output
+	REMARK: empty tags are written on purpose to facilitate entering them at a later stage (empty tags don't bother anyone)
+* hilfetexte überarbeiten (tw. kürzen, verständlicher oder keyboard shortcuts auflisten z.B. space für einen tap)
+	REMARK: tooltips mostly removed and replaced by shorter statustips
+* Und natürlich fehlende Features aus dem SongTapper vllt. übernehmen (Tonhöhen etc. blabla)
+	REMARK: which features are missing? A default pitch is already available. Does SongTapper have a way to set pitches? 
