@@ -799,9 +799,6 @@ void QCMainWindow::handleMP3() {
     ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
     ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
 
-    ui->lineEdit_Cover->clear();
-    ui->lineEdit_Background->clear();
-    ui->lineEdit_Video->clear();
     ui->doubleSpinBox_Videogap->setValue(0.0);
 }
 
