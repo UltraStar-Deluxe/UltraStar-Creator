@@ -29,7 +29,7 @@
    <string>usc</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources/usc.qrc">
+   <iconset>
     <normaloff>:/icons/bean.png</normaloff>:/icons/bean.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -105,13 +105,6 @@
          </item>
          <item row="0" column="2">
           <widget class="QLineEdit" name="lineEdit_Title">
-           <property name="toolTip">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Enter the title of the song.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <property name="statusTip">
             <string>Enter the song title.</string>
            </property>
@@ -144,13 +137,6 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="1" column="2">
           <widget class="QLineEdit" name="lineEdit_Artist">
-           <property name="toolTip">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Enter the artist of the song.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <property name="statusTip">
             <string>Enter the song artist.</string>
            </property>
@@ -177,13 +163,6 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="2" column="2">
           <widget class="QComboBox" name="comboBox_Language">
-           <property name="toolTip">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Choose the language of the song's lyrics.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <property name="statusTip">
             <string>Choose the song language.</string>
            </property>
@@ -209,7 +188,7 @@ p, li { white-space: pre-wrap; }
              <string>Croatian</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/hr.png</normaloff>:/languages/lang/hr.png</iconset>
             </property>
            </item>
@@ -218,7 +197,7 @@ p, li { white-space: pre-wrap; }
              <string>Czech</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/cz.png</normaloff>:/languages/lang/cz.png</iconset>
             </property>
            </item>
@@ -227,7 +206,7 @@ p, li { white-space: pre-wrap; }
              <string>Danish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/dk.png</normaloff>:/languages/lang/dk.png</iconset>
             </property>
            </item>
@@ -236,7 +215,7 @@ p, li { white-space: pre-wrap; }
              <string>Dutch</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/nl.png</normaloff>:/languages/lang/nl.png</iconset>
             </property>
            </item>
@@ -245,7 +224,7 @@ p, li { white-space: pre-wrap; }
              <string>English</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/us.png</normaloff>:/languages/lang/us.png</iconset>
             </property>
            </item>
@@ -254,7 +233,7 @@ p, li { white-space: pre-wrap; }
              <string>Finnish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/fi.png</normaloff>:/languages/lang/fi.png</iconset>
             </property>
            </item>
@@ -263,7 +242,7 @@ p, li { white-space: pre-wrap; }
              <string>French</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/fr.png</normaloff>:/languages/lang/fr.png</iconset>
             </property>
            </item>
@@ -272,7 +251,7 @@ p, li { white-space: pre-wrap; }
              <string>German</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/de.png</normaloff>:/languages/lang/de.png</iconset>
             </property>
            </item>
@@ -281,7 +260,7 @@ p, li { white-space: pre-wrap; }
              <string>Hindi</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/in.png</normaloff>:/languages/lang/in.png</iconset>
             </property>
            </item>
@@ -290,7 +269,7 @@ p, li { white-space: pre-wrap; }
              <string>Italian</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/it.png</normaloff>:/languages/lang/it.png</iconset>
             </property>
            </item>
@@ -299,7 +278,7 @@ p, li { white-space: pre-wrap; }
              <string>Japanese</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/jp.png</normaloff>:/languages/lang/jp.png</iconset>
             </property>
            </item>
@@ -308,7 +287,7 @@ p, li { white-space: pre-wrap; }
              <string>Korean</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/kr.png</normaloff>:/languages/lang/kr.png</iconset>
             </property>
            </item>
@@ -317,7 +296,7 @@ p, li { white-space: pre-wrap; }
              <string>Latin</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/va.png</normaloff>:/languages/lang/va.png</iconset>
             </property>
            </item>
@@ -326,7 +305,7 @@ p, li { white-space: pre-wrap; }
              <string>Norwegian</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/no.png</normaloff>:/languages/lang/no.png</iconset>
             </property>
            </item>
@@ -335,7 +314,7 @@ p, li { white-space: pre-wrap; }
              <string>Polish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/pl.png</normaloff>:/languages/lang/pl.png</iconset>
             </property>
            </item>
@@ -344,7 +323,7 @@ p, li { white-space: pre-wrap; }
              <string>Portuguese</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/pt.png</normaloff>:/languages/lang/pt.png</iconset>
             </property>
            </item>
@@ -353,7 +332,7 @@ p, li { white-space: pre-wrap; }
              <string>Russian</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/ru.png</normaloff>:/languages/lang/ru.png</iconset>
             </property>
            </item>
@@ -362,7 +341,7 @@ p, li { white-space: pre-wrap; }
              <string>Slovak</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/sk.png</normaloff>:/languages/lang/sk.png</iconset>
             </property>
            </item>
@@ -371,7 +350,7 @@ p, li { white-space: pre-wrap; }
              <string>Slovenian</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/si.png</normaloff>:/languages/lang/si.png</iconset>
             </property>
            </item>
@@ -380,7 +359,7 @@ p, li { white-space: pre-wrap; }
              <string>Spanish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/es.png</normaloff>:/languages/lang/es.png</iconset>
             </property>
            </item>
@@ -389,7 +368,7 @@ p, li { white-space: pre-wrap; }
              <string>Swedish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/se.png</normaloff>:/languages/lang/se.png</iconset>
             </property>
            </item>
@@ -398,7 +377,7 @@ p, li { white-space: pre-wrap; }
              <string>Turkish</string>
             </property>
             <property name="icon">
-             <iconset resource="resources/usc.qrc">
+             <iconset>
               <normaloff>:/languages/lang/tr.png</normaloff>:/languages/lang/tr.png</iconset>
             </property>
            </item>
@@ -422,13 +401,6 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="3" column="2">
           <widget class="QComboBox" name="comboBox_Edition">
-           <property name="toolTip">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Choose or enter the song's edition. This is mainly used for corresponding SingStar Editions, so it may be used for indicating song quality etc.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <property name="statusTip">
             <string>Enter the song edition.</string>
            </property>
@@ -465,13 +437,6 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="4" column="2">
           <widget class="QComboBox" name="comboBox_Genre">
-           <property name="toolTip">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Choose or enter the song's musical genre.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <property name="statusTip">
             <string>Enter the song genre.</string>
            </property>
@@ -578,13 +543,6 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="5" column="2">
           <widget class="QComboBox" name="comboBox_Year">
-           <property name="toolTip">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Choose the year the song was first published.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <property name="statusTip">
             <string>Choose the song year.</string>
            </property>
@@ -1077,9 +1035,6 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="6" column="2">
           <widget class="QLineEdit" name="lineEdit_Creator">
-           <property name="toolTip">
-            <string>Enter your name as the creator of the UltraStar file for this song.</string>
-           </property>
            <property name="statusTip">
             <string>Enter the song creator.</string>
            </property>
@@ -1108,17 +1063,6 @@ p, li { white-space: pre-wrap; }
           <widget class="QDoubleSpinBox" name="doubleSpinBox_BPM">
            <property name="enabled">
             <bool>false</bool>
-           </property>
-           <property name="toolTip">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Adjust BPM to suit the song. Remember that this value signifies &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;quarter beats&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;You may want to use the &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Mixmeister BPM Analyzer&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; (Freeware). If you do, multiply the resulting value by 4 to get quarter beats.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;While a value &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;less than 100&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; may lead to very inexact timings, a value &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;greater than 600&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; may be too much to handle for slower computers, therefore a value around, but less than 400 is desireable.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="statusTip">
             <string>BPM will be determined automatically from the MP3 file.</string>
@@ -1164,13 +1108,6 @@ p, li { white-space: pre-wrap; }
            <property name="enabled">
             <bool>false</bool>
            </property>
-           <property name="toolTip">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;The gap will be determined automatically once you start tapping the song.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <property name="statusTip">
             <string>Gap will be determined automatically when you start tapping.</string>
            </property>
@@ -1188,7 +1125,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/font.png</pixmap>
+            <pixmap>:/types/font.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1198,7 +1135,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/user.png</pixmap>
+            <pixmap>:/types/user.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1208,7 +1145,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/language.png</pixmap>
+            <pixmap>:/types/language.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1218,7 +1155,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/edition.png</pixmap>
+            <pixmap>:/types/edition.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1228,7 +1165,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/genre.png</pixmap>
+            <pixmap>:/types/genre.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1238,7 +1175,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/calendar.png</pixmap>
+            <pixmap>:/types/calendar.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1248,7 +1185,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/users.png</pixmap>
+            <pixmap>:/types/users.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1258,7 +1195,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/auction-hammer-gavel.png</pixmap>
+            <pixmap>:/types/auction-hammer-gavel.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1268,7 +1205,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/balloon--arrow.png</pixmap>
+            <pixmap>:/types/balloon--arrow.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1278,7 +1215,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1288,7 +1225,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1298,7 +1235,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1308,7 +1245,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1318,7 +1255,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1328,7 +1265,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1338,7 +1275,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1348,7 +1285,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1358,7 +1295,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1457,7 +1394,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
            </property>
           </widget>
@@ -1477,7 +1414,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/clipboard-text.png</normaloff>:/marks/clipboard-text.png</iconset>
            </property>
           </widget>
@@ -1510,7 +1447,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
            </property>
           </widget>
@@ -1530,7 +1467,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
            </property>
           </widget>
@@ -1594,10 +1531,16 @@ p, li { white-space: pre-wrap; }
 
 The contents can be saved to a file or be copied to the clipboard.</string>
            </property>
+           <property name="tabChangesFocus">
+            <bool>true</bool>
+           </property>
            <property name="lineWrapMode">
             <enum>QPlainTextEdit::NoWrap</enum>
            </property>
            <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="centerOnScroll">
             <bool>true</bool>
            </property>
           </widget>
@@ -1620,7 +1563,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
            </property>
           </widget>
@@ -1643,7 +1586,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/clipboard-text.png</normaloff>:/marks/clipboard-text.png</iconset>
            </property>
           </widget>
@@ -1676,7 +1619,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
            </property>
           </widget>
@@ -1696,7 +1639,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
            </property>
           </widget>
@@ -1773,7 +1716,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             </size>
            </property>
            <property name="toolTip">
-            <string>Browse for an song file to tap.</string>
+            <string/>
            </property>
            <property name="statusTip">
             <string>Browse for an song file to tap.</string>
@@ -1782,7 +1725,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
            </property>
            <property name="iconSize">
@@ -1834,7 +1777,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             </size>
            </property>
            <property name="toolTip">
-            <string>Browse for a cover image file.</string>
+            <string/>
            </property>
            <property name="statusTip">
             <string>Browse for a cover image file.</string>
@@ -1843,7 +1786,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
            </property>
           </widget>
@@ -1885,9 +1828,6 @@ The contents can be saved to a file or be copied to the clipboard.</string>
              <height>20</height>
             </size>
            </property>
-           <property name="toolTip">
-            <string>Browse for a background image file.</string>
-           </property>
            <property name="statusTip">
             <string>Browse for a background image file.</string>
            </property>
@@ -1895,7 +1835,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
            </property>
           </widget>
@@ -1906,7 +1846,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/music.png</pixmap>
+            <pixmap>:/types/music.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1916,7 +1856,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/cover.png</pixmap>
+            <pixmap>:/types/cover.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1926,7 +1866,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/background.png</pixmap>
+            <pixmap>:/types/background.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1936,7 +1876,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1946,7 +1886,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -1956,7 +1896,7 @@ The contents can be saved to a file or be copied to the clipboard.</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2012,13 +1952,6 @@ The contents can be saved to a file or be copied to the clipboard.</string>
          </item>
          <item row="0" column="2">
           <widget class="QLineEdit" name="lineEdit_Video">
-           <property name="toolTip">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Browse for the video file of the song.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <property name="text">
             <string/>
            </property>
@@ -2035,9 +1968,6 @@ p, li { white-space: pre-wrap; }
              <height>20</height>
             </size>
            </property>
-           <property name="toolTip">
-            <string>Browse for a video file.</string>
-           </property>
            <property name="statusTip">
             <string>Browse for a video file.</string>
            </property>
@@ -2045,7 +1975,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
            </property>
           </widget>
@@ -2068,9 +1998,6 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="1" column="2">
           <widget class="QDoubleSpinBox" name="doubleSpinBox_Videogap">
-           <property name="toolTip">
-            <string>Adjust the video gap to fit the given audio file.</string>
-           </property>
            <property name="suffix">
             <string/>
            </property>
@@ -2091,7 +2018,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/film.png</pixmap>
+            <pixmap>:/types/film.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2101,7 +2028,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/videogap.png</pixmap>
+            <pixmap>:/types/videogap.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2111,7 +2038,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+            <pixmap>:/marks/path_error.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2121,7 +2048,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+            <pixmap>:/marks/path_ok.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2171,7 +2098,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/note.png</pixmap>
+            <pixmap>:/types/note.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2278,7 +2205,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+            <pixmap>:/marks/path_ok.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2297,7 +2224,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/types/time_mp3.png</pixmap>
+            <pixmap>:/types/time_mp3.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2389,7 +2316,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+            <pixmap>:/marks/path_ok.png</pixmap>
            </property>
           </widget>
          </item>
@@ -2414,7 +2341,7 @@ p, li { white-space: pre-wrap; }
        <property name="title">
         <string>Control</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -2425,7 +2352,7 @@ p, li { white-space: pre-wrap; }
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QToolButton" name="pushButton_Start">
+          <widget class="QToolButton" name="pushButton_PlayPause">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -2435,11 +2362,14 @@ p, li { white-space: pre-wrap; }
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="statusTip">
+            <string>Start tapping!</string>
+           </property>
            <property name="text">
             <string>play</string>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/player/play.png</normaloff>:/player/play.png</iconset>
            </property>
            <property name="iconSize">
@@ -2464,11 +2394,14 @@ p, li { white-space: pre-wrap; }
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="statusTip">
+            <string>Stop tapping.</string>
+           </property>
            <property name="text">
             <string>stop</string>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/player/stop.png</normaloff>:/player/stop.png</iconset>
            </property>
            <property name="iconSize">
@@ -2483,7 +2416,7 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item>
-          <widget class="QToolButton" name="pushButton_Stop_2">
+          <widget class="QToolButton" name="pushButton_Reset">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -2493,11 +2426,14 @@ p, li { white-space: pre-wrap; }
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="statusTip">
+            <string>Reset.</string>
+           </property>
            <property name="text">
             <string>stop</string>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset>
              <normaloff>:/player/prev.png</normaloff>:/player/prev.png</iconset>
            </property>
            <property name="iconSize">
@@ -2563,12 +2499,8 @@ p, li { white-space: pre-wrap; }
         <property name="cursor">
          <cursorShape>OpenHandCursor</cursorShape>
         </property>
-        <property name="toolTip">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:400;&quot;&gt;Use this button to that the current syllable that is displayed as button text. Click and hold down the button as long as the indicated syllable is sung.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <property name="statusTip">
+         <string>Tap Button.</string>
         </property>
         <property name="autoFillBackground">
          <bool>true</bool>
@@ -2820,7 +2752,7 @@ p, li { white-space: pre-wrap; }
        <property name="title">
         <string>Progress</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>11</x>
@@ -2855,6 +2787,9 @@ p, li { white-space: pre-wrap; }
              <width>16777215</width>
              <height>17</height>
             </size>
+           </property>
+           <property name="statusTip">
+            <string/>
            </property>
            <property name="value">
             <number>0</number>
@@ -2955,7 +2890,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/icons/bean.png</normaloff>:/icons/bean.png</iconset>
    </property>
    <property name="text">
@@ -2975,7 +2910,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionAbout_Qt">
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/qt.png</normaloff>:/qt.png</iconset>
    </property>
    <property name="text">
@@ -2993,7 +2928,7 @@ p, li { white-space: pre-wrap; }
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/languages/lang/us.png</normaloff>:/languages/lang/us.png</iconset>
    </property>
    <property name="text">
@@ -3014,7 +2949,7 @@ p, li { white-space: pre-wrap; }
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/languages/lang/de.png</normaloff>:/languages/lang/de.png</iconset>
    </property>
    <property name="text">
@@ -3023,7 +2958,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionAbout_BASS">
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/logo_bass.png</normaloff>:/logo_bass.png</iconset>
    </property>
    <property name="text">
@@ -3032,7 +2967,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionAbout_TagLib">
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/taglib.png</normaloff>:/taglib.png</iconset>
    </property>
    <property name="text">
@@ -3044,7 +2979,7 @@ p, li { white-space: pre-wrap; }
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/languages/lang/fr.png</normaloff>:/languages/lang/fr.png</iconset>
    </property>
    <property name="text">
@@ -3056,7 +2991,7 @@ p, li { white-space: pre-wrap; }
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/languages/lang/es.png</normaloff>:/languages/lang/es.png</iconset>
    </property>
    <property name="text">
@@ -3068,7 +3003,7 @@ p, li { white-space: pre-wrap; }
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/languages/lang/it.png</normaloff>:/languages/lang/it.png</iconset>
    </property>
    <property name="text">
@@ -3080,7 +3015,7 @@ p, li { white-space: pre-wrap; }
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset>
      <normaloff>:/languages/lang/pl.png</normaloff>:/languages/lang/pl.png</iconset>
    </property>
    <property name="text">
@@ -3116,8 +3051,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>pushButton_CopyToClipboard</tabstop>
   <tabstop>plainTextEdit_OutputLyrics</tabstop>
  </tabstops>
- <resources>
-  <include location="resources/usc.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

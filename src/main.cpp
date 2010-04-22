@@ -136,12 +136,12 @@ void handlePreviousAppCrash() {
                 return; // everything is ok
         }
 
-        int result = QUMessageBox::critical(0,
-                        QObject::tr("Application Crash Detected"),
-                        QObject::tr("The UltraStar Creator did not exit successfully last time. <br>"
-                                        "<br>"
-                                        "Please report this problem <a href=\"http://usc.sf.net\">here</a>."),
-                        BTN	<< ":/marks/accept.png"        << QObject::tr("Try again."));
+        QUMessageBox::critical(0,
+            QObject::tr("Application Crash Detected"),
+            QObject::tr("The UltraStar Creator did not exit successfully last time. <br>"
+                            "<br>"
+                            "Please report this problem <a href=\"http://usc.sf.net\">here</a>."),
+            BTN	<< ":/marks/accept.png"        << QObject::tr("Try again."));
 }
 
 /*!

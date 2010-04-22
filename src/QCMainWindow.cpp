@@ -20,14 +20,18 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     logSrv->add(tr("Ready."), QU::Information);
     numSyllables = 0;
     firstNoteStartBeat = 0;
-    currentSyllableGlobalIndex = 0;
+    currentSyllableIndex = 0;
     currentCharacterIndex = 0;
     firstNote = true;
+    accumulatedPauseTime = 0;
+    accumulatedPauseBeats = 0;
     clipboard = QApplication::clipboard();
     QMainWindow::statusBar()->showMessage(tr("USC ready."));
     if (BASS_Init(-1, 44100, 0, 0, NULL)) {
         QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
     }
+    State state = QCMainWindow::uninitialized;
+    QMainWindow::statusBar()->showMessage(tr("State: uninitialized."));
 }
 
 
@@ -60,96 +64,119 @@ bool QCMainWindow::on_pushButton_SaveToFile_clicked()
     }
 
     QTextStream out(&file);
-    out.setCodec(QTextCodec::codecForName("UTF-16"));
     QApplication::setOverrideCursor(Qt::WaitCursor);
     out << ui->plainTextEdit_OutputLyrics->toPlainText();
     QApplication::restoreOverrideCursor();
     return true;
 }
 
-void QCMainWindow::on_pushButton_Start_clicked()
+void QCMainWindow::on_pushButton_PlayPause_clicked()
 {
-    QWidget::setAcceptDrops(false);
-    QMainWindow::statusBar()->showMessage(tr("USC Tapping."));
-    ui->groupBox_SongMetaInformationTags->setDisabled(true);
-    ui->groupBox_MP3ArtworkTags->setDisabled(true);
-    ui->groupBox_MiscSettings->setDisabled(true);
-    ui->groupBox_VideoTags->setDisabled(true);
-    ui->groupBox_InputLyrics->setDisabled(true);
-    ui->groupBox_OutputLyrics->setEnabled(true);
-    ui->groupBox_TapArea->setEnabled(true);
-    ui->pushButton_Tap->setEnabled(true);
-    ui->pushButton_Stop->setEnabled(true);
-    if (ui->lineEdit_Title->text().isEmpty()) {
-        ui->lineEdit_Title->setText(tr("Title"));
-        ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_ok.png"));
-    }
-    if (ui->lineEdit_Artist->text().isEmpty()) {
-        ui->lineEdit_Artist->setText(tr("Artist"));
-        ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_ok.png"));
-    }
-    if (ui->lineEdit_Cover->text().isEmpty()) {
-        ui->lineEdit_Cover->setText(tr("%1 - %2 [CO].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
-        ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
-    }
-    if (ui->lineEdit_Background->text().isEmpty()) {
-        ui->lineEdit_Background->setText(tr("%1 - %2 [BG].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
-        ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
-    }
-
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ENCODING:Auto"));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#TITLE:%1").arg(ui->lineEdit_Title->text()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->currentText()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#EDITION:%1").arg(ui->comboBox_Edition->currentText()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#YEAR:%1").arg(ui->comboBox_Year->currentText()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#CREATOR:%1").arg(ui->lineEdit_Creator->text()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#MP3:%1").arg(ui->lineEdit_MP3->text()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#COVER:%1").arg(ui->lineEdit_Cover->text()));
-    ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#BACKGROUND:%1").arg(ui->lineEdit_Background->text()));
-
-    if (ui->groupBox_VideoTags->isChecked()) {
-        if (ui->lineEdit_Video->text().isEmpty()) {
-            ui->lineEdit_Video->setText(tr("%1 - %2.avi").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
+    if (state == initialized) {
+        state = QCMainWindow::playing;
+        QMainWindow::statusBar()->showMessage(tr("State: playing."));
+        ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
+        QWidget::setAcceptDrops(false);
+        //QMainWindow::statusBar()->showMessage(tr("USC Tapping."));
+        ui->groupBox_SongMetaInformationTags->setDisabled(true);
+        ui->groupBox_MP3ArtworkTags->setDisabled(true);
+        ui->groupBox_MiscSettings->setDisabled(true);
+        ui->groupBox_VideoTags->setDisabled(true);
+        ui->groupBox_InputLyrics->setDisabled(true);
+        ui->groupBox_OutputLyrics->setEnabled(true);
+        ui->groupBox_TapArea->setEnabled(true);
+        ui->pushButton_Tap->setEnabled(true);
+        ui->pushButton_Stop->setEnabled(true);
+        if (ui->lineEdit_Title->text().isEmpty()) {
+            ui->lineEdit_Title->setText(tr("Title"));
+            ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_ok.png"));
         }
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEO:%1").arg(ui->lineEdit_Video->text()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEOGAP:%1").arg(ui->doubleSpinBox_Videogap->text()));
+        if (ui->lineEdit_Artist->text().isEmpty()) {
+            ui->lineEdit_Artist->setText(tr("Artist"));
+            ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        }
+        if (ui->lineEdit_Cover->text().isEmpty()) {
+            ui->lineEdit_Cover->setText(tr("%1 - %2 [CO].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
+        }
+        if (ui->lineEdit_Background->text().isEmpty()) {
+            ui->lineEdit_Background->setText(tr("%1 - %2 [BG].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
+        }
+
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ENCODING:Auto"));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#TITLE:%1").arg(ui->lineEdit_Title->text()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->currentText()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#EDITION:%1").arg(ui->comboBox_Edition->currentText()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#YEAR:%1").arg(ui->comboBox_Year->currentText()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#CREATOR:%1").arg(ui->lineEdit_Creator->text()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#MP3:%1").arg(ui->lineEdit_MP3->text()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#COVER:%1").arg(ui->lineEdit_Cover->text()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#BACKGROUND:%1").arg(ui->lineEdit_Background->text()));
+
+        if (ui->groupBox_VideoTags->isChecked()) {
+            if (ui->lineEdit_Video->text().isEmpty()) {
+                ui->lineEdit_Video->setText(tr("%1 - %2.avi").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
+            }
+            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEO:%1").arg(ui->lineEdit_Video->text()));
+            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEOGAP:%1").arg(ui->doubleSpinBox_Videogap->text()));
+        }
+        ui->plainTextEdit_OutputLyrics->appendPlainText("#BPM:" + ui->doubleSpinBox_BPM->text());
+
+        BPM = ui->doubleSpinBox_BPM->value();
+
+        QString rawLyricsString = ui->plainTextEdit_InputLyrics->toPlainText();
+
+        lyricsString = cleanLyrics(rawLyricsString);
+
+        lyricsStringList = lyricsString.split(QRegExp("[ +\\n]"), QString::SkipEmptyParts);
+
+        numSyllables = lyricsStringList.length();
+        ui->progressBar_Lyrics->setMaximum(numSyllables);
+
+    if (numSyllables > 5) {
+            ui->pushButton_Tap->setText(lyricsStringList[currentSyllableIndex]);
+            ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableIndex+1]);
+            ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableIndex+2]);
+            ui->pushButton_NextSyllable3->setText(lyricsStringList[currentSyllableIndex+3]);
+            ui->pushButton_NextSyllable4->setText(lyricsStringList[currentSyllableIndex+4]);
+            ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableIndex+5]);
+        }
+
+        playbackSpeedDecreasePercentage = 100 - ui->horizontalSlider_PlaybackSpeed->value();
+        _mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
+        bool result = BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO, -playbackSpeedDecreasePercentage);
+        if (result) {
+            BASS_Play();
+            updateTime();
+        }
+
+        ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
+
+        songTimer.start();
     }
-    ui->plainTextEdit_OutputLyrics->appendPlainText("#BPM:" + ui->doubleSpinBox_BPM->text());
+    else if (state == playing) {
+        // only paused
+        state = QCMainWindow::paused;
+        ui->pushButton_PlayPause->setIcon(QIcon(":/player/play.png"));
+        ui->pushButton_Tap->setDisabled(true);
+        BASS_Pause();
+        // pause songTimer
+        pauseTimer.start();
 
-    BPM = ui->doubleSpinBox_BPM->value();
-
-    QString rawLyricsString = ui->plainTextEdit_InputLyrics->toPlainText();
-
-    lyricsString = cleanLyrics(rawLyricsString);
-
-    lyricsStringList = lyricsString.split(QRegExp("[ +\\n]"), QString::SkipEmptyParts);
-
-    numSyllables = lyricsStringList.length();
-    ui->progressBar_Lyrics->setMaximum(numSyllables);
-    ui->pushButton_Start->setDisabled(true);
-
-if (numSyllables > 5) {
-        ui->pushButton_Tap->setText(lyricsStringList[currentSyllableGlobalIndex]);
-        ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableGlobalIndex+1]);
-        ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableGlobalIndex+2]);
-        ui->pushButton_NextSyllable3->setText(lyricsStringList[currentSyllableGlobalIndex+3]);
-        ui->pushButton_NextSyllable4->setText(lyricsStringList[currentSyllableGlobalIndex+4]);
-        ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableGlobalIndex+5]);
     }
-
-    playbackSpeedDecreasePercentage = 100 - ui->horizontalSlider_PlaybackSpeed->value();
-    _mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
-    bool result = BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO, -playbackSpeedDecreasePercentage);
-    if (result) {
-        BASS_Play();
-        updateTime();
+    else if (state == paused) {
+        accumulatedPauseTime += pauseTimer.elapsed();
+        accumulatedPauseBeats = accumulatedPauseTime * (BPM / 15000);
+        state = QCMainWindow::playing;
+        ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
+        ui->pushButton_Tap->setEnabled(true);
+        BASS_Resume();
+        // resume songTimer
     }
-
-    ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
-
-    currentSongTimer.start();
+    else {
+        // should not be possible
+    }
 }
 
 QString QCMainWindow::cleanLyrics(QString rawLyricsString) {
@@ -178,9 +205,9 @@ QString QCMainWindow::cleanLyrics(QString rawLyricsString) {
 
 void QCMainWindow::on_pushButton_Tap_pressed()
 {
-    currentNoteTimer.start();
-    QMainWindow::statusBar()->showMessage(tr("USC Note Start."));
-    currentNoteStartTime = currentSongTimer.elapsed()*(1-playbackSpeedDecreasePercentage/100);
+    noteTimer.start();
+    //QMainWindow::statusBar()->showMessage(tr("USC Note Start."));
+    currentNoteStartTime = songTimer.elapsed()*(1-playbackSpeedDecreasePercentage/100);
     // conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPM [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
     currentNoteStartBeat = currentNoteStartTime * (BPM / 15000);
     ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
@@ -189,9 +216,9 @@ void QCMainWindow::on_pushButton_Tap_pressed()
 
 void QCMainWindow::on_pushButton_Tap_released()
 {
-    qint32 currentNoteTimeLength = currentNoteTimer.elapsed()*(1-playbackSpeedDecreasePercentage/100);
+    qint32 currentNoteTimeLength = noteTimer.elapsed()*(1-playbackSpeedDecreasePercentage/100);
     ui->pushButton_Tap->setCursor(Qt::OpenHandCursor);
-    QMainWindow::statusBar()->showMessage(tr("USC Note End."));
+    //QMainWindow::statusBar()->showMessage(tr("USC Note End."));
     ui->progressBar_Lyrics->setValue(ui->progressBar_Lyrics->value()+1);
     qint32 currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPM / 15000));
     if (firstNote){
@@ -232,44 +259,44 @@ void QCMainWindow::on_pushButton_Tap_released()
         addLinebreak = false;
     }
 
-    currentOutputTextLine = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
+    currentOutputTextLine = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat - accumulatedPauseBeats)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
     ui->plainTextEdit_OutputLyrics->appendPlainText(currentOutputTextLine);
     if (addLinebreak)
     {
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("- %1").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat + currentNoteBeatLength + 2)));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("- %1").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat - accumulatedPauseBeats + currentNoteBeatLength + 1)));
     }
 
 
-    if ((currentSyllableGlobalIndex+1) < numSyllables) {
-        currentSyllableGlobalIndex++;
+    if ((currentSyllableIndex+1) < numSyllables) {
+        currentSyllableIndex++;
 
-        ui->pushButton_Tap->setText(lyricsStringList[currentSyllableGlobalIndex]);
-        if (currentSyllableGlobalIndex+1 < numSyllables) {
-            ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableGlobalIndex+1]);
+        ui->pushButton_Tap->setText(lyricsStringList[currentSyllableIndex]);
+        if (currentSyllableIndex+1 < numSyllables) {
+            ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableIndex+1]);
         }
         else {
             ui->pushButton_NextSyllable1->setText("");
         }
-        if (currentSyllableGlobalIndex+2 < numSyllables) {
-            ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableGlobalIndex+2]);
+        if (currentSyllableIndex+2 < numSyllables) {
+            ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableIndex+2]);
         }
         else {
             ui->pushButton_NextSyllable2->setText("");
         }
-        if (currentSyllableGlobalIndex+3 < numSyllables) {
-            ui->pushButton_NextSyllable3->setText(lyricsStringList[currentSyllableGlobalIndex+3]);
+        if (currentSyllableIndex+3 < numSyllables) {
+            ui->pushButton_NextSyllable3->setText(lyricsStringList[currentSyllableIndex+3]);
         }
         else {
             ui->pushButton_NextSyllable3->setText("");
         }
-        if (currentSyllableGlobalIndex+4 < numSyllables) {
-            ui->pushButton_NextSyllable4->setText(lyricsStringList[currentSyllableGlobalIndex+4]);
+        if (currentSyllableIndex+4 < numSyllables) {
+            ui->pushButton_NextSyllable4->setText(lyricsStringList[currentSyllableIndex+4]);
         }
         else {
             ui->pushButton_NextSyllable4->setText("");
         }
-        if (currentSyllableGlobalIndex+5 < numSyllables) {
-            ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableGlobalIndex+5]);
+        if (currentSyllableIndex+5 < numSyllables) {
+            ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableIndex+5]);
         }
         else {
             ui->pushButton_NextSyllable5->setText("");
@@ -293,19 +320,28 @@ void QCMainWindow::on_pushButton_CopyToClipboard_clicked()
 
 void QCMainWindow::on_pushButton_Stop_clicked()
 {
-    BASS_StopAndFree();
+    if (state == playing || state == paused) {
+        state = QCMainWindow::stopped;
+        QMainWindow::statusBar()->showMessage(tr("State: stopped."));
+        BASS_StopAndFree();
 
-    ui->plainTextEdit_OutputLyrics->appendPlainText("E");
-    ui->plainTextEdit_OutputLyrics->appendPlainText("");
+        ui->plainTextEdit_OutputLyrics->appendPlainText("E");
+        ui->plainTextEdit_OutputLyrics->appendPlainText("");
 
-    QMainWindow::statusBar()->showMessage(tr("USC ready."));
+        QMainWindow::statusBar()->showMessage(tr("USC ready."));
 
-    ui->pushButton_Stop->setDisabled(true);
-    ui->groupBox_TapArea->setDisabled(true);
-    ui->groupBox_Control->setDisabled(true);
-    ui->pushButton_SaveToFile->setEnabled(true);
-    ui->pushButton_CopyToClipboard->setEnabled(true);
-    QWidget::setAcceptDrops(true);
+        ui->pushButton_PlayPause->setIcon(QIcon(":/player/play.png"));
+        ui->pushButton_PlayPause->setDisabled(true);
+        ui->pushButton_Stop->setDisabled(true);
+        ui->pushButton_Reset->setEnabled(true);
+        ui->groupBox_TapArea->setDisabled(true);
+        ui->pushButton_SaveToFile->setEnabled(true);
+        ui->pushButton_CopyToClipboard->setEnabled(true);
+        QWidget::setAcceptDrops(true);
+    }
+    else {
+        // should not be possible
+    }
 }
 
 void QCMainWindow::on_pushButton_BrowseMP3_clicked()
@@ -320,6 +356,12 @@ void QCMainWindow::on_pushButton_BrowseCover_clicked()
     QFileInfo *fileInfo_Cover = new QFileInfo(filename_Cover);
     if (!fileInfo_Cover->fileName().isEmpty()) {
         ui->lineEdit_Cover->setText(fileInfo_Cover->fileName());
+    }
+}
+
+void QCMainWindow::on_lineEdit_Cover_textChanged(QString cover)
+{
+    if (!cover.isEmpty()) {
         ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
 }
@@ -330,6 +372,12 @@ void QCMainWindow::on_pushButton_BrowseBackground_clicked()
     QFileInfo *fileInfo_Background = new QFileInfo(filename_Background);
     if (!fileInfo_Background->fileName().isEmpty()) {
         ui->lineEdit_Background->setText(fileInfo_Background->fileName());
+    }
+}
+
+void QCMainWindow::on_lineEdit_Background_textChanged(QString background)
+{
+    if (!background.isEmpty()) {
         ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
 }
@@ -443,7 +491,7 @@ void QCMainWindow::on_lineEdit_Artist_textChanged(QString artist)
         ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
     else {
-        ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_error.png"));
     }
 }
 
@@ -548,10 +596,16 @@ void QCMainWindow::on_pushButton_OutputLyricsDecreaseFontSize_clicked()
 void QCMainWindow::on_plainTextEdit_InputLyrics_textChanged()
 {
     if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty() && !ui->lineEdit_MP3->text().isEmpty()) {
-        ui->pushButton_Start->setEnabled(true);
+        if (state == QCMainWindow::uninitialized) {
+            state = QCMainWindow::initialized;
+        }
+        QMainWindow::statusBar()->showMessage(tr("State: initialized."));
+        ui->pushButton_PlayPause->setEnabled(true);
     }
     else {
-        ui->pushButton_Start->setDisabled(true);
+        state = QCMainWindow::uninitialized;
+        QMainWindow::statusBar()->showMessage(tr("State: uninitialized."));
+        ui->pushButton_PlayPause->setDisabled(true);
     }
 }
 
@@ -599,6 +653,26 @@ void QCMainWindow::on_actionGerman_triggered()
                         << ":/marks/accept.png" << tr("Continue."));
     if(result == 0)
             this->close();
+}
+
+void QCMainWindow::BASS_Stop() {
+        if(!_mediaStream)
+                return;
+
+        if(!BASS_ChannelStop(_mediaStream)) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
+}
+
+void QCMainWindow::BASS_Free() {
+        if(!_mediaStream)
+                return;
+
+        if(!BASS_StreamFree(_mediaStream)) {
+                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+                return;
+        }
 }
 
 void QCMainWindow::BASS_StopAndFree() {
@@ -680,10 +754,14 @@ void QCMainWindow::handleMP3() {
         ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
         ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
         if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
-            ui->pushButton_Start->setEnabled(true);
+            state = QCMainWindow::initialized;
+            QMainWindow::statusBar()->showMessage(tr("State: initialized."));
+            ui->pushButton_PlayPause->setEnabled(true);
         }
         else {
-            ui->pushButton_Start->setDisabled(true);
+            state = QCMainWindow::uninitialized;
+            QMainWindow::statusBar()->showMessage(tr("State: uninitialized."));
+            ui->pushButton_PlayPause->setDisabled(true);
         }
     }
 
@@ -691,6 +769,7 @@ void QCMainWindow::handleMP3() {
     QWORD MP3LengthBytes = BASS_ChannelGetLength(_mediaStream, BASS_POS_BYTE); // the length in bytes
     double MP3LengthTime = BASS_ChannelBytes2Seconds(_mediaStream, MP3LengthBytes); // the length in seconds
     ui->progressBar_MP3->setRange(0, (int)MP3LengthTime);
+    ui->progressBar_MP3->setValue(0);
 
     BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, 60, 0, BASS_FX_BPM_BKGRND, 0);
 
@@ -711,6 +790,11 @@ void QCMainWindow::handleMP3() {
     ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
     ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
     ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
+
+    ui->lineEdit_Cover->clear();
+    ui->lineEdit_Background->clear();
+    ui->lineEdit_Video->clear();
+    ui->doubleSpinBox_Videogap->setValue(0.0);
 }
 
 void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)
@@ -752,4 +836,37 @@ void QCMainWindow::updateTime() {
         if(posSec != -1) {
             QTimer::singleShot(1000, this, SLOT(updateTime()));
         }
+}
+
+void QCMainWindow::on_pushButton_Reset_clicked()
+{
+    if (state == stopped) {
+        state = QCMainWindow::initialized;
+        currentSyllableIndex = 0;
+        firstNote = true;
+        ui->plainTextEdit_OutputLyrics->clear();
+        ui->pushButton_Tap->setText("");
+        ui->pushButton_NextSyllable1->setText("");
+        ui->pushButton_NextSyllable2->setText("");
+        ui->pushButton_NextSyllable3->setText("");
+        ui->pushButton_NextSyllable4->setText("");
+        ui->pushButton_NextSyllable5->setText("");
+        ui->progressBar_MP3->setValue(0);
+        ui->progressBar_Lyrics->setValue(0);
+        ui->groupBox_SongMetaInformationTags->setEnabled(true);
+        ui->groupBox_MP3ArtworkTags->setEnabled(true);
+        ui->groupBox_MiscSettings->setEnabled(true);
+        ui->groupBox_VideoTags->setEnabled(true);
+        ui->groupBox_InputLyrics->setEnabled(true);
+        ui->groupBox_OutputLyrics->setDisabled(true);
+        ui->groupBox_TapArea->setDisabled(true);
+        ui->pushButton_Tap->setDisabled(true);
+        ui->pushButton_PlayPause->setEnabled(true);
+        ui->pushButton_Stop->setDisabled(true);
+        ui->pushButton_Reset->setDisabled(true);
+        _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
+    }
+    else {
+        // should not be possible
+    }
 }

@@ -23,7 +23,6 @@ class QCMainWindow: public QMainWindow, private Ui::QCMainWindow {
 
 public:
     QCMainWindow(QWidget *parent = 0);
-    QString filename_MP3;
 
 protected:
     virtual void closeEvent(QCloseEvent *event);
@@ -32,11 +31,12 @@ protected:
 
 private:
     Ui::QCMainWindow *ui;
-    QTime currentSongTimer;
-    QTime currentNoteTimer;
+    QTime songTimer;
+    QTime noteTimer;
+    QTime pauseTimer;
     qint32 numSyllables;
     QString currentOutputTextLine;
-    qint32 currentSyllableGlobalIndex;
+    qint32 currentSyllableIndex;
     qint32 currentCharacterIndex;
     qint32 firstNoteStartBeat;
     qint32 currentNoteStartTime;
@@ -48,6 +48,8 @@ private:
     bool firstNote;
     QString cleanLyrics(QString);
     HSTREAM _mediaStream;
+    void BASS_Stop();
+    void BASS_Free();
     void BASS_StopAndFree();
     void BASS_Play();
     void BASS_Pause();
@@ -57,8 +59,23 @@ private:
     void handleMP3();
     float playbackSpeedDecreasePercentage;
     float BPMFromMP3;
+    QString filename_MP3;
+    qint32 accumulatedPauseTime;
+    qint32 accumulatedPauseBeats;
+
+    enum State {
+        uninitialized,
+        initialized,
+        stopped,
+        paused,
+        playing
+    };
+    State state;
 
 private slots:
+    void on_lineEdit_Background_textChanged(QString );
+    void on_lineEdit_Cover_textChanged(QString );
+    void on_pushButton_Reset_clicked();
     void on_actionAbout_TagLib_triggered();
     void on_actionAbout_BASS_triggered();
     void on_horizontalSlider_PlaybackSpeed_valueChanged(int value);
@@ -89,7 +106,7 @@ private slots:
     void on_pushButton_PasteFromClipboard_clicked();
     void on_pushButton_Tap_released();
     void on_pushButton_Tap_pressed();
-    void on_pushButton_Start_clicked();
+    void on_pushButton_PlayPause_clicked();
     bool on_pushButton_SaveToFile_clicked();
     void updateTime();
 };
