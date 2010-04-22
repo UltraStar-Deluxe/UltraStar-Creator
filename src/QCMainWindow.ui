@@ -80,7 +80,7 @@
           <x>10</x>
           <y>20</y>
           <width>301</width>
-          <height>221</height>
+          <height>232</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_SongMetaInformationTags" columnminimumwidth="16,88,0,16">
@@ -2414,32 +2414,16 @@ p, li { white-space: pre-wrap; }
        <property name="title">
         <string>Control</string>
        </property>
-       <widget class="QWidget" name="layoutWidget">
+       <widget class="QWidget" name="">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>10</y>
           <width>151</width>
-          <height>41</height>
+          <height>40</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
-         <property name="sizeConstraint">
-          <enum>QLayout::SetDefaultConstraint</enum>
-         </property>
-         <item>
-          <spacer name="horizontalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
          <item>
           <widget class="QToolButton" name="pushButton_Start">
            <property name="enabled">
@@ -2460,27 +2444,14 @@ p, li { white-space: pre-wrap; }
            </property>
            <property name="iconSize">
             <size>
-             <width>48</width>
-             <height>48</height>
+             <width>32</width>
+             <height>32</height>
             </size>
            </property>
            <property name="autoRaise">
             <bool>true</bool>
            </property>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
          <item>
           <widget class="QToolButton" name="pushButton_Stop">
@@ -2512,17 +2483,33 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_5">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+          <widget class="QToolButton" name="pushButton_Stop_2">
+           <property name="enabled">
+            <bool>false</bool>
            </property>
-           <property name="sizeHint" stdset="0">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>stop</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resources/usc.qrc">
+             <normaloff>:/player/prev.png</normaloff>:/player/prev.png</iconset>
+           </property>
+           <property name="iconSize">
             <size>
-             <width>20</width>
-             <height>20</height>
+             <width>32</width>
+             <height>32</height>
             </size>
            </property>
-          </spacer>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -2833,19 +2820,16 @@ p, li { white-space: pre-wrap; }
        <property name="title">
         <string>Progress</string>
        </property>
-       <widget class="QWidget" name="layoutWidget">
+       <widget class="QWidget" name="">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>12</y>
-          <width>125</width>
-          <height>41</height>
+          <x>11</x>
+          <y>13</y>
+          <width>120</width>
+          <height>42</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
-         <property name="sizeConstraint">
-          <enum>QLayout::SetDefaultConstraint</enum>
-         </property>
          <item row="0" column="0">
           <widget class="QLabel" name="label_ProgressMP3">
            <property name="font">
@@ -2865,6 +2849,12 @@ p, li { white-space: pre-wrap; }
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>17</height>
+            </size>
            </property>
            <property name="value">
             <number>0</number>
@@ -2893,6 +2883,12 @@ p, li { white-space: pre-wrap; }
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>17</height>
+            </size>
            </property>
            <property name="value">
             <number>0</number>
