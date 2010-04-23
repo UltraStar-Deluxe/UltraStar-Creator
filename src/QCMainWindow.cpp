@@ -783,7 +783,7 @@ void QCMainWindow::handleMP3() {
     ui->progressBar_MP3->setRange(0, (int)MP3LengthTime);
     ui->progressBar_MP3->setValue(0);
 
-    BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, 60, 0, BASS_FX_BPM_BKGRND, 0);
+    BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, 0);
 
     if (BPMFromMP3 < 50) {
         BPMFromMP3 = BPMFromMP3*8;
