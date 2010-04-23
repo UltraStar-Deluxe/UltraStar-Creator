@@ -68,6 +68,7 @@ bool QCMainWindow::on_pushButton_SaveToFile_clicked()
     }
 
     QTextStream out(&file);
+    out.setCodec(QTextCodec::codecForName("UTF-8"));
     QApplication::setOverrideCursor(Qt::WaitCursor);
     out << ui->plainTextEdit_OutputLyrics->toPlainText();
     QApplication::restoreOverrideCursor();
@@ -317,7 +318,9 @@ void QCMainWindow::on_pushButton_Tap_released()
 
 void QCMainWindow::on_pushButton_PasteFromClipboard_clicked()
 {
-    ui->plainTextEdit_InputLyrics->setPlainText(clipboard->text());
+    if (clipboard->mimeData()->hasText()) {
+        ui->plainTextEdit_InputLyrics->setPlainText(clipboard->text());
+    }
 }
 
 void QCMainWindow::on_pushButton_CopyToClipboard_clicked()

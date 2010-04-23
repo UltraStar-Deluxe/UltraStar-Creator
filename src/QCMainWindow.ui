@@ -3003,6 +3003,10 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionQuit_USC">
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/control/quit.png</normaloff>:/control/quit.png</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
