@@ -69,6 +69,7 @@ bool QCMainWindow::on_pushButton_SaveToFile_clicked()
 
     QTextStream out(&file);
     out.setCodec(QTextCodec::codecForName("UTF-8"));
+    out.setGenerateByteOrderMark(true); // BOM needed by UltraStar 1.1
     QApplication::setOverrideCursor(Qt::WaitCursor);
     out << ui->plainTextEdit_OutputLyrics->toPlainText();
     QApplication::restoreOverrideCursor();
@@ -107,7 +108,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
             ui->lineEdit_Background->setText(tr("%1 - %2 [BG].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
         }
 
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ENCODING:Auto"));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ENCODING:UTF8"));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#TITLE:%1").arg(ui->lineEdit_Title->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->currentText()));
@@ -325,7 +326,9 @@ void QCMainWindow::on_pushButton_PasteFromClipboard_clicked()
 
 void QCMainWindow::on_pushButton_CopyToClipboard_clicked()
 {
-    clipboard->setText(ui->plainTextEdit_OutputLyrics->toPlainText());
+    QMimeData *mimeData = new QMimeData;
+    mimeData->setData("text/plain", ui->plainTextEdit_OutputLyrics->toPlainText().toUtf8());
+    clipboard->setMimeData(mimeData, QClipboard::Clipboard);
 }
 
 void QCMainWindow::on_pushButton_Stop_clicked()
@@ -807,6 +810,7 @@ void QCMainWindow::handleMP3() {
     ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
     ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
     ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString::number(ref.tag()->year())));
+    //ui->plainTextEdit_InputLyrics->setPlainText((TStringToQString(ref.tag()->lyrics())));
 }
 
 void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)

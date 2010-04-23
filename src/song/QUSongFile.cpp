@@ -908,12 +908,13 @@ void QUSongFile::deleteUnusedFiles(const QStringList &filter, const QString &pat
 			if(!usePattern || !fi.fileName().contains(QRegExp(pattern)))
 				continue;
 
-		if(!usedFileNames.contains(fi.fileName(), Qt::CaseInsensitive))
+                if(!usedFileNames.contains(fi.fileName(), Qt::CaseInsensitive)) {
 			if(QFile::remove(fi.filePath())) {
 				logSrv->add(QString(tr("File removed successfully: \"%1\".")).arg(fi.filePath()), QU::Information);
 			} else {
 				logSrv->add(QString(tr("File COULD NOT be removed: \"%1\".")).arg(fi.filePath()), QU::Warning);
 			}
+                    }
 	}
 }
 

@@ -10,6 +10,10 @@ notes from bohning:
 * replace b/# in default pitch by proper musical symbol
 * add userdata to combobox_Language so that strings are translatable, but ultrastar file contains english language name
 * sync to MP3 time instead of relying on timers (should be more exact and simplify pause etc.)
+* allow resizing
+* fix output to clipboard with special chars (encoding = UTF8)
+* add proper shortcuts to different actions (open / save / ...
+* add menus for inputlyrics (load from file / copy from clipboard / auto-clean / ...) and outputlyrics (save / copy to clipboard) and tags (option to turn id3-tag auto-fill off, set BPM manually, etc.)?
 
 notes from canni:
 =================
@@ -22,4 +26,8 @@ notes from canni:
 * hilfetexte überarbeiten (tw. kürzen, verständlicher oder keyboard shortcuts auflisten z.B. space für einen tap)
 	REMARK: tooltips mostly removed and replaced by shorter statustips
 * Und natürlich fehlende Features aus dem SongTapper vllt. übernehmen (Tonhöhen etc. blabla)
-	REMARK: which features are missing? A default pitch is already available. Does SongTapper have a way to set pitches? 
+	REMARK: which features are missing? A default pitch is already available. Does SongTapper have a way to set pitches?
+	
+notes from thursday:
+====================
+* get lyrics from mp3
