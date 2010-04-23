@@ -34,7 +34,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
 
     QUMessageBox::information(0,
         QObject::tr("Welcome to UltraStar Creator!"),
-        QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>The bare <b>minimum</b> of what you need is:<br>* a <b>song file</b> (MP3/OGG format)<br>* the song's <b>lyrics</b><br><br><b>Important information</b> such as BPM and GAP are determined <b>automatically</b>.<br><br><b>Additional meta information</b> is read from the <b>ID3 tags</b>, if available.<br><br>Any <b>further information</b> is <b>desirable</b>, but <b>not necessary</b> for song creation.<br><br><b>Happy creating!</b>"),
+        QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>The bare <b>minimum</b> of what you need is:<br>* a <b>song file</b> (MP3/OGG format)<br>* the song's <b>lyrics</b><br><br><b>Important information</b> such as BPM and GAP are determined <b>automatically</b>.<br><br><b>Additional meta information</b> is read from the <b>ID3 tags</b>, if available.<br><br>Any <b>further information</b> is <b>desirable</b>, but <b>not necessary</b> for song creation.<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<b>Happy creating!</b><br><br>P.S.: Tapped files are encoded using <b>UTF-8</b>, therefore they are only compatible with USDX 1.1. If you want to use them with an older version, convert the file encoding to <b>ANSI</b>."),
         BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"));
 }
 
