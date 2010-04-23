@@ -30,3 +30,4 @@ notes from canni:
 notes from thursday:
 ====================
 * get lyrics from mp3
+* add note that files are output to UTF8 (only compatible to USDX 1.1)
