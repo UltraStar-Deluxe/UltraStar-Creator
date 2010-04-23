@@ -88,8 +88,11 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->groupBox_VideoTags->setDisabled(true);
         ui->groupBox_InputLyrics->setDisabled(true);
         ui->groupBox_OutputLyrics->setEnabled(true);
+        ui->pushButton_SaveToFile->setDisabled(true);
+        ui->pushButton_CopyToClipboard->setDisabled(true);
         ui->groupBox_TapArea->setEnabled(true);
         ui->pushButton_Tap->setEnabled(true);
+        ui->pushButton_UndoTap->setEnabled(true);
         ui->pushButton_Stop->setEnabled(true);
         if (ui->lineEdit_Title->text().isEmpty()) {
             ui->lineEdit_Title->setText(tr("Title"));
@@ -136,14 +139,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         numSyllables = lyricsStringList.length();
         ui->progressBar_Lyrics->setMaximum(numSyllables);
 
-    if (numSyllables > 5) {
-            ui->pushButton_Tap->setText(lyricsStringList[currentSyllableIndex]);
-            ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableIndex+1]);
-            ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableIndex+2]);
-            ui->pushButton_NextSyllable3->setText(lyricsStringList[currentSyllableIndex+3]);
-            ui->pushButton_NextSyllable4->setText(lyricsStringList[currentSyllableIndex+4]);
-            ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableIndex+5]);
-        }
+        updateSyllableButtons();
 
         playbackSpeedDecreasePercentage = 100 - ui->horizontalSlider_PlaybackSpeed->value();
         _mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
@@ -159,14 +155,14 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         state = QCMainWindow::paused;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/play.png"));
         ui->pushButton_PlayPause->setStatusTip(tr("Continue tapping."));
-        ui->pushButton_Tap->setDisabled(true);
+        ui->groupBox_TapArea->setDisabled(true);
         BASS_Pause();
     }
     else if (state == paused) {
         state = QCMainWindow::playing;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
         ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
-        ui->pushButton_Tap->setEnabled(true);
+        ui->groupBox_TapArea->setEnabled(true);
         BASS_Resume();
     }
     else {
@@ -262,38 +258,7 @@ void QCMainWindow::on_pushButton_Tap_released()
 
     if ((currentSyllableIndex+1) < numSyllables) {
         currentSyllableIndex++;
-
-        ui->pushButton_Tap->setText(lyricsStringList[currentSyllableIndex]);
-        if (currentSyllableIndex+1 < numSyllables) {
-            ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableIndex+1]);
-        }
-        else {
-            ui->pushButton_NextSyllable1->setText("");
-        }
-        if (currentSyllableIndex+2 < numSyllables) {
-            ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableIndex+2]);
-        }
-        else {
-            ui->pushButton_NextSyllable2->setText("");
-        }
-        if (currentSyllableIndex+3 < numSyllables) {
-            ui->pushButton_NextSyllable3->setText(lyricsStringList[currentSyllableIndex+3]);
-        }
-        else {
-            ui->pushButton_NextSyllable3->setText("");
-        }
-        if (currentSyllableIndex+4 < numSyllables) {
-            ui->pushButton_NextSyllable4->setText(lyricsStringList[currentSyllableIndex+4]);
-        }
-        else {
-            ui->pushButton_NextSyllable4->setText("");
-        }
-        if (currentSyllableIndex+5 < numSyllables) {
-            ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableIndex+5]);
-        }
-        else {
-            ui->pushButton_NextSyllable5->setText("");
-        }
+        updateSyllableButtons();
     }
     else {
         ui->pushButton_Tap->setText("");
@@ -861,6 +826,7 @@ void QCMainWindow::on_pushButton_Reset_clicked()
         ui->groupBox_OutputLyrics->setDisabled(true);
         ui->groupBox_TapArea->setDisabled(true);
         ui->pushButton_Tap->setDisabled(true);
+        ui->pushButton_UndoTap->setDisabled(true);
         ui->pushButton_PlayPause->setEnabled(true);
         ui->pushButton_Stop->setDisabled(true);
         ui->pushButton_Reset->setDisabled(true);
@@ -868,5 +834,44 @@ void QCMainWindow::on_pushButton_Reset_clicked()
     }
     else {
         // should not be possible
+    }
+}
+
+void QCMainWindow::on_pushButton_UndoTap_clicked()
+{
+    // ...
+}
+
+void QCMainWindow::updateSyllableButtons() {
+    ui->pushButton_Tap->setText(lyricsStringList[currentSyllableIndex]);
+    if (currentSyllableIndex+1 < numSyllables) {
+        ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableIndex+1]);
+    }
+    else {
+        ui->pushButton_NextSyllable1->setText("");
+    }
+    if (currentSyllableIndex+2 < numSyllables) {
+        ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableIndex+2]);
+    }
+    else {
+        ui->pushButton_NextSyllable2->setText("");
+    }
+    if (currentSyllableIndex+3 < numSyllables) {
+        ui->pushButton_NextSyllable3->setText(lyricsStringList[currentSyllableIndex+3]);
+    }
+    else {
+        ui->pushButton_NextSyllable3->setText("");
+    }
+    if (currentSyllableIndex+4 < numSyllables) {
+        ui->pushButton_NextSyllable4->setText(lyricsStringList[currentSyllableIndex+4]);
+    }
+    else {
+        ui->pushButton_NextSyllable4->setText("");
+    }
+    if (currentSyllableIndex+5 < numSyllables) {
+        ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableIndex+5]);
+    }
+    else {
+        ui->pushButton_NextSyllable5->setText("");
     }
 }

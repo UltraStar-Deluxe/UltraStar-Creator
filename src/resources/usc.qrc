@@ -23,6 +23,7 @@
         <file>lang/usc.pl.qm</file>
         <file>taglib.png</file>
         <file>logo_bass.png</file>
+        <file>player/undo.png</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>

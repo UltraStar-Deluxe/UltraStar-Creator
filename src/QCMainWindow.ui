@@ -1748,7 +1748,7 @@ p, li { white-space: pre-wrap; }
          <item row="0" column="2">
           <widget class="QLineEdit" name="lineEdit_MP3">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="statusTip">
             <string>Set the song to tap by dropping a song file onto USC or by browsing your harddrive.</string>
@@ -1812,7 +1812,7 @@ p, li { white-space: pre-wrap; }
          <item row="1" column="2">
           <widget class="QLineEdit" name="lineEdit_Cover">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="statusTip">
             <string>Set the cover by dropping an image file onto USC or by browsing your harddrive.</string>
@@ -1867,7 +1867,7 @@ p, li { white-space: pre-wrap; }
          <item row="2" column="2">
           <widget class="QLineEdit" name="lineEdit_Background">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="statusTip">
             <string>Set the background by dropping an image file onto USC or by browsing your harddrive.</string>
@@ -2588,9 +2588,9 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>30</x>
           <y>20</y>
-          <width>161</width>
+          <width>141</width>
           <height>41</height>
          </rect>
         </property>
@@ -2853,6 +2853,47 @@ p, li { white-space: pre-wrap; }
          <string/>
         </property>
         <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QToolButton" name="pushButton_UndoTap">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>20</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="statusTip">
+         <string>Undo last tap.</string>
+        </property>
+        <property name="text">
+         <string>play</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources/usc.qrc">
+          <normaloff>:/player/undo.png</normaloff>:/player/undo.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="shortcut">
+         <string>Ctrl+X</string>
+        </property>
+        <property name="autoRaise">
          <bool>true</bool>
         </property>
        </widget>

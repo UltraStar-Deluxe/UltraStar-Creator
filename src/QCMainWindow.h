@@ -65,8 +65,10 @@ private:
         playing
     };
     State state;
+    void updateSyllableButtons();
 
 private slots:
+    void on_pushButton_UndoTap_clicked();
     void on_lineEdit_Background_textChanged(QString );
     void on_lineEdit_Cover_textChanged(QString );
     void on_pushButton_Reset_clicked();
