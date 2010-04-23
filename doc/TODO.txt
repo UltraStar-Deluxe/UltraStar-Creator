@@ -1,6 +1,6 @@
 notes from bohning:
 ===================
-* translations (so far: German)
+* translations not working
 * undo last tap (maybe with rightclick on tap-button?)
 * keyboard shortcut for tapping / undo
 * play mp3 only (to determine needed playback speed adjustment and default pitch for example)
@@ -9,6 +9,7 @@ notes from bohning:
 * fix pausing before first syllable tapped
 * replace b/# in default pitch by proper musical symbol
 * add userdata to combobox_Language so that strings are translatable, but ultrastar file contains english language name
+* sync to MP3 time instead of relying on timers (should be more exact and simplify pause etc.)
 
 notes from canni:
 =================
@@ -16,7 +17,6 @@ notes from canni:
   => automatische encoding erkennung und #ENCODING tag einfügung?
   #ENCODING:CP1250, CP1252, UTF8, LOCALE, AUTO
 	REMARK: true, true... (cannot reproduce for umlauts, but for other special characters, e.g. cyrillic letters)
-* Sprachwechsel geht bei mir nicht
 * leere tags nicht mit in den output
 	REMARK: empty tags are written on purpose to facilitate entering them at a later stage (empty tags don't bother anyone)
 * hilfetexte überarbeiten (tw. kürzen, verständlicher oder keyboard shortcuts auflisten z.B. space für einen tap)
