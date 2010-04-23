@@ -31,20 +31,17 @@ protected:
 
 private:
     Ui::QCMainWindow *ui;
-    QTime songTimer;
-    QTime noteTimer;
-    QTime pauseTimer;
     qint32 numSyllables;
     QString currentOutputTextLine;
     qint32 currentSyllableIndex;
     qint32 currentCharacterIndex;
     qint32 firstNoteStartBeat;
-    qint32 currentNoteStartTime;
+    double currentNoteStartTime;
     qint32 currentNoteStartBeat;
     QString lyricsString;
     QStringList lyricsStringList;
     QClipboard *clipboard;
-    double BPM;
+    float BPMFromMP3;
     bool firstNote;
     QString cleanLyrics(QString);
     HSTREAM _mediaStream;
@@ -58,10 +55,7 @@ private:
     void BASS_SetPosition(int seconds);
     void handleMP3();
     float playbackSpeedDecreasePercentage;
-    float BPMFromMP3;
     QString filename_MP3;
-    qint32 accumulatedPauseTime;
-    qint32 accumulatedPauseBeats;
 
     enum State {
         uninitialized,

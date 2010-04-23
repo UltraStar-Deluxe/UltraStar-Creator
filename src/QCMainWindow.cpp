@@ -23,8 +23,6 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     currentSyllableIndex = 0;
     currentCharacterIndex = 0;
     firstNote = true;
-    accumulatedPauseTime = 0;
-    accumulatedPauseBeats = 0;
     clipboard = QApplication::clipboard();
     QMainWindow::statusBar()->showMessage(tr("USC ready."));
     if (BASS_Init(-1, 44100, 0, 0, NULL)) {
@@ -129,8 +127,6 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         }
         ui->plainTextEdit_OutputLyrics->appendPlainText("#BPM:" + ui->doubleSpinBox_BPM->text());
 
-        BPM = ui->doubleSpinBox_BPM->value();
-
         QString rawLyricsString = ui->plainTextEdit_InputLyrics->toPlainText();
 
         lyricsString = cleanLyrics(rawLyricsString);
@@ -158,8 +154,6 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         }
 
         ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
-
-        songTimer.start();
     }
     else if (state == playing) {
         state = QCMainWindow::paused;
@@ -167,21 +161,13 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->pushButton_PlayPause->setStatusTip(tr("Continue tapping."));
         ui->pushButton_Tap->setDisabled(true);
         BASS_Pause();
-        // pause songTimer
-        pauseTimer.start();
-
     }
     else if (state == paused) {
         state = QCMainWindow::playing;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
         ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
-        accumulatedPauseTime += pauseTimer.elapsed();
-        accumulatedPauseBeats = accumulatedPauseTime * (BPM / 15000);
-        state = QCMainWindow::playing;
-        ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
         ui->pushButton_Tap->setEnabled(true);
         BASS_Resume();
-        // resume songTimer
     }
     else {
         // should not be possible
@@ -214,22 +200,20 @@ QString QCMainWindow::cleanLyrics(QString rawLyricsString) {
 
 void QCMainWindow::on_pushButton_Tap_pressed()
 {
-    noteTimer.start();
-    //QMainWindow::statusBar()->showMessage(tr("USC Note Start."));
-    currentNoteStartTime = songTimer.elapsed()*(1-playbackSpeedDecreasePercentage/100);
-    // conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPM [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
-    currentNoteStartBeat = currentNoteStartTime * (BPM / 15000);
+    currentNoteStartTime = BASS_Position()*1000; // milliseconds
+
+    // conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPMFromMP3 [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
+    currentNoteStartBeat = currentNoteStartTime * (BPMFromMP3 / 15000);
     ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
 }
 
 
 void QCMainWindow::on_pushButton_Tap_released()
 {
-    qint32 currentNoteTimeLength = noteTimer.elapsed()*(1-playbackSpeedDecreasePercentage/100);
+    double currentNoteTimeLength = BASS_Position()*1000 - currentNoteStartTime;
     ui->pushButton_Tap->setCursor(Qt::OpenHandCursor);
-    //QMainWindow::statusBar()->showMessage(tr("USC Note End."));
     ui->progressBar_Lyrics->setValue(ui->progressBar_Lyrics->value()+1);
-    qint32 currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPM / 15000));
+    qint32 currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPMFromMP3 / 15000));
     if (firstNote){
         firstNoteStartBeat = currentNoteStartBeat;
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GAP:%1").arg(QString::number(currentNoteStartTime)));
@@ -268,11 +252,11 @@ void QCMainWindow::on_pushButton_Tap_released()
         addLinebreak = false;
     }
 
-    currentOutputTextLine = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat - accumulatedPauseBeats)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
+    currentOutputTextLine = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
     ui->plainTextEdit_OutputLyrics->appendPlainText(currentOutputTextLine);
     if (addLinebreak)
     {
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("- %1").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat - accumulatedPauseBeats + currentNoteBeatLength + 1)));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("- %1").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat + currentNoteBeatLength + 1)));
     }
 
 
@@ -810,7 +794,7 @@ void QCMainWindow::handleMP3() {
     ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
     ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
     ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString::number(ref.tag()->year())));
-    //ui->plainTextEdit_InputLyrics->setPlainText((TStringToQString(ref.tag()->lyrics())));
+    // lyrics from mp3
 }
 
 void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)
@@ -859,8 +843,6 @@ void QCMainWindow::on_pushButton_Reset_clicked()
     if (state == stopped) {
         state = QCMainWindow::initialized;
         currentSyllableIndex = 0;
-        accumulatedPauseTime = 0;
-        accumulatedPauseBeats = 0;
         firstNote = true;
         ui->plainTextEdit_OutputLyrics->clear();
         ui->pushButton_Tap->setText("");
