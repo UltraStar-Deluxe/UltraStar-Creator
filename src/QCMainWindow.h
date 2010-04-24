@@ -38,12 +38,15 @@ private:
     qint32 firstNoteStartBeat;
     double currentNoteStartTime;
     qint32 currentNoteStartBeat;
+    qint32 currentNoteBeatLength;
+    qint32 previousNoteEndBeat;
     QString lyricsString;
     QStringList lyricsStringList;
     QClipboard *clipboard;
     float BPMFromMP3;
     bool firstNote;
     QString cleanLyrics(QString);
+    void splitLyricsIntoSyllables();
     HSTREAM _mediaStream;
     void BASS_Stop();
     void BASS_Free();
@@ -66,6 +69,7 @@ private:
     };
     State state;
     void updateSyllableButtons();
+    QStringList lyricsSyllableList;
 
 private slots:
     void on_pushButton_UndoTap_clicked();

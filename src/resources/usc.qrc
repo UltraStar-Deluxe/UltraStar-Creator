@@ -159,6 +159,7 @@
         <file>edit-size-down.png</file>
         <file>edit-size-up.png</file>
         <file>clipboard-text.png</file>
+        <file>pilcrow.png</file>
     </qresource>
     <qresource prefix="/types">
         <file>text_stack.png</file>

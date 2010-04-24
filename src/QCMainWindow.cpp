@@ -20,6 +20,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     logSrv->add(tr("Ready."), QU::Information);
     numSyllables = 0;
     firstNoteStartBeat = 0;
+    currentNoteBeatLength = 0;
     currentSyllableIndex = 0;
     currentCharacterIndex = 0;
     firstNote = true;
@@ -81,7 +82,6 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
         ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
         QWidget::setAcceptDrops(false);
-        //QMainWindow::statusBar()->showMessage(tr("USC Tapping."));
         ui->groupBox_SongMetaInformationTags->setDisabled(true);
         ui->groupBox_MP3ArtworkTags->setDisabled(true);
         ui->groupBox_MiscSettings->setDisabled(true);
@@ -91,6 +91,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->pushButton_SaveToFile->setDisabled(true);
         ui->pushButton_CopyToClipboard->setDisabled(true);
         ui->groupBox_TapArea->setEnabled(true);
+        ui->pushButton_UndoTap->setDisabled(true);
         ui->pushButton_Tap->setEnabled(true);
         ui->pushButton_UndoTap->setEnabled(true);
         ui->pushButton_Stop->setEnabled(true);
@@ -134,9 +135,9 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
 
         lyricsString = cleanLyrics(rawLyricsString);
 
-        lyricsStringList = lyricsString.split(QRegExp("[ +\\n]"), QString::SkipEmptyParts);
+        splitLyricsIntoSyllables();
 
-        numSyllables = lyricsStringList.length();
+        numSyllables = lyricsSyllableList.length();
         ui->progressBar_Lyrics->setMaximum(numSyllables);
 
         updateSyllableButtons();
@@ -199,6 +200,7 @@ void QCMainWindow::on_pushButton_Tap_pressed()
     currentNoteStartTime = BASS_Position()*1000; // milliseconds
 
     // conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPMFromMP3 [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
+    previousNoteEndBeat = currentNoteStartBeat + currentNoteBeatLength - firstNoteStartBeat;
     currentNoteStartBeat = currentNoteStartTime * (BPMFromMP3 / 15000);
     ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
 }
@@ -209,7 +211,10 @@ void QCMainWindow::on_pushButton_Tap_released()
     double currentNoteTimeLength = BASS_Position()*1000 - currentNoteStartTime;
     ui->pushButton_Tap->setCursor(Qt::OpenHandCursor);
     ui->progressBar_Lyrics->setValue(ui->progressBar_Lyrics->value()+1);
-    qint32 currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPMFromMP3 / 15000));
+    if (!ui-pushButton_UndoTap->isEnabled()) {
+        ui->pushButton_UndoTap->setEnabled(true);
+    }
+    currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPMFromMP3 / 15000));
     if (firstNote){
         firstNoteStartBeat = currentNoteStartBeat;
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GAP:%1").arg(QString::number(currentNoteStartTime)));
@@ -217,43 +222,24 @@ void QCMainWindow::on_pushButton_Tap_released()
         ui->label_GapSet->setPixmap(QPixmap(":/marks/path_ok.png"));
         firstNote = false;
     }
-
-    int nextSeparatorIndex = lyricsString.mid(1).indexOf(QRegExp("[ +\\n]"));
-    QString currentSyllable;
     bool addLinebreak = false;
+    QString linebreakString = "";
 
-    if (nextSeparatorIndex != -1) {
-        QChar nextSeparator = lyricsString.at(nextSeparatorIndex+1);
-        currentSyllable = lyricsString.mid(0,nextSeparatorIndex+1);
-
-        if (currentSyllable.startsWith('+')) {
-            currentSyllable = currentSyllable.mid(1);
-        }
-
-        if (nextSeparator == ' ') {
-            lyricsString = lyricsString.mid(nextSeparatorIndex+1);
-            addLinebreak = false;
-        }
-        else if (nextSeparator == '+') {
-            lyricsString = lyricsString.mid(nextSeparatorIndex+2);
-            addLinebreak = false;
-        }
-        else if (nextSeparator == '\n') {
-            lyricsString = lyricsString.mid(nextSeparatorIndex+2);
-            addLinebreak = true;
-        }
-    }
-    else { // end of lyrics
-        currentSyllable = lyricsString;
-        addLinebreak = false;
+    QString currentSyllable = lyricsSyllableList[currentSyllableIndex];
+    if (currentSyllable.startsWith("\n")) {
+        addLinebreak = true;
+        currentSyllable = currentSyllable.mid(1);
     }
 
-    currentOutputTextLine = tr(": %1 %2 %3 %4").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
-    ui->plainTextEdit_OutputLyrics->appendPlainText(currentOutputTextLine);
     if (addLinebreak)
     {
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("- %1").arg(QString::number(currentNoteStartBeat - firstNoteStartBeat + currentNoteBeatLength + 1)));
+        //qint32 linebreakBeat = currentNoteStartBeat - firstNoteStartBeat - 1; // !!! should be replaced by something more intelligent
+        qint32 linebreakBeat = previousNoteEndBeat + (currentNoteStartBeat - firstNoteStartBeat - previousNoteEndBeat)/2;
+        linebreakString = tr("- %1\n").arg(QString::number(linebreakBeat));
     }
+
+    currentOutputTextLine = tr("%1: %2 %3 %4 %5").arg(linebreakString).arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
+    ui->plainTextEdit_OutputLyrics->appendPlainText(currentOutputTextLine);
 
 
     if ((currentSyllableIndex+1) < numSyllables) {
@@ -839,39 +825,115 @@ void QCMainWindow::on_pushButton_Reset_clicked()
 
 void QCMainWindow::on_pushButton_UndoTap_clicked()
 {
-    // ...
+    if (currentSyllableIndex > 0) {
+        currentSyllableIndex = currentSyllableIndex-1;
+        if (currentSyllableIndex == 0) {
+            firstNote = true;
+            ui->plainTextEdit_OutputLyrics->undo(); // delete GAP
+        }
+        updateSyllableButtons();
+        ui->progressBar_Lyrics->setValue(ui->progressBar_Lyrics->value()-1);
+        ui->plainTextEdit_OutputLyrics->undo();
+    }
+    else {
+        ui->pushButton_UndoTap->setDisabled(true);
+    }
 }
 
 void QCMainWindow::updateSyllableButtons() {
-    ui->pushButton_Tap->setText(lyricsStringList[currentSyllableIndex]);
+    QString syllable = lyricsSyllableList[currentSyllableIndex];
+    if (syllable.startsWith("\n")) {
+        syllable.replace("\n","");
+        ui->pushButton_Tap->setIcon(QIcon(":/marks/pilcrow.png"));
+    }
+    else {
+        ui->pushButton_Tap->setIcon(QIcon());
+    }
+    ui->pushButton_Tap->setText(syllable);
+
     if (currentSyllableIndex+1 < numSyllables) {
-        ui->pushButton_NextSyllable1->setText(lyricsStringList[currentSyllableIndex+1]);
+        syllable = lyricsSyllableList[currentSyllableIndex+1];
+        if (syllable.startsWith("\n")) {
+            syllable.replace("\n","");
+           ui->pushButton_NextSyllable1->setIcon(QIcon(":/marks/pilcrow.png"));
+        }
+        else {
+            ui->pushButton_NextSyllable1->setIcon(QIcon());
+        }
+        ui->pushButton_NextSyllable1->setText(syllable);
     }
     else {
         ui->pushButton_NextSyllable1->setText("");
     }
     if (currentSyllableIndex+2 < numSyllables) {
-        ui->pushButton_NextSyllable2->setText(lyricsStringList[currentSyllableIndex+2]);
+        syllable = lyricsSyllableList[currentSyllableIndex+2];
+        if (syllable.startsWith("\n")) {
+            syllable.replace("\n","");
+            ui->pushButton_NextSyllable2->setIcon(QIcon(":/marks/pilcrow.png"));
+        }
+        else {
+            ui->pushButton_NextSyllable2->setIcon(QIcon());
+        }
+        ui->pushButton_NextSyllable2->setText(syllable);
     }
     else {
         ui->pushButton_NextSyllable2->setText("");
     }
     if (currentSyllableIndex+3 < numSyllables) {
-        ui->pushButton_NextSyllable3->setText(lyricsStringList[currentSyllableIndex+3]);
+        syllable = lyricsSyllableList[currentSyllableIndex+3];
+        if (syllable.startsWith("\n")) {
+            syllable.replace("\n","");
+            ui->pushButton_NextSyllable3->setIcon(QIcon(":/marks/pilcrow.png"));
+        }
+        else {
+            ui->pushButton_NextSyllable3->setIcon(QIcon());
+        }
+        ui->pushButton_NextSyllable3->setText(syllable);
     }
     else {
         ui->pushButton_NextSyllable3->setText("");
     }
     if (currentSyllableIndex+4 < numSyllables) {
-        ui->pushButton_NextSyllable4->setText(lyricsStringList[currentSyllableIndex+4]);
+        syllable = lyricsSyllableList[currentSyllableIndex+4];
+        if (syllable.startsWith("\n")) {
+            syllable.replace("\n","");
+            ui->pushButton_NextSyllable4->setIcon(QIcon(":/marks/pilcrow.png"));
+        }
+        else {
+            ui->pushButton_NextSyllable4->setIcon(QIcon());
+        }
+        ui->pushButton_NextSyllable4->setText(syllable);
     }
     else {
         ui->pushButton_NextSyllable4->setText("");
     }
     if (currentSyllableIndex+5 < numSyllables) {
-        ui->pushButton_NextSyllable5->setText(lyricsStringList[currentSyllableIndex+5]);
+        syllable = lyricsSyllableList[currentSyllableIndex+5];
+        if (syllable.startsWith("\n")) {
+            syllable.replace("\n","");
+            ui->pushButton_NextSyllable5->setIcon(QIcon(":/marks/pilcrow.png"));
+        }
+        else {
+            ui->pushButton_NextSyllable5->setIcon(QIcon());
+        }
+        ui->pushButton_NextSyllable5->setText(syllable);
     }
     else {
         ui->pushButton_NextSyllable5->setText("");
+    }
+}
+
+void QCMainWindow::splitLyricsIntoSyllables()
+{
+    int nextSeparatorIndex = lyricsString.mid(1).indexOf(QRegExp("[ +\\n]"));
+
+    while (nextSeparatorIndex != -1) {
+        QString currentSyllable = lyricsString.mid(0,nextSeparatorIndex+1);
+        if (currentSyllable.startsWith("+")) {
+            currentSyllable = currentSyllable.mid(1);
+        }
+        lyricsSyllableList.append(currentSyllable);
+        lyricsString = lyricsString.mid(nextSeparatorIndex+1);
+        nextSeparatorIndex = lyricsString.mid(1).indexOf(QRegExp("[ +\\n]"));
     }
 }
