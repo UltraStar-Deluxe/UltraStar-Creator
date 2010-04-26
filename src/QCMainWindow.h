@@ -70,6 +70,7 @@ private:
     State state;
     void updateSyllableButtons();
     QStringList lyricsSyllableList;
+    void changeLanguage(QString);
 
 private slots:
     void on_pushButton_UndoTap_clicked();
@@ -79,7 +80,11 @@ private slots:
     void on_actionAbout_TagLib_triggered();
     void on_actionAbout_BASS_triggered();
     void on_horizontalSlider_PlaybackSpeed_valueChanged(int value);
+    void on_actionSpanish_triggered();
+    void on_actionPolish_triggered();
+    void on_actionItalian_triggered();
     void on_actionGerman_triggered();
+    void on_actionFrench_triggered();
     void on_actionEnglish_triggered();
     void on_plainTextEdit_InputLyrics_textChanged();
     void on_pushButton_OutputLyricsDecreaseFontSize_clicked();

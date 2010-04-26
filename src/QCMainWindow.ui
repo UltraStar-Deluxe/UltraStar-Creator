@@ -80,7 +80,7 @@
           <x>10</x>
           <y>20</y>
           <width>301</width>
-          <height>221</height>
+          <height>232</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_SongMetaInformationTags" columnminimumwidth="16,88,0,16">
@@ -3004,7 +3004,7 @@ p, li { white-space: pre-wrap; }
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuHelp">
+   <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
@@ -3030,7 +3030,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionPolish"/>
     <addaction name="actionSpanish"/>
    </widget>
-   <addaction name="menuHelp"/>
+   <addaction name="menuFile"/>
    <addaction name="menuLanguage"/>
    <addaction name="menuHelp_2"/>
   </widget>
@@ -3078,10 +3078,10 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionEnglish">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="enabled">
     <bool>true</bool>
@@ -3095,17 +3095,17 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="font">
     <font>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
   </action>
   <action name="actionGerman">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
@@ -3134,8 +3134,11 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionFrench">
-   <property name="enabled">
+   <property name="checkable">
     <bool>false</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
@@ -3146,8 +3149,11 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionSpanish">
-   <property name="enabled">
+   <property name="checkable">
     <bool>false</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
@@ -3158,8 +3164,11 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionItalian">
-   <property name="enabled">
+   <property name="checkable">
     <bool>false</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
@@ -3170,8 +3179,11 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionPolish">
-   <property name="enabled">
+   <property name="checkable">
     <bool>false</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">

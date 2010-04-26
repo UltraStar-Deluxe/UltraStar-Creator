@@ -19,11 +19,14 @@
         <file>player/loop.png</file>
         <file>qt.png</file>
         <file>about_bgr.png</file>
-        <file>lang/usc.de.qm</file>
-        <file>lang/usc.pl.qm</file>
         <file>taglib.png</file>
         <file>logo_bass.png</file>
         <file>player/undo.png</file>
+        <file>usc.de.qm</file>
+        <file>usc.es.qm</file>
+        <file>usc.fr.qm</file>
+        <file>usc.it.qm</file>
+        <file>usc.pl.qm</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>

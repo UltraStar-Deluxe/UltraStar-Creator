@@ -86,16 +86,31 @@ void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &splash) {
                 lang = QLocale(settings.value("language").toString());
         }
 
-        if(lang.language() == QLocale::German) {
-                if(t.load(":/lang/usc.de.qm")) {
-                        app.installTranslator(&t);
-                        //monty->initMessages(":/txt/hints_de");
-                }
+        if (lang.language() == QLocale::French) {
+            if(t.load(":/usc.fr.qm")) {
+                app.installTranslator(&t);
+                //monty->initMessages(":/txt/hints_fr");
+            }
+        } else if (lang.language() == QLocale::German) {
+            if(t.load(":/usc.de.qm")) {
+                app.installTranslator(&t);
+                //monty->initMessages(":/txt/hints_de");
+            }
+        } else if (lang.language() == QLocale::Italian) {
+            if(t.load(":/usc.it.qm")) {
+                app.installTranslator(&t);
+                //monty->initMessages(":/txt/hints_it");
+            }
         } else if (lang.language() == QLocale::Polish) {
-                if(t.load(":/lang/usc.pl.qm")) {
-                        app.installTranslator(&t);
-                        //monty->initMessages(":/txt/hints_pl");
-                }
+            if(t.load(":/usc.pl.qm")) {
+                app.installTranslator(&t);
+                //monty->initMessages(":/txt/hints_pl");
+            }
+        } else if (lang.language() == QLocale::Spanish) {
+            if(t.load(":/usc.es.qm")) {
+                app.installTranslator(&t);
+                //monty->initMessages(":/txt/hints_es");
+            }
         }
 
         splash.showMessage(QString(QObject::tr("%1.%2.%3 is loading...")).arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION), Qt::AlignBottom | Qt::AlignRight, Qt::white);

@@ -574,22 +574,15 @@ void QCMainWindow::on_plainTextEdit_InputLyrics_textChanged()
  */
 void QCMainWindow::on_actionEnglish_triggered()
 {
-    ui->actionGerman->font().setBold(false);
-    ui->actionEnglish->setChecked(true);
-    ui->actionEnglish->font().setBold(true);
+    changeLanguage("English");
+}
 
-    QSettings settings;
-    settings.setValue("language", QLocale(QLocale::English, QLocale::UnitedStates).name());
-
-    // ---------------
-
-    int result = QUMessageBox::information(this,
-                    tr("Change Language"),
-                    tr("Application language changed to <b>English</b>. You need to restart UltraStar Creator to take effect."),
-                    BTN << ":/control/quit.png" << tr("Quit UltraStar Creator.")
-                        << ":/marks/accept.png" << tr("Continue."));
-    if(result == 0)
-            this->close();
+/*!
+ * Changes the application language to french.
+ */
+void QCMainWindow::on_actionFrench_triggered()
+{
+    changeLanguage("French");
 }
 
 /*!
@@ -597,18 +590,65 @@ void QCMainWindow::on_actionEnglish_triggered()
  */
 void QCMainWindow::on_actionGerman_triggered()
 {
-    ui->actionEnglish->font().setBold(false);
-    ui->actionGerman->setChecked(true);
-    ui->actionGerman->font().setBold(true);
+    changeLanguage("German");
+}
 
+/*!
+ * Changes the application language to italian.
+ */
+void QCMainWindow::on_actionItalian_triggered()
+{
+    changeLanguage("Italian");
+}
+
+/*!
+ * Changes the application language to polish.
+ */
+void QCMainWindow::on_actionPolish_triggered()
+{
+    changeLanguage("Polish");
+}
+
+/*!
+ * Changes the application language to spanish.
+ */
+void QCMainWindow::on_actionSpanish_triggered()
+{
+    changeLanguage("Spanish");
+}
+
+void QCMainWindow::changeLanguage(QString language) {
     QSettings settings;
-    settings.setValue("language", QLocale(QLocale::German, QLocale::Germany).name());
+    QString translatedLanguage;
 
-    // ---------------
+    if (language == "English") {
+        settings.setValue("language", QLocale(QLocale::English, QLocale::UnitedStates).name());
+        translatedLanguage = tr("English");
+    }
+    else if (language == "French") {
+        settings.setValue("language", QLocale(QLocale::French, QLocale::France).name());
+        translatedLanguage = tr("French");
+    }
+    else if (language == "German") {
+        settings.setValue("language", QLocale(QLocale::German, QLocale::Germany).name());
+        translatedLanguage = tr("German");
+    }
+    else if (language == "Italian") {
+        settings.setValue("language", QLocale(QLocale::Italian, QLocale::Italy).name());
+        translatedLanguage = tr("Italian");
+    }
+    else if (language == "Polish") {
+        settings.setValue("language", QLocale(QLocale::Polish, QLocale::Poland).name());
+        translatedLanguage = tr("Polish");
+    }
+    else if (language == "Spanish") {
+        settings.setValue("language", QLocale(QLocale::Spanish, QLocale::Spain).name());
+        translatedLanguage = tr("Spanish");
+    }
 
     int result = QUMessageBox::information(this,
                     tr("Change Language"),
-                    tr("Application language changed to <b>German</b>. You need to restart UltraStar Creator to take effect."),
+                    tr("Application language changed to <b>%1</b>. You need to restart UltraStar Creator to take effect.").arg(translatedLanguage),
                     BTN << ":/control/quit.png" << tr("Quit UltraStar Creator.")
                         << ":/marks/accept.png" << tr("Continue."));
     if(result == 0)
