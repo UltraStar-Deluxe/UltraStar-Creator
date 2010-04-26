@@ -942,7 +942,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1741"/>
         <source>&lt;b&gt;#&amp;MP3:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1754"/>
@@ -962,7 +962,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1805"/>
         <source>&lt;b&gt;#&amp;COVER:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1818"/>
@@ -977,7 +977,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1860"/>
         <source>&lt;b&gt;#&amp;BACKGROUND:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1873"/>
@@ -997,7 +997,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="2021"/>
         <source>&lt;b&gt;#&amp;VIDEO:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2050"/>
@@ -1007,7 +1007,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="2070"/>
         <source>&lt;b&gt;#V&amp;IDEOGAP:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2161"/>

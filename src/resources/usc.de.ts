@@ -1035,67 +1035,67 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="2221"/>
         <source>0 (C4)</source>
-        <translation></translation>
+        <translation>0 (c&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2226"/>
         <source>1 (C#4 | Db4)</source>
-        <translation></translation>
+        <translation>1 (cis&apos; | des&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2231"/>
         <source>2 (D4)</source>
-        <translation></translation>
+        <translation>d&apos;</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2236"/>
         <source>3 (D#4 | Eb4)</source>
-        <translation></translation>
+        <translation>3 (dis&apos; | es&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2241"/>
         <source>4 (E)</source>
-        <translation></translation>
+        <translation>4 (e&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2246"/>
         <source>5 (F)</source>
-        <translation></translation>
+        <translation>5 (f&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2251"/>
         <source>6 (F#4 | Gb4)</source>
-        <translation></translation>
+        <translation>6 (fis&apos; | ges&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2256"/>
         <source>7 (G4)</source>
-        <translation></translation>
+        <translation>7 (g&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2261"/>
         <source>8 (G#4 | Ab4)</source>
-        <translation></translation>
+        <translation>8 (gis&apos; | as&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2266"/>
         <source>9 (A)</source>
-        <translation></translation>
+        <translation>9 (a&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2271"/>
         <source>10 (A#4 | Bb4)</source>
-        <translation></translation>
+        <translation>10 (ais&apos; | b)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2276"/>
         <source>11 (B4)</source>
-        <translation></translation>
+        <translation>11 (h&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2281"/>
         <source>12 (C5)</source>
-        <translation></translation>
+        <translation>12 (c&apos;&apos;)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2295"/>

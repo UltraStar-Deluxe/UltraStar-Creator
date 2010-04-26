@@ -16,7 +16,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="99"/>
         <source>&lt;b&gt;#&amp;TITLE&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="109"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="131"/>
         <source>&lt;b&gt;#&amp;ARTIST:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="141"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="157"/>
         <source>&lt;b&gt;#&amp;LANGUAGE:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="167"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="395"/>
         <source>&lt;b&gt;#&amp;EDITION:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="405"/>
@@ -184,7 +184,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="431"/>
         <source>&lt;b&gt;#&amp;GENRE:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="441"/>
@@ -264,7 +264,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="537"/>
         <source>&lt;b&gt;#&amp;YEAR:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="547"/>
@@ -274,462 +274,462 @@
     <message>
         <location filename="../QCMainWindow.ui" line="565"/>
         <source>2010</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="570"/>
         <source>2009</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="575"/>
         <source>2008</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="580"/>
         <source>2007</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="585"/>
         <source>2006</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="590"/>
         <source>2005</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="595"/>
         <source>2004</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="600"/>
         <source>2003</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="605"/>
         <source>2002</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="610"/>
         <source>2001</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="615"/>
         <source>2000</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="620"/>
         <source>1999</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="625"/>
         <source>1998</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="630"/>
         <source>1997</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="635"/>
         <source>1996</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="640"/>
         <source>1995</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="645"/>
         <source>1994</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="650"/>
         <source>1993</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="655"/>
         <source>1992</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="660"/>
         <source>1991</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="665"/>
         <source>1990</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="670"/>
         <source>1989</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="675"/>
         <source>1988</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="680"/>
         <source>1987</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="685"/>
         <source>1986</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="690"/>
         <source>1985</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="695"/>
         <source>1984</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="700"/>
         <source>1983</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="705"/>
         <source>1982</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="710"/>
         <source>1981</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="715"/>
         <source>1980</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="720"/>
         <source>1979</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="725"/>
         <source>1978</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="730"/>
         <source>1977</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="735"/>
         <source>1976</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="740"/>
         <source>1975</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="745"/>
         <source>1974</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="750"/>
         <source>1973</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="755"/>
         <source>1972</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="760"/>
         <source>1971</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="765"/>
         <source>1970</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="770"/>
         <source>1969</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="775"/>
         <source>1968</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="780"/>
         <source>1967</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="785"/>
         <source>1966</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="790"/>
         <source>1965</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="795"/>
         <source>1964</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="800"/>
         <source>1963</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="805"/>
         <source>1962</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="810"/>
         <source>1961</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="815"/>
         <source>1960</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="820"/>
         <source>1959</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="825"/>
         <source>1958</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="830"/>
         <source>1957</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="835"/>
         <source>1956</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="840"/>
         <source>1955</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="845"/>
         <source>1954</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="850"/>
         <source>1953</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="855"/>
         <source>1952</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="860"/>
         <source>1951</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="865"/>
         <source>1950</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="870"/>
         <source>1949</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="875"/>
         <source>1948</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="880"/>
         <source>1947</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="885"/>
         <source>1946</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="890"/>
         <source>1945</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="895"/>
         <source>1944</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="900"/>
         <source>1943</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="905"/>
         <source>1942</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="910"/>
         <source>1941</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="915"/>
         <source>1940</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="920"/>
         <source>1939</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="925"/>
         <source>1938</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="930"/>
         <source>1937</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="935"/>
         <source>1936</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="940"/>
         <source>1935</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="945"/>
         <source>1934</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="950"/>
         <source>1933</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="955"/>
         <source>1932</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="960"/>
         <source>1931</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="965"/>
         <source>1930</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="970"/>
         <source>1929</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="975"/>
         <source>1928</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="980"/>
         <source>1927</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="985"/>
         <source>1926</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="990"/>
         <source>1925</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="995"/>
         <source>1924</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1000"/>
         <source>1923</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1005"/>
         <source>1922</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1010"/>
         <source>1921</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1015"/>
         <source>1920</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1029"/>
         <source>&lt;b&gt;#&amp;CREATOR:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1215"/>
@@ -879,7 +879,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1055"/>
         <source>&lt;b&gt;#&amp;BPM:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1068"/>
@@ -889,7 +889,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1099"/>
         <source>&lt;b&gt;#GAP:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1112"/>
@@ -942,7 +942,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1741"/>
         <source>&lt;b&gt;#&amp;MP3:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1754"/>
@@ -962,7 +962,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1805"/>
         <source>&lt;b&gt;#&amp;COVER:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1818"/>
@@ -977,7 +977,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1860"/>
         <source>&lt;b&gt;#&amp;BACKGROUND:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1873"/>
@@ -997,7 +997,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="2021"/>
         <source>&lt;b&gt;#&amp;VIDEO:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2050"/>
@@ -1007,7 +1007,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="2070"/>
         <source>&lt;b&gt;#V&amp;IDEOGAP:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2161"/>
