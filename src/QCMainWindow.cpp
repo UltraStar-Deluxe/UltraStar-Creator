@@ -25,6 +25,8 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     currentCharacterIndex = 0;
     firstNote = true;
     clipboard = QApplication::clipboard();
+    lyricsProgressBar = new QProgressBar;
+    QMainWindow::statusBar()->addPermanentWidget(lyricsProgressBar);
 
     QMainWindow::statusBar()->showMessage(tr("USC ready."));
     if (BASS_Init(-1, 44100, 0, 0, NULL)) {
@@ -94,7 +96,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->groupBox_TapArea->setEnabled(true);
         ui->pushButton_UndoTap->setDisabled(true);
         ui->pushButton_Tap->setEnabled(true);
-        ui->pushButton_UndoTap->setEnabled(true);
+        ui->pushButton_UndoTap->setDisabled(true);
         ui->pushButton_Stop->setEnabled(true);
         if (ui->lineEdit_Title->text().isEmpty()) {
             ui->lineEdit_Title->setText(tr("Title"));
@@ -138,7 +140,8 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
 
         splitLyricsIntoSyllables();
         numSyllables = lyricsSyllableList.length();
-        ui->progressBar_Lyrics->setMaximum(numSyllables);
+        lyricsProgressBar->setRange(1,numSyllables);
+        lyricsProgressBar->show();
 
         updateSyllableButtons();
 
@@ -210,7 +213,7 @@ void QCMainWindow::on_pushButton_Tap_released()
 {
     double currentNoteTimeLength = BASS_Position()*1000 - currentNoteStartTime;
     ui->pushButton_Tap->setCursor(Qt::OpenHandCursor);
-    ui->progressBar_Lyrics->setValue(ui->progressBar_Lyrics->value()+1);
+    lyricsProgressBar->setValue(lyricsProgressBar->value()+1);
     if (!ui->pushButton_UndoTap->isEnabled()) {
         ui->pushButton_UndoTap->setEnabled(true);
     }
@@ -218,7 +221,7 @@ void QCMainWindow::on_pushButton_Tap_released()
     if (firstNote){
         firstNoteStartBeat = currentNoteStartBeat;
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GAP:%1").arg(QString::number(currentNoteStartTime)));
-        ui->spinBox_Gap->setValue(currentNoteStartTime);
+        ui->doubleSpinBox_Gap->setValue(currentNoteStartTime);
         ui->label_GapSet->setPixmap(QPixmap(":/marks/path_ok.png"));
         firstNote = false;
     }
@@ -233,7 +236,6 @@ void QCMainWindow::on_pushButton_Tap_released()
 
     if (addLinebreak)
     {
-        //qint32 linebreakBeat = currentNoteStartBeat - firstNoteStartBeat - 1; // !!! should be replaced by something more intelligent
         qint32 linebreakBeat = previousNoteEndBeat + (currentNoteStartBeat - firstNoteStartBeat - previousNoteEndBeat)/2;
         linebreakString = tr("- %1\n").arg(QString::number(linebreakBeat));
     }
@@ -760,9 +762,13 @@ void QCMainWindow::handleMP3() {
 
     _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
     QWORD MP3LengthBytes = BASS_ChannelGetLength(_mediaStream, BASS_POS_BYTE); // the length in bytes
-    double MP3LengthTime = BASS_ChannelBytes2Seconds(_mediaStream, MP3LengthBytes); // the length in seconds
-    ui->progressBar_MP3->setRange(0, (int)MP3LengthTime);
-    ui->progressBar_MP3->setValue(0);
+    MP3LengthTime = BASS_ChannelBytes2Seconds(_mediaStream, MP3LengthBytes); // the length in seconds
+    ui->horizontalSlider_MP3->setRange(0, (int)MP3LengthTime);
+    ui->horizontalSlider_MP3->setValue(0);
+    ui->label_TimeElapsed->setText(tr("0:00"));
+    int minutesToRun = (MP3LengthTime / 60);
+    int secondsToRun = ((int)MP3LengthTime % 60);
+    ui->label_TimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
 
     BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, 0);
 
@@ -821,8 +827,14 @@ void QCMainWindow::on_actionAbout_TagLib_triggered()
 
 void QCMainWindow::updateTime() {
         int posSec = (int)BASS_Position();
-
-        ui->progressBar_MP3->setValue(posSec);
+        int minutesElapsed = posSec / 60;
+        int secondsElapsed = posSec % 60;
+        ui->label_TimeElapsed->setText(tr("%1:%2").arg(minutesElapsed).arg(secondsElapsed, 2, 10, QChar('0')));
+        int timeToRun = MP3LengthTime - posSec;
+        int minutesToRun = (timeToRun / 60);
+        int secondsToRun = (timeToRun % 60);
+        ui->label_TimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
+        ui->horizontalSlider_MP3->setValue(posSec);
 
         if(posSec != -1) {
             QTimer::singleShot(1000, this, SLOT(updateTime()));
@@ -832,9 +844,15 @@ void QCMainWindow::updateTime() {
 void QCMainWindow::on_pushButton_Reset_clicked()
 {
     if (state == stopped) {
+        lyricsProgressBar->hide();
         state = QCMainWindow::initialized;
+        numSyllables = 0;
+        firstNoteStartBeat = 0;
+        currentNoteBeatLength = 0;
         currentSyllableIndex = 0;
+        currentCharacterIndex = 0;
         firstNote = true;
+        lyricsSyllableList.clear();
         ui->plainTextEdit_OutputLyrics->clear();
         ui->pushButton_Tap->setText("");
         ui->pushButton_NextSyllable1->setText("");
@@ -842,8 +860,8 @@ void QCMainWindow::on_pushButton_Reset_clicked()
         ui->pushButton_NextSyllable3->setText("");
         ui->pushButton_NextSyllable4->setText("");
         ui->pushButton_NextSyllable5->setText("");
-        ui->progressBar_MP3->setValue(0);
-        ui->progressBar_Lyrics->setValue(0);
+        ui->horizontalSlider_MP3->setValue(0);
+        lyricsProgressBar->setValue(0);
         ui->groupBox_SongMetaInformationTags->setEnabled(true);
         ui->groupBox_MP3ArtworkTags->setEnabled(true);
         ui->groupBox_MiscSettings->setEnabled(true);
@@ -872,7 +890,7 @@ void QCMainWindow::on_pushButton_UndoTap_clicked()
             ui->plainTextEdit_OutputLyrics->undo(); // delete GAP
         }
         updateSyllableButtons();
-        ui->progressBar_Lyrics->setValue(ui->progressBar_Lyrics->value()-1);
+        lyricsProgressBar->setValue(lyricsProgressBar->value()-1);
         ui->plainTextEdit_OutputLyrics->undo();
     }
     else {
@@ -966,15 +984,23 @@ void QCMainWindow::updateSyllableButtons() {
 void QCMainWindow::splitLyricsIntoSyllables()
 {
     int nextSeparatorIndex = lyricsString.mid(1).indexOf(QRegExp("[ +\\n]"));
+    QString currentSyllable = "";
 
     while (nextSeparatorIndex != -1) {
-        QString currentSyllable = lyricsString.mid(0,nextSeparatorIndex+1);
+        currentSyllable = lyricsString.mid(0,nextSeparatorIndex+1);
         if (currentSyllable.startsWith("+")) {
             currentSyllable = currentSyllable.mid(1);
+        }
+        else if (currentSyllable.startsWith("\n")) {
+            currentSyllable = currentSyllable.replace(1,1,currentSyllable.at(1).toUpper());
         }
         lyricsSyllableList.append(currentSyllable);
         lyricsString = lyricsString.mid(nextSeparatorIndex+1);
         nextSeparatorIndex = lyricsString.mid(1).indexOf(QRegExp("[ +\\n]"));
+        if (nextSeparatorIndex == -1) {
+            currentSyllable = lyricsString;
+            lyricsSyllableList.append(currentSyllable);
+        }
     }
 }
 

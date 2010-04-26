@@ -13,6 +13,7 @@
 
 #include <QMainWindow>
 #include <QTime>
+#include <QProgressBar>
 
 namespace Ui {
     class QCMainWindow;
@@ -73,6 +74,8 @@ private:
     void updateSyllableButtons();
     QStringList lyricsSyllableList;
     void changeLanguage(QString);
+    QProgressBar *lyricsProgressBar;
+    double MP3LengthTime;
 
 private slots:
     void on_pushButton_UndoTap_clicked();

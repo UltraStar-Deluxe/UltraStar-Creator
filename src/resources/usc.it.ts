@@ -779,7 +779,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="1354"/>
         <source>Song lyrics</source>
-        <translation type="unfinished"></translation>
+        <translation>Lirica</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1384"/>
