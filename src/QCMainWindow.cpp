@@ -25,11 +25,12 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     currentCharacterIndex = 0;
     firstNote = true;
     clipboard = QApplication::clipboard();
+
     QMainWindow::statusBar()->showMessage(tr("USC ready."));
     if (BASS_Init(-1, 44100, 0, 0, NULL)) {
         QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
     }
-    State state = QCMainWindow::uninitialized;
+    state = QCMainWindow::uninitialized;
 
     this->show();
 
@@ -136,7 +137,6 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         lyricsString = cleanLyrics(rawLyricsString);
 
         splitLyricsIntoSyllables();
-
         numSyllables = lyricsSyllableList.length();
         ui->progressBar_Lyrics->setMaximum(numSyllables);
 
@@ -211,7 +211,7 @@ void QCMainWindow::on_pushButton_Tap_released()
     double currentNoteTimeLength = BASS_Position()*1000 - currentNoteStartTime;
     ui->pushButton_Tap->setCursor(Qt::OpenHandCursor);
     ui->progressBar_Lyrics->setValue(ui->progressBar_Lyrics->value()+1);
-    if (!ui-pushButton_UndoTap->isEnabled()) {
+    if (!ui->pushButton_UndoTap->isEnabled()) {
         ui->pushButton_UndoTap->setEnabled(true);
     }
     currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPMFromMP3 / 15000));
@@ -975,5 +975,38 @@ void QCMainWindow::splitLyricsIntoSyllables()
         lyricsSyllableList.append(currentSyllable);
         lyricsString = lyricsString.mid(nextSeparatorIndex+1);
         nextSeparatorIndex = lyricsString.mid(1).indexOf(QRegExp("[ +\\n]"));
+    }
+}
+
+void QCMainWindow::keyPressEvent(QKeyEvent *event) {
+    if (state == QCMainWindow::playing) {
+        switch(event->key()) {
+        case Qt::Key_V:
+            event->ignore();
+            QCMainWindow::on_pushButton_Tap_pressed();
+            break;
+        case Qt::Key_X:
+            event->ignore();
+            QCMainWindow::on_pushButton_UndoTap_clicked();
+            break;
+        default: QWidget::keyPressEvent(event);
+        }
+    }
+    else {
+        QWidget::keyPressEvent(event);
+    }
+}
+
+void QCMainWindow::keyReleaseEvent(QKeyEvent *event) {
+    if (state == QCMainWindow::playing) {
+        switch(event->key()) {
+        case Qt::Key_V:
+            event->ignore();
+            QCMainWindow::on_pushButton_Tap_released();
+        default: QWidget::keyPressEvent(event);
+        }
+    }
+    else {
+        QWidget::keyPressEvent(event);
     }
 }

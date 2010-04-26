@@ -59,6 +59,8 @@ private:
     void handleMP3();
     float playbackSpeedDecreasePercentage;
     QString filename_MP3;
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
 
     enum State {
         uninitialized,
