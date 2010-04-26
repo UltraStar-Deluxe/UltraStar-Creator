@@ -31,3 +31,10 @@ notes from thursday:
 ====================
 * get lyrics from mp3
 * add note that files are output to UTF8 (only compatible to USDX 1.1)
+
+notes from fepo:
+================
+1. MP3 / Artwork TAGS an erste Stelle setzen.
+2. Habe bei einem Testsong das Problem, dass keine BPM angezeigt wird. BPM: 0 Nach mehrmaligem Laden ging es dann
+3. Lässt sich ein ermittelter BPM Wert nicht nachträglich eintragen? ( Feld bleibt grau ). Wie ändere ich BPM manuell ?
+4. Wie nehme ich während des tappens eine falsch getappte Note zurück? ( Zu früh getappt )
