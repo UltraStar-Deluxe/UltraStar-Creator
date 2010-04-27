@@ -46,14 +46,15 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
  * Overloaded to ensure that all changes are saved before closing this application.
  */
 void QCMainWindow::closeEvent(QCloseEvent *event) {
-        QSettings settings;
+    QSettings settings;
 
-        settings.setValue("windowState", QVariant(this->saveState()));
+    settings.setValue("windowState", QVariant(this->saveState()));
+    settings.setValue("windowSize", size());
 
-        // everything sould be fine from now on
-        QFile::remove("running.app");
+    // everything should be fine from now on
+    QFile::remove("running.app");
 
-        event->accept();
+    event->accept();
 }
 
 bool QCMainWindow::on_pushButton_SaveToFile_clicked()
@@ -140,7 +141,8 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
 
         splitLyricsIntoSyllables();
         numSyllables = lyricsSyllableList.length();
-        lyricsProgressBar->setRange(1,numSyllables);
+        lyricsProgressBar->setRange(0,numSyllables);
+        lyricsProgressBar->setValue(0);
         lyricsProgressBar->show();
 
         updateSyllableButtons();
@@ -184,12 +186,19 @@ QString QCMainWindow::cleanLyrics(QString rawLyricsString) {
     // delete surplus blank lines...
     rawLyricsString = rawLyricsString.replace(QRegExp("\\n{2,}"), "\n");
 
-    // Capitalize each line
-    // ...
-
     // replace misused accents (´,`) by the correct apostrophe (')
     rawLyricsString = rawLyricsString.replace("´", "'");
     rawLyricsString = rawLyricsString.replace("`", "'");
+
+    /* Capitalize each line
+    rawLyricsString = rawLyricsString.replace(0,1,rawLyricsString.at(0).toUpper());
+    int newlineCharIndex = rawLyricsString.indexOf(QRegExp("\\n"));
+    while (newlineCharIndex != -1) {
+        int charToCapIndex = newlineCharIndex+1;
+        rawLyricsString = rawLyricsString.replace(charToCapIndex,1,rawLyricsString.at(charToCapIndex).toUpper());
+        newlineCharIndex = rawLyricsString.mid(charToCapIndex).indexOf(QRegExp("\\n"));
+    }
+    */
 
     QString cleanedLyricsString = rawLyricsString;
 
@@ -274,6 +283,8 @@ void QCMainWindow::on_pushButton_Stop_clicked()
         state = QCMainWindow::stopped;
         QMainWindow::statusBar()->showMessage(tr("State: stopped."));
         BASS_StopAndFree();
+        ui->label_TimeElapsed->setText("0:00");
+        ui->label_TimeToRun->setText("0:00");
 
         ui->plainTextEdit_OutputLyrics->appendPlainText("E");
         ui->plainTextEdit_OutputLyrics->appendPlainText("");
@@ -888,13 +899,11 @@ void QCMainWindow::on_pushButton_UndoTap_clicked()
         if (currentSyllableIndex == 0) {
             firstNote = true;
             ui->plainTextEdit_OutputLyrics->undo(); // delete GAP
+            ui->pushButton_UndoTap->setDisabled(true);
         }
         updateSyllableButtons();
         lyricsProgressBar->setValue(lyricsProgressBar->value()-1);
         ui->plainTextEdit_OutputLyrics->undo();
-    }
-    else {
-        ui->pushButton_UndoTap->setDisabled(true);
     }
 }
 
@@ -990,9 +999,6 @@ void QCMainWindow::splitLyricsIntoSyllables()
         currentSyllable = lyricsString.mid(0,nextSeparatorIndex+1);
         if (currentSyllable.startsWith("+")) {
             currentSyllable = currentSyllable.mid(1);
-        }
-        else if (currentSyllable.startsWith("\n")) {
-            currentSyllable = currentSyllable.replace(1,1,currentSyllable.at(1).toUpper());
         }
         lyricsSyllableList.append(currentSyllable);
         lyricsString = lyricsString.mid(nextSeparatorIndex+1);
