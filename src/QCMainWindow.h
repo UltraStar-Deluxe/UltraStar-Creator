@@ -78,6 +78,7 @@ private:
     double MP3LengthTime;
 
 private slots:
+    void on_spinBox_Year_valueChanged(QString );
     void on_pushButton_UndoTap_clicked();
     void on_lineEdit_Background_textChanged(QString );
     void on_lineEdit_Cover_textChanged(QString );
@@ -99,7 +100,6 @@ private slots:
     void on_pushButton_LoadFromFile_clicked();
     void on_comboBox_Genre_textChanged(QString );
     void on_lineEdit_Creator_textChanged(QString );
-    void on_comboBox_Year_currentIndexChanged(QString );
     void on_comboBox_Edition_textChanged(QString );
     void on_comboBox_Language_currentIndexChanged(QString );
     void on_lineEdit_Title_textChanged(QString );

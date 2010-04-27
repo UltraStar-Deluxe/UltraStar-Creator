@@ -37,7 +37,141 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_Tags_Lyrics_USFile" stretch="1,1,1">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_Tags" stretch="1,1,1,1,1">
+       <layout class="QVBoxLayout" name="verticalLayout_Tags" stretch="1,1,1,1,1,1">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="QGroupBox" name="groupBox_MP3Tag">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>136</width>
+            <height>55</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="title">
+           <string>MP3</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <property name="topMargin">
+            <number>6</number>
+           </property>
+           <property name="bottomMargin">
+            <number>6</number>
+           </property>
+           <item row="0" column="0">
+            <layout class="QGridLayout" name="gridLayout_2" rowstretch="0" columnstretch="0,0,1,0,0" columnminimumwidth="16,88,0,16,16">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_MP3Icon">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="resources/usc.qrc">:/types/music.png</pixmap>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="label_MP3">
+               <property name="statusTip">
+                <string>MP3 tag</string>
+               </property>
+               <property name="text">
+                <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;#MP3:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLineEdit" name="lineEdit_MP3">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="statusTip">
+                <string>Set the song to tap by dropping a song file onto USC or by browsing your harddrive.</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QPushButton" name="pushButton_BrowseMP3">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string/>
+               </property>
+               <property name="statusTip">
+                <string>Browse for an song file to tap.</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="resources/usc.qrc">
+                 <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>16</width>
+                 <height>16</height>
+                </size>
+               </property>
+               <property name="shortcut">
+                <string>Enter</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="4">
+              <widget class="QLabel" name="label_MP3Set">
+               <property name="statusTip">
+                <string>MP3 tag is not set.</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
         <item>
          <widget class="QGroupBox" name="groupBox_SongMetaInformationTags">
           <property name="sizePolicy">
@@ -56,6 +190,12 @@
            <string>Song Meta Information Tags</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_9">
+           <property name="topMargin">
+            <number>6</number>
+           </property>
+           <property name="bottomMargin">
+            <number>6</number>
+           </property>
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_SongMetaInformationTags" rowstretch="1,1,1,1,1,1,1,1,1" columnminimumwidth="16,88,0,16">
              <property name="sizeConstraint">
@@ -69,8 +209,17 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Title tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#&amp;TITLE&lt;/b&gt;</string>
+                <string notr="true">#&amp;TITLE</string>
                </property>
                <property name="buddy">
                 <cstring>lineEdit_Title</cstring>
@@ -107,8 +256,17 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Artist tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#&amp;ARTIST:&lt;/b&gt;</string>
+                <string notr="true">#&amp;ARTIST:</string>
                </property>
                <property name="buddy">
                 <cstring>lineEdit_Artist</cstring>
@@ -133,8 +291,17 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Language tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#&amp;LANGUAGE:&lt;/b&gt;</string>
+                <string notr="true">#&amp;LANGUAGE:</string>
                </property>
                <property name="buddy">
                 <cstring>comboBox_Language</cstring>
@@ -371,8 +538,17 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Edition tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#&amp;EDITION:&lt;/b&gt;</string>
+                <string notr="true">#&amp;EDITION:</string>
                </property>
                <property name="buddy">
                 <cstring>comboBox_Edition</cstring>
@@ -407,8 +583,17 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Genre tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#&amp;GENRE:&lt;/b&gt;</string>
+                <string notr="true">#&amp;GENRE:</string>
                </property>
                <property name="buddy">
                 <cstring>comboBox_Genre</cstring>
@@ -513,488 +698,18 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
-               <property name="text">
-                <string>&lt;b&gt;#&amp;YEAR:&lt;/b&gt;</string>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
                </property>
-               <property name="buddy">
-                <cstring>comboBox_Year</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="2">
-              <widget class="QComboBox" name="comboBox_Year">
                <property name="statusTip">
-                <string>Choose the song year.</string>
+                <string>Year tag</string>
                </property>
-               <property name="editable">
-                <bool>false</bool>
+               <property name="text">
+                <string notr="true">#YEAR:</string>
                </property>
-               <property name="currentIndex">
-                <number>0</number>
-               </property>
-               <property name="maxVisibleItems">
-                <number>25</number>
-               </property>
-               <item>
-                <property name="text">
-                 <string/>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2010</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2009</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2008</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2007</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2006</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2005</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2004</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2003</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2002</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2001</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>2000</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1999</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1998</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1997</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1996</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1995</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1994</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1993</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1992</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1991</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1990</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1989</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1988</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1987</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1986</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1985</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1984</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1983</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1982</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1981</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1980</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1979</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1978</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1977</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1976</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1975</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1974</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1973</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1972</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1971</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1970</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1969</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1968</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1967</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1966</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1965</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1964</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1963</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1962</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1961</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1960</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1959</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1958</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1957</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1956</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1955</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1954</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1953</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1952</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1951</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1950</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1949</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1948</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1947</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1946</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1945</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1944</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1943</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1942</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1941</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1940</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1939</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1938</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1937</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1936</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1935</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1934</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1933</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1932</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1931</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1930</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1929</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1928</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1927</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1926</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1925</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1924</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1923</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1922</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1921</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1920</string>
-                </property>
-               </item>
               </widget>
              </item>
              <item row="6" column="1">
@@ -1005,8 +720,17 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Creator tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#&amp;CREATOR:&lt;/b&gt;</string>
+                <string notr="true">#&amp;CREATOR:</string>
                </property>
                <property name="buddy">
                 <cstring>lineEdit_Creator</cstring>
@@ -1031,8 +755,17 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>BPM tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#&amp;BPM:&lt;/b&gt;</string>
+                <string notr="true">#&amp;BPM:</string>
                </property>
                <property name="buddy">
                 <cstring>doubleSpinBox_BPM</cstring>
@@ -1078,8 +811,17 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Gap tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#GAP:&lt;/b&gt;</string>
+                <string notr="true">#GAP:</string>
                </property>
                <property name="buddy">
                 <cstring>doubleSpinBox_Gap</cstring>
@@ -1309,13 +1051,38 @@
                </property>
               </widget>
              </item>
+             <item row="5" column="2">
+              <widget class="QSpinBox" name="spinBox_Year">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="specialValueText">
+                <string notr="true"/>
+               </property>
+               <property name="accelerated">
+                <bool>true</bool>
+               </property>
+               <property name="minimum">
+                <number>1900</number>
+               </property>
+               <property name="maximum">
+                <number>2010</number>
+               </property>
+               <property name="value">
+                <number>2010</number>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
           </layout>
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupBox_MP3ArtworkTags">
+         <widget class="QGroupBox" name="groupBox_ArtworkTags">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1325,90 +1092,41 @@
           <property name="minimumSize">
            <size>
             <width>321</width>
-            <height>101</height>
+            <height>80</height>
            </size>
           </property>
           <property name="title">
-           <string>MP3 / Artwork Tags</string>
+           <string>Artwork Tags</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_7">
+           <property name="topMargin">
+            <number>6</number>
+           </property>
+           <property name="bottomMargin">
+            <number>6</number>
+           </property>
            <item row="0" column="0">
-            <layout class="QGridLayout" name="gridLayout_MP3ArtworkTags" columnminimumwidth="16,88,0,0,0">
+            <layout class="QGridLayout" name="gridLayout_MP3ArtworkTags">
              <item row="0" column="1">
-              <widget class="QLabel" name="label_MP3">
-               <property name="text">
-                <string>&lt;b&gt;#&amp;MP3:&lt;/b&gt;</string>
-               </property>
-               <property name="buddy">
-                <cstring>lineEdit_MP3</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QLineEdit" name="lineEdit_MP3">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="statusTip">
-                <string>Set the song to tap by dropping a song file onto USC or by browsing your harddrive.</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="readOnly">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="3">
-              <widget class="QPushButton" name="pushButton_BrowseMP3">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string/>
-               </property>
-               <property name="statusTip">
-                <string>Browse for an song file to tap.</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>16</width>
-                 <height>16</height>
-                </size>
-               </property>
-               <property name="shortcut">
-                <string>Enter</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
               <widget class="QLabel" name="label_Cover">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Cover tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#&amp;COVER:&lt;/b&gt;</string>
+                <string>#&amp;COVER:</string>
                </property>
                <property name="buddy">
                 <cstring>lineEdit_Cover</cstring>
                </property>
               </widget>
              </item>
-             <item row="1" column="2">
+             <item row="0" column="2">
               <widget class="QLineEdit" name="lineEdit_Cover">
                <property name="enabled">
                 <bool>true</bool>
@@ -1424,7 +1142,7 @@
                </property>
               </widget>
              </item>
-             <item row="1" column="3">
+             <item row="0" column="3">
               <widget class="QPushButton" name="pushButton_BrowseCover">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1453,17 +1171,26 @@
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
+             <item row="1" column="1">
               <widget class="QLabel" name="label_background">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Background tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#&amp;BACKGROUND:&lt;/b&gt;</string>
+                <string>#&amp;BACKGROUND:</string>
                </property>
                <property name="buddy">
                 <cstring>lineEdit_Background</cstring>
                </property>
               </widget>
              </item>
-             <item row="2" column="2">
+             <item row="1" column="2">
               <widget class="QLineEdit" name="lineEdit_Background">
                <property name="enabled">
                 <bool>true</bool>
@@ -1479,7 +1206,7 @@
                </property>
               </widget>
              </item>
-             <item row="2" column="3">
+             <item row="1" column="3">
               <widget class="QPushButton" name="pushButton_BrowseBackground">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1506,16 +1233,6 @@
               </widget>
              </item>
              <item row="0" column="0">
-              <widget class="QLabel" name="label_MP3Icon">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/types/music.png</pixmap>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
               <widget class="QLabel" name="label_CoverIcon">
                <property name="text">
                 <string/>
@@ -1525,7 +1242,7 @@
                </property>
               </widget>
              </item>
-             <item row="2" column="0">
+             <item row="1" column="0">
               <widget class="QLabel" name="label_BackgroundIcon">
                <property name="text">
                 <string/>
@@ -1536,19 +1253,6 @@
               </widget>
              </item>
              <item row="0" column="4">
-              <widget class="QLabel" name="label_MP3Set">
-               <property name="statusTip">
-                <string>MP3 tag is not set.</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="4">
               <widget class="QLabel" name="label_CoverSet">
                <property name="statusTip">
                 <string>#COVER tag is not set.</string>
@@ -1561,7 +1265,7 @@
                </property>
               </widget>
              </item>
-             <item row="2" column="4">
+             <item row="1" column="4">
               <widget class="QLabel" name="label_BackgroundSet">
                <property name="statusTip">
                 <string>#BACKGROUND tag is not set.</string>
@@ -1606,12 +1310,27 @@
            <bool>false</bool>
           </property>
           <layout class="QGridLayout" name="gridLayout_10">
+           <property name="topMargin">
+            <number>6</number>
+           </property>
+           <property name="bottomMargin">
+            <number>6</number>
+           </property>
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_VideoTags" columnminimumwidth="16,88,0,0,0">
              <item row="0" column="1">
               <widget class="QLabel" name="label_Video">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Video tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#&amp;VIDEO:&lt;/b&gt;</string>
+                <string>#&amp;VIDEO:</string>
                </property>
                <property name="buddy">
                 <cstring>lineEdit_Video</cstring>
@@ -1659,8 +1378,17 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Videogap tag</string>
+               </property>
                <property name="text">
-                <string>&lt;b&gt;#V&amp;IDEOGAP:&lt;/b&gt;</string>
+                <string>#V&amp;IDEOGAP:</string>
                </property>
                <property name="buddy">
                 <cstring>doubleSpinBox_Videogap</cstring>
@@ -1751,13 +1479,19 @@
           <property name="minimumSize">
            <size>
             <width>321</width>
-            <height>71</height>
+            <height>75</height>
            </size>
           </property>
           <property name="title">
            <string>Misc. Settings</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_8">
+           <property name="topMargin">
+            <number>6</number>
+           </property>
+           <property name="bottomMargin">
+            <number>6</number>
+           </property>
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_MiscSettings" columnminimumwidth="16,88,0,16">
              <property name="sizeConstraint">
@@ -1799,6 +1533,18 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
                </property>
                <property name="statusTip">
                 <string>Choose default pitch.</string>
@@ -1937,6 +1683,12 @@
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>32</width>
+                   <height>20</height>
+                  </size>
+                 </property>
                  <property name="statusTip">
                   <string>Current playback speed.</string>
                  </property>
@@ -1958,6 +1710,12 @@
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>20</height>
+                  </size>
                  </property>
                  <property name="statusTip">
                   <string>Set playback speed.</string>
@@ -2037,19 +1795,15 @@
              <string>Control</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
-             <item>
-              <spacer name="verticalSpacer_2">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>13</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
+             <property name="spacing">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>6</number>
+             </property>
+             <property name="bottomMargin">
+              <number>6</number>
+             </property>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_PlayerButtons" stretch="0,1,0,1,0,1,0">
                <item>
@@ -2078,8 +1832,8 @@
                  </property>
                  <property name="minimumSize">
                   <size>
-                   <width>50</width>
-                   <height>50</height>
+                   <width>40</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="statusTip">
@@ -2132,8 +1886,8 @@
                  </property>
                  <property name="minimumSize">
                   <size>
-                   <width>50</width>
-                   <height>50</height>
+                   <width>40</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="statusTip">
@@ -2186,8 +1940,8 @@
                  </property>
                  <property name="minimumSize">
                   <size>
-                   <width>50</width>
-                   <height>50</height>
+                   <width>40</width>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="statusTip">
@@ -2228,19 +1982,6 @@
                 </spacer>
                </item>
               </layout>
-             </item>
-             <item>
-              <spacer name="verticalSpacer">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>17</height>
-                </size>
-               </property>
-              </spacer>
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_Progress" stretch="0,0,0">
@@ -2297,10 +2038,25 @@
           <height>0</height>
          </size>
         </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
         <property name="title">
          <string>Song lyrics</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_6">
+         <property name="topMargin">
+          <number>6</number>
+         </property>
+         <property name="bottomMargin">
+          <number>6</number>
+         </property>
          <item row="0" column="0">
           <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,1,0,0" columnminimumwidth="0,0,0,0,0">
            <item row="0" column="0" colspan="5">
@@ -2491,6 +2247,12 @@ p, li { white-space: pre-wrap; }
          <string>UltraStar file</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_11">
+         <property name="topMargin">
+          <number>6</number>
+         </property>
+         <property name="bottomMargin">
+          <number>6</number>
+         </property>
          <item row="0" column="0">
           <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0,1,0,0">
            <item row="0" column="0" colspan="5">
@@ -2666,6 +2428,12 @@ p, li { white-space: pre-wrap; }
        <string>Tap Area</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_5">
+       <property name="topMargin">
+        <number>6</number>
+       </property>
+       <property name="bottomMargin">
+        <number>6</number>
+       </property>
        <item row="0" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_TapArea">
          <item>
@@ -3193,11 +2961,8 @@ p, li { white-space: pre-wrap; }
   <tabstop>comboBox_Language</tabstop>
   <tabstop>comboBox_Edition</tabstop>
   <tabstop>comboBox_Genre</tabstop>
-  <tabstop>comboBox_Year</tabstop>
   <tabstop>lineEdit_Creator</tabstop>
   <tabstop>doubleSpinBox_BPM</tabstop>
-  <tabstop>lineEdit_MP3</tabstop>
-  <tabstop>pushButton_BrowseMP3</tabstop>
   <tabstop>lineEdit_Cover</tabstop>
   <tabstop>pushButton_BrowseCover</tabstop>
   <tabstop>lineEdit_Background</tabstop>

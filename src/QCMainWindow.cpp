@@ -86,8 +86,9 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
         ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
         QWidget::setAcceptDrops(false);
+        ui->groupBox_MP3Tag->setDisabled(true);
         ui->groupBox_SongMetaInformationTags->setDisabled(true);
-        ui->groupBox_MP3ArtworkTags->setDisabled(true);
+        ui->groupBox_ArtworkTags->setDisabled(true);
         ui->groupBox_MiscSettings->setDisabled(true);
         ui->groupBox_VideoTags->setDisabled(true);
         ui->groupBox_InputLyrics->setDisabled(true);
@@ -120,7 +121,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->currentText()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#EDITION:%1").arg(ui->comboBox_Edition->currentText()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#YEAR:%1").arg(ui->comboBox_Year->currentText()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#YEAR:%1").arg(ui->spinBox_Year->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#CREATOR:%1").arg(ui->lineEdit_Creator->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#MP3:%1").arg(ui->lineEdit_MP3->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#COVER:%1").arg(ui->lineEdit_Cover->text()));
@@ -496,18 +497,6 @@ void QCMainWindow::on_comboBox_Genre_textChanged(QString genre)
     }
 }
 
-void QCMainWindow::on_comboBox_Year_currentIndexChanged(QString year)
-{
-    if(!year.isEmpty()) {
-        ui->label_YearSet->setPixmap(QPixmap(":/marks/path_ok.png"));
-        ui->label_YearSet->setStatusTip(tr("#YEAR tag is set."));
-    }
-    else {
-        ui->label_YearSet->setPixmap(QPixmap(":/marks/path_error.png"));
-        ui->label_YearSet->setStatusTip(tr("#YEAR tag is empty."));
-    }
-}
-
 void QCMainWindow::on_lineEdit_Creator_textChanged(QString creator)
 {
     if(!creator.isEmpty()) {
@@ -801,8 +790,9 @@ void QCMainWindow::handleMP3() {
     ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
     ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
     ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
-    ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString::number(ref.tag()->year())));
-    // lyrics from mp3
+    ui->spinBox_Year->setValue(ref.tag()->year());
+    // lyrics from mp3 lyrics-tag
+    //ui->plainTextEdit_InputLyrics->setPlainText(TStringToQString(ref.tag()->comment()));
 }
 
 void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)
@@ -873,8 +863,9 @@ void QCMainWindow::on_pushButton_Reset_clicked()
         ui->pushButton_NextSyllable5->setText("");
         ui->horizontalSlider_MP3->setValue(0);
         lyricsProgressBar->setValue(0);
+        ui->groupBox_MP3Tag->setEnabled(true);
         ui->groupBox_SongMetaInformationTags->setEnabled(true);
-        ui->groupBox_MP3ArtworkTags->setEnabled(true);
+        ui->groupBox_ArtworkTags->setEnabled(true);
         ui->groupBox_MiscSettings->setEnabled(true);
         ui->groupBox_VideoTags->setEnabled(true);
         ui->groupBox_InputLyrics->setEnabled(true);
@@ -1040,5 +1031,17 @@ void QCMainWindow::keyReleaseEvent(QKeyEvent *event) {
     }
     else {
         QWidget::keyPressEvent(event);
+    }
+}
+
+void QCMainWindow::on_spinBox_Year_valueChanged(QString year)
+{
+    if(!year.isEmpty()) {
+        ui->label_YearSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_YearSet->setStatusTip(tr("#YEAR tag is set."));
+    }
+    else {
+        ui->label_YearSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_YearSet->setStatusTip(tr("#YEAR tag is empty."));
     }
 }
