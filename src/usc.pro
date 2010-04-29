@@ -21,7 +21,8 @@ HEADERS += main.h \
     support/QUProgressDialog.h \
     support/QUMetaphoneString.h \
     QCMainWindow.h \
-    QUAboutDialog.h
+    QUAboutDialog.h \
+    version.h
 SOURCES += main.cpp \
     QCMainWindow.cpp \
     QU.cpp \
@@ -43,20 +44,20 @@ FORMS += mediaplayer/QUMediaPlayer.ui \
     QUAboutDialog.ui
 RESOURCES += resources/usc.qrc
 TRANSLATIONS = resources/usc.de.ts \
-	resources/usc.es.ts \
-	resources/usc.fr.ts \
-	resources/usc.it.ts \
-	resources/usc.pl.ts
+    resources/usc.es.ts \
+    resources/usc.fr.ts \
+    resources/usc.it.ts \
+    resources/usc.pl.ts
 INCLUDEPATH += . \
     song \
     mediaplayer \
     support \
     ui
-win32 {
+win32 { 
     RC_FILE = usc.rc
     INCLUDEPATH += ../include/taglib \
-    ../include/bass \
-    ../include/bass_fx
+        ../include/bass \
+        ../include/bass_fx
     LIBS += -L"../lib" \
         -ltag \
         -lbass \

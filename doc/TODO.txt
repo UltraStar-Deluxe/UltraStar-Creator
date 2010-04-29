@@ -1,18 +1,18 @@
 notes from bohning:
 ===================
-* translations not working
-* undo last tap (maybe with rightclick on tap-button?)
-* keyboard shortcut for tapping / undo
+* undo last tap with rightclick on tap-button
+* keyboard shortcut for tapping (V not working properly b/c of autorepeat)
 * play mp3 only (to determine needed playback speed adjustment and default pitch for example)
 * visualize current beat
 * visualize note creation (progressbar?)
-* fix pausing before first syllable tapped
 * replace b/# in default pitch by proper musical symbol
 * add userdata to combobox_Language so that strings are translatable, but ultrastar file contains english language name
-* allow resizing
+* fix resizing (especially size decrease)
 * fix output to clipboard with special chars (encoding = UTF8)
 * add proper shortcuts to different actions (open / save / ...
 * add menus for inputlyrics (load from file / copy from clipboard / auto-clean / ...) and outputlyrics (save / copy to clipboard) and tags (option to turn id3-tag auto-fill off, set BPM manually, etc.)?
+* work on documentation
+* make host-me-for-a-day-ware
 
 notes from canni:
 =================
@@ -37,4 +37,3 @@ notes from fepo:
 1. MP3 / Artwork TAGS an erste Stelle setzen.
 2. Habe bei einem Testsong das Problem, dass keine BPM angezeigt wird. BPM: 0 Nach mehrmaligem Laden ging es dann
 3. Lässt sich ein ermittelter BPM Wert nicht nachträglich eintragen? ( Feld bleibt grau ). Wie ändere ich BPM manuell ?
-4. Wie nehme ich während des tappens eine falsch getappte Note zurück? ( Zu früh getappt )
