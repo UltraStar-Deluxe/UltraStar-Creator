@@ -14,6 +14,7 @@
 #include <QMainWindow>
 #include <QTime>
 #include <QProgressBar>
+#include <QFileInfo>
 
 namespace Ui {
     class QCMainWindow;
@@ -59,7 +60,7 @@ private:
     void BASS_SetPosition(int seconds);
     void handleMP3();
     float playbackSpeedDecreasePercentage;
-    QString filename_MP3;
+    QFileInfo* fileInfo_MP3;
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
 

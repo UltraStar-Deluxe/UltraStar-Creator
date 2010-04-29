@@ -36,8 +36,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     QFileInfo fi(settings.value("songfile").toString());
     if (fi.exists()) {
         settings.remove("songfile");
-        filename_MP3 = fi.absoluteFilePath();
-        ui->lineEdit_MP3->setText(filename_MP3);
+        fileInfo_MP3 = &fi;
         handleMP3();
     }
 
@@ -69,7 +68,8 @@ void QCMainWindow::closeEvent(QCloseEvent *event) {
 
 bool QCMainWindow::on_pushButton_SaveToFile_clicked()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Please choose file"), QDir::homePath(), tr("Text files (*.txt)"));
+    QString suggestedAbsoluteFilePath = fileInfo_MP3->absolutePath() + "\\" + ui->lineEdit_Artist->text() + " - " + ui->lineEdit_Title->text() + ".txt";
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Please choose file"), suggestedAbsoluteFilePath, tr("Text files (*.txt)"));
 
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
@@ -323,7 +323,8 @@ void QCMainWindow::on_pushButton_Stop_clicked()
 
 void QCMainWindow::on_pushButton_BrowseMP3_clicked()
 {
-    filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose MP3 file"), QDir::homePath(), tr("Audio files (*.mp3 *.ogg)"));
+    QString filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose MP3 file"), QDir::homePath(), tr("Audio files (*.mp3 *.ogg)"));
+    fileInfo_MP3 = new QFileInfo(filename_MP3);
     handleMP3();
 }
 
@@ -405,7 +406,7 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                         }
                     }
                     else if (fileInfo->suffix().toLower() == tr("mp3") || fileInfo->suffix().toLower() == tr("ogg")) {
-                        filename_MP3 = fileName;
+                        fileInfo_MP3 = fileInfo;
                         handleMP3();
                     }
                     else if (fileInfo->suffix().toLower() == tr("jpg")) {
@@ -757,8 +758,7 @@ void QCMainWindow::BASS_SetPosition(int seconds) {
         }
 }
 
-void QCMainWindow::handleMP3() {
-    QFileInfo *fileInfo_MP3 = new QFileInfo(filename_MP3);
+void QCMainWindow::handleMP3() {    
     if (!fileInfo_MP3->fileName().isEmpty()) {
         ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
         ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
@@ -775,7 +775,7 @@ void QCMainWindow::handleMP3() {
         }
     }
 
-    _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
+    _mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->absoluteFilePath().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
     QWORD MP3LengthBytes = BASS_ChannelGetLength(_mediaStream, BASS_POS_BYTE); // the length in bytes
     MP3LengthTime = BASS_ChannelBytes2Seconds(_mediaStream, MP3LengthBytes); // the length in seconds
     ui->horizontalSlider_MP3->setRange(0, (int)MP3LengthTime);
@@ -805,7 +805,7 @@ void QCMainWindow::handleMP3() {
     ui->label_BPMSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     ui->label_BPMSet->setStatusTip(tr("#BPM tag set."));
 
-    TagLib::FileRef ref(filename_MP3.toLocal8Bit().data());
+    TagLib::FileRef ref(fileInfo_MP3->absoluteFilePath().toLocal8Bit().data());
     ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
     ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
     ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
@@ -895,7 +895,7 @@ void QCMainWindow::on_pushButton_Reset_clicked()
         ui->pushButton_PlayPause->setEnabled(true);
         ui->pushButton_Stop->setDisabled(true);
         ui->pushButton_Reset->setDisabled(true);
-        _mediaStream = BASS_StreamCreateFile(FALSE, filename_MP3.toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
+        _mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->fileName().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
     }
     else {
         // should not be possible
