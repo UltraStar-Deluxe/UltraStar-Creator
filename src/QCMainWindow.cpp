@@ -18,6 +18,23 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     ui->setupUi(this);
     setWindowTitle(tr("UltraStar Song Creator %1.%2.%3").arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION));
     logSrv->add(tr("Ready."), QU::Information);
+    lyricsProgressBar = new QProgressBar;
+    QMainWindow::statusBar()->addPermanentWidget(lyricsProgressBar);
+    QMainWindow::statusBar()->showMessage(tr("USC ready."));
+    if (BASS_Init(-1, 44100, 0, 0, NULL)) {
+        QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
+    }
+
+    QSettings settings;
+    ui->lineEdit_Creator->setText(settings.value("creator", "").toString());
+
+    this->show();
+
+    QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
+                              QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b>.<br><br>The <b>ID3 tag</b> is used to fill in song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. Undo the last tap with the undo button (Keyboard: x), stop tapping with the stop button (Keyboard: CTRL+S), start from the beginning with the reset button (Keyboard: CTRL+R). When finished, save the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b><br><br>P.S.: The resulting UltraStar text files are encoded using <b>UTF-8</b>, therefore they are only compatible with USDX 1.1. If you want to use them with an older version, convert the file encoding to <b>ANSI</b>."),
+                              BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
+
+    // init
     numSyllables = 0;
     firstNoteStartBeat = 0;
     currentNoteBeatLength = 0;
@@ -25,20 +42,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     currentCharacterIndex = 0;
     firstNote = true;
     clipboard = QApplication::clipboard();
-    lyricsProgressBar = new QProgressBar;
-    QMainWindow::statusBar()->addPermanentWidget(lyricsProgressBar);
-
-    QMainWindow::statusBar()->showMessage(tr("USC ready."));
-    if (BASS_Init(-1, 44100, 0, 0, NULL)) {
-        QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
-    }
     state = QCMainWindow::uninitialized;
-
-    this->show();
-
-    QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
-        QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>The bare <b>minimum</b> of what you need is a <b>song file</b> in MP3 or OGG format and the <b>song lyrics</b>.<br><br><b>Important information</b> such as BPM and GAP are determined <b>automatically</b>.<br><br><b>Additional meta information</b> is read from the <b>ID3 tags</b>, if available.<br><br>Any <b>other information</b> about the song is <b>desirable</b>, but <b>not necessary</b> for song creation.<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b><br><br>P.S.: Tapped files are encoded using <b>UTF-8</b>, therefore they are only compatible with USDX 1.1. If you want to use them with an older version, convert the file encoding to <b>ANSI</b>."),
-        BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
 }
 
 /*!
@@ -80,6 +84,8 @@ bool QCMainWindow::on_pushButton_SaveToFile_clicked()
 
 void QCMainWindow::on_pushButton_PlayPause_clicked()
 {
+    QSettings settings;
+
     if (state == initialized) {
         state = QCMainWindow::playing;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
@@ -135,6 +141,8 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         }
         ui->plainTextEdit_OutputLyrics->appendPlainText("#BPM:" + ui->doubleSpinBox_BPM->text());
 
+        settings.setValue("creator", ui->lineEdit_Creator->text());
+
         QString rawLyricsString = ui->plainTextEdit_InputLyrics->toPlainText();
 
         lyricsString = cleanLyrics(rawLyricsString);
@@ -169,6 +177,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
         ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
         ui->groupBox_TapArea->setEnabled(true);
+        ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
         BASS_Resume();
     }
     else {

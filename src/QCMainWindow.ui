@@ -88,6 +88,12 @@
              </item>
              <item row="0" column="1">
               <widget class="QLabel" name="label_MP3">
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="statusTip">
                 <string>MP3 tag</string>
                </property>
@@ -95,7 +101,7 @@
                 <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;#MP3:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
@@ -104,6 +110,12 @@ p, li { white-space: pre-wrap; }
               <widget class="QLineEdit" name="lineEdit_MP3">
                <property name="enabled">
                 <bool>true</bool>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
                </property>
                <property name="statusTip">
                 <string>Set the song to tap by dropping a song file onto USC or by browsing your harddrive.</string>
@@ -186,6 +198,12 @@ p, li { white-space: pre-wrap; }
             <height>251</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Song Meta Information Tags</string>
           </property>
@@ -211,8 +229,8 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -233,6 +251,12 @@ p, li { white-space: pre-wrap; }
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
                </property>
                <property name="statusTip">
                 <string>Enter the song title.</string>
@@ -258,8 +282,8 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -275,6 +299,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="1" column="2">
               <widget class="QLineEdit" name="lineEdit_Artist">
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="statusTip">
                 <string>Enter the song artist.</string>
                </property>
@@ -293,8 +323,8 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -310,6 +340,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="2" column="2">
               <widget class="QComboBox" name="comboBox_Language">
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="statusTip">
                 <string>Choose the song language.</string>
                </property>
@@ -540,8 +576,8 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -557,6 +593,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="3" column="2">
               <widget class="QComboBox" name="comboBox_Edition">
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="statusTip">
                 <string>Enter the song edition.</string>
                </property>
@@ -585,8 +627,8 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -602,6 +644,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="4" column="2">
               <widget class="QComboBox" name="comboBox_Genre">
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="statusTip">
                 <string>Enter the song genre.</string>
                </property>
@@ -700,8 +748,8 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -722,8 +770,8 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -739,6 +787,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="6" column="2">
               <widget class="QLineEdit" name="lineEdit_Creator">
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="statusTip">
                 <string>Enter the song creator.</string>
                </property>
@@ -757,8 +811,8 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -775,7 +829,13 @@ p, li { white-space: pre-wrap; }
              <item row="7" column="2">
               <widget class="QDoubleSpinBox" name="doubleSpinBox_BPM">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
                </property>
                <property name="statusTip">
                 <string>BPM will be determined automatically from the MP3 file.</string>
@@ -813,8 +873,8 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -1040,6 +1100,12 @@ p, li { white-space: pre-wrap; }
                <property name="enabled">
                 <bool>false</bool>
                </property>
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="statusTip">
                 <string>Gap will be determined automatically when you start tapping.</string>
                </property>
@@ -1058,6 +1124,12 @@ p, li { white-space: pre-wrap; }
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
                </property>
                <property name="specialValueText">
                 <string notr="true"/>
@@ -1095,6 +1167,12 @@ p, li { white-space: pre-wrap; }
             <height>80</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Artwork Tags</string>
           </property>
@@ -1111,8 +1189,8 @@ p, li { white-space: pre-wrap; }
               <widget class="QLabel" name="label_Cover">
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -1130,6 +1208,12 @@ p, li { white-space: pre-wrap; }
               <widget class="QLineEdit" name="lineEdit_Cover">
                <property name="enabled">
                 <bool>true</bool>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
                </property>
                <property name="statusTip">
                 <string>Set the cover by dropping an image file onto USC or by browsing your harddrive.</string>
@@ -1175,8 +1259,8 @@ p, li { white-space: pre-wrap; }
               <widget class="QLabel" name="label_background">
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -1194,6 +1278,12 @@ p, li { white-space: pre-wrap; }
               <widget class="QLineEdit" name="lineEdit_Background">
                <property name="enabled">
                 <bool>true</bool>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
                </property>
                <property name="statusTip">
                 <string>Set the background by dropping an image file onto USC or by browsing your harddrive.</string>
@@ -1297,6 +1387,12 @@ p, li { white-space: pre-wrap; }
             <height>81</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="toolTip">
            <string/>
           </property>
@@ -1322,8 +1418,8 @@ p, li { white-space: pre-wrap; }
               <widget class="QLabel" name="label_Video">
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -1339,6 +1435,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="0" column="2">
               <widget class="QLineEdit" name="lineEdit_Video">
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="statusTip">
                 <string>Set the video by dropping an image file onto USC or by browsing your harddrive.</string>
                </property>
@@ -1380,8 +1482,8 @@ p, li { white-space: pre-wrap; }
                </property>
                <property name="font">
                 <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <weight>50</weight>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="statusTip">
@@ -1397,6 +1499,12 @@ p, li { white-space: pre-wrap; }
              </item>
              <item row="1" column="2">
               <widget class="QDoubleSpinBox" name="doubleSpinBox_Videogap">
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="statusTip">
                 <string>Set the video gap if needed.</string>
                </property>
@@ -1482,6 +1590,12 @@ p, li { white-space: pre-wrap; }
             <height>75</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Misc. Settings</string>
           </property>
@@ -1520,6 +1634,12 @@ p, li { white-space: pre-wrap; }
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
                </property>
                <property name="text">
                 <string>Default pitch:</string>
@@ -1668,6 +1788,12 @@ p, li { white-space: pre-wrap; }
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>Playback speed:</string>
                </property>
@@ -1688,6 +1814,12 @@ p, li { white-space: pre-wrap; }
                    <width>32</width>
                    <height>20</height>
                   </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
                  </property>
                  <property name="statusTip">
                   <string>Current playback speed.</string>
@@ -1790,6 +1922,12 @@ p, li { white-space: pre-wrap; }
               <width>171</width>
               <height>100</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
             </property>
             <property name="title">
              <string>Control</string>
@@ -1990,6 +2128,12 @@ p, li { white-space: pre-wrap; }
                </property>
                <item>
                 <widget class="QLabel" name="label_TimeElapsed">
+                 <property name="font">
+                  <font>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>-:--</string>
                  </property>
@@ -2004,6 +2148,12 @@ p, li { white-space: pre-wrap; }
                </item>
                <item>
                 <widget class="QLabel" name="label_TimeToRun">
+                 <property name="font">
+                  <font>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>--:--</string>
                  </property>
@@ -2072,6 +2222,12 @@ p, li { white-space: pre-wrap; }
                <width>0</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
              </property>
              <property name="acceptDrops">
               <bool>true</bool>
@@ -2243,6 +2399,12 @@ p, li { white-space: pre-wrap; }
           <height>0</height>
          </size>
         </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="title">
          <string>UltraStar file</string>
         </property>
@@ -2268,6 +2430,12 @@ p, li { white-space: pre-wrap; }
                <width>0</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
              </property>
              <property name="statusTip">
               <string>See resulting UltraStar text file here.</string>
@@ -2424,6 +2592,12 @@ p, li { white-space: pre-wrap; }
         <height>61</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="title">
        <string>Tap Area</string>
       </property>
@@ -2557,6 +2731,8 @@ p, li { white-space: pre-wrap; }
            <property name="font">
             <font>
              <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -2603,6 +2779,8 @@ p, li { white-space: pre-wrap; }
            <property name="font">
             <font>
              <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -2649,6 +2827,8 @@ p, li { white-space: pre-wrap; }
            <property name="font">
             <font>
              <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -2695,6 +2875,8 @@ p, li { white-space: pre-wrap; }
            <property name="font">
             <font>
              <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -2741,6 +2923,8 @@ p, li { white-space: pre-wrap; }
            <property name="font">
             <font>
              <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">

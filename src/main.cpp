@@ -137,7 +137,7 @@ void handleWipWarning() {
 void handleReleaseCandidateInformation() {
         QUMessageBox::information(0,
                                 QObject::tr("Release Candidate Information"),
-                                QObject::tr("<b>Dear testing person,</b><br><br>this version is meant to be <b>feature-complete and almost bug-free</b>. Nevertheless, it might be possible that some errors are still remaining.<br> While testing all these cool new features of version 0.1.0, consider the following:<br><br>- xxx<br>- xxx<br>- xxx<br>- xxx<br>- xxx<br>- xxx<br><br>Send feedback and bug reports to: <a href=\"mailto:xxx@users.sourceforge.net\">xxx@users.sourceforge.net</a>"),
+                                QObject::tr("<b>Dear testing person,</b><br><br>this version is meant to be <b>almost bug-free</b>. Nevertheless, it might be possible that some errors are still remaining.<br> While testing all these cool new features of version %1.%2.%3, consider the following:<br><br>- xxx<br>- xxx<br>- xxx<br>- xxx<br>- xxx<br>- xxx<br><br>Send feedback and bug reports to: <a href=\"mailto:bohning@users.sourceforge.net\">bohning@users.sourceforge.net</a>").arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION),
                                 BTN << ":/marks/accept.png" << QObject::tr("Okay!"),
                                 400);
 }
