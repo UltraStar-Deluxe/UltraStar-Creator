@@ -1184,7 +1184,7 @@ p, li { white-space: pre-wrap; }
             <number>6</number>
            </property>
            <item row="0" column="0">
-            <layout class="QGridLayout" name="gridLayout_MP3ArtworkTags">
+            <layout class="QGridLayout" name="gridLayout_MP3ArtworkTags" columnminimumwidth="16,88,0,0,0">
              <item row="0" column="1">
               <widget class="QLabel" name="label_Cover">
                <property name="font">

@@ -25,14 +25,21 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
         QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
     }
 
-    QSettings settings;
-    ui->lineEdit_Creator->setText(settings.value("creator", "").toString());
-
     this->show();
 
     QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
                               QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b>.<br><br>The <b>ID3 tag</b> is used to fill in song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. Undo the last tap with the undo button (Keyboard: x), stop tapping with the stop button (Keyboard: CTRL+S), start from the beginning with the reset button (Keyboard: CTRL+R). When finished, save the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b><br><br>P.S.: The resulting UltraStar text files are encoded using <b>UTF-8</b>, therefore they are only compatible with USDX 1.1. If you want to use them with an older version, convert the file encoding to <b>ANSI</b>."),
                               BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
+
+    QSettings settings;
+    ui->lineEdit_Creator->setText(settings.value("creator", "").toString());
+    QFileInfo fi(settings.value("songfile").toString());
+    if (fi.exists()) {
+        settings.remove("songfile");
+        filename_MP3 = fi.absoluteFilePath();
+        ui->lineEdit_MP3->setText(filename_MP3);
+        handleMP3();
+    }
 
     // init
     numSyllables = 0;
@@ -189,9 +196,6 @@ QString QCMainWindow::cleanLyrics(QString rawLyricsString) {
     // delete surplus space characters
     rawLyricsString = rawLyricsString.replace(QRegExp(" {2,}"), " ");
 
-    // delete leading and trailing whitespace
-    rawLyricsString = rawLyricsString.trimmed();
-
     // delete surplus blank lines...
     rawLyricsString = rawLyricsString.replace(QRegExp("\\n{2,}"), "\n");
 
@@ -199,15 +203,18 @@ QString QCMainWindow::cleanLyrics(QString rawLyricsString) {
     rawLyricsString = rawLyricsString.replace("´", "'");
     rawLyricsString = rawLyricsString.replace("`", "'");
 
-    /* Capitalize each line
-    rawLyricsString = rawLyricsString.replace(0,1,rawLyricsString.at(0).toUpper());
-    int newlineCharIndex = rawLyricsString.indexOf(QRegExp("\\n"));
-    while (newlineCharIndex != -1) {
-        int charToCapIndex = newlineCharIndex+1;
-        rawLyricsString = rawLyricsString.replace(charToCapIndex,1,rawLyricsString.at(charToCapIndex).toUpper());
-        newlineCharIndex = rawLyricsString.mid(charToCapIndex).indexOf(QRegExp("\\n"));
+    // delete leading and trailing whitespace from each line
+    QStringList rawLyricsStringList = rawLyricsString.split(QRegExp("\\n"));
+    QStringList lyricsStringList;
+    rawLyricsString.clear();
+    QStringListIterator lyricsLineIterator(rawLyricsStringList);
+    while (lyricsLineIterator.hasNext()) {
+        QString currentLine = lyricsLineIterator.next();
+        currentLine = currentLine.trimmed();
+        currentLine.replace(0,1,currentLine.at(0).toUpper());
+        lyricsStringList.append(currentLine);
     }
-    */
+    rawLyricsString = lyricsStringList.join("\n");
 
     QString cleanedLyricsString = rawLyricsString;
 
@@ -780,13 +787,17 @@ void QCMainWindow::handleMP3() {
 
     BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, 0);
 
-    if (BPMFromMP3 < 50) {
+    if (BPMFromMP3 == 0) {
+        BPMFromMP3 = 50;
+    }
+
+    if (BPMFromMP3 <= 50) {
         BPMFromMP3 = BPMFromMP3*8;
     }
-    else if (BPMFromMP3 < 100) {
+    else if (BPMFromMP3 <= 100) {
         BPMFromMP3 = BPMFromMP3*4;
     }
-    else if (BPMFromMP3 < 200) {
+    else if (BPMFromMP3 <= 200) {
         BPMFromMP3 = BPMFromMP3*2;
     }
 
@@ -1052,4 +1063,8 @@ void QCMainWindow::on_spinBox_Year_valueChanged(QString year)
         ui->label_YearSet->setPixmap(QPixmap(":/marks/path_error.png"));
         ui->label_YearSet->setStatusTip(tr("#YEAR tag is empty."));
     }
+}
+void QCMainWindow::on_horizontalSlider_MP3_sliderMoved(int position)
+{
+    BASS_SetPosition(position);
 }

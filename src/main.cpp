@@ -163,12 +163,13 @@ void handlePreviousAppCrash() {
  * Read arguments: song files to be loaded.
  */
 void handleArguments() {
-        QSettings s;
+        QSettings settings;
         foreach(QString arg, qApp->arguments()) {
                 QFileInfo fi(arg);
 
                 if(fi.isFile() && (fi.fileName().endsWith(".mp3") || fi.fileName().endsWith(".ogg"))) {
                     // use argument as audio file
+                    settings.setValue("songfile", fi.absoluteFilePath());
                 }
 
                 if(fi.isFile() && fi.fileName().endsWith(".txt")) {
@@ -181,8 +182,8 @@ void handleArguments() {
 //			QStringList paths(s.value("songPaths").toStringList());
 //			paths.append(arg);
 //			paths.removeDuplicates();
-//			s.setValue("songPaths", paths);
-                        s.setValue("songPath", arg);
+//			settings.setValue("songPaths", paths);
+                        settings.setValue("songPath", arg);
                         break;
                 }
         }

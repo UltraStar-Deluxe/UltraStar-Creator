@@ -1,7 +1,7 @@
 notes from bohning:
 ===================
 * undo last tap with rightclick on tap-button
-* keyboard shortcut for tapping (V not working properly b/c of autorepeat)
+* keyboard shortcut for tapping (V not working properly b/c of autorepeat, space only working because of manual focus to tap button)
 * play mp3 only (to determine needed playback speed adjustment and default pitch for example)
 * visualize current beat
 * visualize note creation (progressbar?)
@@ -12,7 +12,7 @@ notes from bohning:
 * add proper shortcuts to different actions (open / save / ...
 * add menus for inputlyrics (load from file / copy from clipboard / auto-clean / ...) and outputlyrics (save / copy to clipboard) and tags (option to turn id3-tag auto-fill off, set BPM manually, etc.)?
 * work on documentation
-* make host-me-for-a-day-ware
+* add action to input lyrics context menu with selection --> replace all occurences of this word by this syllable splitting
 
 notes from canni:
 =================

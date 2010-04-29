@@ -78,6 +78,7 @@ private:
     double MP3LengthTime;
 
 private slots:
+    void on_horizontalSlider_MP3_sliderMoved(int position);
     void on_spinBox_Year_valueChanged(QString );
     void on_pushButton_UndoTap_clicked();
     void on_lineEdit_Background_textChanged(QString );
