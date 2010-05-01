@@ -47,6 +47,7 @@ private:
     QClipboard *clipboard;
     float BPMFromMP3;
     bool firstNote;
+    bool isFirstKeyPress;
     QString cleanLyrics(QString);
     void splitLyricsIntoSyllables();
     HSTREAM _mediaStream;

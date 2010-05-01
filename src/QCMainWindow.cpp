@@ -46,6 +46,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     currentNoteBeatLength = 0;
     currentSyllableIndex = 0;
     currentCharacterIndex = 0;
+    bool isFirstKeyPress = true;
     firstNote = true;
     clipboard = QApplication::clipboard();
     state = QCMainWindow::uninitialized;
@@ -895,7 +896,7 @@ void QCMainWindow::on_pushButton_Reset_clicked()
         ui->pushButton_PlayPause->setEnabled(true);
         ui->pushButton_Stop->setDisabled(true);
         ui->pushButton_Reset->setDisabled(true);
-        _mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->fileName().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
+        _mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->absoluteFilePath().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
     }
     else {
         // should not be possible
@@ -1021,7 +1022,8 @@ void QCMainWindow::splitLyricsIntoSyllables()
 }
 
 void QCMainWindow::keyPressEvent(QKeyEvent *event) {
-    if (state == QCMainWindow::playing) {
+    if (state == QCMainWindow::playing && isFirstKeyPress) {
+        isFirstKeyPress = false;
         switch(event->key()) {
         case Qt::Key_V:
             event->ignore();
@@ -1040,7 +1042,8 @@ void QCMainWindow::keyPressEvent(QKeyEvent *event) {
 }
 
 void QCMainWindow::keyReleaseEvent(QKeyEvent *event) {
-    if (state == QCMainWindow::playing) {
+    if (state == QCMainWindow::playing && !isFirstKeyPress) {
+        isFirstKeyPress = true;
         switch(event->key()) {
         case Qt::Key_V:
             event->ignore();
