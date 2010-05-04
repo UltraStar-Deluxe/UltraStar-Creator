@@ -1853,7 +1853,7 @@ p, li { white-space: pre-wrap; }
                   <string>Set playback speed.</string>
                  </property>
                  <property name="minimum">
-                  <number>75</number>
+                  <number>50</number>
                  </property>
                  <property name="maximum">
                   <number>100</number>
