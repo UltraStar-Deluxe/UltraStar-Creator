@@ -13,6 +13,7 @@ notes from bohning:
 * add menus for inputlyrics (load from file / copy from clipboard / auto-clean / ...) and outputlyrics (save / copy to clipboard) and tags (option to turn id3-tag auto-fill off, set BPM manually, etc.)?
 * work on documentation
 * add action to input lyrics context menu with selection --> replace all occurences of this word by this syllable splitting
+* get lyrics from internet
 
 notes from canni:
 =================
