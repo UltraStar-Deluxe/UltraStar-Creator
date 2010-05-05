@@ -12,6 +12,7 @@
 #include <QSettings>
 #include <QTimer>
 #include <QTextCodec>
+#include <QProcess>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -87,6 +88,7 @@ bool QCMainWindow::on_pushButton_SaveToFile_clicked()
     QApplication::setOverrideCursor(Qt::WaitCursor);
     out << ui->plainTextEdit_OutputLyrics->toPlainText();
     QApplication::restoreOverrideCursor();
+    ui->pushButton_startUltraStar->setEnabled(true);
     return true;
 }
 
@@ -108,6 +110,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->groupBox_OutputLyrics->setEnabled(true);
         ui->pushButton_SaveToFile->setDisabled(true);
         ui->pushButton_CopyToClipboard->setDisabled(true);
+        ui->pushButton_startUltraStar->setDisabled(true);
         ui->groupBox_TapArea->setEnabled(true);
         ui->pushButton_UndoTap->setDisabled(true);
         ui->pushButton_Tap->setEnabled(true);
@@ -331,7 +334,7 @@ void QCMainWindow::on_pushButton_BrowseMP3_clicked()
 
 void QCMainWindow::on_pushButton_BrowseCover_clicked()
 {
-    QString filename_Cover = QFileDialog::getOpenFileName ( 0, tr("Please choose cover image file"), QDir::homePath(), tr("Image files (*.jpg)"));
+    QString filename_Cover = QFileDialog::getOpenFileName ( 0, tr("Please choose cover image file"), fileInfo_MP3->absolutePath(), tr("Image files (*.jpg)"));
     QFileInfo *fileInfo_Cover = new QFileInfo(filename_Cover);
     if (!fileInfo_Cover->fileName().isEmpty()) {
         ui->lineEdit_Cover->setText(fileInfo_Cover->fileName());
@@ -347,7 +350,7 @@ void QCMainWindow::on_lineEdit_Cover_textChanged(QString cover)
 
 void QCMainWindow::on_pushButton_BrowseBackground_clicked()
 {
-    QString filename_Background = QFileDialog::getOpenFileName ( 0, tr("Please choose background image file"), QDir::homePath(), tr("Image files (*.jpg)"));
+    QString filename_Background = QFileDialog::getOpenFileName ( 0, tr("Please choose background image file"), fileInfo_MP3->absolutePath(), tr("Image files (*.jpg)"));
     QFileInfo *fileInfo_Background = new QFileInfo(filename_Background);
     if (!fileInfo_Background->fileName().isEmpty()) {
         ui->lineEdit_Background->setText(fileInfo_Background->fileName());
@@ -363,7 +366,7 @@ void QCMainWindow::on_lineEdit_Background_textChanged(QString background)
 
 void QCMainWindow::on_pushButton_BrowseVideo_clicked()
 {
-    QString filename_Video = QFileDialog::getOpenFileName ( 0, tr("Please choose video file"), QDir::homePath(), tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts"));
+    QString filename_Video = QFileDialog::getOpenFileName ( 0, tr("Please choose video file"), fileInfo_MP3->absolutePath(), tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts"));
     QFileInfo *fileInfo_Video = new QFileInfo(filename_Video);
     if (!fileInfo_Video->fileName().isEmpty()) {
         ui->lineEdit_Video->setText(fileInfo_Video->fileName());
@@ -526,9 +529,9 @@ void QCMainWindow::on_lineEdit_Creator_textChanged(QString creator)
     }
 }
 
-void QCMainWindow::on_pushButton_LoadFromFile_clicked()
+void QCMainWindow::on_pushButton_BrowseLyrics_clicked()
 {
-    QString filename_Text = QFileDialog::getOpenFileName ( 0, tr("Please choose text file"), QDir::homePath(), tr("Text files (*.txt)"));
+    QString filename_Text = QFileDialog::getOpenFileName ( 0, tr("Please choose text file"), fileInfo_MP3->absolutePath(), tr("Text files (*.txt)"));
 
     if (!filename_Text.isEmpty()) {
         QFile file(filename_Text);
@@ -1070,4 +1073,23 @@ void QCMainWindow::on_spinBox_Year_valueChanged(QString year)
 void QCMainWindow::on_horizontalSlider_MP3_sliderMoved(int position)
 {
     BASS_SetPosition(position);
+}
+
+void QCMainWindow::on_pushButton_startUltraStar_clicked()
+{
+    QSettings settings;
+    QString USdxFilePath;
+
+    if(!settings.contains("USdxFilePath")) {
+        USdxFilePath = QFileDialog::getOpenFileName(0, tr("Choose UltraStar executable"), QDir::homePath(),tr("UltraStar executable (*.exe)"));
+            settings.setValue("USdxFilePath", USdxFilePath);
+    } else {
+        USdxFilePath = settings.value("USdxFilePath").toString();
+    }
+    QFileInfo *USdxFileInfo = new QFileInfo(USdxFilePath);
+    if(USdxFileInfo->exists()) {
+        QStringList USdxArguments;
+        USdxArguments << "-SongPath" << fileInfo_MP3->absolutePath();
+        QProcess::startDetached(USdxFilePath, USdxArguments);
+    }
 }
