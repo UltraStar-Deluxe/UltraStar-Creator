@@ -171,6 +171,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         _mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
         bool result = BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO, -playbackSpeedDecreasePercentage);
         if (result) {
+            BASS_SetPosition(0);
             BASS_Play();
             updateTime();
         }
@@ -181,14 +182,24 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         state = QCMainWindow::paused;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/play.png"));
         ui->pushButton_PlayPause->setStatusTip(tr("Continue tapping."));
-        ui->groupBox_TapArea->setDisabled(true);
+        ui->pushButton_Tap->setDisabled(true);
+        ui->pushButton_NextSyllable1->setDisabled(true);
+        ui->pushButton_NextSyllable2->setDisabled(true);
+        ui->pushButton_NextSyllable3->setDisabled(true);
+        ui->pushButton_NextSyllable4->setDisabled(true);
+        ui->pushButton_NextSyllable5->setDisabled(true);
         BASS_Pause();
     }
     else if (state == paused) {
         state = QCMainWindow::playing;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
         ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
-        ui->groupBox_TapArea->setEnabled(true);
+        ui->pushButton_Tap->setEnabled(true);
+        ui->pushButton_NextSyllable1->setEnabled(true);
+        ui->pushButton_NextSyllable2->setEnabled(true);
+        ui->pushButton_NextSyllable3->setEnabled(true);
+        ui->pushButton_NextSyllable4->setEnabled(true);
+        ui->pushButton_NextSyllable5->setEnabled(true);
         ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
         BASS_Resume();
     }
@@ -376,7 +387,10 @@ void QCMainWindow::on_lineEdit_Background_textChanged(QString background)
 
 void QCMainWindow::on_pushButton_BrowseVideo_clicked()
 {
-    QString filename_Video = QFileDialog::getOpenFileName ( 0, tr("Please choose video file"), defaultDir, tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts"));
+    QString filename_Video = QFileDialog::getOpenFileName ( 0,
+                                                            tr("Please choose video file"),
+                                                            defaultDir,
+                                                            tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts);;All files (*.*)"));
     QFileInfo *fileInfo_Video = new QFileInfo(filename_Video);
     if (fileInfo_Video->exists()) {
         if (defaultDir == QDir::homePath()) {
@@ -430,8 +444,10 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                         }
                     }
                     else if (fileInfo->suffix().toLower() == tr("mp3") || fileInfo->suffix().toLower() == tr("ogg")) {
-                        fileInfo_MP3 = fileInfo;
-                        handleMP3();
+                        if (fileInfo->exists()) {
+                            defaultDir = fileInfo->absolutePath();
+                            handleMP3();
+                        }
                     }
                     else if (fileInfo->suffix().toLower() == tr("jpg")) {
                         int result = QUMessageBox::question(0,
@@ -782,22 +798,10 @@ void QCMainWindow::BASS_SetPosition(int seconds) {
         }
 }
 
-void QCMainWindow::handleMP3() {    
-    if (!fileInfo_MP3->fileName().isEmpty()) {
-        ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
-        ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
-        ui->label_MP3Set->setStatusTip(tr("#MP3 tag is set."));
-        if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
-            state = QCMainWindow::initialized;
-            QMainWindow::statusBar()->showMessage(tr("State: initialized."));
-            ui->pushButton_PlayPause->setEnabled(true);
-        }
-        else {
-            state = QCMainWindow::uninitialized;
-            QMainWindow::statusBar()->showMessage(tr("State: uninitialized."));
-            ui->pushButton_PlayPause->setDisabled(true);
-        }
-    }
+void QCMainWindow::handleMP3() {
+    ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
+    ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
+    ui->label_MP3Set->setStatusTip(tr("#MP3 tag is set."));
 
     _mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->absoluteFilePath().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
     QWORD MP3LengthBytes = BASS_ChannelGetLength(_mediaStream, BASS_POS_BYTE); // the length in bytes
@@ -836,6 +840,17 @@ void QCMainWindow::handleMP3() {
     ui->spinBox_Year->setValue(ref.tag()->year());
     // lyrics from mp3 lyrics-tag
     //ui->plainTextEdit_InputLyrics->setPlainText(TStringToQString(ref.tag()->comment()));
+
+    if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
+        state = QCMainWindow::initialized;
+        QMainWindow::statusBar()->showMessage(tr("State: initialized."));
+        ui->pushButton_PlayPause->setEnabled(true);
+    }
+    else {
+        state = QCMainWindow::uninitialized;
+        QMainWindow::statusBar()->showMessage(tr("State: uninitialized."));
+        ui->pushButton_PlayPause->setDisabled(true);
+    }
 }
 
 void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)
@@ -1099,17 +1114,29 @@ void QCMainWindow::on_pushButton_startUltraStar_clicked()
 {
     QSettings settings;
     QString USdxFilePath;
+    QFileInfo *USdxFileInfo;
 
-    if(!settings.contains("USdxFilePath")) {
-        USdxFilePath = QFileDialog::getOpenFileName(0, tr("Choose UltraStar executable"), QDir::homePath(),tr("UltraStar executable (*.exe)"));
-            settings.setValue("USdxFilePath", USdxFilePath);
-    } else {
+    if(settings.contains("USdxFilePath")) {
         USdxFilePath = settings.value("USdxFilePath").toString();
+        USdxFileInfo = new QFileInfo(USdxFilePath);
+        if(USdxFileInfo->exists()) {
+            settings.setValue("USdxFilePath", USdxFilePath);
+            QStringList USdxArguments;
+            USdxArguments << "-SongPath" << fileInfo_MP3->absolutePath();
+            QProcess::startDetached(USdxFilePath, USdxArguments);
+        }
+        else {
+            settings.remove("USdxFilePath");
+        }
     }
-    QFileInfo *USdxFileInfo = new QFileInfo(USdxFilePath);
-    if(USdxFileInfo->exists()) {
-        QStringList USdxArguments;
-        USdxArguments << "-SongPath" << fileInfo_MP3->absolutePath();
-        QProcess::startDetached(USdxFilePath, USdxArguments);
+    else {
+        USdxFilePath = QFileDialog::getOpenFileName(0, tr("Choose UltraStar executable"), QDir::homePath(),tr("UltraStar executable (*.exe)"));
+        USdxFileInfo = new QFileInfo(USdxFilePath);
+        if(USdxFileInfo->exists()) {
+            settings.setValue("USdxFilePath", USdxFilePath);
+            QStringList USdxArguments;
+            USdxArguments << "-SongPath" << fileInfo_MP3->absolutePath();
+            QProcess::startDetached(USdxFilePath, USdxArguments);
+        }
     }
 }

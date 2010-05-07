@@ -2,7 +2,7 @@ notes from bohning:
 ===================
 * undo last tap with rightclick on tap-button
 * keyboard shortcut for tapping (V not working properly b/c of autorepeat, space only working because of manual focus to tap button)
-* play mp3 only (to determine needed playback speed adjustment and default pitch for example)
+* play mp3 only (to determine needed playback speed adjustment and default pitch for example, to compare lyrics to mp3 version and to work on syllabification
 * visualize current beat
 * visualize note creation (progressbar?)
 * replace b/# in default pitch by proper musical symbol
@@ -14,8 +14,9 @@ notes from bohning:
 * work on documentation
 * add action to input lyrics context menu with selection --> replace all occurences of this word by this syllable splitting
 * get lyrics from internet
-* undo when paused
 * undo with step-back in mp3 time
+* automatic syllabification
+* output with ANSI encoding by choice
 
 notes from canni:
 =================
@@ -33,16 +34,11 @@ notes from canni:
 notes from thursday:
 ====================
 * get lyrics from mp3
-* add note that files are output to UTF8 (only compatible to USDX 1.1)
-* usc_r79 fails to display properly on my Windows 7 netbook as previous versions had (see screenshots 1 & 2)
-*  Clicking to load an mp3 and then cancelling causes the program to crash (see screenshot 3)
-*  Attempting to load a cover without first loading an mp3 causes the program to crash
-*  The ultrastar testing button is a great idea although I couldn't get it to work
+* The ultrastar testing button is a great idea although I couldn't get it to work
 
 notes from fepo:
 ================
 
 notes from Hauke:
 =================
-* Beim Auswählen von Video-Dateien hat das Programm noch Probleme. Bei mir hat das Programm meißt keine Video-Dateien angezeigt, obwohl welche vorhanden waren. Da wäre eine Auswahl "all file types" oder so hilfreich.
-* mp3 abspielen, um Textversion mit mp3-Version zu vergleichen und Silbentrennung zu machen; * Download-/Suchfunktion für Cover, Background und (Video).
+* Download-/Suchfunktion für Cover, Background und (Video).
