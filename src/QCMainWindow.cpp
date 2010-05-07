@@ -51,6 +51,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     firstNote = true;
     clipboard = QApplication::clipboard();
     state = QCMainWindow::uninitialized;
+    defaultDir = QDir::homePath();
 }
 
 /*!
@@ -327,16 +328,22 @@ void QCMainWindow::on_pushButton_Stop_clicked()
 
 void QCMainWindow::on_pushButton_BrowseMP3_clicked()
 {
-    QString filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose MP3 file"), QDir::homePath(), tr("Audio files (*.mp3 *.ogg)"));
+    QString filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose MP3 file"), defaultDir, tr("Audio files (*.mp3 *.ogg)"));
     fileInfo_MP3 = new QFileInfo(filename_MP3);
-    handleMP3();
+    if (fileInfo_MP3->exists()) {
+        defaultDir = fileInfo_MP3->absolutePath();
+        handleMP3();
+    }
 }
 
 void QCMainWindow::on_pushButton_BrowseCover_clicked()
 {
-    QString filename_Cover = QFileDialog::getOpenFileName ( 0, tr("Please choose cover image file"), fileInfo_MP3->absolutePath(), tr("Image files (*.jpg)"));
+    QString filename_Cover = QFileDialog::getOpenFileName ( 0, tr("Please choose cover image file"), defaultDir, tr("Image files (*.jpg)"));
     QFileInfo *fileInfo_Cover = new QFileInfo(filename_Cover);
-    if (!fileInfo_Cover->fileName().isEmpty()) {
+    if (fileInfo_Cover->exists()) {
+        if (defaultDir == QDir::homePath()) {
+            defaultDir = fileInfo_Cover->absolutePath();
+        }
         ui->lineEdit_Cover->setText(fileInfo_Cover->fileName());
     }
 }
@@ -350,9 +357,12 @@ void QCMainWindow::on_lineEdit_Cover_textChanged(QString cover)
 
 void QCMainWindow::on_pushButton_BrowseBackground_clicked()
 {
-    QString filename_Background = QFileDialog::getOpenFileName ( 0, tr("Please choose background image file"), fileInfo_MP3->absolutePath(), tr("Image files (*.jpg)"));
+    QString filename_Background = QFileDialog::getOpenFileName ( 0, tr("Please choose background image file"), defaultDir, tr("Image files (*.jpg)"));
     QFileInfo *fileInfo_Background = new QFileInfo(filename_Background);
-    if (!fileInfo_Background->fileName().isEmpty()) {
+    if (fileInfo_Background->exists()) {
+        if (defaultDir == QDir::homePath()) {
+            defaultDir = fileInfo_Background->absolutePath();
+        }
         ui->lineEdit_Background->setText(fileInfo_Background->fileName());
     }
 }
@@ -366,10 +376,20 @@ void QCMainWindow::on_lineEdit_Background_textChanged(QString background)
 
 void QCMainWindow::on_pushButton_BrowseVideo_clicked()
 {
-    QString filename_Video = QFileDialog::getOpenFileName ( 0, tr("Please choose video file"), fileInfo_MP3->absolutePath(), tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts"));
+    QString filename_Video = QFileDialog::getOpenFileName ( 0, tr("Please choose video file"), defaultDir, tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts"));
     QFileInfo *fileInfo_Video = new QFileInfo(filename_Video);
-    if (!fileInfo_Video->fileName().isEmpty()) {
+    if (fileInfo_Video->exists()) {
+        if (defaultDir == QDir::homePath()) {
+            defaultDir = fileInfo_Video->absolutePath();
+        }
         ui->lineEdit_Video->setText(fileInfo_Video->fileName());
+
+    }
+}
+
+void QCMainWindow::on_lineEdit_Video_textChanged(QString video)
+{
+    if (!video.isEmpty()) {
         ui->label_VideoSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
 }
@@ -531,7 +551,7 @@ void QCMainWindow::on_lineEdit_Creator_textChanged(QString creator)
 
 void QCMainWindow::on_pushButton_BrowseLyrics_clicked()
 {
-    QString filename_Text = QFileDialog::getOpenFileName ( 0, tr("Please choose text file"), fileInfo_MP3->absolutePath(), tr("Text files (*.txt)"));
+    QString filename_Text = QFileDialog::getOpenFileName ( 0, tr("Please choose text file"), defaultDir, tr("Text files (*.txt)"));
 
     if (!filename_Text.isEmpty()) {
         QFile file(filename_Text);

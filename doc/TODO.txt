@@ -41,19 +41,8 @@ notes from thursday:
 
 notes from fepo:
 ================
-1. MP3 / Artwork TAGS an erste Stelle setzen.
-2. Habe bei einem Testsong das Problem, dass keine BPM angezeigt wird. BPM: 0 Nach mehrmaligem Laden ging es dann
-3. Lässt sich ein ermittelter BPM Wert nicht nachträglich eintragen? ( Feld bleibt grau ). Wie ändere ich BPM manuell ?
 
 notes from Hauke:
 =================
-* Wenn man mit der Maus in den Textbereich geht erscheint nach einiger Zeit die Hilfe als ein großer Kasten. Ich würde einen Hilfe-Button stark bevorzugen, weil ich viel mit der Maus arbeite und gerade, wenn ich am Bearbeiten bin, mir dieser Kasten die Sicht versperrt.
-* Abstürze kann ich trotzdem noch konstruieren wenn...
-	... ich auf mp3 aussuchen gehe und den Vorgang dann abbreche,
-	... ich eine Video-Datei auswählen will, bevor ich eine mp3 ausgewählt habe,
-	... ich eine Bild-Datei (CO/BG) auswähle bevor ich eine mp3 auswähle.
 * Beim Auswählen von Video-Dateien hat das Programm noch Probleme. Bei mir hat das Programm meißt keine Video-Dateien angezeigt, obwohl welche vorhanden waren. Da wäre eine Auswahl "all file types" oder so hilfreich.
-
 * mp3 abspielen, um Textversion mit mp3-Version zu vergleichen und Silbentrennung zu machen; * Download-/Suchfunktion für Cover, Background und (Video).
-
-n

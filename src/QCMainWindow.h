@@ -78,8 +78,10 @@ private:
     void changeLanguage(QString);
     QProgressBar *lyricsProgressBar;
     double MP3LengthTime;
+    QString defaultDir;
 
 private slots:
+    void on_lineEdit_Video_textChanged(QString );
     void on_pushButton_startUltraStar_clicked();
     void on_horizontalSlider_MP3_sliderMoved(int position);
     void on_spinBox_Year_valueChanged(QString );
