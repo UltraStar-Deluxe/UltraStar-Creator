@@ -66,3 +66,4 @@ win32 {
 CONFIG -= debug_and_release \
     release
 CONFIG += debug
+#CONFIG += release

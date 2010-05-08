@@ -441,6 +441,7 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                     else if (fileInfo->suffix().toLower() == tr("mp3") || fileInfo->suffix().toLower() == tr("ogg")) {
                         if (fileInfo->exists()) {
                             defaultDir = fileInfo->absolutePath();
+                            fileInfo_MP3 = fileInfo;
                             handleMP3();
                         }
                     }
@@ -1051,6 +1052,9 @@ void QCMainWindow::splitLyricsIntoSyllables()
         nextSeparatorIndex = lyricsString.mid(1).indexOf(QRegExp("[ +\\n]"));
         if (nextSeparatorIndex == -1) {
             currentSyllable = lyricsString;
+            if (currentSyllable.startsWith("+")) {
+                currentSyllable = currentSyllable.mid(1);
+            }
             lyricsSyllableList.append(currentSyllable);
         }
     }
