@@ -67,125 +67,162 @@
           <property name="title">
            <string>MP3</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_4">
-           <property name="topMargin">
-            <number>6</number>
+          <widget class="QWidget" name="">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>301</width>
+             <height>22</height>
+            </rect>
            </property>
-           <property name="bottomMargin">
-            <number>6</number>
-           </property>
-           <item row="0" column="0">
-            <layout class="QGridLayout" name="gridLayout_2" rowstretch="0" columnstretch="0,0,1,0,0" columnminimumwidth="16,88,0,16,16">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_MP3Icon">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/types/music.png</pixmap>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="label_MP3">
-               <property name="font">
-                <font>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="statusTip">
-                <string>MP3 tag</string>
-               </property>
-               <property name="text">
-                <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QLabel" name="label_MP3Icon">
+              <property name="maximumSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="resources/usc.qrc">:/types/music.png</pixmap>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_MP3">
+              <property name="minimumSize">
+               <size>
+                <width>88</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>88</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="statusTip">
+               <string>MP3 tag</string>
+              </property>
+              <property name="text">
+               <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;#MP3:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QLineEdit" name="lineEdit_MP3">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="font">
-                <font>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="statusTip">
-                <string>Set the song to tap by dropping a song file onto USC or by browsing your harddrive.</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="readOnly">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="3">
-              <widget class="QPushButton" name="pushButton_BrowseMP3">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string/>
-               </property>
-               <property name="statusTip">
-                <string>Browse for an song file to tap.</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>16</width>
-                 <height>16</height>
-                </size>
-               </property>
-               <property name="shortcut">
-                <string>Enter</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="4">
-              <widget class="QLabel" name="label_MP3Set">
-               <property name="statusTip">
-                <string>MP3 tag is not set.</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_MP3">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="statusTip">
+               <string>Set the song to tap by dropping a song file onto USC or by browsing your harddrive.</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_BrowseMP3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="statusTip">
+               <string>Browse for an song file to tap.</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="resources/usc.qrc">
+                <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
+               </size>
+              </property>
+              <property name="shortcut">
+               <string>Enter</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_PreviewPlayPause">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="statusTip">
+               <string>Preview MP3 file for correct syllabification of the song's lyrics.</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="resources/usc.qrc">
+                <normaloff>:/control/play.png</normaloff>:/control/play.png</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
         <item>
          <widget class="QGroupBox" name="groupBox_SongMetaInformationTags">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -829,7 +866,7 @@ p, li { white-space: pre-wrap; }
              <item row="7" column="2">
               <widget class="QDoubleSpinBox" name="doubleSpinBox_BPM">
                <property name="enabled">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="font">
                 <font>
@@ -2417,8 +2454,8 @@ I'm ve+~+ry sure.</string>
           <number>6</number>
          </property>
          <item row="0" column="0">
-          <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0,1,0,0,0">
-           <item row="0" column="0" colspan="6">
+          <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0,0,0,0">
+           <item row="0" column="0" colspan="5">
             <widget class="QPlainTextEdit" name="plainTextEdit_OutputLyrics">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -2484,33 +2521,7 @@ I'm ve+~+ry sure.</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QPushButton" name="pushButton_CopyToClipboard">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="toolTip">
-              <string/>
-             </property>
-             <property name="statusTip">
-              <string>Copy UltraStar lyrics to the clipboard.</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="resources/usc.qrc">
-               <normaloff>:/marks/clipboard-text.png</normaloff>:/marks/clipboard-text.png</iconset>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="3">
+           <item row="1" column="2">
             <spacer name="horizontalSpacer_2">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -2523,7 +2534,7 @@ I'm ve+~+ry sure.</string>
              </property>
             </spacer>
            </item>
-           <item row="1" column="4">
+           <item row="1" column="3">
             <widget class="QPushButton" name="pushButton_OutputLyricsIncreaseFontSize">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2546,7 +2557,7 @@ I'm ve+~+ry sure.</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="5">
+           <item row="1" column="4">
             <widget class="QPushButton" name="pushButton_OutputLyricsDecreaseFontSize">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2569,7 +2580,7 @@ I'm ve+~+ry sure.</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="2">
+           <item row="1" column="1">
             <widget class="QPushButton" name="pushButton_startUltraStar">
              <property name="enabled">
               <bool>false</bool>
@@ -3187,7 +3198,6 @@ I'm ve+~+ry sure.</string>
   <tabstop>pushButton_PasteFromClipboard</tabstop>
   <tabstop>pushButton_Tap</tabstop>
   <tabstop>pushButton_SaveToFile</tabstop>
-  <tabstop>pushButton_CopyToClipboard</tabstop>
   <tabstop>plainTextEdit_OutputLyrics</tabstop>
  </tabstops>
  <resources>

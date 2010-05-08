@@ -2,7 +2,6 @@ notes from bohning:
 ===================
 * undo last tap with rightclick on tap-button
 * keyboard shortcut for tapping (V not working properly b/c of autorepeat, space only working because of manual focus to tap button)
-* play mp3 only (to determine needed playback speed adjustment and default pitch for example, to compare lyrics to mp3 version and to work on syllabification
 * visualize current beat
 * visualize note creation (progressbar?)
 * replace b/# in default pitch by proper musical symbol

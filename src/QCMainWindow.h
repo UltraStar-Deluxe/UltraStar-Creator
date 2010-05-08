@@ -71,8 +71,7 @@ private:
         stopped,
         paused,
         playing
-    };
-    State state;
+    } state, previewState;
     void updateSyllableButtons();
     QStringList lyricsSyllableList;
     void changeLanguage(QString);
@@ -81,6 +80,7 @@ private:
     QString defaultDir;
 
 private slots:
+    void on_pushButton_PreviewPlayPause_clicked();
     void on_lineEdit_Video_textChanged(QString );
     void on_pushButton_startUltraStar_clicked();
     void on_horizontalSlider_MP3_sliderMoved(int position);
@@ -118,7 +118,6 @@ private slots:
     void on_pushButton_BrowseBackground_clicked();
     void on_pushButton_BrowseMP3_clicked();
     void on_pushButton_Stop_clicked();
-    void on_pushButton_CopyToClipboard_clicked();
     void on_pushButton_PasteFromClipboard_clicked();
     void on_pushButton_Tap_released();
     void on_pushButton_Tap_pressed();

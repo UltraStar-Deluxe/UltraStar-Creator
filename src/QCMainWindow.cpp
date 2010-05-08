@@ -51,6 +51,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     firstNote = true;
     clipboard = QApplication::clipboard();
     state = QCMainWindow::uninitialized;
+    previewState = QCMainWindow::uninitialized;
     defaultDir = QDir::homePath();
 }
 
@@ -110,7 +111,6 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->groupBox_InputLyrics->setDisabled(true);
         ui->groupBox_OutputLyrics->setEnabled(true);
         ui->pushButton_SaveToFile->setDisabled(true);
-        ui->pushButton_CopyToClipboard->setDisabled(true);
         ui->pushButton_startUltraStar->setDisabled(true);
         ui->groupBox_TapArea->setEnabled(true);
         ui->pushButton_UndoTap->setDisabled(true);
@@ -167,11 +167,14 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
 
         updateSyllableButtons();
 
+        // reset from preview play
+        BASS_StopAndFree();
+        _mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->absoluteFilePath().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
+
         playbackSpeedDecreasePercentage = 100 - ui->horizontalSlider_PlaybackSpeed->value();
         _mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
         bool result = BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO, -playbackSpeedDecreasePercentage);
         if (result) {
-            BASS_SetPosition(0);
             BASS_Play();
             updateTime();
         }
@@ -302,13 +305,6 @@ void QCMainWindow::on_pushButton_PasteFromClipboard_clicked()
     }
 }
 
-void QCMainWindow::on_pushButton_CopyToClipboard_clicked()
-{
-    QMimeData *mimeData = new QMimeData;
-    mimeData->setData("text/plain", ui->plainTextEdit_OutputLyrics->toPlainText().toUtf8());
-    clipboard->setMimeData(mimeData, QClipboard::Clipboard);
-}
-
 void QCMainWindow::on_pushButton_Stop_clicked()
 {
     if (state == playing || state == paused) {
@@ -329,7 +325,6 @@ void QCMainWindow::on_pushButton_Stop_clicked()
         ui->pushButton_Reset->setEnabled(true);
         ui->groupBox_TapArea->setDisabled(true);
         ui->pushButton_SaveToFile->setEnabled(true);
-        ui->pushButton_CopyToClipboard->setEnabled(true);
         QWidget::setAcceptDrops(true);
     }
     else {
@@ -800,8 +795,6 @@ void QCMainWindow::BASS_SetPosition(int seconds) {
 
 void QCMainWindow::handleMP3() {
     ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
-    ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
-    ui->label_MP3Set->setStatusTip(tr("#MP3 tag is set."));
 
     _mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->absoluteFilePath().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
     QWORD MP3LengthBytes = BASS_ChannelGetLength(_mediaStream, BASS_POS_BYTE); // the length in bytes
@@ -839,7 +832,10 @@ void QCMainWindow::handleMP3() {
     ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
     ui->spinBox_Year->setValue(ref.tag()->year());
     // lyrics from mp3 lyrics-tag
-    //ui->plainTextEdit_InputLyrics->setPlainText(TStringToQString(ref.tag()->comment()));
+
+    ui->groupBox_SongMetaInformationTags->setEnabled(true);
+    previewState = QCMainWindow::initialized;
+    ui->pushButton_PreviewPlayPause->setEnabled(true);
 
     if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
         state = QCMainWindow::initialized;
@@ -905,6 +901,7 @@ void QCMainWindow::on_pushButton_Reset_clicked()
     if (state == stopped) {
         lyricsProgressBar->hide();
         state = QCMainWindow::initialized;
+        previewState = QCMainWindow::initialized;
         numSyllables = 0;
         firstNoteStartBeat = 0;
         currentNoteBeatLength = 0;
@@ -1135,8 +1132,34 @@ void QCMainWindow::on_pushButton_startUltraStar_clicked()
         if(USdxFileInfo->exists()) {
             settings.setValue("USdxFilePath", USdxFilePath);
             QStringList USdxArguments;
-            USdxArguments << "-SongPath" << fileInfo_MP3->absolutePath();
+            USdxArguments << "-SongPath " << fileInfo_MP3->absolutePath();
             QProcess::startDetached(USdxFilePath, USdxArguments);
         }
+    }
+}
+
+void QCMainWindow::on_pushButton_PreviewPlayPause_clicked()
+{
+    if (previewState == QCMainWindow::initialized) {
+        previewState = QCMainWindow::playing;
+        _mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
+        bool result = BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO, 0);
+        if (result) {
+            BASS_Play();
+        }
+        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control/pause.png"));
+    }
+    else if (previewState == QCMainWindow::playing) {
+        previewState = QCMainWindow::paused;
+        BASS_Pause();
+        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control/play.png"));
+    }
+    else if (previewState == QCMainWindow::paused) {
+        previewState = QCMainWindow::playing;
+        BASS_Resume();
+        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control/pause.png"));
+    }
+    else {
+        // should not occur
     }
 }
