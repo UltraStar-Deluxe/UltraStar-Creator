@@ -385,7 +385,7 @@ void QCMainWindow::on_pushButton_BrowseVideo_clicked()
     QString filename_Video = QFileDialog::getOpenFileName ( 0,
                                                             tr("Please choose video file"),
                                                             defaultDir,
-                                                            tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts);;All files (*.*)"));
+                                                            tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.m4v *.vob *.ts);;All files (*.*)"));
     QFileInfo *fileInfo_Video = new QFileInfo(filename_Video);
     if (fileInfo_Video->exists()) {
         if (defaultDir == QDir::homePath()) {
@@ -469,7 +469,7 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                             // user cancelled
                         }
                     }
-                    else if ((fileInfo->suffix().toLower() == tr("avi")) || fileInfo->suffix().toLower() == tr("flv") || fileInfo->suffix().toLower() == tr("mpg") || fileInfo->suffix().toLower() == tr("mpeg") || fileInfo->suffix().toLower() == tr("mp4") || fileInfo->suffix().toLower() == tr("vob") || fileInfo->suffix().toLower() == tr("ts")) {
+                    else if ((fileInfo->suffix().toLower() == tr("avi")) || fileInfo->suffix().toLower() == tr("flv") || fileInfo->suffix().toLower() == tr("mpg") || fileInfo->suffix().toLower() == tr("mpeg") || fileInfo->suffix().toLower() == tr("m4v") || fileInfo->suffix().toLower() == tr("mp4") || fileInfo->suffix().toLower() == tr("vob") || fileInfo->suffix().toLower() == tr("ts")) {
                         if (!ui->groupBox_VideoTags->isChecked()) {
                             ui->groupBox_VideoTags->setChecked(true);
                         }
