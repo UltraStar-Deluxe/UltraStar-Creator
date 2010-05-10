@@ -36,7 +36,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="346"/>
         <source>Enter the song artist.</source>
-        <translation type="unfinished">Trage den Liedinterpreten ein.</translation>
+        <translation>Trage den Liedinterpreten ein.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="387"/>
@@ -449,17 +449,17 @@
     <message>
         <location filename="../QCMainWindow.ui" line="636"/>
         <source>Enter the song creator.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gib Deinen Namen bzw. Dein Pseudonym als Liedersteller an.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="680"/>
         <source>BPM will be determined automatically from the MP3 file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die BPM werden automatisch aus der MP3 ermittelt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="949"/>
         <source>Gap will be determined automatically when you start tapping.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Gap wird automatisch ermittelt, sobald Du mit dem Tappen anfängst.</translation>
     </message>
     <message>
         <source>Input Lyrics</source>
@@ -468,24 +468,24 @@
     <message>
         <location filename="../QCMainWindow.ui" line="2121"/>
         <source>Load input lyrics from a plain text file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lade den Liedtext aus einer Datei.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2144"/>
         <source>Paste input lyrics from the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Füge den Liedtext aus der Zwischenablage ein.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2180"/>
         <location filename="../QCMainWindow.ui" line="2351"/>
         <source>Increase font size.</source>
-        <translation type="unfinished"></translation>
+        <translation>Schriftgröße vergrößern.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2203"/>
         <location filename="../QCMainWindow.ui" line="2374"/>
         <source>Decrease font size.</source>
-        <translation type="unfinished"></translation>
+        <translation>Schriftgröße verkleinern.</translation>
     </message>
     <message>
         <source>Output Lyrics</source>
@@ -494,7 +494,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="2312"/>
         <source>Save UltraStar lyrics to a file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Speichere die UltraStar-Datei.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1887"/>
@@ -505,47 +505,47 @@
     <message>
         <location filename="../QCMainWindow.ui" line="140"/>
         <source>Set the song to tap by dropping a song file onto USC or by browsing your harddrive.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle das zu tappende Lied, entweder per Drag &apos;n Drop oder per Dateiauswahldialog.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="168"/>
         <source>Browse for an song file to tap.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle ein zu tappendes Lied.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="184"/>
         <source>Enter</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1058"/>
         <source>Set the cover by dropping an image file onto USC or by browsing your harddrive.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle ein Coverbild, entweder per Drag &apos;n Drop oder bei Dateiauswahldialog.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1086"/>
         <source>Browse for a cover image file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle ein Coverbild Datei.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1128"/>
         <source>Set the background by dropping an image file onto USC or by browsing your harddrive.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle ein Hintergrundbild, entweder per Drag &apos;n Drop oder bei Dateiauswahldialog.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1153"/>
         <source>Browse for a background image file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle ein Hintergrundbild.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1239"/>
         <source>Video Tags</source>
-        <translation></translation>
+        <translation>Video Tags</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1303"/>
         <source>Browse for a video file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle eine Videodatei.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1439"/>
@@ -630,17 +630,17 @@
     <message>
         <location filename="../QCMainWindow.ui" line="1590"/>
         <source>Default pitch is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardtonhöhe ist festgelegt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1637"/>
         <source>Playback speed:</source>
-        <translation type="unfinished">Geschwindigkeit:</translation>
+        <translation>Geschwindigkeit:</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1664"/>
         <source>Current playback speed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Momentane Wiedergabegeschwindigkeit.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1667"/>
@@ -650,12 +650,12 @@
     <message>
         <location filename="../QCMainWindow.ui" line="1692"/>
         <source>Set playback speed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle die Wiedergabegeschwindigkeit.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1734"/>
         <source>Playback speed is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Wiedergabegeschwindigkeit ist festgelegt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1772"/>
@@ -665,13 +665,13 @@
     <message>
         <location filename="../QCMainWindow.ui" line="1817"/>
         <source>Start tapping.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fange mit dem Tappen an.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1820"/>
         <location filename="../QCMainWindow.ui" line="2474"/>
         <source>play</source>
-        <translation type="unfinished"></translation>
+        <translation>Play</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1833"/>
@@ -681,18 +681,18 @@
     <message>
         <location filename="../QCMainWindow.ui" line="1871"/>
         <source>Stop tapping.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tappen stoppen.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1874"/>
         <location filename="../QCMainWindow.ui" line="1928"/>
         <source>stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1925"/>
         <source>Reset &amp; restart tapping.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setze zurück und fange von vorne an.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1941"/>
@@ -730,12 +730,29 @@ I know what leaves me cold
 and what burns me up
 now this time it&apos;s just right
 I&apos;m ve+~+ry sure.</source>
-        <translation type="unfinished"></translation>
+        <translation>Füge den Liedtext hier ein, entweder durch Laden einer
+Datei oder durch Einfügen aus der Zwischenablage. Editiere
+den Liedtext nach den folgenden Regeln:
+
+* Zeilenumbrüche entsprechend Zeilenumbrüchen in UltraStar.
+* Wörter werden durch Leerzeichen getrennt.
+* Silben innerhalb eines Wortes werden durch &apos;+&apos; getrennt.
+* Füge eine &apos;~&apos; für jeden wiederholten Vokal ein, falls nötig.
+
+Beispiel:
+
+Das ist wie Flie+gen
+Dich ein+fach zu lie+ben
+Dich spür&apos;n, Dich ver+mis+sen
+Dich ein+fach zu küs+sen
+Fühl&apos; dass Du da bist
+Auch wenn Du weit weg bist
+Der Him+mel ist na+~h.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2400"/>
         <source>Launch UltraStar with current song folder for finetuning.</source>
-        <translation type="unfinished"></translation>
+        <translation>Starte UltraStar mit dem getappten Lied für die Feinabstimmung.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2442"/>
@@ -957,7 +974,7 @@ I&apos;m ve+~+ry sure.</source>
         <location filename="../QCMainWindow.cpp" line="131"/>
         <location filename="../QCMainWindow.cpp" line="226"/>
         <source>Pause tapping.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausiere das Tappen.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="162"/>
@@ -967,7 +984,7 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="214"/>
         <source>Continue tapping.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tappen fortführen.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="311"/>
@@ -983,12 +1000,12 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="339"/>
         <source>State: stopped.</source>
-        <translation type="unfinished"></translation>
+        <translation>Status: gestoppt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="364"/>
         <source>Please choose MP3 file</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte wähle eine MP3 Datei aus</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="364"/>
@@ -998,7 +1015,7 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="374"/>
         <source>Please choose cover image file</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="374"/>
@@ -1009,12 +1026,12 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="393"/>
         <source>Please choose background image file</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte wähle eine Hintergrundbilddatei aus</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="413"/>
         <source>Please choose video file</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte wähle eine Videodatei aus</translation>
     </message>
     <message>
         <source>Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts</source>
@@ -1083,52 +1100,52 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="523"/>
         <source>#TITLE tag is set.</source>
-        <translation type="unfinished">#TITLE tag ist gesetzt.</translation>
+        <translation>Der #TITLE Tag ist gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="527"/>
         <source>#TITLE tag is empty.</source>
-        <translation>#TITLE tag ist leer.</translation>
+        <translation>Der #TITLE Tag ist leer.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="535"/>
         <source>#ARTIST tag is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #ARTIST Tag ist gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="539"/>
         <source>#ARTIST tag is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #ARTIST Tag ist leer.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="547"/>
         <source>#LANGUAGE tag is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #LANGUAGE Tag ist gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="551"/>
         <source>#LANGUAGE tag is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #LANGUAGE Tag ist leer.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="559"/>
         <source>#EDITION tag is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #EDITION Tag ist gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="563"/>
         <source>#EDITION tag is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #EDITION Tag ist leer.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="571"/>
         <source>#GENRE tag is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #GENRE Tag ist gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="575"/>
         <source>#GENRE tag is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #GENRE Tag ist leer.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="832"/>
@@ -1149,27 +1166,27 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="1129"/>
         <source>#YEAR tag is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #YEAR Tag ist gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="1133"/>
         <source>#YEAR tag is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #YEAR Tag ist leer.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="1161"/>
         <source>Choose UltraStar executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle die UltraStar Executable</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="1161"/>
         <source>UltraStar executable (*.exe)</source>
-        <translation>UltraStar (*.exe)</translation>
+        <translation>UltraStar Executable (*.exe)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="583"/>
         <source>#CREATOR tag is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #CREATOR Tag ist gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="415"/>
@@ -1179,7 +1196,7 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="587"/>
         <source>#CREATOR tag is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #CREATOR Tag ist leer.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="593"/>
@@ -1217,17 +1234,17 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="870"/>
         <source>State: initialized.</source>
-        <translation type="unfinished"></translation>
+        <translation>Status: initialisiert.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="875"/>
         <source>State: uninitialized.</source>
-        <translation type="unfinished"></translation>
+        <translation>Status: nicht initialisiert.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="855"/>
         <source>#BPM tag set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #BPM Tag ist gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="882"/>
@@ -1237,12 +1254,12 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="889"/>
         <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 1999-2008&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;BASS Audiobibliothek.&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS ist eine Audiobibliothek für die Verwendung in Windows und MacOSX Software. Ihre Zielsetzung ist es, die mächtigsten und effizientesten (und gleichzeitig einfach anzuwendenden) Funktionen für das Sampling, das Streaming und die Aufnahme bereitzustellen. Alles in einer winzigen DLL unter 100KB Größe.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 1999-2008&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Alle Rechte vorbehalten.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="902"/>
         <source>&lt;b&gt;TagLib Audio Meta-Data Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;TagLib is a library for reading and editing the meta-data of several popular audio formats.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1.%2.%3&lt;/b&gt;&lt;br&gt;&lt;br&gt;Visit: &lt;a href=&quot;http://developer.kde.org/~wheeler/taglib.html&quot;&gt;TagLib Homepage&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;TagLib Audio Metadatenbibliothek&lt;/b&gt;&lt;br&gt;&lt;br&gt;TagLib ist eine Bibliothek zum Auslesen und Edititieren der Metadaten einiger gängigen Audioformate.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1.%2.%3&lt;/b&gt;&lt;br&gt;&lt;br&gt;Besuche: &lt;a href=&quot;http://developer.kde.org/~wheeler/taglib.html&quot;&gt;TagLib Homepage&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
@@ -1255,7 +1272,7 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="59"/>
         <source>This tool enables you to &lt;b&gt;rapidly&lt;/b&gt; create UltraStar text files &lt;b&gt;from scratch&lt;/b&gt;.&lt;br&gt;&lt;br&gt;To get started, simply chose a &lt;b&gt;song file&lt;/b&gt; in MP3 or OGG format, insert the &lt;b&gt;song lyrics&lt;/b&gt; from a file or the clipboard and divide them into syllables with &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Important song meta information&lt;/b&gt; such as &lt;b&gt;BPM&lt;/b&gt; and &lt;b&gt;GAP&lt;/b&gt; are determined &lt;b&gt;automatically&lt;/b&gt;.&lt;br&gt;&lt;br&gt;The &lt;b&gt;ID3 tag&lt;/b&gt; is used to fill in song details, if available.&lt;br&gt;&lt;br&gt;To &lt;b&gt;start tapping&lt;/b&gt;, hit the play/pause button (Keyboard: CTRL+P). Keep the &lt;b&gt;tap button&lt;/b&gt; (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. Undo the last tap with the undo button (Keyboard: x), stop tapping with the stop button (Keyboard: CTRL+S), start from the beginning with the reset button (Keyboard: CTRL+R). When finished, save the tapped song using the save button (CTRL+S).&lt;br&gt;&lt;br&gt;Having successfully tapped a song, use the UltraStar internal editor for &lt;b&gt;finetuning the timings&lt;/b&gt;, setting &lt;b&gt;note pitches&lt;/b&gt; and &lt;b&gt;golden&lt;/b&gt; or &lt;b&gt;freestyle notes&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Happy creating!&lt;/b&gt;&lt;br&gt;&lt;br&gt;P.S.: The resulting UltraStar text files are encoded using &lt;b&gt;UTF-8&lt;/b&gt;, therefore they are only compatible with USDX 1.1. If you want to use them with an older version, convert the file encoding to &lt;b&gt;ANSI&lt;/b&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dieses Programm ermöglicht es Dir, UltraStar Textdateien &lt;b&gt;schnell&lt;/b&gt; und &lt;b&gt;ohne Weiteres&lt;/b&gt; zu erstellen.&lt;br&gt;&lt;br&gt;Um loszulegen wählst Du einfach eine &lt;b&gt;Lieddatei&lt;/b&gt; im MP3 oder OGG Format, fügst den &lt;b&gt;Liedtext&lt;/b&gt; aus einer vorhandenen Datei oder von der Zwischenablage ein und trennst Silben mit &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Wichtige Metainformation des Lieds&lt;/b&gt; wie die &lt;b&gt;BPM&lt;/b&gt; und der &lt;b&gt;GAP&lt;/b&gt; werden &lt;b&gt;automatisch&lt;/b&gt; ermittelt.&lt;br&gt;&lt;br&gt;Der &lt;b&gt;ID3 Tag&lt;/b&gt; wird verwendet, um weitere Details des Lieds zu füllen, sofern diese vorhanden sind.&lt;br&gt;&lt;br&gt;Um mit dem &lt;b&gt;Tappen anzufangen&lt;/b&gt; drückst Du einfach den Play/Pause Button (Tastatur: STRG+P). Halte den &lt;b&gt;Tap Button&lt;/b&gt; (Tastatur: Leertaste) gedrückt solange die aktuelle Silbe gesungen wird, um eine Note zu tappen. Mache eine falsch getappte Note rückgängig mit dem Undo Button (Tastatur: x), stoppe das Tappen mit dem Stop Button (Tastatur: STRG+S), fange von vorne an mit dem Reset Button (Tastatur: STRG+R). Nach dem Tappen speicherst Du den getappten Song mit dem Speichern Button (Tastatur: STRG+S).&lt;br&gt;&lt;br&gt;Nach dem erfolgreichen Tappen eines Lieds kannst Du den UltraStar-internen Editor für das &lt;b&gt;Finetuning der Timings&lt;/b&gt;, das Setzen der &lt;b&gt;Tonhöhen&lt;/b&gt; und &lt;b&gt;goldenen&lt;/b&gt; oder &lt;b&gt;Freestyle Noten&lt;/b&gt; verwenden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Viel Spaß beim Liederstellen!&lt;/b&gt;&lt;br&gt;&lt;br&gt;P.S.: Die UltraStar Textdateien werden mittels &lt;b&gt;UTF-8&lt;/b&gt; kodiert, daher sind sie nur zum neuen UltraStar deluxe 1.1 kompatibel. Möchtest Du sie mit einer älteren Version verwenden, so musst Du die Kodierung der Datei mithilfe eines Editors in&lt;b&gt;ANSI&lt;/b&gt; ändern.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="60"/>
