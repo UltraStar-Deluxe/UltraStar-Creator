@@ -56,7 +56,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     this->show();
 
     QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
-                              QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b>.<br><br>The <b>ID3 tag</b> is used to fill in song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. Undo the last tap with the undo button (Keyboard: x), stop tapping with the stop button (Keyboard: CTRL+S), start from the beginning with the reset button (Keyboard: CTRL+R). When finished, save the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b><br><br>P.S.: The resulting UltraStar text files are encoded using <b>UTF-8</b>, therefore they are only compatible with USDX 1.1. If you want to use them with an older version, convert the file encoding to <b>ANSI</b>."),
+                              QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL+S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL+R). When finished, <b>save</b> the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
                               BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
 
     QSettings settings;
@@ -112,8 +112,17 @@ bool QCMainWindow::on_pushButton_SaveToFile_clicked()
     }
 
     QTextStream out(&file);
-    out.setCodec(QTextCodec::codecForName("UTF-8"));
-    out.setGenerateByteOrderMark(true); // BOM needed by UltraStar 1.1
+    QTextCodec *codec = QTextCodec::codecForName("Windows-1252");
+    if (codec->canEncode(ui->plainTextEdit_OutputLyrics->toPlainText())) {
+        out.setCodec(codec);
+        out << "#ENCODING:CP1252\n";
+    }
+    else {
+        out.setCodec(QTextCodec::codecForName("UTF-8"));
+        out.setGenerateByteOrderMark(true); // BOM needed by UltraStar 1.1
+        out << "#ENCODING:UTF8\n";
+    }
+
     QApplication::setOverrideCursor(Qt::WaitCursor);
     out << ui->plainTextEdit_OutputLyrics->toPlainText();
     QApplication::restoreOverrideCursor();
@@ -159,7 +168,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
             ui->lineEdit_Background->setText(tr("%1 - %2 [BG].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
         }
 
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ENCODING:UTF8"));
+        //ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ENCODING:UTF8"));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#TITLE:%1").arg(ui->lineEdit_Title->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));

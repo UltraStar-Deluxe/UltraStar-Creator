@@ -15,14 +15,9 @@ notes from bohning:
 * get lyrics from internet
 * undo with step-back in mp3 time
 * automatic syllabification
-* output with ANSI encoding by choice
 
 notes from canni:
 =================
-* Lyrics: umlaute werden beim laden aus txt datei nicht angezeigt => utf-8
-  => automatische encoding erkennung und #ENCODING tag einfügung?
-  #ENCODING:CP1250, CP1252, UTF8, LOCALE, AUTO
-	REMARK: true, true... (cannot reproduce for umlauts, but for other special characters, e.g. cyrillic letters)
 * leere tags nicht mit in den output
 	REMARK: empty tags are written on purpose to facilitate entering them at a later stage (empty tags don't bother anyone)
 * hilfetexte überarbeiten (tw. kürzen, verständlicher oder keyboard shortcuts auflisten z.B. space für einen tap)
