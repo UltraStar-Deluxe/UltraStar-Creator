@@ -18,6 +18,33 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
 
     ui->setupUi(this);
     setWindowTitle(tr("UltraStar Song Creator %1.%2.%3").arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION));
+
+    // adding languages to language combobox as I did not find a way to add itemData within designer
+    // this way, foreign language names are displayed to the user while the UltraStar file will contain the
+    // english language name
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/hr.png"),tr("Croatian"),"Croatian");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/cz.png"),tr("Czech"),"Czech");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/dk.png"),tr("Danish"),"Danish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/nl.png"),tr("Dutch"),"Dutch");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/us.png"),tr("English"),"English");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/fi.png"),tr("Finnish"),"Finnish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/fr.png"),tr("French"),"French");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/de.png"),tr("German"),"German");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/in.png"),tr("Hindi"),"Hindi");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/it.png"),tr("Italian"),"Italian");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/jp.png"),tr("Japanese"),"Japanese");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/kr.png"),tr("Korean"),"Korean");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/va.png"),tr("Latin"),"Latin");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/no.png"),tr("Norwegian"),"Norwegian");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/pl.png"),tr("Polish"),"Polish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/pt.png"),tr("Portuguese"),"Portuguese");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/ru.png"),tr("Russian"),"Russian");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/sk.png"),tr("Slovak"),"Slovak");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/si.png"),tr("Slowenian"),"Slowenian");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/es.png"),tr("Spanish"),"Spanish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/se.png"),tr("Swedish"),"Swedish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/tr.png"),tr("Turkish"),"Turkish");
+
     logSrv->add(tr("Ready."), QU::Information);
     lyricsProgressBar = new QProgressBar;
     QMainWindow::statusBar()->addPermanentWidget(lyricsProgressBar);
@@ -135,7 +162,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ENCODING:UTF8"));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#TITLE:%1").arg(ui->lineEdit_Title->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->currentText()));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#EDITION:%1").arg(ui->comboBox_Edition->currentText()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#YEAR:%1").arg(ui->spinBox_Year->text()));
@@ -385,7 +412,7 @@ void QCMainWindow::on_pushButton_BrowseVideo_clicked()
     QString filename_Video = QFileDialog::getOpenFileName ( 0,
                                                             tr("Please choose video file"),
                                                             defaultDir,
-                                                            tr("Video files (*.avi *.flv *.mpg *.mpeg *.mp4 *.m4v *.vob *.ts);;All files (*.*)"));
+                                                            tr("Video files (*.avi *.divx *.flv *.mpg *.mpeg *.mp4 *.m4v *.vob *.ts);;All files (*.*)"));
     QFileInfo *fileInfo_Video = new QFileInfo(filename_Video);
     if (fileInfo_Video->exists()) {
         if (defaultDir == QDir::homePath()) {
@@ -469,7 +496,7 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                             // user cancelled
                         }
                     }
-                    else if ((fileInfo->suffix().toLower() == tr("avi")) || fileInfo->suffix().toLower() == tr("flv") || fileInfo->suffix().toLower() == tr("mpg") || fileInfo->suffix().toLower() == tr("mpeg") || fileInfo->suffix().toLower() == tr("m4v") || fileInfo->suffix().toLower() == tr("mp4") || fileInfo->suffix().toLower() == tr("vob") || fileInfo->suffix().toLower() == tr("ts")) {
+                    else if ((fileInfo->suffix().toLower() == tr("avi")) || fileInfo->suffix().toLower() == tr("divx") || fileInfo->suffix().toLower() == tr("flv") || fileInfo->suffix().toLower() == tr("mpg") || fileInfo->suffix().toLower() == tr("mpeg") || fileInfo->suffix().toLower() == tr("m4v") || fileInfo->suffix().toLower() == tr("mp4") || fileInfo->suffix().toLower() == tr("vob") || fileInfo->suffix().toLower() == tr("ts")) {
                         if (!ui->groupBox_VideoTags->isChecked()) {
                             ui->groupBox_VideoTags->setChecked(true);
                         }
