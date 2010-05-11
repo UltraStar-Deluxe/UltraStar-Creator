@@ -28,6 +28,8 @@
         <file>usc.it.qm</file>
         <file>usc.pl.qm</file>
         <file>yass.png</file>
+        <file>dict/en_US.dic</file>
+        <file>dict/en_US.aff</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>

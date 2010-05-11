@@ -57,11 +57,13 @@ win32 {
     RC_FILE = usc.rc
     INCLUDEPATH += ../include/taglib \
         ../include/bass \
-        ../include/bass_fx
+        ../include/bass_fx \
+        ../include/hunspell
     LIBS += -L"../lib" \
         -ltag \
         -lbass \
-        -lbass_fx
+        -lbass_fx \
+        -llibhunspell
 }
 CONFIG -= debug_and_release \
     release

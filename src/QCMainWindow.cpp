@@ -4,6 +4,7 @@
 #include "QULogService.h"
 #include "QUMessageBox.h"
 #include "QUAboutDialog.h"
+#include "hunspelldll.h"
 
 #include <QFileDialog>
 #include <QTextStream>
