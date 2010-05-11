@@ -80,6 +80,7 @@ private:
     QString defaultDir;
 
 private slots:
+    void on_pushButton_startYass_clicked();
     void on_pushButton_PreviewPlayPause_clicked();
     void on_lineEdit_Video_textChanged(QString );
     void on_pushButton_startUltraStar_clicked();

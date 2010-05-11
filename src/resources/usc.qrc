@@ -27,6 +27,7 @@
         <file>usc.fr.qm</file>
         <file>usc.it.qm</file>
         <file>usc.pl.qm</file>
+        <file>yass.png</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>

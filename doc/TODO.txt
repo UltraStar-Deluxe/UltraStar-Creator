@@ -5,9 +5,7 @@ notes from bohning:
 * visualize current beat
 * visualize note creation (progressbar?)
 * replace b/# in default pitch by proper musical symbol
-* add userdata to combobox_Language so that strings are translatable, but ultrastar file contains english language name
 * fix resizing (especially size decrease)
-* fix output to clipboard with special chars (encoding = UTF8)
 * add proper shortcuts to different actions (open / save / ...
 * add menus for inputlyrics (load from file / copy from clipboard / auto-clean / ...) and outputlyrics (save / copy to clipboard) and tags (option to turn id3-tag auto-fill off, set BPM manually, etc.)?
 * work on documentation

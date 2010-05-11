@@ -127,6 +127,7 @@ bool QCMainWindow::on_pushButton_SaveToFile_clicked()
     out << ui->plainTextEdit_OutputLyrics->toPlainText();
     QApplication::restoreOverrideCursor();
     ui->pushButton_startUltraStar->setEnabled(true);
+    ui->pushButton_startYass->setEnabled(true);
     return true;
 }
 
@@ -148,6 +149,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->groupBox_OutputLyrics->setEnabled(true);
         ui->pushButton_SaveToFile->setDisabled(true);
         ui->pushButton_startUltraStar->setDisabled(true);
+        ui->pushButton_startYass->setDisabled(true);
         ui->groupBox_TapArea->setEnabled(true);
         ui->pushButton_UndoTap->setDisabled(true);
         ui->pushButton_Tap->setEnabled(true);
@@ -373,7 +375,7 @@ void QCMainWindow::on_pushButton_BrowseMP3_clicked()
     QString filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose MP3 file"), defaultDir, tr("Audio files (*.mp3 *.ogg)"));
     fileInfo_MP3 = new QFileInfo(filename_MP3);
     if (fileInfo_MP3->exists()) {
-        defaultDir = fileInfo_MP3->absolutePath();
+        defaultDir = fileInfo_MP3->absolutePath();        
         handleMP3();
     }
 }
@@ -831,6 +833,8 @@ void QCMainWindow::BASS_SetPosition(int seconds) {
 }
 
 void QCMainWindow::handleMP3() {
+    setCursor(Qt::WaitCursor);
+
     ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
 
     _mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->absoluteFilePath().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
@@ -884,6 +888,7 @@ void QCMainWindow::handleMP3() {
         QMainWindow::statusBar()->showMessage(tr("State: uninitialized."));
         ui->pushButton_PlayPause->setDisabled(true);
     }
+    setCursor(Qt::ArrowCursor);
 }
 
 void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)
@@ -1201,5 +1206,36 @@ void QCMainWindow::on_pushButton_PreviewPlayPause_clicked()
     }
     else {
         // should not occur
+    }
+}
+
+void QCMainWindow::on_pushButton_startYass_clicked()
+{
+    QSettings settings;
+    QString YassFilePath;
+    QFileInfo *YassFileInfo;
+
+    if(settings.contains("YassFilePath")) {
+        YassFilePath = settings.value("YassFilePath").toString();
+        YassFileInfo = new QFileInfo(YassFilePath);
+        if(YassFileInfo->exists()) {
+            settings.setValue("YassFilePath", YassFilePath);
+            QStringList YassArguments;
+            YassArguments << fileInfo_MP3->absolutePath();
+            QProcess::startDetached(YassFilePath, YassArguments);
+        }
+        else {
+            settings.remove("YassFilePath");
+        }
+    }
+    else {
+        YassFilePath = QFileDialog::getOpenFileName(0, tr("Choose YASS executable"), QDir::homePath(),tr("YASS executable (*.exe)"));
+        YassFileInfo = new QFileInfo(YassFilePath);
+        if(YassFileInfo->exists()) {
+            settings.setValue("YassFilePath", YassFilePath);
+            QStringList YassArguments;
+            YassArguments << fileInfo_MP3->absolutePath();
+            QProcess::startDetached(YassFilePath, YassArguments);
+        }
     }
 }
