@@ -44,120 +44,120 @@
         <translation>Wähle die Liedsprache.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="25"/>
+        <location filename="../QCMainWindow.cpp" line="26"/>
         <source>Croatian</source>
         <translation>Kroatisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="26"/>
+        <location filename="../QCMainWindow.cpp" line="27"/>
         <source>Czech</source>
         <translation>Tschechisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="27"/>
+        <location filename="../QCMainWindow.cpp" line="28"/>
         <source>Danish</source>
         <translation>Dänisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="28"/>
+        <location filename="../QCMainWindow.cpp" line="29"/>
         <source>Dutch</source>
         <translation>Niederländisch</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2907"/>
-        <location filename="../QCMainWindow.cpp" line="29"/>
-        <location filename="../QCMainWindow.cpp" line="718"/>
+        <location filename="../QCMainWindow.cpp" line="30"/>
+        <location filename="../QCMainWindow.cpp" line="719"/>
         <source>English</source>
         <translation>Englisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="30"/>
+        <location filename="../QCMainWindow.cpp" line="31"/>
         <source>Finnish</source>
         <translation>Finnisch</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2958"/>
-        <location filename="../QCMainWindow.cpp" line="31"/>
-        <location filename="../QCMainWindow.cpp" line="722"/>
+        <location filename="../QCMainWindow.cpp" line="32"/>
+        <location filename="../QCMainWindow.cpp" line="723"/>
         <source>French</source>
         <translation>Französisch</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2925"/>
-        <location filename="../QCMainWindow.cpp" line="32"/>
-        <location filename="../QCMainWindow.cpp" line="726"/>
+        <location filename="../QCMainWindow.cpp" line="33"/>
+        <location filename="../QCMainWindow.cpp" line="727"/>
         <source>German</source>
         <translation>Deutsch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="33"/>
+        <location filename="../QCMainWindow.cpp" line="34"/>
         <source>Hindi</source>
         <translation>Hindi</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2988"/>
-        <location filename="../QCMainWindow.cpp" line="34"/>
-        <location filename="../QCMainWindow.cpp" line="730"/>
+        <location filename="../QCMainWindow.cpp" line="35"/>
+        <location filename="../QCMainWindow.cpp" line="731"/>
         <source>Italian</source>
         <translation>Italienisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="35"/>
+        <location filename="../QCMainWindow.cpp" line="36"/>
         <source>Japanese</source>
         <translation>Japanisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="36"/>
+        <location filename="../QCMainWindow.cpp" line="37"/>
         <source>Korean</source>
         <translation>Koreanisch</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="545"/>
-        <location filename="../QCMainWindow.cpp" line="37"/>
+        <location filename="../QCMainWindow.cpp" line="38"/>
         <source>Latin</source>
         <translation>Latein</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="38"/>
+        <location filename="../QCMainWindow.cpp" line="39"/>
         <source>Norwegian</source>
         <translation>Norwegisch</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3003"/>
-        <location filename="../QCMainWindow.cpp" line="39"/>
-        <location filename="../QCMainWindow.cpp" line="734"/>
+        <location filename="../QCMainWindow.cpp" line="40"/>
+        <location filename="../QCMainWindow.cpp" line="735"/>
         <source>Polish</source>
         <translation>Polnisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="40"/>
+        <location filename="../QCMainWindow.cpp" line="41"/>
         <source>Portuguese</source>
         <translation>Portugiesisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="41"/>
+        <location filename="../QCMainWindow.cpp" line="42"/>
         <source>Russian</source>
         <translation>Russisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="42"/>
+        <location filename="../QCMainWindow.cpp" line="43"/>
         <source>Slovak</source>
         <translation>Slowakisch</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2973"/>
-        <location filename="../QCMainWindow.cpp" line="44"/>
-        <location filename="../QCMainWindow.cpp" line="738"/>
+        <location filename="../QCMainWindow.cpp" line="45"/>
+        <location filename="../QCMainWindow.cpp" line="739"/>
         <source>Spanish</source>
         <translation>Spanisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="45"/>
+        <location filename="../QCMainWindow.cpp" line="46"/>
         <source>Swedish</source>
         <translation>Schwedisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="46"/>
+        <location filename="../QCMainWindow.cpp" line="47"/>
         <source>Turkish</source>
         <translation>Türkisch</translation>
     </message>
@@ -817,148 +817,148 @@ Der Him+mel ist na+~h.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2934"/>
-        <location filename="../QCMainWindow.cpp" line="902"/>
+        <location filename="../QCMainWindow.cpp" line="903"/>
         <source>About BASS</source>
         <translatorcomment>Sur BASS</translatorcomment>
         <translation>Über BASS</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2943"/>
-        <location filename="../QCMainWindow.cpp" line="915"/>
+        <location filename="../QCMainWindow.cpp" line="916"/>
         <source>About TagLib</source>
         <translatorcomment>Sur TagLib</translatorcomment>
         <translation>Über TagLib</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="20"/>
+        <location filename="../QCMainWindow.cpp" line="21"/>
         <source>UltraStar Song Creator %1.%2.%3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="43"/>
+        <location filename="../QCMainWindow.cpp" line="44"/>
         <source>Slowenian</source>
         <translation>Slowenisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="48"/>
+        <location filename="../QCMainWindow.cpp" line="49"/>
         <source>Ready.</source>
         <translation>Bereit.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="51"/>
-        <location filename="../QCMainWindow.cpp" line="358"/>
+        <location filename="../QCMainWindow.cpp" line="52"/>
+        <location filename="../QCMainWindow.cpp" line="359"/>
         <source>USC ready.</source>
         <translation>USC bereit.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="53"/>
+        <location filename="../QCMainWindow.cpp" line="54"/>
         <source>BASS initialized.</source>
         <translation>BASS initialisiert.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="103"/>
+        <location filename="../QCMainWindow.cpp" line="104"/>
         <source>Please choose file</source>
         <translation>Datei öffnen</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="103"/>
-        <location filename="../QCMainWindow.cpp" line="604"/>
+        <location filename="../QCMainWindow.cpp" line="104"/>
+        <location filename="../QCMainWindow.cpp" line="605"/>
         <source>Text files (*.txt)</source>
         <translation>Textdateien (*.txt)</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="107"/>
+        <location filename="../QCMainWindow.cpp" line="108"/>
         <source>Application</source>
         <translation>Anwendung</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="108"/>
+        <location filename="../QCMainWindow.cpp" line="109"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>Kann Datei %1 nicht schreiben: %2.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="159"/>
+        <location filename="../QCMainWindow.cpp" line="160"/>
         <source>Title</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="163"/>
+        <location filename="../QCMainWindow.cpp" line="164"/>
         <source>Artist</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="167"/>
+        <location filename="../QCMainWindow.cpp" line="168"/>
         <source>%1 - %2 [CO].jpg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="170"/>
+        <location filename="../QCMainWindow.cpp" line="171"/>
         <source>%1 - %2 [BG].jpg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="174"/>
+        <location filename="../QCMainWindow.cpp" line="175"/>
         <source>#TITLE:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="175"/>
+        <location filename="../QCMainWindow.cpp" line="176"/>
         <source>#ARTIST:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="176"/>
+        <location filename="../QCMainWindow.cpp" line="177"/>
         <source>#LANGUAGE:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="177"/>
+        <location filename="../QCMainWindow.cpp" line="178"/>
         <source>#EDITION:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="178"/>
+        <location filename="../QCMainWindow.cpp" line="179"/>
         <source>#GENRE:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="179"/>
+        <location filename="../QCMainWindow.cpp" line="180"/>
         <source>#YEAR:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="180"/>
+        <location filename="../QCMainWindow.cpp" line="181"/>
         <source>#CREATOR:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="181"/>
+        <location filename="../QCMainWindow.cpp" line="182"/>
         <source>#MP3:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="182"/>
+        <location filename="../QCMainWindow.cpp" line="183"/>
         <source>#COVER:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="183"/>
+        <location filename="../QCMainWindow.cpp" line="184"/>
         <source>#BACKGROUND:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="187"/>
+        <location filename="../QCMainWindow.cpp" line="188"/>
         <source>%1 - %2.avi</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="189"/>
+        <location filename="../QCMainWindow.cpp" line="190"/>
         <source>#VIDEO:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="190"/>
+        <location filename="../QCMainWindow.cpp" line="191"/>
         <source>#VIDEOGAP:%1</source>
         <translation></translation>
     </message>
@@ -971,65 +971,65 @@ Der Him+mel ist na+~h.</translation>
         <translation type="obsolete">USC Notenende.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="305"/>
+        <location filename="../QCMainWindow.cpp" line="306"/>
         <source>#GAP:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="141"/>
-        <location filename="../QCMainWindow.cpp" line="237"/>
+        <location filename="../QCMainWindow.cpp" line="142"/>
+        <location filename="../QCMainWindow.cpp" line="238"/>
         <source>Pause tapping.</source>
         <translation>Pausiere das Tappen.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="225"/>
+        <location filename="../QCMainWindow.cpp" line="226"/>
         <source>Continue tapping.</source>
         <translation>Tappen fortführen.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="322"/>
+        <location filename="../QCMainWindow.cpp" line="323"/>
         <source>- %1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="325"/>
+        <location filename="../QCMainWindow.cpp" line="326"/>
         <source>%1: %2 %3 %4 %5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="350"/>
+        <location filename="../QCMainWindow.cpp" line="351"/>
         <source>State: stopped.</source>
         <translation>Status: gestoppt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="375"/>
+        <location filename="../QCMainWindow.cpp" line="376"/>
         <source>Please choose MP3 file</source>
         <translation>Bitte wähle eine MP3 Datei aus</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="375"/>
+        <location filename="../QCMainWindow.cpp" line="376"/>
         <source>Audio files (*.mp3 *.ogg)</source>
         <translation>Audiodateien (*.mp3 *.ogg)</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="385"/>
+        <location filename="../QCMainWindow.cpp" line="386"/>
         <source>Please choose cover image file</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="385"/>
-        <location filename="../QCMainWindow.cpp" line="404"/>
+        <location filename="../QCMainWindow.cpp" line="386"/>
+        <location filename="../QCMainWindow.cpp" line="405"/>
         <source>Image files (*.jpg)</source>
         <translation>Bilddateien (*.jpg</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="404"/>
+        <location filename="../QCMainWindow.cpp" line="405"/>
         <source>Please choose background image file</source>
         <translation>Bitte wähle eine Hintergrundbilddatei aus</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="424"/>
+        <location filename="../QCMainWindow.cpp" line="425"/>
         <source>Please choose video file</source>
         <translation>Bitte wähle eine Videodatei aus</translation>
     </message>
@@ -1038,188 +1038,188 @@ Der Him+mel ist na+~h.</translation>
         <translation type="obsolete">Videodateien (*.avi *.flv *.mpg *.mpeg *.mp4 *.vob *.ts</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="479"/>
+        <location filename="../QCMainWindow.cpp" line="480"/>
         <source>mp3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="479"/>
+        <location filename="../QCMainWindow.cpp" line="480"/>
         <source>ogg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="486"/>
+        <location filename="../QCMainWindow.cpp" line="487"/>
         <source>jpg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="510"/>
+        <location filename="../QCMainWindow.cpp" line="511"/>
         <source>avi</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="510"/>
+        <location filename="../QCMainWindow.cpp" line="511"/>
         <source>flv</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="510"/>
+        <location filename="../QCMainWindow.cpp" line="511"/>
         <source>mpg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="510"/>
+        <location filename="../QCMainWindow.cpp" line="511"/>
         <source>mpeg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="510"/>
+        <location filename="../QCMainWindow.cpp" line="511"/>
         <source>mp4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="510"/>
+        <location filename="../QCMainWindow.cpp" line="511"/>
         <source>vob</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="510"/>
+        <location filename="../QCMainWindow.cpp" line="511"/>
         <source>ts</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="510"/>
+        <location filename="../QCMainWindow.cpp" line="511"/>
         <source>divx</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="510"/>
+        <location filename="../QCMainWindow.cpp" line="511"/>
         <source>m4v</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="534"/>
+        <location filename="../QCMainWindow.cpp" line="535"/>
         <source>#TITLE tag is set.</source>
         <translation>Der #TITLE Tag ist gesetzt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="538"/>
+        <location filename="../QCMainWindow.cpp" line="539"/>
         <source>#TITLE tag is empty.</source>
         <translation>Der #TITLE Tag ist leer.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="546"/>
+        <location filename="../QCMainWindow.cpp" line="547"/>
         <source>#ARTIST tag is set.</source>
         <translation>Der #ARTIST Tag ist gesetzt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="550"/>
+        <location filename="../QCMainWindow.cpp" line="551"/>
         <source>#ARTIST tag is empty.</source>
         <translation>Der #ARTIST Tag ist leer.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="558"/>
+        <location filename="../QCMainWindow.cpp" line="559"/>
         <source>#LANGUAGE tag is set.</source>
         <translation>Der #LANGUAGE Tag ist gesetzt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="562"/>
+        <location filename="../QCMainWindow.cpp" line="563"/>
         <source>#LANGUAGE tag is empty.</source>
         <translation>Der #LANGUAGE Tag ist leer.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="570"/>
+        <location filename="../QCMainWindow.cpp" line="571"/>
         <source>#EDITION tag is set.</source>
         <translation>Der #EDITION Tag ist gesetzt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="574"/>
+        <location filename="../QCMainWindow.cpp" line="575"/>
         <source>#EDITION tag is empty.</source>
         <translation>Der #EDITION Tag ist leer.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="582"/>
+        <location filename="../QCMainWindow.cpp" line="583"/>
         <source>#GENRE tag is set.</source>
         <translation>Der #GENRE Tag ist gesetzt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="586"/>
+        <location filename="../QCMainWindow.cpp" line="587"/>
         <source>#GENRE tag is empty.</source>
         <translation>Der #GENRE Tag ist leer.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="845"/>
+        <location filename="../QCMainWindow.cpp" line="846"/>
         <source>0:00</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="848"/>
-        <location filename="../QCMainWindow.cpp" line="933"/>
+        <location filename="../QCMainWindow.cpp" line="849"/>
+        <location filename="../QCMainWindow.cpp" line="934"/>
         <source>-%1:%2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="929"/>
+        <location filename="../QCMainWindow.cpp" line="930"/>
         <source>%1:%2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1143"/>
+        <location filename="../QCMainWindow.cpp" line="1144"/>
         <source>#YEAR tag is set.</source>
         <translation>Der #YEAR Tag ist gesetzt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1147"/>
+        <location filename="../QCMainWindow.cpp" line="1148"/>
         <source>#YEAR tag is empty.</source>
         <translation>Der #YEAR Tag ist leer.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1175"/>
+        <location filename="../QCMainWindow.cpp" line="1176"/>
         <source>Choose UltraStar executable</source>
         <translation>Wähle die UltraStar Executable</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1175"/>
+        <location filename="../QCMainWindow.cpp" line="1176"/>
         <source>UltraStar executable (*.exe)</source>
         <translation>UltraStar Executable (*.exe)</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1232"/>
+        <location filename="../QCMainWindow.cpp" line="1233"/>
         <source>Choose YASS executable</source>
         <translation>Wähle die YASS Executable</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1232"/>
+        <location filename="../QCMainWindow.cpp" line="1233"/>
         <source>YASS executable (*.exe)</source>
         <translation>YASS Executable (*.exe)</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="594"/>
+        <location filename="../QCMainWindow.cpp" line="595"/>
         <source>#CREATOR tag is set.</source>
         <translation>Der #CREATOR Tag ist gesetzt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="426"/>
+        <location filename="../QCMainWindow.cpp" line="427"/>
         <source>Video files (*.avi *.divx *.flv *.mpg *.mpeg *.mp4 *.m4v *.vob *.ts);;All files (*.*)</source>
         <translation>Videodateien (*.avi *.divx *.flv *.mpg *.mpeg *.mp4 *.m4v *.vob *.ts);;All files (*.*)</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="598"/>
+        <location filename="../QCMainWindow.cpp" line="599"/>
         <source>#CREATOR tag is empty.</source>
         <translation>Der #CREATOR Tag ist leer.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="604"/>
+        <location filename="../QCMainWindow.cpp" line="605"/>
         <source>Please choose text file</source>
         <translation>Textdatei öffnen</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="742"/>
+        <location filename="../QCMainWindow.cpp" line="743"/>
         <source>Change Language</source>
         <translation>Sprachenwechsel</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="743"/>
+        <location filename="../QCMainWindow.cpp" line="744"/>
         <source>Application language changed to &lt;b&gt;%1&lt;/b&gt;. You need to restart UltraStar Creator to take effect.</source>
         <translation>Anwendungssprache geändert in &lt;b&gt;%1&lt;/b&gt;. Du musst UltraStar Creator neustarten, damit die Änderung wirksam wird.</translation>
     </message>
@@ -1228,12 +1228,12 @@ Der Him+mel ist na+~h.</translation>
         <translation type="obsolete">Anwendungssprache geändert zu &lt;b&gt;Englisch&lt;/b&gt;. Du musst UltraStar Creator neustarten, damit die Änderung wirksam wird.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="744"/>
+        <location filename="../QCMainWindow.cpp" line="745"/>
         <source>Quit UltraStar Creator.</source>
         <translation>Verlasse UltraStar Creator.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="745"/>
+        <location filename="../QCMainWindow.cpp" line="746"/>
         <source>Continue.</source>
         <translation>Weiter.</translation>
     </message>
@@ -1242,32 +1242,32 @@ Der Him+mel ist na+~h.</translation>
         <translation type="obsolete">Anwendungssprache geändert zu &lt;b&gt;Deutsch&lt;/b&gt;. Du musst UltraStar Creator neustarten, damit die Änderung wirksam wird.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="883"/>
+        <location filename="../QCMainWindow.cpp" line="884"/>
         <source>State: initialized.</source>
         <translation>Status: initialisiert.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="888"/>
+        <location filename="../QCMainWindow.cpp" line="889"/>
         <source>State: uninitialized.</source>
         <translation>Status: nicht initialisiert.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="868"/>
+        <location filename="../QCMainWindow.cpp" line="869"/>
         <source>#BPM tag set.</source>
         <translation>Der #BPM Tag ist gesetzt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="896"/>
+        <location filename="../QCMainWindow.cpp" line="897"/>
         <source>%1 %</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="903"/>
+        <location filename="../QCMainWindow.cpp" line="904"/>
         <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 1999-2008&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
         <translation>&lt;b&gt;BASS Audiobibliothek.&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS ist eine Audiobibliothek für die Verwendung in Windows und MacOSX Software. Ihre Zielsetzung ist es, die mächtigsten und effizientesten (und gleichzeitig einfach anzuwendenden) Funktionen für das Sampling, das Streaming und die Aufnahme bereitzustellen. Alles in einer winzigen DLL unter 100KB Größe.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 1999-2008&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Alle Rechte vorbehalten.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="916"/>
+        <location filename="../QCMainWindow.cpp" line="917"/>
         <source>&lt;b&gt;TagLib Audio Meta-Data Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;TagLib is a library for reading and editing the meta-data of several popular audio formats.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1.%2.%3&lt;/b&gt;&lt;br&gt;&lt;br&gt;Visit: &lt;a href=&quot;http://developer.kde.org/~wheeler/taglib.html&quot;&gt;TagLib Homepage&lt;/a&gt;</source>
         <translation>&lt;b&gt;TagLib Audio Metadatenbibliothek&lt;/b&gt;&lt;br&gt;&lt;br&gt;TagLib ist eine Bibliothek zum Auslesen und Edititieren der Metadaten einiger gängigen Audioformate.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1.%2.%3&lt;/b&gt;&lt;br&gt;&lt;br&gt;Besuche: &lt;a href=&quot;http://developer.kde.org/~wheeler/taglib.html&quot;&gt;TagLib Homepage&lt;/a&gt;</translation>
     </message>
@@ -1275,7 +1275,7 @@ Der Him+mel ist na+~h.</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../QCMainWindow.cpp" line="58"/>
+        <location filename="../QCMainWindow.cpp" line="59"/>
         <source>Welcome to UltraStar Creator!</source>
         <translation>Willkommen zu UltraStar Creator!</translation>
     </message>
@@ -1284,37 +1284,37 @@ Der Him+mel ist na+~h.</translation>
         <translation type="obsolete">Dieses Programm ermöglicht es Dir, UltraStar Textdateien &lt;b&gt;schnell&lt;/b&gt; und &lt;b&gt;ohne Weiteres&lt;/b&gt; zu erstellen.&lt;br&gt;&lt;br&gt;Um loszulegen wählst Du einfach eine &lt;b&gt;Lieddatei&lt;/b&gt; im MP3 oder OGG Format, fügst den &lt;b&gt;Liedtext&lt;/b&gt; aus einer vorhandenen Datei oder von der Zwischenablage ein und trennst Silben mit &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Wichtige Metainformation des Lieds&lt;/b&gt; wie die &lt;b&gt;BPM&lt;/b&gt; und der &lt;b&gt;GAP&lt;/b&gt; werden &lt;b&gt;automatisch&lt;/b&gt; ermittelt.&lt;br&gt;&lt;br&gt;Der &lt;b&gt;ID3 Tag&lt;/b&gt; wird verwendet, um weitere Details des Lieds zu füllen, sofern diese vorhanden sind.&lt;br&gt;&lt;br&gt;Um mit dem &lt;b&gt;Tappen anzufangen&lt;/b&gt; drückst Du einfach den Play/Pause Button (Tastatur: STRG+P). Halte den &lt;b&gt;Tap Button&lt;/b&gt; (Tastatur: Leertaste) gedrückt solange die aktuelle Silbe gesungen wird, um eine Note zu tappen. Mache eine falsch getappte Note rückgängig mit dem Undo Button (Tastatur: x), stoppe das Tappen mit dem Stop Button (Tastatur: STRG+S), fange von vorne an mit dem Reset Button (Tastatur: STRG+R). Nach dem Tappen speicherst Du den getappten Song mit dem Speichern Button (Tastatur: STRG+S).&lt;br&gt;&lt;br&gt;Nach dem erfolgreichen Tappen eines Lieds kannst Du den UltraStar-internen Editor für das &lt;b&gt;Finetuning der Timings&lt;/b&gt;, das Setzen der &lt;b&gt;Tonhöhen&lt;/b&gt; und &lt;b&gt;goldenen&lt;/b&gt; oder &lt;b&gt;Freestyle Noten&lt;/b&gt; verwenden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Viel Spaß beim Liederstellen!&lt;/b&gt;&lt;br&gt;&lt;br&gt;P.S.: Die UltraStar Textdateien werden mittels &lt;b&gt;UTF-8&lt;/b&gt; kodiert, daher sind sie nur zum neuen UltraStar deluxe 1.1 kompatibel. Möchtest Du sie mit einer älteren Version verwenden, so musst Du die Kodierung der Datei mithilfe eines Editors in&lt;b&gt;ANSI&lt;/b&gt; ändern.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="59"/>
+        <location filename="../QCMainWindow.cpp" line="60"/>
         <source>This tool enables you to &lt;b&gt;rapidly&lt;/b&gt; create UltraStar text files &lt;b&gt;from scratch&lt;/b&gt;.&lt;br&gt;&lt;br&gt;To get started, simply chose a &lt;b&gt;song file&lt;/b&gt; in MP3 or OGG format, insert the &lt;b&gt;song lyrics&lt;/b&gt; from a file or the clipboard and divide them into syllables with &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Important song meta information&lt;/b&gt; such as &lt;b&gt;BPM&lt;/b&gt; and &lt;b&gt;GAP&lt;/b&gt; are determined &lt;b&gt;automatically&lt;/b&gt; while the &lt;b&gt;ID3 tag&lt;/b&gt; is used to fill in additional song details, if available.&lt;br&gt;&lt;br&gt;To &lt;b&gt;start tapping&lt;/b&gt;, hit the play/pause button (Keyboard: CTRL+P). Keep the &lt;b&gt;tap button&lt;/b&gt; (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. &lt;b&gt;Undo&lt;/b&gt; the last tap with the undo button (Keyboard: x), &lt;b&gt;stop tapping&lt;/b&gt; with the stop button (Keyboard: CTRL+S), &lt;b&gt;restart&lt;/b&gt; from the beginning with the reset button (Keyboard: CTRL+R). When finished, &lt;b&gt;save&lt;/b&gt; the tapped song using the save button (CTRL+S).&lt;br&gt;&lt;br&gt;Having successfully tapped a song, use the UltraStar internal editor for &lt;b&gt;finetuning the timings&lt;/b&gt;, setting &lt;b&gt;note pitches&lt;/b&gt; and &lt;b&gt;golden&lt;/b&gt; or &lt;b&gt;freestyle notes&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Happy creating!&lt;/b&gt;</source>
         <translation>Dieses Programm ermöglicht es Dir, UltraStar Textdateien &lt;b&gt;schnell&lt;/b&gt; und &lt;b&gt;ohne Weiteres&lt;/b&gt; zu erstellen.&lt;br&gt;&lt;br&gt;Um loszulegen wählst Du einfach eine &lt;b&gt;Lieddatei&lt;/b&gt; im MP3 oder OGG Format, fügst den &lt;b&gt;Liedtext&lt;/b&gt; aus einer vorhandenen Datei oder von der Zwischenablage ein und trennst Silben mit &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Wichtige Metainformation des Lieds&lt;/b&gt; wie die &lt;b&gt;BPM&lt;/b&gt; und der &lt;b&gt;GAP&lt;/b&gt; werden &lt;b&gt;automatisch&lt;/b&gt; ermittelt.&lt;br&gt;&lt;br&gt;Der &lt;b&gt;ID3 Tag&lt;/b&gt; wird verwendet, um weitere Details des Lieds zu füllen, sofern diese vorhanden sind.&lt;br&gt;&lt;br&gt;Um mit dem &lt;b&gt;Tappen anzufangen&lt;/b&gt; drückst Du einfach den Play/Pause Button (Tastatur: STRG+P). Halte den &lt;b&gt;Tap Button&lt;/b&gt; (Tastatur: Leertaste) gedrückt solange die aktuelle Silbe gesungen wird, um eine Note zu tappen. Mache eine falsch getappte &lt;b&gt;Note rückgängig&lt;/b&gt; mit dem Undo Button (Tastatur: x), &lt;b&gt;stoppe&lt;/b&gt; das Tappen mit dem Stop Button (Tastatur: STRG+S), &lt;b&gt;fange von vorne an&lt;/b&gt; mit dem Reset Button (Tastatur: STRG+R). Nach dem Tappen &lt;b&gt;speicherst&lt;/b&gt; Du den getappten Song mit dem Speichern Button (Tastatur: STRG+S).&lt;br&gt;&lt;br&gt;Nach dem erfolgreichen Tappen eines Lieds kannst Du den UltraStar-internen Editor für das &lt;b&gt;Finetuning der Timings&lt;/b&gt;, das Setzen der &lt;b&gt;Tonhöhen&lt;/b&gt; und &lt;b&gt;goldenen&lt;/b&gt; oder &lt;b&gt;Freestyle Noten&lt;/b&gt; verwenden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Viel Spaß beim Liederstellen!&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="60"/>
+        <location filename="../QCMainWindow.cpp" line="61"/>
         <source>Okay. Let&apos;s go!</source>
         <translation>Okay. Los geht&apos;s!</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="488"/>
+        <location filename="../QCMainWindow.cpp" line="489"/>
         <source>Image file drop detected.</source>
         <translation>Eine Bilddatei wurde hinzugefügt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="489"/>
+        <location filename="../QCMainWindow.cpp" line="490"/>
         <source>Use &lt;b&gt;%1&lt;/b&gt; as...</source>
         <translation>Verwende &lt;b&gt;%1&lt;/b&gt; als...</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="490"/>
+        <location filename="../QCMainWindow.cpp" line="491"/>
         <source>Cover</source>
         <translation>Cover</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="491"/>
+        <location filename="../QCMainWindow.cpp" line="492"/>
         <source>Background</source>
         <translation>Hintergrund</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="492"/>
+        <location filename="../QCMainWindow.cpp" line="493"/>
         <source>Ignore this file</source>
         <translation>Ignoriere diese Datei</translation>
     </message>
