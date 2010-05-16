@@ -20,6 +20,10 @@ void handleWipWarning();
 void handleReleaseCandidateInformation();
 void handleArguments();
 
+/*!
+ * This is the main entry point of the application
+ *
+ */
 int main(int argc, char *argv[]) {
     initApplication();
 
@@ -127,6 +131,10 @@ void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &splash) {
                                 270);
 }
 
+/*!
+ * This function displays a warning about the ongoing work on this software
+ * and that it should not be distributed.
+ */
 void handleWipWarning() {
         QUMessageBox::warning(0,
                                 QObject::tr("WIP version detected!"),
@@ -134,6 +142,10 @@ void handleWipWarning() {
                                 BTN << ":/marks/accept.png" << QObject::tr("I will be careful."));
 }
 
+/*!
+ * This function displays a message that this software is a release candidate version.
+ *
+ */
 void handleReleaseCandidateInformation() {
         QUMessageBox::information(0,
                                 QObject::tr("Release Candidate Information"),
@@ -142,6 +154,10 @@ void handleReleaseCandidateInformation() {
                                 400);
 }
 
+/*!
+ * This function handles a previous crash of the application by detecting
+ * if the file 'running.app' exists in the working directory
+ */
 void handlePreviousAppCrash() {
         if(!QFile::exists("running.app")) {
                 QFile f("running.app");
@@ -160,7 +176,8 @@ void handlePreviousAppCrash() {
 }
 
 /*!
- * Read arguments: song files to be loaded.
+ * This function handles the input arguments of the application.
+ * So far, an MP3 file can be passed to it as the song file to be tapped.
  */
 void handleArguments() {
         QSettings settings;
