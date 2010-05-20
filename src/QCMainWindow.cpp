@@ -14,6 +14,7 @@
 #include <QTimer>
 #include <QTextCodec>
 #include <QProcess>
+#include <QUrl>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -876,6 +877,7 @@ void QCMainWindow::handleMP3() {
     // lyrics from mp3 lyrics-tag
 
     ui->groupBox_SongMetaInformationTags->setEnabled(true);
+    ui->groupBox_InputLyrics->setEnabled(true);
     previewState = QCMainWindow::initialized;
     ui->pushButton_PreviewPlayPause->setEnabled(true);
 
@@ -1238,5 +1240,101 @@ void QCMainWindow::on_pushButton_startYass_clicked()
             YassArguments << fileInfo_MP3->absolutePath();
             QProcess::startDetached(YassFilePath, YassArguments);
         }
+    }
+}
+
+void QCMainWindow::on_pushButton_Syllabificate_clicked()
+{
+    nam = new QNetworkAccessManager(this);
+    connect(nam, SIGNAL(finished(QNetworkReply*)),
+            this, SLOT(finishedSlot(QNetworkReply*)));
+
+    QNetworkRequest request(QUrl("http://www.probandodominio.co.cc/silabear.php"));
+    request.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
+
+    QByteArray data;
+    QUrl params;
+    bool langAvailable = false;
+
+    QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
+    if (language == "English") {
+        language = "Eng";
+        langAvailable = true;
+    }
+    else if (language == "German") {
+        language = "Deu";
+        langAvailable = true;
+    }
+    else if (language == "Spanish") {
+        language = "Esp";
+        langAvailable = true;
+    }
+    else {
+        QString infoString;
+        if (!ui->comboBox_Language->currentText().isEmpty()) {
+            infoString = QString("The automatic lyrics syllabification is not (yet) available for <b>%1</b>.").arg(ui->comboBox_Language->currentText());
+        }
+        else {
+            infoString = QString("The song language has not yet been set.");
+        }
+        int result = QUMessageBox::question(0,
+                        QObject::tr("Syllabification."),
+                        QObject::tr("%1 Apply...").arg(infoString),
+                        BTN << ":/languages/lang/us.png"    << QObject::tr("English syllabification rules.")
+                            << ":/languages/lang/de.png"    << QObject::tr("German syllabification rules.")
+                            << ":/languages/lang/es.png"    << QObject::tr("Spanish syllabification rules.")
+                            << ":/marks/cancel.png"         << QObject::tr("Cancel."));
+
+        if (result == 0) {
+            language = "Eng";
+            langAvailable = true;
+        }
+        else if (result == 1) {
+            language = "Deu";
+            langAvailable = true;
+        }
+        else if (result == 2) {
+            language = "Esp";
+            langAvailable = true;
+        }
+        else {
+            // user cancelled
+        }
+    }
+
+    if (langAvailable) {
+        params.addQueryItem("txt", cleanLyrics(ui->plainTextEdit_InputLyrics->toPlainText()));
+        params.addQueryItem("idioma", language);
+        params.addQueryItem("silabear", "silabear");
+        params.addQueryItem("separador", "%2B");
+        data.append(params.toString());
+        data.remove(0,1);
+
+        QNetworkReply* reply = nam->post(request,data);
+    }
+}
+
+void QCMainWindow::finishedSlot(QNetworkReply* reply)
+{
+    if (reply->error() == QNetworkReply::NoError)
+    {
+        // read data from QNetworkReply here
+        QByteArray bytes = reply->readAll();
+        QString syllabifiedLyrics(bytes); // string
+        syllabifiedLyrics.replace("&nbsp;"," ");
+        syllabifiedLyrics.replace("<br>","##break##");
+        syllabifiedLyrics.replace("</br>","##break##");
+        syllabifiedLyrics.replace("</p>","##break##");
+        syllabifiedLyrics.remove(QRegExp("<head>(.*)</head>",Qt::CaseInsensitive));
+        syllabifiedLyrics.remove(QRegExp("<form(.)[^>]*</form>",Qt::CaseInsensitive));
+        syllabifiedLyrics.remove(QRegExp("<script(.)[^>]*</script>",Qt::CaseInsensitive));
+        syllabifiedLyrics.remove(QRegExp("<style(.)[^>]*</style>",Qt::CaseInsensitive));
+        syllabifiedLyrics.remove(QRegExp("<(.)[^>]*>"));
+        syllabifiedLyrics.replace("##break##","\n");
+        ui->plainTextEdit_InputLyrics->setPlainText(syllabifiedLyrics.trimmed());
+    }
+    else
+    {
+        QUMessageBox::information(this, tr("Network error"), QString(tr("Error: %1").arg(reply->errorString())));
     }
 }

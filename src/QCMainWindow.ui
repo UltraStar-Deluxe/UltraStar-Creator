@@ -2009,6 +2009,9 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <widget class="QGroupBox" name="groupBox_InputLyrics">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>100</horstretch>
@@ -2047,8 +2050,8 @@ p, li { white-space: pre-wrap; }
           <number>6</number>
          </property>
          <item row="0" column="0">
-          <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,1,0,0" columnminimumwidth="0,0,0,0,0">
-           <item row="0" column="0" colspan="5">
+          <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,1,0,0,0" columnminimumwidth="0,0,0,0,0,0">
+           <item row="0" column="0" colspan="6">
             <widget class="QPlainTextEdit" name="plainTextEdit_InputLyrics">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -2152,7 +2155,7 @@ I'm ve+~+ry sure.</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="2">
+           <item row="1" column="3">
             <spacer name="horizontalSpacer">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -2165,7 +2168,7 @@ I'm ve+~+ry sure.</string>
              </property>
             </spacer>
            </item>
-           <item row="1" column="3">
+           <item row="1" column="4">
             <widget class="QPushButton" name="pushButton_InputLyricsIncreaseFontSize">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2188,7 +2191,7 @@ I'm ve+~+ry sure.</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="4">
+           <item row="1" column="5">
             <widget class="QPushButton" name="pushButton_InputLyricsDecreaseFontSize">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2208,6 +2211,29 @@ I'm ve+~+ry sure.</string>
              <property name="icon">
               <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QPushButton" name="pushButton_Syllabificate">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string/>
+             </property>
+             <property name="statusTip">
+              <string>Split lyrics into syllables.</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="resources/usc.qrc">
+               <normaloff>:/marks/wand.png</normaloff>:/marks/wand.png</iconset>
              </property>
             </widget>
            </item>

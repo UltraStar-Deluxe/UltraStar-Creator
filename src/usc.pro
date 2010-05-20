@@ -6,7 +6,8 @@ UI_DIR = ui
 OBJECTS_DIR = tmp
 RCC_DIR = tmp
 QT += core \
-    gui
+    gui \
+    network
 HEADERS += main.h \
     QU.h \
     QUStringSupport.h \
@@ -65,7 +66,7 @@ win32 {
         -lbass_fx \
         -llibhunspell
 }
-CONFIG -= debug_and_release \
-    release
-CONFIG += debug
-#CONFIG += release
+#CONFIG -= debug_and_release \
+#    release
+#CONFIG += debug
+CONFIG += release

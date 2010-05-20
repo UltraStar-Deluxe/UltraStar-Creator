@@ -15,6 +15,8 @@
 #include <QTime>
 #include <QProgressBar>
 #include <QFileInfo>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
 
 namespace Ui {
     class QCMainWindow;
@@ -78,8 +80,11 @@ private:
     QProgressBar *lyricsProgressBar;
     double MP3LengthTime;
     QString defaultDir;
+    QNetworkAccessManager *nam;
 
 private slots:
+    void finishedSlot(QNetworkReply* reply);
+    void on_pushButton_Syllabificate_clicked();
     void on_pushButton_startYass_clicked();
     void on_pushButton_PreviewPlayPause_clicked();
     void on_lineEdit_Video_textChanged(QString );
