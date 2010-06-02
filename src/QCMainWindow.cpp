@@ -138,6 +138,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
     QSettings settings;
 
     if (state == initialized) {
+        setCursor(Qt::WaitCursor);
         state = QCMainWindow::playing;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
         ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
@@ -220,6 +221,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         }
 
         ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
+        setCursor(Qt::ArrowCursor);
     }
     else if (state == playing) {
         state = QCMainWindow::paused;
@@ -877,6 +879,7 @@ void QCMainWindow::handleMP3() {
     // lyrics from mp3 lyrics-tag
 
     ui->groupBox_SongMetaInformationTags->setEnabled(true);
+    ui->groupBox_ArtworkTags->setEnabled(true);
     ui->groupBox_InputLyrics->setEnabled(true);
     previewState = QCMainWindow::initialized;
     ui->pushButton_PreviewPlayPause->setEnabled(true);
