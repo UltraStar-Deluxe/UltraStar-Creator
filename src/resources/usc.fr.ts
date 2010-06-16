@@ -6,12 +6,12 @@
     <message>
         <location filename="../QCMainWindow.ui" line="29"/>
         <source>usc</source>
-        <translation></translation>
+        <translation>usc</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="68"/>
         <source>MP3</source>
-        <translation type="unfinished"></translation>
+        <translation>MP3</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="117"/>
@@ -46,120 +46,120 @@
     <message>
         <location filename="../QCMainWindow.cpp" line="26"/>
         <source>Croatian</source>
-        <translation type="unfinished"></translation>
+        <translation>Croate</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="27"/>
         <source>Czech</source>
-        <translation type="unfinished"></translation>
+        <translation>Tchèque</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="28"/>
         <source>Danish</source>
-        <translation type="unfinished"></translation>
+        <translation>Danois</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="29"/>
         <source>Dutch</source>
-        <translation type="unfinished"></translation>
+        <translation>Néerlandais</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2907"/>
         <location filename="../QCMainWindow.cpp" line="30"/>
         <location filename="../QCMainWindow.cpp" line="719"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation>Anglais</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="31"/>
         <source>Finnish</source>
-        <translation type="unfinished"></translation>
+        <translation>Finnois</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2958"/>
         <location filename="../QCMainWindow.cpp" line="32"/>
         <location filename="../QCMainWindow.cpp" line="723"/>
         <source>French</source>
-        <translation type="unfinished"></translation>
+        <translation>Français</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2925"/>
         <location filename="../QCMainWindow.cpp" line="33"/>
         <location filename="../QCMainWindow.cpp" line="727"/>
         <source>German</source>
-        <translation type="unfinished"></translation>
+        <translation>Allemand</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="34"/>
         <source>Hindi</source>
-        <translation type="unfinished"></translation>
+        <translation>Hindi</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2988"/>
         <location filename="../QCMainWindow.cpp" line="35"/>
         <location filename="../QCMainWindow.cpp" line="731"/>
         <source>Italian</source>
-        <translation type="unfinished"></translation>
+        <translation>Italien</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="36"/>
         <source>Japanese</source>
-        <translation type="unfinished"></translation>
+        <translation>Japonais</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="37"/>
         <source>Korean</source>
-        <translation type="unfinished"></translation>
+        <translation>Coréen</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="545"/>
         <location filename="../QCMainWindow.cpp" line="38"/>
         <source>Latin</source>
-        <translation type="unfinished"></translation>
+        <translation>Latin</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="39"/>
         <source>Norwegian</source>
-        <translation type="unfinished"></translation>
+        <translation>Norvegien</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3003"/>
         <location filename="../QCMainWindow.cpp" line="40"/>
         <location filename="../QCMainWindow.cpp" line="735"/>
         <source>Polish</source>
-        <translation type="unfinished"></translation>
+        <translation>Polonais</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="41"/>
         <source>Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>Portugais</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="42"/>
         <source>Russian</source>
-        <translation type="unfinished"></translation>
+        <translation>Russe</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="43"/>
         <source>Slovak</source>
-        <translation type="unfinished"></translation>
+        <translation>Slovaque</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2973"/>
         <location filename="../QCMainWindow.cpp" line="45"/>
         <location filename="../QCMainWindow.cpp" line="739"/>
         <source>Spanish</source>
-        <translation type="unfinished"></translation>
+        <translation>Espagnol</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="46"/>
         <source>Swedish</source>
-        <translation type="unfinished"></translation>
+        <translation>Suédois</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="47"/>
         <source>Turkish</source>
-        <translation type="unfinished"></translation>
+        <translation>Turc</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="442"/>
@@ -1224,7 +1224,7 @@ I&apos;m ve+~+ry sure.</source>
     <message>
         <location filename="../QCMainWindow.cpp" line="60"/>
         <source>This tool enables you to &lt;b&gt;rapidly&lt;/b&gt; create UltraStar text files &lt;b&gt;from scratch&lt;/b&gt;.&lt;br&gt;&lt;br&gt;To get started, simply chose a &lt;b&gt;song file&lt;/b&gt; in MP3 or OGG format, insert the &lt;b&gt;song lyrics&lt;/b&gt; from a file or the clipboard and divide them into syllables with &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Important song meta information&lt;/b&gt; such as &lt;b&gt;BPM&lt;/b&gt; and &lt;b&gt;GAP&lt;/b&gt; are determined &lt;b&gt;automatically&lt;/b&gt; while the &lt;b&gt;ID3 tag&lt;/b&gt; is used to fill in additional song details, if available.&lt;br&gt;&lt;br&gt;To &lt;b&gt;start tapping&lt;/b&gt;, hit the play/pause button (Keyboard: CTRL+P). Keep the &lt;b&gt;tap button&lt;/b&gt; (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. &lt;b&gt;Undo&lt;/b&gt; the last tap with the undo button (Keyboard: x), &lt;b&gt;stop tapping&lt;/b&gt; with the stop button (Keyboard: CTRL+S), &lt;b&gt;restart&lt;/b&gt; from the beginning with the reset button (Keyboard: CTRL+R). When finished, &lt;b&gt;save&lt;/b&gt; the tapped song using the save button (CTRL+S).&lt;br&gt;&lt;br&gt;Having successfully tapped a song, use the UltraStar internal editor for &lt;b&gt;finetuning the timings&lt;/b&gt;, setting &lt;b&gt;note pitches&lt;/b&gt; and &lt;b&gt;golden&lt;/b&gt; or &lt;b&gt;freestyle notes&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Happy creating!&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ce logiciel te permet de créer &lt;b&gt;rapidement&lt;/b&gt; des fichiers UltraStar &lt;b&gt;partir à zéro&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Pour commencer, choisis simplement un &lt;b&gt;fichier d&apos;une chanson&lt;/b&gt; en format MP3 ou OGG, insère &lt;b&gt;les paroles&lt;/b&gt; d&apos;un fichier ou du presse-papiers et divise-les en syllables avec &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Méta-information important de la chanson&lt;/b&gt; comme le &lt;b&gt;BPM&lt;/b&gt; et le &lt;b&gt;GAP&lt;/b&gt; sont determinés  &lt;b&gt;automatiquement&lt;/b&gt; et le &lt;b&gt;tag ID3&lt;/b&gt; est utilisé pour remplir les details additionnels de la chanson, si disponible.&lt;br&gt;&lt;br&gt;Pour &lt;b&gt;engager le tapping&lt;/b&gt;, presse le bouton play/pause (clavier: CTRL+P). Maintène (enfoncée) le &lt;b&gt;bouton tap&lt;/b&gt; (clavier: bar d&apos;espacement) aussi longtemps que pendant la syllable actuelle est chantée pour créer une note. &lt;b&gt;Annule&lt;/b&gt; la dernière note avec le bouton undo (clavier: x), &lt;b&gt;arrête le tapping&lt;/b&gt; avec le bouton stop (clavier: CTRL+S), &lt;b&gt;recommence&lt;/b&gt; à zéro avec le bouton reset (clavier: CTRL+R). Quand fini, &lt;b&gt;sauvegarde&lt;/b&gt; la chanson avec le bouton save (clavier: CTRL+S).&lt;br&gt;&lt;br&gt;Après avoir crée une chanson avec succès, utilise l&apos;éditeur interne d&apos;UltraStar pour le&lt;b&gt;réglage minutieux des notes&lt;/b&gt;, mettre les &lt;b&gt;hauteurs du son&lt;/b&gt; et les notes &lt;b&gt;doré&lt;/b&gt; ou &lt;b&gt;de style libre&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Amuse-toi avec la création des chansons!&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="61"/>
