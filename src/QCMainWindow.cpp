@@ -881,8 +881,12 @@ void QCMainWindow::handleMP3() {
     ui->groupBox_SongMetaInformationTags->setEnabled(true);
     ui->groupBox_ArtworkTags->setEnabled(true);
     ui->groupBox_InputLyrics->setEnabled(true);
+    ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
+    ui->label_BPMSet->setStatusTip(tr("MP3 set."));
     previewState = QCMainWindow::initialized;
     ui->pushButton_PreviewPlayPause->setEnabled(true);
+    ui->pushButton_PreviewStop->setEnabled(true);
+    ui->pushButton_PreviewRewind->setEnabled(true);
 
     if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
         state = QCMainWindow::initialized;
@@ -1198,17 +1202,17 @@ void QCMainWindow::on_pushButton_PreviewPlayPause_clicked()
         if (result) {
             BASS_Play();
         }
-        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control/pause.png"));
+        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control_pause_blue.png"));
     }
     else if (previewState == QCMainWindow::playing) {
         previewState = QCMainWindow::paused;
         BASS_Pause();
-        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control/play.png"));
+        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control_play_blue.png"));
     }
     else if (previewState == QCMainWindow::paused) {
         previewState = QCMainWindow::playing;
         BASS_Resume();
-        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control/pause.png"));
+        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control_pause_blue.png"));
     }
     else {
         // should not occur

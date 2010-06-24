@@ -29,7 +29,7 @@
    <string>usc</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="resources/usc.qrc">
     <normaloff>:/icons/bean.png</normaloff>:/icons/bean.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -78,7 +78,7 @@
             <number>4</number>
            </property>
            <item row="0" column="0">
-            <layout class="QGridLayout" name="gridLayout_MP3" rowstretch="0" columnstretch="0,0,1,0,0" columnminimumwidth="16,88,0,16,16">
+            <layout class="QGridLayout" name="gridLayout_MP3" rowstretch="0,0" columnstretch="0,0,0,0,0">
              <property name="verticalSpacing">
               <number>4</number>
              </property>
@@ -94,7 +94,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/music.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/music.png</pixmap>
                </property>
               </widget>
              </item>
@@ -182,7 +182,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="resources/usc.qrc">
                  <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
                </property>
                <property name="iconSize">
@@ -197,33 +197,157 @@ p, li { white-space: pre-wrap; }
               </widget>
              </item>
              <item row="0" column="4">
-              <widget class="QPushButton" name="pushButton_PreviewPlayPause">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
+              <widget class="QLabel" name="label_MP3Set">
                <property name="statusTip">
-                <string>Preview MP3 file for correct syllabification of the song's lyrics.</string>
+                <string>MP3 is not set.</string>
                </property>
                <property name="text">
                 <string/>
                </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>:/control/play.png</normaloff>:/control/play.png</iconset>
+               <property name="pixmap">
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
+             </item>
+             <item row="1" column="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_PreviewPlayProgress" stretch="0,0,0">
+               <property name="sizeConstraint">
+                <enum>QLayout::SetDefaultConstraint</enum>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_PreviewTimeElapsed">
+                 <property name="font">
+                  <font>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>-:--</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSlider" name="horizontalSlider_PreviewMP3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_PreviewTimeToRun">
+                 <property name="font">
+                  <font>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>--:--</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_PlayerButtons_2" stretch="0,0,0">
+               <item>
+                <widget class="QPushButton" name="pushButton_PreviewPlayPause">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="statusTip">
+                  <string>Preview MP3 file for correct syllabification of the song's lyrics.</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/usc.qrc">
+                   <normaloff>:/control_play_blue.png</normaloff>:/control_play_blue.png</iconset>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_PreviewStop">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="statusTip">
+                  <string>Preview MP3 file for correct syllabification of the song's lyrics.</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/usc.qrc">
+                   <normaloff>:/control_stop_blue.png</normaloff>:/control_stop_blue.png</iconset>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_PreviewRewind">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="statusTip">
+                  <string>Preview MP3 file for correct syllabification of the song's lyrics.</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/usc.qrc">
+                   <normaloff>:/control_start_blue.png</normaloff>:/control_start_blue.png</iconset>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
            </item>
@@ -293,7 +417,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/font.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/font.png</pixmap>
                </property>
               </widget>
              </item>
@@ -359,7 +483,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -369,7 +493,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/user.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/user.png</pixmap>
                </property>
               </widget>
              </item>
@@ -423,7 +547,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -433,7 +557,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/language.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/language.png</pixmap>
                </property>
               </widget>
              </item>
@@ -501,7 +625,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -511,7 +635,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/edition.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/edition.png</pixmap>
                </property>
               </widget>
              </item>
@@ -575,7 +699,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -585,7 +709,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/genre.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/genre.png</pixmap>
                </property>
               </widget>
              </item>
@@ -719,7 +843,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -729,7 +853,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/calendar.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/calendar.png</pixmap>
                </property>
               </widget>
              </item>
@@ -795,7 +919,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -805,7 +929,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/users.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/users.png</pixmap>
                </property>
               </widget>
              </item>
@@ -859,7 +983,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -869,7 +993,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/auction-hammer-gavel.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/auction-hammer-gavel.png</pixmap>
                </property>
               </widget>
              </item>
@@ -944,7 +1068,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -954,7 +1078,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/balloon--arrow.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/balloon--arrow.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1014,7 +1138,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1145,7 +1269,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="resources/usc.qrc">
                  <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
                </property>
               </widget>
@@ -1218,7 +1342,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="resources/usc.qrc">
                  <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
                </property>
               </widget>
@@ -1229,7 +1353,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/cover.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/cover.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1239,7 +1363,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/background.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/background.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1252,7 +1376,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1265,7 +1389,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1390,7 +1514,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="resources/usc.qrc">
                  <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
                </property>
               </widget>
@@ -1454,7 +1578,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/film.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/film.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1464,7 +1588,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/videogap.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/videogap.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1477,7 +1601,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_error.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1490,7 +1614,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_ok.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1562,7 +1686,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/note.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/note.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1693,7 +1817,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_ok.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1712,7 +1836,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/types/time_mp3.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/types/time_mp3.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1837,7 +1961,7 @@ p, li { white-space: pre-wrap; }
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/marks/path_ok.png</pixmap>
+                <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1920,7 +2044,7 @@ p, li { white-space: pre-wrap; }
                   <string>play</string>
                  </property>
                  <property name="icon">
-                  <iconset>
+                  <iconset resource="resources/usc.qrc">
                    <normaloff>:/player/play.png</normaloff>:/player/play.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -1974,7 +2098,7 @@ p, li { white-space: pre-wrap; }
                   <string>stop</string>
                  </property>
                  <property name="icon">
-                  <iconset>
+                  <iconset resource="resources/usc.qrc">
                    <normaloff>:/player/stop.png</normaloff>:/player/stop.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -2028,7 +2152,7 @@ p, li { white-space: pre-wrap; }
                   <string>stop</string>
                  </property>
                  <property name="icon">
-                  <iconset>
+                  <iconset resource="resources/usc.qrc">
                    <normaloff>:/player/prev.png</normaloff>:/player/prev.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -2163,7 +2287,7 @@ p, li { white-space: pre-wrap; }
           <number>4</number>
          </property>
          <item row="0" column="0">
-          <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,1,0,0,0" columnminimumwidth="0,0,0,0,0,0">
+          <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0,0,0">
            <item row="0" column="0" colspan="6">
             <widget class="QPlainTextEdit" name="plainTextEdit_InputLyrics">
              <property name="sizePolicy">
@@ -2240,7 +2364,7 @@ I'm ve+~+ry sure.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="resources/usc.qrc">
                <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
              </property>
             </widget>
@@ -2263,7 +2387,7 @@ I'm ve+~+ry sure.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/clipboard-text.png</normaloff>:/marks/clipboard-text.png</iconset>
              </property>
             </widget>
@@ -2299,7 +2423,7 @@ I'm ve+~+ry sure.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
              </property>
             </widget>
@@ -2322,7 +2446,7 @@ I'm ve+~+ry sure.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
              </property>
             </widget>
@@ -2345,7 +2469,7 @@ I'm ve+~+ry sure.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/wand.png</normaloff>:/marks/wand.png</iconset>
              </property>
             </widget>
@@ -2454,7 +2578,7 @@ I'm ve+~+ry sure.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="resources/usc.qrc">
                <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
              </property>
              <property name="shortcut">
@@ -2493,7 +2617,7 @@ I'm ve+~+ry sure.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
              </property>
             </widget>
@@ -2516,7 +2640,7 @@ I'm ve+~+ry sure.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
              </property>
             </widget>
@@ -2542,7 +2666,7 @@ I'm ve+~+ry sure.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/usdx.png</normaloff>:/marks/usdx.png</iconset>
              </property>
             </widget>
@@ -2568,7 +2692,7 @@ I'm ve+~+ry sure.</string>
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="resources/usc.qrc">
                <normaloff>:/yass.png</normaloff>:/yass.png</iconset>
              </property>
             </widget>
@@ -2639,7 +2763,7 @@ I'm ve+~+ry sure.</string>
             <string>play</string>
            </property>
            <property name="icon">
-            <iconset>
+            <iconset resource="resources/usc.qrc">
              <normaloff>:/player/undo.png</normaloff>:/player/undo.png</iconset>
            </property>
            <property name="iconSize">
@@ -2989,7 +3113,7 @@ I'm ve+~+ry sure.</string>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/icons/bean.png</normaloff>:/icons/bean.png</iconset>
    </property>
    <property name="text">
@@ -3001,7 +3125,7 @@ I'm ve+~+ry sure.</string>
   </action>
   <action name="actionQuit_USC">
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/control/quit.png</normaloff>:/control/quit.png</iconset>
    </property>
    <property name="text">
@@ -3013,7 +3137,7 @@ I'm ve+~+ry sure.</string>
   </action>
   <action name="actionAbout_Qt">
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/qt.png</normaloff>:/qt.png</iconset>
    </property>
    <property name="text">
@@ -3031,7 +3155,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/languages/lang/us.png</normaloff>:/languages/lang/us.png</iconset>
    </property>
    <property name="text">
@@ -3049,7 +3173,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/languages/lang/de.png</normaloff>:/languages/lang/de.png</iconset>
    </property>
    <property name="text">
@@ -3058,7 +3182,7 @@ I'm ve+~+ry sure.</string>
   </action>
   <action name="actionAbout_BASS">
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/logo_bass.png</normaloff>:/logo_bass.png</iconset>
    </property>
    <property name="text">
@@ -3067,7 +3191,7 @@ I'm ve+~+ry sure.</string>
   </action>
   <action name="actionAbout_TagLib">
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/taglib.png</normaloff>:/taglib.png</iconset>
    </property>
    <property name="text">
@@ -3082,7 +3206,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/languages/lang/fr.png</normaloff>:/languages/lang/fr.png</iconset>
    </property>
    <property name="text">
@@ -3097,7 +3221,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/languages/lang/es.png</normaloff>:/languages/lang/es.png</iconset>
    </property>
    <property name="text">
@@ -3112,7 +3236,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/languages/lang/it.png</normaloff>:/languages/lang/it.png</iconset>
    </property>
    <property name="text">
@@ -3127,7 +3251,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/usc.qrc">
      <normaloff>:/languages/lang/pl.png</normaloff>:/languages/lang/pl.png</iconset>
    </property>
    <property name="text">
@@ -3159,6 +3283,8 @@ I'm ve+~+ry sure.</string>
   <tabstop>pushButton_SaveToFile</tabstop>
   <tabstop>plainTextEdit_OutputLyrics</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="resources/usc.qrc"/>
+ </resources>
  <connections/>
 </ui>

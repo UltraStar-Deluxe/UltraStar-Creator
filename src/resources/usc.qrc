@@ -30,6 +30,10 @@
         <file>yass.png</file>
         <file>dict/en_US.dic</file>
         <file>dict/en_US.aff</file>
+        <file>control_pause_blue.png</file>
+        <file>control_play_blue.png</file>
+        <file>control_start_blue.png</file>
+        <file>control_stop_blue.png</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>
