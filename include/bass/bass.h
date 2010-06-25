@@ -1,6 +1,6 @@
 /*
 	BASS 2.4 C/C++ header file
-	Copyright (c) 1999-2008 Un4seen Developments Ltd.
+	Copyright (c) 1999-2010 Un4seen Developments Ltd.
 
 	See the BASS.CHM file for more detailed documentation
 */
@@ -8,10 +8,10 @@
 #ifndef BASS_H
 #define BASS_H
 
-#ifdef _WIN32 // Windows
+#ifdef _WIN32
 #include <wtypes.h>
 typedef unsigned __int64 QWORD;
-#else // OSX
+#else
 #include <stdint.h>
 #define WINAPI
 #define CALLBACK
@@ -22,8 +22,10 @@ typedef uint64_t QWORD;
 #ifndef __OBJC__
 typedef int BOOL;
 #endif
+#ifndef TRUE
 #define TRUE 1
 #define FALSE 0
+#endif
 #define LOBYTE(a) (BYTE)(a)
 #define HIBYTE(a) (BYTE)((a)>>8)
 #define LOWORD(a) (WORD)(a)
@@ -36,8 +38,8 @@ typedef int BOOL;
 extern "C" {
 #endif
 
-#define BASSVERSION 0x204	// API version
-#define BASSVERSIONTEXT "2.4"
+#define BASSVERSION		0x204	// API version
+#define BASSVERSIONTEXT		"2.4.6"
 
 #ifndef BASSDEF
 #define BASSDEF(f) WINAPI f
@@ -88,6 +90,7 @@ typedef DWORD HPLUGIN;		// Plugin handle
 #define BASS_ERROR_VERSION	43	// invalid BASS version (used by add-ons)
 #define BASS_ERROR_CODEC	44	// codec is not available/supported
 #define BASS_ERROR_ENDED	45	// the channel/file has ended
+#define BASS_ERROR_BUSY		46	// the device is busy
 #define BASS_ERROR_UNKNOWN	-1	// some other mystery problem
 
 // BASS_SetConfig options
@@ -110,6 +113,9 @@ typedef DWORD HPLUGIN;		// Plugin handle
 #define BASS_CONFIG_MUSIC_VIRTUAL	22
 #define BASS_CONFIG_VERIFY			23
 #define BASS_CONFIG_UPDATETHREADS	24
+#if defined(__linux__) || defined (_WIN32_WCE)
+#define BASS_CONFIG_DEV_BUFFER		27
+#endif
 
 // BASS_SetConfigPtr options
 #define BASS_CONFIG_NET_AGENT		16
@@ -123,6 +129,9 @@ typedef DWORD HPLUGIN;		// Plugin handle
 #define BASS_DEVICE_CPSPEAKERS	1024 // detect speakers via Windows control panel
 #define BASS_DEVICE_SPEAKERS	2048 // force enabling of speaker assignment
 #define BASS_DEVICE_NOSPEAKER	4096 // ignore speaker arrangement
+#ifdef __linux__
+#define BASS_DEVICE_DMIX		8192 // use "dmix" (shared) output
+#endif
 
 // DirectSound interfaces (for use with BASS_GetDSoundObject)
 #define BASS_OBJECT_DS		1	// IDirectSound
@@ -130,8 +139,13 @@ typedef DWORD HPLUGIN;		// Plugin handle
 
 // Device info structure
 typedef struct {
+#ifdef _WIN32_WCE
+	const wchar_t *name;	// description
+	const wchar_t *driver;	// driver
+#else
 	const char *name;	// description
 	const char *driver;	// driver
+#endif
 	DWORD flags;
 } BASS_DEVICEINFO;
 
@@ -308,6 +322,7 @@ typedef struct {
 #define BASS_CTYPE_STREAM_MP2	0x10004
 #define BASS_CTYPE_STREAM_MP3	0x10005
 #define BASS_CTYPE_STREAM_AIFF	0x10006
+#define BASS_CTYPE_STREAM_CA	0x10007
 #define BASS_CTYPE_STREAM_WAV	0x40000 // WAVE flag, LOWORD=codec
 #define BASS_CTYPE_STREAM_WAV_PCM	0x50001
 #define BASS_CTYPE_STREAM_WAV_FLOAT	0x50003
@@ -320,8 +335,13 @@ typedef struct {
 
 typedef struct {
 	DWORD ctype;		// channel type
+#ifdef _WIN32_WCE
+	const wchar_t *name;	// format description
+	const wchar_t *exts;	// file extension filter (*.ext1;*.ext2;etc...)
+#else
 	const char *name;	// format description
 	const char *exts;	// file extension filter (*.ext1;*.ext2;etc...)
+#endif
 } BASS_PLUGINFORM;
 
 typedef struct {
@@ -352,7 +372,6 @@ typedef struct BASS_3DVECTOR {
 #define BASS_3DALG_FULL		2
 #define BASS_3DALG_LIGHT	3
 
-#ifdef _WIN32
 // EAX environments, use with BASS_SetEAXParameters
 enum
 {
@@ -413,7 +432,6 @@ enum
 #define EAX_PRESET_DRUGGED         EAX_ENVIRONMENT_DRUGGED,0.875F,8.392F,1.388F
 #define EAX_PRESET_DIZZY           EAX_ENVIRONMENT_DIZZY,0.139F,17.234F,0.666F
 #define EAX_PRESET_PSYCHOTIC       EAX_ENVIRONMENT_PSYCHOTIC,0.486F,7.563F,0.806F
-#endif
 
 typedef DWORD (CALLBACK STREAMPROC)(HSTREAM handle, void *buffer, DWORD length, void *user);
 /* User stream callback function. NOTE: A stream function should obviously be as quick
@@ -543,6 +561,7 @@ RETURN : TRUE = continue recording, FALSE = stop */
 #define BASS_DATA_FFT8192	0x80000005	// 8192 FFT
 #define BASS_DATA_FFT_INDIVIDUAL 0x10	// FFT flag: FFT for each channel, else all combined
 #define BASS_DATA_FFT_NOWINDOW	0x20	// FFT flag: no Hanning window
+#define BASS_DATA_FFT_REMOVEDC	0x40	// FFT flag: pre-remove DC bias
 
 // BASS_ChannelGetTags types : what's returned
 #define BASS_TAG_ID3		0	// ID3v1 tags : TAG_ID3 structure
@@ -551,12 +570,17 @@ RETURN : TRUE = continue recording, FALSE = stop */
 #define BASS_TAG_HTTP		3	// HTTP headers : series of null-terminated ANSI strings
 #define BASS_TAG_ICY		4	// ICY headers : series of null-terminated ANSI strings
 #define BASS_TAG_META		5	// ICY metadata : ANSI string
+#define BASS_TAG_APE		6	// APEv2 tags : series of null-terminated UTF-8 strings
 #define BASS_TAG_VENDOR		9	// OGG encoder : UTF-8 string
 #define BASS_TAG_LYRICS3	10	// Lyric3v2 tag : ASCII string
+#define BASS_TAG_CA_CODEC	11	// CoreAudio codec info : TAG_CA_CODEC structure
 #define BASS_TAG_RIFF_INFO	0x100 // RIFF "INFO" tags : series of null-terminated ANSI strings
-#define BASS_TAG_RIFF_BEXT	0x101 // RIFF/BWF Broadcast Audio Extension tags : TAG_BEXT structure
+#define BASS_TAG_RIFF_BEXT	0x101 // RIFF/BWF "bext" tags : TAG_BEXT structure
+#define BASS_TAG_RIFF_CART	0x102 // RIFF/BWF "cart" tags : TAG_CART structure
+#define BASS_TAG_APE_BINARY	0x1000	// + index #, binary APEv2 tag : TAG_APE_BINARY structure
 #define BASS_TAG_MUSIC_NAME		0x10000	// MOD music name : ANSI string
 #define BASS_TAG_MUSIC_MESSAGE	0x10001	// MOD message : ANSI string
+#define BASS_TAG_MUSIC_ORDERS	0x10002	// MOD order list : BYTE array of pattern numbers
 #define BASS_TAG_MUSIC_INST		0x10100	// + instrument #, MOD instrument name : ANSI string
 #define BASS_TAG_MUSIC_SAMPLE	0x10300	// + sample #, MOD sample name : ANSI string
 
@@ -571,7 +595,14 @@ typedef struct {
 	BYTE genre;
 } TAG_ID3;
 
-// BWF Broadcast Audio Extension tag structure
+// Binary APEv2 tag structure
+typedef struct {
+	const char *key;
+	const void *data;
+	DWORD length;
+} TAG_APE_BINARY;
+
+// BWF "bext" tag structure
 #ifdef _MSC_VER
 #pragma warning(push)
 #pragma warning(disable:4200)
@@ -600,9 +631,54 @@ typedef struct {
 #pragma warning(pop)
 #endif
 
+// BWF "cart" tag structures
+typedef struct
+{
+	DWORD dwUsage;					// FOURCC timer usage ID
+	DWORD dwValue;					// timer value in samples from head
+} TAG_CART_TIMER;
+
+typedef struct
+{
+	char Version[4];				// version of the data structure
+	char Title[64];					// title of cart audio sequence
+	char Artist[64];				// artist or creator name
+	char CutID[64];					// cut number identification
+	char ClientID[64];				// client identification
+	char Category[64];				// category ID, PSA, NEWS, etc
+	char Classification[64];		// classification or auxiliary key
+	char OutCue[64];				// out cue text
+	char StartDate[10];				// yyyy-mm-dd
+	char StartTime[8];				// hh:mm:ss
+	char EndDate[10];				// yyyy-mm-dd
+	char EndTime[8];				// hh:mm:ss
+	char ProducerAppID[64];			// name of vendor or application
+	char ProducerAppVersion[64];	// version of producer application
+	char UserDef[64];				// user defined text
+	DWORD dwLevelReference;			// sample value for 0 dB reference
+	TAG_CART_TIMER PostTimer[8];	// 8 time markers after head
+	char Reserved[276];
+	char URL[1024];					// uniform resource locator
+#if defined(__GNUC__) && __GNUC__<3
+	char TagText[0];				// free form text for scripts or tags
+#elif 1 // change to 0 if compiler fails the following line
+	char TagText[];					// free form text for scripts or tags
+#else
+	char TagText[1];				// free form text for scripts or tags
+#endif
+} TAG_CART;
+
+// CoreAudio codec info structure
+typedef struct {
+	DWORD ftype;					// file format
+	DWORD atype;					// audio format
+	const char *name;				// description
+} TAG_CA_CODEC;
+
 // BASS_ChannelGetLength/GetPosition/SetPosition modes
 #define BASS_POS_BYTE			0		// byte position
 #define BASS_POS_MUSIC_ORDER	1		// order.row position, MAKELONG(order,row)
+#define BASS_POS_DECODE			0x10000000 // flag: get the decoding (not playing) position
 
 // BASS_RecordSetInput flags
 #define BASS_INPUT_OFF		0x10000
@@ -726,7 +802,7 @@ void *BASSDEF(BASS_GetConfigPtr)(DWORD option);
 DWORD BASSDEF(BASS_GetVersion)();
 int BASSDEF(BASS_ErrorGetCode)();
 BOOL BASSDEF(BASS_GetDeviceInfo)(DWORD device, BASS_DEVICEINFO *info);
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(_WIN32_WCE)
 BOOL BASSDEF(BASS_Init)(int device, DWORD freq, DWORD flags, HWND win, const GUID *dsguid);
 #else
 BOOL BASSDEF(BASS_Init)(int device, DWORD freq, DWORD flags, void *win, void *dsguid);
@@ -734,7 +810,7 @@ BOOL BASSDEF(BASS_Init)(int device, DWORD freq, DWORD flags, void *win, void *ds
 BOOL BASSDEF(BASS_SetDevice)(DWORD device);
 DWORD BASSDEF(BASS_GetDevice)();
 BOOL BASSDEF(BASS_Free)();
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(_WIN32_WCE)
 void *BASSDEF(BASS_GetDSoundObject)(DWORD object);
 #endif
 BOOL BASSDEF(BASS_GetInfo)(BASS_INFO *info);
@@ -755,7 +831,7 @@ BOOL BASSDEF(BASS_Get3DFactors)(float *distf, float *rollf, float *doppf);
 BOOL BASSDEF(BASS_Set3DPosition)(const BASS_3DVECTOR *pos, const BASS_3DVECTOR *vel, const BASS_3DVECTOR *front, const BASS_3DVECTOR *top);
 BOOL BASSDEF(BASS_Get3DPosition)(BASS_3DVECTOR *pos, BASS_3DVECTOR *vel, BASS_3DVECTOR *front, BASS_3DVECTOR *top);
 void BASSDEF(BASS_Apply3D)();
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(_WIN32_WCE)
 BOOL BASSDEF(BASS_SetEAXParameters)(int env, float vol, float decay, float damp);
 BOOL BASSDEF(BASS_GetEAXParameters)(DWORD *env, float *vol, float *decay, float *damp);
 #endif

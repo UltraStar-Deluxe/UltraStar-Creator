@@ -845,11 +845,15 @@ void QCMainWindow::handleMP3() {
     QWORD MP3LengthBytes = BASS_ChannelGetLength(_mediaStream, BASS_POS_BYTE); // the length in bytes
     MP3LengthTime = BASS_ChannelBytes2Seconds(_mediaStream, MP3LengthBytes); // the length in seconds
     ui->horizontalSlider_MP3->setRange(0, (int)MP3LengthTime);
+    ui->horizontalSlider_PreviewMP3->setRange(0, (int)MP3LengthTime);
     ui->horizontalSlider_MP3->setValue(0);
+    ui->horizontalSlider_PreviewMP3->setValue(0);
     ui->label_TimeElapsed->setText(tr("0:00"));
+    ui->label_PreviewTimeElapsed->setText(tr("0:00"));
     int minutesToRun = (MP3LengthTime / 60);
     int secondsToRun = ((int)MP3LengthTime % 60);
     ui->label_TimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
+    ui->label_PreviewTimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
 
     BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, 0);
 
@@ -885,8 +889,6 @@ void QCMainWindow::handleMP3() {
     ui->label_BPMSet->setStatusTip(tr("MP3 set."));
     previewState = QCMainWindow::initialized;
     ui->pushButton_PreviewPlayPause->setEnabled(true);
-    ui->pushButton_PreviewStop->setEnabled(true);
-    ui->pushButton_PreviewRewind->setEnabled(true);
 
     if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
         state = QCMainWindow::initialized;
@@ -912,9 +914,11 @@ void QCMainWindow::on_actionAbout_BASS_triggered()
                             tr("About BASS"),
                             QString(tr("<b>BASS Audio Library</b><br><br>"
                                             "BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.<br><br>"
-                                            "Version: <b>%1</b><br><br>"
-                                            "Copyright (c) 1999-2008<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved."))
-                                            .arg(BASSVERSIONTEXT),
+                                            "Version: <b>%1</b><br>"
+                                            "<br><br><b>BASS FX Effects Extension</b><br><br>"
+                                            "BASS FX is an extension providing several effects, including tempo & pitch control.<br><br>"
+                                            "Version: <b>2.4.5</b><br><br><br>"
+                                            "Copyright (c) 2003-2010<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved.")).arg(BASSVERSIONTEXT),
                             QStringList() << ":/marks/accept.png" << "OK",
                             330);
 }
@@ -945,6 +949,22 @@ void QCMainWindow::updateTime() {
 
         if(posSec != -1) {
             QTimer::singleShot(1000, this, SLOT(updateTime()));
+        }
+}
+
+void QCMainWindow::updatePreviewTime() {
+        int posSec = (int)BASS_Position();
+        int minutesElapsed = posSec / 60;
+        int secondsElapsed = posSec % 60;
+        ui->label_PreviewTimeElapsed->setText(tr("%1:%2").arg(minutesElapsed).arg(secondsElapsed, 2, 10, QChar('0')));
+        int timeToRun = MP3LengthTime - posSec;
+        int minutesToRun = (timeToRun / 60);
+        int secondsToRun = (timeToRun % 60);
+        ui->label_PreviewTimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
+        ui->horizontalSlider_PreviewMP3->setValue(posSec);
+
+        if(posSec != -1) {
+            QTimer::singleShot(1000, this, SLOT(updatePreviewTime()));
         }
 }
 
@@ -1162,6 +1182,11 @@ void QCMainWindow::on_horizontalSlider_MP3_sliderMoved(int position)
     BASS_SetPosition(position);
 }
 
+void QCMainWindow::on_horizontalSlider_PreviewMP3_sliderMoved(int position)
+{
+    BASS_SetPosition(position);
+}
+
 void QCMainWindow::on_pushButton_startUltraStar_clicked()
 {
     QSettings settings;
@@ -1201,6 +1226,7 @@ void QCMainWindow::on_pushButton_PreviewPlayPause_clicked()
         bool result = BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO, 0);
         if (result) {
             BASS_Play();
+            updatePreviewTime();
         }
         ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control_pause_blue.png"));
     }
