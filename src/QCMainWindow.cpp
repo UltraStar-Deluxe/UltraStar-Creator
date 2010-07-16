@@ -448,8 +448,6 @@ void QCMainWindow::on_lineEdit_Video_textChanged(QString video)
 
 void QCMainWindow::on_actionAbout_triggered()
 {
-    //QMessageBox::information(this, tr("About UltraStar Song Creator"),
-    //                  tr("<b>UltraStar Song Creator 0.1</b><br><br> by:saiya_mg & bohning"));
     QUAboutDialog(this).exec();
 }
 
