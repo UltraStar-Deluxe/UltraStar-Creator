@@ -24,6 +24,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     // adding languages to language combobox as I did not find a way to add itemData within designer
     // this way, foreign language names are displayed to the user while the UltraStar file will contain the
     // english language name
+    ui->comboBox_Language->addItem(QIcon(":/languages/lang/cn.png"),tr("Chinese"),"Chinese");
     ui->comboBox_Language->addItem(QIcon(":/languages/lang/hr.png"),tr("Croatian"),"Croatian");
     ui->comboBox_Language->addItem(QIcon(":/languages/lang/cz.png"),tr("Czech"),"Czech");
     ui->comboBox_Language->addItem(QIcon(":/languages/lang/dk.png"),tr("Danish"),"Danish");
