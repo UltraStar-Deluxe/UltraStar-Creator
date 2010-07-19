@@ -476,7 +476,8 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                     if (fileInfo->suffix().toLower() == "txt") {
                         QFile file(fileName);
                         if (file.open(QFile::ReadOnly | QFile::Text)) {
-                            ui->plainTextEdit_InputLyrics->setPlainText(file.readAll());
+                            QTextStream lyrics(&file);
+                            ui->plainTextEdit_InputLyrics->setPlainText(lyrics.readAll());
                         }
                     }
                     else if (fileInfo->suffix().toLower() == tr("mp3") || fileInfo->suffix().toLower() == tr("ogg")) {
@@ -609,7 +610,8 @@ void QCMainWindow::on_pushButton_BrowseLyrics_clicked()
     if (!filename_Text.isEmpty()) {
         QFile file(filename_Text);
         if (file.open(QFile::ReadOnly | QFile::Text)) {
-            ui->plainTextEdit_InputLyrics->setPlainText(file.readAll());
+            QTextStream lyrics(&file);
+            ui->plainTextEdit_InputLyrics->setPlainText(lyrics.readAll());
         }
     }
 }
