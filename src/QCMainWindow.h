@@ -83,6 +83,7 @@ private:
     QNetworkAccessManager *nam;
 
 private slots:
+    void on_actionCreate_Dummy_Songs_triggered();
     void on_horizontalSlider_PreviewMP3_sliderMoved(int position);
     void finishedSlot(QNetworkReply* reply);
     void on_pushButton_Syllabificate_clicked();

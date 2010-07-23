@@ -3070,9 +3070,16 @@ I'm ve+~+ry sure.</string>
     <addaction name="actionPolish"/>
     <addaction name="actionSpanish"/>
    </widget>
+   <widget class="QMenu" name="menuExperimental_don_t_dare">
+    <property name="title">
+     <string>Experimental (don't dare!)</string>
+    </property>
+    <addaction name="actionCreate_Dummy_Songs"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuLanguage"/>
    <addaction name="menuHelp_2"/>
+   <addaction name="menuExperimental_don_t_dare"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
@@ -3232,6 +3239,18 @@ I'm ve+~+ry sure.</string>
    </property>
    <property name="text">
     <string>Polish</string>
+   </property>
+  </action>
+  <action name="actionCreate_Dummy_Songs">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/types/text_plain.png</normaloff>:/types/text_plain.png</iconset>
+   </property>
+   <property name="text">
+    <string>Generate Freestyle text files from music collection</string>
    </property>
   </action>
  </widget>

@@ -15,6 +15,7 @@
 #include <QTextCodec>
 #include <QProcess>
 #include <QUrl>
+ #include <QDirIterator>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -1371,4 +1372,99 @@ void QCMainWindow::finishedSlot(QNetworkReply* reply)
     {
         QUMessageBox::information(this, tr("Network error"), QString(tr("Error: %1").arg(reply->errorString())));
     }
+}
+
+void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
+{
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    QString SongCollectionPath;
+    SongCollectionPath = QFileDialog::getExistingDirectory(0, tr("Choose root song folder"), QDir::homePath());
+
+    QDirIterator it(SongCollectionPath, QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        it.next();
+        if (it.fileInfo().suffix() == "mp3") {
+            QMainWindow::statusBar()->showMessage(tr("Creating %1").arg(it.fileInfo().completeBaseName()));
+
+            // create directory, move MP3 into it
+            QFile songFile(it.fileInfo().absoluteFilePath());
+            QFileInfo songInfo(songFile);
+            int separatorPos = songInfo.fileName().indexOf(" - ");
+
+            QString artist = songInfo.completeBaseName().mid(0, separatorPos);
+            artist = artist.trimmed();
+            QStringList tokens = artist.split(QRegExp("(\\s+)"));
+                QList<QString>::iterator tokItr = tokens.begin();
+
+                for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
+                (*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
+                }
+            artist = tokens.join(" ");
+            artist.replace("Feat.", "feat.", Qt::CaseSensitive);
+            artist.replace("With.", "with.", Qt::CaseSensitive);
+            artist.replace("Vs.", "vs.", Qt::CaseSensitive);
+
+            QString title = songInfo.completeBaseName().mid(separatorPos + 3);
+            title = title.trimmed();
+            tokens = title.split(QRegExp("(\\s+)"));
+                tokItr = tokens.begin();
+
+                for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
+                (*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
+                }
+            title = tokens.join(" ");
+
+            QString dirName = tr("%1 - %2").arg(artist).arg(title);
+            songInfo.dir().mkdir(dirName);
+            QString newFileName(tr("%1/%2/%3.mp3").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+            songFile.rename(newFileName);
+
+            // text file
+            QString textFilename(tr("%1/%2/%3.txt").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+            QFile file(textFilename);
+            if (!file.open(QFile::WriteOnly | QFile::Text)) {
+                QUMessageBox::warning(this, tr("Application"),
+                    tr("Cannot write file %1:\n%2.")
+                    .arg(textFilename)
+                    .arg(file.errorString()));
+            }
+
+            QTextStream out(&file);
+            QTextCodec *codec = QTextCodec::codecForName("Windows-1252");
+            //QTextCodec *codec = QTextCodec::codecForName("UTF-8");
+            //out.setGenerateByteOrderMark(true); // BOM needed by UltraStar 1.1
+
+            out.setCodec(codec);
+            QString textString;
+            textString += "#ENCODING:CP1252\n";
+            //textString += "#ENCODING:UTF8\n";
+            textString += tr("#TITLE:%1\n").arg(title);
+            textString += tr("#ARTIST:%1\n").arg(artist);
+            textString += "#LANGUAGE:\n";
+            textString += "#EDITION:\n";
+            textString += "#GENRE:\n";
+            textString += "#YEAR:\n";
+            textString += tr("#MP3:%1 - %2.mp3\n").arg(artist).arg(title);
+            textString += tr("#COVER:%1 - %2 [CO].jpg\n").arg(artist).arg(title);
+            textString += tr("#BACKGROUND:%1 - %2 [BG].jpg\n").arg(artist).arg(title);
+            textString += "#BPM:300\n";
+            textString += "#GAP:0\n";
+            textString += "F 0 0 0 \n";
+            textString += "- 1\n";
+            textString += "F 1 0 0 \n";
+            textString += "E\n";
+            out << textString;
+
+            // Cover
+            QString coverFilename(tr("%1/%2/%3 [CO].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+            QFile cover(":/NoCover.jpg");
+            cover.copy(coverFilename);
+
+            // Background
+            QString backgroundFilename(tr("%1/%2/%3 [BG].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+            QFile background(":/NoBackground.jpg");
+            background.copy(backgroundFilename);
+        }
+    }
+    QApplication::restoreOverrideCursor();
 }
