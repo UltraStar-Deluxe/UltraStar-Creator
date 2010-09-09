@@ -1395,9 +1395,9 @@ void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
 {
     int result = QUMessageBox::question(0,
                     QObject::tr("Freestyle text file generation."),
-                    QObject::tr("This function will generate UltraStar compatible freestyle text files without any lyrics for each MP3 file in a subsequently selectable folder.<br><br>Each MP3 will be moved into a separate subdirectory and a text file containing the bare minimum of information will be automatically created along with a standard cover and background.<br><br>Make sure that the MP3 files follow a 'Artist - Title.mp3' naming scheme."),
-                    BTN << ":/marks/accept.png" << QObject::tr("Go ahead!")
-                        << ":/marks/cancel.png" << QObject::tr("Cancel"),550,0);
+                    QObject::tr("This function will generate UltraStar compatible freestyle text files without any lyrics for each audio file in a subsequently selectable folder.<br><br>Each MP3 will be moved into a separate subdirectory and a text file containing the bare minimum of information will be automatically created along with a standard cover and background.<br><br>If your audio files follow an 'Artist - Title.mp3' naming scheme, they will be correctly mapped in the resulting song file."),
+                    BTN << ":/marks/accept.png" << QObject::tr("Go ahead, I know what I am doing!")
+                        << ":/marks/cancel.png" << QObject::tr("I'm not sure. I want cancel."),400,0);
 
     if (result == 0) {
         QString SongCollectionPath;
@@ -1407,40 +1407,54 @@ void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
         QDirIterator it(SongCollectionPath, QDirIterator::Subdirectories);
         while (it.hasNext()) {
             it.next();
-            if (it.fileInfo().suffix() == "mp3") {
+            if (it.fileInfo().suffix().toLower() == tr("mp3") || it.fileInfo().suffix().toLower() == tr("ogg")) {
+
                 QMainWindow::statusBar()->showMessage(tr("Creating %1").arg(it.fileInfo().completeBaseName()));
 
-                // create directory, move MP3 into it
+                // create directory, move MP3/OGG into it
                 QFile songFile(it.fileInfo().absoluteFilePath());
                 QFileInfo songInfo(songFile);
                 int separatorPos = songInfo.fileName().indexOf(" - ");
 
-                QString artist = songInfo.completeBaseName().mid(0, separatorPos);
-                artist = artist.trimmed();
-                QStringList tokens = artist.split(QRegExp("(\\s+)"));
-                    QList<QString>::iterator tokItr = tokens.begin();
+                QString artist;
+                QString title;
+                QString dirName;
 
-                    for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
-                    (*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
-                    }
-                artist = tokens.join(" ");
-                artist.replace("Feat.", "feat.", Qt::CaseSensitive);
-                artist.replace("With.", "with.", Qt::CaseSensitive);
-                artist.replace("Vs.", "vs.", Qt::CaseSensitive);
+                if (separatorPos != -1) {
+                    artist = songInfo.completeBaseName().mid(0, separatorPos);
+                    artist = artist.trimmed();
+                    QStringList tokens = artist.split(QRegExp("(\\s+)"));
+                        QList<QString>::iterator tokItr = tokens.begin();
 
-                QString title = songInfo.completeBaseName().mid(separatorPos + 3);
-                title = title.trimmed();
-                tokens = title.split(QRegExp("(\\s+)"));
-                    tokItr = tokens.begin();
+                        for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
+                        (*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
+                        }
+                    artist = tokens.join(" ");
+                    artist.replace("Feat.", "feat.", Qt::CaseSensitive);
+                    artist.replace("With.", "with.", Qt::CaseSensitive);
+                    artist.replace("Vs.", "vs.", Qt::CaseSensitive);
 
-                    for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
-                    (*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
-                    }
-                title = tokens.join(" ");
+                    title = songInfo.completeBaseName().mid(separatorPos + 3);
+                    title = title.trimmed();
+                    tokens = title.split(QRegExp("(\\s+)"));
+                        tokItr = tokens.begin();
 
-                QString dirName = tr("%1 - %2").arg(artist).arg(title);
+                        for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
+                        (*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
+                        }
+                    title = tokens.join(" ");
+
+                    dirName = tr("%1 - %2").arg(artist).arg(title);
+                }
+                else { // audio file does not follow "Artist - Title.*" naming scheme
+                    artist = songInfo.completeBaseName();
+                    title = "";
+
+                    dirName = artist;
+                }
+
                 songInfo.dir().mkdir(dirName);
-                QString newFileName(tr("%1/%2/%3.mp3").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+                QString newFileName(tr("%1/%2/%3.%4").arg(songInfo.absolutePath()).arg(dirName).arg(dirName).arg(songInfo.suffix().toLower()));
                 songFile.rename(newFileName);
 
                 // text file
@@ -1460,17 +1474,29 @@ void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
 
                 out.setCodec(codec);
                 QString textString;
-                textString += "#ENCODING:CP1252\n";
+                //textString += "#ENCODING:CP1252\n";
                 //textString += "#ENCODING:UTF8\n";
-                textString += tr("#TITLE:%1\n").arg(title);
+                if (separatorPos != -1) {
+                    textString += tr("#TITLE:%1\n").arg(title);
+                }
+                else {
+                    textString += tr("#TITLE:?\n");
+                }
                 textString += tr("#ARTIST:%1\n").arg(artist);
                 textString += "#LANGUAGE:\n";
                 textString += "#EDITION:\n";
                 textString += "#GENRE:\n";
                 textString += "#YEAR:\n";
-                textString += tr("#MP3:%1 - %2.mp3\n").arg(artist).arg(title);
-                textString += tr("#COVER:%1 - %2 [CO].jpg\n").arg(artist).arg(title);
-                textString += tr("#BACKGROUND:%1 - %2 [BG].jpg\n").arg(artist).arg(title);
+                if (separatorPos != -1) {
+                    textString += tr("#MP3:%1 - %2.%3\n").arg(artist).arg(title).arg(songInfo.suffix().toLower());
+                    textString += tr("#COVER:%1 - %2 [CO].jpg\n").arg(artist).arg(title);
+                    textString += tr("#BACKGROUND:%1 - %2 [BG].jpg\n").arg(artist).arg(title);
+                }
+                else {
+                    textString += tr("#MP3:%1.%2\n").arg(artist).arg(songInfo.suffix().toLower());
+                    textString += tr("#COVER:%1 [CO].jpg\n").arg(artist);
+                    textString += tr("#BACKGROUND:%1 [BG].jpg\n").arg(artist);
+                }
                 textString += "#BPM:300\n";
                 textString += "#GAP:0\n";
                 textString += "F 0 0 0 \n";
