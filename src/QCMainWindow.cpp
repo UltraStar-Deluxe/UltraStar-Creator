@@ -15,7 +15,7 @@
 #include <QTextCodec>
 #include <QProcess>
 #include <QUrl>
- #include <QDirIterator>
+#include <QDirIterator>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -59,11 +59,17 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
 
     this->show();
 
-    QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
-                              QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL+S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL+R). When finished, <b>save</b> the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
-                              BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
-
     QSettings settings;
+    bool firstRun = settings.value("firstRun", "true").toBool();
+
+    if(firstRun) {
+        QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
+                                  QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL+S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL+R). When finished, <b>save</b> the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
+                                  BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
+        firstRun = false;
+        settings.setValue("firstRun", firstRun);
+    }
+
     ui->lineEdit_Creator->setText(settings.value("creator", "").toString());
     QFileInfo fi(settings.value("songfile").toString());
     if (fi.exists()) {
@@ -178,11 +184,21 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         //ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ENCODING:UTF8"));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#TITLE:%1").arg(ui->lineEdit_Title->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#EDITION:%1").arg(ui->comboBox_Edition->currentText()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#YEAR:%1").arg(ui->spinBox_Year->text()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#CREATOR:%1").arg(ui->lineEdit_Creator->text()));
+        if (!ui->comboBox_Language->currentText().isEmpty()) {
+            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));
+        }
+        if (!ui->lineEdit_Edition->text().isEmpty()) {
+            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#EDITION:%1").arg(ui->lineEdit_Edition->text()));
+        }
+        if (!ui->comboBox_Genre->currentText().isEmpty()) {
+            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
+        }
+        if (!ui->comboBox_Year->currentText().isEmpty()) {
+            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#YEAR:%1").arg(ui->comboBox_Year->currentText()));
+        }
+        if (!ui->lineEdit_Creator->text().isEmpty()) {
+            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#CREATOR:%1").arg(ui->lineEdit_Creator->text()));
+        }
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#MP3:%1").arg(ui->lineEdit_MP3->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#COVER:%1").arg(ui->lineEdit_Cover->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#BACKGROUND:%1").arg(ui->lineEdit_Background->text()));
@@ -568,7 +584,7 @@ void QCMainWindow::on_comboBox_Language_currentIndexChanged(QString language)
     }
 }
 
-void QCMainWindow::on_comboBox_Edition_textChanged(QString edition)
+void QCMainWindow::on_lineEdit_Edition_textChanged(QString edition)
 {
     if(!edition.isEmpty()) {
         ui->label_EditionSet->setPixmap(QPixmap(":/marks/path_ok.png"));
@@ -881,8 +897,8 @@ void QCMainWindow::handleMP3() {
     ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
     ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
     ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
-    ui->spinBox_Year->setValue(ref.tag()->year());
-    // lyrics from mp3 lyrics-tag
+    ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString(ref.tag()->year())));
+    // TODO: lyrics from mp3 lyrics-tag
 
     ui->groupBox_SongMetaInformationTags->setEnabled(true);
     ui->groupBox_ArtworkTags->setEnabled(true);
@@ -1168,7 +1184,7 @@ void QCMainWindow::keyReleaseEvent(QKeyEvent *event) {
     }
 }
 
-void QCMainWindow::on_spinBox_Year_valueChanged(QString year)
+void QCMainWindow::on_comboBox_Year_activated(QString year)
 {
     if(!year.isEmpty()) {
         ui->label_YearSet->setPixmap(QPixmap(":/marks/path_ok.png"));
@@ -1179,6 +1195,7 @@ void QCMainWindow::on_spinBox_Year_valueChanged(QString year)
         ui->label_YearSet->setStatusTip(tr("#YEAR tag is empty."));
     }
 }
+
 void QCMainWindow::on_horizontalSlider_MP3_sliderMoved(int position)
 {
     BASS_SetPosition(position);
@@ -1345,7 +1362,7 @@ void QCMainWindow::on_pushButton_Syllabificate_clicked()
         data.append(params.toString());
         data.remove(0,1);
 
-        QNetworkReply* reply = nam->post(request,data);
+        //QNetworkReply* reply = nam->post(request,data);
     }
 }
 
@@ -1376,95 +1393,113 @@ void QCMainWindow::finishedSlot(QNetworkReply* reply)
 
 void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
 {
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    QString SongCollectionPath;
-    SongCollectionPath = QFileDialog::getExistingDirectory(0, tr("Choose root song folder"), QDir::homePath());
+    int result = QUMessageBox::question(0,
+                    QObject::tr("Freestyle text file generation."),
+                    QObject::tr("This function will generate UltraStar compatible freestyle text files without any lyrics for each MP3 file in a subsequently selectable folder.<br><br>Each MP3 will be moved into a separate subdirectory and a text file containing the bare minimum of information will be automatically created along with a standard cover and background.<br><br>Make sure that the MP3 files follow a 'Artist - Title.mp3' naming scheme."),
+                    BTN << ":/marks/accept.png" << QObject::tr("Go ahead!")
+                        << ":/marks/cancel.png" << QObject::tr("Cancel"),550,0);
 
-    QDirIterator it(SongCollectionPath, QDirIterator::Subdirectories);
-    while (it.hasNext()) {
-        it.next();
-        if (it.fileInfo().suffix() == "mp3") {
-            QMainWindow::statusBar()->showMessage(tr("Creating %1").arg(it.fileInfo().completeBaseName()));
+    if (result == 0) {
+        QString SongCollectionPath;
+        SongCollectionPath = QFileDialog::getExistingDirectory(0, tr("Choose root song folder"), QDir::homePath());
 
-            // create directory, move MP3 into it
-            QFile songFile(it.fileInfo().absoluteFilePath());
-            QFileInfo songInfo(songFile);
-            int separatorPos = songInfo.fileName().indexOf(" - ");
+        QApplication::setOverrideCursor(Qt::WaitCursor);
+        QDirIterator it(SongCollectionPath, QDirIterator::Subdirectories);
+        while (it.hasNext()) {
+            it.next();
+            if (it.fileInfo().suffix() == "mp3") {
+                QMainWindow::statusBar()->showMessage(tr("Creating %1").arg(it.fileInfo().completeBaseName()));
 
-            QString artist = songInfo.completeBaseName().mid(0, separatorPos);
-            artist = artist.trimmed();
-            QStringList tokens = artist.split(QRegExp("(\\s+)"));
-                QList<QString>::iterator tokItr = tokens.begin();
+                // create directory, move MP3 into it
+                QFile songFile(it.fileInfo().absoluteFilePath());
+                QFileInfo songInfo(songFile);
+                int separatorPos = songInfo.fileName().indexOf(" - ");
 
-                for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
-                (*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
+                QString artist = songInfo.completeBaseName().mid(0, separatorPos);
+                artist = artist.trimmed();
+                QStringList tokens = artist.split(QRegExp("(\\s+)"));
+                    QList<QString>::iterator tokItr = tokens.begin();
+
+                    for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
+                    (*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
+                    }
+                artist = tokens.join(" ");
+                artist.replace("Feat.", "feat.", Qt::CaseSensitive);
+                artist.replace("With.", "with.", Qt::CaseSensitive);
+                artist.replace("Vs.", "vs.", Qt::CaseSensitive);
+
+                QString title = songInfo.completeBaseName().mid(separatorPos + 3);
+                title = title.trimmed();
+                tokens = title.split(QRegExp("(\\s+)"));
+                    tokItr = tokens.begin();
+
+                    for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
+                    (*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
+                    }
+                title = tokens.join(" ");
+
+                QString dirName = tr("%1 - %2").arg(artist).arg(title);
+                songInfo.dir().mkdir(dirName);
+                QString newFileName(tr("%1/%2/%3.mp3").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+                songFile.rename(newFileName);
+
+                // text file
+                QString textFilename(tr("%1/%2/%3.txt").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+                QFile file(textFilename);
+                if (!file.open(QFile::WriteOnly | QFile::Text)) {
+                    QUMessageBox::warning(this, tr("Application"),
+                        tr("Cannot write file %1:\n%2.")
+                        .arg(textFilename)
+                        .arg(file.errorString()));
                 }
-            artist = tokens.join(" ");
-            artist.replace("Feat.", "feat.", Qt::CaseSensitive);
-            artist.replace("With.", "with.", Qt::CaseSensitive);
-            artist.replace("Vs.", "vs.", Qt::CaseSensitive);
 
-            QString title = songInfo.completeBaseName().mid(separatorPos + 3);
-            title = title.trimmed();
-            tokens = title.split(QRegExp("(\\s+)"));
-                tokItr = tokens.begin();
+                QTextStream out(&file);
+                QTextCodec *codec = QTextCodec::codecForName("Windows-1252");
+                //QTextCodec *codec = QTextCodec::codecForName("UTF-8");
+                //out.setGenerateByteOrderMark(true); // BOM needed by UltraStar 1.1
 
-                for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
-                (*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
-                }
-            title = tokens.join(" ");
+                out.setCodec(codec);
+                QString textString;
+                textString += "#ENCODING:CP1252\n";
+                //textString += "#ENCODING:UTF8\n";
+                textString += tr("#TITLE:%1\n").arg(title);
+                textString += tr("#ARTIST:%1\n").arg(artist);
+                textString += "#LANGUAGE:\n";
+                textString += "#EDITION:\n";
+                textString += "#GENRE:\n";
+                textString += "#YEAR:\n";
+                textString += tr("#MP3:%1 - %2.mp3\n").arg(artist).arg(title);
+                textString += tr("#COVER:%1 - %2 [CO].jpg\n").arg(artist).arg(title);
+                textString += tr("#BACKGROUND:%1 - %2 [BG].jpg\n").arg(artist).arg(title);
+                textString += "#BPM:300\n";
+                textString += "#GAP:0\n";
+                textString += "F 0 0 0 \n";
+                textString += "- 1\n";
+                textString += "F 1 0 0 \n";
+                textString += "E\n";
+                out << textString;
 
-            QString dirName = tr("%1 - %2").arg(artist).arg(title);
-            songInfo.dir().mkdir(dirName);
-            QString newFileName(tr("%1/%2/%3.mp3").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
-            songFile.rename(newFileName);
+                // Cover
+                QString coverFilename(tr("%1/%2/%3 [CO].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+                QFile cover(":/NoCover.jpg");
+                cover.copy(coverFilename);
 
-            // text file
-            QString textFilename(tr("%1/%2/%3.txt").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
-            QFile file(textFilename);
-            if (!file.open(QFile::WriteOnly | QFile::Text)) {
-                QUMessageBox::warning(this, tr("Application"),
-                    tr("Cannot write file %1:\n%2.")
-                    .arg(textFilename)
-                    .arg(file.errorString()));
+                // Background
+                QString backgroundFilename(tr("%1/%2/%3 [BG].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+                QFile background(":/NoBackground.jpg");
+                background.copy(backgroundFilename);
             }
-
-            QTextStream out(&file);
-            QTextCodec *codec = QTextCodec::codecForName("Windows-1252");
-            //QTextCodec *codec = QTextCodec::codecForName("UTF-8");
-            //out.setGenerateByteOrderMark(true); // BOM needed by UltraStar 1.1
-
-            out.setCodec(codec);
-            QString textString;
-            textString += "#ENCODING:CP1252\n";
-            //textString += "#ENCODING:UTF8\n";
-            textString += tr("#TITLE:%1\n").arg(title);
-            textString += tr("#ARTIST:%1\n").arg(artist);
-            textString += "#LANGUAGE:\n";
-            textString += "#EDITION:\n";
-            textString += "#GENRE:\n";
-            textString += "#YEAR:\n";
-            textString += tr("#MP3:%1 - %2.mp3\n").arg(artist).arg(title);
-            textString += tr("#COVER:%1 - %2 [CO].jpg\n").arg(artist).arg(title);
-            textString += tr("#BACKGROUND:%1 - %2 [BG].jpg\n").arg(artist).arg(title);
-            textString += "#BPM:300\n";
-            textString += "#GAP:0\n";
-            textString += "F 0 0 0 \n";
-            textString += "- 1\n";
-            textString += "F 1 0 0 \n";
-            textString += "E\n";
-            out << textString;
-
-            // Cover
-            QString coverFilename(tr("%1/%2/%3 [CO].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
-            QFile cover(":/NoCover.jpg");
-            cover.copy(coverFilename);
-
-            // Background
-            QString backgroundFilename(tr("%1/%2/%3 [BG].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
-            QFile background(":/NoBackground.jpg");
-            background.copy(backgroundFilename);
         }
+        QApplication::restoreOverrideCursor();
     }
-    QApplication::restoreOverrideCursor();
+    else {
+        // user cancelled
+    }
+}
+
+void QCMainWindow::on_actionHelp_triggered()
+{
+    QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
+                              QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL+S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL+R). When finished, <b>save</b> the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
+                              BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
 }

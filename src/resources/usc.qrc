@@ -34,8 +34,8 @@
         <file>control_play_blue.png</file>
         <file>control_start_blue.png</file>
         <file>control_stop_blue.png</file>
-        <file>NoCover.jpg</file>
         <file>NoBackground.jpg</file>
+        <file>NoCover.jpg</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>
@@ -128,6 +128,7 @@
         <file>cup.png</file>
         <file>bean.png</file>
         <file>bean--plus.png</file>
+        <file>beans.png</file>
     </qresource>
     <qresource prefix="/marks">
         <file>accept.png</file>

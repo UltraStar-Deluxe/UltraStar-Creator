@@ -83,6 +83,8 @@ private:
     QNetworkAccessManager *nam;
 
 private slots:
+    void on_comboBox_Year_activated(QString );
+    void on_actionHelp_triggered();
     void on_actionCreate_Dummy_Songs_triggered();
     void on_horizontalSlider_PreviewMP3_sliderMoved(int position);
     void finishedSlot(QNetworkReply* reply);
@@ -92,7 +94,6 @@ private slots:
     void on_lineEdit_Video_textChanged(QString );
     void on_pushButton_startUltraStar_clicked();
     void on_horizontalSlider_MP3_sliderMoved(int position);
-    void on_spinBox_Year_valueChanged(QString );
     void on_pushButton_UndoTap_clicked();
     void on_lineEdit_Background_textChanged(QString );
     void on_lineEdit_Cover_textChanged(QString );
@@ -114,7 +115,7 @@ private slots:
     void on_pushButton_BrowseLyrics_clicked();
     void on_comboBox_Genre_textChanged(QString );
     void on_lineEdit_Creator_textChanged(QString );
-    void on_comboBox_Edition_textChanged(QString );
+    void on_lineEdit_Edition_textChanged(QString );
     void on_comboBox_Language_currentIndexChanged(QString );
     void on_lineEdit_Title_textChanged(QString );
     void on_lineEdit_Artist_textChanged(QString );
