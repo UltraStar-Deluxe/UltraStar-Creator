@@ -122,6 +122,8 @@
         <file>convert-r.png</file>
         <file>text_allcaps.png</file>
         <file>cog.png</file>
+        <file>edit-hyphenation.png</file>
+        <file>question-frame.png</file>
     </qresource>
     <qresource prefix="/icons">
         <file>splash.png</file>

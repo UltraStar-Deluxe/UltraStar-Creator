@@ -15,8 +15,6 @@
 #include <QTime>
 #include <QProgressBar>
 #include <QFileInfo>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
 
 namespace Ui {
     class QCMainWindow;
@@ -66,6 +64,11 @@ private:
     QFileInfo* fileInfo_MP3;
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
+    bool isVowel(QChar ch);
+    bool isConsonant(QChar character);
+    bool isInseparable(QChar character1, QChar character2);
+    bool isStrongVowel(QChar character);
+    bool isHiatus(QChar character1, QChar character2);
 
     enum State {
         uninitialized,
@@ -80,14 +83,13 @@ private:
     QProgressBar *lyricsProgressBar;
     double MP3LengthTime;
     QString defaultDir;
-    QNetworkAccessManager *nam;
 
 private slots:
+    void on_actionWhats_This_triggered();
     void on_comboBox_Year_activated(QString );
     void on_actionHelp_triggered();
     void on_actionCreate_Dummy_Songs_triggered();
     void on_horizontalSlider_PreviewMP3_sliderMoved(int position);
-    void finishedSlot(QNetworkReply* reply);
     void on_pushButton_Syllabificate_clicked();
     void on_pushButton_startYass_clicked();
     void on_pushButton_PreviewPlayPause_clicked();

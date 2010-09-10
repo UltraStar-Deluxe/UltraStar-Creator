@@ -6,8 +6,7 @@ UI_DIR = ui
 OBJECTS_DIR = tmp
 RCC_DIR = tmp
 QT += core \
-    gui \
-    network
+    gui
 HEADERS += main.h \
     QU.h \
     QUStringSupport.h \

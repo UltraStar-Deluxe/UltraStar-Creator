@@ -4,18 +4,16 @@
 #include "QULogService.h"
 #include "QUMessageBox.h"
 #include "QUAboutDialog.h"
-#include "hunspelldll.h"
 
 #include <QFileDialog>
 #include <QTextStream>
 #include <QClipboard>
-#include <QUrl>
 #include <QSettings>
 #include <QTimer>
 #include <QTextCodec>
 #include <QProcess>
-#include <QUrl>
 #include <QDirIterator>
+#include <QWhatsThis>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -1295,102 +1293,6 @@ void QCMainWindow::on_pushButton_startYass_clicked()
     }
 }
 
-void QCMainWindow::on_pushButton_Syllabificate_clicked()
-{
-    nam = new QNetworkAccessManager(this);
-    connect(nam, SIGNAL(finished(QNetworkReply*)),
-            this, SLOT(finishedSlot(QNetworkReply*)));
-
-    QNetworkRequest request(QUrl("http://www.probandodominio.co.cc/silabear.php"));
-    request.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
-
-    QByteArray data;
-    QUrl params;
-    bool langAvailable = false;
-
-    QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
-    if (language == "English") {
-        language = "Eng";
-        langAvailable = true;
-    }
-    else if (language == "German") {
-        language = "Deu";
-        langAvailable = true;
-    }
-    else if (language == "Spanish") {
-        language = "Esp";
-        langAvailable = true;
-    }
-    else {
-        QString infoString;
-        if (!ui->comboBox_Language->currentText().isEmpty()) {
-            infoString = QString("The automatic lyrics syllabification is not (yet) available for <b>%1</b>.").arg(ui->comboBox_Language->currentText());
-        }
-        else {
-            infoString = QString("The song language has not yet been set.");
-        }
-        int result = QUMessageBox::question(0,
-                        QObject::tr("Syllabification."),
-                        QObject::tr("%1 Apply...").arg(infoString),
-                        BTN << ":/languages/lang/us.png"    << QObject::tr("English syllabification rules.")
-                            << ":/languages/lang/de.png"    << QObject::tr("German syllabification rules.")
-                            << ":/languages/lang/es.png"    << QObject::tr("Spanish syllabification rules.")
-                            << ":/marks/cancel.png"         << QObject::tr("Cancel."));
-
-        if (result == 0) {
-            language = "Eng";
-            langAvailable = true;
-        }
-        else if (result == 1) {
-            language = "Deu";
-            langAvailable = true;
-        }
-        else if (result == 2) {
-            language = "Esp";
-            langAvailable = true;
-        }
-        else {
-            // user cancelled
-        }
-    }
-
-    if (langAvailable) {
-        params.addQueryItem("txt", cleanLyrics(ui->plainTextEdit_InputLyrics->toPlainText()));
-        params.addQueryItem("idioma", language);
-        params.addQueryItem("silabear", "silabear");
-        params.addQueryItem("separador", "%2B");
-        data.append(params.toString());
-        data.remove(0,1);
-
-        //QNetworkReply* reply = nam->post(request,data);
-    }
-}
-
-void QCMainWindow::finishedSlot(QNetworkReply* reply)
-{
-    if (reply->error() == QNetworkReply::NoError)
-    {
-        // read data from QNetworkReply here
-        QByteArray bytes = reply->readAll();
-        QString syllabifiedLyrics(bytes); // string
-        syllabifiedLyrics.replace("&nbsp;"," ");
-        syllabifiedLyrics.replace("<br>","##break##");
-        syllabifiedLyrics.replace("</br>","##break##");
-        syllabifiedLyrics.replace("</p>","##break##");
-        syllabifiedLyrics.remove(QRegExp("<head>(.*)</head>",Qt::CaseInsensitive));
-        syllabifiedLyrics.remove(QRegExp("<form(.)[^>]*</form>",Qt::CaseInsensitive));
-        syllabifiedLyrics.remove(QRegExp("<script(.)[^>]*</script>",Qt::CaseInsensitive));
-        syllabifiedLyrics.remove(QRegExp("<style(.)[^>]*</style>",Qt::CaseInsensitive));
-        syllabifiedLyrics.remove(QRegExp("<(.)[^>]*>"));
-        syllabifiedLyrics.replace("##break##","\n");
-        ui->plainTextEdit_InputLyrics->setPlainText(syllabifiedLyrics.trimmed());
-    }
-    else
-    {
-        QUMessageBox::information(this, tr("Network error"), QString(tr("Error: %1").arg(reply->errorString())));
-    }
-}
-
 void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
 {
     int result = QUMessageBox::question(0,
@@ -1529,3 +1431,282 @@ void QCMainWindow::on_actionHelp_triggered()
                               QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL+S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL+R). When finished, <b>save</b> the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
                               BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
 }
+
+void QCMainWindow::on_actionWhats_This_triggered()
+{
+    if (!QWhatsThis::inWhatsThisMode()) {
+        QWhatsThis::enterWhatsThisMode();
+    }
+    else {
+        QWhatsThis::leaveWhatsThisMode();
+    }
+}
+
+// begin syllabification --> thanks to Klafhor who provided the PHP code as a basis
+
+void QCMainWindow::on_pushButton_Syllabificate_clicked()
+{
+    QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
+    QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
+    QChar sep = '+';
+    QString syllabifiedLyrics = "";
+
+    if ((language != "English") && (language != "German") && (language != "Spanish")) {
+        QString infoString;
+        if (!ui->comboBox_Language->currentText().isEmpty()) {
+            infoString = QString("The automatic lyrics syllabification is not (yet) available for <b>%1</b>.").arg(ui->comboBox_Language->currentText());
+        }
+        else {
+            infoString = QString("The song language has not yet been set.");
+        }
+        int result = QUMessageBox::question(0,
+                        QObject::tr("Syllabification."),
+                        QObject::tr("%1 Apply...").arg(infoString),
+                        BTN << ":/languages/lang/us.png"    << QObject::tr("English syllabification rules.")
+                            << ":/languages/lang/de.png"    << QObject::tr("German syllabification rules.")
+                            << ":/languages/lang/es.png"    << QObject::tr("Spanish syllabification rules.")
+                            << ":/marks/cancel.png"         << QObject::tr("Cancel."));
+
+        if (result == 0) {
+            language = "English";
+        }
+        else if (result == 1) {
+            language = "German";
+        }
+        else if (result == 2) {
+            language = "Spanish";
+        }
+        else {
+            syllabifiedLyrics = lyrics;
+        }
+    }
+
+    if (language == "English") {
+        for (int i = 0; i < lyrics.length(); i++)
+        {
+            QChar ch1 = lyrics.at(i);
+            QChar ch2 = lyrics.at(i+1);
+            QChar ch3 = lyrics.at(i+2);
+            QChar ch4 = lyrics.at(i+3);
+            QChar ch5 = lyrics.at(i+4);
+
+            // the final character "e" isn't considerated vowel, by example in "case"
+            if (isVowel(ch1) && isConsonant(ch2) && ch3.toLower() == 'e' && ((!isConsonant(ch4) && !isVowel(ch4)) || (ch4.toLower() == 's' && (!isConsonant(ch5) && !isVowel(ch5))))) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3;
+                i = i + 2;
+            }
+            // "e" final preceded by double consonant the same, by example "table"
+            else if (isVowel(ch1) && isConsonant(ch2) && isConsonant(ch3) && ch4.toLower() == 'e' && ((!isConsonant(ch5) && !isVowel(ch5)) || ch5.toLower() == 's')) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + ch4;
+                i = i + 3;
+            }
+            // initial consonants
+            else if ((!isVowel(ch1) && !isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || isConsonant(ch4))) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3;
+                i = i + 2;
+            }
+            // a consonant between 2 vowels
+            else if (isVowel(ch1) && isConsonant(ch2) && (isVowel(ch3) || ch3.toLower() == 'y')) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
+            }
+            // consonants are inseparable between vowels
+            else if ((isVowel(ch1) || isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || ch4.toLower() == 'y') && isInseparable(ch2, ch3)) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
+            }
+            // separable consonants between vowels
+            else if ((isVowel(ch1) || isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || ch4.toLower() == 'y') && !isInseparable(ch2, ch3)) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
+                i = i + 1;
+            }
+            // "qu" is inseparable
+            else if (ch1.toLower() == 'q' && ch2.toLower() == 'u') {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2;
+                i = i + 1;
+            }
+            // other options
+            else {
+                syllabifiedLyrics = syllabifiedLyrics + ch1;
+            }
+        }
+    }
+    else if (language == "German") {
+        for (int i = 0; i < lyrics.length(); i++)
+        {
+            QChar ch1 = lyrics.at(i);
+            QChar ch2 = lyrics.at(i+1);
+            QChar ch3 = lyrics.at(i+2);
+            QChar ch4 = lyrics.at(i+3);
+
+            // consonants at the beginning
+            if ((!isVowel(ch1) && !isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || isConsonant(ch4))) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3;
+                i = i + 2;
+            }
+            // consonant between two vowels
+            else if (isVowel(ch1) && isConsonant(ch2) && (isVowel(ch3) || ch3.toLower() == 'y')) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
+            }
+            // double consonant isn't separated in german, by example "ad-X-ded"
+            else if ((isVowel(ch1) || isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || ch4.toLower() == 'y') && ch2.toLower() == ch3.toLower()) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
+                i = i + 1;
+            }
+            // "sch" -----> the characters "sch" isn't separated
+            else if ((isVowel(ch1) || isConsonant(ch1)) && ch2.toLower() == 's' && ch3.toLower() == 'c' && ch4.toLower() == 'h') {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + sep + ch2;
+                i = i + 1;
+            }
+            // "eie" -----> the characters "eie" is separate "ei-e"
+            else if (ch1.toLower() == 'e' && ch2.toLower() == 'i' && ch3.toLower() == 'e') {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
+                i = i + 1;
+            }
+            // inseparable consonants between vowels
+            else if ((isVowel(ch1) || isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || ch4.toLower() == 'y') && isInseparable(ch2, ch3)) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
+            }
+            // separable consonants between vowels
+            else if ((isVowel(ch1) || isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || ch4.toLower() == 'y') && !isInseparable(ch2, ch3)) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
+                i = i + 1;
+            }
+            // "qu" is inseparable
+            else if (ch1.toLower() == 'q' && ch2.toLower() == 'u') {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2;
+                i = i + 1;
+            }
+            // all other cases
+            else {
+                syllabifiedLyrics = syllabifiedLyrics + ch1;
+            }
+        }
+    }
+    else if (language == "Spanish") {
+        for (int i = 0; i < lyrics.length(); i++)
+        {
+            QChar ch1 = lyrics.at(i);
+            QChar ch2 = lyrics.at(i+1);
+            QChar ch3 = lyrics.at(i+2);
+            QChar ch4 = lyrics.at(i+3);
+
+            // initial consonants don't separate in a word, the syllable need a vowel, by example "t-X-ranslation
+            if ((!isVowel(ch1) && !isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || isConsonant(ch4)))
+            {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3;
+                i = i + 2;
+            }
+            // consonant between 2 vowel, we separate this, by example "e-xample"
+            else if (isVowel(ch1) && isConsonant(ch2) && (isVowel(ch3) || ch3.toLower() == 'y')) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
+            // inseparable consonants between vowels, for example "hel-X-lo"
+            }
+            else if ((isVowel(ch1) || isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || ch4.toLower() == 'y') && isInseparable(ch2, ch3)) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
+            }
+            // separable consonants between vowels, for example "bet-ween"
+            else if ((isVowel(ch1) || isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || ch4.toLower() == 'y') && !isInseparable(ch2, ch3)) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
+                i = i + 1;
+            }
+            // the characters "qu" are inseparable "q-X-u"
+            else if (ch1.toLower() == 'q' && ch2.toLower() == 'u') {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2;
+                i = i + 1;
+            }
+            // hiatus
+            else if (isVowel(ch1) && isVowel(ch2) && isHiatus(ch1, ch2)) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
+            }
+            // synalepha first word ending in a vowel (spanish only)
+            else if (isVowel(ch1) && ch2 == ' ' && ((isVowel(ch3) || (ch3.toLower() == 'y' && (!isVowel(ch4) && !isConsonant(ch4)))) || (ch3.toLower() == 'h' && isVowel(ch4)))) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + "·";
+                i = i + 1;
+            }
+            // synalepha first word being 'y' (spanish only)
+            else if ((ch1 == ' ') && ch2.toLower() == 'y' && ch3 == ' ' && (isVowel(ch4) || ch4.toLower() == 'h')) {
+                syllabifiedLyrics = syllabifiedLyrics + " y·";
+                i = i + 2;
+            }
+            // synalephy and the beginning of the text (spanish only)
+            else if (i == 1 && ch1.toLower() == 'y' && ch2 == ' ' && (isVowel(ch3) || ch3.toLower() == 'h')) {
+                syllabifiedLyrics = syllabifiedLyrics + "y·";
+                i = i + 1;
+            }
+            // all other cases
+            else {
+                syllabifiedLyrics = syllabifiedLyrics + ch1;
+            }
+        }
+    }
+    ui->plainTextEdit_InputLyrics->setPlainText(syllabifiedLyrics);
+}
+
+bool QCMainWindow::isVowel(QChar character)
+{
+    QChar ch = character.toLower();
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'á' || ch == 'é' || ch == 'í' || ch == 'ó' || ch == 'ú' || ch == 'à' || ch == 'à' || ch == 'ì' || ch == 'ò' || ch == 'ù' || ch == 'â' || ch == 'ê' || ch == 'î' || ch == 'ô' || ch == 'û' || ch == 'ä' || ch == 'ë' || ch == 'ï' || ch == 'ö' || ch == 'ü')
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool QCMainWindow::isConsonant(QChar character)
+{
+    QChar ch = character.toLower();
+    if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == 'ñ' || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z' || ch == 'ß')
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool QCMainWindow::isInseparable(QChar character1, QChar character2)
+{
+    QChar ch1 = character1.toLower();
+    QChar ch2 = character2.toLower();
+    if (((ch1 == 'b' || ch1 == 'c' || ch1 == 'd' || ch1 == 'f' || ch1 == 'g' || ch1 == 'p' || ch1 == 't' || ch1 == 'w') && (ch2 == 'l' || ch2 == 'r')) || (ch1 == 'r' && ch2 == 'r') || (ch1 == 'l' && ch2 == 'l') || ((ch1 == 'c' || ch1 == 't' ||  ch1 == 'r' || ch1 == 's' || ch1 == 'p' || ch1 == 'w') && ch2 == 'h') || (ch1 == 'c' && ch2 == 'k'))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool QCMainWindow::isStrongVowel(QChar character)
+{
+    QChar ch = character.toLower();
+
+    if (ch == 'a' || ch == 'e' || ch == 'o' || ch == 'á' || ch == 'é' || ch == 'ó')
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool QCMainWindow::isHiatus(QChar character1, QChar character2)
+{
+    QChar ch1 = character1.toLower();
+    QChar ch2 = character2.toLower();
+    if ((isStrongVowel(ch1) && isStrongVowel(ch2)) || (ch1 == 'í' && ch2 == 'ú') || (ch1 == 'ú' || ch2 == 'í') || (ch1 == ch2) || (ch1 == 'a' && ch2 == 'á') || (ch1 == 'á' && ch2 == 'a') || (ch1 == 'e' && ch2 == 'é') || (ch1 == 'é' && ch2 == 'e') || (ch1 == 'i' && ch2 == 'í') || (ch1 == 'í' && ch2 == 'i') || (ch1 == 'o' && ch2 == 'ó') || (ch1 == 'ó' && ch2 == 'o') || (ch1 == 'u' && ch2 == 'ú') || (ch1 == 'ú' && ch2 == 'u'))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+// end syllabification

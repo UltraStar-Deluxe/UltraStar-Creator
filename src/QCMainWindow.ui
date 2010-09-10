@@ -64,6 +64,9 @@
             <bold>true</bold>
            </font>
           </property>
+          <property name="whatsThis">
+           <string>Choose the audio file. After having inserted the lyrics, you can start the preview playback in order to correct spelling and syllabification mistakes in the lyrics.</string>
+          </property>
           <property name="autoFillBackground">
            <bool>false</bool>
           </property>
@@ -352,6 +355,9 @@
             <weight>75</weight>
             <bold>true</bold>
            </font>
+          </property>
+          <property name="whatsThis">
+           <string>Here you can enter meta information about the song. Enter as much information as possible, leave unknown fields blank.</string>
           </property>
           <property name="title">
            <string>Song Meta Information Tags</string>
@@ -1683,6 +1689,9 @@
             <bold>true</bold>
            </font>
           </property>
+          <property name="whatsThis">
+           <string>Here you can choose the cover and background image file, if you already have them available.</string>
+          </property>
           <property name="title">
            <string>Artwork Tags</string>
           </property>
@@ -1934,6 +1943,9 @@
           <property name="toolTip">
            <string/>
           </property>
+          <property name="whatsThis">
+           <string>Here you can choose a video file, if available.</string>
+          </property>
           <property name="title">
            <string>Video Tags</string>
           </property>
@@ -2155,6 +2167,9 @@
             <weight>75</weight>
             <bold>true</bold>
            </font>
+          </property>
+          <property name="whatsThis">
+           <string>Here you can set the default pitch for each note as well as the playback speed for the audio file. This is especially interesting if you want to tap very fast songs.</string>
           </property>
           <property name="title">
            <string>Misc. Settings</string>
@@ -2492,6 +2507,9 @@
               <bold>true</bold>
              </font>
             </property>
+            <property name="whatsThis">
+             <string>This is the overall control station. You can start, stop, pause, resume the tapping and reset everything so you can start from the beginning.</string>
+            </property>
             <property name="title">
              <string>Control</string>
             </property>
@@ -2817,6 +2835,27 @@
              <property name="statusTip">
               <string>Insert and edit lyrics here.</string>
              </property>
+             <property name="whatsThis">
+              <string>Insert song lyrics here, either by loading from a file or by
+pasting from the clipboard. Edit lyrics to conform to the
+following rules:
+
+* Linebreaks correspond to linebreaks in UltraStar.
+* Words should be separated by spaces.
+* Syllables within a word should be separated by a '+'.
+* Add '~' for each repeated vowel if needed.
+
+Example:
+
+Some say it's sure col+li+sion
+say it's bound to lose
+but there's no de+ny+ing
+I'm a+ble to choose.
+I know what leaves me cold
+and what burns me up
+now this time it's just right
+I'm ve+~+ry sure.</string>
+             </property>
              <property name="tabChangesFocus">
               <bool>true</bool>
              </property>
@@ -2970,7 +3009,7 @@ I'm ve+~+ry sure.</string>
              </property>
              <property name="icon">
               <iconset resource="resources/usc.qrc">
-               <normaloff>:/marks/wand.png</normaloff>:/marks/wand.png</iconset>
+               <normaloff>:/control/edit-hyphenation.png</normaloff>:/control/edit-hyphenation.png</iconset>
              </property>
             </widget>
            </item>
@@ -3041,6 +3080,9 @@ I'm ve+~+ry sure.</string>
               </font>
              </property>
              <property name="statusTip">
+              <string>See resulting UltraStar text file here.</string>
+             </property>
+             <property name="whatsThis">
               <string>See resulting UltraStar text file here.</string>
              </property>
              <property name="tabChangesFocus">
@@ -3226,6 +3268,9 @@ I'm ve+~+ry sure.</string>
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="whatsThis">
+       <string>The tap button is used to tap each syllable while it is sung. If you hold down the button for as long as the shown syllable is sung, a corresponding note is created.</string>
       </property>
       <property name="title">
        <string>Tap Area</string>
@@ -3591,6 +3636,7 @@ I'm ve+~+ry sure.</string>
      <string>Help</string>
     </property>
     <addaction name="actionHelp"/>
+    <addaction name="actionWhats_This"/>
     <addaction name="separator"/>
     <addaction name="actionAbout"/>
     <addaction name="actionAbout_Qt"/>
@@ -3632,7 +3678,7 @@ I'm ve+~+ry sure.</string>
     <string>About UltraStar Creator</string>
    </property>
    <property name="shortcut">
-    <string>F2</string>
+    <string>F3</string>
    </property>
   </action>
   <action name="actionQuit_USC">
@@ -3656,7 +3702,7 @@ I'm ve+~+ry sure.</string>
     <string>About Qt</string>
    </property>
    <property name="shortcut">
-    <string>F3</string>
+    <string>F4</string>
    </property>
   </action>
   <action name="actionEnglish">
@@ -3707,7 +3753,7 @@ I'm ve+~+ry sure.</string>
     <string>About BASS</string>
    </property>
    <property name="shortcut">
-    <string>F4</string>
+    <string>F5</string>
    </property>
   </action>
   <action name="actionAbout_TagLib">
@@ -3719,7 +3765,7 @@ I'm ve+~+ry sure.</string>
     <string>About TagLib</string>
    </property>
    <property name="shortcut">
-    <string>F5</string>
+    <string>F6</string>
    </property>
   </action>
   <action name="actionFrench">
@@ -3804,6 +3850,18 @@ I'm ve+~+ry sure.</string>
    </property>
    <property name="shortcut">
     <string>F1</string>
+   </property>
+  </action>
+  <action name="actionWhats_This">
+   <property name="icon">
+    <iconset resource="resources/usc.qrc">
+     <normaloff>:/control/question-frame.png</normaloff>:/control/question-frame.png</iconset>
+   </property>
+   <property name="text">
+    <string>What's This?</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
    </property>
   </action>
  </widget>
