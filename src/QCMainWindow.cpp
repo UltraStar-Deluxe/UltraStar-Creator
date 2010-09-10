@@ -1490,12 +1490,12 @@ void QCMainWindow::on_pushButton_Syllabificate_clicked()
             QChar ch4 = lyrics.at(i+3);
             QChar ch5 = lyrics.at(i+4);
 
-            // the final character "e" isn't considerated vowel, by example in "case"
+            // "e" at the end of a word isn't considered a vowel, for example "case"
             if (isVowel(ch1) && isConsonant(ch2) && ch3.toLower() == 'e' && ((!isConsonant(ch4) && !isVowel(ch4)) || (ch4.toLower() == 's' && (!isConsonant(ch5) && !isVowel(ch5))))) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3;
                 i = i + 2;
             }
-            // "e" final preceded by double consonant the same, by example "table"
+            // "e" at the end of a word preceded by two consonants isn't considered a vowel, for example "table"
             else if (isVowel(ch1) && isConsonant(ch2) && isConsonant(ch3) && ch4.toLower() == 'e' && ((!isConsonant(ch5) && !isVowel(ch5)) || ch5.toLower() == 's')) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + ch4;
                 i = i + 3;
@@ -1509,7 +1509,7 @@ void QCMainWindow::on_pushButton_Syllabificate_clicked()
             else if (isVowel(ch1) && isConsonant(ch2) && (isVowel(ch3) || ch3.toLower() == 'y')) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
             }
-            // consonants are inseparable between vowels
+            // inseparable consonants between vowels
             else if ((isVowel(ch1) || isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || ch4.toLower() == 'y') && isInseparable(ch2, ch3)) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
             }
@@ -1551,12 +1551,12 @@ void QCMainWindow::on_pushButton_Syllabificate_clicked()
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
                 i = i + 1;
             }
-            // "sch" -----> the characters "sch" isn't separated
+            // "sch" is inseparable
             else if ((isVowel(ch1) || isConsonant(ch1)) && ch2.toLower() == 's' && ch3.toLower() == 'c' && ch4.toLower() == 'h') {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + sep + ch2;
                 i = i + 1;
             }
-            // "eie" -----> the characters "eie" is separate "ei-e"
+            // "eie" is separated into "ei-e"
             else if (ch1.toLower() == 'e' && ch2.toLower() == 'i' && ch3.toLower() == 'e') {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
                 i = i + 1;
@@ -1595,11 +1595,11 @@ void QCMainWindow::on_pushButton_Syllabificate_clicked()
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3;
                 i = i + 2;
             }
-            // consonant between 2 vowel, we separate this, by example "e-xample"
+            // consonant between 2 vowels, we separate this, by example "e-xample"
             else if (isVowel(ch1) && isConsonant(ch2) && (isVowel(ch3) || ch3.toLower() == 'y')) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
-            // inseparable consonants between vowels, for example "hel-X-lo"
             }
+            // inseparable consonants between vowels, for example "hel-X-lo"
             else if ((isVowel(ch1) || isConsonant(ch1)) && isConsonant(ch2) && isConsonant(ch3) && (isVowel(ch4) || ch4.toLower() == 'y') && isInseparable(ch2, ch3)) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
             }
