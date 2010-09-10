@@ -191,7 +191,7 @@
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
+                 <normaloff>:/control/folder-open-document-music.png</normaloff>:/control/folder-open-document-music.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -201,6 +201,9 @@
                </property>
                <property name="shortcut">
                 <string>Enter</string>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -1779,7 +1782,10 @@
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
+                 <normaloff>:/control/folder-open-slide.png</normaloff>:/control/folder-open-slide.png</iconset>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -1852,7 +1858,10 @@
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
+                 <normaloff>:/control/folder-open-slide.png</normaloff>:/control/folder-open-slide.png</iconset>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -2027,7 +2036,10 @@
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/save_as.png</normaloff>:/control/save_as.png</iconset>
+                 <normaloff>:/control/folder-open-film.png</normaloff>:/control/folder-open-film.png</iconset>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -2904,7 +2916,10 @@ I'm ve+~+ry sure.</string>
              </property>
              <property name="icon">
               <iconset resource="resources/usc.qrc">
-               <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
+               <normaloff>:/control/folder-open-document.png</normaloff>:/control/folder-open-document.png</iconset>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -2927,7 +2942,10 @@ I'm ve+~+ry sure.</string>
              </property>
              <property name="icon">
               <iconset resource="resources/usc.qrc">
-               <normaloff>:/marks/clipboard-text.png</normaloff>:/marks/clipboard-text.png</iconset>
+               <normaloff>:/control/clipboard-paste-document-text.png</normaloff>:/control/clipboard-paste-document-text.png</iconset>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -2965,6 +2983,9 @@ I'm ve+~+ry sure.</string>
               <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
              </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item row="1" column="5">
@@ -2988,6 +3009,9 @@ I'm ve+~+ry sure.</string>
               <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
              </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item row="1" column="2">
@@ -3010,6 +3034,9 @@ I'm ve+~+ry sure.</string>
              <property name="icon">
               <iconset resource="resources/usc.qrc">
                <normaloff>:/control/edit-hyphenation.png</normaloff>:/control/edit-hyphenation.png</iconset>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -3126,6 +3153,9 @@ I'm ve+~+ry sure.</string>
              <property name="shortcut">
               <string>Ctrl+S</string>
              </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item row="1" column="3">
@@ -3162,6 +3192,9 @@ I'm ve+~+ry sure.</string>
               <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
              </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item row="1" column="5">
@@ -3184,6 +3217,9 @@ I'm ve+~+ry sure.</string>
              <property name="icon">
               <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -3211,6 +3247,9 @@ I'm ve+~+ry sure.</string>
               <iconset resource="resources/usc.qrc">
                <normaloff>:/marks/usdx.png</normaloff>:/marks/usdx.png</iconset>
              </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item row="1" column="2">
@@ -3236,6 +3275,9 @@ I'm ve+~+ry sure.</string>
              <property name="icon">
               <iconset resource="resources/usc.qrc">
                <normaloff>:/yass.png</normaloff>:/yass.png</iconset>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
              </property>
             </widget>
            </item>

@@ -124,6 +124,11 @@
         <file>cog.png</file>
         <file>edit-hyphenation.png</file>
         <file>question-frame.png</file>
+        <file>folder-open-document.png</file>
+        <file>folder-open-document-music.png</file>
+        <file>folder-open-film.png</file>
+        <file>folder-open-slide.png</file>
+        <file>clipboard-paste-document-text.png</file>
     </qresource>
     <qresource prefix="/icons">
         <file>splash.png</file>
@@ -173,7 +178,6 @@
         <file>path_unknown.png</file>
         <file>edit-size-down.png</file>
         <file>edit-size-up.png</file>
-        <file>clipboard-text.png</file>
         <file>pilcrow.png</file>
     </qresource>
     <qresource prefix="/types">

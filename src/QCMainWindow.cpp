@@ -1217,7 +1217,7 @@ void QCMainWindow::on_pushButton_startUltraStar_clicked()
             settings.setValue("USdxFilePath", USdxFilePath);
             QStringList USdxArguments;
             USdxArguments << "-SongPath" << fileInfo_MP3->absolutePath();
-            QProcess::startDetached(USdxFilePath, USdxArguments);
+            QProcess::startDetached(USdxFilePath, USdxArguments, USdxFileInfo->absolutePath());
         }
         else {
             settings.remove("USdxFilePath");
@@ -1230,7 +1230,7 @@ void QCMainWindow::on_pushButton_startUltraStar_clicked()
             settings.setValue("USdxFilePath", USdxFilePath);
             QStringList USdxArguments;
             USdxArguments << "-SongPath " << fileInfo_MP3->absolutePath();
-            QProcess::startDetached(USdxFilePath, USdxArguments);
+            QProcess::startDetached(USdxFilePath, USdxArguments, USdxFileInfo->absolutePath());
         }
     }
 }
@@ -1275,7 +1275,7 @@ void QCMainWindow::on_pushButton_startYass_clicked()
             settings.setValue("YassFilePath", YassFilePath);
             QStringList YassArguments;
             YassArguments << fileInfo_MP3->absolutePath();
-            QProcess::startDetached(YassFilePath, YassArguments);
+            QProcess::startDetached(YassFilePath, YassArguments, YassFileInfo->absolutePath());
         }
         else {
             settings.remove("YassFilePath");
@@ -1288,7 +1288,7 @@ void QCMainWindow::on_pushButton_startYass_clicked()
             settings.setValue("YassFilePath", YassFilePath);
             QStringList YassArguments;
             YassArguments << fileInfo_MP3->absolutePath();
-            QProcess::startDetached(YassFilePath, YassArguments);
+            QProcess::startDetached(YassFilePath, YassArguments, YassFileInfo->absolutePath());
         }
     }
 }
