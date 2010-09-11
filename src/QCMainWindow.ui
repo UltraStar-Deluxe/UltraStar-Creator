@@ -3767,6 +3767,9 @@ I'm ve+~+ry sure.</string>
    <property name="font">
     <font/>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
   </action>
   <action name="actionGerman">
    <property name="checkable">
@@ -3781,6 +3784,9 @@ I'm ve+~+ry sure.</string>
    </property>
    <property name="text">
     <string>German</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
    </property>
   </action>
   <action name="actionAbout_BASS">
@@ -3824,6 +3830,9 @@ I'm ve+~+ry sure.</string>
    <property name="text">
     <string>French</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
   </action>
   <action name="actionSpanish">
    <property name="checkable">
@@ -3838,6 +3847,9 @@ I'm ve+~+ry sure.</string>
    </property>
    <property name="text">
     <string>Spanish</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionItalian">
@@ -3854,6 +3866,9 @@ I'm ve+~+ry sure.</string>
    <property name="text">
     <string>Italian</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
   </action>
   <action name="actionPolish">
    <property name="checkable">
@@ -3868,6 +3883,9 @@ I'm ve+~+ry sure.</string>
    </property>
    <property name="text">
     <string>Polish</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
   <action name="actionCreate_Dummy_Songs">

@@ -1523,6 +1523,11 @@ void QCMainWindow::on_pushButton_Syllabificate_clicked()
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2;
                 i = i + 1;
             }
+            /*
+            // hiatus
+            else if (isVowel(ch1) && isVowel(ch2) && isHiatus(ch1, ch2)) {
+                syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
+            }*/
             // other options
             else {
                 syllabifiedLyrics = syllabifiedLyrics + ch1;
