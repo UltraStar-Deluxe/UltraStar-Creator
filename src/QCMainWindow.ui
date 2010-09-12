@@ -569,6 +569,9 @@
                <property name="statusTip">
                 <string>Choose the song language.</string>
                </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
                <property name="editable">
                 <bool>false</bool>
                </property>
@@ -942,14 +945,14 @@
              </item>
              <item row="7" column="2">
               <widget class="QDoubleSpinBox" name="doubleSpinBox_BPM">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="font">
                 <font>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
+               </property>
+               <property name="toolTip">
+                <string>BPM will be determined automatically from the MP3 file.</string>
                </property>
                <property name="statusTip">
                 <string>BPM will be determined automatically from the MP3 file.</string>
@@ -957,8 +960,11 @@
                <property name="locale">
                 <locale language="English" country="UnitedStates"/>
                </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
                <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::UpDownArrows</enum>
+                <enum>QAbstractSpinBox::NoButtons</enum>
                </property>
                <property name="suffix">
                 <string/>
@@ -1027,20 +1033,26 @@
              </item>
              <item row="8" column="2">
               <widget class="QDoubleSpinBox" name="doubleSpinBox_Gap">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="font">
                 <font>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
                </property>
+               <property name="toolTip">
+                <string>Gap will be determined automatically when you start tapping.</string>
+               </property>
                <property name="statusTip">
                 <string>Gap will be determined automatically when you start tapping.</string>
                </property>
                <property name="locale">
                 <locale language="English" country="UnitedStates"/>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::NoButtons</enum>
                </property>
                <property name="maximum">
                 <double>2000000.000000000000000</double>
@@ -1731,9 +1743,6 @@
              </item>
              <item row="0" column="2">
               <widget class="QLineEdit" name="lineEdit_Cover">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1751,6 +1760,9 @@
                </property>
                <property name="text">
                 <string/>
+               </property>
+               <property name="frame">
+                <bool>true</bool>
                </property>
                <property name="readOnly">
                 <bool>true</bool>
@@ -1810,9 +1822,6 @@
              </item>
              <item row="1" column="2">
               <widget class="QLineEdit" name="lineEdit_Background">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1931,6 +1940,9 @@
         </item>
         <item row="3" column="0">
          <widget class="QGroupBox" name="groupBox_VideoTags">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -1959,7 +1971,7 @@
            <string>Video Tags</string>
           </property>
           <property name="checkable">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="checked">
            <bool>false</bool>
@@ -2070,6 +2082,9 @@
              </item>
              <item row="1" column="2">
               <widget class="QDoubleSpinBox" name="doubleSpinBox_Videogap">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="font">
                 <font>
                  <weight>50</weight>
@@ -2162,6 +2177,9 @@
         </item>
         <item row="4" column="0">
          <widget class="QGroupBox" name="groupBox_MiscSettings">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -2269,7 +2287,7 @@
                </item>
                <item>
                 <property name="text">
-                 <string>1 (C#4 | Db4)</string>
+                 <string>1 (C♯4 | D♭4)</string>
                 </property>
                </item>
                <item>
@@ -2279,7 +2297,7 @@
                </item>
                <item>
                 <property name="text">
-                 <string>3 (D#4 | Eb4)</string>
+                 <string>3 (D♯4 | E♭4)</string>
                 </property>
                </item>
                <item>
@@ -2294,7 +2312,7 @@
                </item>
                <item>
                 <property name="text">
-                 <string>6 (F#4 | Gb4)</string>
+                 <string>6 (F♯4 | G♭4)</string>
                 </property>
                </item>
                <item>
@@ -2304,7 +2322,7 @@
                </item>
                <item>
                 <property name="text">
-                 <string>8 (G#4 | Ab4)</string>
+                 <string>8 (G♯4 | A♭4)</string>
                 </property>
                </item>
                <item>
@@ -2314,7 +2332,7 @@
                </item>
                <item>
                 <property name="text">
-                 <string>10 (A#4 | Bb4)</string>
+                 <string>10 (A♯4 | B♭4)</string>
                 </property>
                </item>
                <item>
@@ -2350,9 +2368,6 @@
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_PlaybackSpeedIcon">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2369,9 +2384,6 @@
              </item>
              <item row="1" column="1">
               <widget class="QLabel" name="label_PlaybackSpeed">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2424,9 +2436,6 @@
                </item>
                <item>
                 <widget class="QSlider" name="horizontalSlider_PlaybackSpeed">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -2472,9 +2481,6 @@
              </item>
              <item row="1" column="3">
               <widget class="QLabel" name="label_PlaybackSpeedSet">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>

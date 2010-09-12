@@ -97,8 +97,6 @@ private slots:
     void on_pushButton_startUltraStar_clicked();
     void on_horizontalSlider_MP3_sliderMoved(int position);
     void on_pushButton_UndoTap_clicked();
-    void on_lineEdit_Background_textChanged(QString );
-    void on_lineEdit_Cover_textChanged(QString );
     void on_pushButton_Reset_clicked();
     void on_actionAbout_TagLib_triggered();
     void on_actionAbout_BASS_triggered();

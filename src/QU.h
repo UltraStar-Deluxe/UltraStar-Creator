@@ -10,8 +10,6 @@
 #define CHAR_UTF8_APPROX "\xe2\x89\x88"
 #define CHAR_UTF8_NEQUAL "\xe2\x89\xa0"
 #define CHAR_UTF8_DOT    "\xc2\xb7"
-#define CHAR_UTF8_FLAT   "\xe2\x99\xad"
-#define CHAR_UTF8_SHARP  "\xe2\x99\xaf"
 
 //! This class provides global flags and enumerations.
 class QU: QObject {

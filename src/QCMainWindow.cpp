@@ -152,6 +152,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->groupBox_MP3Tag->setDisabled(true);
         ui->groupBox_SongMetaInformationTags->setDisabled(true);
         ui->groupBox_ArtworkTags->setDisabled(true);
+        ui->groupBox_VideoTags->setDisabled(true);
         ui->groupBox_MiscSettings->setDisabled(true);
         ui->groupBox_VideoTags->setDisabled(true);
         ui->groupBox_InputLyrics->setDisabled(true);
@@ -201,10 +202,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#COVER:%1").arg(ui->lineEdit_Cover->text()));
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#BACKGROUND:%1").arg(ui->lineEdit_Background->text()));
 
-        if (ui->groupBox_VideoTags->isChecked()) {
-            if (ui->lineEdit_Video->text().isEmpty()) {
-                ui->lineEdit_Video->setText(tr("%1 - %2.avi").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
-            }
+        if (!ui->lineEdit_Video->text().isEmpty()) {
             ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEO:%1").arg(ui->lineEdit_Video->text()));
             ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEOGAP:%1").arg(ui->doubleSpinBox_Videogap->text()));
         }
@@ -322,7 +320,7 @@ void QCMainWindow::on_pushButton_Tap_released()
     currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPMFromMP3 / 15000));
     if (firstNote){
         firstNoteStartBeat = currentNoteStartBeat;
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GAP:%1").arg(QString::number(currentNoteStartTime)));
+        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GAP:%1").arg(QString::number(currentNoteStartTime, 'f', 2)));
         ui->doubleSpinBox_Gap->setValue(currentNoteStartTime);
         ui->label_GapSet->setPixmap(QPixmap(":/marks/path_ok.png"));
         firstNote = false;
@@ -405,16 +403,7 @@ void QCMainWindow::on_pushButton_BrowseCover_clicked()
     QString filename_Cover = QFileDialog::getOpenFileName ( 0, tr("Please choose cover image file"), defaultDir, tr("Image files (*.jpg)"));
     QFileInfo *fileInfo_Cover = new QFileInfo(filename_Cover);
     if (fileInfo_Cover->exists()) {
-        if (defaultDir == QDir::homePath()) {
-            defaultDir = fileInfo_Cover->absolutePath();
-        }
         ui->lineEdit_Cover->setText(fileInfo_Cover->fileName());
-    }
-}
-
-void QCMainWindow::on_lineEdit_Cover_textChanged(QString cover)
-{
-    if (!cover.isEmpty()) {
         ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
 }
@@ -424,16 +413,7 @@ void QCMainWindow::on_pushButton_BrowseBackground_clicked()
     QString filename_Background = QFileDialog::getOpenFileName ( 0, tr("Please choose background image file"), defaultDir, tr("Image files (*.jpg)"));
     QFileInfo *fileInfo_Background = new QFileInfo(filename_Background);
     if (fileInfo_Background->exists()) {
-        if (defaultDir == QDir::homePath()) {
-            defaultDir = fileInfo_Background->absolutePath();
-        }
         ui->lineEdit_Background->setText(fileInfo_Background->fileName());
-    }
-}
-
-void QCMainWindow::on_lineEdit_Background_textChanged(QString background)
-{
-    if (!background.isEmpty()) {
         ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     }
 }
@@ -458,6 +438,10 @@ void QCMainWindow::on_lineEdit_Video_textChanged(QString video)
 {
     if (!video.isEmpty()) {
         ui->label_VideoSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->doubleSpinBox_Videogap->setEnabled(true);
+    }
+    else {
+        ui->doubleSpinBox_Videogap->setDisabled(true);
     }
 }
 
@@ -900,6 +884,8 @@ void QCMainWindow::handleMP3() {
 
     ui->groupBox_SongMetaInformationTags->setEnabled(true);
     ui->groupBox_ArtworkTags->setEnabled(true);
+    ui->groupBox_VideoTags->setEnabled(true);
+    ui->groupBox_MiscSettings->setEnabled(true);
     ui->groupBox_InputLyrics->setEnabled(true);
     ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
     ui->label_BPMSet->setStatusTip(tr("MP3 set."));
@@ -1009,6 +995,7 @@ void QCMainWindow::on_pushButton_Reset_clicked()
         ui->groupBox_MP3Tag->setEnabled(true);
         ui->groupBox_SongMetaInformationTags->setEnabled(true);
         ui->groupBox_ArtworkTags->setEnabled(true);
+        ui->groupBox_VideoTags->setEnabled(true);
         ui->groupBox_MiscSettings->setEnabled(true);
         ui->groupBox_VideoTags->setEnabled(true);
         ui->groupBox_InputLyrics->setEnabled(true);
