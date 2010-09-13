@@ -890,7 +890,11 @@ void QCMainWindow::handleMP3() {
     ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
     ui->label_BPMSet->setStatusTip(tr("MP3 set."));
     previewState = QCMainWindow::initialized;
+    ui->groupBox_Control->setEnabled(true);
     ui->pushButton_PreviewPlayPause->setEnabled(true);
+    ui->label_PreviewTimeElapsed->setEnabled(true);
+    ui->horizontalSlider_PreviewMP3->setEnabled(true);
+    ui->label_PreviewTimeToRun->setEnabled(true);
 
     if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
         state = QCMainWindow::initialized;
@@ -965,7 +969,7 @@ void QCMainWindow::updatePreviewTime() {
         ui->label_PreviewTimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
         ui->horizontalSlider_PreviewMP3->setValue(posSec);
 
-        if(posSec != -1) {
+        if (posSec != -1) {
             QTimer::singleShot(1000, this, SLOT(updatePreviewTime()));
         }
 }
