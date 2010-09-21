@@ -64,11 +64,12 @@ private:
     QFileInfo* fileInfo_MP3;
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
-    bool isVowel(QChar ch);
-    bool isConsonant(QChar character);
-    bool isInseparable(QChar character1, QChar character2);
-    bool isStrongVowel(QChar character);
-    bool isHiatus(QChar character1, QChar character2);
+    bool isVowel(QChar character, QString lang);
+    bool isUmlaut(QChar character, QString lang);
+    bool isConsonant(QChar character, QString lang);
+    bool isInseparable(QChar character1, QChar character2, QString lang);
+    bool isStrongVowel(QChar character, QString lang);
+    bool isHiatus(QChar character1, QChar character2, QString lang);
 
     enum State {
         uninitialized,
