@@ -66,6 +66,7 @@ private:
     void keyReleaseEvent(QKeyEvent *event);
     bool isVowel(QChar character, QString lang);
     bool isUmlaut(QChar character, QString lang);
+    bool isDiphthong(QChar character1, QChar character2, QString lang);
     bool isConsonant(QChar character, QString lang);
     bool isInseparable(QChar character1, QChar character2, QString lang);
     bool isStrongVowel(QChar character, QString lang);

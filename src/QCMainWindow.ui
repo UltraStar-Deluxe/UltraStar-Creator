@@ -4212,7 +4212,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionWhats_This">
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/control/question-frame.png</normaloff>:/control/question-frame.png</iconset>
+     <normaloff>:/control/cursor-question.png</normaloff>:/control/cursor-question.png</iconset>
    </property>
    <property name="text">
     <string>What's This?</string>

@@ -36,6 +36,7 @@
         <file>control_stop_blue.png</file>
         <file>NoBackground.jpg</file>
         <file>NoCover.jpg</file>
+        <file>dict/hyph-de-1996.tex</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>
@@ -129,6 +130,7 @@
         <file>folder-open-film.png</file>
         <file>folder-open-slide.png</file>
         <file>clipboard-paste-document-text.png</file>
+        <file>cursor-question.png</file>
     </qresource>
     <qresource prefix="/icons">
         <file>splash.png</file>

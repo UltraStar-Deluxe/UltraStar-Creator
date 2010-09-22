@@ -82,7 +82,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     currentNoteBeatLength = 0;
     currentSyllableIndex = 0;
     currentCharacterIndex = 0;
-    bool isFirstKeyPress = true;
+    isFirstKeyPress = true;
     firstNote = true;
     clipboard = QApplication::clipboard();
     state = QCMainWindow::uninitialized;
@@ -1741,6 +1741,10 @@ bool QCMainWindow::isVowel(QChar character, QString lang)
             return false;
         }
     }
+    else
+    {
+        return false;
+    }
 }
 
 bool QCMainWindow::isUmlaut(QChar character, QString lang)
@@ -1763,6 +1767,55 @@ bool QCMainWindow::isUmlaut(QChar character, QString lang)
         }
     }
     else if (lang == "es")
+    {
+        return false;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool QCMainWindow::isDiphthong(QChar character1, QChar character2, QString lang)
+{
+    QChar ch1 = character1.toLower();
+    QChar ch2 = character2.toLower();
+    QString str = QString("%1%2").arg(ch1).arg(ch2);
+
+    if (lang == "en")
+    {
+        if (str == "ou" || str == "ie" || str == "oi" || str == "oo" || str == "ea" || str == "ee" || str == "ai")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else if (lang == "de")
+    {
+        if (str == "au" || str == "ei" || str == "eu")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else if (lang == "es")
+    {
+        if (str == "ey" || str == "ai" || str == "oy" || str == "eu" || str == "au" || str == "ou" || str == "ie" || str == "ia" || str == "io" || str == "iu" || str == "ui" || str == "ue" || str == "ua" || str == "uo")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
     {
         return false;
     }
@@ -1805,16 +1858,21 @@ bool QCMainWindow::isConsonant(QChar character, QString lang)
             return false;
         }
     }
+    else
+    {
+        return false;
+    }
 }
 
 bool QCMainWindow::isInseparable(QChar character1, QChar character2, QString lang)
 {
     QChar ch1 = character1.toLower();
     QChar ch2 = character2.toLower();
+    QString str = QString("%1%2").arg(ch1).arg(ch2);
 
     if (lang == "en" || lang == "de" || lang == "es")
     {
-        if (((ch1 == 'b' || ch1 == 'c' || ch1 == 'd' || ch1 == 'f' || ch1 == 'g' || ch1 == 'p' || ch1 == 't' || ch1 == 'w') && (ch2 == 'l' || ch2 == 'r')) || (ch1 == 'r' && ch2 == 'r') || (ch1 == 'l' && ch2 == 'l') || ((ch1 == 'c' || ch1 == 't' ||  ch1 == 'r' || ch1 == 's' || ch1 == 'p' || ch1 == 'w') && ch2 == 'h') || (ch1 == 'c' && ch2 == 'k'))
+        if (((ch1 == 'b' || ch1 == 'c' || ch1 == 'd' || ch1 == 'f' || ch1 == 'g' || ch1 == 'p' || ch1 == 't' || ch1 == 'w') && (ch2 == 'l' || ch2 == 'r')) || (str == "rr") || (str == "ll") || ((ch1 == 'c' || ch1 == 't' ||  ch1 == 'r' || ch1 == 's' || ch1 == 'p' || ch1 == 'w') && ch2 == 'h') || (str == "ck"))
         {
             return true;
         }
@@ -1854,10 +1912,11 @@ bool QCMainWindow::isHiatus(QChar character1, QChar character2, QString lang)
 {
     QChar ch1 = character1.toLower();
     QChar ch2 = character2.toLower();
+    QString str = QString("%1%2").arg(ch1).arg(ch2);
 
     if (lang == "es")
     {
-        if ((isStrongVowel(ch1, lang) && isStrongVowel(ch2, lang)) || (ch1 == 'í' && ch2 == 'ú') || (ch1 == 'ú' || ch2 == 'í') || (ch1 == ch2) || (ch1 == 'a' && ch2 == 'á') || (ch1 == 'á' && ch2 == 'a') || (ch1 == 'e' && ch2 == 'é') || (ch1 == 'é' && ch2 == 'e') || (ch1 == 'i' && ch2 == 'í') || (ch1 == 'í' && ch2 == 'i') || (ch1 == 'o' && ch2 == 'ó') || (ch1 == 'ó' && ch2 == 'o') || (ch1 == 'u' && ch2 == 'ú') || (ch1 == 'ú' && ch2 == 'u'))
+        if ((isStrongVowel(ch1, lang) && isStrongVowel(ch2, lang)) || str == "íú" || str == "úí" || ch1 == ch2 || str == "aá" || str == "áa" || str == "eé" || str == "ée" || str == "ií" || str == "íi" || str == "oó" || str == "óo" || str == "uú" || str == "úu")
         {
             return true;
         }
