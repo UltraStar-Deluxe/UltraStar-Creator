@@ -87,6 +87,7 @@ private:
     QString defaultDir;
 
 private slots:
+    void on_pushButton_Syllabificate_Test_clicked();
     void on_actionWhats_This_triggered();
     void on_comboBox_Year_activated(QString );
     void on_actionHelp_triggered();

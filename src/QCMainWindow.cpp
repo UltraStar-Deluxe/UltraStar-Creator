@@ -1932,3 +1932,57 @@ bool QCMainWindow::isHiatus(QChar character1, QChar character2, QString lang)
 }
 
 // end syllabification
+
+void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
+{
+    QFile patternFile(":/dict/hyph-de-1996.tex");
+    if (patternFile.exists()) {
+        if (patternFile.open(QFile::ReadOnly | QFile::Text)) {
+            QTextStream in(&patternFile);
+            in.setCodec(QTextCodec::codecForName("UTF-8"));
+            QString patterns = in.readAll();
+            QString rawLyrics = ui->plainTextEdit_InputLyrics->toPlainText();
+            QStringList words = rawLyrics.split(QRegExp("\\s"));
+            QString currentWord = "Keule";
+            currentWord = currentWord.toLower();
+            int wordLength = currentWord.length();
+            for (int i = 0; i<= (wordLength-2); i++) {
+                QString subString = currentWord.mid(i, wordLength-i);
+                int subStringLength = subString.length();
+                // pattern must start with whitespace (beginning of line)
+                QString regExpString = "\\s";
+                // for the beginning of the word, a '.' must occur, possibly followed by an integer
+                if (i == 0) {
+                    regExpString += "\\.\\d?";
+                }
+                // otherwise, no '.', but possibly an integer
+                else {
+                    regExpString += "\\d?";
+                }
+                // first two letters of the substring are mandatory
+                regExpString += subString.mid(0,1) + "\\d?";
+                regExpString += subString.mid(1,1) + "\\d?";
+
+                // the following letters are optional
+                for (int j = 2; j <= (subStringLength-2); j++) {
+                    regExpString += "[" + subString.mid(j,1) + "?\\d?";
+                    // TODO [U[L[E.]?]?]?
+                }
+                // if last letter is present, then a '.' must follow instead of a digit
+                regExpString += "[" + subString.mid(subStringLength-1,1) + "\\.]?";
+
+                // pattern must end with whitespace (end of line)
+                regExpString += "\\s";
+                ui->plainTextEdit_OutputLyrics->appendPlainText("regExpString = " + regExpString + "\n");
+                int idx = patterns.indexOf(QRegExp(regExpString));
+                if (idx != -1) {
+                    ui->plainTextEdit_OutputLyrics->appendPlainText(QString("idx %1: %2\n").arg(idx).arg(patterns.mid(idx+1,5)));
+                }
+            }
+            //int idx1 = patterns.indexOf(QRegExp("\\s\\.\\d?k\\d?e\\d?u?\\d?l?\\d?e?\\.?\\s"));
+            //int idx2 = patterns.indexOf(QRegExp("\\s\\d?e\\d?u\\d?l?\\d?e?\\.?\\s"));
+            //int idx3 = patterns.indexOf(QRegExp("\\s\\d?u\\d?l\\d?e?\\.?\\s"));
+            //int idx4 = patterns.indexOf(QRegExp("\\s\\d?l\\d?e\\.\\s"));
+        }
+    }
+}
