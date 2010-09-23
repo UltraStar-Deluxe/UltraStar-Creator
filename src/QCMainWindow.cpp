@@ -1943,7 +1943,7 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
             QString patterns = in.readAll();
             QString rawLyrics = ui->plainTextEdit_InputLyrics->toPlainText();
             QStringList words = rawLyrics.split(QRegExp("\\s"));
-            QString currentWord = "Keule";
+            QString currentWord = "korken";
             currentWord = currentWord.toLower();
             int wordLength = currentWord.length();
             for (int i = 0; i<= (wordLength-2); i++) {
@@ -1953,7 +1953,7 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
                 QString regExpString = "\\s";
                 // for the beginning of the word, a '.' must occur, possibly followed by an integer
                 if (i == 0) {
-                    regExpString += "\\.\\d?";
+                    regExpString += "\\.";
                 }
                 // otherwise, no '.', but possibly an integer
                 else {
@@ -1964,13 +1964,16 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
                 regExpString += subString.mid(1,1) + "\\d?";
 
                 // the following letters are optional
-                for (int j = 2; j <= (subStringLength-2); j++) {
-                    regExpString += "[" + subString.mid(j,1) + "?\\d?";
+                QString endString = "\\.";
+                for (int j = 2; j <= (subStringLength-1); j++) {
+                    regExpString += "[" + subString.mid(j,1);
+                    if (j != (subStringLength-1)) {
+                        regExpString += "\\d?";
+                    }
+                    endString += "]?";
                     // TODO [U[L[E.]?]?]?
                 }
-                // if last letter is present, then a '.' must follow instead of a digit
-                regExpString += "[" + subString.mid(subStringLength-1,1) + "\\.]?";
-
+                regExpString += endString;
                 // pattern must end with whitespace (end of line)
                 regExpString += "\\s";
                 ui->plainTextEdit_OutputLyrics->appendPlainText("regExpString = " + regExpString + "\n");
