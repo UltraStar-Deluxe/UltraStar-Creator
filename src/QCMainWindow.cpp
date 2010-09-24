@@ -1935,19 +1935,53 @@ bool QCMainWindow::isHiatus(QChar character1, QChar character2, QString lang)
 
 void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
 {
-    QFile patternFile(":/dict/hyph-de-1996.tex");
+    //
+    QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
+    QChar sep = '+';
+    QString syllabifiedLyrics = "";
+    QFile patternFile;
+
+    if (language.isEmpty()) {
+        QUMessageBox::warning(this, tr("Application"),
+            tr("Please choose the song's language first."));
+    }
+    else if (language == "German") {
+        patternFile.setFileName(":/hyph/hyph-de");
+    }
+    else if (language == "English") {
+        patternFile.setFileName(":/hyph/hyph-en");
+    }
+    else if (language == "Spanish") {
+        patternFile.setFileName(":/hyph/hyph-es");
+    }
+    else if (language == "French") {
+        patternFile.setFileName(":/hyph/hyph-fr");
+    }
+    else {
+        //
+    }
+
+    //
+
     if (patternFile.exists()) {
         if (patternFile.open(QFile::ReadOnly | QFile::Text)) {
             QTextStream in(&patternFile);
             in.setCodec(QTextCodec::codecForName("UTF-8"));
             QString patterns = in.readAll();
-            QString rawLyrics = ui->plainTextEdit_InputLyrics->toPlainText();
-            QStringList words = rawLyrics.split(QRegExp("\\s"));
-            QString currentWord = "korken";
-            currentWord = currentWord.toLower();
+            QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
+            QStringList words = lyrics.split(QRegExp("\\s"));
+            QString word = words.first();
+            QString currentWord = word.toLower();
             int wordLength = currentWord.length();
-            for (int i = 0; i<= (wordLength-2); i++) {
+            int patternCount = 0;
+            QStringList patternList;
+            int hyphenIndicators[wordLength-1];
+            for (int h = 0; h < (wordLength-1); h++) {
+                hyphenIndicators[h] = 0;
+            }
+            for (int i = 0; i < (wordLength-1); i++) {
                 QString subString = currentWord.mid(i, wordLength-i);
+                //ui->plainTextEdit_OutputLyrics->appendPlainText("subString = " + subString + "\n");
                 int subStringLength = subString.length();
                 // pattern must start with whitespace (beginning of line)
                 QString regExpString = "\\s";
@@ -1966,26 +2000,61 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
                 // the following letters are optional
                 QString endString = "\\.";
                 for (int j = 2; j <= (subStringLength-1); j++) {
-                    regExpString += "[" + subString.mid(j,1);
+                    regExpString += "(" + subString.mid(j,1);
                     if (j != (subStringLength-1)) {
                         regExpString += "\\d?";
                     }
-                    endString += "]?";
-                    // TODO [U[L[E.]?]?]?
+                    endString += ")?";
                 }
                 regExpString += endString;
                 // pattern must end with whitespace (end of line)
                 regExpString += "\\s";
-                ui->plainTextEdit_OutputLyrics->appendPlainText("regExpString = " + regExpString + "\n");
-                int idx = patterns.indexOf(QRegExp(regExpString));
-                if (idx != -1) {
-                    ui->plainTextEdit_OutputLyrics->appendPlainText(QString("idx %1: %2\n").arg(idx).arg(patterns.mid(idx+1,5)));
+                //ui->plainTextEdit_OutputLyrics->appendPlainText("regExpString = " + regExpString + "\n");
+                int patternSearchPos = 0;
+                int patternStartPos = patterns.indexOf(QRegExp(regExpString), patternSearchPos);
+                while (patternStartPos != -1) {
+                    patternCount++;
+                    int patternEndPos = patterns.indexOf(QRegExp("\\s"), patternStartPos+1);
+                    int patternLength = patternEndPos - patternStartPos - 1;
+                    QString pattern = patterns.mid(patternStartPos+1,patternLength);
+                    patternList << pattern;
+                    //ui->plainTextEdit_OutputLyrics->appendPlainText(pattern);
+                    // copy hyphen indicators into hyphenIndicators for current pattern
+                    int numChars = 0;
+                    for (int k = 0; k < patternLength; k++) {
+                        if (pattern.at(k).isDigit() && (hyphenIndicators[i+numChars-1] < pattern.at(k).digitValue())) {
+                            hyphenIndicators[i+numChars-1] = pattern.at(k).digitValue();
+                        }
+                        else {
+                            numChars++;
+                        }
+                    }
+
+                    // step ahead for next search
+                    patternSearchPos = patternStartPos+patternLength;
+                    // search again
+                    patternStartPos = patterns.indexOf(QRegExp(regExpString), patternSearchPos);
+
                 }
             }
-            //int idx1 = patterns.indexOf(QRegExp("\\s\\.\\d?k\\d?e\\d?u?\\d?l?\\d?e?\\.?\\s"));
-            //int idx2 = patterns.indexOf(QRegExp("\\s\\d?e\\d?u\\d?l?\\d?e?\\.?\\s"));
-            //int idx3 = patterns.indexOf(QRegExp("\\s\\d?u\\d?l\\d?e?\\.?\\s"));
-            //int idx4 = patterns.indexOf(QRegExp("\\s\\d?l\\d?e\\.\\s"));
+            // don't allow a single character at the end
+            hyphenIndicators[wordLength-2] = 0;
+
+            QString output = word.mid(0,1);
+            for (int z = 0; z < (wordLength-1); z++) {
+                if (hyphenIndicators[z]%2 != 0) {
+                    output += "+";
+                    output += word.mid(z+1,1);
+                }
+                else {
+                    output += word.mid(z+1,1);
+                }
+            }
+            ui->plainTextEdit_OutputLyrics->appendPlainText(output);
         }
+    }
+    else {
+        QUMessageBox::warning(this, tr("Application"),
+            tr("Pattern file not available."));
     }
 }

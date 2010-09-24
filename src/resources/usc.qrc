@@ -36,7 +36,11 @@
         <file>control_stop_blue.png</file>
         <file>NoBackground.jpg</file>
         <file>NoCover.jpg</file>
-        <file>dict/hyph-de-1996.tex</file>
+        <file>hyph/hyph-de</file>
+        <file>hyph/hyph-de-1996</file>
+        <file>hyph/hyph-en</file>
+        <file>hyph/hyph-es</file>
+        <file>hyph/hyph-fr</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>
