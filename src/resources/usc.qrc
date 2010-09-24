@@ -36,11 +36,27 @@
         <file>control_stop_blue.png</file>
         <file>NoBackground.jpg</file>
         <file>NoCover.jpg</file>
+        <file>hyph/hyph-cz</file>
         <file>hyph/hyph-de</file>
-        <file>hyph/hyph-de-1996</file>
+        <file>hyph/hyph-dk</file>
         <file>hyph/hyph-en</file>
+        <file>hyph/hyph-eo</file>
         <file>hyph/hyph-es</file>
+        <file>hyph/hyph-fi</file>
         <file>hyph/hyph-fr</file>
+        <file>hyph/hyph-hr</file>
+        <file>hyph/hyph-in</file>
+        <file>hyph/hyph-it</file>
+        <file>hyph/hyph-nl</file>
+        <file>hyph/hyph-no</file>
+        <file>hyph/hyph-pl</file>
+        <file>hyph/hyph-pt</file>
+        <file>hyph/hyph-ru</file>
+        <file>hyph/hyph-se</file>
+        <file>hyph/hyph-si</file>
+        <file>hyph/hyph-sk</file>
+        <file>hyph/hyph-tr</file>
+        <file>hyph/hyph-va</file>
     </qresource>
     <qresource prefix="/bubble">
         <file>speech8.png</file>

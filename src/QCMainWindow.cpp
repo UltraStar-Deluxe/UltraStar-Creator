@@ -1945,18 +1945,67 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
         QUMessageBox::warning(this, tr("Application"),
             tr("Please choose the song's language first."));
     }
-    else if (language == "German") {
-        patternFile.setFileName(":/hyph/hyph-de");
+    else if (language == "Croation") {
+        patternFile.setFileName(":/hyph/hyph-hr");
+    }
+    else if (language == "Czech") {
+        patternFile.setFileName(":/hyph/hyph-cz");
+    }
+    else if (language == "Danish") {
+        patternFile.setFileName(":/hyph/hyph-dk");
+    }
+    else if (language == "Dutch") {
+        patternFile.setFileName(":/hyph/hyph-nl");
     }
     else if (language == "English") {
         patternFile.setFileName(":/hyph/hyph-en");
     }
-    else if (language == "Spanish") {
-        patternFile.setFileName(":/hyph/hyph-es");
+    else if (language == "Finnish") {
+        patternFile.setFileName(":/hyph/hyph-fi");
     }
     else if (language == "French") {
         patternFile.setFileName(":/hyph/hyph-fr");
     }
+    else if (language == "German") {
+        patternFile.setFileName(":/hyph/hyph-de");
+    }
+    else if (language == "Hindi") {
+        patternFile.setFileName(":/hyph/hyph-in");
+    }
+    else if (language == "Italian") {
+        patternFile.setFileName(":/hyph/hyph-it");
+    }
+    else if (language == "Latin") {
+        patternFile.setFileName(":/hyph/hyph-va");
+    }
+    else if (language == "Norwegian") {
+        patternFile.setFileName(":/hyph/hyph-no");
+    }
+    else if (language == "Polish") {
+        patternFile.setFileName(":/hyph/hyph-pl");
+    }
+    else if (language == "Portuguese") {
+        patternFile.setFileName(":/hyph/hyph-pt");
+    }
+    else if (language == "Russian") {
+        patternFile.setFileName(":/hyph/hyph-ru");
+    }
+    else if (language == "Slovak") {
+        patternFile.setFileName(":/hyph/hyph-sk");
+    }
+    else if (language == "Slowenian") {
+        patternFile.setFileName(":/hyph/hyph-si");
+    }
+    else if (language == "Spanish") {
+        patternFile.setFileName(":/hyph/hyph-es");
+    }
+    else if (language == "Swedish") {
+        patternFile.setFileName(":/hyph/hyph-se");
+    }
+    else if (language == "Turkish") {
+        patternFile.setFileName(":/hyph/hyph-tr");
+    }
+
     else {
         //
     }
