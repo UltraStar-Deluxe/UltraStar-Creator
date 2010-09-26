@@ -1940,70 +1940,93 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
     QChar sep = '+';
     QString syllabifiedLyrics = "";
     QFile patternFile;
+    QString patternEncoding;
 
     if (language.isEmpty()) {
         QUMessageBox::warning(this, tr("Application"),
             tr("Please choose the song's language first."));
     }
-    else if (language == "Croation") {
-        patternFile.setFileName(":/hyph/hyph-hr");
+    else if (language == "Croatian") {
+        patternFile.setFileName(":/hyph/hyph_hr.dic");
+        patternEncoding = "ISO-8859-2";
     }
     else if (language == "Czech") {
-        patternFile.setFileName(":/hyph/hyph-cz");
+        patternFile.setFileName(":/hyph/hyph_cs_CZ.dic");
+        patternEncoding = "ISO-8859-2";
     }
     else if (language == "Danish") {
-        patternFile.setFileName(":/hyph/hyph-dk");
+        patternFile.setFileName(":/hyph/hyph_da_DK.dic");
+        patternEncoding = "ISO-8859-1";
     }
     else if (language == "Dutch") {
-        patternFile.setFileName(":/hyph/hyph-nl");
+        patternFile.setFileName(":/hyph/hyph_nl_NL.dic");
+        patternEncoding = "ISO-8859-1";
     }
     else if (language == "English") {
-        patternFile.setFileName(":/hyph/hyph-en");
+        patternFile.setFileName(":/hyph/hyph_en_US.dic");
+        //patternFile.setFileName(":/hyph/hyph_en_GB.dic"); // British
+        //patternFile.setFileName(":/hyph/hyph_en_CA.dic"); // Canadian
+        patternEncoding = "ISO-8859-1";
     }
     else if (language == "Finnish") {
-        patternFile.setFileName(":/hyph/hyph-fi");
+        patternFile.setFileName(":/hyph/hyph_fi_FI.dic");
+        patternEncoding = "ISO-8859-1";
     }
     else if (language == "French") {
-        patternFile.setFileName(":/hyph/hyph-fr");
+        patternFile.setFileName(":/hyph/hyph_fr_FR.dic");
+        patternEncoding = "ISO-8859-1";
     }
     else if (language == "German") {
-        patternFile.setFileName(":/hyph/hyph-de");
+        patternFile.setFileName(":/hyph/hyph_de_DE.dic");
+        //patternFile.setFileName(":/hyph/hyph_de_CH.dic");
+        patternEncoding = "ISO-8859-1";
     }
     else if (language == "Hindi") {
-        patternFile.setFileName(":/hyph/hyph-in");
+        // no pattern file available
     }
     else if (language == "Italian") {
-        patternFile.setFileName(":/hyph/hyph-it");
+        patternFile.setFileName(":/hyph/hyph_it_IT.dic");
+        patternEncoding = "ISO-8859-1";
     }
     else if (language == "Latin") {
-        patternFile.setFileName(":/hyph/hyph-va");
+        // no pattern file available
     }
     else if (language == "Norwegian") {
-        patternFile.setFileName(":/hyph/hyph-no");
+        patternFile.setFileName(":/hyph/hyph_nb_NO.dic");
+        //patternFile.setFileName(":/hyph/hyph_nn_NO.dic");
+        patternEncoding = "ISO-8859-1";
     }
     else if (language == "Polish") {
-        patternFile.setFileName(":/hyph/hyph-pl");
+        patternFile.setFileName(":/hyph/hyph_pl_PL.dic");
+        patternEncoding = "ISO-8859-2";
     }
     else if (language == "Portuguese") {
-        patternFile.setFileName(":/hyph/hyph-pt");
+        patternFile.setFileName(":/hyph/hyph_pt_PT.dic");
+        //patternFile.setFileName(":/hyph/hyph_pt_BR.dic");
+        patternEncoding = "ISO-8859-1";
     }
     else if (language == "Russian") {
-        patternFile.setFileName(":/hyph/hyph-ru");
+        patternFile.setFileName(":/hyph/hyph_ru_RU.dic");
+        patternEncoding = "KOI8-R";
     }
     else if (language == "Slovak") {
-        patternFile.setFileName(":/hyph/hyph-sk");
+        patternFile.setFileName(":/hyph/hyph_sk_SK.dic");
+        patternEncoding = "ISO-8859-2";
     }
     else if (language == "Slowenian") {
-        patternFile.setFileName(":/hyph/hyph-si");
+        patternFile.setFileName(":/hyph/hyph_sl_SI.dic");
+        patternEncoding = "ISO-8859-2";
     }
     else if (language == "Spanish") {
-        patternFile.setFileName(":/hyph/hyph-es");
+        patternFile.setFileName(":/hyph/hyph_es_ES.dic");
+        patternEncoding = "ISO-8859-1";
     }
     else if (language == "Swedish") {
-        patternFile.setFileName(":/hyph/hyph-se");
+        patternFile.setFileName(":/hyph/hyph_sv_SE.dic");
+        patternEncoding = "ISO-8859-2";
     }
     else if (language == "Turkish") {
-        patternFile.setFileName(":/hyph/hyph-tr");
+        // no pattern file available
     }
 
     else {
@@ -2015,7 +2038,8 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
     if (patternFile.exists()) {
         if (patternFile.open(QFile::ReadOnly | QFile::Text)) {
             QTextStream in(&patternFile);
-            in.setCodec(QTextCodec::codecForName("UTF-8"));
+            //in.setCodec(QTextCodec::codecForName("UTF-8"));
+            in.setCodec(QTextCodec::codecForName(patternEncoding.toLatin1()));
             QString patterns = in.readAll();
             QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
             QStringList words = lyrics.split(QRegExp("\\s"));
@@ -2066,13 +2090,31 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
                     int patternEndPos = patterns.indexOf(QRegExp("\\s"), patternStartPos+1);
                     int patternLength = patternEndPos - patternStartPos - 1;
                     QString pattern = patterns.mid(patternStartPos+1,patternLength);
+                    pattern = pattern.remove('.');
+                    patternLength = pattern.length();
                     patternList << pattern;
-                    //ui->plainTextEdit_OutputLyrics->appendPlainText(pattern);
+
+                    QString output = word.mid(0,1);
+                    for (int z = 0; z < (wordLength-1); z++) {
+                        if (hyphenIndicators[z]%2 != 0) {
+                            output += "+";
+                            output += word.mid(z+1,1);
+                        }
+                        else {
+                            output += word.mid(z+1,1);
+                        }
+                    }
+                    ui->plainTextEdit_OutputLyrics->appendPlainText(output);
+
+                    ui->plainTextEdit_OutputLyrics->appendPlainText(pattern);
+
                     // copy hyphen indicators into hyphenIndicators for current pattern
                     int numChars = 0;
                     for (int k = 0; k < patternLength; k++) {
-                        if (pattern.at(k).isDigit() && (hyphenIndicators[i+numChars-1] < pattern.at(k).digitValue())) {
-                            hyphenIndicators[i+numChars-1] = pattern.at(k).digitValue();
+                        if (pattern.at(k).isDigit()) {
+                            if (hyphenIndicators[i+numChars-1] < pattern.at(k).digitValue()) {
+                                hyphenIndicators[i+numChars-1] = pattern.at(k).digitValue();
+                            }
                         }
                         else {
                             numChars++;
