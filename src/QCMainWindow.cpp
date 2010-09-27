@@ -2043,105 +2043,106 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
             QString patterns = in.readAll();
             QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
             QStringList words = lyrics.split(QRegExp("\\s"));
-            QString word = words.first();
-            QString currentWord = word.toLower();
-            int wordLength = currentWord.length();
-            int patternCount = 0;
-            QStringList patternList;
-            int hyphenIndicators[wordLength-1];
-            for (int h = 0; h < (wordLength-1); h++) {
-                hyphenIndicators[h] = 0;
-            }
-            for (int i = 0; i < (wordLength-1); i++) {
-                QString subString = currentWord.mid(i, wordLength-i);
-                //ui->plainTextEdit_OutputLyrics->appendPlainText("subString = " + subString + "\n");
-                int subStringLength = subString.length();
-                // pattern must start with whitespace (beginning of line)
-                QString regExpString = "\\s";
-                // for the beginning of the word, a '.' must occur, possibly followed by an integer
-                if (i == 0) {
-                    regExpString += "\\.";
+            foreach (QString word, words) {
+                QString currentWord = word.toLower();
+                int wordLength = currentWord.length();
+                int patternCount = 0;
+                QStringList patternList;
+                int hyphenIndicators[wordLength-1];
+                for (int h = 0; h < (wordLength-1); h++) {
+                    hyphenIndicators[h] = 0;
                 }
-                // otherwise, no '.', but possibly an integer
-                else {
-                    regExpString += "\\d?";
-                }
-                // first two letters of the substring are mandatory
-                regExpString += subString.mid(0,1) + "\\d?";
-                regExpString += subString.mid(1,1) + "\\d?";
-
-                // the following letters are optional
-                QString endString = "\\.";
-                for (int j = 2; j <= (subStringLength-1); j++) {
-                    regExpString += "(" + subString.mid(j,1);
-                    if (j != (subStringLength-1)) {
+                for (int i = 0; i < (wordLength-1); i++) {
+                    QString subString = currentWord.mid(i, wordLength-i);
+                    //ui->plainTextEdit_OutputLyrics->appendPlainText("subString = " + subString + "\n");
+                    int subStringLength = subString.length();
+                    // pattern must start with whitespace (beginning of line)
+                    QString regExpString = "\\s";
+                    // for the beginning of the word, a '.' must occur, possibly followed by an integer
+                    if (i == 0) {
+                        regExpString += "\\.";
+                    }
+                    // otherwise, no '.', but possibly an integer
+                    else {
                         regExpString += "\\d?";
                     }
-                    endString += ")?";
-                }
-                regExpString += endString;
-                // pattern must end with whitespace (end of line)
-                regExpString += "\\s";
-                //ui->plainTextEdit_OutputLyrics->appendPlainText("regExpString = " + regExpString + "\n");
-                int patternSearchPos = 0;
-                int patternStartPos = patterns.indexOf(QRegExp(regExpString), patternSearchPos);
-                while (patternStartPos != -1) {
-                    patternCount++;
-                    int patternEndPos = patterns.indexOf(QRegExp("\\s"), patternStartPos+1);
-                    int patternLength = patternEndPos - patternStartPos - 1;
-                    QString pattern = patterns.mid(patternStartPos+1,patternLength);
-                    pattern = pattern.remove('.');
-                    patternLength = pattern.length();
-                    patternList << pattern;
+                    // first two letters of the substring are mandatory
+                    regExpString += subString.mid(0,1) + "\\d?";
+                    regExpString += subString.mid(1,1) + "\\d?";
 
-                    QString output = word.mid(0,1);
-                    for (int z = 0; z < (wordLength-1); z++) {
-                        if (hyphenIndicators[z]%2 != 0) {
-                            output += "+";
-                            output += word.mid(z+1,1);
+                    // the following letters are optional
+                    QString endString = "\\.?";
+                    for (int j = 2; j <= (subStringLength-1); j++) {
+                        regExpString += "(" + subString.mid(j,1);
+                        if (j != (subStringLength-1)) {
+                            regExpString += "\\d?";
                         }
-                        else {
-                            output += word.mid(z+1,1);
-                        }
+                        endString += ")?";
                     }
-                    ui->plainTextEdit_OutputLyrics->appendPlainText(output);
+                    regExpString += endString;
+                    // pattern must end with whitespace (end of line)
+                    regExpString += "\\s";
+                    //ui->plainTextEdit_OutputLyrics->appendPlainText("regExpString = " + regExpString + "\n");
+                    int patternSearchPos = 0;
+                    int patternStartPos = patterns.indexOf(QRegExp(regExpString), patternSearchPos);
+                    while (patternStartPos != -1) {
+                        patternCount++;
+                        int patternEndPos = patterns.indexOf(QRegExp("\\s"), patternStartPos+1);
+                        int patternLength = patternEndPos - patternStartPos - 1;
+                        QString pattern = patterns.mid(patternStartPos+1,patternLength);
+                        pattern = pattern.remove('.');
+                        patternLength = pattern.length();
+                        patternList << pattern;
 
-                    ui->plainTextEdit_OutputLyrics->appendPlainText(pattern);
-
-                    // copy hyphen indicators into hyphenIndicators for current pattern
-                    int numChars = 0;
-                    for (int k = 0; k < patternLength; k++) {
-                        if (pattern.at(k).isDigit()) {
-                            if (hyphenIndicators[i+numChars-1] < pattern.at(k).digitValue()) {
-                                hyphenIndicators[i+numChars-1] = pattern.at(k).digitValue();
+                        QString output = word.mid(0,1);
+                        for (int z = 0; z < (wordLength-1); z++) {
+                            if (hyphenIndicators[z]%2 != 0) {
+                                output += "+";
+                                output += word.mid(z+1,1);
+                            }
+                            else {
+                                output += word.mid(z+1,1);
                             }
                         }
-                        else {
-                            numChars++;
+                        ui->plainTextEdit_OutputLyrics->appendPlainText(output);
+
+                        ui->plainTextEdit_OutputLyrics->appendPlainText(pattern);
+
+                        // copy hyphen indicators into hyphenIndicators for current pattern
+                        int numChars = 0;
+                        for (int k = 0; k < patternLength; k++) {
+                            if (pattern.at(k).isDigit()) {
+                                if (hyphenIndicators[i+numChars-1] < pattern.at(k).digitValue()) {
+                                    hyphenIndicators[i+numChars-1] = pattern.at(k).digitValue();
+                                }
+                            }
+                            else {
+                                numChars++;
+                            }
                         }
+
+                        // step ahead for next search
+                        patternSearchPos = patternStartPos+patternLength;
+                        // search again
+                        patternStartPos = patterns.indexOf(QRegExp(regExpString), patternSearchPos);
+
                     }
-
-                    // step ahead for next search
-                    patternSearchPos = patternStartPos+patternLength;
-                    // search again
-                    patternStartPos = patterns.indexOf(QRegExp(regExpString), patternSearchPos);
-
                 }
+                // don't allow a single character at the end
+                //hyphenIndicators[wordLength-2] = 0;
+
+                QString output = word.mid(0,1);
+                for (int z = 0; z < (wordLength-1); z++) {
+                    if (hyphenIndicators[z]%2 != 0) {
+                        output += "+";
+                        output += word.mid(z+1,1);
+                    }
+                    else {
+                        output += word.mid(z+1,1);
+                    }
+                }
+                ui->plainTextEdit_OutputLyrics->appendPlainText(output);
             }
-            // don't allow a single character at the end
-            hyphenIndicators[wordLength-2] = 0;
-
-            QString output = word.mid(0,1);
-            for (int z = 0; z < (wordLength-1); z++) {
-                if (hyphenIndicators[z]%2 != 0) {
-                    output += "+";
-                    output += word.mid(z+1,1);
-                }
-                else {
-                    output += word.mid(z+1,1);
-                }
-            }
-            ui->plainTextEdit_OutputLyrics->appendPlainText(output);
         }
     }
     else {

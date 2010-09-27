@@ -65,7 +65,7 @@ win32 {
         -lbass_fx \
         -llibhunspell
 }
-CONFIG -= debug_and_release \
-    release
-CONFIG += debug
-#CONFIG += release
+#CONFIG -= debug_and_release \
+#    release
+#CONFIG += debug
+CONFIG += release
