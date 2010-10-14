@@ -302,9 +302,9 @@ void QCMainWindow::on_pushButton_Tap_pressed()
 {
     currentNoteStartTime = BASS_Position()*1000; // milliseconds
 
-    // conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPMFromMP3 [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
+    // conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPM [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
     previousNoteEndBeat = currentNoteStartBeat + currentNoteBeatLength - firstNoteStartBeat;
-    currentNoteStartBeat = currentNoteStartTime * (BPMFromMP3 / 15000);
+    currentNoteStartBeat = currentNoteStartTime * (BPM / 15000);
     ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
 }
 
@@ -317,7 +317,7 @@ void QCMainWindow::on_pushButton_Tap_released()
     if (!ui->pushButton_UndoTap->isEnabled()) {
         ui->pushButton_UndoTap->setEnabled(true);
     }
-    currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPMFromMP3 / 15000));
+    currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPM / 15000));
     if (firstNote){
         firstNoteStartBeat = currentNoteStartBeat;
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GAP:%1").arg(QString::number(currentNoteStartTime, 'f', 2)));
@@ -856,22 +856,23 @@ void QCMainWindow::handleMP3() {
     ui->label_PreviewTimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
 
     BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, 0);
+    BPM = BPMFromMP3;
 
-    if (BPMFromMP3 == 0) {
-        BPMFromMP3 = 50;
-    }
-
-    if (BPMFromMP3 <= 50) {
-        BPMFromMP3 = BPMFromMP3*8;
-    }
-    else if (BPMFromMP3 <= 100) {
-        BPMFromMP3 = BPMFromMP3*4;
-    }
-    else if (BPMFromMP3 <= 200) {
-        BPMFromMP3 = BPMFromMP3*2;
+    if (BPM == 0) {
+        BPM = 50;
     }
 
-    ui->doubleSpinBox_BPM->setValue(BPMFromMP3);
+    if (BPM <= 50) {
+        BPM = BPM*8;
+    }
+    else if (BPM <= 100) {
+        BPM = BPM*4;
+    }
+    else if (BPM <= 200) {
+        BPM = BPM*2;
+    }
+
+    ui->doubleSpinBox_BPM->setValue(BPM);
     ui->label_BPMSet->setPixmap(QPixmap(":/marks/path_ok.png"));
     ui->label_BPMSet->setStatusTip(tr("#BPM tag set."));
 
@@ -1435,7 +1436,7 @@ void QCMainWindow::on_actionWhats_This_triggered()
 
 // begin syllabification --> thanks to Klafhor who provided the PHP code as a basis
 
-void QCMainWindow::on_pushButton_Syllabificate_clicked()
+void QCMainWindow::on_pushButton_SyllabificateRules_clicked()
 {
     QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
     QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
@@ -1933,7 +1934,7 @@ bool QCMainWindow::isHiatus(QChar character1, QChar character2, QString lang)
 
 // end syllabification
 
-void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
+void QCMainWindow::on_pushButton_SyllabificateTeX_clicked()
 {
     //
     QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
@@ -2070,8 +2071,14 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
                     regExpString += subString.mid(0,1) + "\\d?";
                     regExpString += subString.mid(1,1) + "\\d?";
 
-                    // the following letters are optional
-                    QString endString = "\\.?";
+                    // the following letters are optional (Spanish syllabification patterns don't have '.' at the end of words
+                    QString endString = "";
+                    if (language == "Spanish") {
+                        endString += "\\.?";
+                    }
+                    else {
+                        endString += "\\.";
+                    }
                     for (int j = 2; j <= (subStringLength-1); j++) {
                         regExpString += "(" + subString.mid(j,1);
                         if (j != (subStringLength-1)) {
@@ -2108,6 +2115,7 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
 
                         ui->plainTextEdit_OutputLyrics->appendPlainText(pattern);
 
+
                         // copy hyphen indicators into hyphenIndicators for current pattern
                         int numChars = 0;
                         for (int k = 0; k < patternLength; k++) {
@@ -2129,7 +2137,7 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
                     }
                 }
                 // don't allow a single character at the end
-                //hyphenIndicators[wordLength-2] = 0;
+                hyphenIndicators[wordLength-2] = 0;
 
                 QString output = word.mid(0,1);
                 for (int z = 0; z < (wordLength-1); z++) {
@@ -2148,5 +2156,33 @@ void QCMainWindow::on_pushButton_Syllabificate_Test_clicked()
     else {
         QUMessageBox::warning(this, tr("Application"),
             tr("Pattern file not available."));
+    }
+}
+
+
+
+void QCMainWindow::on_pushButton_EnableBPMEdit_toggled(bool checked)
+{
+    ui->doubleSpinBox_BPM->setReadOnly(!checked);
+    if(checked){
+        ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/types/lock-unlock.png"));
+    }
+    else {
+        ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/types/lock.png"));
+    }
+}
+
+void QCMainWindow::on_doubleSpinBox_BPM_valueChanged(double BPMValue)
+{
+    BPM = BPMValue;
+
+    if (BPM <= 50) {
+        BPM = BPM*8;
+    }
+    else if (BPM <= 100) {
+        BPM = BPM*4;
+    }
+    else if (BPM <= 200) {
+        BPM = BPM*2;
     }
 }

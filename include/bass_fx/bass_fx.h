@@ -1,5 +1,5 @@
 /****************************************************************************
- BASS_FX 2.4 - Copyright (c) 2002-2009 (: JOBnik! :) [Arthur Aminov, ISRAEL]
+ BASS_FX 2.4 - Copyright (c) 2002-2010 (: JOBnik! :) [Arthur Aminov, ISRAEL]
                                                      [http://www.jobnik.org]
 
       bugs/suggestions/questions:
@@ -8,7 +8,7 @@
         e-mail : bass_fx@jobnik.org
      --------------------------------------------------
 
- NOTE: This header will work only with BASS_FX version 2.4.5.0
+ NOTE: This header will work only with BASS_FX version 2.4.6
        Check www.un4seen.com or www.jobnik.org for any later versions.
 
  * Requires BASS 2.4 (available @ www.un4seen.com)

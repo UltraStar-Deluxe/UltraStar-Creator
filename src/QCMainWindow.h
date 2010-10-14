@@ -46,6 +46,7 @@ private:
     QStringList lyricsStringList;
     QClipboard *clipboard;
     float BPMFromMP3;
+    float BPM;
     bool firstNote;
     bool isFirstKeyPress;
     QString cleanLyrics(QString);
@@ -87,13 +88,15 @@ private:
     QString defaultDir;
 
 private slots:
-    void on_pushButton_Syllabificate_Test_clicked();
+    void on_doubleSpinBox_BPM_valueChanged(double );
+    void on_pushButton_EnableBPMEdit_toggled(bool checked);
+    void on_pushButton_SyllabificateTeX_clicked();
     void on_actionWhats_This_triggered();
     void on_comboBox_Year_activated(QString );
     void on_actionHelp_triggered();
     void on_actionCreate_Dummy_Songs_triggered();
     void on_horizontalSlider_PreviewMP3_sliderMoved(int position);
-    void on_pushButton_Syllabificate_clicked();
+    void on_pushButton_SyllabificateRules_clicked();
     void on_pushButton_startYass_clicked();
     void on_pushButton_PreviewPlayPause_clicked();
     void on_lineEdit_Video_textChanged(QString );

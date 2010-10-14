@@ -38,8 +38,8 @@ typedef int BOOL;
 extern "C" {
 #endif
 
-#define BASSVERSION		0x204	// API version
-#define BASSVERSIONTEXT		"2.4.6"
+#define BASSVERSION			0x204	// API version
+#define BASSVERSIONTEXT		"2.4"
 
 #ifndef BASSDEF
 #define BASSDEF(f) WINAPI f
