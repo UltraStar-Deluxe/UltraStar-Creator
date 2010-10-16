@@ -47,6 +47,9 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     ui->comboBox_Language->addItem(QIcon(":/languages/lang/se.png"),tr("Swedish"),"Swedish");
     ui->comboBox_Language->addItem(QIcon(":/languages/lang/tr.png"),tr("Turkish"),"Turkish");
 
+    // deactivate TeX syllabification for now
+    ui->pushButton_SyllabificateTeX->setVisible(false);
+
     logSrv->add(tr("Ready."), QU::Information);
     lyricsProgressBar = new QProgressBar;
     QMainWindow::statusBar()->addPermanentWidget(lyricsProgressBar);
