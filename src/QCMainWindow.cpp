@@ -72,6 +72,15 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     }
 
     ui->lineEdit_Creator->setText(settings.value("creator", "").toString());
+
+    // restore font sizes
+    QFont font = ui->plainTextEdit_InputLyrics->font();
+    font.setPointSize(settings.value("inputlyricsfontsize", 10).toInt());
+    ui->plainTextEdit_InputLyrics->setFont(font);
+    font.setPointSize(settings.value("outputlyricsfontsize", 10).toInt());
+    ui->plainTextEdit_OutputLyrics->setFont(font);
+
+    //
     QFileInfo fi(settings.value("songfile").toString());
     if (fi.exists()) {
         settings.remove("songfile");
@@ -101,6 +110,8 @@ void QCMainWindow::closeEvent(QCloseEvent *event) {
 
     settings.setValue("windowState", QVariant(this->saveState()));
     settings.setValue("windowSize", size());
+    settings.setValue("inputlyricsfontsize", ui->plainTextEdit_InputLyrics->fontInfo().pointSize());
+    settings.setValue("outputlyricsfontsize", ui->plainTextEdit_OutputLyrics->fontInfo().pointSize());
 
     // everything should be fine from now on
     QFile::remove("running.app");
