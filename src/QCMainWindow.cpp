@@ -165,10 +165,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         QWidget::setAcceptDrops(false);
         ui->groupBox_MP3Tag->setDisabled(true);
         ui->groupBox_SongMetaInformationTags->setDisabled(true);
-        ui->groupBox_ArtworkTags->setDisabled(true);
-        ui->groupBox_VideoTags->setDisabled(true);
         ui->groupBox_MiscSettings->setDisabled(true);
-        ui->groupBox_VideoTags->setDisabled(true);
         ui->groupBox_InputLyrics->setDisabled(true);
         ui->groupBox_OutputLyrics->setEnabled(true);
         ui->pushButton_SaveToFile->setDisabled(true);
@@ -525,9 +522,6 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                         }
                     }
                     else if ((fileInfo->suffix().toLower() == tr("avi")) || fileInfo->suffix().toLower() == tr("divx") || fileInfo->suffix().toLower() == tr("flv") || fileInfo->suffix().toLower() == tr("mpg") || fileInfo->suffix().toLower() == tr("mpeg") || fileInfo->suffix().toLower() == tr("m4v") || fileInfo->suffix().toLower() == tr("mp4") || fileInfo->suffix().toLower() == tr("vob") || fileInfo->suffix().toLower() == tr("ts")) {
-                        if (!ui->groupBox_VideoTags->isChecked()) {
-                            ui->groupBox_VideoTags->setChecked(true);
-                        }
                         if (!fileInfo->fileName().isEmpty()) {
                             ui->lineEdit_Video->setText(fileInfo->fileName());
                             ui->label_VideoSet->setPixmap(QPixmap(":/marks/path_ok.png"));
@@ -898,8 +892,6 @@ void QCMainWindow::handleMP3() {
     // TODO: lyrics from mp3 lyrics-tag
 
     ui->groupBox_SongMetaInformationTags->setEnabled(true);
-    ui->groupBox_ArtworkTags->setEnabled(true);
-    ui->groupBox_VideoTags->setEnabled(true);
     ui->groupBox_MiscSettings->setEnabled(true);
     ui->groupBox_InputLyrics->setEnabled(true);
     ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
@@ -1013,10 +1005,7 @@ void QCMainWindow::on_pushButton_Reset_clicked()
         lyricsProgressBar->setValue(0);
         ui->groupBox_MP3Tag->setEnabled(true);
         ui->groupBox_SongMetaInformationTags->setEnabled(true);
-        ui->groupBox_ArtworkTags->setEnabled(true);
-        ui->groupBox_VideoTags->setEnabled(true);
         ui->groupBox_MiscSettings->setEnabled(true);
-        ui->groupBox_VideoTags->setEnabled(true);
         ui->groupBox_InputLyrics->setEnabled(true);
         ui->groupBox_OutputLyrics->setDisabled(true);
         ui->groupBox_TapArea->setDisabled(true);
