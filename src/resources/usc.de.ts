@@ -2031,7 +2031,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../QCMainWindow.cpp" line="403"/>
         <location filename="../QCMainWindow.cpp" line="413"/>
         <source>Image files (*.jpg)</source>
-        <translation>Bilddateien (*.jpg</translation>
+        <translation>Bilddateien (*.jpg)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="413"/>
