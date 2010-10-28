@@ -870,13 +870,7 @@ void QCMainWindow::handleMP3() {
         BPM = 50;
     }
 
-    if (BPM <= 50) {
-        BPM = BPM*8;
-    }
-    else if (BPM <= 100) {
-        BPM = BPM*4;
-    }
-    else if (BPM <= 200) {
+    while (BPM <= 200) {
         BPM = BPM*2;
     }
 
