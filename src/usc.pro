@@ -62,8 +62,17 @@ win32 {
     LIBS += -L"../lib" \
         -ltag \
         -lbass \
-        -lbass_fx \
-        -llibhunspell
+        -lbass_fx
+}
+unix { 
+    INCLUDEPATH += /usr/include/taglib \
+		/usr/include/bass \
+		/usr/include/bass_fx \
+		/usr/include/hunspell
+    LIBS += -L"/usr/lib" \
+        -ltag \
+		-lbass \
+		-lbass_fx
 }
 #CONFIG -= debug_and_release \
 #    release
