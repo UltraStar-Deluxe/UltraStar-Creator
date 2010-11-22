@@ -66,10 +66,8 @@ win32 {
 }
 unix { 
     INCLUDEPATH += /usr/include/taglib \
-		/usr/include/bass \
-		/usr/include/bass_fx \
-		/usr/include/hunspell
-    LIBS += -L"/usr/lib" \
+		/usr/local/include/libbass
+    LIBS += -L"/usr/local/lib/libbass" \
         -ltag \
 		-lbass \
 		-lbass_fx
