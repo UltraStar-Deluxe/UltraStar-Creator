@@ -138,12 +138,12 @@ bool QCMainWindow::on_pushButton_SaveToFile_clicked()
     QTextCodec *codec = QTextCodec::codecForName("Windows-1252");
     if (codec->canEncode(ui->plainTextEdit_OutputLyrics->toPlainText())) {
         out.setCodec(codec);
-        out << "#ENCODING:CP1252\n";
+        //out << "#ENCODING:CP1252\n";
     }
     else {
         out.setCodec(QTextCodec::codecForName("UTF-8"));
         out.setGenerateByteOrderMark(true); // BOM needed by UltraStar 1.1
-        out << "#ENCODING:UTF8\n";
+        //out << "#ENCODING:UTF8\n";
     }
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
