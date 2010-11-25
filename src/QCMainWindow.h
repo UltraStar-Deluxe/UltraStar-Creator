@@ -88,6 +88,7 @@ private:
     QString defaultDir;
 
 private slots:
+    void on_pushButton_ShowSwissCharts_clicked();
     void on_doubleSpinBox_BPM_valueChanged(double );
     void on_pushButton_EnableBPMEdit_toggled(bool checked);
     void on_pushButton_SyllabificateTeX_clicked();

@@ -14,6 +14,7 @@
 #include <QProcess>
 #include <QDirIterator>
 #include <QWhatsThis>
+#include <QWebView>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -1210,10 +1211,18 @@ void QCMainWindow::on_pushButton_startUltraStar_clicked()
         }
         else {
             settings.remove("USdxFilePath");
+            USdxFilePath = QFileDialog::getOpenFileName(0, tr("Choose UltraStar executable"), QDir::homePath(),tr("UltraStar executable (*.exe);;All files (*.*)"));
+            USdxFileInfo = new QFileInfo(USdxFilePath);
+            if(USdxFileInfo->exists()) {
+                settings.setValue("USdxFilePath", USdxFilePath);
+                QStringList USdxArguments;
+                USdxArguments << "-SongPath " << fileInfo_MP3->absolutePath();
+                QProcess::startDetached(USdxFilePath, USdxArguments, USdxFileInfo->absolutePath());
+            }
         }
     }
     else {
-        USdxFilePath = QFileDialog::getOpenFileName(0, tr("Choose UltraStar executable"), QDir::homePath(),tr("UltraStar executable (*.exe)"));
+        USdxFilePath = QFileDialog::getOpenFileName(0, tr("Choose UltraStar executable"), QDir::homePath(),tr("UltraStar executable (*.exe);;All files (*.*)"));
         USdxFileInfo = new QFileInfo(USdxFilePath);
         if(USdxFileInfo->exists()) {
             settings.setValue("USdxFilePath", USdxFilePath);
@@ -1268,10 +1277,18 @@ void QCMainWindow::on_pushButton_startYass_clicked()
         }
         else {
             settings.remove("YassFilePath");
+            YassFilePath = QFileDialog::getOpenFileName(0, tr("Choose YASS executable"), QDir::homePath(),tr("YASS executable (*.exe);;All files (*.*)"));
+            YassFileInfo = new QFileInfo(YassFilePath);
+            if(YassFileInfo->exists()) {
+                settings.setValue("YassFilePath", YassFilePath);
+                QStringList YassArguments;
+                YassArguments << fileInfo_MP3->absolutePath();
+                QProcess::startDetached(YassFilePath, YassArguments, YassFileInfo->absolutePath());
+            }
         }
     }
     else {
-        YassFilePath = QFileDialog::getOpenFileName(0, tr("Choose YASS executable"), QDir::homePath(),tr("YASS executable (*.exe)"));
+        YassFilePath = QFileDialog::getOpenFileName(0, tr("Choose YASS executable"), QDir::homePath(),tr("YASS executable (*.exe);;All files (*.*)"));
         YassFileInfo = new QFileInfo(YassFilePath);
         if(YassFileInfo->exists()) {
             settings.setValue("YassFilePath", YassFilePath);
@@ -2182,4 +2199,12 @@ void QCMainWindow::on_doubleSpinBox_BPM_valueChanged(double BPMValue)
     else if (BPM <= 200) {
         BPM = BPM*2;
     }
+}
+
+void QCMainWindow::on_pushButton_ShowSwissCharts_clicked()
+{
+    QString urlString("http://swisscharts.com/search.asp?cat=s&search=" + ui->lineEdit_Artist->text().replace(QRegExp("(\\s+)"),"+") + "+" + ui->lineEdit_Title->text().replace(QRegExp("(\\s+)"),"+"));
+    QWebView* webView = new QWebView();
+    webView->load(QUrl(urlString));
+    webView->show();
 }
