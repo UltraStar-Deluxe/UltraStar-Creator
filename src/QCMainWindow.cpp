@@ -4,6 +4,7 @@
 #include "QULogService.h"
 #include "QUMessageBox.h"
 #include "QUAboutDialog.h"
+#include "QUProxyDialog.h"
 
 #include <QFileDialog>
 #include <QTextStream>
@@ -15,6 +16,7 @@
 #include <QDirIterator>
 #include <QWhatsThis>
 #include <QWebView>
+#include <QNetworkProxy>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -2201,10 +2203,21 @@ void QCMainWindow::on_doubleSpinBox_BPM_valueChanged(double BPMValue)
     }
 }
 
-void QCMainWindow::on_pushButton_ShowSwissCharts_clicked()
+void QCMainWindow::on_pushButton_ShowWebSite_clicked()
 {
+    QNetworkProxy proxy;
+    proxy.setType(QNetworkProxy::HttpProxy);
+    proxy.setHostName(QString("134.28.35.35"));
+    proxy.setPort(8080);
+    QNetworkProxy::setApplicationProxy(proxy);
+
     QString urlString("http://swisscharts.com/search.asp?cat=s&search=" + ui->lineEdit_Artist->text().replace(QRegExp("(\\s+)"),"+") + "+" + ui->lineEdit_Title->text().replace(QRegExp("(\\s+)"),"+"));
     QWebView* webView = new QWebView();
     webView->load(QUrl(urlString));
     webView->show();
+}
+
+void QCMainWindow::on_actionSettings_triggered()
+{
+    QUProxyDialog().exec();
 }

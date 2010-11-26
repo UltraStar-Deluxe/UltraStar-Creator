@@ -256,6 +256,7 @@
         <file>note.png</file>
         <file>lock.png</file>
         <file>lock-unlock.png</file>
+        <file>world.png</file>
     </qresource>
     <qresource prefix="/big">
         <file>save_big.png</file>

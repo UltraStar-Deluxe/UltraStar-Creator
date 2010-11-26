@@ -7,7 +7,8 @@ OBJECTS_DIR = tmp
 RCC_DIR = tmp
 QT += core \
     gui \
-    webkit
+    webkit \
+    network
 HEADERS += main.h \
     QU.h \
     QUStringSupport.h \
@@ -23,7 +24,8 @@ HEADERS += main.h \
     support/QUMetaphoneString.h \
     QCMainWindow.h \
     QUAboutDialog.h \
-    version.h
+    version.h \
+    QUProxyDialog.h
 SOURCES += main.cpp \
     QCMainWindow.cpp \
     QU.cpp \
@@ -37,12 +39,14 @@ SOURCES += main.cpp \
     support/QUMetaphoneString.cpp \
     song/QUSongFile.cpp \
     song/QUSongLine.cpp \
-    QUAboutDialog.cpp
+    QUAboutDialog.cpp \
+    QUProxyDialog.cpp
 FORMS += mediaplayer/QUMediaPlayer.ui \
     support/QUMessageBox.ui \
     support/QUProgressDialog.ui \
     QCMainWindow.ui \
-    QUAboutDialog.ui
+    QUAboutDialog.ui \
+    QUProxyDialog.ui
 RESOURCES += resources/usc.qrc
 TRANSLATIONS = resources/usc.de.ts \
     resources/usc.es.ts \
@@ -67,13 +71,14 @@ win32 {
 }
 unix { 
     INCLUDEPATH += /usr/include/taglib \
-		/usr/local/include/libbass
+        /usr/local/include/libbass
     LIBS += -L"/usr/local/lib/libbass" \
         -ltag \
-		-lbass \
-		-lbass_fx
+        -lbass \
+        -lbass_fx
 }
-#CONFIG -= debug_and_release \
-#    release
-#CONFIG += debug
+
+# CONFIG -= debug_and_release \
+# release
+# CONFIG += debug
 CONFIG += release
