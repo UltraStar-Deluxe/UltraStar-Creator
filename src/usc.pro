@@ -1,25 +1,15 @@
 TEMPLATE = app
+TARGET = usc
+DESTDIR = ../bin
+MOC_DIR = tmp
 UI_DIR = ui
+OBJECTS_DIR = tmp
+RCC_DIR = tmp
+
 QT += core \
     gui \
     webkit \
     network
-
-CONFIG(release, debug|release) { 
-    TARGET = usc
-    DESTDIR = ../bin/usc
-    MOC_DIR = tmp/release
-    OBJECTS_DIR = tmp/release
-    RCC_DIR = tmp/release
-}
-
-CONFIG(debug, debug|release) { 
-    TARGET = usc_debug
-    DESTDIR = ../bin/usc_debug
-    MOC_DIR = tmp/debug
-    OBJECTS_DIR = tmp/debug
-    RCC_DIR = tmp/debug
-}
 
 HEADERS += main.h \
     QU.h \
@@ -60,7 +50,7 @@ FORMS += mediaplayer/QUMediaPlayer.ui \
     QCMainWindow.ui \
     QUAboutDialog.ui \
     QUProxyDialog.ui
-
+	
 RESOURCES += resources/usc.qrc
 
 TRANSLATIONS = resources/usc.de.ts \
@@ -93,6 +83,7 @@ unix {
         -lbass \
         -lbass_fx
 }
+
 QMAKE_EXTRA_TARGETS += revtarget
 PRE_TARGETDEPS += version.h
 revtarget.target = version.h
@@ -103,5 +94,5 @@ revtarget.depends = $$SOURCES \
 
 # CONFIG -= debug_and_release \
 # release
-#CONFIG += debug
-#CONFIG += release
+# CONFIG += debug
+CONFIG += release
