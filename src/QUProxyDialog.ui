@@ -14,7 +14,7 @@
    <string>Proxy settings</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources/usc.qrc">
+   <iconset>
     <normaloff>:/types/folder_go.png</normaloff>:/types/folder_go.png</iconset>
   </property>
   <widget class="QWidget" name="layoutWidget">
@@ -127,7 +127,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="resources/usc.qrc">:/marks/information.png</pixmap>
+          <pixmap>:/marks/information.png</pixmap>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -137,7 +137,7 @@
        <item>
         <widget class="QLabel" name="textLbl">
          <property name="text">
-          <string>...</string>
+          <string>Use this dialog to enter proxy settings.</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -166,7 +166,7 @@
        <number>5</number>
       </property>
       <item>
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="checkBox_useProxy">
         <property name="text">
          <string>Use the following proxy settings for internet access:</string>
         </property>
@@ -255,7 +255,7 @@
          <string>OK</string>
         </property>
         <property name="icon">
-         <iconset resource="resources/usc.qrc">
+         <iconset>
           <normaloff>:/marks/accept.png</normaloff>:/marks/accept.png</iconset>
         </property>
        </widget>
@@ -266,7 +266,7 @@
          <string>Cancel</string>
         </property>
         <property name="icon">
-         <iconset resource="resources/usc.qrc">
+         <iconset>
           <normaloff>:/marks/cancel.png</normaloff>:/marks/cancel.png</iconset>
         </property>
        </widget>
@@ -276,8 +276,6 @@
    </layout>
   </widget>
  </widget>
- <resources>
-  <include location="resources/usc.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

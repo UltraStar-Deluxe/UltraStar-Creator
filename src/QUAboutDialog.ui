@@ -20,7 +20,7 @@
    <string>About</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources/uman.qrc">
+   <iconset resource="resources/usc.qrc">
     <normaloff>:/icons/cup.png</normaloff>:/icons/cup.png</iconset>
   </property>
   <property name="styleSheet">
@@ -198,7 +198,7 @@ background-image: url();</string>
   </layout>
  </widget>
  <resources>
-  <include location="resources/uman.qrc"/>
+  <include location="resources/usc.qrc"/>
  </resources>
  <connections/>
 </ui>

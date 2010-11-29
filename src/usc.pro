@@ -9,6 +9,20 @@ QT += core \
     gui \
     webkit \
     network
+CONFIG(release, debug|release) { 
+    TARGET = usc
+    DESTDIR = ../bin/usc
+    MOC_DIR = tmp/release
+    OBJECTS_DIR = tmp/release
+    RCC_DIR = tmp/release
+}
+CONFIG(debug, debug|release) { 
+    TARGET = usc_debug
+    DESTDIR = ../bin/usc_debug
+    MOC_DIR = tmp/debug
+    OBJECTS_DIR = tmp/debug
+    RCC_DIR = tmp/debug
+}
 HEADERS += main.h \
     QU.h \
     QUStringSupport.h \
@@ -24,7 +38,6 @@ HEADERS += main.h \
     support/QUMetaphoneString.h \
     QCMainWindow.h \
     QUAboutDialog.h \
-    version.h \
     QUProxyDialog.h
 SOURCES += main.cpp \
     QCMainWindow.cpp \
@@ -62,8 +75,7 @@ win32 {
     RC_FILE = usc.rc
     INCLUDEPATH += ../include/taglib \
         ../include/bass \
-        ../include/bass_fx \
-        ../include/hunspell
+        ../include/bass_fx
     LIBS += -L"../lib" \
         -ltag \
         -lbass \
@@ -77,6 +89,17 @@ unix {
         -lbass \
         -lbass_fx
 }
+QMAKE_EXTRA_TARGETS += revtarget
+PRE_TARGETDEPS += version.h
+revtarget.target = version.h
+#revtarget.commands = @echo \
+#    "const char *revision = \"r$(shell SubWCRev.exe . version.in version.h)\"; const char *date_time = \"$(shell date /T)$(shell time /T)\";" \
+revtarget.commands = $(shell SubWCRev . version.in version.h) #\
+#    > \
+#    $$revtarget.target
+revtarget.depends = $$SOURCES \
+    $$HEADERS \
+    $$FORMS
 
 # CONFIG -= debug_and_release \
 # release

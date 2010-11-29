@@ -9,1534 +9,450 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="74"/>
+        <location filename="../QCMainWindow.ui" line="76"/>
         <source>MP3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="131"/>
+        <location filename="../QCMainWindow.ui" line="118"/>
         <source>MP3 tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="318"/>
+        <location filename="../QCMainWindow.ui" line="231"/>
         <source>Preview MP3 file for correct syllabification of the song&apos;s lyrics.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="389"/>
         <source>Song Meta Information Tags</source>
-        <translation>Metadatos de la canción</translation>
+        <translation type="obsolete">Metadatos de la canción</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="459"/>
+        <location filename="../QCMainWindow.ui" line="387"/>
         <source>Enter the song title.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="534"/>
+        <location filename="../QCMainWindow.ui" line="462"/>
         <source>Enter the song artist.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="603"/>
+        <location filename="../QCMainWindow.ui" line="531"/>
         <source>Choose the song language.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="27"/>
+        <location filename="../QCMainWindow.cpp" line="30"/>
         <source>Croatian</source>
         <translation>Croata</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="28"/>
+        <location filename="../QCMainWindow.cpp" line="31"/>
         <source>Czech</source>
         <translation>Checo</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="29"/>
+        <location filename="../QCMainWindow.cpp" line="32"/>
         <source>Danish</source>
         <translation>Danés</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="30"/>
+        <location filename="../QCMainWindow.cpp" line="33"/>
         <source>Dutch</source>
         <translation>Neerlandés</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4062"/>
-        <location filename="../QCMainWindow.cpp" line="31"/>
-        <location filename="../QCMainWindow.cpp" line="722"/>
+        <location filename="../QCMainWindow.ui" line="3840"/>
+        <location filename="../QCMainWindow.cpp" line="34"/>
+        <location filename="../QCMainWindow.cpp" line="733"/>
         <source>English</source>
         <translation>Inglés</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="32"/>
+        <location filename="../QCMainWindow.cpp" line="35"/>
         <source>Finnish</source>
         <translation>Finés</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4128"/>
-        <location filename="../QCMainWindow.cpp" line="33"/>
-        <location filename="../QCMainWindow.cpp" line="726"/>
+        <location filename="../QCMainWindow.ui" line="3906"/>
+        <location filename="../QCMainWindow.cpp" line="36"/>
+        <location filename="../QCMainWindow.cpp" line="737"/>
         <source>French</source>
         <translation>Francés</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4083"/>
-        <location filename="../QCMainWindow.cpp" line="34"/>
-        <location filename="../QCMainWindow.cpp" line="730"/>
+        <location filename="../QCMainWindow.ui" line="3861"/>
+        <location filename="../QCMainWindow.cpp" line="37"/>
+        <location filename="../QCMainWindow.cpp" line="741"/>
         <source>German</source>
         <translation>Alemán</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="35"/>
+        <location filename="../QCMainWindow.cpp" line="38"/>
         <source>Hindi</source>
         <translation>Hindi</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4164"/>
-        <location filename="../QCMainWindow.cpp" line="36"/>
-        <location filename="../QCMainWindow.cpp" line="734"/>
+        <location filename="../QCMainWindow.ui" line="3942"/>
+        <location filename="../QCMainWindow.cpp" line="39"/>
+        <location filename="../QCMainWindow.cpp" line="745"/>
         <source>Italian</source>
         <translation>Italiano</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="37"/>
+        <location filename="../QCMainWindow.cpp" line="40"/>
         <source>Japanese</source>
         <translation>Japonés</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="38"/>
+        <location filename="../QCMainWindow.cpp" line="41"/>
         <source>Korean</source>
         <translation>Coreano</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="790"/>
-        <location filename="../QCMainWindow.cpp" line="39"/>
+        <location filename="../QCMainWindow.ui" line="731"/>
+        <location filename="../QCMainWindow.cpp" line="42"/>
         <source>Latin</source>
         <translation>Latín</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="40"/>
+        <location filename="../QCMainWindow.cpp" line="43"/>
         <source>Norwegian</source>
         <translation>Noruego</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4182"/>
-        <location filename="../QCMainWindow.cpp" line="41"/>
-        <location filename="../QCMainWindow.cpp" line="738"/>
+        <location filename="../QCMainWindow.ui" line="3960"/>
+        <location filename="../QCMainWindow.cpp" line="44"/>
+        <location filename="../QCMainWindow.cpp" line="749"/>
         <source>Polish</source>
         <translation>Polaco</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="42"/>
+        <location filename="../QCMainWindow.cpp" line="45"/>
         <source>Portuguese</source>
         <translation>Portugués</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="43"/>
+        <location filename="../QCMainWindow.cpp" line="46"/>
         <source>Russian</source>
         <translation>Ruso</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="44"/>
+        <location filename="../QCMainWindow.cpp" line="47"/>
         <source>Slovak</source>
         <translation>Eslovaco</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4146"/>
-        <location filename="../QCMainWindow.cpp" line="46"/>
-        <location filename="../QCMainWindow.cpp" line="742"/>
+        <location filename="../QCMainWindow.ui" line="3924"/>
+        <location filename="../QCMainWindow.cpp" line="49"/>
+        <location filename="../QCMainWindow.cpp" line="753"/>
         <source>Spanish</source>
         <translation>Español</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="47"/>
+        <location filename="../QCMainWindow.cpp" line="50"/>
         <source>Swedish</source>
         <translation>Sueco</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="48"/>
+        <location filename="../QCMainWindow.cpp" line="51"/>
         <source>Turkish</source>
         <translation>Turco</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="735"/>
+        <location filename="../QCMainWindow.ui" line="676"/>
         <source>Enter the song genre.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="750"/>
+        <location filename="../QCMainWindow.ui" line="691"/>
         <source>Afropop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="755"/>
+        <location filename="../QCMainWindow.ui" line="696"/>
         <source>Avant-Garde</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="760"/>
+        <location filename="../QCMainWindow.ui" line="701"/>
         <source>Country</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="765"/>
+        <location filename="../QCMainWindow.ui" line="706"/>
         <source>Jazz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="770"/>
+        <location filename="../QCMainWindow.ui" line="711"/>
         <source>Blues</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="775"/>
+        <location filename="../QCMainWindow.ui" line="716"/>
         <source>Easy Listening</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="780"/>
+        <location filename="../QCMainWindow.ui" line="721"/>
         <source>Electronic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="785"/>
+        <location filename="../QCMainWindow.ui" line="726"/>
         <source>Hip-Hop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="795"/>
+        <location filename="../QCMainWindow.ui" line="736"/>
         <source>Modern Folk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="800"/>
+        <location filename="../QCMainWindow.ui" line="741"/>
         <source>Pop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="805"/>
+        <location filename="../QCMainWindow.ui" line="746"/>
         <source>Rap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="810"/>
+        <location filename="../QCMainWindow.ui" line="751"/>
         <source>Rhythm &amp; Blues</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="815"/>
+        <location filename="../QCMainWindow.ui" line="756"/>
         <source>Rock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="820"/>
+        <location filename="../QCMainWindow.ui" line="761"/>
         <source>Ska</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="480"/>
+        <location filename="../QCMainWindow.ui" line="408"/>
         <source>#TITLE tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="549"/>
+        <location filename="../QCMainWindow.ui" line="477"/>
         <source>#ARTIST tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="633"/>
+        <location filename="../QCMainWindow.ui" line="561"/>
         <source>#LANGUAGE tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="681"/>
+        <location filename="../QCMainWindow.ui" line="622"/>
         <source>#EDITION tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="828"/>
+        <location filename="../QCMainWindow.ui" line="769"/>
         <source>#GENRE tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="876"/>
+        <location filename="../QCMainWindow.ui" line="1404"/>
         <source>#YEAR tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="947"/>
+        <location filename="../QCMainWindow.ui" line="1475"/>
         <source>#CREATOR tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="1047"/>
+        <location filename="../QCMainWindow.ui" line="1967"/>
         <source>#BPM tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="1133"/>
+        <location filename="../QCMainWindow.ui" line="2049"/>
         <source>#GAP tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../QCMainWindow.ui" line="2407"/>
+        <location filename="../QCMainWindow.ui" line="2236"/>
         <source>1 (C♯4 | D♭4)</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../QCMainWindow.ui" line="2417"/>
+        <location filename="../QCMainWindow.ui" line="2246"/>
         <source>3 (D♯4 | E♭4)</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../QCMainWindow.ui" line="2432"/>
+        <location filename="../QCMainWindow.ui" line="2261"/>
         <source>6 (F♯4 | G♭4)</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../QCMainWindow.ui" line="2442"/>
+        <location filename="../QCMainWindow.ui" line="2271"/>
         <source>8 (G♯4 | A♭4)</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../QCMainWindow.ui" line="2452"/>
+        <location filename="../QCMainWindow.ui" line="2281"/>
         <source>10 (A♯4 | B♭4)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2572"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:400;&quot;&gt;Here you can adjust the playback speed of the audio file while tapping. This is especially helpful when tapping very fast songs.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2656"/>
+        <location filename="../QCMainWindow.ui" line="2481"/>
         <source>This is the overall control station. You can start, stop, pause, resume the tapping and reset everything so you can start from the beginning.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2707"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:400;&quot;&gt;This button disables all the fields above and starts the tapping. The header of the UltraStar file will be displayed, the audio file will start playing and the first syllables appear in the tap area. Get ready to tap!&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt; font-weight:400;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:400;&quot;&gt;While tapping, this button will turn into a pause button where you can interrupt the tapping process any time.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2770"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;This button stops the tapping process. Now you can either save the tapped UltraStar file or restart the tapping from the beginning using the reset button.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;The tapping process is automatically stopped once you have tapped all available lyrics.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2833"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;This button resets all tapped notes and enables all fields on the left to make any necessary changes before restarting the tapping process.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2968"/>
+        <location filename="../QCMainWindow.ui" line="2781"/>
         <source>Song lyrics</source>
         <translation>La letra de la canción</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3006"/>
+        <location filename="../QCMainWindow.ui" line="2819"/>
         <source>Insert and edit lyrics here.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3073"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Here you can browse for a plain text file that contains the lyrics.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;This is useful if you have stored the song&apos;s lyrics in a file on your harddrive.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3108"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Here you can paste lyrics from the clipboard. This is useful if you have searched the lyrics on the internet and copied them to the clipboard.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;This overrides the current content of the lyrics text field.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3156"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Here you can increase the font size of the displayed lyrics.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3189"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Here you can decrease the font size of the displayed lyrics.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3219"/>
-        <source>Split lyrics into syllables.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3222"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;After having inserted the song lyrics, you can use this button to apply automatic syllabification.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;USC will try to split words into individual syllables automatically. So far, only English, German, and Spanish syllabification rules are available.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;You can try to use automatic syllabification with languages other than the ones mentioned above, but results may be unsatisfactory.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3279"/>
+        <location filename="../QCMainWindow.ui" line="3105"/>
         <source>UltraStar file</source>
         <translation>Archivo de texto UltraStar</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3311"/>
+        <location filename="../QCMainWindow.ui" line="3137"/>
         <source>See resulting UltraStar text file here.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="1992"/>
+        <location filename="../QCMainWindow.ui" line="1580"/>
         <source>#COVER tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2005"/>
+        <location filename="../QCMainWindow.ui" line="1679"/>
         <source>#BACKGROUND tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2117"/>
+        <location filename="../QCMainWindow.ui" line="1733"/>
         <source>Set the video by dropping an image file onto USC or by browsing your harddrive.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2194"/>
+        <location filename="../QCMainWindow.ui" line="1806"/>
         <source>Set the video gap if needed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2245"/>
+        <location filename="../QCMainWindow.ui" line="1749"/>
         <source>#VIDEO tag is not set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2258"/>
+        <location filename="../QCMainWindow.ui" line="1833"/>
         <source>#VIDEOGAP tag is set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3651"/>
+        <location filename="../QCMainWindow.ui" line="3449"/>
         <source>Click &amp; hold down to tap a note.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3591"/>
+        <location filename="../QCMainWindow.ui" line="3393"/>
         <source>Undo last tap.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="434"/>
+        <location filename="../QCMainWindow.ui" line="362"/>
         <source>Title tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="515"/>
+        <location filename="../QCMainWindow.ui" line="443"/>
         <source>Artist tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="584"/>
+        <location filename="../QCMainWindow.ui" line="512"/>
         <source>Language tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="668"/>
+        <location filename="../QCMainWindow.ui" line="596"/>
         <source>Edition tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="716"/>
+        <location filename="../QCMainWindow.ui" line="657"/>
         <source>Genre tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="863"/>
+        <location filename="../QCMainWindow.ui" line="804"/>
         <source>Year tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="911"/>
+        <location filename="../QCMainWindow.ui" line="1439"/>
         <source>Creator tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="982"/>
+        <location filename="../QCMainWindow.ui" line="1868"/>
         <source>BPM tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="1082"/>
+        <location filename="../QCMainWindow.ui" line="2002"/>
         <source>Gap tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="1789"/>
-        <source>Artwork Tags</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1812"/>
+        <location filename="../QCMainWindow.ui" line="1504"/>
         <source>Cover tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="1898"/>
+        <location filename="../QCMainWindow.ui" line="1609"/>
         <source>Background tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="1901"/>
+        <location filename="../QCMainWindow.ui" line="1612"/>
         <source>#&amp;BACKGROUND:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2092"/>
+        <location filename="../QCMainWindow.ui" line="1708"/>
         <source>Video tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2095"/>
+        <location filename="../QCMainWindow.ui" line="1711"/>
         <source>#&amp;VIDEO:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2172"/>
+        <location filename="../QCMainWindow.ui" line="1784"/>
         <source>Videogap tag</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="2175"/>
+        <location filename="../QCMainWindow.ui" line="1787"/>
         <source>#V&amp;IDEOGAP:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3616"/>
-        <source>Ctrl+X</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="930"/>
-        <source>Enter the song creator.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1001"/>
-        <location filename="../QCMainWindow.ui" line="1004"/>
-        <source>BPM will be determined automatically from the MP3 file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1101"/>
-        <location filename="../QCMainWindow.ui" line="1104"/>
-        <source>Gap will be determined automatically when you start tapping.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3070"/>
-        <source>Load input lyrics from a plain text file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3105"/>
-        <source>Paste input lyrics from the clipboard.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3153"/>
-        <location filename="../QCMainWindow.ui" line="3398"/>
-        <source>Increase font size.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3186"/>
-        <location filename="../QCMainWindow.ui" line="3431"/>
-        <source>Decrease font size.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3349"/>
-        <source>Save UltraStar lyrics to a file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2792"/>
-        <location filename="../QCMainWindow.ui" line="3366"/>
-        <location filename="../QCMainWindow.ui" line="4149"/>
-        <source>Ctrl+S</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="68"/>
-        <source>Choose the audio file. After having inserted the lyrics, you can start the preview playback in order to correct spelling and syllabification mistakes in the lyrics.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="159"/>
-        <source>Set the song to tap by dropping a song file onto USC or by browsing your harddrive.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="162"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field contains the audio file to be used for tapping the song.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="194"/>
-        <source>Browse for an song file to tap.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="210"/>
-        <source>Enter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="220"/>
-        <source>MP3 is not set.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="321"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;This is the preview play button. You can listen to the song at hand before starting the actual tapping to verify the correctness of the pasted lyrics, to adjust the splitting of syllables and to add additional notes with the help of the tilde &apos;~&apos;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="386"/>
-        <source>Here you can enter meta information about the song. Enter as much information as possible, leave unknown fields blank.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="462"/>
-        <source>This field should contain the song&apos;s title, including additional version information such as &apos;(live)&apos;, &apos;(unplugged)&apos; or &apos;(remix)&apos;.
-
-Try to fill this field as accurately as possible, as it influences file namings and the display of the song in UltraStar itself.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="537"/>
-        <source>This field should contain the song&apos;s artist(s).
-
-Try to fill this field as accurately as possible, as it influences file namings and the display of the song in UltraStar itself.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="606"/>
-        <source>This field should contain the song&apos;s main language. The selection also influences the rules to be used when applying automatic syllabification.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="738"/>
-        <source>This field should contain the song&apos;s musical genre. There are some major default fields, but if you prefer a genre that&apos;s not on the list, feel free to type it in.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="933"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field should contain your name or pseudonym, if you like. If you choose to publish your creations (&lt;/span&gt;&lt;a href=&quot;http://usdb.animux.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;usdb&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;), then people know who made the songs and can contact you for feedback or corrections.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1007"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field contains the song&apos;s beats per minute (or a multiple thereof). It is determined automatically from the audio file and therefore cannot be edited.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;The BPM value determines all the timings of your tapped UltraStar file. If it is too low, only poor synchronization of lyrics and music is possible, if it is too high, low-end processors might be overstrained with your song. In practice, a value between 300-400 has proven suitable. USC automatically makes sure that a BPM in that range is chosen.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1107"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field contains the time gap in milliseconds from the beginning of the song until the first syllable is sung. It is determined automatically when tapping the first syllable and can therefore not be edited.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1152"/>
-        <source>This field should contain the song&apos;s edition. It&apos;s main purpose is to distinguish SingStar titles and checked songs (&apos;[SC]-Songs&apos;) from all other songs that song makers create.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1165"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This field should contain the year the song was first published. If the song is more or less popular, a look at &lt;a href=&quot;http://swisscharts.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Swisscharts&lt;/span&gt;&lt;/a&gt; might help.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1184"/>
-        <source>2011</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1189"/>
-        <source>2010</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1194"/>
-        <source>2009</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1199"/>
-        <source>2008</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1204"/>
-        <source>2007</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1209"/>
-        <source>2006</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1214"/>
-        <source>2005</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1219"/>
-        <source>2004</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1224"/>
-        <source>2003</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1229"/>
-        <source>2002</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1234"/>
-        <source>2001</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1239"/>
-        <source>2000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1244"/>
-        <source>1999</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1249"/>
-        <source>1998</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1254"/>
-        <source>1997</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1259"/>
-        <source>1996</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1264"/>
-        <source>1995</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1269"/>
-        <source>1994</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1274"/>
-        <source>1993</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1279"/>
-        <source>1992</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1284"/>
-        <source>1991</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1289"/>
-        <source>1990</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1294"/>
-        <source>1989</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1299"/>
-        <source>1988</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1304"/>
-        <source>1987</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1309"/>
-        <source>1986</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1314"/>
-        <source>1985</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1319"/>
-        <source>1984</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1324"/>
-        <source>1983</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1329"/>
-        <source>1982</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1334"/>
-        <source>1981</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1339"/>
-        <source>1980</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1344"/>
-        <source>1979</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1349"/>
-        <source>1978</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1354"/>
-        <source>1977</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1359"/>
-        <source>1976</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1364"/>
-        <source>1975</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1369"/>
-        <source>1974</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1374"/>
-        <source>1973</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1379"/>
-        <source>1972</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1384"/>
-        <source>1971</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1389"/>
-        <source>1970</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1394"/>
-        <source>1969</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1399"/>
-        <source>1968</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1404"/>
-        <source>1967</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1409"/>
-        <source>1966</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1414"/>
-        <source>1965</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1419"/>
-        <source>1964</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1424"/>
-        <source>1963</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1429"/>
-        <source>1962</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1434"/>
-        <source>1961</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1439"/>
-        <source>1960</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1444"/>
-        <source>1959</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1449"/>
-        <source>1958</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1454"/>
-        <source>1957</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1459"/>
-        <source>1956</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1464"/>
-        <source>1955</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1469"/>
-        <source>1954</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1474"/>
-        <source>1953</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1479"/>
-        <source>1952</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1484"/>
-        <source>1951</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1489"/>
-        <source>1950</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1494"/>
-        <source>1949</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1499"/>
-        <source>1948</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1504"/>
-        <source>1947</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1509"/>
-        <source>1946</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1514"/>
-        <source>1945</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1519"/>
-        <source>1944</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1524"/>
-        <source>1943</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1529"/>
-        <source>1942</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1534"/>
-        <source>1941</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1539"/>
-        <source>1940</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1544"/>
-        <source>1939</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1549"/>
-        <source>1938</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1554"/>
-        <source>1937</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1559"/>
-        <source>1936</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1564"/>
-        <source>1935</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1569"/>
-        <source>1934</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1574"/>
-        <source>1933</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1579"/>
-        <source>1932</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1584"/>
-        <source>1931</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1589"/>
-        <source>1930</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1594"/>
-        <source>1929</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1599"/>
-        <source>1928</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1604"/>
-        <source>1927</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1609"/>
-        <source>1926</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1614"/>
-        <source>1925</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1619"/>
-        <source>1924</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1624"/>
-        <source>1923</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1629"/>
-        <source>1922</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1634"/>
-        <source>1921</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1639"/>
-        <source>1920</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1644"/>
-        <source>1919</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1649"/>
-        <source>1918</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1654"/>
-        <source>1917</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1659"/>
-        <source>1916</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1664"/>
-        <source>1915</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1669"/>
-        <source>1914</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1674"/>
-        <source>1913</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1679"/>
-        <source>1912</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1684"/>
-        <source>1911</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1689"/>
-        <source>1910</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1694"/>
-        <source>1909</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1699"/>
-        <source>1908</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1704"/>
-        <source>1907</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1709"/>
-        <source>1906</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1714"/>
-        <source>1905</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1719"/>
-        <source>1904</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1724"/>
-        <source>1903</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1729"/>
-        <source>1902</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1734"/>
-        <source>1901</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1739"/>
-        <source>1900</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1786"/>
-        <source>Here you can choose the cover and background image file, if you already have them available.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1815"/>
-        <source>#C&amp;OVER:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1837"/>
-        <source>Set the cover by dropping an image file onto USC or by browsing your harddrive.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1840"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field contains the cover image file to be included into the UltraStar header.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1875"/>
-        <source>Browse for a cover image file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1923"/>
-        <source>Set the background by dropping an image file onto USC or by browsing your harddrive.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1926"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field contains the background image file to be included into the UltraStar header.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="1955"/>
-        <source>Browse for a background image file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2060"/>
-        <source>Here you can choose a video file, if available.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2063"/>
-        <source>Video Tags</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2120"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field contains the video file to be included into the UltraStar header.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2143"/>
-        <source>Browse for a video file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2197"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This field contains gap in seconds between the beginning of the song and the beginning of the audio.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;If you extract the audio track from the given video, this should be zero. Other videogap values need to be finetuned later.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2310"/>
-        <source>Here you can set the default pitch for each note as well as the playback speed for the audio file. This is especially interesting if you want to tap very fast songs.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2313"/>
-        <source>Misc. Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2361"/>
-        <source>Default pitch:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2386"/>
-        <source>Choose default pitch.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2389"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Here you can choose the default pitch of all the tapped notes.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;The pitch of each individual note needs to be set using the UltraStar internal editor or YASS after having successfully tapped the song.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2402"/>
-        <source>0 (C4)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="4218"/>
-        <source>What&apos;s This?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="4221"/>
-        <source>F2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2412"/>
-        <source>2 (D4)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2422"/>
-        <source>4 (E)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2427"/>
-        <source>5 (F)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2437"/>
-        <source>7 (G4)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2447"/>
-        <source>9 (A)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2457"/>
-        <source>11 (B4)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2462"/>
-        <source>12 (C5)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2476"/>
-        <source>Default pitch is set.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2517"/>
-        <source>Playback speed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2544"/>
-        <source>Current playback speed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2547"/>
-        <source>100 %</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2569"/>
-        <source>Set playback speed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2615"/>
-        <source>Playback speed is set.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2659"/>
-        <source>Control</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2704"/>
-        <source>Start tapping.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2716"/>
-        <location filename="../QCMainWindow.ui" line="3603"/>
-        <source>play</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2729"/>
-        <location filename="../QCMainWindow.ui" line="4185"/>
-        <source>Ctrl+P</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2767"/>
-        <source>Stop tapping.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2779"/>
-        <location filename="../QCMainWindow.ui" line="2840"/>
-        <source>stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2830"/>
-        <source>Reset &amp; restart tapping.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="2853"/>
-        <source>Ctrl+R</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="247"/>
-        <location filename="../QCMainWindow.ui" line="2889"/>
-        <source>-:--</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="273"/>
-        <location filename="../QCMainWindow.ui" line="2909"/>
-        <source>--:--</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3009"/>
-        <location filename="../QCMainWindow.ui" line="3036"/>
+        <location filename="../QCMainWindow.ui" line="2822"/>
+        <location filename="../QCMainWindow.ui" line="2849"/>
         <source>Insert song lyrics here, either by loading from a file or by
 pasting from the clipboard. Edit lyrics to conform to the
 following rules:
@@ -1544,7 +460,7 @@ following rules:
 * Linebreaks correspond to linebreaks in UltraStar.
 * Words should be separated by spaces.
 * Syllables within a word should be separated by a &apos;+&apos;.
-* Add &apos;~&apos; for each repeated vowel if needed.
+* Add &apos;+~&apos; for each repeated vowel if needed.
 
 Example:
 
@@ -1559,743 +475,1190 @@ I&apos;m ve+~+ry sure.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../QCMainWindow.ui" line="2886"/>
+        <source>Here you can browse for a plain text file that contains the lyrics.
+
+This is useful if you have stored the song&apos;s lyrics in a file on your harddrive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2917"/>
+        <source>Here you can paste lyrics from the clipboard. This is useful if you have searched the lyrics on the internet and copied them to the clipboard.
+
+This overrides the current content of the lyrics text field.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2961"/>
+        <source>Here you can increase the font size of the displayed lyrics.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2990"/>
+        <source>Here you can decrease the font size of the displayed lyrics.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3016"/>
+        <source>Split lyrics into syllables based on rules.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3019"/>
+        <source>After having inserted the song lyrics, you can use this button to apply automatic syllabification.
+
+USC will try to split words into individual syllables automatically based on syllabification rules. So far, these are only available for English, German, and Spanish.
+
+You can try to use automatic syllabification with languages other than the ones mentioned above, but results may be unsatisfactory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3049"/>
+        <source>Split lyrics into syllables based on hyphenation patterns.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3052"/>
+        <source>After having inserted the song lyrics, you can use this button to apply automatic syllabification.
+
+USC will try to split words into individual syllables automatically based on hyphenation patterns derived from TeX. So far, these are only available for English, German, and Spanish.
+
+You can try to use automatic syllabification with languages other than the ones mentioned above, but results may be unsatisfactory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3140"/>
+        <source>Here the resulting UltraStar text file is created while you are tapping the song lyrics.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3174"/>
+        <source>Here you can save the resulting UltraStar file on your harddrive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3219"/>
+        <source>Here you can increase the font size of the displayed UltraStar text file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3248"/>
+        <source>Here you can decrease the font size of the displayed UltraStar text file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3280"/>
+        <source>Having successfully saved the UltraStar file, you can launch UltraStar with only that individual song for finetuning note timings and pitches.
+
+For the first launch from within USC, you can browse for the UltraStar executable file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../QCMainWindow.ui" line="3314"/>
+        <source>Having successfully saved the UltraStar file, you can launch YASS with only that individual song for finetuning note timings and pitches.
+
+For the first launch from within USC, you can browse for the YASS executable file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3396"/>
+        <source>Here you can undo your last tap (shortcut: X). This will step back by one syllable without pausing or stepping back in the audio file. This is useful if you tapped one or more syllables ahead of time.
+
+It is also possible to pause the tapping first before stepping back by one syllable at the time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3414"/>
+        <source>Ctrl+X</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1458"/>
+        <source>Enter the song creator.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1925"/>
+        <location filename="../QCMainWindow.ui" line="1928"/>
+        <source>BPM will be determined automatically from the MP3 file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2021"/>
+        <location filename="../QCMainWindow.ui" line="2024"/>
+        <source>Gap will be determined automatically when you start tapping.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2883"/>
+        <source>Load input lyrics from a plain text file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2914"/>
+        <source>Paste input lyrics from the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2958"/>
+        <location filename="../QCMainWindow.ui" line="3216"/>
+        <source>Increase font size.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2987"/>
+        <location filename="../QCMainWindow.ui" line="3245"/>
+        <source>Decrease font size.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3171"/>
+        <source>Save UltraStar lyrics to a file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2609"/>
+        <location filename="../QCMainWindow.ui" line="3184"/>
+        <location filename="../QCMainWindow.ui" line="3927"/>
+        <source>Ctrl+S</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="70"/>
+        <source>Choose the audio file. After having inserted the lyrics, you can start the preview playback in order to correct spelling and syllabification mistakes in the lyrics.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="187"/>
+        <source>Set the song to tap by dropping a song file onto USC or by browsing your harddrive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="146"/>
+        <source>Browse for an song file to tap.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="162"/>
+        <source>Enter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="203"/>
+        <source>MP3 is not set.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="329"/>
+        <source>Here you can enter meta information about the song. Enter as much information as possible, leave unknown fields blank.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="390"/>
+        <source>This field should contain the song&apos;s title, including additional version information such as &apos;(live)&apos;, &apos;(unplugged)&apos; or &apos;(remix)&apos;.
+
+Try to fill this field as accurately as possible, as it influences file namings and the display of the song in UltraStar itself.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="465"/>
+        <source>This field should contain the song&apos;s artist(s).
+
+Try to fill this field as accurately as possible, as it influences file namings and the display of the song in UltraStar itself.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="534"/>
+        <source>This field should contain the song&apos;s main language. The selection also influences the rules to be used when applying automatic syllabification.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="679"/>
+        <source>This field should contain the song&apos;s musical genre. There are some major default fields, but if you prefer a genre that&apos;s not on the list, feel free to type it in.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="615"/>
+        <source>This field should contain the song&apos;s edition. It&apos;s main purpose is to distinguish SingStar titles and checked songs (&apos;[SC]-Songs&apos;) from all other songs that song makers create.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1226"/>
+        <source>1934</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1507"/>
+        <source>#C&amp;OVER:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1561"/>
+        <source>Set the cover by dropping an image file onto USC or by browsing your harddrive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1532"/>
+        <location filename="../QCMainWindow.ui" line="1896"/>
+        <source>Browse for a cover image file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1663"/>
+        <source>Set the background by dropping an image file onto USC or by browsing your harddrive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1634"/>
+        <source>Browse for a background image file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2068"/>
+        <source>Browse for a video file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2143"/>
+        <source>Here you can set the default pitch for each note as well as the playback speed for the audio file. This is especially interesting if you want to tap very fast songs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2146"/>
+        <source>Misc. Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2194"/>
+        <source>Default pitch:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2219"/>
+        <source>Choose default pitch.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2231"/>
+        <source>0 (C4)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3996"/>
+        <source>What&apos;s This?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3999"/>
+        <source>F2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2241"/>
+        <source>2 (D4)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="190"/>
+        <source>This field contains the audio file to be used for tapping the song.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="234"/>
+        <source>This is the preview play button. You can listen to the song at hand before starting the actual tapping to verify the correctness of the pasted lyrics, to adjust the splitting of syllables and to add additional notes with the help of the tilde &apos;~&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="332"/>
+        <source>Song Header</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="823"/>
+        <source>Enter the year the song was first released.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="826"/>
+        <source>This field should contain the year the song was first published. Use the little world icon on the left to look the song up at swisscharts.com.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1461"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Here the resulting UltraStar text file is created while you are tapping the song lyrics.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This field should contain your name or pseudonym, if you like. If you choose to publish your creations (&lt;a href=&quot;http://usdb.animux.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;usdb&lt;/span&gt;&lt;/a&gt;), then people know who made the songs and can contact you for feedback or corrections.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3352"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Here you can save the resulting UltraStar file on your harddrive.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../QCMainWindow.ui" line="1564"/>
+        <source>This field contains the cover image file to be included into the UltraStar header.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../QCMainWindow.ui" line="1666"/>
+        <source>This field contains the background image file to be included into the UltraStar header.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1736"/>
+        <source>This field contains the video file to be included into the UltraStar header.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1809"/>
+        <source>This field contains gap in seconds between the beginning of the song and the beginning of the audio.
+
+If you extract the audio track from the given video, this should be zero. Other videogap values need to be finetuned later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="1931"/>
+        <source>This field contains the song&apos;s beats per minute (or a multiple thereof). It is determined automatically from the audio file and therefore cannot be edited.
+
+The BPM value determines all the timings of your tapped UltraStar file. If it is too low, only poor synchronization of lyrics and music is possible, if it is too high, low-end processors might be overstrained with your song. In practice, a value between 300-400 has proven suitable. USC automatically makes sure that a BPM in that range is chosen.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2027"/>
+        <source>This field contains the time gap in milliseconds from the beginning of the song until the first syllable is sung. It is determined automatically when tapping the first syllable and can therefore not be edited.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2100"/>
+        <source>Search swisscharts.com for Artist and Title to determine release year.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2222"/>
+        <source>Here you can choose the default pitch of all the tapped notes.
+
+The pitch of each individual note needs to be set using the UltraStar internal editor or YASS after having successfully tapped the song.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2251"/>
+        <source>4 (E)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2256"/>
+        <source>5 (F)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2266"/>
+        <source>7 (G4)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2276"/>
+        <source>9 (A)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2286"/>
+        <source>11 (B4)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2291"/>
+        <source>12 (C5)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2305"/>
+        <source>Default pitch is set.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2346"/>
+        <source>Playback speed:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2373"/>
+        <source>Current playback speed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2376"/>
+        <source>100 %</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2398"/>
+        <source>Set playback speed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2401"/>
+        <source>Here you can adjust the playback speed of the audio file while tapping. This is especially helpful when tapping very fast songs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2440"/>
+        <source>Playback speed is set.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2484"/>
+        <source>Control</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2529"/>
+        <source>Start tapping.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2532"/>
+        <source>This button disables all the fields above and starts the tapping. The header of the UltraStar file will be displayed, the audio file will start playing and the first syllables appear in the tap area. Get ready to tap!
+
+While tapping, this button will turn into a pause button where you can interrupt the tapping process any time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2537"/>
         <location filename="../QCMainWindow.ui" line="3401"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Here you can increase the font size of the displayed UltraStar text file.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3434"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Here you can decrease the font size of the displayed UltraStar text file.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../QCMainWindow.ui" line="2550"/>
+        <location filename="../QCMainWindow.ui" line="3963"/>
+        <source>Ctrl+P</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2588"/>
+        <source>Stop tapping.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3467"/>
+        <location filename="../QCMainWindow.ui" line="2591"/>
+        <source>This button stops the tapping process. Now you can either save the tapped UltraStar file or restart the tapping from the beginning using the reset button.
+
+The tapping process is automatically stopped once you have tapped all available lyrics.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2596"/>
+        <location filename="../QCMainWindow.ui" line="2653"/>
+        <source>stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2647"/>
+        <source>Reset &amp; restart tapping.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2650"/>
+        <source>This button resets all tapped notes and enables all fields on the left to make any necessary changes before restarting the tapping process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="2666"/>
+        <source>Ctrl+R</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="4008"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="268"/>
+        <location filename="../QCMainWindow.ui" line="2702"/>
+        <source>-:--</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="294"/>
+        <location filename="../QCMainWindow.ui" line="2722"/>
+        <source>--:--</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3277"/>
         <source>Launch UltraStar with current song folder for finetuning.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3470"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Having successfully saved the UltraStar file, you can launch UltraStar with only that individual song for finetuning note timings and pitches.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;For the first launch from within USC, you can browse for the UltraStar executable file.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3505"/>
+        <location filename="../QCMainWindow.ui" line="3311"/>
         <source>Launch YASS with current song folder for finetuning.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3508"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Having successfully saved the UltraStar file, you can launch YASS with only that individual song for finetuning note timings and pitches.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;For the first launch from within USC, you can browse for the YASS executable file.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3559"/>
+        <location filename="../QCMainWindow.ui" line="3361"/>
         <source>The tap button is used to tap each syllable while it is sung. If you hold down the button for as long as the shown syllable is sung, a corresponding note is created.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3562"/>
+        <location filename="../QCMainWindow.ui" line="3364"/>
         <source>Tap Area</source>
         <translation type="unfinished">Tap área</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3594"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:400;&quot;&gt;Here you can undo your last tap (shortcut: X). This will step back by one syllable without pausing or stepping back in the audio file. This is useful if you tapped one or more syllables ahead of time.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt; font-weight:400;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:400;&quot;&gt;It is also possible to pause the tapping first before stepping back by one syllable at the time.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3654"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:14pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:400;&quot;&gt;Here the current syllable to be tapped is displayed.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt; font-weight:400;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:400;&quot;&gt;Start pressing this button (or the space bar) when the syllable is sung and keep it pressed until it is over. The longer you hold the button down, the longer the resulting note will be.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3717"/>
-        <location filename="../QCMainWindow.ui" line="3772"/>
-        <location filename="../QCMainWindow.ui" line="3827"/>
-        <location filename="../QCMainWindow.ui" line="3882"/>
-        <location filename="../QCMainWindow.ui" line="3937"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Here the subsequent syllables to be tapped are displayed.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.ui" line="3969"/>
+        <location filename="../QCMainWindow.ui" line="3745"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3975"/>
-        <location filename="../QCMainWindow.ui" line="4206"/>
+        <location filename="../QCMainWindow.ui" line="3753"/>
+        <location filename="../QCMainWindow.ui" line="3984"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3987"/>
+        <location filename="../QCMainWindow.ui" line="3765"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4001"/>
+        <location filename="../QCMainWindow.ui" line="3779"/>
         <source>Tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4017"/>
+        <location filename="../QCMainWindow.ui" line="3795"/>
         <source>About UltraStar Creator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4020"/>
+        <location filename="../QCMainWindow.ui" line="3798"/>
         <source>F3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4044"/>
+        <location filename="../QCMainWindow.ui" line="3822"/>
         <source>F4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4068"/>
+        <location filename="../QCMainWindow.ui" line="3846"/>
         <source>Ctrl+E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4086"/>
+        <location filename="../QCMainWindow.ui" line="3864"/>
         <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4101"/>
+        <location filename="../QCMainWindow.ui" line="3879"/>
         <source>F5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4113"/>
+        <location filename="../QCMainWindow.ui" line="3891"/>
         <source>F6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4131"/>
+        <location filename="../QCMainWindow.ui" line="3909"/>
         <source>Ctrl+F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4167"/>
+        <location filename="../QCMainWindow.ui" line="3945"/>
         <source>Ctrl+I</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4197"/>
+        <location filename="../QCMainWindow.ui" line="3975"/>
         <source>Generate freestyle text files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4209"/>
+        <location filename="../QCMainWindow.ui" line="3987"/>
         <source>F1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4029"/>
+        <location filename="../QCMainWindow.ui" line="3807"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4032"/>
+        <location filename="../QCMainWindow.ui" line="3452"/>
+        <source>Here the current syllable to be tapped is displayed.
+
+Start pressing this button (or the space bar) when the syllable is sung and keep it pressed until it is over. The longer you hold the button down, the longer the resulting note will be.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3511"/>
+        <location filename="../QCMainWindow.ui" line="3562"/>
+        <location filename="../QCMainWindow.ui" line="3613"/>
+        <location filename="../QCMainWindow.ui" line="3664"/>
+        <location filename="../QCMainWindow.ui" line="3715"/>
+        <source>Here the subsequent syllables to be tapped are displayed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.ui" line="3810"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4041"/>
+        <location filename="../QCMainWindow.ui" line="3819"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4095"/>
-        <location filename="../QCMainWindow.ui" line="4098"/>
-        <location filename="../QCMainWindow.cpp" line="920"/>
+        <location filename="../QCMainWindow.ui" line="3873"/>
+        <location filename="../QCMainWindow.ui" line="3876"/>
+        <location filename="../QCMainWindow.cpp" line="924"/>
         <source>About BASS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="4110"/>
-        <location filename="../QCMainWindow.cpp" line="935"/>
+        <location filename="../QCMainWindow.ui" line="3888"/>
+        <location filename="../QCMainWindow.cpp" line="939"/>
         <source>About TagLib</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="21"/>
+        <location filename="../QCMainWindow.cpp" line="24"/>
         <source>UltraStar Song Creator %1.%2.%3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="45"/>
+        <location filename="../QCMainWindow.cpp" line="48"/>
         <source>Slowenian</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="50"/>
+        <location filename="../QCMainWindow.cpp" line="56"/>
         <source>Ready.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="53"/>
-        <location filename="../QCMainWindow.cpp" line="376"/>
+        <location filename="../QCMainWindow.cpp" line="59"/>
+        <location filename="../QCMainWindow.cpp" line="390"/>
         <source>USC ready.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="55"/>
+        <location filename="../QCMainWindow.cpp" line="61"/>
         <source>BASS initialized.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="111"/>
+        <location filename="../QCMainWindow.cpp" line="128"/>
         <source>Please choose file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="111"/>
-        <location filename="../QCMainWindow.cpp" line="607"/>
+        <location filename="../QCMainWindow.cpp" line="128"/>
+        <location filename="../QCMainWindow.cpp" line="618"/>
         <source>Text files (*.txt)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="115"/>
-        <location filename="../QCMainWindow.cpp" line="1357"/>
+        <location filename="../QCMainWindow.cpp" line="132"/>
+        <location filename="../QCMainWindow.cpp" line="1374"/>
+        <location filename="../QCMainWindow.cpp" line="1963"/>
+        <location filename="../QCMainWindow.cpp" line="2173"/>
         <source>Application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="116"/>
-        <location filename="../QCMainWindow.cpp" line="1358"/>
+        <location filename="../QCMainWindow.cpp" line="133"/>
+        <location filename="../QCMainWindow.cpp" line="1375"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="169"/>
+        <location filename="../QCMainWindow.cpp" line="183"/>
         <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="173"/>
+        <location filename="../QCMainWindow.cpp" line="187"/>
         <source>Artist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="177"/>
+        <location filename="../QCMainWindow.cpp" line="191"/>
         <source>%1 - %2 [CO].jpg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="180"/>
+        <location filename="../QCMainWindow.cpp" line="194"/>
         <source>%1 - %2 [BG].jpg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="184"/>
+        <location filename="../QCMainWindow.cpp" line="198"/>
         <source>#TITLE:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="185"/>
+        <location filename="../QCMainWindow.cpp" line="199"/>
         <source>#ARTIST:%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="187"/>
+        <location filename="../QCMainWindow.cpp" line="201"/>
         <source>#LANGUAGE:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="190"/>
+        <location filename="../QCMainWindow.cpp" line="204"/>
         <source>#EDITION:%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="193"/>
+        <location filename="../QCMainWindow.cpp" line="207"/>
         <source>#GENRE:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="196"/>
+        <location filename="../QCMainWindow.cpp" line="210"/>
         <source>#YEAR:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="199"/>
+        <location filename="../QCMainWindow.cpp" line="213"/>
         <source>#CREATOR:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="201"/>
+        <location filename="../QCMainWindow.cpp" line="215"/>
         <source>#MP3:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="202"/>
+        <location filename="../QCMainWindow.cpp" line="216"/>
         <source>#COVER:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="203"/>
+        <location filename="../QCMainWindow.cpp" line="217"/>
         <source>#BACKGROUND:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="206"/>
+        <location filename="../QCMainWindow.cpp" line="220"/>
         <source>#VIDEO:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="207"/>
+        <location filename="../QCMainWindow.cpp" line="221"/>
         <source>#VIDEOGAP:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="323"/>
+        <location filename="../QCMainWindow.cpp" line="337"/>
         <source>#GAP:%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1218"/>
+        <location filename="../QCMainWindow.cpp" line="1216"/>
+        <location filename="../QCMainWindow.cpp" line="1227"/>
         <source>Choose UltraStar executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1218"/>
-        <source>UltraStar executable (*.exe)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../QCMainWindow.cpp" line="150"/>
-        <location filename="../QCMainWindow.cpp" line="255"/>
+        <location filename="../QCMainWindow.cpp" line="167"/>
+        <location filename="../QCMainWindow.cpp" line="269"/>
         <source>Pause tapping.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="26"/>
+        <location filename="../QCMainWindow.cpp" line="29"/>
         <source>Chinese</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="243"/>
+        <location filename="../QCMainWindow.cpp" line="257"/>
         <source>Continue tapping.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="340"/>
+        <location filename="../QCMainWindow.cpp" line="354"/>
         <source>- %1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="343"/>
+        <location filename="../QCMainWindow.cpp" line="357"/>
         <source>%1: %2 %3 %4 %5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="368"/>
+        <location filename="../QCMainWindow.cpp" line="382"/>
         <source>State: stopped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="393"/>
+        <location filename="../QCMainWindow.cpp" line="407"/>
         <source>Please choose MP3 file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="393"/>
+        <location filename="../QCMainWindow.cpp" line="407"/>
         <source>Audio files (*.mp3 *.ogg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="403"/>
+        <location filename="../QCMainWindow.cpp" line="417"/>
         <source>Please choose cover image file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="403"/>
-        <location filename="../QCMainWindow.cpp" line="413"/>
+        <location filename="../QCMainWindow.cpp" line="417"/>
+        <location filename="../QCMainWindow.cpp" line="427"/>
         <source>Image files (*.jpg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="413"/>
+        <location filename="../QCMainWindow.cpp" line="427"/>
         <source>Please choose background image file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="424"/>
+        <location filename="../QCMainWindow.cpp" line="438"/>
         <source>Please choose video file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="482"/>
-        <location filename="../QCMainWindow.cpp" line="1303"/>
+        <location filename="../QCMainWindow.cpp" line="496"/>
+        <location filename="../QCMainWindow.cpp" line="1320"/>
         <source>mp3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="482"/>
-        <location filename="../QCMainWindow.cpp" line="1303"/>
+        <location filename="../QCMainWindow.cpp" line="496"/>
+        <location filename="../QCMainWindow.cpp" line="1320"/>
         <source>ogg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="489"/>
+        <location filename="../QCMainWindow.cpp" line="503"/>
         <source>jpg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="513"/>
+        <location filename="../QCMainWindow.cpp" line="527"/>
         <source>avi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="513"/>
+        <location filename="../QCMainWindow.cpp" line="527"/>
         <source>flv</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="513"/>
+        <location filename="../QCMainWindow.cpp" line="527"/>
         <source>mpg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="513"/>
+        <location filename="../QCMainWindow.cpp" line="527"/>
         <source>mpeg</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="513"/>
+        <location filename="../QCMainWindow.cpp" line="527"/>
         <source>mp4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="513"/>
+        <location filename="../QCMainWindow.cpp" line="527"/>
         <source>vob</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="513"/>
+        <location filename="../QCMainWindow.cpp" line="527"/>
         <source>ts</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="513"/>
+        <location filename="../QCMainWindow.cpp" line="527"/>
         <source>divx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="513"/>
+        <location filename="../QCMainWindow.cpp" line="527"/>
         <source>m4v</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="537"/>
+        <location filename="../QCMainWindow.cpp" line="548"/>
         <source>#TITLE tag is set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="541"/>
+        <location filename="../QCMainWindow.cpp" line="552"/>
         <source>#TITLE tag is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="549"/>
+        <location filename="../QCMainWindow.cpp" line="560"/>
         <source>#ARTIST tag is set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="553"/>
+        <location filename="../QCMainWindow.cpp" line="564"/>
         <source>#ARTIST tag is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="561"/>
+        <location filename="../QCMainWindow.cpp" line="572"/>
         <source>#LANGUAGE tag is set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="565"/>
+        <location filename="../QCMainWindow.cpp" line="576"/>
         <source>#LANGUAGE tag is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="573"/>
+        <location filename="../QCMainWindow.cpp" line="584"/>
         <source>#EDITION tag is set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="577"/>
+        <location filename="../QCMainWindow.cpp" line="588"/>
         <source>#EDITION tag is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="585"/>
+        <location filename="../QCMainWindow.cpp" line="596"/>
         <source>#GENRE tag is set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="589"/>
+        <location filename="../QCMainWindow.cpp" line="600"/>
         <source>#GENRE tag is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="851"/>
-        <location filename="../QCMainWindow.cpp" line="852"/>
+        <location filename="../QCMainWindow.cpp" line="862"/>
+        <location filename="../QCMainWindow.cpp" line="863"/>
         <source>0:00</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="855"/>
-        <location filename="../QCMainWindow.cpp" line="856"/>
-        <location filename="../QCMainWindow.cpp" line="953"/>
-        <location filename="../QCMainWindow.cpp" line="969"/>
+        <location filename="../QCMainWindow.cpp" line="866"/>
+        <location filename="../QCMainWindow.cpp" line="867"/>
+        <location filename="../QCMainWindow.cpp" line="957"/>
+        <location filename="../QCMainWindow.cpp" line="973"/>
         <source>-%1:%2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="891"/>
+        <location filename="../QCMainWindow.cpp" line="895"/>
         <source>MP3 set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="921"/>
+        <location filename="../QCMainWindow.cpp" line="925"/>
         <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX is an extension providing several effects, including tempo &amp; pitch control.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.5&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="949"/>
-        <location filename="../QCMainWindow.cpp" line="965"/>
+        <location filename="../QCMainWindow.cpp" line="953"/>
+        <location filename="../QCMainWindow.cpp" line="969"/>
         <source>%1:%2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1180"/>
+        <location filename="../QCMainWindow.cpp" line="1181"/>
         <source>#YEAR tag is set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1184"/>
+        <location filename="../QCMainWindow.cpp" line="1185"/>
         <source>#YEAR tag is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1276"/>
+        <location filename="../QCMainWindow.cpp" line="1216"/>
+        <location filename="../QCMainWindow.cpp" line="1227"/>
+        <source>UltraStar executable (*.exe);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.cpp" line="1282"/>
+        <location filename="../QCMainWindow.cpp" line="1293"/>
         <source>Choose YASS executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1276"/>
-        <source>YASS executable (*.exe)</source>
+        <location filename="../QCMainWindow.cpp" line="1282"/>
+        <location filename="../QCMainWindow.cpp" line="1293"/>
+        <source>YASS executable (*.exe);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1297"/>
+        <location filename="../QCMainWindow.cpp" line="1964"/>
+        <source>Please choose the song&apos;s language first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.cpp" line="2174"/>
+        <source>Pattern file not available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.cpp" line="1314"/>
         <source>Choose root song folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1305"/>
+        <location filename="../QCMainWindow.cpp" line="1322"/>
         <source>Creating %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1340"/>
+        <location filename="../QCMainWindow.cpp" line="1357"/>
         <source>%1 - %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1350"/>
+        <location filename="../QCMainWindow.cpp" line="1367"/>
         <source>%1/%2/%3.%4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1354"/>
+        <location filename="../QCMainWindow.cpp" line="1371"/>
         <source>%1/%2/%3.txt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1373"/>
+        <location filename="../QCMainWindow.cpp" line="1390"/>
         <source>#TITLE:%1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1376"/>
+        <location filename="../QCMainWindow.cpp" line="1393"/>
         <source>#TITLE:?
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1378"/>
+        <location filename="../QCMainWindow.cpp" line="1395"/>
         <source>#ARTIST:%1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1384"/>
+        <location filename="../QCMainWindow.cpp" line="1401"/>
         <source>#MP3:%1 - %2.%3
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1385"/>
+        <location filename="../QCMainWindow.cpp" line="1402"/>
         <source>#COVER:%1 - %2 [CO].jpg
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1386"/>
+        <location filename="../QCMainWindow.cpp" line="1403"/>
         <source>#BACKGROUND:%1 - %2 [BG].jpg
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1389"/>
+        <location filename="../QCMainWindow.cpp" line="1406"/>
         <source>#MP3:%1.%2
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1390"/>
+        <location filename="../QCMainWindow.cpp" line="1407"/>
         <source>#COVER:%1 [CO].jpg
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1391"/>
+        <location filename="../QCMainWindow.cpp" line="1408"/>
         <source>#BACKGROUND:%1 [BG].jpg
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1402"/>
+        <location filename="../QCMainWindow.cpp" line="1419"/>
         <source>%1/%2/%3 [CO].jpg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1407"/>
+        <location filename="../QCMainWindow.cpp" line="1424"/>
         <source>%1/%2/%3 [BG].jpg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="597"/>
+        <location filename="../QCMainWindow.cpp" line="608"/>
         <source>#CREATOR tag is set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="426"/>
+        <location filename="../QCMainWindow.cpp" line="440"/>
         <source>Video files (*.avi *.divx *.flv *.mpg *.mpeg *.mp4 *.m4v *.vob *.ts);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="601"/>
+        <location filename="../QCMainWindow.cpp" line="612"/>
         <source>#CREATOR tag is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="607"/>
+        <location filename="../QCMainWindow.cpp" line="618"/>
         <source>Please choose text file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="746"/>
+        <location filename="../QCMainWindow.cpp" line="757"/>
         <source>Change Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="747"/>
+        <location filename="../QCMainWindow.cpp" line="758"/>
         <source>Application language changed to &lt;b&gt;%1&lt;/b&gt;. You need to restart UltraStar Creator to take effect.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="748"/>
+        <location filename="../QCMainWindow.cpp" line="759"/>
         <source>Quit UltraStar Creator.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="749"/>
+        <location filename="../QCMainWindow.cpp" line="760"/>
         <source>Continue.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="901"/>
+        <location filename="../QCMainWindow.cpp" line="905"/>
         <source>State: initialized.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="906"/>
+        <location filename="../QCMainWindow.cpp" line="910"/>
         <source>State: uninitialized.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="876"/>
+        <location filename="../QCMainWindow.cpp" line="882"/>
         <source>#BPM tag set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="914"/>
+        <location filename="../QCMainWindow.cpp" line="918"/>
         <source>%1 %</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="936"/>
+        <location filename="../QCMainWindow.cpp" line="940"/>
         <source>&lt;b&gt;TagLib Audio Meta-Data Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;TagLib is a library for reading and editing the meta-data of several popular audio formats.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1.%2.%3&lt;/b&gt;&lt;br&gt;&lt;br&gt;Visit: &lt;a href=&quot;http://developer.kde.org/~wheeler/taglib.html&quot;&gt;TagLib Homepage&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2303,95 +1666,95 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../QCMainWindow.cpp" line="64"/>
-        <location filename="../QCMainWindow.cpp" line="1421"/>
+        <location filename="../QCMainWindow.cpp" line="70"/>
+        <location filename="../QCMainWindow.cpp" line="1438"/>
         <source>Welcome to UltraStar Creator!</source>
         <translation type="unfinished">¡Bienvenido al UltraStar Creator!</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="65"/>
-        <location filename="../QCMainWindow.cpp" line="1422"/>
+        <location filename="../QCMainWindow.cpp" line="71"/>
+        <location filename="../QCMainWindow.cpp" line="1439"/>
         <source>This tool enables you to &lt;b&gt;rapidly&lt;/b&gt; create UltraStar text files &lt;b&gt;from scratch&lt;/b&gt;.&lt;br&gt;&lt;br&gt;To get started, simply chose a &lt;b&gt;song file&lt;/b&gt; in MP3 or OGG format, insert the &lt;b&gt;song lyrics&lt;/b&gt; from a file or the clipboard and divide them into syllables with &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Important song meta information&lt;/b&gt; such as &lt;b&gt;BPM&lt;/b&gt; and &lt;b&gt;GAP&lt;/b&gt; are determined &lt;b&gt;automatically&lt;/b&gt; while the &lt;b&gt;ID3 tag&lt;/b&gt; is used to fill in additional song details, if available.&lt;br&gt;&lt;br&gt;To &lt;b&gt;start tapping&lt;/b&gt;, hit the play/pause button (Keyboard: CTRL+P). Keep the &lt;b&gt;tap button&lt;/b&gt; (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. &lt;b&gt;Undo&lt;/b&gt; the last tap with the undo button (Keyboard: x), &lt;b&gt;stop tapping&lt;/b&gt; with the stop button (Keyboard: CTRL+S), &lt;b&gt;restart&lt;/b&gt; from the beginning with the reset button (Keyboard: CTRL+R). When finished, &lt;b&gt;save&lt;/b&gt; the tapped song using the save button (CTRL+S).&lt;br&gt;&lt;br&gt;Having successfully tapped a song, use the UltraStar internal editor for &lt;b&gt;finetuning the timings&lt;/b&gt;, setting &lt;b&gt;note pitches&lt;/b&gt; and &lt;b&gt;golden&lt;/b&gt; or &lt;b&gt;freestyle notes&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Happy creating!&lt;/b&gt;</source>
         <translation type="unfinished">Esta herramienta permite crear &lt;b&gt;rápidamente&lt;/b&gt; archivos de texto UltraStar &lt;b&gt;desde la nada&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Primero escoge simplemente &lt;b&gt;una canción&lt;/b&gt; MP3 o OGG, inserta &lt;b&gt;la letra de la canción&lt;/b&gt; del archivo o pégala del portapapeles y dividela en silabas con &apos;+&apos;.&lt;br&gt;&lt;br&gt;La información importante como &lt;b&gt;BPM&lt;/b&gt; y &lt;b&gt;GAP&lt;/b&gt; es determinada &lt;b&gt;automáticamente&lt;/b&gt; mientras la &lt;b&gt;etiqueta ID3&lt;/b&gt; es usado para completar detalles adicionales de la canción, si tiene.&lt;br&gt;&lt;br&gt;Para &lt;b&gt;empezar&lt;/b&gt;, presiona el botón &quot;Play/Pausa&quot; (teclado: CTRL+P). Mantén el &lt;b&gt;botón de la actual silaba&lt;/b&gt; presionada (teclado: barra espciadora) mientras ésta sea cantada para crear una nota. &lt;b&gt;Deshace&lt;/b&gt; la última nota con el botón &quot;Deshacer&quot; (teclado: x), &lt;b&gt;para&lt;/b&gt; con el botón de &quot;Stop&quot; (teclado: CTRL+S), &lt;b&gt;reinicia&lt;/b&gt; desde el principio con el botón de &quot;Reset&quot; (teclado: CTRL+R). Cuando termines, guarda la canción con el botón &quot;Guardar&quot; (teclado: CTRL+S).&lt;br&gt;&lt;br&gt;Una vez finalizada satisfactoriamente la creación de la canción, usa el editor interno de UltraStar para &lt;b&gt;ajustar los tiempos&lt;/b&gt; y &lt;b&gt;los tonos&lt;/b&gt; y para añadir las &lt;b&gt;notas doradas&lt;/b&gt; y los &lt;b&gt;estilos libres&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;¡Feliz creación!&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="66"/>
-        <location filename="../QCMainWindow.cpp" line="1423"/>
+        <location filename="../QCMainWindow.cpp" line="72"/>
+        <location filename="../QCMainWindow.cpp" line="1440"/>
         <source>Okay. Let&apos;s go!</source>
         <translation type="unfinished">¡Vale! ¡Arriba!</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="491"/>
+        <location filename="../QCMainWindow.cpp" line="505"/>
         <source>Image file drop detected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="492"/>
+        <location filename="../QCMainWindow.cpp" line="506"/>
         <source>Use &lt;b&gt;%1&lt;/b&gt; as...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="493"/>
+        <location filename="../QCMainWindow.cpp" line="507"/>
         <source>Cover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="494"/>
+        <location filename="../QCMainWindow.cpp" line="508"/>
         <source>Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="495"/>
+        <location filename="../QCMainWindow.cpp" line="509"/>
         <source>Ignore this file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1290"/>
+        <location filename="../QCMainWindow.cpp" line="1307"/>
         <source>Freestyle text file generation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1291"/>
+        <location filename="../QCMainWindow.cpp" line="1308"/>
         <source>This function will generate UltraStar compatible freestyle text files without any lyrics for each audio file in a subsequently selectable folder.&lt;br&gt;&lt;br&gt;Each MP3 will be moved into a separate subdirectory and a text file containing the bare minimum of information will be automatically created along with a standard cover and background.&lt;br&gt;&lt;br&gt;If your audio files follow an &apos;Artist - Title.mp3&apos; naming scheme, they will be correctly mapped in the resulting song file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1292"/>
+        <location filename="../QCMainWindow.cpp" line="1309"/>
         <source>Go ahead, I know what I am doing!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1293"/>
+        <location filename="../QCMainWindow.cpp" line="1310"/>
         <source>I&apos;m not sure. I want cancel.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1454"/>
+        <location filename="../QCMainWindow.cpp" line="1472"/>
         <source>Syllabification.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1455"/>
+        <location filename="../QCMainWindow.cpp" line="1473"/>
         <source>%1 Apply...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1456"/>
+        <location filename="../QCMainWindow.cpp" line="1474"/>
         <source>English syllabification rules.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1457"/>
+        <location filename="../QCMainWindow.cpp" line="1475"/>
         <source>German syllabification rules.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1458"/>
+        <location filename="../QCMainWindow.cpp" line="1476"/>
         <source>Spanish syllabification rules.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="1459"/>
+        <location filename="../QCMainWindow.cpp" line="1477"/>
         <source>Cancel.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2711,6 +2074,44 @@ background-image: url();</source>
     <message>
         <location filename="../support/QUProgressDialog.cpp" line="140"/>
         <source>&lt;b&gt;%1%2&lt;/b&gt; items/sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QUProxyDialog</name>
+    <message>
+        <location filename="../QUProxyDialog.ui" line="14"/>
+        <source>Proxy settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QUProxyDialog.ui" line="140"/>
+        <source>Use this dialog to enter proxy settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QUProxyDialog.ui" line="171"/>
+        <source>Use the following proxy settings for internet access:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QUProxyDialog.ui" line="186"/>
+        <source>Proxy:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QUProxyDialog.ui" line="203"/>
+        <source>Port:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QUProxyDialog.ui" line="255"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../QUProxyDialog.ui" line="266"/>
+        <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

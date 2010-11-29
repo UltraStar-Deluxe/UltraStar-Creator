@@ -1,0 +1,1 @@
+const char *revision = "r$WCREV$"; const char *date_time = "$WCDATE$";
