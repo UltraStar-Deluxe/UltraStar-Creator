@@ -1,14 +1,10 @@
 TEMPLATE = app
-TARGET = usc
-DESTDIR = ../bin
-MOC_DIR = tmp
 UI_DIR = ui
-OBJECTS_DIR = tmp
-RCC_DIR = tmp
 QT += core \
     gui \
     webkit \
     network
+
 CONFIG(release, debug|release) { 
     TARGET = usc
     DESTDIR = ../bin/usc
@@ -16,6 +12,7 @@ CONFIG(release, debug|release) {
     OBJECTS_DIR = tmp/release
     RCC_DIR = tmp/release
 }
+
 CONFIG(debug, debug|release) { 
     TARGET = usc_debug
     DESTDIR = ../bin/usc_debug
@@ -23,6 +20,7 @@ CONFIG(debug, debug|release) {
     OBJECTS_DIR = tmp/debug
     RCC_DIR = tmp/debug
 }
+
 HEADERS += main.h \
     QU.h \
     QUStringSupport.h \
@@ -39,6 +37,7 @@ HEADERS += main.h \
     QCMainWindow.h \
     QUAboutDialog.h \
     QUProxyDialog.h
+
 SOURCES += main.cpp \
     QCMainWindow.cpp \
     QU.cpp \
@@ -54,23 +53,28 @@ SOURCES += main.cpp \
     song/QUSongLine.cpp \
     QUAboutDialog.cpp \
     QUProxyDialog.cpp
+
 FORMS += mediaplayer/QUMediaPlayer.ui \
     support/QUMessageBox.ui \
     support/QUProgressDialog.ui \
     QCMainWindow.ui \
     QUAboutDialog.ui \
     QUProxyDialog.ui
+
 RESOURCES += resources/usc.qrc
+
 TRANSLATIONS = resources/usc.de.ts \
     resources/usc.es.ts \
     resources/usc.fr.ts \
     resources/usc.it.ts \
     resources/usc.pl.ts
+
 INCLUDEPATH += . \
     song \
     mediaplayer \
     support \
     ui
+
 win32 { 
     RC_FILE = usc.rc
     INCLUDEPATH += ../include/taglib \
@@ -92,16 +96,12 @@ unix {
 QMAKE_EXTRA_TARGETS += revtarget
 PRE_TARGETDEPS += version.h
 revtarget.target = version.h
-#revtarget.commands = @echo \
-#    "const char *revision = \"r$(shell SubWCRev.exe . version.in version.h)\"; const char *date_time = \"$(shell date /T)$(shell time /T)\";" \
-revtarget.commands = $(shell SubWCRev . version.in version.h) #\
-#    > \
-#    $$revtarget.target
+revtarget.commands = $(shell SubWCRev . version.in version.h)
 revtarget.depends = $$SOURCES \
     $$HEADERS \
     $$FORMS
 
 # CONFIG -= debug_and_release \
 # release
-# CONFIG += debug
-CONFIG += release
+#CONFIG += debug
+#CONFIG += release
