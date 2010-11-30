@@ -1,15 +1,31 @@
 TEMPLATE = app
-TARGET = usc
-DESTDIR = ../bin
-MOC_DIR = tmp
 UI_DIR = ui
-OBJECTS_DIR = tmp
-RCC_DIR = tmp
 
 QT += core \
     gui \
     webkit \
     network
+
+# CONFIG -= debug_and_release \
+# release
+#CONFIG += debug
+CONFIG += release
+
+CONFIG(release, debug|release) {
+        TARGET = usc
+        DESTDIR = ../bin/usc
+        MOC_DIR = tmp/release
+        OBJECTS_DIR = tmp/release
+        RCC_DIR = tmp/release
+}
+
+CONFIG(debug, debug|release) {
+        TARGET = usc_debug
+        DESTDIR = ../bin/usc_debug
+        MOC_DIR = tmp/debug
+        OBJECTS_DIR = tmp/debug
+        RCC_DIR = tmp/debug
+}
 
 HEADERS += main.h \
     QU.h \
@@ -92,7 +108,3 @@ revtarget.depends = $$SOURCES \
     $$HEADERS \
     $$FORMS
 
-# CONFIG -= debug_and_release \
-# release
-# CONFIG += debug
-CONFIG += release
