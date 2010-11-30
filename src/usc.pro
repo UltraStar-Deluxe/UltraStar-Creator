@@ -8,8 +8,8 @@ QT += core \
 
 # CONFIG -= debug_and_release \
 # release
-#CONFIG += debug
-CONFIG += release
+CONFIG += debug
+#CONFIG += release
 
 CONFIG(release, debug|release) {
         TARGET = usc
@@ -103,7 +103,8 @@ unix {
 QMAKE_EXTRA_TARGETS += revtarget
 PRE_TARGETDEPS += version.h
 revtarget.target = version.h
-revtarget.commands = $(shell SubWCRev . version.in version.h)
+revtarget.commands = $(shell del version.h ) \
+                     $(shell SubWCRev . version.in version.h )
 revtarget.depends = $$SOURCES \
     $$HEADERS \
     $$FORMS

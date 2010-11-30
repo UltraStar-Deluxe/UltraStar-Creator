@@ -24,7 +24,7 @@ QUAboutDialog::QUAboutDialog(QWidget *parent): QDialog(parent) {
 		f.close();
 	}
 
-        QDateTime dateTime = QDateTime::fromString(QString(date_time), "yyyy/mm/dd HH:mm:ss");
+        QDateTime dateTime = QDateTime::fromString(QString(date_time), "yyyy/MM/dd HH:mm:ss");
 
 	versionLbl->setText(QString(tr("Version: <b>%1.%2.%3</b><br>SVN: #%4, %5"))
 			.arg(MAJOR_VERSION)
