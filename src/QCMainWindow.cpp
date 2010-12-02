@@ -4,7 +4,6 @@
 #include "QULogService.h"
 #include "QUMessageBox.h"
 #include "QUAboutDialog.h"
-#include "QUProxyDialog.h"
 
 #include <QFileDialog>
 #include <QTextStream>
@@ -15,8 +14,7 @@
 #include <QProcess>
 #include <QDirIterator>
 #include <QWhatsThis>
-#include <QWebView>
-#include <QNetworkProxy>
+#include <QDesktopServices>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
 
@@ -2205,22 +2203,7 @@ void QCMainWindow::on_doubleSpinBox_BPM_valueChanged(double BPMValue)
 
 void QCMainWindow::on_pushButton_ShowWebSite_clicked()
 {
-    QSettings settings;
-    if (settings.value("useProxy").toBool() && settings.contains("proxyServer") && settings.contains("proxyPort")) {
-        QNetworkProxy proxy;
-        proxy.setType(QNetworkProxy::HttpProxy);
-        proxy.setHostName(settings.value("proxyServer").toString());
-        proxy.setPort(settings.value("proxyPort").toUInt());
-        QNetworkProxy::setApplicationProxy(proxy);
-    }
-
     QString urlString("http://swisscharts.com/search.asp?cat=s&search=" + ui->lineEdit_Artist->text().replace(QRegExp("(\\s+)"),"+") + "+" + ui->lineEdit_Title->text().replace(QRegExp("(\\s+)"),"+"));
-    QWebView* webView = new QWebView();
-    webView->load(QUrl(urlString));
-    webView->show();
-}
 
-void QCMainWindow::on_actionSettings_triggered()
-{
-    QUProxyDialog().exec();
+    QDesktopServices::openUrl(urlString);
 }

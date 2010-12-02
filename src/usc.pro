@@ -41,8 +41,7 @@ HEADERS += main.h \
     support/QUProgressDialog.h \
     support/QUMetaphoneString.h \
     QCMainWindow.h \
-    QUAboutDialog.h \
-    QUProxyDialog.h
+    QUAboutDialog.h
 
 SOURCES += main.cpp \
     QCMainWindow.cpp \
@@ -57,15 +56,13 @@ SOURCES += main.cpp \
     support/QUMetaphoneString.cpp \
     song/QUSongFile.cpp \
     song/QUSongLine.cpp \
-    QUAboutDialog.cpp \
-    QUProxyDialog.cpp
+    QUAboutDialog.cpp
 
 FORMS += mediaplayer/QUMediaPlayer.ui \
     support/QUMessageBox.ui \
     support/QUProgressDialog.ui \
     QCMainWindow.ui \
-    QUAboutDialog.ui \
-    QUProxyDialog.ui
+    QUAboutDialog.ui
 	
 RESOURCES += resources/usc.qrc
 
@@ -107,4 +104,3 @@ revtarget.commands = $(shell SubWCRev . version.in version.h )
 revtarget.depends = $$SOURCES \
     $$HEADERS \
     $$FORMS
-

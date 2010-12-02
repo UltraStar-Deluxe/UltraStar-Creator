@@ -3744,7 +3744,6 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionSettings"/>
     <addaction name="separator"/>
     <addaction name="actionQuit_USC"/>
    </widget>
@@ -3997,15 +3996,6 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    </property>
    <property name="shortcut">
     <string>F2</string>
-   </property>
-  </action>
-  <action name="actionSettings">
-   <property name="icon">
-    <iconset resource="resources/usc.qrc">
-     <normaloff>:/control/cog.png</normaloff>:/control/cog.png</iconset>
-   </property>
-   <property name="text">
-    <string>Settings</string>
    </property>
   </action>
  </widget>

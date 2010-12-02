@@ -88,7 +88,6 @@ private:
     QString defaultDir;
 
 private slots:
-    void on_actionSettings_triggered();
     void on_pushButton_ShowWebSite_clicked();
     void on_doubleSpinBox_BPM_valueChanged(double );
     void on_pushButton_EnableBPMEdit_toggled(bool checked);
