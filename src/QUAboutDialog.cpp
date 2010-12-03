@@ -17,7 +17,7 @@ QUAboutDialog::QUAboutDialog(QWidget *parent): QDialog(parent) {
 
 	connect(acceptBtn, SIGNAL(clicked()), this, SLOT(accept()));
 
-	QFile f(":/txt/credits");
+        QFile f(":/text/credits");
 
 	if(f.open(QIODevice::ReadOnly | QIODevice::Text)) {
 		credits->setHtml(QString(f.readAll()).replace("\n", "<br>"));

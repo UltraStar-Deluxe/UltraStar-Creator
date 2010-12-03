@@ -90,7 +90,7 @@
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/music.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/music.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -150,7 +150,7 @@
                  </property>
                  <property name="icon">
                   <iconset resource="resources/usc.qrc">
-                   <normaloff>:/control/folder-open-document-music.png</normaloff>:/control/folder-open-document-music.png</iconset>
+                   <normaloff>:/icons/folder-open-document-music.png</normaloff>:/icons/folder-open-document-music.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -206,7 +206,7 @@
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -241,7 +241,7 @@
                  </property>
                  <property name="icon">
                   <iconset resource="resources/usc.qrc">
-                   <normaloff>:/control_play_blue.png</normaloff>:/control_play_blue.png</iconset>
+                   <normaloff>:/icons/control_play_blue.png</normaloff>:/icons/control_play_blue.png</iconset>
                  </property>
                  <property name="flat">
                   <bool>true</bool>
@@ -340,7 +340,7 @@
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/font.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/font.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -411,7 +411,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -421,7 +421,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/user.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/user.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -480,7 +480,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -490,7 +490,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/language.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/language.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -564,7 +564,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -574,7 +574,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/edition.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/edition.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -625,7 +625,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -635,7 +635,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/genre.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/genre.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -772,7 +772,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -782,7 +782,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/calendar.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/calendar.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1407,7 +1407,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1417,7 +1417,7 @@ Try to fill this field as accurately as possible, as it influences file namings 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/users.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/users.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1478,7 +1478,7 @@ p, li { white-space: pre-wrap; }
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1488,7 +1488,7 @@ p, li { white-space: pre-wrap; }
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/cover.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/cover.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1536,7 +1536,7 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="icon">
                   <iconset resource="resources/usc.qrc">
-                   <normaloff>:/control/folder-open-slide.png</normaloff>:/control/folder-open-slide.png</iconset>
+                   <normaloff>:/icons/folder-open-slide.png</normaloff>:/icons/folder-open-slide.png</iconset>
                  </property>
                  <property name="flat">
                   <bool>true</bool>
@@ -1583,7 +1583,7 @@ p, li { white-space: pre-wrap; }
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1593,7 +1593,7 @@ p, li { white-space: pre-wrap; }
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/background.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/background.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1638,7 +1638,7 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="icon">
                   <iconset resource="resources/usc.qrc">
-                   <normaloff>:/control/folder-open-slide.png</normaloff>:/control/folder-open-slide.png</iconset>
+                   <normaloff>:/icons/folder-open-slide.png</normaloff>:/icons/folder-open-slide.png</iconset>
                  </property>
                  <property name="flat">
                   <bool>true</bool>
@@ -1682,7 +1682,7 @@ p, li { white-space: pre-wrap; }
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1692,7 +1692,7 @@ p, li { white-space: pre-wrap; }
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/film.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/film.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1752,7 +1752,7 @@ p, li { white-space: pre-wrap; }
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1762,7 +1762,7 @@ p, li { white-space: pre-wrap; }
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/videogap.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/videogap.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1836,7 +1836,7 @@ If you extract the audio track from the given video, this should be zero. Other 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_ok.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1846,7 +1846,7 @@ If you extract the audio track from the given video, this should be zero. Other 
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/auction-hammer-gavel.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/auction-hammer-gavel.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1900,7 +1900,7 @@ If you extract the audio track from the given video, this should be zero. Other 
                  </property>
                  <property name="icon">
                   <iconset resource="resources/usc.qrc">
-                   <normaloff>:/types/lock.png</normaloff>:/types/lock.png</iconset>
+                   <normaloff>:/icons/lock.png</normaloff>:/icons/lock.png</iconset>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -1970,7 +1970,7 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -1980,7 +1980,7 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/balloon--arrow.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/balloon--arrow.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -2052,7 +2052,7 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_error.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -2072,7 +2072,7 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
                  </property>
                  <property name="icon">
                   <iconset resource="resources/usc.qrc">
-                   <normaloff>:/control/folder-open-film.png</normaloff>:/control/folder-open-film.png</iconset>
+                   <normaloff>:/icons/folder-open-film.png</normaloff>:/icons/folder-open-film.png</iconset>
                  </property>
                  <property name="flat">
                   <bool>true</bool>
@@ -2104,7 +2104,7 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
                  </property>
                  <property name="icon">
                   <iconset resource="resources/usc.qrc">
-                   <normaloff>:/types/world.png</normaloff>:/types/world.png</iconset>
+                   <normaloff>:/icons/world.png</normaloff>:/icons/world.png</iconset>
                  </property>
                  <property name="flat">
                   <bool>true</bool>
@@ -2172,7 +2172,7 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/note.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/note.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -2308,7 +2308,7 @@ The pitch of each individual note needs to be set using the UltraStar internal e
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_ok.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -2324,7 +2324,7 @@ The pitch of each individual note needs to be set using the UltraStar internal e
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/types/time_mp3.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/time_mp3.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -2443,7 +2443,7 @@ The pitch of each individual note needs to be set using the UltraStar internal e
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="resources/usc.qrc">:/marks/path_ok.png</pixmap>
+                  <pixmap resource="resources/usc.qrc">:/icons/path_ok.png</pixmap>
                  </property>
                 </widget>
                </item>
@@ -2892,7 +2892,7 @@ This is useful if you have stored the song's lyrics in a file on your harddrive.
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/folder-open-document.png</normaloff>:/control/folder-open-document.png</iconset>
+                 <normaloff>:/icons/folder-open-document.png</normaloff>:/icons/folder-open-document.png</iconset>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -2923,7 +2923,7 @@ This overrides the current content of the lyrics text field.</string>
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/clipboard-paste-document-text.png</normaloff>:/control/clipboard-paste-document-text.png</iconset>
+                 <normaloff>:/icons/clipboard-paste-document-text.png</normaloff>:/icons/clipboard-paste-document-text.png</iconset>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -2965,7 +2965,7 @@ This overrides the current content of the lyrics text field.</string>
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
+                 <normaloff>:/icons/edit-size-up.png</normaloff>:/icons/edit-size-up.png</iconset>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -2994,7 +2994,7 @@ This overrides the current content of the lyrics text field.</string>
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
+                 <normaloff>:/icons/edit-size-down.png</normaloff>:/icons/edit-size-down.png</iconset>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -3027,7 +3027,7 @@ You can try to use automatic syllabification with languages other than the ones 
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/edit-hyphenation.png</normaloff>:/control/edit-hyphenation.png</iconset>
+                 <normaloff>:/icons/edit-hyphenation.png</normaloff>:/icons/edit-hyphenation.png</iconset>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -3060,7 +3060,7 @@ You can try to use automatic syllabification with languages other than the ones 
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/edit-hyphenation.png</normaloff>:/control/edit-hyphenation.png</iconset>
+                 <normaloff>:/icons/edit-hyphenation.png</normaloff>:/icons/edit-hyphenation.png</iconset>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -3178,7 +3178,7 @@ You can try to use automatic syllabification with languages other than the ones 
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/control/save.png</normaloff>:/control/save.png</iconset>
+                 <normaloff>:/icons/save.png</normaloff>:/icons/save.png</iconset>
                </property>
                <property name="shortcut">
                 <string>Ctrl+S</string>
@@ -3223,7 +3223,7 @@ You can try to use automatic syllabification with languages other than the ones 
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/marks/edit-size-up.png</normaloff>:/marks/edit-size-up.png</iconset>
+                 <normaloff>:/icons/edit-size-up.png</normaloff>:/icons/edit-size-up.png</iconset>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -3252,7 +3252,7 @@ You can try to use automatic syllabification with languages other than the ones 
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/marks/edit-size-down.png</normaloff>:/marks/edit-size-down.png</iconset>
+                 <normaloff>:/icons/edit-size-down.png</normaloff>:/icons/edit-size-down.png</iconset>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -3286,7 +3286,7 @@ For the first launch from within USC, you can browse for the UltraStar executabl
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/marks/usdx.png</normaloff>:/marks/usdx.png</iconset>
+                 <normaloff>:/icons/usdx.png</normaloff>:/icons/usdx.png</iconset>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -3320,7 +3320,7 @@ For the first launch from within USC, you can browse for the YASS executable fil
                </property>
                <property name="icon">
                 <iconset resource="resources/usc.qrc">
-                 <normaloff>:/yass.png</normaloff>:/yass.png</iconset>
+                 <normaloff>:/icons/yass.png</normaloff>:/icons/yass.png</iconset>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -3800,7 +3800,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
   <action name="actionQuit_USC">
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/control/quit.png</normaloff>:/control/quit.png</iconset>
+     <normaloff>:/icons/quit.png</normaloff>:/icons/quit.png</iconset>
    </property>
    <property name="text">
     <string>Exit</string>
@@ -3812,7 +3812,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
   <action name="actionAbout_Qt">
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/qt.png</normaloff>:/qt.png</iconset>
+     <normaloff>:/icons/qt.png</normaloff>:/icons/qt.png</iconset>
    </property>
    <property name="text">
     <string>About Qt</string>
@@ -3833,7 +3833,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/languages/lang/us.png</normaloff>:/languages/lang/us.png</iconset>
+     <normaloff>:/languages/us.png</normaloff>:/languages/us.png</iconset>
    </property>
    <property name="text">
     <string>English</string>
@@ -3854,7 +3854,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/languages/lang/de.png</normaloff>:/languages/lang/de.png</iconset>
+     <normaloff>:/languages/de.png</normaloff>:/languages/de.png</iconset>
    </property>
    <property name="text">
     <string>German</string>
@@ -3866,7 +3866,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
   <action name="actionAbout_BASS">
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/logo_bass.png</normaloff>:/logo_bass.png</iconset>
+     <normaloff>:/icons/logo_bass.png</normaloff>:/icons/logo_bass.png</iconset>
    </property>
    <property name="text">
     <string>About BASS</string>
@@ -3881,7 +3881,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
   <action name="actionAbout_TagLib">
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/taglib.png</normaloff>:/taglib.png</iconset>
+     <normaloff>:/icons/taglib.png</normaloff>:/icons/taglib.png</iconset>
    </property>
    <property name="text">
     <string>About TagLib</string>
@@ -3899,7 +3899,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/languages/lang/fr.png</normaloff>:/languages/lang/fr.png</iconset>
+     <normaloff>:/languages/fr.png</normaloff>:/languages/fr.png</iconset>
    </property>
    <property name="text">
     <string>French</string>
@@ -3917,7 +3917,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/languages/lang/es.png</normaloff>:/languages/lang/es.png</iconset>
+     <normaloff>:/languages/es.png</normaloff>:/languages/es.png</iconset>
    </property>
    <property name="text">
     <string>Spanish</string>
@@ -3935,7 +3935,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/languages/lang/it.png</normaloff>:/languages/lang/it.png</iconset>
+     <normaloff>:/languages/it.png</normaloff>:/languages/it.png</iconset>
    </property>
    <property name="text">
     <string>Italian</string>
@@ -3953,7 +3953,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    </property>
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/languages/lang/pl.png</normaloff>:/languages/lang/pl.png</iconset>
+     <normaloff>:/languages/pl.png</normaloff>:/languages/pl.png</iconset>
    </property>
    <property name="text">
     <string>Polish</string>
@@ -3989,7 +3989,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
   <action name="actionWhats_This">
    <property name="icon">
     <iconset resource="resources/usc.qrc">
-     <normaloff>:/control/cursor-question.png</normaloff>:/control/cursor-question.png</iconset>
+     <normaloff>:/icons/cursor-question.png</normaloff>:/icons/cursor-question.png</iconset>
    </property>
    <property name="text">
     <string>What's This?</string>

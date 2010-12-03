@@ -1,0 +1,65 @@
+﻿Wenn du einen Doppelklick in die Zelle machst, wo sich die Zeile für eine <i>Audio-Datei</i> und die <i>Audio-Spalte</i> kreuzen, kannst du sofort festlegen, dass der Song genau diese Audio-Datei unter UltraStar nutzen soll.<br><br>Die ganze Sache funktioniert auch für Cover, Hintergründe und Videos.
+Du kannst den Wert von fast allen Tags eines Songs bearbeiten, wenn du einen Song auswählst und einen Doppelklick in die gewünschte Zelle der <i>Detail-Tabelle</i> machst.
+Du kannst die Reihenfolge verändern, in der Tags in die Songdateien geschrieben werden.<br><br><i>Einstellungen > Tag-Speicher-Reihenfolge...</i>
+Hast du schon den <i>Aufgabenbereich</i> bemerkt? Wähle einfach die Aufgaben aus, die du erledigt haben möchtest, selektiere ein paar Songs und klicke auf den Knopf <i>Los!</i>.<br><br>Du kannst auch <i>Strg+R</i> drücken.
+Du kannst das Ereignisprotokoll verstecken, in dem du <i>Ansicht > Ereignisprotokoll</i> abwählst.<br><br>Das funktioniert auch mit den Songdetails und dem Aufgabenbereich.
+Soll ich irgendwas anderes sagen? Anregungen und Wünsche wirst du jederzeit auf unserer <a href="http://uman.sf.net">SourceForge-Projekt-Website</a> los.
+Einige Tags kann man nicht bearbeiten? Japs, das ist beabsichtigt. Einige Daten werden unverändert in die Songdateien zurückgeschrieben, z. B. GAP oder BPM.<br><br>Du kannst UltraStars eingebaute Editorfunktionen sehr gut dafür benutzen.
+Hab' ich dich richtig verstanden? Ein fehlendes Feature?! Einfach <a href="http://uman.sf.net">hier</a> klicken und es allen mitteilen - besonders den Entwicklern.
+Du kannst jederzeit einfach eine E-Mail an <a href="mailto:saiya_mg@users.sourceforge.net">irgendeinen Entwickler</a> schicken und dein Feedback abgeben.
+Im "Songs"-Menü findest du die Möglichkeit, den gesamten Song-Baum aus- oder einzuklappen. So siehst du entweder alle Dateien, die du benutzen kannst oder nur die Ordner der Songs.
+Dir fehlt ein Video für deinen Lieblingssong? Schau mal bei <a href="http://www.youtube.com">Youtube</a> vorbei!
+Immer wenn eine Aufgabe nicht ordnungsgemäßig abgeschlossen werden konnte, siehst du eine Warnung im Ereignisprotokoll. Das kann viele Ursachen haben. Oft wurde beim Umbenennen auf unzulässige Zeichen zurückgegriffen (bsp. '?').<br><br><i>UltraStar</i> kann mehr Zeichen zur Darstellung verwenden, als man unter <i>Windows</i> für einen Dateinamen nutzen kann.
+Schon die grünen und blauen Häkchen im Song-Baum bemerkt? Die blauen geben an, dass das Songverzeichnis zwar grundlegend nach dem Schema <i>Interpret - Titel</i> benannt wurde,  sich aber die Groß-/Kleinschreibung unterscheidet.
+Die kleine <i>Kette</i> in der Zeile eines Bildes, einer Audio-Datei oder eines Videos gibt an, dass diese Datei von UltraStar korrekt gefunden und genutzt wird.<br><br>Du kannst diese Ketten neu setzen, in dem du in der richtigen Zelle einen Doppelklick ausführst.
+Wenn Dateien grau erscheinen, werden sie von UltraStar nicht genutzt bzw. gefunden.
+Du willst wissen, wie viele Songs du schon besitzt? Also... in deiner Sammlung befinden sich <b>%1 Songs</b>. Gar nicht mal so schlecht.<br><br>Hat denn jeder Song schon Cover, Hintergrund und Video? Nein? Dann hast du ja noch was zu tun.
+Hmmm... Falls es dir noch nicht aufgefallen sein sollte: Die letzten Ereignisse stehen immer am Anfang des Protokolls.
+Sind dir schonmal diese netten Tooltips in der Kopzeile bei jeder Spalte des Song-Baumes aufgefallen?
+Fragst du dich, warum einige Aufgaben deine Datei nach <i>irgendwas.*</i> umbenennen wollen?<br><br>Nun, die Dateiendung wird einfach beibehalten. Also mach dir keine Sorgen darüber.
+Die erste Datei mit der Endung *.txt in jedem Unterverzeichnis des US-Song-Ordners wird als Song interpretiert und im Song-Baum angezeigt.
+Es wird ein Song nicht angezeigt, welcher aber von UltraStar gefunden wird? Das kann nicht sein!<br><br>Hmmm...bitte teile uns dies auf unserer <a href="http://uman.sf.net">Projekt-Website</a> mit. Vergiss keine Details, wie bspw. den Ort des Songs.
+Du kannst die relativen Pfade im Song-Baum ausschalten, wenn du <i>Ansicht > Relativer Songpfad</i> abwählst.
+Was sind <b>blaue Ordner</b>? Wenn in einer Songdatei ein Tag gefunden wird, der nicht von UltraStar erkannt werden kann, wird dieser Song mit einem blauen Ordner markiert.<br><br>Das ist nichts schlimmes. Diese Tags werden nicht verändert.
+Der Tooltip eines blauen Ordners zeigt dir alle nicht unterstützten Tags, die gefunden wurden.
+Versuch mal auf eine Audio-Datei zu klicken und beobachte das Vorschaufenster...
+Hast du schon die riesige Anzahl von Werten für den Genre-Tag in den Songdetails bemerkt? Diese Genres stammen aus der guten alten ID3v1-Spezifikation sowie einigen Winamp-Erweiterungen.
+Ich soll ruhig sein? Dann wähle einfach <i>Hilfe > Monty darf reden</i> ab.
+Die Standardwerte für Interpret, Titel und Jahr stammen aus dem ID3-Tag sofern vorhanden.
+Es gibt eine Aufgabe, die es dir ermöglicht, fehlende Dateien automatisch zuzuordnen. Hierbei wird nach Dateien in dem jeweiligen Ordner gesucht und passende Audio-, Video- oder Bilddateien berücksichtigt.
+Du kannst Details von mehreren Songs auf einmal bearbeiten, wenn du viele Songs markierst.
+Wenn du zwei Werkzeugfenster übereinanderschiebst, verschmelzen sie zu einem Fenster mit Registerkarten.
+Du kannst ein Werkzeugfenster abkoppeln, wenn du auf dessen Titelzeile einen Doppelklick ausführst.
+Der Zustand des Anwendungsfensters, sowie die Position der Werkzeugfenster werden beim Beenden gespeichert.
+Nicht unterstützte Tags werden nach allen anderen Tags in der Songdatei gespeichert.
+Du hast ein Problem beim Umbenennen des Interpreten weil die Autovervollständigung ständig den ID3-Tag-Wert nehmen will? (bsp. "abba" -> "Abba")<br><br>Wähle <i>Beachte Groß-/Kleinschreibung</i> unter der Detailtabelle aus.
+Ein Doppelklick auf die aktive Songtextdatei öffnet deren Inhalt. Inaktive Songtextdateien werden aktiv.
+Wenn du irgendwelche Dateien von außerhalb auf einen Song ziehst, kopierst du diese an die Stelle des Songs. Passende Dateien werden automatisch zugewiesen.
+Dateien die grau und durchgestrichen sind, sind eigentlich nutzlos und können niemals von UltraStar genutzt werden.
+Jeder Song besitzt ein Kontextmenü im Song-Baum.
+Du kannst Dateien löschen, wenn du die Entfernen-Taste drückst oder im Kontextmenü <i>Löschen</i> auswählst.<br><br><b>Vorsicht! Auch Songdateien können gelöscht werden!</b>
+Wenn du Songdateien von außerhalb zwischen andere Songs auf den Song-Baum ziehst, wird ein neuer Song deiner Sammlung hinzugefügt.
+Ein fettgedrucktes Songverzeichnis signalisiert ungespeicherte Änderungen. Speichern nicht vergessen!
+Du kannst die %1 Songs deiner riesigen Sammlung filtern. Drücke <i>Strg+F</i> und tippe einen regulären Ausdruck ein. Bestätige dies mit <i>Enter</i>.
+Hast du schonmal einen <i>Bericht</i> deiner Songs erzeugt? Noch nicht?<br><br>Dann wähle mal <i>Songs > Neuer Bericht...</i>
+Wenn du einen Doppelklick auf ein Bild machst, bekommst du es angezeigt.
+Du kannst Aufgaben, welche Ordner und Dateien umbenennen, entfernen, indem du die zugehörige Konfigurationsdatei im Anwendungspfad löschst.
+Wenn du einen Doppelklick auf eine Umbenennungsaufgabe machst, kannst du sie bearbeiten.
+Die Aufgabenliste hat ein Kontextmenü, welches es dir ermöglicht, neue Aufgaben anzulegen oder vorhandene zu bearbeiten.
+Einige Vorgänge können nicht abgebrochen werden, weil dies zu einem inkonsistenten Zustand führen würde, z.B. Filter anwenden.
+Du kannst die Kategorien im DB-Info-Fenster ein- und ausklappen, indem du auf deren Namen einen Doppelklick machst.
+Ein Kreuz mit Ausrufezeichen im Songbaum bedeutet, dass ein dateibezogener Tag (z.B. #cover) einen Wert hat, wobei die Datei nicht existiert.
+Ein Song ist <b>ungültig</b>, wenn er keinen Interpreten oder keinen Titel besitzt, oder wenn die Länge Null ist.<br><br>Dieser Song wird einen <b>leicht rötlichen Hintergrund</b> im Song-Baum haben.
+Wenn du per Drag&Drop neue Songs in deine Sammlung integrieren willst, bietet es sich eventuell an, über das Kontextmenu im Song-Baum alle Songs zu verstecken.<br><br><i>Verstecke > Alle</i>
+Es gibt zwei Varianten von Kontextmenüs im Song-Baum. Eins für Dateien und eins für Ordner (ganze Songs).
+Du kannst den regulären Ausdruck beim Filtern umkehren, indem du auf das Plus vor der Eingabezeile drückst.
+Wenn du nach "abba|akon|wizo" filterst, suchst du alles, was "abba", "akon" oder "wizo" enthält.
+Es gibt Tooltips zu fast allen Symbolen im Song-Baum. Lass den Cursor einfach 1-2 Sekunden stehen und der Hinweis erscheint.
+Du kannst dir doppelte Songs anzeigen lassen, wenn du im Filterbereich auf <i>Duplikate</i> klickst. Diese stehen dann immer zusammen im Song-Baum.
+Playlisten werden mit der aktuellen Songdatenbank verbunden. Sobald ein Song geändert wird, welcher in einer Playliste ist, wird auch diese aktualisiert.<br><br>Änderungen in Playlisten müssen jedoch manuell gespeichert werden.
+<i>Amazon Assiciates Web Service:</i><br><br>Es werden nur Covers zu den Songs runtergeladen, welche angewählt sind. Ebenso verhält es sich mit dem Kopieren und Setzen der Cover.
+Eine Liste der unterstützten Dateitypen kannst du ausklappen, indem du bei den <i>Datei-Infos</i> einen Doppelklick auf die zugehörige Überschrift machst.
+Die editierbaren Aufgaben kannst du mit einem Doppelklick bearbeiten. Alternativ ist auch ein Kontextmenü (Rechtsklick) vorhanden.
+Das Ereignisprotokoll wird beim Beenden im Programmpfad abgespeichert.
+Die Kopfzeile im Song-Baum besitzt ein Kontextmenü. Hier kann man Spalten an- und abwählen. Über Voreinstellungen kann man dies auch mit weniger Klicks erreichen.
+Mittels <i>Strg + L</i> kannst du dir die Lyrics des aktuellen Songs anzeigen lassen.

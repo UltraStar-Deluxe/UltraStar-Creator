@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     QTranslator tr;
 
-    QSplashScreen splash(QPixmap(":/icons/splash.png"));
+    QSplashScreen splash(QPixmap(":/splash/splash.png"));
     splash.show();
 
     initLanguage(app, tr, splash);
@@ -93,27 +93,27 @@ void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &splash) {
         if (lang.language() == QLocale::French) {
             if(t.load(":/usc.fr.qm")) {
                 app.installTranslator(&t);
-                //monty->initMessages(":/txt/hints_fr");
+                //monty->initMessages(":/text/hints_fr");
             }
         } else if (lang.language() == QLocale::German) {
             if(t.load(":/usc.de.qm")) {
                 app.installTranslator(&t);
-                //monty->initMessages(":/txt/hints_de");
+                //monty->initMessages(":/text/hints_de");
             }
         } else if (lang.language() == QLocale::Italian) {
             if(t.load(":/usc.it.qm")) {
                 app.installTranslator(&t);
-                //monty->initMessages(":/txt/hints_it");
+                //monty->initMessages(":/text/hints_it");
             }
         } else if (lang.language() == QLocale::Polish) {
             if(t.load(":/usc.pl.qm")) {
                 app.installTranslator(&t);
-                //monty->initMessages(":/txt/hints_pl");
+                //monty->initMessages(":/text/hints_pl");
             }
         } else if (lang.language() == QLocale::Spanish) {
             if(t.load(":/usc.es.qm")) {
                 app.installTranslator(&t);
-                //monty->initMessages(":/txt/hints_es");
+                //monty->initMessages(":/text/hints_es");
             }
         }
 

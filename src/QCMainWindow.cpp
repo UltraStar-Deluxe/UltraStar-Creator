@@ -24,29 +24,29 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     // adding languages to language combobox as I did not find a way to add itemData within designer
     // this way, foreign language names are displayed to the user while the UltraStar file will contain the
     // english language name
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/cn.png"),tr("Chinese"),"Chinese");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/hr.png"),tr("Croatian"),"Croatian");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/cz.png"),tr("Czech"),"Czech");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/dk.png"),tr("Danish"),"Danish");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/nl.png"),tr("Dutch"),"Dutch");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/us.png"),tr("English"),"English");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/fi.png"),tr("Finnish"),"Finnish");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/fr.png"),tr("French"),"French");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/de.png"),tr("German"),"German");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/in.png"),tr("Hindi"),"Hindi");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/it.png"),tr("Italian"),"Italian");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/jp.png"),tr("Japanese"),"Japanese");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/kr.png"),tr("Korean"),"Korean");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/va.png"),tr("Latin"),"Latin");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/no.png"),tr("Norwegian"),"Norwegian");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/pl.png"),tr("Polish"),"Polish");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/pt.png"),tr("Portuguese"),"Portuguese");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/ru.png"),tr("Russian"),"Russian");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/sk.png"),tr("Slovak"),"Slovak");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/si.png"),tr("Slowenian"),"Slowenian");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/es.png"),tr("Spanish"),"Spanish");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/se.png"),tr("Swedish"),"Swedish");
-    ui->comboBox_Language->addItem(QIcon(":/languages/lang/tr.png"),tr("Turkish"),"Turkish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/cn.png"),tr("Chinese"),"Chinese");
+    ui->comboBox_Language->addItem(QIcon(":/languages/hr.png"),tr("Croatian"),"Croatian");
+    ui->comboBox_Language->addItem(QIcon(":/languages/cz.png"),tr("Czech"),"Czech");
+    ui->comboBox_Language->addItem(QIcon(":/languages/dk.png"),tr("Danish"),"Danish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/nl.png"),tr("Dutch"),"Dutch");
+    ui->comboBox_Language->addItem(QIcon(":/languages/us.png"),tr("English"),"English");
+    ui->comboBox_Language->addItem(QIcon(":/languages/fi.png"),tr("Finnish"),"Finnish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/fr.png"),tr("French"),"French");
+    ui->comboBox_Language->addItem(QIcon(":/languages/de.png"),tr("German"),"German");
+    ui->comboBox_Language->addItem(QIcon(":/languages/in.png"),tr("Hindi"),"Hindi");
+    ui->comboBox_Language->addItem(QIcon(":/languages/it.png"),tr("Italian"),"Italian");
+    ui->comboBox_Language->addItem(QIcon(":/languages/jp.png"),tr("Japanese"),"Japanese");
+    ui->comboBox_Language->addItem(QIcon(":/languages/kr.png"),tr("Korean"),"Korean");
+    ui->comboBox_Language->addItem(QIcon(":/languages/va.png"),tr("Latin"),"Latin");
+    ui->comboBox_Language->addItem(QIcon(":/languages/no.png"),tr("Norwegian"),"Norwegian");
+    ui->comboBox_Language->addItem(QIcon(":/languages/pl.png"),tr("Polish"),"Polish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/pt.png"),tr("Portuguese"),"Portuguese");
+    ui->comboBox_Language->addItem(QIcon(":/languages/ru.png"),tr("Russian"),"Russian");
+    ui->comboBox_Language->addItem(QIcon(":/languages/sk.png"),tr("Slovak"),"Slovak");
+    ui->comboBox_Language->addItem(QIcon(":/languages/si.png"),tr("Slowenian"),"Slowenian");
+    ui->comboBox_Language->addItem(QIcon(":/languages/es.png"),tr("Spanish"),"Spanish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/se.png"),tr("Swedish"),"Swedish");
+    ui->comboBox_Language->addItem(QIcon(":/languages/tr.png"),tr("Turkish"),"Turkish");
 
     // deactivate TeX syllabification for now
     ui->pushButton_SyllabificateTeX->setVisible(false);
@@ -67,7 +67,7 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
     if(firstRun) {
         QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
                                   QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL+S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL+R). When finished, <b>save</b> the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
-                                  BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
+                                  BTN << ":/icons/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
         firstRun = false;
         settings.setValue("firstRun", firstRun);
     }
@@ -179,11 +179,11 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         ui->pushButton_Stop->setEnabled(true);
         if (ui->lineEdit_Title->text().isEmpty()) {
             ui->lineEdit_Title->setText(tr("Title"));
-            ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+            ui->label_TitleSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         }
         if (ui->lineEdit_Artist->text().isEmpty()) {
             ui->lineEdit_Artist->setText(tr("Artist"));
-            ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+            ui->label_ArtistSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         }
         if (ui->lineEdit_Cover->text().isEmpty()) {
             ui->lineEdit_Cover->setText(tr("%1 - %2 [CO].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
@@ -334,7 +334,7 @@ void QCMainWindow::on_pushButton_Tap_released()
         firstNoteStartBeat = currentNoteStartBeat;
         ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GAP:%1").arg(QString::number(currentNoteStartTime, 'f', 2)));
         ui->doubleSpinBox_Gap->setValue(currentNoteStartTime);
-        ui->label_GapSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_GapSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         firstNote = false;
     }
     bool addLinebreak = false;
@@ -416,7 +416,7 @@ void QCMainWindow::on_pushButton_BrowseCover_clicked()
     QFileInfo *fileInfo_Cover = new QFileInfo(filename_Cover);
     if (fileInfo_Cover->exists()) {
         ui->lineEdit_Cover->setText(fileInfo_Cover->fileName());
-        ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_CoverSet->setPixmap(QPixmap(":/icons/path_ok.png"));
     }
 }
 
@@ -426,7 +426,7 @@ void QCMainWindow::on_pushButton_BrowseBackground_clicked()
     QFileInfo *fileInfo_Background = new QFileInfo(filename_Background);
     if (fileInfo_Background->exists()) {
         ui->lineEdit_Background->setText(fileInfo_Background->fileName());
-        ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_BackgroundSet->setPixmap(QPixmap(":/icons/path_ok.png"));
     }
 }
 
@@ -449,7 +449,7 @@ void QCMainWindow::on_pushButton_BrowseVideo_clicked()
 void QCMainWindow::on_lineEdit_Video_textChanged(QString video)
 {
     if (!video.isEmpty()) {
-        ui->label_VideoSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_VideoSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         ui->doubleSpinBox_Videogap->setEnabled(true);
     }
     else {
@@ -502,20 +502,20 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                         int result = QUMessageBox::question(0,
                                         QObject::tr("Image file drop detected."),
                                         QObject::tr("Use <b>%1</b> as...").arg(fileInfo->fileName()),
-                                        BTN << ":/types/cover.png"        << QObject::tr("Cover")
-                                            << ":/types/background.png" << QObject::tr("Background")
-                                            << ":/marks/cancel.png" << QObject::tr("Ignore this file"));
+                                        BTN << ":/icons/cover.png"        << QObject::tr("Cover")
+                                            << ":/icons/background.png"   << QObject::tr("Background")
+                                            << ":/icons/cancel.png" << QObject::tr("Ignore this file"));
 
                         if (result == 0) {
                             if (!fileInfo->fileName().isEmpty()) {
                                 ui->lineEdit_Cover->setText(fileInfo->fileName());
-                                ui->label_CoverSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+                                ui->label_CoverSet->setPixmap(QPixmap(":/icons/path_ok.png"));
                             }
                         }
                         else if (result == 1) {
                             if (!fileInfo->fileName().isEmpty()) {
                                 ui->lineEdit_Background->setText(fileInfo->fileName());
-                                ui->label_BackgroundSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+                                ui->label_BackgroundSet->setPixmap(QPixmap(":/icons/path_ok.png"));
                             }
                         }
                         else {
@@ -525,7 +525,7 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                     else if ((fileInfo->suffix().toLower() == tr("avi")) || fileInfo->suffix().toLower() == tr("divx") || fileInfo->suffix().toLower() == tr("flv") || fileInfo->suffix().toLower() == tr("mpg") || fileInfo->suffix().toLower() == tr("mpeg") || fileInfo->suffix().toLower() == tr("m4v") || fileInfo->suffix().toLower() == tr("mp4") || fileInfo->suffix().toLower() == tr("vob") || fileInfo->suffix().toLower() == tr("ts")) {
                         if (!fileInfo->fileName().isEmpty()) {
                             ui->lineEdit_Video->setText(fileInfo->fileName());
-                            ui->label_VideoSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+                            ui->label_VideoSet->setPixmap(QPixmap(":/icons/path_ok.png"));
                         }
                     }
                 }
@@ -542,11 +542,11 @@ void QCMainWindow::on_actionAbout_Qt_triggered()
 void QCMainWindow::on_lineEdit_Title_textChanged(QString title)
 {
     if(!title.isEmpty()) {
-        ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_TitleSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         ui->label_TitleSet->setStatusTip(tr("#TITLE tag is set."));
     }
     else {
-        ui->label_TitleSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_TitleSet->setPixmap(QPixmap(":/icons/path_error.png"));
         ui->label_TitleSet->setStatusTip(tr("#TITLE tag is empty."));
     }
 }
@@ -554,11 +554,11 @@ void QCMainWindow::on_lineEdit_Title_textChanged(QString title)
 void QCMainWindow::on_lineEdit_Artist_textChanged(QString artist)
 {
     if(!artist.isEmpty()) {
-        ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_ArtistSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         ui->label_ArtistSet->setStatusTip(tr("#ARTIST tag is set."));
     }
     else {
-        ui->label_ArtistSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_ArtistSet->setPixmap(QPixmap(":/icons/path_error.png"));
         ui->label_ArtistSet->setStatusTip(tr("#ARTIST tag is empty."));
     }
 }
@@ -566,11 +566,11 @@ void QCMainWindow::on_lineEdit_Artist_textChanged(QString artist)
 void QCMainWindow::on_comboBox_Language_currentIndexChanged(QString language)
 {
     if(!language.isEmpty()) {
-        ui->label_LanguageSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_LanguageSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         ui->label_LanguageSet->setStatusTip(tr("#LANGUAGE tag is set."));
     }
     else {
-        ui->label_LanguageSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_LanguageSet->setPixmap(QPixmap(":/icons/path_error.png"));
         ui->label_LanguageSet->setStatusTip(tr("#LANGUAGE tag is empty."));
     }
 }
@@ -578,11 +578,11 @@ void QCMainWindow::on_comboBox_Language_currentIndexChanged(QString language)
 void QCMainWindow::on_lineEdit_Edition_textChanged(QString edition)
 {
     if(!edition.isEmpty()) {
-        ui->label_EditionSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_EditionSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         ui->label_EditionSet->setStatusTip(tr("#EDITION tag is set."));
     }
     else {
-        ui->label_EditionSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_EditionSet->setPixmap(QPixmap(":/icons/path_error.png"));
         ui->label_EditionSet->setStatusTip(tr("#EDITION tag is empty."));
     }
 }
@@ -590,11 +590,11 @@ void QCMainWindow::on_lineEdit_Edition_textChanged(QString edition)
 void QCMainWindow::on_comboBox_Genre_textChanged(QString genre)
 {
     if(!genre.isEmpty()) {
-        ui->label_GenreSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_GenreSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         ui->label_GenreSet->setStatusTip(tr("#GENRE tag is set."));
     }
     else {
-        ui->label_GenreSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_GenreSet->setPixmap(QPixmap(":/icons/path_error.png"));
         ui->label_GenreSet->setStatusTip(tr("#GENRE tag is empty."));
     }
 }
@@ -602,11 +602,11 @@ void QCMainWindow::on_comboBox_Genre_textChanged(QString genre)
 void QCMainWindow::on_lineEdit_Creator_textChanged(QString creator)
 {
     if(!creator.isEmpty()) {
-        ui->label_CreatorSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_CreatorSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         ui->label_CreatorSet->setStatusTip(tr("#CREATOR tag is set."));
     }
     else {
-        ui->label_CreatorSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_CreatorSet->setPixmap(QPixmap(":/icons/path_error.png"));
         ui->label_CreatorSet->setStatusTip(tr("#CREATOR tag is empty."));
     }
 }
@@ -754,8 +754,8 @@ void QCMainWindow::changeLanguage(QString language) {
     int result = QUMessageBox::information(this,
                     tr("Change Language"),
                     tr("Application language changed to <b>%1</b>. You need to restart UltraStar Creator to take effect.").arg(translatedLanguage),
-                    BTN << ":/control/quit.png" << tr("Quit UltraStar Creator.")
-                        << ":/marks/accept.png" << tr("Continue."));
+                    BTN << ":/icons/quit.png" << tr("Quit UltraStar Creator.")
+                        << ":/icons/accept.png" << tr("Continue."));
     if(result == 0)
             this->close();
 }
@@ -876,7 +876,7 @@ void QCMainWindow::handleMP3() {
     }
 
     ui->doubleSpinBox_BPM->setValue(BPM);
-    ui->label_BPMSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+    ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
     ui->label_BPMSet->setStatusTip(tr("#BPM tag set."));
 
     TagLib::FileRef ref(fileInfo_MP3->absoluteFilePath().toLocal8Bit().data());
@@ -889,7 +889,7 @@ void QCMainWindow::handleMP3() {
     ui->groupBox_SongMetaInformationTags->setEnabled(true);
     ui->groupBox_MiscSettings->setEnabled(true);
     ui->groupBox_InputLyrics->setEnabled(true);
-    ui->label_MP3Set->setPixmap(QPixmap(":/marks/path_ok.png"));
+    ui->label_MP3Set->setPixmap(QPixmap(":/icons/path_ok.png"));
     ui->label_BPMSet->setStatusTip(tr("MP3 set."));
     previewState = QCMainWindow::initialized;
     ui->groupBox_Control->setEnabled(true);
@@ -927,7 +927,7 @@ void QCMainWindow::on_actionAbout_BASS_triggered()
                                             "BASS FX is an extension providing several effects, including tempo & pitch control.<br><br>"
                                             "Version: <b>2.4.5</b><br><br><br>"
                                             "Copyright (c) 2003-2010<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved.")).arg(BASSVERSIONTEXT),
-                            QStringList() << ":/marks/accept.png" << "OK",
+                            QStringList() << ":/icons/accept.png" << "OK",
                             330);
 }
 
@@ -1035,7 +1035,7 @@ void QCMainWindow::updateSyllableButtons() {
     QString syllable = lyricsSyllableList[currentSyllableIndex];
     if (syllable.startsWith("\n")) {
         syllable.replace("\n","");
-        ui->pushButton_Tap->setIcon(QIcon(":/marks/pilcrow.png"));
+        ui->pushButton_Tap->setIcon(QIcon(":/icons/pilcrow.png"));
     }
     else {
         ui->pushButton_Tap->setIcon(QIcon());
@@ -1046,7 +1046,7 @@ void QCMainWindow::updateSyllableButtons() {
         syllable = lyricsSyllableList[currentSyllableIndex+1];
         if (syllable.startsWith("\n")) {
             syllable.replace("\n","");
-           ui->pushButton_NextSyllable1->setIcon(QIcon(":/marks/pilcrow.png"));
+           ui->pushButton_NextSyllable1->setIcon(QIcon(":/icons/pilcrow.png"));
         }
         else {
             ui->pushButton_NextSyllable1->setIcon(QIcon());
@@ -1060,7 +1060,7 @@ void QCMainWindow::updateSyllableButtons() {
         syllable = lyricsSyllableList[currentSyllableIndex+2];
         if (syllable.startsWith("\n")) {
             syllable.replace("\n","");
-            ui->pushButton_NextSyllable2->setIcon(QIcon(":/marks/pilcrow.png"));
+            ui->pushButton_NextSyllable2->setIcon(QIcon(":/icons/pilcrow.png"));
         }
         else {
             ui->pushButton_NextSyllable2->setIcon(QIcon());
@@ -1074,7 +1074,7 @@ void QCMainWindow::updateSyllableButtons() {
         syllable = lyricsSyllableList[currentSyllableIndex+3];
         if (syllable.startsWith("\n")) {
             syllable.replace("\n","");
-            ui->pushButton_NextSyllable3->setIcon(QIcon(":/marks/pilcrow.png"));
+            ui->pushButton_NextSyllable3->setIcon(QIcon(":/icons/pilcrow.png"));
         }
         else {
             ui->pushButton_NextSyllable3->setIcon(QIcon());
@@ -1088,7 +1088,7 @@ void QCMainWindow::updateSyllableButtons() {
         syllable = lyricsSyllableList[currentSyllableIndex+4];
         if (syllable.startsWith("\n")) {
             syllable.replace("\n","");
-            ui->pushButton_NextSyllable4->setIcon(QIcon(":/marks/pilcrow.png"));
+            ui->pushButton_NextSyllable4->setIcon(QIcon(":/icons/pilcrow.png"));
         }
         else {
             ui->pushButton_NextSyllable4->setIcon(QIcon());
@@ -1102,7 +1102,7 @@ void QCMainWindow::updateSyllableButtons() {
         syllable = lyricsSyllableList[currentSyllableIndex+5];
         if (syllable.startsWith("\n")) {
             syllable.replace("\n","");
-            ui->pushButton_NextSyllable5->setIcon(QIcon(":/marks/pilcrow.png"));
+            ui->pushButton_NextSyllable5->setIcon(QIcon(":/icons/pilcrow.png"));
         }
         else {
             ui->pushButton_NextSyllable5->setIcon(QIcon());
@@ -1175,11 +1175,11 @@ void QCMainWindow::keyReleaseEvent(QKeyEvent *event) {
 void QCMainWindow::on_comboBox_Year_activated(QString year)
 {
     if(!year.isEmpty()) {
-        ui->label_YearSet->setPixmap(QPixmap(":/marks/path_ok.png"));
+        ui->label_YearSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         ui->label_YearSet->setStatusTip(tr("#YEAR tag is set."));
     }
     else {
-        ui->label_YearSet->setPixmap(QPixmap(":/marks/path_error.png"));
+        ui->label_YearSet->setPixmap(QPixmap(":/icons/path_error.png"));
         ui->label_YearSet->setStatusTip(tr("#YEAR tag is empty."));
     }
 }
@@ -1243,17 +1243,17 @@ void QCMainWindow::on_pushButton_PreviewPlayPause_clicked()
             BASS_Play();
             updatePreviewTime();
         }
-        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control_pause_blue.png"));
+        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/icons/control_pause_blue.png"));
     }
     else if (previewState == QCMainWindow::playing) {
         previewState = QCMainWindow::paused;
         BASS_Pause();
-        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control_play_blue.png"));
+        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/icons/control_play_blue.png"));
     }
     else if (previewState == QCMainWindow::paused) {
         previewState = QCMainWindow::playing;
         BASS_Resume();
-        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/control_pause_blue.png"));
+        ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/icons/control_pause_blue.png"));
     }
     else {
         // should not occur
@@ -1304,8 +1304,8 @@ void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
     int result = QUMessageBox::question(0,
                     QObject::tr("Freestyle text file generation."),
                     QObject::tr("This function will generate UltraStar compatible freestyle text files without any lyrics for each audio file in a subsequently selectable folder.<br><br>Each MP3 will be moved into a separate subdirectory and a text file containing the bare minimum of information will be automatically created along with a standard cover and background.<br><br>If your audio files follow an 'Artist - Title.mp3' naming scheme, they will be correctly mapped in the resulting song file."),
-                    BTN << ":/marks/accept.png" << QObject::tr("Go ahead, I know what I am doing!")
-                        << ":/marks/cancel.png" << QObject::tr("I'm not sure. I want cancel."),400,0);
+                    BTN << ":/icons/accept.png" << QObject::tr("Go ahead, I know what I am doing!")
+                        << ":/icons/cancel.png" << QObject::tr("I'm not sure. I want cancel."),400,0);
 
     if (result == 0) {
         QString SongCollectionPath;
@@ -1435,7 +1435,7 @@ void QCMainWindow::on_actionHelp_triggered()
 {
     QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
                               QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL+S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL+R). When finished, <b>save</b> the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
-                              BTN << ":/marks/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
+                              BTN << ":/icons/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
 }
 
 void QCMainWindow::on_actionWhats_This_triggered()
@@ -1469,10 +1469,10 @@ void QCMainWindow::on_pushButton_SyllabificateRules_clicked()
         int result = QUMessageBox::question(0,
                         QObject::tr("Syllabification."),
                         QObject::tr("%1 Apply...").arg(infoString),
-                        BTN << ":/languages/lang/us.png"    << QObject::tr("English syllabification rules.")
-                            << ":/languages/lang/de.png"    << QObject::tr("German syllabification rules.")
-                            << ":/languages/lang/es.png"    << QObject::tr("Spanish syllabification rules.")
-                            << ":/marks/cancel.png"         << QObject::tr("Cancel."));
+                        BTN << ":/languages/us.png"    << QObject::tr("English syllabification rules.")
+                            << ":/languages/de.png"    << QObject::tr("German syllabification rules.")
+                            << ":/languages/es.png"    << QObject::tr("Spanish syllabification rules.")
+                            << ":/icons/cancel.png"         << QObject::tr("Cancel."));
 
         if (result == 0) {
             language = "English";
@@ -2179,10 +2179,10 @@ void QCMainWindow::on_pushButton_EnableBPMEdit_toggled(bool checked)
 {
     ui->doubleSpinBox_BPM->setReadOnly(!checked);
     if(checked){
-        ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/types/lock-unlock.png"));
+        ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/icons/lock-unlock.png"));
     }
     else {
-        ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/types/lock.png"));
+        ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/icons/lock.png"));
     }
 }
 
