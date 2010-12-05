@@ -127,7 +127,7 @@ void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &splash) {
                                 QObject::tr("There was no configuration setting about your language. Your <b>system language</b> will be used if possible.<br>"
                                                 "<br>"
                                                 "See <b>Language</b> to change this."),
-                                BTN << ":/marks/accept.png" << QObject::tr("Continue."),
+                                BTN << ":/icons/accept.png" << QObject::tr("Continue."),
                                 270);
 }
 
@@ -139,7 +139,7 @@ void handleWipWarning() {
         QUMessageBox::warning(0,
                                 QObject::tr("WIP version detected!"),
                                 QObject::tr("This version is still under development <b>and may not be very stable</b>. <br><br><b>Please</b> do not distribute this version."),
-                                BTN << ":/marks/accept.png" << QObject::tr("I will be careful."));
+                                BTN << ":/icons/accept.png" << QObject::tr("I will be careful."));
 }
 
 /*!
@@ -150,7 +150,7 @@ void handleReleaseCandidateInformation() {
         QUMessageBox::information(0,
                                 QObject::tr("Release Candidate Information"),
                                 QObject::tr("<b>Dear testing person,</b><br><br>this version is meant to be <b>almost bug-free</b>. Nevertheless, it might be possible that some errors are still remaining.<br> While testing all these cool new features of version %1.%2.%3, consider the following:<br><br>- xxx<br>- xxx<br>- xxx<br>- xxx<br>- xxx<br>- xxx<br><br>Send feedback and bug reports to: <a href=\"mailto:bohning@users.sourceforge.net\">bohning@users.sourceforge.net</a>").arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION),
-                                BTN << ":/marks/accept.png" << QObject::tr("Okay!"),
+                                BTN << ":/icons/accept.png" << QObject::tr("Okay!"),
                                 400);
 }
 
@@ -172,7 +172,7 @@ void handlePreviousAppCrash() {
             QObject::tr("The UltraStar Creator did not exit successfully last time. <br>"
                             "<br>"
                             "Please report this problem <a href=\"http://usc.sf.net\">here</a>."),
-            BTN	<< ":/marks/accept.png"        << QObject::tr("Try again."));
+            BTN	<< ":/icons/accept.png"        << QObject::tr("Try again."));
 }
 
 /*!

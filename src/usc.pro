@@ -29,28 +29,19 @@ CONFIG(debug, debug|release) {
 
 HEADERS += main.h \
     QU.h \
-    QUStringSupport.h \
-    QUSongSupport.h \
-    song/QUSongInterface.h \
-    song/QUSongFile.h \
-    song/QUSongLine.h \
-    support/QULogService.h \
-    support/QUMessageBox.h \
+    QULogService.h \
+    QUMessageBox.h \
     QCMainWindow.h \
     QUAboutDialog.h
 
 SOURCES += main.cpp \
     QCMainWindow.cpp \
     QU.cpp \
-    QUStringSupport.cpp \
-    QUSongSupport.cpp \
-    support/QULogService.cpp \
-    support/QUMessageBox.cpp \
-    song/QUSongFile.cpp \
-    song/QUSongLine.cpp \
+    QULogService.cpp \
+    QUMessageBox.cpp \
     QUAboutDialog.cpp
 
-FORMS += support/QUMessageBox.ui \
+FORMS += QUMessageBox.ui \
     QCMainWindow.ui \
     QUAboutDialog.ui
 	
@@ -64,9 +55,6 @@ TRANSLATIONS = resources/usc.de.ts \
     resources/usc.pl.ts
 
 INCLUDEPATH += . \
-    song \
-    mediaplayer \
-    support \
     ui
 
 win32 { 
