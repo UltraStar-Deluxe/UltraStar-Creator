@@ -34,12 +34,8 @@ HEADERS += main.h \
     song/QUSongInterface.h \
     song/QUSongFile.h \
     song/QUSongLine.h \
-    mediaplayer/QUAutoCue.h \
-    mediaplayer/QUMediaPlayer.h \
     support/QULogService.h \
     support/QUMessageBox.h \
-    support/QUProgressDialog.h \
-    support/QUMetaphoneString.h \
     QCMainWindow.h \
     QUAboutDialog.h
 
@@ -48,19 +44,13 @@ SOURCES += main.cpp \
     QU.cpp \
     QUStringSupport.cpp \
     QUSongSupport.cpp \
-    mediaplayer/QUAutoCue.cpp \
-    mediaplayer/QUMediaPlayer.cpp \
     support/QULogService.cpp \
-    support/QUProgressDialog.cpp \
     support/QUMessageBox.cpp \
-    support/QUMetaphoneString.cpp \
     song/QUSongFile.cpp \
     song/QUSongLine.cpp \
     QUAboutDialog.cpp
 
-FORMS += mediaplayer/QUMediaPlayer.ui \
-    support/QUMessageBox.ui \
-    support/QUProgressDialog.ui \
+FORMS += support/QUMessageBox.ui \
     QCMainWindow.ui \
     QUAboutDialog.ui
 	
