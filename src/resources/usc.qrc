@@ -311,20 +311,6 @@
         <file>languages/uy.png</file>
         <file>languages/uz.png</file>
         <file>languages/va.png</file>
-        <file>languages/vc.png</file>
-        <file>languages/ve.png</file>
-        <file>languages/vg.png</file>
-        <file>languages/vi.png</file>
-        <file>languages/vn.png</file>
-        <file>languages/vu.png</file>
-        <file>languages/wales.png</file>
-        <file>languages/wf.png</file>
-        <file>languages/ws.png</file>
-        <file>languages/ye.png</file>
-        <file>languages/yt.png</file>
-        <file>languages/za.png</file>
-        <file>languages/zm.png</file>
-        <file>languages/zw.png</file>
         <file>player/loop.png</file>
         <file>player/next.png</file>
         <file>player/pause.png</file>
@@ -337,5 +323,9 @@
         <file>splash/splash.png</file>
         <file>text/credits</file>
         <file>icons/quit.png</file>
+        <file>icons/accept.png</file>
+        <file>icons/cancel.png</file>
+        <file>icons/help.png</file>
+        <file>icons/information.png</file>
     </qresource>
 </RCC>

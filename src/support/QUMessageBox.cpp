@@ -25,7 +25,7 @@ void QUMessageBox::closeEvent(QCloseEvent *event) {
 int QUMessageBox::information(QWidget *parent, const QString &title, const QString &msg, const QStringList &buttons, int widthHint, int defaultIndex) {
 	QUMessageBox *dlg = new QUMessageBox(parent);
 
-	dlg->setIcon(":/marks/information.png");
+        dlg->setIcon(":/icons/information.png");
 
 	int result = dlg->showMessage(title, msg, buttons, defaultIndex, widthHint);
 	delete dlg;
@@ -35,7 +35,7 @@ int QUMessageBox::information(QWidget *parent, const QString &title, const QStri
 int QUMessageBox::question(QWidget *parent, const QString &title, const QString &msg, const QStringList &buttons, int widthHint, int defaultIndex) {
 	QUMessageBox *dlg = new QUMessageBox(parent);
 
-	dlg->setIcon(":/marks/help.png");
+        dlg->setIcon(":/icons/help.png");
 
 	int result = dlg->showMessage(title, msg, buttons, defaultIndex, widthHint);
 	delete dlg;
@@ -45,7 +45,7 @@ int QUMessageBox::question(QWidget *parent, const QString &title, const QString 
 int QUMessageBox::warning(QWidget *parent, const QString &title, const QString &msg, const QStringList &buttons, int widthHint, int defaultIndex) {
 	QUMessageBox *dlg = new QUMessageBox(parent);
 
-	dlg->setIcon(":/marks/error.png");
+        dlg->setIcon(":/icons/error.png");
 
 	int result = dlg->showMessage(title, msg, buttons, defaultIndex, widthHint);
 	delete dlg;
@@ -55,7 +55,7 @@ int QUMessageBox::warning(QWidget *parent, const QString &title, const QString &
 int QUMessageBox::critical(QWidget *parent, const QString &title, const QString &msg, const QStringList &buttons, int widthHint, int defaultIndex) {
 	QUMessageBox *dlg = new QUMessageBox(parent);
 
-	dlg->setIcon(":/marks/cancel.png");
+        dlg->setIcon(":/icons/cancel.png");
 
 	int result = dlg->showMessage(title, msg, buttons, defaultIndex, widthHint);
 	delete dlg;
