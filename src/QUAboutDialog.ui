@@ -5,7 +5,7 @@
   <property name="geometry">
    <rect>
     <x>0</x>
-    <y>4</y>
+    <y>0</y>
     <width>500</width>
     <height>300</height>
    </rect>
@@ -20,11 +20,11 @@
    <string>About</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources/usc.qrc">
+   <iconset>
     <normaloff>:/icons/cup.png</normaloff>:/icons/cup.png</iconset>
   </property>
   <property name="styleSheet">
-   <string>background-image: url(:/about_bgr.png);</string>
+   <string notr="true">background-image: url(:/splash/about_bgr.png);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
@@ -197,8 +197,6 @@ background-image: url();</string>
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="resources/usc.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
