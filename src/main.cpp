@@ -93,40 +93,34 @@ void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &splash) {
         if (lang.language() == QLocale::French) {
             if(t.load(":/usc.fr.qm")) {
                 app.installTranslator(&t);
-                //monty->initMessages(":/text/hints_fr");
             }
         } else if (lang.language() == QLocale::German) {
             if(t.load(":/usc.de.qm")) {
                 app.installTranslator(&t);
-                //monty->initMessages(":/text/hints_de");
             }
         } else if (lang.language() == QLocale::Italian) {
             if(t.load(":/usc.it.qm")) {
                 app.installTranslator(&t);
-                //monty->initMessages(":/text/hints_it");
             }
         } else if (lang.language() == QLocale::Polish) {
             if(t.load(":/usc.pl.qm")) {
                 app.installTranslator(&t);
-                //monty->initMessages(":/text/hints_pl");
             }
         } else if (lang.language() == QLocale::Spanish) {
             if(t.load(":/usc.es.qm")) {
                 app.installTranslator(&t);
-                //monty->initMessages(":/text/hints_es");
             }
         }
 
         splash.showMessage(QString(QObject::tr("%1.%2.%3 is loading...")).arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION), Qt::AlignBottom | Qt::AlignRight, Qt::white);
 
-        // message needs to be here because it can be translated only after installing
-        // the translator
+        // message needs to be here because it can be translated only after installing the translator
         if(!settingFound)
                 QUMessageBox::information(0,
                                 QObject::tr("Init Language"),
                                 QObject::tr("There was no configuration setting about your language. Your <b>system language</b> will be used if possible.<br>"
                                                 "<br>"
-                                                "See <b>Language</b> to change this."),
+                                                "Choose <b>Language</b> from the menu to change this."),
                                 BTN << ":/icons/accept.png" << QObject::tr("Continue."),
                                 270);
 }
@@ -190,16 +184,12 @@ void handleArguments() {
                 }
 
                 if(fi.isFile() && fi.fileName().endsWith(".txt")) {
-                    // use argument as input lyrics file
+                // use argument as input lyrics file
                 }
 
                 // add cover/background and video files here
 
                 if(fi.isDir() && fi.exists()) {
-//			QStringList paths(s.value("songPaths").toStringList());
-//			paths.append(arg);
-//			paths.removeDuplicates();
-//			settings.setValue("songPaths", paths);
                         settings.setValue("songPath", arg);
                         break;
                 }

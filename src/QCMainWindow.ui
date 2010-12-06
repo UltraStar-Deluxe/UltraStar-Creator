@@ -2097,7 +2097,7 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
                   <string/>
                  </property>
                  <property name="statusTip">
-                  <string>Search swisscharts.com for Artist and Title to determine release year.</string>
+                  <string>Search swisscharts.com for Artist and Title to determine the release year of the song.</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -2526,7 +2526,7 @@ The pitch of each individual note needs to be set using the UltraStar internal e
                     </size>
                    </property>
                    <property name="statusTip">
-                    <string>Start tapping.</string>
+                    <string>Start tapping (CTRL-P).</string>
                    </property>
                    <property name="whatsThis">
                     <string>This button disables all the fields above and starts the tapping. The header of the UltraStar file will be displayed, the audio file will start playing and the first syllables appear in the tap area. Get ready to tap!
@@ -2585,7 +2585,7 @@ While tapping, this button will turn into a pause button where you can interrupt
                     </size>
                    </property>
                    <property name="statusTip">
-                    <string>Stop tapping.</string>
+                    <string>Stop tapping (CTRL-S).</string>
                    </property>
                    <property name="whatsThis">
                     <string>This button stops the tapping process. Now you can either save the tapped UltraStar file or restart the tapping from the beginning using the reset button.
@@ -2644,7 +2644,7 @@ The tapping process is automatically stopped once you have tapped all available 
                     </size>
                    </property>
                    <property name="statusTip">
-                    <string>Reset &amp; restart tapping.</string>
+                    <string>Reset &amp; restart tapping (CTRL-R).</string>
                    </property>
                    <property name="whatsThis">
                     <string>This button resets all tapped notes and enables all fields on the left to make any necessary changes before restarting the tapping process.</string>
@@ -3168,7 +3168,7 @@ You can try to use automatic syllabification with languages other than the ones 
                 <string/>
                </property>
                <property name="statusTip">
-                <string>Save UltraStar lyrics to a file.</string>
+                <string>Save UltraStar lyrics to a file (CTRL-S).</string>
                </property>
                <property name="whatsThis">
                 <string>Here you can save the resulting UltraStar file on your harddrive.</string>
@@ -3274,7 +3274,7 @@ You can try to use automatic syllabification with languages other than the ones 
                 <string/>
                </property>
                <property name="statusTip">
-                <string>Launch UltraStar with current song folder for finetuning.</string>
+                <string>Launch UltraStar (deluxe) with current song folder for finetuning.</string>
                </property>
                <property name="whatsThis">
                 <string>Having successfully saved the UltraStar file, you can launch UltraStar with only that individual song for finetuning note timings and pitches.
@@ -3390,7 +3390,7 @@ For the first launch from within USC, you can browse for the YASS executable fil
               </size>
              </property>
              <property name="statusTip">
-              <string>Undo last tap.</string>
+              <string>Undo last tap (X).</string>
              </property>
              <property name="whatsThis">
               <string>Here you can undo your last tap (shortcut: X). This will step back by one syllable without pausing or stepping back in the audio file. This is useful if you tapped one or more syllables ahead of time.
@@ -3446,7 +3446,7 @@ It is also possible to pause the tapping first before stepping back by one sylla
               <cursorShape>OpenHandCursor</cursorShape>
              </property>
              <property name="statusTip">
-              <string>Click &amp; hold down to tap a note.</string>
+              <string>Click &amp; hold down to tap a note (SPACE).</string>
              </property>
              <property name="whatsThis">
               <string>Here the current syllable to be tapped is displayed.
@@ -3823,7 +3823,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
   </action>
   <action name="actionEnglish">
    <property name="checkable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="checked">
     <bool>false</bool>
@@ -3841,13 +3841,10 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    <property name="font">
     <font/>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+E</string>
-   </property>
   </action>
   <action name="actionGerman">
    <property name="checkable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="enabled">
     <bool>true</bool>
@@ -3858,9 +3855,6 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    </property>
    <property name="text">
     <string>German</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+G</string>
    </property>
   </action>
   <action name="actionAbout_BASS">
@@ -3892,7 +3886,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
   </action>
   <action name="actionFrench">
    <property name="checkable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="enabled">
     <bool>true</bool>
@@ -3904,13 +3898,10 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    <property name="text">
     <string>French</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+F</string>
-   </property>
   </action>
   <action name="actionSpanish">
    <property name="checkable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="enabled">
     <bool>true</bool>
@@ -3922,13 +3913,10 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    <property name="text">
     <string>Spanish</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+S</string>
-   </property>
   </action>
   <action name="actionItalian">
    <property name="checkable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="enabled">
     <bool>true</bool>
@@ -3940,13 +3928,10 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    <property name="text">
     <string>Italian</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+I</string>
-   </property>
   </action>
   <action name="actionPolish">
    <property name="checkable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="enabled">
     <bool>true</bool>
@@ -3957,9 +3942,6 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
    </property>
    <property name="text">
     <string>Polish</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+P</string>
    </property>
   </action>
   <action name="actionCreate_Dummy_Songs">

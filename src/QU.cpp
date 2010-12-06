@@ -1,5 +1,4 @@
 #include "QU.h"
-#include "QUSongSupport.h"
 
 #include <QDir>
 

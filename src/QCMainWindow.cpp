@@ -5,6 +5,7 @@
 #include "QUMessageBox.h"
 #include "QUAboutDialog.h"
 
+#include <QActionGroup>
 #include <QFileDialog>
 #include <QTextStream>
 #include <QClipboard>
@@ -17,6 +18,8 @@
 #include <QDesktopServices>
 
 QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCMainWindow) {
+
+    QSettings settings;
 
     ui->setupUi(this);
     setWindowTitle(tr("UltraStar Song Creator %1.%2.%3").arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION));
@@ -59,14 +62,37 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
         QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
     }
 
+    // check correct language
+    QActionGroup *languageGroup = new QActionGroup(this);
+    languageGroup->addAction(ui->actionEnglish);
+    languageGroup->addAction(ui->actionFrench);
+    languageGroup->addAction(ui->actionGerman);
+    languageGroup->addAction(ui->actionItalian);
+    languageGroup->addAction(ui->actionPolish);
+    languageGroup->addAction(ui->actionSpanish);
+
+    QLocale lang = QLocale(settings.value("language").toString());
+    if (lang.language() == QLocale::English) {
+        ui->actionEnglish->setChecked(true);
+    } else if (lang.language() == QLocale::French) {
+        ui->actionFrench->setChecked(true);
+    } else if (lang.language() == QLocale::German) {
+        ui->actionGerman->setChecked(true);
+    } else if (lang.language() == QLocale::Italian) {
+        ui->actionItalian->setChecked(true);
+    } else if (lang.language() == QLocale::Polish) {
+        ui->actionPolish->setChecked(true);
+    } else if (lang.language() == QLocale::Spanish) {
+        ui->actionSpanish->setChecked(true);
+    }
+
     this->show();
 
-    QSettings settings;
     bool firstRun = settings.value("firstRun", "true").toBool();
 
-    if(firstRun) {
+    if (firstRun) {
         QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
-                                  QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL+S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL+R). When finished, <b>save</b> the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
+                                  QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL-P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL-S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL-R). When finished, <b>save</b> the tapped song using the save button (CTRL-S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
                                   BTN << ":/icons/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
         firstRun = false;
         settings.setValue("firstRun", firstRun);
@@ -162,7 +188,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         setCursor(Qt::WaitCursor);
         state = QCMainWindow::playing;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
-        ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
+        ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping (CTRL-P)."));
         QWidget::setAcceptDrops(false);
         ui->groupBox_MP3Tag->setDisabled(true);
         ui->groupBox_SongMetaInformationTags->setDisabled(true);
@@ -252,7 +278,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
     else if (state == playing) {
         state = QCMainWindow::paused;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/play.png"));
-        ui->pushButton_PlayPause->setStatusTip(tr("Continue tapping."));
+        ui->pushButton_PlayPause->setStatusTip(tr("Continue tapping (CTRL-P)."));
         ui->pushButton_Tap->setDisabled(true);
         ui->pushButton_NextSyllable1->setDisabled(true);
         ui->pushButton_NextSyllable2->setDisabled(true);
@@ -264,7 +290,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
     else if (state == paused) {
         state = QCMainWindow::playing;
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
-        ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping."));
+        ui->pushButton_PlayPause->setStatusTip(tr("Pause tapping (CTRL-P)."));
         ui->pushButton_Tap->setEnabled(true);
         ui->pushButton_NextSyllable1->setEnabled(true);
         ui->pushButton_NextSyllable2->setEnabled(true);
@@ -388,6 +414,7 @@ void QCMainWindow::on_pushButton_Stop_clicked()
         QMainWindow::statusBar()->showMessage(tr("USC ready."));
 
         ui->pushButton_PlayPause->setIcon(QIcon(":/player/play.png"));
+        ui->pushButton_PlayPause->setStatusTip(tr("Start tapping (CTRL-P)."));
         ui->pushButton_PlayPause->setDisabled(true);
         ui->pushButton_Stop->setDisabled(true);
         ui->pushButton_Reset->setEnabled(true);
@@ -1305,7 +1332,7 @@ void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
                     QObject::tr("Freestyle text file generation."),
                     QObject::tr("This function will generate UltraStar compatible freestyle text files without any lyrics for each audio file in a subsequently selectable folder.<br><br>Each MP3 will be moved into a separate subdirectory and a text file containing the bare minimum of information will be automatically created along with a standard cover and background.<br><br>If your audio files follow an 'Artist - Title.mp3' naming scheme, they will be correctly mapped in the resulting song file."),
                     BTN << ":/icons/accept.png" << QObject::tr("Go ahead, I know what I am doing!")
-                        << ":/icons/cancel.png" << QObject::tr("I'm not sure. I want cancel."),400,0);
+                        << ":/icons/cancel.png" << QObject::tr("I'm not sure. I want to cancel."),400,0);
 
     if (result == 0) {
         QString SongCollectionPath;
@@ -1434,7 +1461,7 @@ void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
 void QCMainWindow::on_actionHelp_triggered()
 {
     QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
-                              QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL+P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL+S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL+R). When finished, <b>save</b> the tapped song using the save button (CTRL+S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
+                              QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL-P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL-S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL-R). When finished, <b>save</b> the tapped song using the save button (CTRL-S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
                               BTN << ":/icons/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
 }
 
