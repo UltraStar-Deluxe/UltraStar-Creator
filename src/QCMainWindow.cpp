@@ -1016,6 +1016,7 @@ void QCMainWindow::on_pushButton_Reset_clicked()
         currentCharacterIndex = 0;
         firstNote = true;
         lyricsSyllableList.clear();
+        ui->doubleSpinBox_Gap->setValue(0.00);
         ui->plainTextEdit_OutputLyrics->clear();
         ui->pushButton_Tap->setText("");
         ui->pushButton_NextSyllable1->setText("");
@@ -1050,6 +1051,7 @@ void QCMainWindow::on_pushButton_UndoTap_clicked()
         if (currentSyllableIndex == 0) {
             firstNote = true;
             ui->plainTextEdit_OutputLyrics->undo(); // delete GAP
+            ui->doubleSpinBox_Gap->setValue(0.00);
             ui->pushButton_UndoTap->setDisabled(true);
         }
         updateSyllableButtons();
