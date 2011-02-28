@@ -8,8 +8,8 @@ QT += core \
 
 # CONFIG -= debug_and_release \
 # release
-#CONFIG += debug
-CONFIG += release
+CONFIG += debug
+#CONFIG += release
 
 CONFIG(release, debug|release) {
         TARGET = usc

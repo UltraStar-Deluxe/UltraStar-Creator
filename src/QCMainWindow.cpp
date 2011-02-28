@@ -212,39 +212,41 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
             ui->label_ArtistSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         }
         if (ui->lineEdit_Cover->text().isEmpty()) {
-            ui->lineEdit_Cover->setText(tr("%1 - %2 [CO].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
+            ui->lineEdit_Cover->setText(QString("%1 - %2 [CO].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
         }
         if (ui->lineEdit_Background->text().isEmpty()) {
-            ui->lineEdit_Background->setText(tr("%1 - %2 [BG].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
+            ui->lineEdit_Background->setText(QString("%1 - %2 [BG].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
         }
 
-        //ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ENCODING:UTF8"));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#TITLE:%1").arg(ui->lineEdit_Title->text()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
+        //timeLineMap.insert(-15, "#ENCODING:UTF8");
+        timeLineMap.insert(-14, QString("#TITLE:%1").arg(ui->lineEdit_Title->text()));
+        timeLineMap.insert(-13, QString("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
         if (!ui->comboBox_Language->currentText().isEmpty()) {
-            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));
+            timeLineMap.insert(-12, QString("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));
         }
         if (!ui->lineEdit_Edition->text().isEmpty()) {
-            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#EDITION:%1").arg(ui->lineEdit_Edition->text()));
+            timeLineMap.insert(-11, QString("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));
         }
         if (!ui->comboBox_Genre->currentText().isEmpty()) {
-            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
+            timeLineMap.insert(-10, QString("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
         }
         if (!ui->comboBox_Year->currentText().isEmpty()) {
-            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#YEAR:%1").arg(ui->comboBox_Year->currentText()));
+            timeLineMap.insert(-9, QString("#YEAR:%1").arg(ui->comboBox_Year->currentText()));
         }
         if (!ui->lineEdit_Creator->text().isEmpty()) {
-            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#CREATOR:%1").arg(ui->lineEdit_Creator->text()));
+            timeLineMap.insert(-8, QString("#CREATOR:%1").arg(ui->lineEdit_Creator->text()));
         }
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#MP3:%1").arg(ui->lineEdit_MP3->text()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#COVER:%1").arg(ui->lineEdit_Cover->text()));
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#BACKGROUND:%1").arg(ui->lineEdit_Background->text()));
+        timeLineMap.insert(-7, QString("#MP3:%1").arg(ui->lineEdit_MP3->text()));
+        timeLineMap.insert(-6, QString("#COVER:%1").arg(ui->lineEdit_Cover->text()));
+        timeLineMap.insert(-5, QString("#BACKGROUND:%1").arg(ui->lineEdit_Background->text()));
 
         if (!ui->lineEdit_Video->text().isEmpty()) {
-            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEO:%1").arg(ui->lineEdit_Video->text()));
-            ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#VIDEOGAP:%1").arg(ui->doubleSpinBox_Videogap->text()));
+            timeLineMap.insert(-4, QString("#VIDEO:%1").arg(ui->lineEdit_Video->text()));
+            timeLineMap.insert(-3, QString("#VIDEOGAP:%1").arg(ui->doubleSpinBox_Videogap->text()));
         }
-        ui->plainTextEdit_OutputLyrics->appendPlainText("#BPM:" + ui->doubleSpinBox_BPM->text());
+        timeLineMap.insert(-2, QString("#BPM:%1").arg(ui->doubleSpinBox_BPM->text()));
+
+        updateOutputLyrics();
 
         settings.setValue("creator", ui->lineEdit_Creator->text());
 
@@ -358,7 +360,7 @@ void QCMainWindow::on_pushButton_Tap_released()
     currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPM / 15000));
     if (firstNote){
         firstNoteStartBeat = currentNoteStartBeat;
-        ui->plainTextEdit_OutputLyrics->appendPlainText(tr("#GAP:%1").arg(QString::number(currentNoteStartTime, 'f', 2)));
+        timeLineMap.insert(-1, QString("#GAP:%1").arg(QString::number(currentNoteStartTime, 'f', 2)));
         ui->doubleSpinBox_Gap->setValue(currentNoteStartTime);
         ui->label_GapSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         firstNote = false;
@@ -375,12 +377,14 @@ void QCMainWindow::on_pushButton_Tap_released()
     if (addLinebreak)
     {
         qint32 linebreakBeat = previousNoteEndBeat + (currentNoteStartBeat - firstNoteStartBeat - previousNoteEndBeat)/2;
-        linebreakString = tr("- %1\n").arg(QString::number(linebreakBeat));
+        linebreakString = QString("- %1\n").arg(QString::number(linebreakBeat));
     }
 
-    currentOutputTextLine = tr("%1: %2 %3 %4 %5").arg(linebreakString).arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
-    ui->plainTextEdit_OutputLyrics->appendPlainText(currentOutputTextLine);
+    currentOutputTextLine = QString("%1: %2 %3 %4 %5").arg(linebreakString).arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(ui->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
 
+    timeLineMap.insert(currentNoteStartTime, currentOutputTextLine);
+
+    updateOutputLyrics();
 
     if ((currentSyllableIndex+1) < numSyllables) {
         currentSyllableIndex++;
@@ -390,6 +394,23 @@ void QCMainWindow::on_pushButton_Tap_released()
         ui->pushButton_Tap->setText("");
         on_pushButton_Stop_clicked();
     }
+}
+
+void QCMainWindow::updateOutputLyrics()
+{
+    // start experimental
+    ui->plainTextEdit_OutputLyrics->clear();
+    // insert header
+    QMapIterator<double, QString> i(timeLineMap);
+        while (i.hasNext()) {
+            i.next();
+             if (i.key() <= currentNoteStartTime)
+             {
+                 ui->plainTextEdit_OutputLyrics->appendPlainText(i.value());
+             }
+         }
+    // end experimental
+    //ui->plainTextEdit_OutputLyrics->appendPlainText(timeLineMap.value(currentNoteStartTime));
 }
 
 void QCMainWindow::on_pushButton_PasteFromClipboard_clicked()
@@ -789,64 +810,65 @@ void QCMainWindow::changeLanguage(QString language) {
 
 void QCMainWindow::BASS_Stop() {
         if(!_mediaStream)
-                return;
+            return;
 
         if(!BASS_ChannelStop(_mediaStream)) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
-                return;
+            //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+            return;
         }
 }
+#
 
 void QCMainWindow::BASS_Free() {
         if(!_mediaStream)
-                return;
+            return;
 
         if(!BASS_StreamFree(_mediaStream)) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
-                return;
+            //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+            return;
         }
 }
 
 void QCMainWindow::BASS_StopAndFree() {
         if(!_mediaStream)
-                return;
+            return;
 
         if(!BASS_ChannelStop(_mediaStream)) {
-                return;
+            return;
         }
 
         if(!BASS_StreamFree(_mediaStream)) {
-                return;
+            return;
         }
 }
 
 void QCMainWindow::BASS_Play() {
         if(!_mediaStream) {
-                return;
+            return;
         }
 
         if(!BASS_ChannelPlay(_mediaStream, TRUE)) {
-                return;
+            return;
         }
 }
 
 void QCMainWindow::BASS_Pause() {
         if(!_mediaStream) {
-                return;
+            return;
         }
 
         if(!BASS_ChannelPause(_mediaStream)) {
-                return;
+            return;
         }
 }
 
 void QCMainWindow::BASS_Resume() {
         if(!_mediaStream) {
-                return;
+            return;
         }
 
         if(!BASS_ChannelPlay(_mediaStream, FALSE)) {
-                return;
+            return;
         }
 }
 
@@ -855,20 +877,20 @@ void QCMainWindow::BASS_Resume() {
  */
 double QCMainWindow::BASS_Position() {
         if(!_mediaStream)
-                return -1;
+            return -1;
 
         return BASS_ChannelBytes2Seconds(_mediaStream, BASS_ChannelGetPosition(_mediaStream, BASS_POS_BYTE));
 }
 
 void QCMainWindow::BASS_SetPosition(int seconds) {
         if(!_mediaStream)
-                return;
+            return;
 
         QWORD pos = BASS_ChannelSeconds2Bytes(_mediaStream, (double)seconds);
 
         if(!BASS_ChannelSetPosition(_mediaStream, pos, BASS_POS_BYTE)) {
-                //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
-                return;
+            //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+            return;
         }
 }
 
@@ -884,12 +906,12 @@ void QCMainWindow::handleMP3() {
     ui->horizontalSlider_PreviewMP3->setRange(0, (int)MP3LengthTime);
     ui->horizontalSlider_MP3->setValue(0);
     ui->horizontalSlider_PreviewMP3->setValue(0);
-    ui->label_TimeElapsed->setText(tr("0:00"));
-    ui->label_PreviewTimeElapsed->setText(tr("0:00"));
+    ui->label_TimeElapsed->setText("0:00");
+    ui->label_PreviewTimeElapsed->setText("0:00");
     int minutesToRun = (MP3LengthTime / 60);
     int secondsToRun = ((int)MP3LengthTime % 60);
-    ui->label_TimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
-    ui->label_PreviewTimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
+    ui->label_TimeToRun->setText(QString("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
+    ui->label_PreviewTimeToRun->setText(QString("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
 
     BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, 0);
     BPM = BPMFromMP3;
@@ -940,7 +962,7 @@ void QCMainWindow::handleMP3() {
 
 void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)
 {
-    ui->label_PlaybackSpeedPercentage->setText(tr("%1 \%").arg(QString::number(value)));
+    ui->label_PlaybackSpeedPercentage->setText(QString("%1 \%").arg(QString::number(value)));
 }
 
 void QCMainWindow::on_actionAbout_BASS_triggered()
@@ -975,12 +997,16 @@ void QCMainWindow::updateTime() {
         int posSec = (int)BASS_Position();
         int minutesElapsed = posSec / 60;
         int secondsElapsed = posSec % 60;
-        ui->label_TimeElapsed->setText(tr("%1:%2").arg(minutesElapsed).arg(secondsElapsed, 2, 10, QChar('0')));
+        ui->label_TimeElapsed->setText(QString("%1:%2").arg(minutesElapsed).arg(secondsElapsed, 2, 10, QChar('0')));
         int timeToRun = MP3LengthTime - posSec;
         int minutesToRun = (timeToRun / 60);
         int secondsToRun = (timeToRun % 60);
-        ui->label_TimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
-        ui->horizontalSlider_MP3->setValue(posSec);
+        ui->label_TimeToRun->setText(QString("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
+
+        if(!ui->horizontalSlider_MP3->isSliderDown())
+        {
+            ui->horizontalSlider_MP3->setValue(posSec);
+        }
 
         if(posSec != -1) {
             QTimer::singleShot(1000, this, SLOT(updateTime()));
@@ -991,11 +1017,11 @@ void QCMainWindow::updatePreviewTime() {
         int posSec = (int)BASS_Position();
         int minutesElapsed = posSec / 60;
         int secondsElapsed = posSec % 60;
-        ui->label_PreviewTimeElapsed->setText(tr("%1:%2").arg(minutesElapsed).arg(secondsElapsed, 2, 10, QChar('0')));
+        ui->label_PreviewTimeElapsed->setText(QString("%1:%2").arg(minutesElapsed).arg(secondsElapsed, 2, 10, QChar('0')));
         int timeToRun = MP3LengthTime - posSec;
         int minutesToRun = (timeToRun / 60);
         int secondsToRun = (timeToRun % 60);
-        ui->label_PreviewTimeToRun->setText(tr("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
+        ui->label_PreviewTimeToRun->setText(QString("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
         ui->horizontalSlider_PreviewMP3->setValue(posSec);
 
         if (posSec != -1) {
@@ -1006,6 +1032,7 @@ void QCMainWindow::updatePreviewTime() {
 void QCMainWindow::on_pushButton_Reset_clicked()
 {
     if (state == stopped) {
+        timeLineMap.clear();
         lyricsProgressBar->hide();
         state = QCMainWindow::initialized;
         previewState = QCMainWindow::initialized;
@@ -1046,17 +1073,23 @@ void QCMainWindow::on_pushButton_Reset_clicked()
 
 void QCMainWindow::on_pushButton_UndoTap_clicked()
 {
+    QMutableMapIterator<double, QString> i(timeLineMap);
+
     if (currentSyllableIndex > 0) {
         currentSyllableIndex = currentSyllableIndex-1;
         if (currentSyllableIndex == 0) {
             firstNote = true;
-            ui->plainTextEdit_OutputLyrics->undo(); // delete GAP
+            timeLineMap.remove(-1); // delete GAP
             ui->doubleSpinBox_Gap->setValue(0.00);
             ui->pushButton_UndoTap->setDisabled(true);
         }
         updateSyllableButtons();
         lyricsProgressBar->setValue(lyricsProgressBar->value()-1);
-        ui->plainTextEdit_OutputLyrics->undo();
+        i.toBack();
+        i.previous();
+        timeLineMap.remove(i.key());
+
+        updateOutputLyrics();
     }
 }
 
@@ -1381,7 +1414,7 @@ void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
                         }
                     title = tokens.join(" ");
 
-                    dirName = tr("%1 - %2").arg(artist).arg(title);
+                    dirName = QString("%1 - %2").arg(artist).arg(title);
                 }
                 else { // audio file does not follow "Artist - Title.*" naming scheme
                     artist = songInfo.completeBaseName();
@@ -1391,11 +1424,11 @@ void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
                 }
 
                 songInfo.dir().mkdir(dirName);
-                QString newFileName(tr("%1/%2/%3.%4").arg(songInfo.absolutePath()).arg(dirName).arg(dirName).arg(songInfo.suffix().toLower()));
+                QString newFileName(QString("%1/%2/%3.%4").arg(songInfo.absolutePath()).arg(dirName).arg(dirName).arg(songInfo.suffix().toLower()));
                 songFile.rename(newFileName);
 
                 // text file
-                QString textFilename(tr("%1/%2/%3.txt").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+                QString textFilename(QString("%1/%2/%3.txt").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
                 QFile file(textFilename);
                 if (!file.open(QFile::WriteOnly | QFile::Text)) {
                     QUMessageBox::warning(this, tr("Application"),
@@ -1414,25 +1447,25 @@ void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
                 //textString += "#ENCODING:CP1252\n";
                 //textString += "#ENCODING:UTF8\n";
                 if (separatorPos != -1) {
-                    textString += tr("#TITLE:%1\n").arg(title);
+                    textString += QString("#TITLE:%1\n").arg(title);
                 }
                 else {
-                    textString += tr("#TITLE:?\n");
+                    textString += QString("#TITLE:?\n");
                 }
-                textString += tr("#ARTIST:%1\n").arg(artist);
+                textString += QString("#ARTIST:%1\n").arg(artist);
                 textString += "#LANGUAGE:\n";
                 textString += "#EDITION:\n";
                 textString += "#GENRE:\n";
                 textString += "#YEAR:\n";
                 if (separatorPos != -1) {
-                    textString += tr("#MP3:%1 - %2.%3\n").arg(artist).arg(title).arg(songInfo.suffix().toLower());
-                    textString += tr("#COVER:%1 - %2 [CO].jpg\n").arg(artist).arg(title);
-                    textString += tr("#BACKGROUND:%1 - %2 [BG].jpg\n").arg(artist).arg(title);
+                    textString += QString("#MP3:%1 - %2.%3\n").arg(artist).arg(title).arg(songInfo.suffix().toLower());
+                    textString += QString("#COVER:%1 - %2 [CO].jpg\n").arg(artist).arg(title);
+                    textString += QString("#BACKGROUND:%1 - %2 [BG].jpg\n").arg(artist).arg(title);
                 }
                 else {
-                    textString += tr("#MP3:%1.%2\n").arg(artist).arg(songInfo.suffix().toLower());
-                    textString += tr("#COVER:%1 [CO].jpg\n").arg(artist);
-                    textString += tr("#BACKGROUND:%1 [BG].jpg\n").arg(artist);
+                    textString += QString("#MP3:%1.%2\n").arg(artist).arg(songInfo.suffix().toLower());
+                    textString += QString("#COVER:%1 [CO].jpg\n").arg(artist);
+                    textString += QString("#BACKGROUND:%1 [BG].jpg\n").arg(artist);
                 }
                 textString += "#BPM:300\n";
                 textString += "#GAP:0\n";
@@ -1443,12 +1476,12 @@ void QCMainWindow::on_actionCreate_Dummy_Songs_triggered()
                 out << textString;
 
                 // Cover
-                QString coverFilename(tr("%1/%2/%3 [CO].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+                QString coverFilename(QString("%1/%2/%3 [CO].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
                 QFile cover(":/NoCover.jpg");
                 cover.copy(coverFilename);
 
                 // Background
-                QString backgroundFilename(tr("%1/%2/%3 [BG].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+                QString backgroundFilename(QString("%1/%2/%3 [BG].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
                 QFile background(":/NoBackground.jpg");
                 background.copy(backgroundFilename);
             }

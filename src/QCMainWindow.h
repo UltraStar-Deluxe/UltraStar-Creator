@@ -86,6 +86,8 @@ private:
     QProgressBar *lyricsProgressBar;
     double MP3LengthTime;
     QString defaultDir;
+    QMap<double, QString> timeLineMap;
+    void updateOutputLyrics();
 
 private slots:
     void on_pushButton_ShowWebSite_clicked();
