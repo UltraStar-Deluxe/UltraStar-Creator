@@ -47,6 +47,7 @@ private:
     QClipboard *clipboard;
     float BPMFromMP3;
     float BPM;
+    float sampleRate;
     bool firstNote;
     bool isFirstKeyPress;
     QString cleanLyrics(QString);
@@ -61,7 +62,6 @@ private:
     double BASS_Position();
     void BASS_SetPosition(int seconds);
     void handleMP3();
-    float playbackSpeedDecreasePercentage;
     QFileInfo* fileInfo_MP3;
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);

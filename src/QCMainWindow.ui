@@ -2401,7 +2401,7 @@ The pitch of each individual note needs to be set using the UltraStar internal e
                     <string>Here you can adjust the playback speed of the audio file while tapping. This is especially helpful when tapping very fast songs.</string>
                    </property>
                    <property name="minimum">
-                    <number>50</number>
+                    <number>10</number>
                    </property>
                    <property name="maximum">
                     <number>100</number>
@@ -3746,7 +3746,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

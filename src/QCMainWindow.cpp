@@ -192,7 +192,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         QWidget::setAcceptDrops(false);
         ui->groupBox_MP3Tag->setDisabled(true);
         ui->groupBox_SongMetaInformationTags->setDisabled(true);
-        ui->groupBox_MiscSettings->setDisabled(true);
+        //ui->groupBox_MiscSettings->setDisabled(true);
         ui->groupBox_InputLyrics->setDisabled(true);
         ui->groupBox_OutputLyrics->setEnabled(true);
         ui->pushButton_SaveToFile->setDisabled(true);
@@ -266,10 +266,12 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
         BASS_StopAndFree();
         _mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->absoluteFilePath().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
 
-        playbackSpeedDecreasePercentage = 100 - ui->horizontalSlider_PlaybackSpeed->value();
         _mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
-        bool result = BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO, -playbackSpeedDecreasePercentage);
-        if (result) {
+
+        // playing slower results in lower pitch, just like a record played at a lower speed
+        // playing slower while preserving pitch only works well for small changes in speed
+        BASS_ChannelGetAttribute(_mediaStream, BASS_ATTRIB_FREQ, &sampleRate);
+        if (BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO_FREQ, sampleRate*ui->horizontalSlider_PlaybackSpeed->value()/100)) {
             BASS_Play();
             updateTime();
         }
@@ -876,22 +878,22 @@ void QCMainWindow::BASS_Resume() {
  * Get current position in seconds of the stream.
  */
 double QCMainWindow::BASS_Position() {
-        if(!_mediaStream)
-            return -1;
+    if(!_mediaStream)
+        return -1;
 
-        return BASS_ChannelBytes2Seconds(_mediaStream, BASS_ChannelGetPosition(_mediaStream, BASS_POS_BYTE));
+    return BASS_ChannelBytes2Seconds(_mediaStream, BASS_ChannelGetPosition(_mediaStream, BASS_POS_BYTE));
 }
 
 void QCMainWindow::BASS_SetPosition(int seconds) {
-        if(!_mediaStream)
-            return;
+    if(!_mediaStream)
+        return;
 
-        QWORD pos = BASS_ChannelSeconds2Bytes(_mediaStream, (double)seconds);
+    QWORD pos = BASS_ChannelSeconds2Bytes(_mediaStream, (double)seconds);
 
-        if(!BASS_ChannelSetPosition(_mediaStream, pos, BASS_POS_BYTE)) {
-            //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
-            return;
-        }
+    if(!BASS_ChannelSetPosition(_mediaStream, pos, BASS_POS_BYTE)) {
+        //logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
+        return;
+    }
 }
 
 void QCMainWindow::handleMP3() {
@@ -963,6 +965,10 @@ void QCMainWindow::handleMP3() {
 void QCMainWindow::on_horizontalSlider_PlaybackSpeed_valueChanged(int value)
 {
     ui->label_PlaybackSpeedPercentage->setText(QString("%1 \%").arg(QString::number(value)));
+
+    if (state == playing || state == paused) {
+        BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO_FREQ, sampleRate*ui->horizontalSlider_PlaybackSpeed->value()/100);
+    }
 }
 
 void QCMainWindow::on_actionAbout_BASS_triggered()
@@ -1090,6 +1096,9 @@ void QCMainWindow::on_pushButton_UndoTap_clicked()
         timeLineMap.remove(i.key());
 
         updateOutputLyrics();
+
+        double undoTime = 1.0; // step 1 second back in MP3
+        BASS_SetPosition(qMax(BASS_Position() - undoTime, 0.0));
     }
 }
 
