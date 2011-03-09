@@ -245,6 +245,8 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
             timeLineMap.insert(-3, QString("#VIDEOGAP:%1").arg(ui->doubleSpinBox_Videogap->text()));
         }
         timeLineMap.insert(-2, QString("#BPM:%1").arg(ui->doubleSpinBox_BPM->text()));
+        // BPM might have been changed manually
+        BPM = ui->doubleSpinBox_BPM->value();
 
         updateOutputLyrics();
 
