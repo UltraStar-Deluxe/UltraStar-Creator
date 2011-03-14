@@ -6,7 +6,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="29"/>
         <source>usc</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="76"/>

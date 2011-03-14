@@ -225,7 +225,7 @@ void QCMainWindow::on_pushButton_PlayPause_clicked()
             timeLineMap.insert(-12, QString("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));
         }
         if (!ui->lineEdit_Edition->text().isEmpty()) {
-            timeLineMap.insert(-11, QString("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));
+            timeLineMap.insert(-11, QString("#EDITION:%1").arg(ui->lineEdit_Edition->text()));
         }
         if (!ui->comboBox_Genre->currentText().isEmpty()) {
             timeLineMap.insert(-10, QString("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
@@ -364,7 +364,7 @@ void QCMainWindow::on_pushButton_Tap_released()
     currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPM / 15000));
     if (firstNote){
         firstNoteStartBeat = currentNoteStartBeat;
-        timeLineMap.insert(-1, QString("#GAP:%1").arg(QString::number(currentNoteStartTime, 'f', 2)));
+        timeLineMap.insert(-1, QString("#GAP:%1").arg(QString::number(currentNoteStartTime, 'f', 0)));
         ui->doubleSpinBox_Gap->setValue(currentNoteStartTime);
         ui->label_GapSet->setPixmap(QPixmap(":/icons/path_ok.png"));
         firstNote = false;
