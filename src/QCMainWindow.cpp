@@ -457,7 +457,7 @@ void QCMainWindow::on_pushButton_BrowseMP3_clicked()
     QString filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose MP3 file"), defaultDir, tr("Audio files (*.mp3 *.ogg)"));
     fileInfo_MP3 = new QFileInfo(filename_MP3);
     if (fileInfo_MP3->exists()) {
-        defaultDir = fileInfo_MP3->absolutePath();        
+        defaultDir = fileInfo_MP3->absolutePath();
         handleMP3();
     }
 }
@@ -900,6 +900,7 @@ void QCMainWindow::BASS_SetPosition(int seconds) {
 
 void QCMainWindow::handleMP3() {
     setCursor(Qt::WaitCursor);
+    ui->label_MP3Set->setStatusTip(tr("#MP3 is set."));
 
     ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
 
@@ -1534,10 +1535,10 @@ void QCMainWindow::on_pushButton_SyllabificateRules_clicked()
     if ((language != "English") && (language != "German") && (language != "Spanish")) {
         QString infoString;
         if (!ui->comboBox_Language->currentText().isEmpty()) {
-            infoString = QString("The automatic lyrics syllabification is not (yet) available for <b>%1</b>.").arg(ui->comboBox_Language->currentText());
+            infoString = tr("The automatic lyrics syllabification is not (yet) available for <b>%1</b>.").arg(ui->comboBox_Language->currentText());
         }
         else {
-            infoString = QString("The song language has not yet been set.");
+            infoString = tr("The song language has not yet been set.");
         }
         int result = QUMessageBox::question(0,
                         QObject::tr("Syllabification."),
@@ -2253,9 +2254,25 @@ void QCMainWindow::on_pushButton_EnableBPMEdit_toggled(bool checked)
     ui->doubleSpinBox_BPM->setReadOnly(!checked);
     if(checked){
         ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/icons/lock-unlock.png"));
+        ui->pushButton_EnableBPMEdit->setStatusTip(tr("Lock to determine BPM automatically."));
     }
     else {
         ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/icons/lock.png"));
+        ui->pushButton_EnableBPMEdit->setStatusTip(tr("Unlock to edit BPM manually."));
+        BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, 0);
+        BPM = BPMFromMP3;
+
+        if (BPM == 0) {
+            BPM = 50;
+        }
+
+        while (BPM <= 200) {
+            BPM = BPM*2;
+        }
+
+        ui->doubleSpinBox_BPM->setValue(BPM);
+        ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
+        ui->label_BPMSet->setStatusTip(tr("#BPM tag set."));
     }
 }
 
@@ -2263,13 +2280,11 @@ void QCMainWindow::on_doubleSpinBox_BPM_valueChanged(double BPMValue)
 {
     BPM = BPMValue;
 
-    if (BPM <= 50) {
-        BPM = BPM*8;
+    if (BPM == 0) {
+        BPM = 50;
     }
-    else if (BPM <= 100) {
-        BPM = BPM*4;
-    }
-    else if (BPM <= 200) {
+
+    while (BPM <= 200) {
         BPM = BPM*2;
     }
 }

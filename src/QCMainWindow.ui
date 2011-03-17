@@ -1893,7 +1893,7 @@ If you extract the audio track from the given video, this should be zero. Other 
                   <string/>
                  </property>
                  <property name="statusTip">
-                  <string>Browse for a cover image file.</string>
+                  <string>Unlock to edit BPM manually.</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -3746,7 +3746,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
