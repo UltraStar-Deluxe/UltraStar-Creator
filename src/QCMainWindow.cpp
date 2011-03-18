@@ -599,7 +599,7 @@ void QCMainWindow::on_lineEdit_Title_textChanged(QString title)
     }
     else {
         ui->label_TitleSet->setPixmap(QPixmap(":/icons/path_error.png"));
-        ui->label_TitleSet->setStatusTip(tr("#TITLE tag is empty."));
+        ui->label_TitleSet->setStatusTip(tr("#TITLE tag is not set."));
     }
 }
 
@@ -611,7 +611,7 @@ void QCMainWindow::on_lineEdit_Artist_textChanged(QString artist)
     }
     else {
         ui->label_ArtistSet->setPixmap(QPixmap(":/icons/path_error.png"));
-        ui->label_ArtistSet->setStatusTip(tr("#ARTIST tag is empty."));
+        ui->label_ArtistSet->setStatusTip(tr("#ARTIST tag is not set."));
     }
 }
 
@@ -623,7 +623,7 @@ void QCMainWindow::on_comboBox_Language_currentIndexChanged(QString language)
     }
     else {
         ui->label_LanguageSet->setPixmap(QPixmap(":/icons/path_error.png"));
-        ui->label_LanguageSet->setStatusTip(tr("#LANGUAGE tag is empty."));
+        ui->label_LanguageSet->setStatusTip(tr("#LANGUAGE tag is not set."));
     }
 }
 
@@ -635,7 +635,7 @@ void QCMainWindow::on_lineEdit_Edition_textChanged(QString edition)
     }
     else {
         ui->label_EditionSet->setPixmap(QPixmap(":/icons/path_error.png"));
-        ui->label_EditionSet->setStatusTip(tr("#EDITION tag is empty."));
+        ui->label_EditionSet->setStatusTip(tr("#EDITION tag is not set."));
     }
 }
 
@@ -647,7 +647,7 @@ void QCMainWindow::on_comboBox_Genre_textChanged(QString genre)
     }
     else {
         ui->label_GenreSet->setPixmap(QPixmap(":/icons/path_error.png"));
-        ui->label_GenreSet->setStatusTip(tr("#GENRE tag is empty."));
+        ui->label_GenreSet->setStatusTip(tr("#GENRE tag is not set."));
     }
 }
 
@@ -659,7 +659,7 @@ void QCMainWindow::on_lineEdit_Creator_textChanged(QString creator)
     }
     else {
         ui->label_CreatorSet->setPixmap(QPixmap(":/icons/path_error.png"));
-        ui->label_CreatorSet->setStatusTip(tr("#CREATOR tag is empty."));
+        ui->label_CreatorSet->setStatusTip(tr("#CREATOR tag is not set."));
     }
 }
 
@@ -900,7 +900,7 @@ void QCMainWindow::BASS_SetPosition(int seconds) {
 
 void QCMainWindow::handleMP3() {
     setCursor(Qt::WaitCursor);
-    ui->label_MP3Set->setStatusTip(tr("#MP3 is set."));
+    ui->label_MP3Set->setStatusTip(tr("#MP3 tag is set."));
 
     ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
 
@@ -931,7 +931,7 @@ void QCMainWindow::handleMP3() {
 
     ui->doubleSpinBox_BPM->setValue(BPM);
     ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
-    ui->label_BPMSet->setStatusTip(tr("#BPM tag set."));
+    ui->label_BPMSet->setStatusTip(tr("#BPM tag is set."));
 
     TagLib::FileRef ref(fileInfo_MP3->absoluteFilePath().toLocal8Bit().data());
     ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
@@ -944,7 +944,7 @@ void QCMainWindow::handleMP3() {
     ui->groupBox_MiscSettings->setEnabled(true);
     ui->groupBox_InputLyrics->setEnabled(true);
     ui->label_MP3Set->setPixmap(QPixmap(":/icons/path_ok.png"));
-    ui->label_BPMSet->setStatusTip(tr("MP3 set."));
+    ui->label_BPMSet->setStatusTip(tr("#BPM tag is set."));
     previewState = QCMainWindow::initialized;
     ui->groupBox_Control->setEnabled(true);
     ui->pushButton_PreviewPlayPause->setEnabled(true);
@@ -1254,7 +1254,7 @@ void QCMainWindow::on_comboBox_Year_activated(QString year)
     }
     else {
         ui->label_YearSet->setPixmap(QPixmap(":/icons/path_error.png"));
-        ui->label_YearSet->setStatusTip(tr("#YEAR tag is empty."));
+        ui->label_YearSet->setStatusTip(tr("#YEAR tag is not set."));
     }
 }
 
@@ -2254,11 +2254,13 @@ void QCMainWindow::on_pushButton_EnableBPMEdit_toggled(bool checked)
     ui->doubleSpinBox_BPM->setReadOnly(!checked);
     if(checked){
         ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/icons/lock-unlock.png"));
-        ui->pushButton_EnableBPMEdit->setStatusTip(tr("Lock to determine BPM automatically."));
+        ui->pushButton_EnableBPMEdit->setStatusTip(tr("Lock to determine #BPM automatically."));
+        ui->doubleSpinBox_BPM->setStatusTip(tr("Enter the song's #BPM manually."));
     }
     else {
         ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/icons/lock.png"));
-        ui->pushButton_EnableBPMEdit->setStatusTip(tr("Unlock to edit BPM manually."));
+        ui->pushButton_EnableBPMEdit->setStatusTip(tr("Unlock to edit #BPM manually."));
+        ui->doubleSpinBox_BPM->setStatusTip(tr("BPM is determined automatically from the MP3 file."));
         BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, 0);
         BPM = BPMFromMP3;
 
@@ -2272,7 +2274,7 @@ void QCMainWindow::on_pushButton_EnableBPMEdit_toggled(bool checked)
 
         ui->doubleSpinBox_BPM->setValue(BPM);
         ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
-        ui->label_BPMSet->setStatusTip(tr("#BPM tag set."));
+        ui->label_BPMSet->setStatusTip(tr("#BPM tag is set."));
     }
 }
 

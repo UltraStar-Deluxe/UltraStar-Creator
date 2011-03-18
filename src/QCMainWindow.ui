@@ -200,7 +200,7 @@
                <item row="0" column="4">
                 <widget class="QLabel" name="label_MP3Set">
                  <property name="statusTip">
-                  <string>MP3 is not set.</string>
+                  <string>#MP3 tag is not set.</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -610,6 +610,9 @@ Try to fill this field as accurately as possible, as it influences file namings 
                    <weight>50</weight>
                    <bold>false</bold>
                   </font>
+                 </property>
+                 <property name="statusTip">
+                  <string>Enter the song edition.</string>
                  </property>
                  <property name="whatsThis">
                   <string>This field should contain the song's edition. It's main purpose is to distinguish SingStar titles and checked songs ('[SC]-Songs') from all other songs that song makers create.</string>
@@ -1893,7 +1896,7 @@ If you extract the audio track from the given video, this should be zero. Other 
                   <string/>
                  </property>
                  <property name="statusTip">
-                  <string>Unlock to edit BPM manually.</string>
+                  <string>Unlock to edit #BPM manually.</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -1922,10 +1925,10 @@ If you extract the audio track from the given video, this should be zero. Other 
                   <enum>Qt::CustomContextMenu</enum>
                  </property>
                  <property name="toolTip">
-                  <string>BPM will be determined automatically from the MP3 file.</string>
+                  <string/>
                  </property>
                  <property name="statusTip">
-                  <string>BPM will be determined automatically from the MP3 file.</string>
+                  <string>#BPM is determined automatically from the MP3 file.</string>
                  </property>
                  <property name="whatsThis">
                   <string>This field contains the song's beats per minute (or a multiple thereof). It is determined automatically from the audio file and therefore cannot be edited.
@@ -2018,10 +2021,10 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
                   </font>
                  </property>
                  <property name="toolTip">
-                  <string>Gap will be determined automatically when you start tapping.</string>
+                  <string/>
                  </property>
                  <property name="statusTip">
-                  <string>Gap will be determined automatically when you start tapping.</string>
+                  <string>#GAP will be determined automatically when you start tapping.</string>
                  </property>
                  <property name="whatsThis">
                   <string>This field contains the time gap in milliseconds from the beginning of the song until the first syllable is sung. It is determined automatically when tapping the first syllable and can therefore not be edited.</string>
@@ -3746,7 +3749,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
