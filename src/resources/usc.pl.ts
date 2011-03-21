@@ -302,7 +302,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="2027"/>
         <source>#GAP will be determined automatically when you start tapping.</source>
-        <translation>Opóżnienie zostanie wpisane automatycznie w chwili kliknięcia pierwszej sylaby piosenki.</translation>
+        <translation>Opóźnienie zostanie wpisane automatycznie w chwili kliknięcia pierwszej sylaby piosenki.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2052"/>
@@ -337,7 +337,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="2484"/>
         <source>This is the overall control station. You can start, stop, pause, resume the tapping and reset everything so you can start from the beginning.</source>
-        <translation>To jest główny panel kontrolny. Za jego pomocą możemy rozpocząć, wstrzymać, zakończyć oraz zresetować i wznowić proces &quot;wyklikiwania&quot; piosenki. </translation>
+        <translation>To jest główny panel kontrolny. Za jego pomocą możesz rozpocząć, wstrzymać, zakończyć oraz zresetować i wznowić proces &quot;wyklikiwania&quot; piosenki. </translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2793"/>
@@ -500,7 +500,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="2650"/>
         <source>Reset &amp; restart tapping (CTRL-R).</source>
-        <translation>Cofnij wszystkie zmiany (CTRL-R).</translation>
+        <translation>Zacznij wszystko od początku (CTRL-R).</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2834"/>
@@ -524,7 +524,7 @@ I know what leaves me cold
 and what burns me up
 now this time it&apos;s just right
 I&apos;m ve+~+ry sure.</source>
-        <translation>Wstaw tutaj tekst piosenki przez wczytanie go
+        <translation>Wstaw tutaj tekst piosenki, przez wczytanie go
 z pliku tekstowego lub przez wklejanie ze schowka.
 Edytuj tekst zgodnie z następującymi zasadami:
 
@@ -532,8 +532,8 @@ Edytuj tekst zgodnie z następującymi zasadami:
 * Słowa powinny być rozdzielone spacjami.
 * Sylaby w słowach rozdziel za pomocą &quot;+&quot;.
 * Dodaj &apos;+ ~ &quot; aby powtórzyć samogłoski.
-* W wyrażeniach przyimkowych połącz tymczasowo
-   przyimek z sylabą za pomocą np. &quot;_&quot;.
+* W wyrażeniach przyimkowych, połącz tymczasowo
+   przyimek z sylabą, za pomocą np. &quot;_&quot;.
 
 Przykład:
 
@@ -552,25 +552,25 @@ Mia+~+~+~+~+u.</translation>
         <source>Here you can browse for a plain text file that contains the lyrics.
 
 This is useful if you have stored the song&apos;s lyrics in a file on your harddrive.</source>
-        <translation>Jeżeli masz na swoim dysku twardym zapisane teksty piosenek w postaci zwykłych plików tekstowych, za pomocą tego przycisku możesz przejrzeć swoje zasoby i wybrać odpowiedni plik.</translation>
+        <translation>Jeżeli masz na swoim dysku twardym, zapisane teksty piosenek, w postaci zwykłych plików tekstowych, za pomocą tego przycisku, możesz przejrzeć swoje zasoby i wybrać odpowiedni plik.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2929"/>
         <source>Here you can paste lyrics from the clipboard. This is useful if you have searched the lyrics on the internet and copied them to the clipboard.
 
 This overrides the current content of the lyrics text field.</source>
-        <translation>Ten przycisk służy do wklejenia tekstu ze schowka który wcześniej skopiowaliśmy np. ze strony internetowej.
-Wklejany tekst zastępuje tekst znajdujący się w oknie.</translation>
+        <translation>Ten przycisk służy do wklejenia tekstu ze schowka, który wcześniej skopiowaliśmy, np. ze strony internetowej.
+Wklejany tekst, zastępuje tekst znajdujący się w oknie.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2973"/>
         <source>Here you can increase the font size of the displayed lyrics.</source>
-        <translation>Tutaj możesz zwiększyć rozmiar czcionki wyświetlanego tekstu ..</translation>
+        <translation>Tutaj możesz zwiększyć rozmiar czcionki wyświetlanego tekstu.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3002"/>
         <source>Here you can decrease the font size of the displayed lyrics.</source>
-        <translation>Tutaj możesz zmniejszyć rozmiar czcionki wyświetlanego tekstu ..</translation>
+        <translation>Tutaj możesz zmniejszyć rozmiar czcionki wyświetlanego tekstu.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3028"/>
@@ -584,9 +584,9 @@ Wklejany tekst zastępuje tekst znajdujący się w oknie.</translation>
 USC will try to split words into individual syllables automatically based on syllabification rules. So far, these are only available for English, German, and Spanish.
 
 You can try to use automatic syllabification with languages other than the ones mentioned above, but results may be unsatisfactory.</source>
-        <translation>Użycie tego przycisku spowoduje automatyczny podział na sylaby tekstu znajdującego się w oknie.
-USC dokonuje tego podziału wg algorytmu opartego na zasadach gramatycznych danego języka. Aktualnie wspierane języki to: angielski, niemiecki i hiszpański. 
-Oczywiście możesz za pomocą tej funkcji spróbować podzielić tekst zapisany w innym języku, lecz efekty mogą być niezadowalające i będą wymagały sporej ilości poprawek.</translation>
+        <translation>Użycie tego przycisku spowoduje automatyczny podział na sylaby, tekstu znajdującego się w oknie.
+USC dokonuje tego podziału wg algorytmu, opartego na zasadach gramatycznych danego języka. Aktualnie wspierane języki to: angielski, niemiecki i hiszpański. 
+Oczywiście za pomocą tej funkcji, możesz spróbować podzielić tekst zapisany w innym języku, lecz efekty mogą być niezadowalające i będą wymagały sporej ilości poprawek.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3061"/>
@@ -607,7 +607,7 @@ Oczywiście możesz za pomocą tej funkcji spróbować podzielić tekst zapisany
     <message>
         <location filename="../QCMainWindow.ui" line="3152"/>
         <source>Here the resulting UltraStar text file is created while you are tapping the song lyrics.</source>
-        <translation>Tutaj możesz na bieżąco śledzić jak powstaje plik tekstowy do Ultrastar&apos;a będący wynikiem &quot;wyklikiwania&quot; sylab tekstu piosenki. </translation>
+        <translation>Tutaj możesz na bieżąco śledzić, jak powstaje plik tekstowy do Ultrastar&apos;a, będący wynikiem &quot;wyklikiwania&quot; sylab tekstu piosenki. </translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3183"/>
@@ -639,18 +639,18 @@ Oczywiście możesz za pomocą tej funkcji spróbować podzielić tekst zapisany
         <source>Having successfully saved the UltraStar file, you can launch UltraStar with only that individual song for finetuning note timings and pitches.
 
 For the first launch from within USC, you can browse for the UltraStar executable file.</source>
-        <translation>Po zapisaniu utworzonego pliku txt na dysku za pomocą tego przycisku możesz bezpośrednio uruchomić program UltraStar w celu dokonania niezbędnych poprawek synchronizacji nut, ich czasu trwania oraz wysokości każdej z nich, zgodnej z linią melodyczną piosenki.
+        <translation>Po zapisaniu utworzonego pliku txt na dysku, za pomocą tego przycisku, możesz bezpośrednio uruchomić program UltraStar, w celu dokonania niezbędnych poprawek synchronizacji nut, ich czasu trwania oraz wysokości każdej z nich, zgodnie z linią melodyczną piosenki.
 
-W przypadku pierwszego uruchomienia należy wskazać plik exe programu UltraStar.</translation>
+W przypadku pierwszego uruchomienia, należy wskazać plik exe programu UltraStar.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3326"/>
         <source>Having successfully saved the UltraStar file, you can launch YASS with only that individual song for finetuning note timings and pitches.
 
 For the first launch from within USC, you can browse for the YASS executable file.</source>
-        <translation>Po zapisaniu utworzonego pliku txt na dysku za pomocą tego przycisku możesz bezpośrednio uruchomić program YASS w celu dokonania niezbędnych poprawek synchronizacji nut, ich czasu trwania oraz wysokości każdej z nich, zgodnej z linią melodyczną piosenki.
+        <translation>Po zapisaniu utworzonego pliku txt na dysku, za pomocą tego przycisku, możesz bezpośrednio uruchomić program YASS, w celu dokonania niezbędnych poprawek synchronizacji nut, ich czasu trwania oraz wysokości każdej z nich, zgodnie z linią melodyczną piosenki.
 
-W przypadku pierwszego uruchomienia należy wskazać plik exe programu YASS.</translation>
+W przypadku pierwszego uruchomienia, należy wskazać plik exe programu YASS.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3405"/>
@@ -662,7 +662,7 @@ W przypadku pierwszego uruchomienia należy wskazać plik exe programu YASS.</tr
         <source>Here you can undo your last tap (shortcut: X). This will step back by one syllable without pausing or stepping back in the audio file. This is useful if you tapped one or more syllables ahead of time.
 
 It is also possible to pause the tapping first before stepping back by one syllable at the time.</source>
-        <translation>Tym przyciskiem możesz anulować (X) w trakcie edycji ostatnie kliknięcie. Każde jego naciśnięcie cofa tekst o jedną sylabę jednocześnie cofając o jedną sekundę odtwarzany plik audio.
+        <translation>Tym przyciskiem możesz anulować (X) w trakcie edycji ostatnie kliknięcie. Każde jego naciśnięcie cofa tekst o jedną sylabę, jednocześnie cofając o jedną sekundę odtwarzany plik audio.
 Funkcja jest przydatna do szybkiej korekty nie &quot;trafionej&quot; jednej lub kilku sylab.
 Gdy się &quot;zagubisz&quot;, możesz wstrzymać edycję i naciskając ten przycisk, cofnąć tekst do właściwego momentu, plik audio cofnąć suwakiem i rozpocząć ponownie edycję od tego miejsca.</translation>
     </message>
@@ -719,7 +719,7 @@ Gdy się &quot;zagubisz&quot;, możesz wstrzymać edycję i naciskając ten przy
     <message>
         <location filename="../QCMainWindow.ui" line="70"/>
         <source>Choose the audio file. After having inserted the lyrics, you can start the preview playback in order to correct spelling and syllabification mistakes in the lyrics.</source>
-        <translation>Ten panel służy do wyboru pliku audio piosenki. Możesz go przesłuchać uruchamiając player. Gdy już wstawisz tekst do panelu obok odsłuchiwanie piosenki znacząco ułatwi wychwycenie błędów i brakujących fragmentów tekstu. Ułatwi też podział słów na sylaby oraz korektę błędów sylabifikacji automatycznej.</translation>
+        <translation>Ten panel służy do wyboru pliku audio piosenki. Możesz go przesłuchać uruchamiając player. Gdy już wstawisz do panelu obok tekst, odsłuchiwanie piosenki znacząco ułatwi wychwycenie błędów i brakujących fragmentów tekstu. Ułatwi też podział słów na sylaby oraz korektę błędów sylabifikacji automatycznej.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="187"/>
@@ -760,26 +760,25 @@ Try to fill this field as accurately as possible, as it influences file namings 
         <source>This field should contain the song&apos;s artist(s).
 
 Try to fill this field as accurately as possible, as it influences file namings and the display of the song in UltraStar itself.</source>
-        <translation>To pole powinno zawierać imię i nazwisko lub pseudonim artysty (artystów) lub nazwę zespołu wykonującego piosenkę.
+        <translation>To pole powinno zawierać imię i nazwisko lub pseudonim artysty (artystów), lub nazwę zespołu wykonującego piosenkę.
 
  Staraj się wypełnić je jak najdokładniej, ponieważ tekst jaki tu wpiszesz będzie wyświetlany jako wykonawca na ekranie wyboru piosenek w UltraStar.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="534"/>
         <source>This field should contain the song&apos;s main language. The selection also influences the rules to be used when applying automatic syllabification.</source>
-        <translation>W tym polu wybieramy z listy język w jakim jest wykonywana piosenka. Wybór ten wpływa na zasady automatycznego podziału wyrazów na sylaby.
-</translation>
+        <translation>W tym polu wybieramy z listy język w jakim jest wykonywana piosenka. Wybór ten wpływa na zasady automatycznego podziału wyrazów na sylaby.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="682"/>
         <source>This field should contain the song&apos;s musical genre. There are some major default fields, but if you prefer a genre that&apos;s not on the list, feel free to type it in.</source>
-        <translation>W to pole należy wpisać nazwę gatunku muzyki z kręgu którego pochodzi edytowana piosenka. Z rozwijanej listy możesz wybrać odpowiedni gatunek lub wpisać samemu, gdy właściwego brakuje.</translation>
+        <translation>W to pole należy wpisać nazwę gatunku muzyki, z kręgu którego pochodzi edytowana piosenka. Z rozwijanej listy możesz wybrać odpowiedni gatunek lub wpisać samemu, gdy właściwego brakuje.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="618"/>
         <source>This field should contain the song&apos;s edition. It&apos;s main purpose is to distinguish SingStar titles and checked songs (&apos;[SC]-Songs&apos;) from all other songs that song makers create.</source>
         <translation>W to pole możesz wpisać np. nazwę &quot;projektu&quot; w ramach którego będzie wydana tworzona piosenka.
-Głównym celem wprowadzenia tego tagu było wyróżnienie piosenek wydanych w kolejnych edycjach SingStar&apos;a od piosenek tworzonych przez usmaker&apos;ów.</translation>
+Głównym celem wprowadzenia tego tagu było wyróżnienie piosenek wydanych w kolejnych edycjach SingStar&apos;a, od piosenek tworzonych przez usmaker&apos;ów.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1229"/>
@@ -860,12 +859,12 @@ Oba te parametry możesz również zmieniać w trakcie edycji.</translation>
     <message>
         <location filename="../QCMainWindow.ui" line="190"/>
         <source>This field contains the audio file to be used for tapping the song.</source>
-        <translation>W tym polu należy umieścić plik audio piosenki dla której będziesz tworzył plik Ultrastar.</translation>
+        <translation>W tym polu należy umieścić plik audio piosenki, dla której będziesz tworzył plik Ultrastar.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="234"/>
         <source>This is the preview play button. You can listen to the song at hand before starting the actual tapping to verify the correctness of the pasted lyrics, to adjust the splitting of syllables and to add additional notes with the help of the tilde &apos;~&apos;.</source>
-        <translation>Jest to przycisk uruchamiający/wstrzymujący odsłuch piosenki przed właściwą edycją. Pozwala to na zweryfikowanie wklejonego tekstu piosenki pod kątem zgodności z wokalem, umożliwia łatwiejsze wychwycenie błędów w podziale na sylaby oraz wprowadzenie innego typu poprawek. </translation>
+        <translation>Jest to przycisk uruchamiający/wstrzymujący odsłuch piosenki, przed właściwą edycją. Pozwala to na zweryfikowanie wklejonego tekstu piosenki pod kątem zgodności z wokalem, umożliwia łatwiejsze wychwycenie błędów w podziale na sylaby oraz wprowadzenie innego typu poprawek.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="332"/>
@@ -917,7 +916,7 @@ p, li { white-space: pre-wrap; }
 If you extract the audio track from the given video, this should be zero. Other videogap values need to be finetuned later.</source>
         <translation>Pole to zawiera liczone w sekundach opóźnienie rozpoczęcia teledysku w stosunku do pliku audio.
 
-Jeżeli plik audio był wyodrębniony z teledysku to wartość tego opóźnienia powinna wynosić zero.  W innym przypadku możesz wpisać wartość orientacyjną a dokładnie ją dostroić podczas edycji w edytorze UltraStar&apos;a.</translation>
+Jeżeli plik audio był wyodrębniony z teledysku, to wartość tego opóźnienia powinna wynosić zero. W innym przypadku możesz wpisać wartość orientacyjną a dokładnie ją dostroić, podczas edycji w edytorze UltraStar&apos;a.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1934"/>
@@ -926,13 +925,12 @@ Jeżeli plik audio był wyodrębniony z teledysku to wartość tego opóźnienia
 The BPM value determines all the timings of your tapped UltraStar file. If it is too low, only poor synchronization of lyrics and music is possible, if it is too high, low-end processors might be overstrained with your song. In practice, a value between 300-400 has proven suitable. USC automatically makes sure that a BPM in that range is chosen.</source>
         <translation>Pole to zawiera wartość BPM (Beats Per Minute) pliku audio lub jego wielokrotność. Wartość ta jest wyliczana automatycznie. Po otwarciu kłódeczki obok możemy ją edytować.
 
-Wielkość BPM jest podstawowym parametrem tworzonego pliku txt UltraStar-a. Określa on wszystkie zależności czasowe w nim występujące. Jeżeli jest zbyt niski możesz mieć problemy z synchronizacją tekstu i muzyki, jeśli za wysoki, komputery ze słabymi procesorami mogą nie nadążać z analizą piosenki. W praktyce wartość między 300-400 okazała się wartością optymalną, dlatego USC automatycznie ustawia wartość BPM w tym przedziale.</translation>
+Wielkość BPM jest podstawowym parametrem tworzonego pliku txt UltraStar-a. Określa on wszystkie zależności czasowe w nim występujące. Jeżeli jest zbyt niski, możesz mieć problemy z synchronizacją tekstu i muzyki, jeśli za wysoki, komputery ze słabymi procesorami mogą nie nadążać z analizą piosenki. W praktyce wartość między 300-400 okazała się wartością optymalną, dlatego USC automatycznie ustawia wartość BPM w tym przedziale.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2030"/>
         <source>This field contains the time gap in milliseconds from the beginning of the song until the first syllable is sung. It is determined automatically when tapping the first syllable and can therefore not be edited.</source>
-        <translation>Pole to zawiera wartość opóźnienia liczoną w milisekundach pomiędzy początkiem pliku audio, a pierwszą sylabą śpiewanego tekstu. Jest ona wpisywana automatycznie w momencie kliknięcia pierwszej sylaby i nie może być edytowana.
-</translation>
+        <translation>Pole to zawiera wartość opóźnienia liczoną w milisekundach pomiędzy początkiem pliku audio, a pierwszą sylabą śpiewanego tekstu. Jest ona wpisywana automatycznie w momencie kliknięcia pierwszej sylaby i nie może być edytowana.</translation>
     </message>
     <message>
         <source>Search swisscharts.com for Artist and Title to determine release year.</source>
@@ -945,7 +943,7 @@ Wielkość BPM jest podstawowym parametrem tworzonego pliku txt UltraStar-a. Okr
 The pitch of each individual note needs to be set using the UltraStar internal editor or YASS after having successfully tapped the song.</source>
         <translation>W tym polu wybierasz domyślną wysokość wszystkich tworzonych nut.
 
-Dokładne ustawienie wysokości poszczególnych nut należy przeprowadzić w wewnętrznym edytorze UltraStar&apos;a lub w programie YASS, po zakończonym procesie &quot;wyklikiwania&quot; piosenki.</translation>
+Dokładne ustawienie wysokości poszczególnych nut, należy przeprowadzić w wewnętrznym edytorze UltraStar&apos;a lub w programie YASS, po zakończonym procesie &quot;wyklikiwania&quot; piosenki.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2254"/>
@@ -1005,7 +1003,7 @@ Dokładne ustawienie wysokości poszczególnych nut należy przeprowadzić w wew
     <message>
         <location filename="../QCMainWindow.ui" line="2404"/>
         <source>Here you can adjust the playback speed of the audio file while tapping. This is especially helpful when tapping very fast songs.</source>
-        <translation>Tutaj możesz ustawić odpowiednią do tempa piosenki prędkość odsłuchu co umożliwi łatwiejsze trafianie w sylaby. Prędkość odsłuchu można również zmieniać w trakcie edycji.</translation>
+        <translation>Tutaj możesz ustawić odpowiednią do tempa piosenki prędkość odsłuchu, co umożliwi łatwiejsze trafianie w sylaby. Prędkość odsłuchu możesz regulować także w trakcie edycji.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2443"/>
@@ -1026,9 +1024,9 @@ Dokładne ustawienie wysokości poszczególnych nut należy przeprowadzić w wew
         <source>This button disables all the fields above and starts the tapping. The header of the UltraStar file will be displayed, the audio file will start playing and the first syllables appear in the tap area. Get ready to tap!
 
 While tapping, this button will turn into a pause button where you can interrupt the tapping process any time.</source>
-        <translation>Użycie tego przycisku powoduje wygaszenie paneli powyżej (oprócz panelu ustawień) i rozpoczyna właściwą edycję. W panelu pliku UltraStar pojawia się nagłówek z tagami, rozpoczyna się odtwarzanie pliku audio, a w pierwszym segmencie pola edycji pojawia się pierwsza sylaba tekstu piosenki. Przygotuj się, zaraz się zacznie.
+        <translation>Użycie tego przycisku powoduje wygaszenie paneli powyżej (oprócz panelu ustawień) i rozpoczyna właściwą edycję. W panelu pliku UltraStar pojawia się nagłówek z tagami, rozpoczyna się odtwarzanie pliku audio a w pierwszym segmencie pola edycji, pojawia się pierwsza sylaba tekstu piosenki. Przygotuj się, zaraz się zacznie.
 
-Po rozpoczęciu edycji, przycisk zmienia swoją funkcję. Staje się przyciskiem pauzy, dzięki któremu w każdej chwili możesz wstrzymać proces. </translation>
+Po rozpoczęciu edycji, przycisk zmienia swoją funkcję. Staje się przyciskiem pauzy, dzięki któremu, w każdej chwili możesz wstrzymać proces.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2540"/>
@@ -1050,9 +1048,9 @@ Po rozpoczęciu edycji, przycisk zmienia swoją funkcję. Staje się przyciskiem
         <source>This button stops the tapping process. Now you can either save the tapped UltraStar file or restart the tapping from the beginning using the reset button.
 
 The tapping process is automatically stopped once you have tapped all available lyrics.</source>
-        <translation>Ten przycisk kończy proces tworzenia pliku txt. Możesz go zapisać lub używając przycisku reset rozpocząć pracę od początku. 
+        <translation>Ten przycisk kończy proces tworzenia pliku txt. Możesz go zapisać lub używając przycisku reset, rozpocząć pracę od początku. 
 
-Tworzenie pliku kończy się również automatycznie w momencie kliknięcia ostatniej sylaby.</translation>
+Tworzenie pliku kończy się również automatycznie, w momencie kliknięcia ostatniej sylaby.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2599"/>
@@ -1067,7 +1065,7 @@ Tworzenie pliku kończy się również automatycznie w momencie kliknięcia osta
     <message>
         <location filename="../QCMainWindow.ui" line="2653"/>
         <source>This button resets all tapped notes and enables all fields on the left to make any necessary changes before restarting the tapping process.</source>
-        <translation>Przycisk ten usuwa wszystkie utworzone nuty, ponownie uaktywnia pola tagów i umożliwia naniesienie poprawek w tekście przed ponownym uruchomieniem procesu tworzenia pliku.</translation>
+        <translation>Przycisk ten usuwa wszystkie utworzone nuty, ponownie uaktywnia pola tagów i umożliwia naniesienie poprawek w tekście, przed ponownym uruchomieniem procesu tworzenia pliku.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2669"/>
@@ -1198,7 +1196,7 @@ Tworzenie pliku kończy się również automatycznie w momencie kliknięcia osta
 Start pressing this button (or the space bar) when the syllable is sung and keep it pressed until it is over. The longer you hold the button down, the longer the resulting note will be.</source>
         <translation>W tym segmencie wyświetlane są kolejno sylaby, które należy w odpowiednim momencie kliknąć.
 
-Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk gdy wokalista zacznie i puść go gdy skończy śpiewać sylabę. Im dłuższe naciśnięcie tym dłuższa powstanie nuta.</translation>
+Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalista zacznie i puść go, gdy skończy śpiewać sylabę. Im dłuższe naciśnięcie, tym dłuższa powstanie nuta.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3523"/>
@@ -1495,7 +1493,7 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk gdy wokalist
     <message>
         <location filename="../QCMainWindow.cpp" line="2257"/>
         <source>Lock to determine #BPM automatically.</source>
-        <translation>Zamknij aby wyliczyć #BPM automatycznie.</translation>
+        <translation>Zamknij, aby wyliczyć #BPM automatycznie.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="2258"/>
@@ -1505,7 +1503,7 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk gdy wokalist
     <message>
         <location filename="../QCMainWindow.cpp" line="2263"/>
         <source>BPM is determined automatically from the MP3 file.</source>
-        <translation>BPM jest wyliczany automatycznie podczas wczytywania pliku audio.</translation>
+        <translation>BPM jest wyliczany automatycznie, podczas wczytywania pliku audio.</translation>
     </message>
     <message>
         <source>#TITLE tag is empty.</source>
@@ -1587,7 +1585,7 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk gdy wokalist
     <message>
         <location filename="../QCMainWindow.cpp" line="1538"/>
         <source>The automatic lyrics syllabification is not (yet) available for &lt;b&gt;%1&lt;/b&gt;.</source>
-        <translation>Język &lt;b&gt;%1&lt;/b&gt; to język edytowanej piosenki. Dla tego języka automatyczna sylabifikacja jest (jeszcze) nie możliwa.</translation>
+        <translation>Język &lt;b&gt;%1&lt;/b&gt;został wybrany jako język piosenki. Dla tego języka, automatyczna sylabifikacja jest (jeszcze) nie możliwa.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="1541"/>
@@ -1789,7 +1787,7 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk gdy wokalist
         <location filename="../QCMainWindow.cpp" line="95"/>
         <location filename="../QCMainWindow.cpp" line="1511"/>
         <source>This tool enables you to &lt;b&gt;rapidly&lt;/b&gt; create UltraStar text files &lt;b&gt;from scratch&lt;/b&gt;.&lt;br&gt;&lt;br&gt;To get started, simply chose a &lt;b&gt;song file&lt;/b&gt; in MP3 or OGG format, insert the &lt;b&gt;song lyrics&lt;/b&gt; from a file or the clipboard and divide them into syllables with &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Important song meta information&lt;/b&gt; such as &lt;b&gt;BPM&lt;/b&gt; and &lt;b&gt;GAP&lt;/b&gt; are determined &lt;b&gt;automatically&lt;/b&gt; while the &lt;b&gt;ID3 tag&lt;/b&gt; is used to fill in additional song details, if available.&lt;br&gt;&lt;br&gt;To &lt;b&gt;start tapping&lt;/b&gt;, hit the play/pause button (Keyboard: CTRL-P). Keep the &lt;b&gt;tap button&lt;/b&gt; (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. &lt;b&gt;Undo&lt;/b&gt; the last tap with the undo button (Keyboard: x), &lt;b&gt;stop tapping&lt;/b&gt; with the stop button (Keyboard: CTRL-S), &lt;b&gt;restart&lt;/b&gt; from the beginning with the reset button (Keyboard: CTRL-R). When finished, &lt;b&gt;save&lt;/b&gt; the tapped song using the save button (CTRL-S).&lt;br&gt;&lt;br&gt;Having successfully tapped a song, use the UltraStar internal editor for &lt;b&gt;finetuning the timings&lt;/b&gt;, setting &lt;b&gt;note pitches&lt;/b&gt; and &lt;b&gt;golden&lt;/b&gt; or &lt;b&gt;freestyle notes&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Happy creating!&lt;/b&gt;</source>
-        <translation>To narzędzie pozwala na &lt;b&gt;szybkie&lt;/b&gt; tworzenie &lt;b&gt;od podstaw&lt;/b&gt; plików tekstowych do gry UltraStar.&lt;br&gt;&lt;br&gt;Aby rozpocząć, wystarczy wybrać &lt;b&gt;plik piosenki&lt;/b&gt; w formacie MP3 lub OGG, wstawić &lt;b&gt;tekst piosenki&lt;/b&gt; z pliku lub schowka i podzielić go na sylaby rozdzielając je &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Podstawowe informacje o piosence&lt;/b&gt; niezbędne do powstania pliku czyli &lt;b&gt;BPM&lt;/b&gt; i &lt;b&gt;GAP&lt;/b&gt; są generowane &lt;b&gt;automatycznie&lt;/b&gt;. Również automatycznie wypełniane są odpowiednie tagi informacjami zawartymi w tagach &lt;b&gt;ID3&lt;/b&gt; pliku audio, oczywiście jeżeli plik je zawiera.&lt;br&gt;&lt;br&gt;Aby &lt;b&gt;rozpocząć&lt;/b&gt; proces tworzenia, naciśnij przycisk Play / Pauza (CTRL-P). Nuty tworzymy naciskając i przytrzymując &lt;b&gt;przycisk w polu edycji&lt;/b&gt; (Spacja) . Przycisk należy naciskać w rytm sylab śpiewanych przez wykonawcę i trzymać naciśnięty tak długo jak długo dana sylaba jest śpiewana. Przycisk &lt;b&gt;Cofnij&lt;/b&gt; (X) usuwa ostatnio stworzoną nutę , &lt;b&gt;Stop&lt;/b&gt; (CTRL-S) kończy, a &lt;b&gt;Reset &amp; restart&lt;/b&gt; (CTRL-R) rozpoczyna proces od początku. Po zakończeniu &quot;klikania&quot; plik zapisujemy klawiszem &lt;b&gt;Zapisz&lt;/b&gt; (CTRL-S).&lt;br&gt;&lt;br&gt;Dalszą część edycji, czyli &lt;b&gt;korekty synchronizacji&lt;/b&gt;, ustawienie &lt;b&gt;wysokości nut&lt;/b&gt;, dodanie nut &lt;b&gt;złotych&lt;/b&gt; i &lt;b&gt;freestyle&apos;owych&lt;/b&gt; należy przeprowadzić w wewnętrznym edytorze programu UltraStar lub w programie YASS.&lt;br&gt;&lt;br&gt;&lt;b&gt;Uwaga!&lt;/b&gt; Plik wynikowy USC zapisuje używając kodowania &lt;b&gt;UTF-8&lt;/b&gt;, który jest kompatybilny tylko z USDX 1.1. Jeżeli korzystasz z innej wersji UltraStar&apos;a, plik należy przekonwertować do &lt;b&gt;ANSI&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Udanego tworzenia!&lt;b/b&gt;</translation>
+        <translation>To narzędzie pozwala na &lt;b&gt;szybkie&lt;/b&gt; tworzenie &lt;b&gt;od podstaw&lt;/b&gt; plików tekstowych do gry UltraStar.&lt;br&gt;&lt;br&gt;Aby rozpocząć, wystarczy wybrać &lt;b&gt;plik piosenki&lt;/b&gt; w formacie MP3 lub OGG, wstawić &lt;b&gt;tekst piosenki&lt;/b&gt; z pliku lub schowka i podzielić go na sylaby rozdzielając je &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Podstawowe informacje o piosence&lt;/b&gt; niezbędne do powstania pliku czyli &lt;b&gt;BPM&lt;/b&gt; i &lt;b&gt;GAP&lt;/b&gt; są generowane &lt;b&gt;automatycznie&lt;/b&gt;. Również automatycznie wypełniane są odpowiednie tagi informacjami zawartymi w tagach &lt;b&gt;ID3&lt;/b&gt; pliku audio, oczywiście jeżeli plik je zawiera.&lt;br&gt;&lt;br&gt;Aby &lt;b&gt;rozpocząć&lt;/b&gt; proces tworzenia, naciśnij przycisk Play / Pauza (CTRL-P). Nuty tworzymy naciskając i przytrzymując &lt;b&gt;przycisk w polu edycji&lt;/b&gt; (Spacja) . Przycisk należy naciskać w rytm sylab śpiewanych przez wykonawcę i trzymać naciśnięty tak długo jak długo dana sylaba jest śpiewana. Przycisk &lt;b&gt;Cofnij&lt;/b&gt; (X) usuwa ostatnio stworzoną nutę , &lt;b&gt;Stop&lt;/b&gt; (CTRL-S) kończy, a &lt;b&gt;Reset &amp; restart&lt;/b&gt; (CTRL-R) rozpoczyna proces od początku. Po zakończeniu &quot;klikania&quot; plik zapisujemy klawiszem &lt;b&gt;Zapisz&lt;/b&gt; (CTRL-S).&lt;br&gt;&lt;br&gt;Dalszą część edycji, czyli &lt;b&gt;korekty synchronizacji&lt;/b&gt;, ustawienie &lt;b&gt;wysokości nut&lt;/b&gt;, dodanie nut &lt;b&gt;złotych&lt;/b&gt; i &lt;b&gt;freestyle&apos;owych&lt;/b&gt; należy przeprowadzić w wewnętrznym edytorze programu UltraStar lub w programie YASS.&lt;br&gt;&lt;br&gt;&lt;b&gt;Uwaga!&lt;/b&gt; Plik wynikowy USC zapisuje używając kodowania &lt;b&gt;UTF-8&lt;/b&gt;, który jest kompatybilny tylko z USDX 1.1. Jeżeli korzystasz z innej wersji UltraStar&apos;a, plik należy przekonwertować do &lt;b&gt;ANSI&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Owocnej pracy!&lt;b/b&gt;</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="96"/>
@@ -1830,7 +1828,7 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk gdy wokalist
     <message>
         <location filename="../QCMainWindow.cpp" line="1380"/>
         <source>This function will generate UltraStar compatible freestyle text files without any lyrics for each audio file in a subsequently selectable folder.&lt;br&gt;&lt;br&gt;Each MP3 will be moved into a separate subdirectory and a text file containing the bare minimum of information will be automatically created along with a standard cover and background.&lt;br&gt;&lt;br&gt;If your audio files follow an &apos;Artist - Title.mp3&apos; naming scheme, they will be correctly mapped in the resulting song file.</source>
-        <translation>Użycie tej funkcji wygeneruje kompatybilne z UltraStar&apos;em freestyle&apos;owe pliki txt nie zawierające tekstu piosenki, dla każdego pliku audio znajdującego się we wskazanym katalogu.&lt;br&gt;&lt;br&gt;Każdy plik audio zostanie przeniesiony do osobnego, nowo utworzonego katalogu wraz ze standardowym obrazkiem okładki i tła oraz z wygenerowanym plikiem txt.&lt;br&gt;&lt;br&gt;Jeżeli nazwa pliku audio będzie zgodna ze schematem: &apos;Artist - Title.mp3&apos; odpowiednie tagi  w pliku wynikowym będą poprawnie wypełnione.&lt;br&gt;&lt;br&gt;Dzięki tej funkcji twoje ulubione piosenki, do których nie ma jeszcze zrobionych właściwych plików txt, będziesz mógł odsłuchać w US. </translation>
+        <translation>Użycie tej funkcji, wygeneruje kompatybilne z UltraStar&apos;em, freestyle&apos;owe pliki txt (nie zawierające tekstu piosenki), dla każdego pliku audio, znajdującego się we wskazanym katalogu.&lt;br&gt;&lt;br&gt;Każdy plik audio, zostanie przeniesiony do osobnego, nowo utworzonego katalogu, wraz ze standardowym obrazkiem okładki i tła oraz z wygenerowanym plikiem txt.&lt;br&gt;&lt;br&gt;Jeżeli nazwa pliku audio, będzie zgodna ze schematem: &apos;Artist - Title.mp3&apos;, odpowiednie tagi  w pliku wynikowym będą poprawnie wypełnione.&lt;br&gt;&lt;br&gt;Dzięki tej funkcji, twoje ulubione piosenki, do których nie ma jeszcze zrobionych właściwych plików txt, będziesz mógł odsłuchać w US.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="1381"/>
@@ -1889,7 +1887,7 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk gdy wokalist
     <message>
         <location filename="../main.cpp" line="121"/>
         <source>There was no configuration setting about your language. Your &lt;b&gt;system language&lt;/b&gt; will be used if possible.&lt;br&gt;&lt;br&gt;Choose &lt;b&gt;Language&lt;/b&gt; from the menu to change this.</source>
-        <translation>Ustawienia konfiguracyjne nie zawierają informacji o twoim języku. Twój &lt;b&gt;język systemowy&lt;/b&gt;będzie użyty jeśl to możliwe.&lt;br&gt;&lt;br&gt;Wybierz z menu &lt;b&gt;Język&lt;/b&gt;aby go zmienić.</translation>
+        <translation>Ustawienia konfiguracyjne nie zawierają informacji o twoim języku. Twój &lt;b&gt;język systemowy&lt;/b&gt;będzie użyty jeśil to możliwe.&lt;br&gt;&lt;br&gt;Wybierz z menu &lt;b&gt;Język&lt;/b&gt;żeby go zmienić.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="124"/>
@@ -2003,7 +2001,7 @@ background-image: url();</source>
     <message>
         <location filename="../QUMessageBox.ui" line="130"/>
         <source>This is an example message. You&apos;ll have to change it to fit your needs.</source>
-        <translation>To jest przykładowa wiadomość.  Będziesz musiał ją dostosować do twoich potrzeb.</translation>
+        <translation>To jest przykładowa wiadomość. Będziesz musiał ją dostosować do twoich potrzeb.</translation>
     </message>
     <message>
         <location filename="../QUMessageBox.ui" line="191"/>
