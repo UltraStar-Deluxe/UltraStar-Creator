@@ -67,7 +67,24 @@ win32 {
         -lbass \
         -lbass_fx
 }
-unix { 
+
+macx {
+    #example
+    #ICON = images/app.icns
+    #OBJECTIVE_SOURCES += utils.mm
+    #LIBS += -framework Cocoa
+    #QMAKE_INFO_PLIST = min.us.Info.plist
+    #
+    #INCLUDEPATH += ../include/taglib \
+    #    ../include/bass \
+    #    ../include/bass_fx
+    #LIBS += -L"../lib" \
+    #    -ltag \
+    #    -lbass \
+    #    -lbass_fx
+}
+
+unix:!macx {
     INCLUDEPATH += /usr/include/taglib \
         /usr/local/include/libbass
     LIBS += -L"/usr/local/lib/libbass" \
