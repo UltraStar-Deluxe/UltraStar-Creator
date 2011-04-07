@@ -1676,17 +1676,17 @@ void QCMainWindow::on_pushButton_SyllabificateRules_clicked()
                 i = i + 1;
             }
             // prefix "ab"
-            else if (ch1.toLower() == 'a' && ch2.toLower() == 'b') {
+            else if (ch1.toLower() == 'a' && ch2.toLower() == 'b' && ch3.toLower() != ' ') {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
                 i = i + 1;
             }
             // prefix "auf"
-            else if (ch1.toLower() == 'a' && ch2.toLower() == 'u' && ch3.toLower() == 'f' && !((ch4.toLower() == 'e' && ch5.toLower() == 'n') || ch4.toLower() == 't')) {
+            else if (ch1.toLower() == 'a' && ch2.toLower() == 'u' && ch3.toLower() == 'f' && ch4.toLower() != ' ' && !((ch4.toLower() == 'e' && ch5.toLower() == 'n') || ch4.toLower() == 't')) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep;
                 i = i + 2;
             }
             // prefix "aus"
-            else if (ch1.toLower() == 'a' && ch2.toLower() == 'u' && ch3.toLower() == 's') {
+            else if (ch1.toLower() == 'a' && ch2.toLower() == 'u' && ch3.toLower() == 's' && ch4.toLower() != ' ') {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep;
                 i = i + 2;
             }
