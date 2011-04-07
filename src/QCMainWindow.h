@@ -90,6 +90,7 @@ private:
     void updateOutputLyrics();
 
 private slots:
+    void on_pushButton_Mixmeister_clicked();
     void on_pushButton_ShowWebSite_clicked();
     void on_doubleSpinBox_BPM_valueChanged(double );
     void on_pushButton_EnableBPMEdit_toggled(bool checked);

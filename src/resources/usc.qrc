@@ -327,5 +327,6 @@
         <file>icons/cancel.png</file>
         <file>icons/help.png</file>
         <file>icons/information.png</file>
+        <file>icons/mixmeister.png</file>
     </qresource>
 </RCC>

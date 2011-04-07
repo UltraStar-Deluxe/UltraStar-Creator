@@ -2297,3 +2297,42 @@ void QCMainWindow::on_pushButton_ShowWebSite_clicked()
 
     QDesktopServices::openUrl(urlString);
 }
+
+void QCMainWindow::on_pushButton_Mixmeister_clicked()
+{
+    QSettings settings;
+    QString MixmeisterFilePath;
+    QFileInfo *MixmeisterFileInfo;
+
+    if(settings.contains("MixmeisterFilePath")) {
+        MixmeisterFilePath = settings.value("MixmeisterFilePath").toString();
+        MixmeisterFileInfo = new QFileInfo(MixmeisterFilePath);
+        if(MixmeisterFileInfo->exists()) {
+            settings.setValue("MixmeisterFilePath", MixmeisterFilePath);
+            QStringList MixmeisterArguments;
+            MixmeisterArguments << fileInfo_MP3->absoluteFilePath();
+            QProcess::startDetached(MixmeisterFilePath, MixmeisterArguments, MixmeisterFileInfo->absolutePath());
+        }
+        else {
+            settings.remove("MixmeisterFilePath");
+            MixmeisterFilePath = QFileDialog::getOpenFileName(0, tr("Choose Mixmeister BPM Analyzer executable"), QDir::homePath(),tr("Mixmeister BPM Analyzer executable (*.exe);;All files (*.*)"));
+            MixmeisterFileInfo = new QFileInfo(MixmeisterFilePath);
+            if(MixmeisterFileInfo->exists()) {
+                settings.setValue("MixmeisterFilePath", MixmeisterFilePath);
+                QStringList MixmeisterArguments;
+                MixmeisterArguments << fileInfo_MP3->absoluteFilePath();
+                QProcess::startDetached(MixmeisterFilePath, MixmeisterArguments, MixmeisterFileInfo->absolutePath());
+            }
+        }
+    }
+    else {
+        MixmeisterFilePath = QFileDialog::getOpenFileName(0, tr("Choose Mixmeister BPM Analyzer executable"), QDir::homePath(),tr("Mixmeister BPM Analyzer executable (*.exe);;All files (*.*)"));
+        MixmeisterFileInfo = new QFileInfo(MixmeisterFilePath);
+        if(MixmeisterFileInfo->exists()) {
+            settings.setValue("MixmeisterFilePath", MixmeisterFilePath);
+            QStringList MixmeisterArguments;
+            MixmeisterArguments << fileInfo_MP3->absoluteFilePath();
+            QProcess::startDetached(MixmeisterFilePath, MixmeisterArguments, MixmeisterFileInfo->absolutePath());
+        }
+    }
+}
