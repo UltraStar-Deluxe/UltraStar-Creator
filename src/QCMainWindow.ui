@@ -2114,41 +2114,6 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
                  </property>
                 </widget>
                </item>
-               <item row="12" column="2">
-                <widget class="QPushButton" name="pushButton_Mixmeister">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>20</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                 <property name="toolTip">
-                  <string/>
-                 </property>
-                 <property name="statusTip">
-                  <string>Open Mixmeister to determine #BPM.</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="resources/usc.qrc">
-                   <normaloff>:/icons/mixmeister.png</normaloff>:/icons/mixmeister.png</iconset>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="flat">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
               </layout>
              </item>
             </layout>

@@ -521,7 +521,7 @@ void QCMainWindow::on_actionQuit_USC_triggered()
 
 void QCMainWindow::dragEnterEvent( QDragEnterEvent* event ) {
     const QMimeData* md = event->mimeData();
-    if( event && md->hasUrls()) {
+    if( event && (md->hasUrls() || md->hasText())) {
         event->acceptProposedAction();
     }
 }
@@ -582,6 +582,9 @@ void QCMainWindow::dropEvent( QDropEvent* event ) {
                     }
                 }
             }
+        }
+        else if (data->hasText()) {
+            ui->plainTextEdit_InputLyrics->setPlainText(data->text());
         }
     }
 }
@@ -2296,43 +2299,4 @@ void QCMainWindow::on_pushButton_ShowWebSite_clicked()
     QString urlString("http://swisscharts.com/search.asp?cat=s&search=" + ui->lineEdit_Artist->text().replace(QRegExp("(\\s+)"),"+") + "+" + ui->lineEdit_Title->text().replace(QRegExp("(\\s+)"),"+"));
 
     QDesktopServices::openUrl(urlString);
-}
-
-void QCMainWindow::on_pushButton_Mixmeister_clicked()
-{
-    QSettings settings;
-    QString MixmeisterFilePath;
-    QFileInfo *MixmeisterFileInfo;
-
-    if(settings.contains("MixmeisterFilePath")) {
-        MixmeisterFilePath = settings.value("MixmeisterFilePath").toString();
-        MixmeisterFileInfo = new QFileInfo(MixmeisterFilePath);
-        if(MixmeisterFileInfo->exists()) {
-            settings.setValue("MixmeisterFilePath", MixmeisterFilePath);
-            QStringList MixmeisterArguments;
-            MixmeisterArguments << fileInfo_MP3->absoluteFilePath();
-            QProcess::startDetached(MixmeisterFilePath, MixmeisterArguments, MixmeisterFileInfo->absolutePath());
-        }
-        else {
-            settings.remove("MixmeisterFilePath");
-            MixmeisterFilePath = QFileDialog::getOpenFileName(0, tr("Choose Mixmeister BPM Analyzer executable"), QDir::homePath(),tr("Mixmeister BPM Analyzer executable (*.exe);;All files (*.*)"));
-            MixmeisterFileInfo = new QFileInfo(MixmeisterFilePath);
-            if(MixmeisterFileInfo->exists()) {
-                settings.setValue("MixmeisterFilePath", MixmeisterFilePath);
-                QStringList MixmeisterArguments;
-                MixmeisterArguments << fileInfo_MP3->absoluteFilePath();
-                QProcess::startDetached(MixmeisterFilePath, MixmeisterArguments, MixmeisterFileInfo->absolutePath());
-            }
-        }
-    }
-    else {
-        MixmeisterFilePath = QFileDialog::getOpenFileName(0, tr("Choose Mixmeister BPM Analyzer executable"), QDir::homePath(),tr("Mixmeister BPM Analyzer executable (*.exe);;All files (*.*)"));
-        MixmeisterFileInfo = new QFileInfo(MixmeisterFilePath);
-        if(MixmeisterFileInfo->exists()) {
-            settings.setValue("MixmeisterFilePath", MixmeisterFilePath);
-            QStringList MixmeisterArguments;
-            MixmeisterArguments << fileInfo_MP3->absoluteFilePath();
-            QProcess::startDetached(MixmeisterFilePath, MixmeisterArguments, MixmeisterFileInfo->absolutePath());
-        }
-    }
 }
