@@ -1643,7 +1643,7 @@ void QCMainWindow::on_pushButton_SyllabificateRules_clicked()
             else if (isVowel(ch1, lang) && isConsonant(ch2, lang) && (isVowel(ch3, lang) || ch3.toLower() == 'y')) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
             }
-            // double consonant isn't separated in german, by example "ad-X-ded"
+            // double consonant isn't separated in german
             else if ((isVowel(ch1, lang) || isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || ch4.toLower() == 'y') && ch2.toLower() == ch3.toLower()) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
                 i = i + 1;
@@ -1679,17 +1679,17 @@ void QCMainWindow::on_pushButton_SyllabificateRules_clicked()
                 i = i + 1;
             }
             // prefix "ab"
-            else if (ch1.toLower() == 'a' && ch2.toLower() == 'b' && ch3.toLower() != ' ') {
+            else if (ch1.toLower() == 'a' && ch2.toLower() == 'b' && ch3.isLetter()) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
                 i = i + 1;
             }
             // prefix "auf"
-            else if (ch1.toLower() == 'a' && ch2.toLower() == 'u' && ch3.toLower() == 'f' && ch4.toLower() != ' ' && !((ch4.toLower() == 'e' && ch5.toLower() == 'n') || ch4.toLower() == 't')) {
+            else if (ch1.toLower() == 'a' && ch2.toLower() == 'u' && ch3.toLower() == 'f' && ch4.isLetter() && !((ch4.toLower() == 'e' && ch5.toLower() == 'n') || ch4.toLower() == 't')) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep;
                 i = i + 2;
             }
             // prefix "aus"
-            else if (ch1.toLower() == 'a' && ch2.toLower() == 'u' && ch3.toLower() == 's' && ch4.toLower() != ' ') {
+            else if (ch1.toLower() == 'a' && ch2.toLower() == 'u' && ch3.toLower() == 's' && ch4.isLetter()) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep;
                 i = i + 2;
             }
@@ -1700,7 +1700,7 @@ void QCMainWindow::on_pushButton_SyllabificateRules_clicked()
                 i = i + 1;
             }*/
             // prefix "ver"
-            else if (ch1.toLower() == 'v' && ch2.toLower() == 'e' && ch3.toLower() == 'r') {
+            else if (ch1.toLower() == 'v' && ch2.toLower() == 'e' && ch3.toLower() == 'r' && ch4.isLetter()) {
                 syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep;
                 i = i + 2;
             }
@@ -1732,6 +1732,11 @@ void QCMainWindow::on_pushButton_SyllabificateRules_clicked()
             else {
                 syllabifiedLyrics = syllabifiedLyrics + ch1;
             }
+            /* remaining Problems:
+                Situation   --> Si+tua+tion
+                weshalb     --> we+shalb
+                verschonen  --> ver+s+cho+nen
+                symmetrisch --> symme+tri+sch */
         }
     }
     else if (language == "Spanish") {
