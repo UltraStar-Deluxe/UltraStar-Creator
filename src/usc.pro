@@ -69,12 +69,7 @@ win32 {
 }
 
 macx {
-    #example
     #ICON = images/app.icns
-    #OBJECTIVE_SOURCES += utils.mm
-    #LIBS += -framework Cocoa
-    #QMAKE_INFO_PLIST = min.us.Info.plist
-    #
     #INCLUDEPATH += ../include/taglib \
     #    ../include/bass \
     #    ../include/bass_fx
@@ -82,6 +77,7 @@ macx {
     #    -ltag \
     #    -lbass \
     #    -lbass_fx
+    #QMAKE_INFO_PLIST = min.us.Info.plist
 }
 
 unix:!macx {
