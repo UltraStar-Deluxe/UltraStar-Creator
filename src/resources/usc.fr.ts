@@ -1670,7 +1670,7 @@ Appuyer sur le bouton départ (ou la barre d&apos;espace) lorsque la syllabe est
     <message>
         <location filename="../main.cpp" line="166"/>
         <source>The UltraStar Creator did not exit successfully last time. &lt;br&gt;&lt;br&gt;Please report this problem &lt;a href=&quot;http://usc.sf.net&quot;&gt;here&lt;/a&gt;.</source>
-        <translation>Ultrastar Creator n&apos;a pas été quitté de façon correcte la dernière fois. &lt;br&gt;&lt;br&gt;Merci de reporter ce problème &lt;a href=&quot;http://usc.sf.net&quot;&gt;here&lt;/a&gt;.</translation>
+        <translation>Ultrastar Creator n&apos;a pas été quitté de façon correcte la dernière fois. &lt;br&gt;&lt;br&gt;Merci de reporter ce problème &lt;a href=&quot;http://usc.sf.net&quot;&gt;ici&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="169"/>
