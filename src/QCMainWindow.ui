@@ -2855,7 +2855,7 @@ I'm ve+~+ry sure.</string>
                 <bool>true</bool>
                </property>
                <property name="lineWrapMode">
-                <enum>QPlainTextEdit::NoWrap</enum>
+                <enum>QPlainTextEdit::WidgetWidth</enum>
                </property>
                <property name="plainText">
                 <string>Insert song lyrics here, either by loading from a file or by

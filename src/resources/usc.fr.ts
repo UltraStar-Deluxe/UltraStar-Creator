@@ -16,7 +16,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="118"/>
         <source>MP3 tag</source>
-        <translation>MP3 Tag</translation>
+        <translation>Nom du MP3</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="231"/>
@@ -486,7 +486,7 @@ I know what leaves me cold
 and what burns me up
 now this time it&apos;s just right
 I&apos;m ve+~+ry sure.</source>
-        <translation>Insérer les paroles de la chanson ici, en les chargeant d&apos;un fichier ou
+        <translation type="unfinished">Insérer les paroles de la chanson ici, en les chargeant d&apos;un fichier ou
 en les collants à partir du presse-papier. Les éditer suivant les
 règles suivantes:
 
@@ -497,14 +497,14 @@ règles suivantes:
 
 Exemple:
 
-Some say it&apos;s sure col+li+sion
-say it&apos;s bound to lose
-but there&apos;s no de+ny+ing
-I&apos;m a+ble to choose.
-I know what leaves me cold
-and what burns me up
-now this time it&apos;s just right
-I&apos;m ve+~+ry sure.</translation>
+Le vent nous por+te+ra
+Ces par+fums de nos an+nées mortes
+Ceux qui peuvent frap+per à ta porte
+In+fi+ni+~+té de des+tin on en pose un
+Qu&apos;est-ce qu&apos;on en re+tient?
+Le vent l&apos;em+por+te+ra
+Pen+dant que+~ la ma+rée monte
+Et que cha+cun re+fait ses comptes.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2898"/>
@@ -1268,7 +1268,7 @@ Appuyer sur le bouton départ (ou la barre d&apos;espace) lorsque la syllabe est
     <message>
         <location filename="../QCMainWindow.cpp" line="457"/>
         <source>Audio files (*.mp3 *.ogg)</source>
-        <translation>Fichiers audio (*.mp3, *.ogg)</translation>
+        <translation>Fichiers audio (*.mp3 *.ogg)</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="467"/>
@@ -1295,18 +1295,18 @@ Appuyer sur le bouton départ (ou la barre d&apos;espace) lorsque la syllabe est
         <location filename="../QCMainWindow.cpp" line="546"/>
         <location filename="../QCMainWindow.cpp" line="1395"/>
         <source>mp3</source>
-        <translation>MP3</translation>
+        <translation>mp3</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="546"/>
         <location filename="../QCMainWindow.cpp" line="1395"/>
         <source>ogg</source>
-        <translation>OGG</translation>
+        <translation>ogg</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="553"/>
         <source>jpg</source>
-        <translation>JPG</translation>
+        <translation>jpg</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="577"/>
@@ -1396,7 +1396,7 @@ Appuyer sur le bouton départ (ou la barre d&apos;espace) lorsque la syllabe est
     <message>
         <location filename="../QCMainWindow.cpp" line="984"/>
         <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX is an extension providing several effects, including tempo &amp; pitch control.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.5&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
-        <translation>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS est une librairie audio à utiliser sous Windows et MacOSX. Elle permet d&apos;utiliser de facon la plus puissante et efficace (et facile à utiliser), des échantillons de musique, des flux audio, Music MOD, et des fonctions d&apos;enregistrement. Tout cela dans une petite bibliothèque DLL, de moins de 100KB.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX est une extension qui permet d&apos;obtenir différents effets, incluant le tempo et le contrôle du pitch.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.5&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Tous droits réservés.</translation>
+        <translation type="unfinished">&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS est une librairie audio à utiliser sous Windows et MacOSX. Elle permet d&apos;utiliser de façon la plus puissante et efficace (et facile à utiliser), des échantillons de musique, des flux audio, Music MOD, et des fonctions d&apos;enregistrement. Tout cela dans une petite bibliothèque DLL, de moins de 100KB.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX est une extension qui permet d&apos;obtenir différents effets, incluant le tempo et le contrôle du pitch.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.5&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Tous droits réservés.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="1256"/>
@@ -1523,7 +1523,7 @@ Appuyer sur le bouton départ (ou la barre d&apos;espace) lorsque la syllabe est
         <location filename="../QCMainWindow.cpp" line="95"/>
         <location filename="../QCMainWindow.cpp" line="1514"/>
         <source>This tool enables you to &lt;b&gt;rapidly&lt;/b&gt; create UltraStar text files &lt;b&gt;from scratch&lt;/b&gt;.&lt;br&gt;&lt;br&gt;To get started, simply chose a &lt;b&gt;song file&lt;/b&gt; in MP3 or OGG format, insert the &lt;b&gt;song lyrics&lt;/b&gt; from a file or the clipboard and divide them into syllables with &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Important song meta information&lt;/b&gt; such as &lt;b&gt;BPM&lt;/b&gt; and &lt;b&gt;GAP&lt;/b&gt; are determined &lt;b&gt;automatically&lt;/b&gt; while the &lt;b&gt;ID3 tag&lt;/b&gt; is used to fill in additional song details, if available.&lt;br&gt;&lt;br&gt;To &lt;b&gt;start tapping&lt;/b&gt;, hit the play/pause button (Keyboard: CTRL-P). Keep the &lt;b&gt;tap button&lt;/b&gt; (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. &lt;b&gt;Undo&lt;/b&gt; the last tap with the undo button (Keyboard: x), &lt;b&gt;stop tapping&lt;/b&gt; with the stop button (Keyboard: CTRL-S), &lt;b&gt;restart&lt;/b&gt; from the beginning with the reset button (Keyboard: CTRL-R). When finished, &lt;b&gt;save&lt;/b&gt; the tapped song using the save button (CTRL-S).&lt;br&gt;&lt;br&gt;Having successfully tapped a song, use the UltraStar internal editor for &lt;b&gt;finetuning the timings&lt;/b&gt;, setting &lt;b&gt;note pitches&lt;/b&gt; and &lt;b&gt;golden&lt;/b&gt; or &lt;b&gt;freestyle notes&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Happy creating!&lt;/b&gt;</source>
-        <translation>Cet outil vous permet de créer&lt;b&gt; rapidement&lt;/b&gt; des fichiers au format Ultrastar&lt;b&gt;à partir de rien&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Pour commencer, choisissez simplement un &lt;b&gt;fichier audio&lt;/b&gt;au format MP3 ou OGG, insérer les &lt;b&gt;paroles de la chanson&lt;/b&gt;à partir d&apos;un fichier ou du presse-papier et les diviser en syllabes avec le symbole &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Les meta-informations importantes &lt;/b&gt;telles que le &lt;b&gt;BPM&lt;/b&gt; et le &lt;b&gt;GAP&lt;/b&gt; sont déterminés &lt;b&gt;automatiquement&lt;/b&gt; tandis que l&apos;&lt;b&gt;ID3 tag&lt;/b&gt;est utilisé pour remplir les autres détails de la chanson sil il est disponible.&lt;br&gt;&lt;br&gt;Pour &lt;b&gt;démarrer l&apos;enregistrement&lt;/b&gt;,appuyer sur le bouton Départ/Pause (Clavier: CTRL + P). Garder le &lt;b&gt;bouton d&apos;enregistrement&lt;/b&gt; (clavier: barre d&apos;espace) préssé aussi longtemps que la syllabe est chantée afin de créer la note. &lt;b&gt;Annuler&lt;/b&gt; le dernier enregistrement avec le bouton Annuler (Clavier: X), &lt;b&gt;arrêter l&apos;enregistrement&lt;/b&gt; avec le bouton Stop (Clavier: CTRL + S), &lt;b&gt;redémarrer&lt;/b&gt; depui le début avec le bouton Recommencer (Clavier: CTRL + R). Lorsque vous avez fini, &lt;b&gt;sauvegarder&lt;/b&gt; la chanson enregistrée avec le bouton Sauver (CTRL + S).&lt;br&gt;&lt;br&gt;Lorsque vous avez enregistré avec succès une chanson, utilisez l&apos;éditeur interne d&apos;Ultrastar pour &lt;b&gt;régler minutieusement les temps&lt;/b&gt;, les informations &lt;b&gt;le pitch des notes&lt;/b&gt; et les notes en&lt;b&gt; or&lt;/b&gt; ou en &lt;b&gt;freestyle&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Bonne création!&lt;/b&gt;</translation>
+        <translation>Cet outil vous permet de créer&lt;b&gt; rapidement&lt;/b&gt; des fichiers au format Ultrastar&lt;b&gt;à partir de rien&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Pour commencer, choisissez simplement un &lt;b&gt;fichier audio &lt;/b&gt;au format MP3 ou OGG, insérer les &lt;b&gt;paroles de la chanson &lt;/b&gt;à partir d&apos;un fichier texte ou du presse-papier et les diviser en syllabes avec le symbole &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Les meta-informations importantes &lt;/b&gt;telles que le &lt;b&gt;BPM&lt;/b&gt; et le &lt;b&gt;GAP&lt;/b&gt; sont déterminés &lt;b&gt;automatiquement&lt;/b&gt; tandis que l&apos;&lt;b&gt;ID3 tag &lt;/b&gt;est utilisé pour remplir les autres détails de la chanson si il sont disponibles.&lt;br&gt;&lt;br&gt;Pour &lt;b&gt;démarrer l&apos;enregistrement&lt;/b&gt;, appuyer sur le bouton Départ/Pause (Clavier: CTRL + P). Garder le &lt;b&gt;bouton d&apos;enregistrement&lt;/b&gt; (clavier: barre d&apos;espace) préssé aussi longtemps que la syllabe est chantée afin de créer la note. &lt;b&gt;Annuler&lt;/b&gt; le dernier enregistrement avec le bouton Annuler (Clavier: X), &lt;b&gt;arrêter l&apos;enregistrement&lt;/b&gt; avec le bouton Stop (Clavier: CTRL + S), &lt;b&gt;redémarrer&lt;/b&gt; depuis le début avec le bouton Recommencer (Clavier: CTRL + R). Lorsque vous avez fini, &lt;b&gt;sauvegarder&lt;/b&gt; la chanson enregistrée avec le bouton Sauver (CTRL + S).&lt;br&gt;&lt;br&gt;Lorsque vous avez enregistré avec succès une chanson, utilisez l&apos;éditeur interne d&apos;Ultrastar pour &lt;b&gt;régler minutieusement les temps&lt;/b&gt;, les informations &lt;b&gt;le pitch des notes&lt;/b&gt; et les notes en&lt;b&gt; or&lt;/b&gt; ou en &lt;b&gt;freestyle&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Bonne création!&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="96"/>
@@ -1564,7 +1564,7 @@ Appuyer sur le bouton départ (ou la barre d&apos;espace) lorsque la syllabe est
     <message>
         <location filename="../QCMainWindow.cpp" line="1383"/>
         <source>This function will generate UltraStar compatible freestyle text files without any lyrics for each audio file in a subsequently selectable folder.&lt;br&gt;&lt;br&gt;Each MP3 will be moved into a separate subdirectory and a text file containing the bare minimum of information will be automatically created along with a standard cover and background.&lt;br&gt;&lt;br&gt;If your audio files follow an &apos;Artist - Title.mp3&apos; naming scheme, they will be correctly mapped in the resulting song file.</source>
-        <translation>Cette fonction va générer des fichiers textes  compatible avec Ultrastar de facon rapide. C&apos;est à dire sans paroles, dans un dossier contenant le fichier audio.&lt;br&gt;&lt;br&gt; Chaque MP3 sera déplacé dans dans un sous-dossier distinct et un fichier texte contenant un minimum d&apos;information sera automatiquement généré avec une couverture et un fond d&apos;écran standard.&lt;br&gt;&lt;br&gt;Si vos fichiers audio suivent le schéma de nomination suivant:&apos;Artist&apos;-&apos;Title&apos;.mp3, ils seront correctement rangés dans des dossiers de résultat.</translation>
+        <translation>Cette fonction va générer des fichiers textes  compatible avec Ultrastar de façon rapide. C&apos;est à dire sans paroles, dans un dossier contenant le fichier audio.&lt;br&gt;&lt;br&gt; Chaque MP3 sera déplacé dans un sous-dossier distinct et un fichier texte contenant un minimum d&apos;information sera automatiquement généré avec une couverture et un fond d&apos;écran standard.&lt;br&gt;&lt;br&gt;Si vos fichiers audio suivent le schéma de nomination suivant:&apos;Artist&apos;-&apos;Title&apos;.mp3, ils seront correctement rangés dans des dossiers de résultat.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="1384"/>
