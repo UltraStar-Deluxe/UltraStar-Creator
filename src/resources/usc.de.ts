@@ -163,7 +163,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="615"/>
         <source>Enter the song edition.</source>
-        <translation type="unfinished">Gib die Edition des Lieds ein.</translation>
+        <translation>Gib die Edition des Lieds ein.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="679"/>
@@ -254,7 +254,7 @@
     <message>
         <location filename="../QCMainWindow.ui" line="203"/>
         <source>#MP3 tag is not set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #MP3 Tag ist nicht gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="234"/>
@@ -328,42 +328,46 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../QCMainWindow.ui" line="1567"/>
         <source>This field contains the cover image file to be included into the UltraStar header.</source>
-        <translation>Dieses Feld enthält die Datei des Coverbildes um es in den UltraStar Liedkopf zu übernehmen.</translation>
+        <translation>Dieses Feld enthält die Datei des Coverbildes, um es in den UltraStar Liedkopf zu übernehmen.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1669"/>
         <source>This field contains the background image file to be included into the UltraStar header.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Feld enthält die Datei des Hintergrundbildes, um es in den UltraStar Liedkopf zu übernehmen.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1739"/>
         <source>This field contains the video file to be included into the UltraStar header.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Feld enthält die Datei des Videos, um es in den UltraStar Liedkopf zu übernehmen.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1812"/>
         <source>This field contains gap in seconds between the beginning of the song and the beginning of the audio.
 
 If you extract the audio track from the given video, this should be zero. Other videogap values need to be finetuned later.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Feld enthält den Gap in Sekunden zwischen dem Liedanfang und dem Beginn des Videos.
+
+Wenn Du die Audiospur aus dem Video extrahierst, sollte dieser Wert Null sein. Andere Videogap-Werte müssen später eingestellt werden.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1899"/>
         <location filename="../QCMainWindow.cpp" line="2270"/>
         <source>Unlock to edit #BPM manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Entsperren, um #BPM manuell einzutragen.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1931"/>
         <source>#BPM is determined automatically from the MP3 file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die BPM werden automatisch aus der MP3 ermittelt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1934"/>
         <source>This field contains the song&apos;s beats per minute (or a multiple thereof). It is determined automatically from the audio file and therefore cannot be edited.
 
 The BPM value determines all the timings of your tapped UltraStar file. If it is too low, only poor synchronization of lyrics and music is possible, if it is too high, low-end processors might be overstrained with your song. In practice, a value between 300-400 has proven suitable. USC automatically makes sure that a BPM in that range is chosen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Feld enhält die Beats pro Minute des Lied (oder ein Vielfaches davon). Dieser Wert wird automatisch ermittelt und kann daher nicht editiert werden.
+
+Der BPM-Wert legt alle Einsätze der getappten UltraStar-Datei fest. Ist er zu niedrig, lässt sich das Lied nur schlecht mit dem Liedtext synchronisieren; ist er zu hoch, könnten schwache Prozessoren mit dem Lied überfordert sein. In der Praxis hat sich ein Wert von 300-400 als guter Erfahrungswert erwiesen. USC wählt automatisch einen Wert in diesem Bereich.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="1970"/>
@@ -373,12 +377,12 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
     <message>
         <location filename="../QCMainWindow.ui" line="2027"/>
         <source>#GAP will be determined automatically when you start tapping.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Gap wird automatisch ermittelt, sobald Du mit dem Tappen anfängst.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2030"/>
         <source>This field contains the time gap in milliseconds from the beginning of the song until the first syllable is sung. It is determined automatically when tapping the first syllable and can therefore not be edited.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Feld enthält den Gap in Millisekunden zwischen dem Liedanfang und der ersten Silbe des Liedtexts. Er wird automatisch ermittert, wenn die erste Silbe getappt wird und kann daher nicht editiert werden.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2052"/>
@@ -390,7 +394,9 @@ The BPM value determines all the timings of your tapped UltraStar file. If it is
         <source>Here you can choose the default pitch of all the tapped notes.
 
 The pitch of each individual note needs to be set using the UltraStar internal editor or YASS after having successfully tapped the song.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier kann die Standardtonhöhe für alle getappten Noten eingestellt werden.
+
+Die Tonhöhe jeder einzelnen Note muss dann später mittels des UltraStar-internen Editors oder mittels YASS nach dem Tappen eingestellt werden.</translation>
     </message>
     <message utf8="true">
         <location filename="../QCMainWindow.ui" line="2239"/>
@@ -424,7 +430,8 @@ The pitch of each individual note needs to be set using the UltraStar internal e
     <message>
         <location filename="../QCMainWindow.ui" line="2484"/>
         <source>This is the overall control station. You can start, stop, pause, resume the tapping and reset everything so you can start from the beginning.</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Dies ist die Steuerungszentrale. Hier kannst Du das Tappen des Lieds starten, anhalten, pausieren und fortsetzen sowie alles zurücksetzen, um von vorne zu beginnen.</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2793"/>
@@ -479,7 +486,7 @@ The pitch of each individual note needs to be set using the UltraStar internal e
     <message>
         <location filename="../QCMainWindow.ui" line="3373"/>
         <source>The tap button is used to tap each syllable while it is sung. If you hold down the button for as long as the shown syllable is sung, a corresponding note is created.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Tap-Button wird dazu benutzt, jede Silbe zu tappen während sie gesungen wird. Wenn Du den Button so lange gedrückt hältst wie die angezeigte Silbe gesungen wird, dann wird eine entsprechende Note erstellt.</translation>
     </message>
     <message>
         <source>Click &amp; hold down to tap a note.</source>
@@ -1017,7 +1024,7 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
     <message>
         <location filename="../QCMainWindow.ui" line="2404"/>
         <source>Here you can adjust the playback speed of the audio file while tapping. This is especially helpful when tapping very fast songs.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier kannst Du die Abspielgeschwindigkeit der Audio-Datei während des Tappens einstellen. Dies ist besonders für schnelle Lieder sinnvoll.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2443"/>
@@ -1038,7 +1045,9 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
         <source>This button disables all the fields above and starts the tapping. The header of the UltraStar file will be displayed, the audio file will start playing and the first syllables appear in the tap area. Get ready to tap!
 
 While tapping, this button will turn into a pause button where you can interrupt the tapping process any time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieser Button speichert alle obigen Felder und startet das Tappen. Der Header der UltraStar-Datei wird angezeigt, die Audio-Datei wird abgespielt und die ersten Silben werden im Tap-Bereich angezeigt. Mach Dich bereit zum Tappen!
+
+Während des Tappens wird dieser Button zu einem Pause-Button, mit dem sich das Tappen jederzeit pausieren lässt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2540"/>
@@ -1060,7 +1069,9 @@ While tapping, this button will turn into a pause button where you can interrupt
         <source>This button stops the tapping process. Now you can either save the tapped UltraStar file or restart the tapping from the beginning using the reset button.
 
 The tapping process is automatically stopped once you have tapped all available lyrics.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieser Button hält das Tappen an. Jetzt kannst Du entweder die getappte UltraStar-Datei speichern oder das Tappen von vorne starten mit dem Reset Button.
+
+Das Tappen wird automatisch angehalten sobald der ganze Liedtext getappt ist.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2599"/>
@@ -1075,7 +1086,7 @@ The tapping process is automatically stopped once you have tapped all available 
     <message>
         <location filename="../QCMainWindow.ui" line="2653"/>
         <source>This button resets all tapped notes and enables all fields on the left to make any necessary changes before restarting the tapping process.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieser Button setzt alle getappten Noten zurück und macht alle Felder auf der linken Seite wieder editierbar, um eventuelle Änderungen machen zu können vor einem erneuten Tappen.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="2669"/>
@@ -1321,7 +1332,7 @@ Der Him+mel ist na+~h.</translation>
         <location filename="../QCMainWindow.cpp" line="191"/>
         <location filename="../QCMainWindow.cpp" line="299"/>
         <source>Pause tapping (CTRL-P).</source>
-        <translation type="unfinished"></translation>
+        <translation>Tappen pausieren (STRG-P).</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="207"/>
@@ -1336,29 +1347,38 @@ Der Him+mel ist na+~h.</translation>
     <message>
         <location filename="../QCMainWindow.cpp" line="906"/>
         <source>#MP3 tag is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #MP3 Tag ist gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="937"/>
         <location filename="../QCMainWindow.cpp" line="950"/>
         <location filename="../QCMainWindow.cpp" line="2285"/>
         <source>#BPM tag is set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der #BPM Tag ist gesetzt.</translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.cpp" line="984"/>
+        <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, about 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX is an extension providing several effects, including tempo &amp; pitch control.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.7.1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
+        <translation>&lt;b&gt;BASS Audiobibliothek.&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS ist eine Audiobibliothek für die Verwendung in Windows und MacOSX Software. Ihre Zielsetzung ist es, die mächtigsten und effizientesten (und gleichzeitig einfach anzuwendenden) Funktionen für das Sampling, das Streaming und die Aufnahme bereitzustellen. Alles in einer winzigen DLL von etwa 100KB Größe.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 1999-2008&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Alle Rechte vorbehalten.</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX is an extension providing several effects, including tempo &amp; pitch control.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.7.1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
+        <translation type="obsolete">&lt;b&gt;BASS Audiobibliothek.&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS ist eine Audiobibliothek für die Verwendung in Windows und MacOSX Software. Ihre Zielsetzung ist es, die mächtigsten und effizientesten (und gleichzeitig einfach anzuwendenden) Funktionen für das Sampling, das Streaming und die Aufnahme bereitzustellen. Alles in einer winzigen DLL unter 100KB Größe.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 1999-2008&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Alle Rechte vorbehalten. {100K?} {1&lt;?} {2.4.7.1&lt;?} {2003-2010&lt;?} {4s?} {4s?}</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="2265"/>
         <source>Lock to determine #BPM automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Schließen, um den BPM-Wert automatisch zu ermitteln.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="2266"/>
         <source>Enter the song&apos;s #BPM manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gib den BPM-Wert des Lieds manuell ein.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="2271"/>
         <source>BPM is determined automatically from the MP3 file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die BPM werden automatisch aus der MP3 ermittelt.</translation>
     </message>
     <message>
         <source>USC Note Start.</source>
@@ -1528,9 +1548,8 @@ Der Him+mel ist na+~h.</translation>
         <translation type="obsolete">MP3 gesetzt.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="984"/>
         <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX is an extension providing several effects, including tempo &amp; pitch control.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.5&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
-        <translation>&lt;b&gt;BASS Audiobibliothek.&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS ist eine Audiobibliothek für die Verwendung in Windows und MacOSX Software. Ihre Zielsetzung ist es, die mächtigsten und effizientesten (und gleichzeitig einfach anzuwendenden) Funktionen für das Sampling, das Streaming und die Aufnahme bereitzustellen. Alles in einer winzigen DLL unter 100KB Größe.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 1999-2008&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Alle Rechte vorbehalten.</translation>
+        <translation type="obsolete">&lt;b&gt;BASS Audiobibliothek.&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS ist eine Audiobibliothek für die Verwendung in Windows und MacOSX Software. Ihre Zielsetzung ist es, die mächtigsten und effizientesten (und gleichzeitig einfach anzuwendenden) Funktionen für das Sampling, das Streaming und die Aufnahme bereitzustellen. Alles in einer winzigen DLL unter 100KB Größe.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 1999-2008&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Alle Rechte vorbehalten.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="1256"/>
@@ -1562,12 +1581,12 @@ Der Him+mel ist na+~h.</translation>
     <message>
         <location filename="../QCMainWindow.cpp" line="1541"/>
         <source>The automatic lyrics syllabification is not (yet) available for &lt;b&gt;%1&lt;/b&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die automatische Silbentrennfunktion ist (noch) nicht verfügbar für &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="1544"/>
         <source>The song language has not yet been set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Sprache des Lieds wurde noch nicht gesetzt.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="2044"/>
@@ -1690,7 +1709,7 @@ Der Him+mel ist na+~h.</translation>
     <message>
         <location filename="../QCMainWindow.cpp" line="287"/>
         <source>Continue tapping (CTRL-P).</source>
-        <translation type="unfinished"></translation>
+        <translation>Tappen fortsetzen (STRG-P).</translation>
     </message>
     <message>
         <source>#CREATOR tag is empty.</source>

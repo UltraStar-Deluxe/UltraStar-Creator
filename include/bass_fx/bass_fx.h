@@ -1,5 +1,5 @@
 /****************************************************************************
- BASS_FX 2.4 - Copyright (c) 2002-2010 (: JOBnik! :) [Arthur Aminov, ISRAEL]
+ BASS_FX 2.4 - Copyright (c) 2002-2011 (: JOBnik! :) [Arthur Aminov, ISRAEL]
                                                      [http://www.jobnik.org]
 
       bugs/suggestions/questions:

@@ -914,7 +914,7 @@ p, li { white-space: pre-wrap; }
         <source>This field contains gap in seconds between the beginning of the song and the beginning of the audio.
 
 If you extract the audio track from the given video, this should be zero. Other videogap values need to be finetuned later.</source>
-        <translation>Pole to zawiera liczone w sekundach opóźnienie rozpoczęcia teledysku w stosunku do pliku audio.
+        <translation type="unfinished">Pole to zawiera liczone w sekundach opóźnienie rozpoczęcia teledysku w stosunku do pliku audio.
 
 Jeżeli plik audio był wyodrębniony z teledysku, to wartość tego opóźnienia powinna wynosić zero. W innym przypadku możesz wpisać wartość orientacyjną a dokładnie ją dostroić, podczas edycji w edytorze UltraStar&apos;a.</translation>
     </message>
@@ -1491,6 +1491,11 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
         <translation>Tag #TITLE jest wypełniony.</translation>
     </message>
     <message>
+        <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX is an extension providing several effects, including tempo &amp; pitch control.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.7.1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
+        <translation type="obsolete">&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;Biblioteka BASS jest biblioteką audio do stosowania w systemach Windows i MacOSX. Umożliwia ona aplikacjom kompleksową obsługę większości popularnych formatów plików audio, funkcje odtwarzania muzyki, streamingu, dekodowania skompresowanych plików do czystej postaci WAV, nagrywania z wejścia a także generowania dźwięków. A wszystko to w małym około 100 KB-wym pliku DLL.&lt;br&gt;&lt;br&gt;Wersja: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX jest rozszerzeniem, udostępniającym  szereg efektów w tym regulację tempa i wysokości.
+&lt;br&gt;&lt;br&gt;Wersja: &lt;b&gt;2.4.5&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved. {100K?} {1&lt;?} {2.4.7.1&lt;?} {2003-2010&lt;?} {4s?} {4s?}</translation>
+    </message>
+    <message>
         <location filename="../QCMainWindow.cpp" line="2265"/>
         <source>Lock to determine #BPM automatically.</source>
         <translation>Zamknij, aby wyliczyć #BPM automatycznie.</translation>
@@ -1550,9 +1555,8 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
         <translation type="obsolete">Zamknij aby wyliczyć BPM automatycznie.</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.cpp" line="984"/>
         <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX is an extension providing several effects, including tempo &amp; pitch control.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.5&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
-        <translation>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;Biblioteka BASS jest biblioteką audio do stosowania w systemach Windows i MacOSX. Umożliwia ona aplikacjom kompleksową obsługę większości popularnych formatów plików audio, funkcje odtwarzania muzyki, streamingu, dekodowania skompresowanych plików do czystej postaci WAV, nagrywania z wejścia a także generowania dźwięków. A wszystko to w małym około 100 KB-wym pliku DLL.&lt;br&gt;&lt;br&gt;Wersja: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX jest rozszerzeniem, udostępniającym  szereg efektów w tym regulację tempa i wysokości.
+        <translation type="obsolete">&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;Biblioteka BASS jest biblioteką audio do stosowania w systemach Windows i MacOSX. Umożliwia ona aplikacjom kompleksową obsługę większości popularnych formatów plików audio, funkcje odtwarzania muzyki, streamingu, dekodowania skompresowanych plików do czystej postaci WAV, nagrywania z wejścia a także generowania dźwięków. A wszystko to w małym około 100 KB-wym pliku DLL.&lt;br&gt;&lt;br&gt;Wersja: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX jest rozszerzeniem, udostępniającym  szereg efektów w tym regulację tempa i wysokości.
 &lt;br&gt;&lt;br&gt;Wersja: &lt;b&gt;2.4.5&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</translation>
     </message>
     <message>
@@ -1618,6 +1622,12 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
         <location filename="../QCMainWindow.cpp" line="2285"/>
         <source>#BPM tag is set.</source>
         <translation>Tag #BPM jest wypełniony.</translation>
+    </message>
+    <message>
+        <location filename="../QCMainWindow.cpp" line="984"/>
+        <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, about 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX is an extension providing several effects, including tempo &amp; pitch control.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.7.1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
+        <translation>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;Biblioteka BASS jest biblioteką audio do stosowania w systemach Windows i MacOSX. Umożliwia ona aplikacjom kompleksową obsługę większości popularnych formatów plików audio, funkcje odtwarzania muzyki, streamingu, dekodowania skompresowanych plików do czystej postaci WAV, nagrywania z wejścia a także generowania dźwięków. A wszystko to w małym około 100 KB-wym pliku DLL.&lt;br&gt;&lt;br&gt;Wersja: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX jest rozszerzeniem, udostępniającym  szereg efektów w tym regulację tempa i wysokości.
+&lt;br&gt;&lt;br&gt;Wersja: &lt;b&gt;2.4.7.1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="1397"/>

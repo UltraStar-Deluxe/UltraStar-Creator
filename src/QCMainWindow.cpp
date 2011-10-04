@@ -982,11 +982,11 @@ void QCMainWindow::on_actionAbout_BASS_triggered()
     QUMessageBox::information(this,
                             tr("About BASS"),
                             QString(tr("<b>BASS Audio Library</b><br><br>"
-                                            "BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.<br><br>"
+                                            "BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, about 100KB in size.<br><br>"
                                             "Version: <b>%1</b><br>"
                                             "<br><br><b>BASS FX Effects Extension</b><br><br>"
                                             "BASS FX is an extension providing several effects, including tempo & pitch control.<br><br>"
-                                            "Version: <b>2.4.5</b><br><br><br>"
+                                            "Version: <b>2.4.7.1</b><br><br><br>"
                                             "Copyright (c) 2003-2010<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved.")).arg(BASSVERSIONTEXT),
                             QStringList() << ":/icons/accept.png" << "OK",
                             330);
