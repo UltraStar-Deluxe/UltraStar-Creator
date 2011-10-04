@@ -486,9 +486,7 @@ I know what leaves me cold
 and what burns me up
 now this time it&apos;s just right
 I&apos;m ve+~+ry sure.</source>
-        <translation type="unfinished">Insérer les paroles de la chanson ici, en les chargeant d&apos;un fichier ou
-en les collants à partir du presse-papier. Les éditer suivant les
-règles suivantes:
+        <translation>Insérer les paroles de la chanson ici, en les chargeant d&apos;un fichier ou en les collants à partir du presse-papier. Les éditer suivant les règles suivantes:
 
 * Les retours à la ligne correspondent aux retours à la ligne d&apos;Ultrastar.
 * Les mots doivent être séparés par des espaces.
