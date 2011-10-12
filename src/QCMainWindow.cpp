@@ -135,8 +135,8 @@ QCMainWindow::QCMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QCM
 void QCMainWindow::closeEvent(QCloseEvent *event) {
     QSettings settings;
 
-    settings.setValue("windowState", QVariant(this->saveState()));
-    settings.setValue("windowSize", size());
+    settings.setValue("geometry", saveGeometry());
+    settings.setValue("windowState", saveState());
     settings.setValue("inputlyricsfontsize", ui->plainTextEdit_InputLyrics->fontInfo().pointSize());
     settings.setValue("outputlyricsfontsize", ui->plainTextEdit_OutputLyrics->fontInfo().pointSize());
 

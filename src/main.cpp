@@ -49,6 +49,10 @@ int main(int argc, char *argv[]) {
     QCMainWindow mainWindow;
     app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
 
+    QSettings settings;
+    mainWindow.restoreGeometry(settings.value("geometry").toByteArray());
+    mainWindow.restoreState(settings.value("windowState").toByteArray());
+
     mainWindow.show();
     splash.finish(&mainWindow);
 
