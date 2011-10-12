@@ -59,7 +59,6 @@
         <translation>Holenderski</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3851"/>
         <location filename="../QCMainWindow.cpp" line="35"/>
         <location filename="../QCMainWindow.cpp" line="786"/>
         <source>English</source>
@@ -71,14 +70,12 @@
         <translation>Fiński</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3911"/>
         <location filename="../QCMainWindow.cpp" line="37"/>
         <location filename="../QCMainWindow.cpp" line="790"/>
         <source>French</source>
         <translation>Francuski</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3869"/>
         <location filename="../QCMainWindow.cpp" line="38"/>
         <location filename="../QCMainWindow.cpp" line="794"/>
         <source>German</source>
@@ -90,7 +87,6 @@
         <translation>Hinduski</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3941"/>
         <location filename="../QCMainWindow.cpp" line="40"/>
         <location filename="../QCMainWindow.cpp" line="798"/>
         <source>Italian</source>
@@ -118,7 +114,6 @@
         <translation>Norweski</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3956"/>
         <location filename="../QCMainWindow.cpp" line="45"/>
         <location filename="../QCMainWindow.cpp" line="802"/>
         <source>Polish</source>
@@ -140,7 +135,6 @@
         <translation>Słowacki</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3926"/>
         <location filename="../QCMainWindow.cpp" line="50"/>
         <location filename="../QCMainWindow.cpp" line="806"/>
         <source>Spanish</source>
@@ -842,12 +836,12 @@ Oba te parametry możesz również zmieniać w trakcie edycji.</translation>
         <translation>0 (c&apos;)</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3989"/>
+        <location filename="../QCMainWindow.ui" line="4007"/>
         <source>What&apos;s This?</source>
         <translation>Co to jest?</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3992"/>
+        <location filename="../QCMainWindow.ui" line="4010"/>
         <source>F2</source>
         <translation>F2</translation>
     </message>
@@ -1119,7 +1113,7 @@ Tworzenie pliku kończy się również automatycznie, w momencie kliknięcia ost
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3764"/>
-        <location filename="../QCMainWindow.ui" line="3977"/>
+        <location filename="../QCMainWindow.ui" line="3995"/>
         <source>Help</source>
         <translation>Pomoc</translation>
     </message>
@@ -1157,12 +1151,12 @@ Tworzenie pliku kończy się również automatycznie, w momencie kliknięcia ost
         <translation type="obsolete">Ctrl+G</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3884"/>
+        <location filename="../QCMainWindow.ui" line="3890"/>
         <source>F5</source>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3896"/>
+        <location filename="../QCMainWindow.ui" line="3902"/>
         <source>F6</source>
         <translation>F6</translation>
     </message>
@@ -1175,12 +1169,12 @@ Tworzenie pliku kończy się również automatycznie, w momencie kliknięcia ost
         <translation type="obsolete">Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3968"/>
+        <location filename="../QCMainWindow.ui" line="3986"/>
         <source>Generate freestyle text files</source>
         <translation>Wygeneruj freestyle&apos;owe pliki txt</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3980"/>
+        <location filename="../QCMainWindow.ui" line="3998"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
@@ -1218,14 +1212,14 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
         <translation>O programie Qt</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3878"/>
-        <location filename="../QCMainWindow.ui" line="3881"/>
+        <location filename="../QCMainWindow.ui" line="3884"/>
+        <location filename="../QCMainWindow.ui" line="3887"/>
         <location filename="../QCMainWindow.cpp" line="983"/>
         <source>About BASS</source>
         <translation>O bibliotece BASS</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3893"/>
+        <location filename="../QCMainWindow.ui" line="3899"/>
         <location filename="../QCMainWindow.cpp" line="998"/>
         <source>About TagLib</source>
         <translation>O bibliotece TagLib</translation>

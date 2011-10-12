@@ -63,7 +63,6 @@
         <translation>Niederländisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3851"/>
         <location filename="../QCMainWindow.cpp" line="35"/>
         <location filename="../QCMainWindow.cpp" line="786"/>
         <source>English</source>
@@ -75,14 +74,12 @@
         <translation>Finnisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3911"/>
         <location filename="../QCMainWindow.cpp" line="37"/>
         <location filename="../QCMainWindow.cpp" line="790"/>
         <source>French</source>
         <translation>Französisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3869"/>
         <location filename="../QCMainWindow.cpp" line="38"/>
         <location filename="../QCMainWindow.cpp" line="794"/>
         <source>German</source>
@@ -94,7 +91,6 @@
         <translation>Hindi</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3941"/>
         <location filename="../QCMainWindow.cpp" line="40"/>
         <location filename="../QCMainWindow.cpp" line="798"/>
         <source>Italian</source>
@@ -122,7 +118,6 @@
         <translation>Norwegisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3956"/>
         <location filename="../QCMainWindow.cpp" line="45"/>
         <location filename="../QCMainWindow.cpp" line="802"/>
         <source>Polish</source>
@@ -144,7 +139,6 @@
         <translation>Slowakisch</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3926"/>
         <location filename="../QCMainWindow.cpp" line="50"/>
         <location filename="../QCMainWindow.cpp" line="806"/>
         <source>Spanish</source>
@@ -931,12 +925,12 @@ Start pressing this button (or the space bar) when the syllable is sung and keep
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3989"/>
+        <location filename="../QCMainWindow.ui" line="4007"/>
         <source>What&apos;s This?</source>
         <translation>Was ist das?</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3992"/>
+        <location filename="../QCMainWindow.ui" line="4010"/>
         <source>F2</source>
         <translation>F2
 </translation>
@@ -1173,7 +1167,7 @@ Der Him+mel ist na+~h.</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3764"/>
-        <location filename="../QCMainWindow.ui" line="3977"/>
+        <location filename="../QCMainWindow.ui" line="3995"/>
         <source>Help</source>
         <translatorcomment>Info</translatorcomment>
         <translation>Hilfe</translation>
@@ -1190,7 +1184,7 @@ Der Him+mel ist na+~h.</translation>
         <translation>Über UltraStar Creator</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3896"/>
+        <location filename="../QCMainWindow.ui" line="3902"/>
         <source>F6</source>
         <translation>F6</translation>
     </message>
@@ -1203,12 +1197,12 @@ Der Him+mel ist na+~h.</translation>
         <translation type="obsolete">Strg+I</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3968"/>
+        <location filename="../QCMainWindow.ui" line="3986"/>
         <source>Generate freestyle text files</source>
         <translation>Generiere Freestyle Textdateien</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3980"/>
+        <location filename="../QCMainWindow.ui" line="3998"/>
         <source>F1</source>
         <translation></translation>
     </message>
@@ -1252,20 +1246,20 @@ Der Him+mel ist na+~h.</translation>
         <translation type="obsolete">Strg+G</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3878"/>
-        <location filename="../QCMainWindow.ui" line="3881"/>
+        <location filename="../QCMainWindow.ui" line="3884"/>
+        <location filename="../QCMainWindow.ui" line="3887"/>
         <location filename="../QCMainWindow.cpp" line="983"/>
         <source>About BASS</source>
         <translatorcomment>Sur BASS</translatorcomment>
         <translation>Über BASS</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3884"/>
+        <location filename="../QCMainWindow.ui" line="3890"/>
         <source>F5</source>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3893"/>
+        <location filename="../QCMainWindow.ui" line="3899"/>
         <location filename="../QCMainWindow.cpp" line="998"/>
         <source>About TagLib</source>
         <translatorcomment>Sur TagLib</translatorcomment>

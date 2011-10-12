@@ -41,120 +41,114 @@
     <message>
         <location filename="../QCMainWindow.cpp" line="31"/>
         <source>Croatian</source>
-        <translation type="unfinished">Hrvatski</translation>
+        <translation>Croate</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="32"/>
         <source>Czech</source>
-        <translation>český</translation>
+        <translation>Tchèque</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="33"/>
         <source>Danish</source>
-        <translation>Danske</translation>
+        <translation>Danois</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="34"/>
         <source>Dutch</source>
-        <translation>Nederlands</translation>
+        <translation>Néerlandais</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3851"/>
         <location filename="../QCMainWindow.cpp" line="35"/>
         <location filename="../QCMainWindow.cpp" line="786"/>
         <source>English</source>
-        <translation>English</translation>
+        <translation>Anglais</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="36"/>
         <source>Finnish</source>
-        <translation>Suomalainen</translation>
+        <translation>Finnois</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3911"/>
         <location filename="../QCMainWindow.cpp" line="37"/>
         <location filename="../QCMainWindow.cpp" line="790"/>
         <source>French</source>
         <translation>Français</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3869"/>
         <location filename="../QCMainWindow.cpp" line="38"/>
         <location filename="../QCMainWindow.cpp" line="794"/>
         <source>German</source>
-        <translation>Deutsch</translation>
+        <translation>Allemand</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="39"/>
         <source>Hindi</source>
-        <translation>भारतीय</translation>
+        <translation>Hindi</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3941"/>
         <location filename="../QCMainWindow.cpp" line="40"/>
         <location filename="../QCMainWindow.cpp" line="798"/>
         <source>Italian</source>
-        <translation>Italiano</translation>
+        <translation>Italien</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="41"/>
         <source>Japanese</source>
-        <translation>日本</translation>
+        <translation>Japonais</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="42"/>
         <source>Korean</source>
-        <translation>한국의</translation>
+        <translation>Coréen</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="734"/>
         <location filename="../QCMainWindow.cpp" line="43"/>
         <source>Latin</source>
-        <translation>Latine</translation>
+        <translation>Latin</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="44"/>
         <source>Norwegian</source>
-        <translation>Norske</translation>
+        <translation>Norvégien</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3956"/>
         <location filename="../QCMainWindow.cpp" line="45"/>
         <location filename="../QCMainWindow.cpp" line="802"/>
         <source>Polish</source>
-        <translation>Polski</translation>
+        <translation>Polonais</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="46"/>
         <source>Portuguese</source>
-        <translation>Português</translation>
+        <translation>Portugais</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="47"/>
         <source>Russian</source>
-        <translation>Pусский</translation>
+        <translation>Russe</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="48"/>
         <source>Slovak</source>
-        <translation>Slovenských</translation>
+        <translation>Slovaque</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3926"/>
         <location filename="../QCMainWindow.cpp" line="50"/>
         <location filename="../QCMainWindow.cpp" line="806"/>
         <source>Spanish</source>
-        <translation>Español</translation>
+        <translation>Espagnol</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="51"/>
         <source>Swedish</source>
-        <translation>Svenska</translation>
+        <translation>Suédois</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="52"/>
         <source>Turkish</source>
-        <translation>Türk</translation>
+        <translation>Turc</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="679"/>
@@ -787,12 +781,12 @@ Essayez de remplir ce champ le plus précisément possible, cela influence le no
         <translation>0 (C4)</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3989"/>
+        <location filename="../QCMainWindow.ui" line="4007"/>
         <source>What&apos;s This?</source>
         <translation>Qu&apos;est ce que c&apos;est?</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3992"/>
+        <location filename="../QCMainWindow.ui" line="4010"/>
         <source>F2</source>
         <translation>F2</translation>
     </message>
@@ -1066,7 +1060,7 @@ L&apos;enregistrement est automatiquement stoppé losque vous avez enregistré t
     </message>
     <message>
         <location filename="../QCMainWindow.ui" line="3764"/>
-        <location filename="../QCMainWindow.ui" line="3977"/>
+        <location filename="../QCMainWindow.ui" line="3995"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
@@ -1096,22 +1090,22 @@ L&apos;enregistrement est automatiquement stoppé losque vous avez enregistré t
         <translation>F4</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3884"/>
+        <location filename="../QCMainWindow.ui" line="3890"/>
         <source>F5</source>
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3896"/>
+        <location filename="../QCMainWindow.ui" line="3902"/>
         <source>F6</source>
         <translation>F6</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3968"/>
+        <location filename="../QCMainWindow.ui" line="3986"/>
         <source>Generate freestyle text files</source>
         <translation>Générer les fichiers textes de façon rapide</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3980"/>
+        <location filename="../QCMainWindow.ui" line="3998"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
@@ -1149,14 +1143,14 @@ Appuyer sur le bouton départ (ou la barre d&apos;espace) lorsque la syllabe est
         <translation>A propos de Qt</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3878"/>
-        <location filename="../QCMainWindow.ui" line="3881"/>
+        <location filename="../QCMainWindow.ui" line="3884"/>
+        <location filename="../QCMainWindow.ui" line="3887"/>
         <location filename="../QCMainWindow.cpp" line="983"/>
         <source>About BASS</source>
         <translation>A propos de BASS</translation>
     </message>
     <message>
-        <location filename="../QCMainWindow.ui" line="3893"/>
+        <location filename="../QCMainWindow.ui" line="3899"/>
         <location filename="../QCMainWindow.cpp" line="998"/>
         <source>About TagLib</source>
         <translation>A propos de TagLib</translation>
@@ -1169,7 +1163,7 @@ Appuyer sur le bouton départ (ou la barre d&apos;espace) lorsque la syllabe est
     <message>
         <location filename="../QCMainWindow.cpp" line="49"/>
         <source>Slowenian</source>
-        <translation>Slovenských</translation>
+        <translation>Slovène</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="57"/>
@@ -1256,7 +1250,7 @@ Appuyer sur le bouton départ (ou la barre d&apos;espace) lorsque la syllabe est
     <message>
         <location filename="../QCMainWindow.cpp" line="30"/>
         <source>Chinese</source>
-        <translation>中国</translation>
+        <translation>Chinois</translation>
     </message>
     <message>
         <location filename="../QCMainWindow.cpp" line="431"/>
