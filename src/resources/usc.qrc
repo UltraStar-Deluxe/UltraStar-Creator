@@ -34,7 +34,6 @@
         <file>hyph/hyph_sk_SK.dic</file>
         <file>hyph/hyph_sl_SI.dic</file>
         <file>hyph/hyph_sv_SE.dic</file>
-        <file>icons/auction-hammer-gavel.png</file>
         <file>icons/background.png</file>
         <file>icons/balloon--arrow.png</file>
         <file>icons/bean.png</file>
@@ -62,7 +61,6 @@
         <file>icons/language.png</file>
         <file>icons/lock.png</file>
         <file>icons/lock-unlock.png</file>
-        <file>icons/logo_bass.png</file>
         <file>icons/music.png</file>
         <file>icons/note.png</file>
         <file>icons/path_error.png</file>
@@ -321,12 +319,35 @@
         <file>player/undo.png</file>
         <file>splash/about_bgr.png</file>
         <file>splash/splash.png</file>
-        <file>text/credits</file>
         <file>icons/quit.png</file>
         <file>icons/accept.png</file>
         <file>icons/cancel.png</file>
         <file>icons/help.png</file>
         <file>icons/information.png</file>
         <file>icons/mixmeister.png</file>
+        <file>languages/wales.png</file>
+        <file>icons/check_for_update.png</file>
+        <file>icons/bpm.png</file>
+        <file>icons/bass.png</file>
+        <file>qt_de.qm</file>
+        <file>qt_es.qm</file>
+        <file>qt_fr.qm</file>
+        <file>qt_pl.qm</file>
+        <file>qt_pt.qm</file>
+        <file>monty/back.png</file>
+        <file>monty/happy.png</file>
+        <file>monty/normal.png</file>
+        <file>monty/seated.png</file>
+        <file>icons/comment.png</file>
+        <file>icons/eye.png</file>
+        <file>icons/bullet_black.png</file>
+        <file>monty/speech1.png</file>
+        <file>monty/speech2.png</file>
+        <file>monty/speech3.png</file>
+        <file>monty/speech4.png</file>
+        <file>monty/speech5.png</file>
+        <file>monty/speech6.png</file>
+        <file>monty/speech7.png</file>
+        <file>monty/speech8.png</file>
     </qresource>
 </RCC>
