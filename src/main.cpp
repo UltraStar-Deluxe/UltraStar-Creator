@@ -1,5 +1,5 @@
 #include "main.h"
-#include "QCMainWindow.h"
+#include "QUMainWindow.h"
 #include "QUMessageBox.h"
 
 #include <QApplication>
@@ -14,7 +14,7 @@
 #include <QFileInfo>
 
 void initApplication();
-void initLanguage(QApplication&, QTranslator&, QSplashScreen&);
+void initLanguage(QApplication&, QTranslator&, QTranslator&, QSplashScreen&);
 void handlePreviousAppCrash();
 void handleWipWarning();
 void handleReleaseCandidateInformation();
@@ -28,12 +28,13 @@ int main(int argc, char *argv[]) {
     initApplication();
 
     QApplication app(argc, argv);
-    QTranslator tr;
+    QTranslator trContent;
+    QTranslator trQt;
 
     QSplashScreen splash(QPixmap(":/splash/splash.png"));
     splash.show();
 
-    initLanguage(app, tr, splash);
+    initLanguage(app, trContent, trQt, splash);
 
     #ifdef WIP_VERSION
     handleWipWarning();
@@ -46,12 +47,8 @@ int main(int argc, char *argv[]) {
     handlePreviousAppCrash();
     handleArguments();
 
-    QCMainWindow mainWindow;
+    QUMainWindow mainWindow;
     app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
-
-    QSettings settings;
-    mainWindow.restoreGeometry(settings.value("geometry").toByteArray());
-    mainWindow.restoreState(settings.value("windowState").toByteArray());
 
     mainWindow.show();
     splash.finish(&mainWindow);
@@ -77,10 +74,10 @@ void initApplication() {
  * have to restart this application if you want to change its language. Uses the system
  * language if no registry setting is found.
  *
- * Note that there is no special translation file for english present. That's why all
+ * Note that there is no special translation file for English present. That's why all
  * strings in the application source code is in english.
  */
-void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &splash) {
+void initLanguage(QApplication &app, QTranslator &trContent, QTranslator &trQt, QSplashScreen &s) {
         QSettings settings;
         bool settingFound;
         QLocale lang;
@@ -95,28 +92,43 @@ void initLanguage(QApplication &app, QTranslator &t, QSplashScreen &splash) {
         }
 
         if (lang.language() == QLocale::French) {
-            if(t.load(":/usc.fr.qm")) {
-                app.installTranslator(&t);
+            if(trContent.load(":/usc.fr.qm")) {
+                app.installTranslator(&trContent);
+            }
+            if(trQt.load(":/qt_fr.qm")) {
+                app.installTranslator(&trQt);
             }
         } else if (lang.language() == QLocale::German) {
-            if(t.load(":/usc.de.qm")) {
-                app.installTranslator(&t);
+            if(trContent.load(":/usc.de.qm")) {
+                app.installTranslator(&trContent);
             }
-        } else if (lang.language() == QLocale::Italian) {
-            if(t.load(":/usc.it.qm")) {
-                app.installTranslator(&t);
+            if(trQt.load(":/qt_de.qm")) {
+                app.installTranslator(&trQt);
             }
         } else if (lang.language() == QLocale::Polish) {
-            if(t.load(":/usc.pl.qm")) {
-                app.installTranslator(&t);
+            if(trContent.load(":/usc.pl.qm")) {
+                app.installTranslator(&trContent);
+            }
+            if(trQt.load(":/qt_pl.qm")) {
+                app.installTranslator(&trQt);
             }
         } else if (lang.language() == QLocale::Spanish) {
-            if(t.load(":/usc.es.qm")) {
-                app.installTranslator(&t);
+            if(trContent.load(":/usc.es.qm")) {
+                app.installTranslator(&trContent);
+            }
+            if(trQt.load(":/qt_es.qm")) {
+                app.installTranslator(&trQt);
+            }
+        } else if (lang.language() == QLocale::Portuguese) {
+            if(trContent.load(":/usc.pt.qm")) {
+                app.installTranslator(&trContent);
+            }
+            if(trQt.load(":/qt_pt.qm")) {
+                app.installTranslator(&trQt);
             }
         }
 
-        splash.showMessage(QString(QObject::tr("%1.%2.%3 is loading...")).arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION), Qt::AlignBottom | Qt::AlignRight, Qt::white);
+        s.showMessage(QString(QObject::tr("%1.%2.%3 is loading...")).arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION), Qt::AlignBottom | Qt::AlignRight, Qt::white);
 
         // message needs to be here because it can be translated only after installing the translator
         if(!settingFound)
@@ -169,7 +181,7 @@ void handlePreviousAppCrash() {
             QObject::tr("Application Crash Detected"),
             QObject::tr("The UltraStar Creator did not exit successfully last time. <br>"
                             "<br>"
-                            "Please report this problem <a href=\"http://usc.sf.net\">here</a>."),
+                            "Please report this problem <a href=\"http://sourceforge.net/projects/usc/\">here</a>."),
             BTN	<< ":/icons/accept.png"        << QObject::tr("Try again."));
 }
 
