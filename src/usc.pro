@@ -6,10 +6,7 @@ QT += core \
     webkit \
     network
 
-# CONFIG -= debug_and_release \
-# release
 #CONFIG += debug
-CONFIG += release
 
 CONFIG(release, debug|release) {
         TARGET = usc
@@ -29,21 +26,40 @@ CONFIG(debug, debug|release) {
 
 HEADERS += main.h \
     QU.h \
-    QULogService.h \
-    QUMessageBox.h \
-    QCMainWindow.h \
-    QUAboutDialog.h
+    QUMainWindow.h \
+    QUAboutDialog.h \
+    support/QUMessageBox.h \
+    support/QULogService.h \
+    ribbon/QURibbonBar.h \
+    QUMonty.h \
+    monty/QUMontyArea.h \
+    QUSongSupport.h \
+    song/QUSongLine.h \
+    song/QUSongInterface.h \
+    song/QUSongFile.h \
+    song/QUSongDatabase.h \
+    QUStringSupport.h
 
 SOURCES += main.cpp \
-    QCMainWindow.cpp \
+    QUMainWindow.cpp \
     QU.cpp \
-    QULogService.cpp \
-    QUMessageBox.cpp \
-    QUAboutDialog.cpp
+    QUAboutDialog.cpp \
+    support/QUMessageBox.cpp \
+    support/QULogService.cpp \
+    ribbon/QURibbonBar.cpp \
+    QUMonty.cpp \
+    monty/QUMontyArea.cpp \
+    QUSongSupport.cpp \
+    song/QUSongLine.cpp \
+    song/QUSongFile.cpp \
+    song/QUSongDatabase.cpp \
+    QUStringSupport.cpp
 
-FORMS += QUMessageBox.ui \
-    QCMainWindow.ui \
-    QUAboutDialog.ui
+FORMS += QUMainWindow.ui \
+    QUAboutDialog.ui \
+    support/QUMessageBox.ui \
+    ribbon/QURibbonBar.ui \
+    monty/QUMontyArea.ui
 	
 RESOURCES += \
     resources/usc.qrc
@@ -51,10 +67,14 @@ RESOURCES += \
 TRANSLATIONS = resources/usc.de.ts \
     resources/usc.es.ts \
     resources/usc.fr.ts \
-    resources/usc.it.ts \
-    resources/usc.pl.ts
+    resources/usc.pl.ts \
+    resources/usc.pt.ts
 
 INCLUDEPATH += . \
+    monty \
+    ribbon \
+    song \
+    support \
     ui
 
 win32 { 
@@ -89,10 +109,23 @@ unix:!macx {
         -lbass_fx
 }
 
+win32 {
 QMAKE_EXTRA_TARGETS += revtarget
 PRE_TARGETDEPS += version.h
 revtarget.target = version.h
-revtarget.commands = $(shell SubWCRev . version.in version.h )
+revtarget.commands = @echo \
+    "const char *revision = \"r$(shell svnversion .)\"; const char *date_time = \"$(shell date /T)$(shell time /T)\";" > $$revtarget.target
 revtarget.depends = $$SOURCES \
     $$HEADERS \
     $$FORMS
+}
+
+unix {
+QMAKE_EXTRA_TARGETS += revtarget
+PRE_TARGETDEPS += version.h
+revtarget.target = version.h
+revtarget.commands = @echo \"const char *revision = \\\"r$(shell svnversion .)\\\"; const char *date_time = \\\"$(shell date +%d.%m.%Y%6R)\\\";\" > $$revtarget.target
+revtarget.depends = $$SOURCES \
+    $$HEADERS \
+    $$FORMS
+}
