@@ -1,5 +1,5 @@
 /****************************************************************************
- BASS_FX 2.4 - Copyright (c) 2002-2011 (: JOBnik! :) [Arthur Aminov, ISRAEL]
+ BASS_FX 2.4 - Copyright (c) 2002-2012 (: JOBnik! :) [Arthur Aminov, ISRAEL]
                                                      [http://www.jobnik.org]
 
       bugs/suggestions/questions:
@@ -8,7 +8,7 @@
         e-mail : bass_fx@jobnik.org
      --------------------------------------------------
 
- NOTE: This header will work only with BASS_FX version 2.4.6
+ NOTE: This header will work only with BASS_FX version 2.4.8
        Check www.un4seen.com or www.jobnik.org for any later versions.
 
  * Requires BASS 2.4 (available @ www.un4seen.com)
@@ -347,10 +347,10 @@ enum {
 	BASS_FX_BPM_TRAN_PERCENT2	// Percents to BPM value
 };
 
-typedef void (CALLBACK BPMPROCESSPROC)(DWORD chan, float percent);
+typedef void (CALLBACK BPMPROCESSPROC)(DWORD chan, float percent, void *user);
 typedef void (CALLBACK BPMPROC)(DWORD chan, float bpm, void *user);
 
-float BASS_FXDEF(BASS_FX_BPM_DecodeGet)(DWORD chan, double startSec, double endSec, DWORD minMaxBPM, DWORD flags, BPMPROCESSPROC *proc);
+float BASS_FXDEF(BASS_FX_BPM_DecodeGet)(DWORD chan, double startSec, double endSec, DWORD minMaxBPM, DWORD flags, BPMPROCESSPROC *proc, void *user);
 BOOL BASS_FXDEF(BASS_FX_BPM_CallbackSet)(DWORD handle, BPMPROC *proc, double period, DWORD minMaxBPM, DWORD flags, void *user);
 BOOL BASS_FXDEF(BASS_FX_BPM_CallbackReset)(DWORD handle);
 float BASS_FXDEF(BASS_FX_BPM_Translate)(DWORD handle, float val2tran, DWORD trans);
