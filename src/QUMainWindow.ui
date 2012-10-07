@@ -2277,11 +2277,11 @@
              <number>4</number>
             </property>
             <item row="0" column="0">
-             <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0,0,0,0">
+             <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0,0,0,0,0">
               <property name="spacing">
                <number>4</number>
               </property>
-              <item row="0" column="0" colspan="7">
+              <item row="0" column="0" colspan="8">
                <widget class="QPlainTextEdit" name="plainTextEdit_InputLyrics">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -2398,7 +2398,7 @@ I'm ve+~+ry sure.</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="4">
+              <item row="1" column="5">
                <spacer name="horizontalSpacer">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
@@ -2411,7 +2411,7 @@ I'm ve+~+ry sure.</string>
                 </property>
                </spacer>
               </item>
-              <item row="1" column="5">
+              <item row="1" column="6">
                <widget class="QPushButton" name="pushButton_InputLyricsIncreaseFontSize">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2440,7 +2440,7 @@ I'm ve+~+ry sure.</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="6">
+              <item row="1" column="7">
                <widget class="QPushButton" name="pushButton_InputLyricsDecreaseFontSize">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2498,7 +2498,7 @@ I'm ve+~+ry sure.</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
+              <item row="1" column="4">
                <widget class="QPushButton" name="pushButton_SyllabificateTeX">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2523,6 +2523,41 @@ I'm ve+~+ry sure.</string>
                   <normaloff>:/icons/edit-hyphenation.png</normaloff>:/icons/edit-hyphenation.png</iconset>
                 </property>
                 <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QToolButton" name="toolButton_Capitalize">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="statusTip">
+                 <string/>
+                </property>
+                <property name="whatsThis">
+                 <string/>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources/usc.qrc">
+                  <normaloff>:/icons/edit-uppercase.png</normaloff>:/icons/edit-uppercase.png</iconset>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+                <property name="autoRaise">
                  <bool>true</bool>
                 </property>
                </widget>
@@ -2574,46 +2609,6 @@ I'm ve+~+ry sure.</string>
               <property name="spacing">
                <number>4</number>
               </property>
-              <item row="0" column="0" colspan="6">
-               <widget class="QPlainTextEdit" name="plainTextEdit_OutputLyrics">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                  <horstretch>50</horstretch>
-                  <verstretch>50</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="sizeIncrement">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <weight>50</weight>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="statusTip">
-                 <string/>
-                </property>
-                <property name="whatsThis">
-                 <string/>
-                </property>
-                <property name="tabChangesFocus">
-                 <bool>true</bool>
-                </property>
-                <property name="lineWrapMode">
-                 <enum>QPlainTextEdit::NoWrap</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-                <property name="centerOnScroll">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
               <item row="1" column="0">
                <widget class="QPushButton" name="pushButton_SaveToFile">
                 <property name="enabled">
@@ -2781,6 +2776,34 @@ I'm ve+~+ry sure.</string>
                 </property>
                 <property name="flat">
                  <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="6">
+               <widget class="QTextEdit" name="textEdit_OutputLyrics">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>50</horstretch>
+                  <verstretch>50</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="sizeIncrement">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="statusTip">
+                 <string/>
+                </property>
+                <property name="whatsThis">
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -3453,7 +3476,7 @@ I'm ve+~+ry sure.</string>
   <tabstop>pushButton_startUltraStar</tabstop>
   <tabstop>pushButton_startYass</tabstop>
   <tabstop>plainTextEdit_InputLyrics</tabstop>
-  <tabstop>plainTextEdit_OutputLyrics</tabstop>
+  <tabstop>textEdit_OutputLyrics</tabstop>
   <tabstop>pushButton_NextSyllable1</tabstop>
   <tabstop>pushButton_NextSyllable2</tabstop>
   <tabstop>pushButton_NextSyllable3</tabstop>
