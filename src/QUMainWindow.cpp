@@ -8,6 +8,8 @@
 #include "QUMonty.h"
 #include "QUSongSupport.h"
 
+#include "hyphen/hyphen.h"
+
 #include <QActionGroup>
 #include <QFileDialog>
 #include <QTextStream>
@@ -38,12 +40,13 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	initMonty();
 
 	// deactivate TeX syllabification for now
-	ui->pushButton_SyllabificateTeX->setVisible(false);
+	//ui->pushButton_SyllabificateTeX->setVisible(false);
 
 	logSrv->add(tr("Ready."), QU::Information);
 	lyricsProgressBar = new QProgressBar;
-	QMainWindow::statusBar()->addPermanentWidget(lyricsProgressBar);
-	QMainWindow::statusBar()->showMessage(tr("USC ready."));
+	lyricsProgressBar->setFormat("%v/%m (%p%)");
+	QMainWindow::statusBar()->addPermanentWidget(lyricsProgressBar, 1);
+
 	if (BASS_Init(-1, 44100, 0, 0, NULL)) {
 		QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
 	}
@@ -96,9 +99,11 @@ void QUMainWindow::closeEvent(QCloseEvent *event) {
 	settings.setValue("allowMonty", QVariant(_menu->montyBtn->isChecked()));
 	settings.setValue("geometry", saveGeometry());
 	settings.setValue("windowState", saveState());
+	settings.setValue("creator", ui->lineEdit_Creator->text());
 	settings.setValue("inputlyricsfontsize", ui->plainTextEdit_InputLyrics->fontInfo().pointSize());
-	settings.setValue("outputlyricsfontsize", ui->plainTextEdit_OutputLyrics->fontInfo().pointSize());
+	settings.setValue("outputlyricsfontsize", ui->textEdit_OutputLyrics->fontInfo().pointSize());
 	settings.setValue("defaultPitch", _menu->comboBox_DefaultPitch->currentIndex());
+	settings.setValue("autoCapitalizeLyricLines", ui->toolButton_Capitalize->isChecked());
 
 	// everything should be fine from now on
 	QFile::remove("running.app");
@@ -234,12 +239,15 @@ void QUMainWindow::initConfig() {
 	font.setPointSize(settings.value("inputlyricsfontsize", 10).toInt());
 	ui->plainTextEdit_InputLyrics->setFont(font);
 	font.setPointSize(settings.value("outputlyricsfontsize", 10).toInt());
-	ui->plainTextEdit_OutputLyrics->setFont(font);
+	ui->textEdit_OutputLyrics->setFont(font);
 
 	// restore default pitch
 	_menu->comboBox_DefaultPitch->setCurrentIndex(settings.value("defaultPitch", 0).toInt());
 
 	_menu->montyBtn->setChecked(settings.value("allowMonty", true).toBool());
+
+	// restore autoCapitalizeLyricLines
+	ui->toolButton_Capitalize->setChecked(settings.value("autoCapitalizeLyricLines", true).toBool());
 
 	/*
 	updateViewButtons();
@@ -341,6 +349,9 @@ bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 	QString suggestedAbsoluteFilePath = fileInfo_MP3->absolutePath() + "\\" + ui->lineEdit_Artist->text() + " - " + ui->lineEdit_Title->text() + ".txt";
 	QString fileName = QFileDialog::getSaveFileName(this, tr("Please choose file"), suggestedAbsoluteFilePath, tr("Text files (*.txt)"));
 
+	if(fileName.isEmpty())
+		return false;
+
 	QFile file(fileName);
 	if (!file.open(QFile::WriteOnly | QFile::Text)) {
 		QUMessageBox::warning(this, tr("Application"),
@@ -352,7 +363,7 @@ bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 
 	QTextStream out(&file);
 	QTextCodec *codec = QTextCodec::codecForName("Windows-1252");
-	if (codec->canEncode(ui->plainTextEdit_OutputLyrics->toPlainText())) {
+	if (codec->canEncode(ui->textEdit_OutputLyrics->toPlainText())) {
 		out.setCodec(codec);
 	}
 	else {
@@ -361,7 +372,7 @@ bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 	}
 
 	QApplication::setOverrideCursor(Qt::WaitCursor);
-	out << ui->plainTextEdit_OutputLyrics->toPlainText();
+	out << ui->textEdit_OutputLyrics->toPlainText();
 	QApplication::restoreOverrideCursor();
 	ui->pushButton_startUltraStar->setEnabled(true);
 	ui->pushButton_startYass->setEnabled(true);
@@ -370,15 +381,13 @@ bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 
 void QUMainWindow::on_pushButton_PlayPause_clicked()
 {
-	QSettings settings;
-
 	if (state == initialized) {
 		setCursor(Qt::WaitCursor);
 		state = QUMainWindow::playing;
 		ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
 		QWidget::setAcceptDrops(false);
 		ui->groupBox_SongMetaInformationTags->setDisabled(true);
-		ui->groupBox_InputLyrics->setDisabled(true);
+		ui->plainTextEdit_InputLyrics->setReadOnly(true);
 		ui->groupBox_OutputLyrics->setEnabled(true);
 		ui->pushButton_SaveToFile->setDisabled(true);
 		ui->pushButton_startUltraStar->setDisabled(true);
@@ -389,21 +398,14 @@ void QUMainWindow::on_pushButton_PlayPause_clicked()
 		ui->pushButton_UndoTap->setDisabled(true);
 		ui->pushButton_Stop->setEnabled(true);
 		if (ui->lineEdit_Title->text().isEmpty()) {
-			ui->lineEdit_Title->setText(tr("Title"));
+			ui->lineEdit_Title->setText(tr("Unknown Title"));
 			ui->label_TitleSet->setPixmap(QPixmap(":/icons/path_ok.png"));
 		}
 		if (ui->lineEdit_Artist->text().isEmpty()) {
-			ui->lineEdit_Artist->setText(tr("Artist"));
+			ui->lineEdit_Artist->setText(tr("Unknown Artist"));
 			ui->label_ArtistSet->setPixmap(QPixmap(":/icons/path_ok.png"));
 		}
-		if (ui->comboBox_Cover->currentText().isEmpty()) {
-			ui->comboBox_Cover->addItem(QString("%1 - %2 [CO].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
-		}
-		if (ui->comboBox_Background->currentText().isEmpty()) {
-			ui->comboBox_Background->addItem(QString("%1 - %2 [BG].jpg").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text()));
-		}
 
-		//timeLineMap.insert(-15, "#ENCODING:UTF8");
 		timeLineMap.insert(-14, QString("#TITLE:%1").arg(ui->lineEdit_Title->text()));
 		timeLineMap.insert(-13, QString("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
 		if (!ui->comboBox_Language->currentText().isEmpty()) {
@@ -436,8 +438,6 @@ void QUMainWindow::on_pushButton_PlayPause_clicked()
 		BPM = ui->doubleSpinBox_BPM->value();
 
 		updateOutputLyrics();
-
-		settings.setValue("creator", ui->lineEdit_Creator->text());
 
 		QString rawLyricsString = ui->plainTextEdit_InputLyrics->toPlainText();
 
@@ -509,7 +509,7 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	rawLyricsString = rawLyricsString.replace("´", "'");
 	rawLyricsString = rawLyricsString.replace("`", "'");
 
-	// delete leading and trailing whitespace from each line
+	// delete leading and trailing whitespace from each line, change line beginning to uppercase if selected
 	QStringList rawLyricsStringList = rawLyricsString.split(QRegExp("\\n"));
 	QStringList lyricsStringList;
 	rawLyricsString.clear();
@@ -517,7 +517,9 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	while (lyricsLineIterator.hasNext()) {
 		QString currentLine = lyricsLineIterator.next();
 		currentLine = currentLine.trimmed();
-		currentLine.replace(0,1,currentLine.at(0).toUpper());
+		if(ui->toolButton_Capitalize->isChecked()) {
+			currentLine.replace(0,1,currentLine.at(0).toUpper());
+		}
 		lyricsStringList.append(currentLine);
 	}
 	rawLyricsString = lyricsStringList.join("\n");
@@ -598,14 +600,14 @@ void QUMainWindow::on_pushButton_Tap_released()
 
 void QUMainWindow::updateOutputLyrics()
 {
-	ui->plainTextEdit_OutputLyrics->clear();
+	ui->textEdit_OutputLyrics->clear();
 	// insert header
 	QMapIterator<double, QString> i(timeLineMap);
 		while (i.hasNext()) {
 			i.next();
 			 if (i.key() <= currentNoteStartTime)
 			 {
-				 ui->plainTextEdit_OutputLyrics->appendPlainText(i.value());
+				 ui->textEdit_OutputLyrics->append(i.value());
 			 }
 		 }
 }
@@ -628,8 +630,8 @@ void QUMainWindow::on_pushButton_Stop_clicked()
 		ui->label_TimeElapsed->setText("0:00");
 		ui->label_TimeToRun->setText("0:00");
 
-		ui->plainTextEdit_OutputLyrics->appendPlainText("E");
-		ui->plainTextEdit_OutputLyrics->appendPlainText("");
+		ui->textEdit_OutputLyrics->append("E");
+		ui->textEdit_OutputLyrics->append("");
 
 		QMainWindow::statusBar()->showMessage(tr("USC ready."));
 
@@ -692,7 +694,6 @@ void QUMainWindow::dropEvent( QDropEvent* event ) {
 					QFileInfo fileInfo(fileName);
 					QString fileScheme("*." + fileInfo.suffix());
 
-					//if (fileInfo->suffix().toLower() == "txt") {
 					if(QUSongSupport::allowedSongFiles().contains(fileScheme, Qt::CaseInsensitive)) {
 						QFile file(fileName);
 						if (file.open(QFile::ReadOnly | QFile::Text)) {
@@ -700,11 +701,11 @@ void QUMainWindow::dropEvent( QDropEvent* event ) {
 							ui->plainTextEdit_InputLyrics->setPlainText(lyrics.readAll());
 						}
 					}
-					//else if (fileInfo->suffix().toLower() == tr("mp3") || fileInfo->suffix().toLower() == tr("ogg")) {
 					else if(QUSongSupport::allowedAudioFiles().contains(fileScheme, Qt::CaseInsensitive)) {
 						if (fileInfo.exists()) {
 							defaultDir = fileInfo.absolutePath();
-							fileInfo_MP3 = &fileInfo;
+							fileInfo_MP3 = new QFileInfo(fileName);
+
 							handleMP3();
 						}
 					}
@@ -815,19 +816,19 @@ void QUMainWindow::on_pushButton_InputLyricsDecreaseFontSize_clicked()
 
 void QUMainWindow::on_pushButton_OutputLyricsIncreaseFontSize_clicked()
 {
-	QFont font = ui->plainTextEdit_OutputLyrics->font();
+	QFont font = ui->textEdit_OutputLyrics->font();
 	if (font.pointSize() < 20) {
 		font.setPointSize(font.pointSize()+1);
-		ui->plainTextEdit_OutputLyrics->setFont(font);
+		ui->textEdit_OutputLyrics->setFont(font);
 	}
 }
 
 void QUMainWindow::on_pushButton_OutputLyricsDecreaseFontSize_clicked()
 {
-	QFont font = ui->plainTextEdit_OutputLyrics->font();
+	QFont font = ui->textEdit_OutputLyrics->font();
 	if (font.pointSize() > 5) {
 		font.setPointSize(font.pointSize()-1);
-		ui->plainTextEdit_OutputLyrics->setFont(font);
+		ui->textEdit_OutputLyrics->setFont(font);
 	}
 }
 
@@ -843,8 +844,6 @@ void QUMainWindow::on_plainTextEdit_InputLyrics_textChanged()
 		state = QUMainWindow::uninitialized;
 		ui->pushButton_PlayPause->setDisabled(true);
 	}
-
-	montyTalk();
 }
 
 /*!
@@ -1052,7 +1051,7 @@ void QUMainWindow::handleMP3() {
 	if (videoFiles.length() > 0)
 		ui->comboBox_Video->setCurrentIndex(1);
 
-	BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, 0);
+	BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, NULL, 0);
 	BPM = BPMFromMP3;
 
 	if (BPM == 0) {
@@ -1158,6 +1157,16 @@ void QUMainWindow::setPlaybackSpeed(int value)
 
 void QUMainWindow::aboutBASS()
 {
+	BYTE BASS_MAJOR_VERSION   = (BASS_GetVersion()    >> 24) & 0xFF;
+	BYTE BASS_MINOR_VERSION   = (BASS_GetVersion()    >> 16) & 0xFF;
+	BYTE BASS_PATCH_VERSION   = (BASS_GetVersion()    >>  8) & 0xFF;
+	BYTE BASS_REVISION        = (BASS_GetVersion()         ) & 0xFF;
+	QString BASS_VERSION      = QString("%1.%2.%3.%4").arg(BASS_MAJOR_VERSION).arg(BASS_MINOR_VERSION).arg(BASS_PATCH_VERSION).arg(BASS_REVISION);
+	BYTE BASSFX_MAJOR_VERSION = (BASS_FX_GetVersion() >> 24) & 0xFF;
+	BYTE BASSFX_MINOR_VERSION = (BASS_FX_GetVersion() >> 16) & 0xFF;
+	BYTE BASSFX_PATCH_VERSION = (BASS_FX_GetVersion() >>  8) & 0xFF;
+	BYTE BASSFX_REVISION      = (BASS_FX_GetVersion()      ) & 0xFF;
+	QString BASSFX_VERSION    = QString("%1.%2.%3.%4").arg(BASSFX_MAJOR_VERSION).arg(BASSFX_MINOR_VERSION).arg(BASSFX_PATCH_VERSION).arg(BASSFX_REVISION);
 	QUMessageBox::information(this,
 							tr("About BASS"),
 							QString(tr("<b>BASS Audio Library</b><br><br>"
@@ -1165,8 +1174,8 @@ void QUMainWindow::aboutBASS()
 											"Version: <b>%1</b><br>"
 											"<br><br><b>BASS FX Effects Extension</b><br><br>"
 											"BASS FX is an extension providing several effects, including tempo & pitch control.<br><br>"
-											"Version: <b>2.4.7.1</b><br><br><br>"
-											"Copyright (c) 2003-2010<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved.")).arg(BASSVERSIONTEXT),
+											"Version: <b>%2</b><br><br><br>"
+									   "Copyright (c) 1999-2012<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved.")).arg(BASS_VERSION).arg(BASSFX_VERSION),
 							QStringList() << ":/icons/accept.png" << "OK",
 							330);
 }
@@ -1234,7 +1243,7 @@ void QUMainWindow::on_pushButton_Reset_clicked()
 		currentCharacterIndex = 0;
 		firstNote = true;
 		lyricsSyllableList.clear();
-		ui->plainTextEdit_OutputLyrics->clear();
+		ui->textEdit_OutputLyrics->clear();
 		ui->pushButton_Tap->setText("");
 		ui->pushButton_NextSyllable1->setText("");
 		ui->pushButton_NextSyllable2->setText("");
@@ -1244,7 +1253,7 @@ void QUMainWindow::on_pushButton_Reset_clicked()
 		ui->horizontalSlider_MP3->setValue(0);
 		lyricsProgressBar->setValue(0);
 		ui->groupBox_SongMetaInformationTags->setEnabled(true);
-		ui->groupBox_InputLyrics->setEnabled(true);
+		ui->plainTextEdit_InputLyrics->setReadOnly(false);
 		ui->groupBox_OutputLyrics->setDisabled(true);
 		ui->groupBox_TapArea->setDisabled(true);
 		ui->pushButton_Tap->setDisabled(true);
@@ -1553,13 +1562,6 @@ void QUMainWindow::on_pushButton_startYass_clicked()
 
 void QUMainWindow::generateFreestyleTextFiles()
 {
-	int result = QUMessageBox::question(0,
-					QObject::tr("Freestyle text file generation."),
-					QObject::tr("This function will generate UltraStar compatible freestyle text files without any lyrics for each audio file in a subsequently selectable folder.<br><br>Each MP3 will be moved into a separate subdirectory and a text file containing the bare minimum of information will be automatically created along with a standard cover and background.<br><br>If your audio files follow an 'Artist - Title.mp3' naming scheme, they will be correctly mapped in the resulting song file."),
-					BTN << ":/icons/accept.png" << QObject::tr("Go ahead, I know what I am doing!")
-						<< ":/icons/cancel.png" << QObject::tr("I'm not sure. I want to cancel."),400,0);
-
-	if (result == 0) {
 		QString SongCollectionPath;
 		SongCollectionPath = QFileDialog::getExistingDirectory(0, tr("Choose root song folder"), QDir::homePath());
 
@@ -1590,11 +1592,11 @@ void QUMainWindow::generateFreestyleTextFiles()
 					artist = songInfo.completeBaseName().mid(0, separatorPos);
 					artist = artist.trimmed();
 					QStringList tokens = artist.split(QRegExp("(\\s+)"));
-						QList<QString>::iterator tokItr = tokens.begin();
+					QList<QString>::iterator tokItr = tokens.begin();
 
-						for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
+					for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
 						(*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
-						}
+					}
 					artist = tokens.join(" ");
 					artist.replace("Feat.", "feat.", Qt::CaseSensitive);
 					artist.replace("With.", "with.", Qt::CaseSensitive);
@@ -1603,11 +1605,11 @@ void QUMainWindow::generateFreestyleTextFiles()
 					title = songInfo.completeBaseName().mid(separatorPos + 3);
 					title = title.trimmed();
 					tokens = title.split(QRegExp("(\\s+)"));
-						tokItr = tokens.begin();
+					tokItr = tokens.begin();
 
-						for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
+					for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
 						(*tokItr) = (*tokItr).at(0).toUpper() + (*tokItr).mid(1);
-						}
+					}
 					title = tokens.join(" ");
 
 					dirName = QString("%1 - %2").arg(artist).arg(title);
@@ -1628,9 +1630,9 @@ void QUMainWindow::generateFreestyleTextFiles()
 				QFile file(textFilename);
 				if (!file.open(QFile::WriteOnly | QFile::Text)) {
 					QUMessageBox::warning(this, tr("Application"),
-						tr("Cannot write file: %1\n%2.")
-						.arg(textFilename)
-						.arg(file.errorString()));
+										  tr("Cannot write file: %1\n%2.")
+										  .arg(textFilename)
+										  .arg(file.errorString()));
 				}
 
 				QTextStream out(&file);
@@ -1690,10 +1692,6 @@ void QUMainWindow::generateFreestyleTextFiles()
 								  BTN << ":/icons/accept.png" << QObject::tr("OK"),
 								  400,
 								  0);
-	}
-	else {
-		// user cancelled
-	}
 }
 
 void QUMainWindow::on_actionHelp_triggered()
@@ -1770,7 +1768,7 @@ void QUMainWindow::on_pushButton_SyllabificateRules_clicked()
 				i = i + 2;
 			}
 			// a consonant between 2 vowels
-			else if (isVowel(ch1, lang) && isConsonant(ch2, lang) && (isVowel(ch3, lang) || ch3.toLower() == 'y')) {
+			else if (isVowel(ch1, lang) && isConsonant(ch2, lang) && ((isVowel(ch3, lang) && (ch3.toLower() != 'e')) || ch3.toLower() == 'y')) {
 				syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
 			}
 			// inseparable consonants between vowels
@@ -2210,222 +2208,156 @@ bool QUMainWindow::isHiatus(QChar character1, QChar character2, QString lang)
 
 void QUMainWindow::on_pushButton_SyllabificateTeX_clicked()
 {
-	//
 	QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
 	QChar sep = '+';
-	QString syllabifiedLyrics = "";
 	QFile patternFile;
-	QString patternEncoding;
 
 	if (language.isEmpty()) {
 		QUMessageBox::warning(this, tr("Application"),
 			tr("Please choose the song's language first."));
 	}
 	else if (language == "Croatian") {
-		patternFile.setFileName(":/hyph/hyph_hr.dic");
-		patternEncoding = "ISO-8859-2";
+		//patternFile.setFileName("dict/cr_50K.dic");
 	}
 	else if (language == "Czech") {
-		patternFile.setFileName(":/hyph/hyph_cs_CZ.dic");
-		patternEncoding = "ISO-8859-2";
+		//patternFile.setFileName("dict/cz_50K.dic");
 	}
 	else if (language == "Danish") {
-		patternFile.setFileName(":/hyph/hyph_da_DK.dic");
-		patternEncoding = "ISO-8859-1";
+		//patternFile.setFileName("dict/dk_50K.dic");
 	}
 	else if (language == "Dutch") {
-		patternFile.setFileName(":/hyph/hyph_nl_NL.dic");
-		patternEncoding = "ISO-8859-1";
+		patternFile.setFileName("dict/nl_50K.dic");
 	}
 	else if (language == "English") {
-		patternFile.setFileName(":/hyph/hyph_en_US.dic");
-		//patternFile.setFileName(":/hyph/hyph_en_GB.dic"); // British
-		//patternFile.setFileName(":/hyph/hyph_en_CA.dic"); // Canadian
-		patternEncoding = "ISO-8859-1";
+		patternFile.setFileName("dict/hyph_en_US.dic");
 	}
 	else if (language == "Finnish") {
-		patternFile.setFileName(":/hyph/hyph_fi_FI.dic");
-		patternEncoding = "ISO-8859-1";
+		patternFile.setFileName("dict/fi_50K.dic");
 	}
 	else if (language == "French") {
-		patternFile.setFileName(":/hyph/hyph_fr_FR.dic");
-		patternEncoding = "ISO-8859-1";
+		patternFile.setFileName("dict/fr_50K.dic");
 	}
 	else if (language == "German") {
-		patternFile.setFileName(":/hyph/hyph_de_DE.dic");
-		//patternFile.setFileName(":/hyph/hyph_de_CH.dic");
-		patternEncoding = "ISO-8859-1";
+		patternFile.setFileName("dict/top10000de.dic");
 	}
 	else if (language == "Hindi") {
-		// no pattern file available
+		//patternFile.setFileName("dict/hi_50K.dic");
 	}
 	else if (language == "Italian") {
-		patternFile.setFileName(":/hyph/hyph_it_IT.dic");
-		patternEncoding = "ISO-8859-1";
+		patternFile.setFileName("dict/it_50K.dic");
 	}
 	else if (language == "Latin") {
-		// no pattern file available
+		//patternFile.setFileName("dict/.dic");
 	}
 	else if (language == "Norwegian") {
-		patternFile.setFileName(":/hyph/hyph_nb_NO.dic");
-		//patternFile.setFileName(":/hyph/hyph_nn_NO.dic");
-		patternEncoding = "ISO-8859-1";
+		patternFile.setFileName("dict/no_50K.dic");
 	}
 	else if (language == "Polish") {
-		patternFile.setFileName(":/hyph/hyph_pl_PL.dic");
-		patternEncoding = "ISO-8859-2";
+		patternFile.setFileName("dict/pl_50K.dic");
 	}
 	else if (language == "Portuguese") {
-		patternFile.setFileName(":/hyph/hyph_pt_PT.dic");
-		//patternFile.setFileName(":/hyph/hyph_pt_BR.dic");
-		patternEncoding = "ISO-8859-1";
+		patternFile.setFileName("dict/pt_50K.dic");
 	}
 	else if (language == "Russian") {
-		patternFile.setFileName(":/hyph/hyph_ru_RU.dic");
-		patternEncoding = "KOI8-R";
+		patternFile.setFileName("dict/ru_50K.dic");
 	}
 	else if (language == "Slovak") {
-		patternFile.setFileName(":/hyph/hyph_sk_SK.dic");
-		patternEncoding = "ISO-8859-2";
+		//patternFile.setFileName("dict/.dic");
 	}
 	else if (language == "Slowenian") {
-		patternFile.setFileName(":/hyph/hyph_sl_SI.dic");
-		patternEncoding = "ISO-8859-2";
+		//patternFile.setFileName("dict/.dic");
 	}
 	else if (language == "Spanish") {
-		patternFile.setFileName(":/hyph/hyph_es_ES.dic");
-		patternEncoding = "ISO-8859-1";
+		patternFile.setFileName("dict/es_50K.dic");
 	}
 	else if (language == "Swedish") {
-		patternFile.setFileName(":/hyph/hyph_sv_SE.dic");
-		patternEncoding = "ISO-8859-2";
+		patternFile.setFileName("dict/sv_50K.dic");
 	}
 	else if (language == "Turkish") {
-		// no pattern file available
+		patternFile.setFileName("dict/tr_50K.dic");
 	}
 
-	else {
-		//
-	}
+	if (patternFile.exists())
+	{
+		/* load the hyphenation dictionary */
+		HyphenDict *dict;
+		if ((dict = hnj_hyphen_load(patternFile.fileName().toStdString().c_str())) == NULL)
+		{
+			QUMessageBox::warning(this, tr("Application"), tr("Pattern file could not be loaded."));
+		}
 
-	//
+		QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
+		QRegExp rx("\\w{2,}"); // match any word with at least 2 characters
+		int position = 0;
+		while (position >= 0)
+		{
+			position = rx.indexIn(lyrics, position);
+			if (position >= 0)
+			{
+				QString match = rx.cap(0);
 
-	if (patternFile.exists()) {
-		if (patternFile.open(QFile::ReadOnly | QFile::Text)) {
-			QTextStream in(&patternFile);
-			//in.setCodec(QTextCodec::codecForName("UTF-8"));
-			in.setCodec(QTextCodec::codecForName(patternEncoding.toLatin1()));
-			QString patterns = in.readAll();
-			QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
-			QStringList words = lyrics.split(QRegExp("\\s"));
-			foreach (QString word, words) {
-				QString currentWord = word.toLower();
-				int wordLength = currentWord.length();
-				int patternCount = 0;
-				QStringList patternList;
-				int hyphenIndicators[wordLength-1];
-				for (int h = 0; h < (wordLength-1); h++) {
-					hyphenIndicators[h] = 0;
-				}
-				for (int i = 0; i < (wordLength-1); i++) {
-					QString subString = currentWord.mid(i, wordLength-i);
-					//ui->plainTextEdit_OutputLyrics->appendPlainText("subString = " + subString + "\n");
-					int subStringLength = subString.length();
-					// pattern must start with whitespace (beginning of line)
-					QString regExpString = "\\s";
-					// for the beginning of the word, a '.' must occur, possibly followed by an integer
-					if (i == 0) {
-						regExpString += "\\.";
-					}
-					// otherwise, no '.', but possibly an integer
-					else {
-						regExpString += "\\d?";
-					}
-					// first two letters of the substring are mandatory
-					regExpString += subString.mid(0,1) + "\\d?";
-					regExpString += subString.mid(1,1) + "\\d?";
-
-					// the following letters are optional (Spanish syllabification patterns don't have '.' at the end of words
-					QString endString = "";
-					if (language == "Spanish") {
-						endString += "\\.?";
-					}
-					else {
-						endString += "\\.";
-					}
-					for (int j = 2; j <= (subStringLength-1); j++) {
-						regExpString += "(" + subString.mid(j,1);
-						if (j != (subStringLength-1)) {
-							regExpString += "\\d?";
-						}
-						endString += ")?";
-					}
-					regExpString += endString;
-					// pattern must end with whitespace (end of line)
-					regExpString += "\\s";
-					//ui->plainTextEdit_OutputLyrics->appendPlainText("regExpString = " + regExpString + "\n");
-					int patternSearchPos = 0;
-					int patternStartPos = patterns.indexOf(QRegExp(regExpString), patternSearchPos);
-					while (patternStartPos != -1) {
-						patternCount++;
-						int patternEndPos = patterns.indexOf(QRegExp("\\s"), patternStartPos+1);
-						int patternLength = patternEndPos - patternStartPos - 1;
-						QString pattern = patterns.mid(patternStartPos+1,patternLength);
-						pattern = pattern.remove('.');
-						patternLength = pattern.length();
-						patternList << pattern;
-
-						QString output = word.mid(0,1);
-						for (int z = 0; z < (wordLength-1); z++) {
-							if (hyphenIndicators[z]%2 != 0) {
-								output += "+";
-								output += word.mid(z+1,1);
-							}
-							else {
-								output += word.mid(z+1,1);
-							}
-						}
-						ui->plainTextEdit_OutputLyrics->appendPlainText(output);
-
-						ui->plainTextEdit_OutputLyrics->appendPlainText(pattern);
-
-
-						// copy hyphen indicators into hyphenIndicators for current pattern
-						int numChars = 0;
-						for (int k = 0; k < patternLength; k++) {
-							if (pattern.at(k).isDigit()) {
-								if (hyphenIndicators[i+numChars-1] < pattern.at(k).digitValue()) {
-									hyphenIndicators[i+numChars-1] = pattern.at(k).digitValue();
-								}
-							}
-							else {
-								numChars++;
-							}
-						}
-
-						// step ahead for next search
-						patternSearchPos = patternStartPos+patternLength;
-						// search again
-						patternStartPos = patterns.indexOf(QRegExp(regExpString), patternSearchPos);
-
-					}
-				}
-				// don't allow a single character at the end
-				hyphenIndicators[wordLength-2] = 0;
-
-				QString output = word.mid(0,1);
-				for (int z = 0; z < (wordLength-1); z++) {
-					if (hyphenIndicators[z]%2 != 0) {
-						output += "+";
-						output += word.mid(z+1,1);
-					}
-					else {
-						output += word.mid(z+1,1);
-					}
-				}
-				ui->plainTextEdit_OutputLyrics->appendPlainText(output);
+				char ** rep = NULL;
+				int * pos = NULL;
+				int * cut = NULL;
+				char hyphens[30];
+				int test = hnj_hyphen_hyphenate2(dict, match.toLower().toStdString().c_str(), match.length(), hyphens, NULL, &rep, &pos, &cut);
+				position += rx.matchedLength();
 			}
 		}
+
+
+		/*
+		if (patternFile.open(QFile::ReadOnly | QFile::Text))
+		{
+			QTextStream in(&patternFile);
+			in.setCodec(QTextCodec::codecForName("UTF-8"));
+
+			QMap<QString, QString> syllabificationMap;
+			QString currentLine;
+			QStringList currentEntry;
+			do
+			{
+				currentLine = in.readLine();
+				currentEntry = currentLine.split(QRegExp("\\s"));
+				if (currentEntry.length() == 2)
+				{
+					syllabificationMap.insert(currentEntry.first().toLower(), currentEntry.last().toLower());
+				}
+			} while (!currentLine.isNull());
+
+
+			QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
+			QRegExp rx("\\w{2,}"); // match any word with at least 2 characters
+			int pos = 0;
+			while (pos >= 0)
+			{
+				pos = rx.indexIn(lyrics, pos);
+				if (pos >= 0)
+				{
+					QString match = rx.cap(0);
+					bool b = syllabificationMap.contains(match.toLower());
+					QString test = match.toLower();
+					int test2 = syllabificationMap.size();
+					pos += rx.matchedLength();
+					QString syllabifiedMatch = syllabificationMap.value(match.toLower());
+					if (syllabifiedMatch.isNull())
+					{
+						syllabifiedMatch = match;
+					} else
+					{
+						syllabifiedMatch.replace('-', sep);
+						bool matchIsCapitalized = match.at(0).isUpper();
+						if (matchIsCapitalized)
+						{
+							syllabifiedMatch.replace(0,1, syllabifiedMatch.at(0).toUpper());
+						}
+						lyrics.replace(match, syllabifiedMatch);
+						pos += syllabifiedMatch.count(sep);
+					}
+				}
+			}
+			ui->plainTextEdit_InputLyrics->setPlainText(lyrics);
+		}*/
 	}
 	else {
 		QUMessageBox::warning(this, tr("Application"),
@@ -2443,7 +2375,7 @@ void QUMainWindow::on_pushButton_EnableBPMEdit_toggled(bool checked)
 	}
 	else {
 		ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/icons/lock.png"));
-		BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, 0);
+		BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, NULL, 0);
 		BPM = BPMFromMP3;
 
 		if (BPM == 0) {
