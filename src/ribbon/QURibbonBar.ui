@@ -126,13 +126,8 @@
              <bold>false</bold>
             </font>
            </property>
-           <property name="statusTip">
+           <property name="toolTip">
             <string>Choose default pitch.</string>
-           </property>
-           <property name="whatsThis">
-            <string>Here you can choose the default pitch of all the tapped notes.
-
-The pitch of each individual note needs to be set using the UltraStar internal editor or YASS after having successfully tapped the song.</string>
            </property>
            <property name="maxVisibleItems">
             <number>25</number>
@@ -202,7 +197,7 @@ The pitch of each individual note needs to be set using the UltraStar internal e
                <bold>false</bold>
               </font>
              </property>
-             <property name="statusTip">
+             <property name="toolTip">
               <string>Current playback speed.</string>
              </property>
              <property name="text">
@@ -227,11 +222,11 @@ The pitch of each individual note needs to be set using the UltraStar internal e
                <height>20</height>
               </size>
              </property>
-             <property name="statusTip">
+             <property name="toolTip">
               <string>Set playback speed.</string>
              </property>
-             <property name="whatsThis">
-              <string>Here you can adjust the playback speed of the audio file while tapping. This is especially helpful when tapping very fast songs.</string>
+             <property name="statusTip">
+              <string/>
              </property>
              <property name="minimum">
               <number>10</number>
@@ -285,7 +280,7 @@ The pitch of each individual note needs to be set using the UltraStar internal e
    <attribute name="title">
     <string>E&amp;xtras</string>
    </attribute>
-   <layout class="QHBoxLayout" name="horizontalLayout_14">
+   <layout class="QHBoxLayout" name="horizontalLayout_7">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -336,6 +331,64 @@ text files</string>
           <bool>true</bool>
          </property>
         </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_13">
+      <property name="title">
+       <string>Update</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_18">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_15">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="checkForUpdateBtn">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>54</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Check for Update. Internet connection required.</string>
+           </property>
+           <property name="text">
+            <string>Check for
+Update</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../resources/usc.qrc">
+             <normaloff>:/icons/check_for_update.png</normaloff>:/icons/check_for_update.png</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
@@ -805,64 +858,6 @@ Creator...</string>
           <bool>true</bool>
          </property>
         </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QGroupBox" name="groupBox_13">
-      <property name="title">
-       <string>Update</string>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_18">
-       <property name="spacing">
-        <number>2</number>
-       </property>
-       <property name="margin">
-        <number>0</number>
-       </property>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_15">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QToolButton" name="checkForUpdateBtn">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>54</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="toolTip">
-            <string>Check for Update. Internet connection required.</string>
-           </property>
-           <property name="text">
-            <string>Check for
-Update</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../resources/usc.qrc">
-             <normaloff>:/icons/check_for_update.png</normaloff>:/icons/check_for_update.png</iconset>
-           </property>
-           <property name="toolButtonStyle">
-            <enum>Qt::ToolButtonTextUnderIcon</enum>
-           </property>
-           <property name="autoRaise">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
       </layout>
      </widget>
