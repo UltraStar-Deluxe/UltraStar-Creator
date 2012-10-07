@@ -17,13 +17,13 @@ QURibbonBar::QURibbonBar(QWidget *parent): QTabWidget(parent), _menuHidden(false
 
 	helpBtn = new QToolButton(this);
 	helpBtn->setAutoRaise(true);
-    helpBtn->setIcon(QIcon(":/icons/help.png"));
+	helpBtn->setIcon(QIcon(":/icons/help.png"));
 	helpBtn->setToolTip(tr("Show Monty now to help you."));
 
 	montyBtn = new QToolButton(this);
 	montyBtn->setAutoRaise(true);
 	montyBtn->setCheckable(true);
-    montyBtn->setToolTip(tr("Allow Monty to help you on his own."));
+	montyBtn->setToolTip(tr("Allow Monty to help you on his own."));
 
 	montyBtn->setIcon(QIcon(":/monty/normal.png"));
 
@@ -31,7 +31,7 @@ QURibbonBar::QURibbonBar(QWidget *parent): QTabWidget(parent), _menuHidden(false
 	corner->setLayout(new QHBoxLayout(this));
 	corner->layout()->addWidget(montyBtn);
 	corner->layout()->addWidget(helpBtn);
-    corner->layout()->setContentsMargins(0, 0, 0, 0);
+	corner->layout()->setContentsMargins(0, 0, 0, 0);
 	corner->layout()->setSpacing(0);
 
 	setCornerWidget(corner, Qt::TopRightCorner);
@@ -48,7 +48,7 @@ QURibbonBar::QURibbonBar(QWidget *parent): QTabWidget(parent), _menuHidden(false
 
 	// recover menu state
 	QSettings s;
-    setMenuHidden(s.value("hideRibbonBar", false).toBool());
+	setMenuHidden(s.value("hideRibbonBar", false).toBool());
 }
 
 void QURibbonBar::setShortcut(QToolButton *w, const QKeySequence &key) {
