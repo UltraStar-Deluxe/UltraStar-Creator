@@ -97,7 +97,7 @@ void QUSongLine::setSyllables(const QStringList &s) {
 	QList<QUSongNoteInterface*> notes = this->notes();
 
 	if(notes.size() != s.size()) {
-		logSrv->add(tr("Cannot set syllables. Count does not match."), QU::Warning);
+		logSrv->add(QString("Cannot set syllables. Count does not match."), QU::Warning);
 		return;
 	}
 
