@@ -79,7 +79,7 @@ QStringList QUSongSupport::allowedScoreFiles() {
 }
 
 QStringList QUSongSupport::allowedAudioFiles() {
-	return registryKey("allowedAudioFiles", "*.mp3 *.ogg");
+	return registryKey("allowedAudioFiles", "*.mp3 *.ogg *.mpg *.mpeg *.avi *.flv *.ogm *.mp4 *.divx *.wmv *.mov *.mkv *.vob *.m2v *.m4v *.ts *.webm");
 }
 
 QStringList QUSongSupport::allowedImageFiles() {
@@ -87,7 +87,7 @@ QStringList QUSongSupport::allowedImageFiles() {
 }
 
 QStringList QUSongSupport::allowedVideoFiles() {
-	return registryKey("allowedVideoFiles", "*.mpg *.mpeg *.avi *.flv *.ogm *.mp4 *.divx *.wmv *.mov *.mkv *.vob *.m2v *.m4v *.ts");
+	return registryKey("allowedVideoFiles", "*.mpg *.mpeg *.avi *.flv *.ogm *.mp4 *.divx *.wmv *.mov *.mkv *.vob *.m2v *.m4v *.ts *.webm");
 }
 
 QStringList QUSongSupport::allowedPlaylistFiles() {
@@ -139,7 +139,7 @@ QStringList QUSongSupport::availableSongLanguages() {
 QStringList QUSongSupport::availableSongEditions() {
 	QStringList result;
 
-    result << "";
+	result << "";
 
 	return result;
 }
@@ -285,35 +285,35 @@ QString QUSongSupport::defaultOutputEncoding() {
 }
 
 QStringList QUSongSupport::availableDefaultPitches() {
-    QStringList result;
+	QStringList result;
 
-    result << "0 (C4)";
-    result << QString("1 (C#4, Db4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
-    result << "2 (D4)";
-    result << QString("3 (D#4, Eb4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
-    result << "4 (E4)";
-    result << "5 (F4)";
-    result << QString("6 (F#4, Gb4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
-    result << "7 (G4)";
-    result << QString("8 (G#4, Ab4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
-    result << "9 (A4)";
-    result << QString("10 (A#4, Bb4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
-    result << "11 (B4)";
-    result << "12 (C5)";
-    result << QString("13 (C#5, Db5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
-    result << "14 (D5)";
-    result << QString("15 (D#5, Eb5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
-    result << "16 (E5)";
-    result << "17 (F5)";
-    result << QString("18 (F#5, Gb5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
-    result << "19 (G4)";
-    result << QString("20 (G#5, Ab5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
-    result << "21 (A5)";
-    result << QString("22 (A#5, Bb5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
-    result << "23 (B5)";
-    result << "24 (C6)";
+	result << "0 (C4)";
+	result << QString("1 (C#4, Db4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << "2 (D4)";
+	result << QString("3 (D#4, Eb4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << "4 (E4)";
+	result << "5 (F4)";
+	result << QString("6 (F#4, Gb4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << "7 (G4)";
+	result << QString("8 (G#4, Ab4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << "9 (A4)";
+	result << QString("10 (A#4, Bb4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << "11 (B4)";
+	result << "12 (C5)";
+	result << QString("13 (C#5, Db5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << "14 (D5)";
+	result << QString("15 (D#5, Eb5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << "16 (E5)";
+	result << "17 (F5)";
+	result << QString("18 (F#5, Gb5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << "19 (G4)";
+	result << QString("20 (G#5, Ab5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << "21 (A5)";
+	result << QString("22 (A#5, Bb5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << "23 (B5)";
+	result << "24 (C6)";
 
-    return result;
+	return result;
 }
 
 /*!
