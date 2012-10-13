@@ -19,7 +19,7 @@ SAVING
 ~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#  CHANGES  ~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~
 
 QT
-* based on Qt 4.8.2 now
+* based on Qt 4.8.3 now
 
 BASS/BASS FX
 * updated to BASS 2.4.9
