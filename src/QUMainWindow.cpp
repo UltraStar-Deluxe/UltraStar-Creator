@@ -8,8 +8,6 @@
 #include "QUMonty.h"
 #include "QUSongSupport.h"
 
-#include "hyphen/hyphen.h"
-
 #include <QActionGroup>
 #include <QFileDialog>
 #include <QTextStream>
@@ -2277,36 +2275,9 @@ void QUMainWindow::on_pushButton_SyllabificateTeX_clicked()
 		patternFile.setFileName("dict/tr_50K.dic");
 	}
 
+	/*
 	if (patternFile.exists())
 	{
-		/* load the hyphenation dictionary */
-		HyphenDict *dict;
-		if ((dict = hnj_hyphen_load(patternFile.fileName().toStdString().c_str())) == NULL)
-		{
-			QUMessageBox::warning(this, tr("Application"), tr("Pattern file could not be loaded."));
-		}
-
-		QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
-		QRegExp rx("\\w{2,}"); // match any word with at least 2 characters
-		int position = 0;
-		while (position >= 0)
-		{
-			position = rx.indexIn(lyrics, position);
-			if (position >= 0)
-			{
-				QString match = rx.cap(0);
-
-				char ** rep = NULL;
-				int * pos = NULL;
-				int * cut = NULL;
-				char hyphens[30];
-				int test = hnj_hyphen_hyphenate2(dict, match.toLower().toStdString().c_str(), match.length(), hyphens, NULL, &rep, &pos, &cut);
-				position += rx.matchedLength();
-			}
-		}
-
-
-		/*
 		if (patternFile.open(QFile::ReadOnly | QFile::Text))
 		{
 			QTextStream in(&patternFile);
@@ -2357,12 +2328,13 @@ void QUMainWindow::on_pushButton_SyllabificateTeX_clicked()
 				}
 			}
 			ui->plainTextEdit_InputLyrics->setPlainText(lyrics);
-		}*/
+		}
 	}
 	else {
 		QUMessageBox::warning(this, tr("Application"),
 			tr("Pattern file not available."));
 	}
+	*/
 }
 
 

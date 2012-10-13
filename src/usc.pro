@@ -38,9 +38,7 @@ HEADERS += main.h \
 	song/QUSongInterface.h \
 	song/QUSongFile.h \
 	song/QUSongDatabase.h \
-	QUStringSupport.h \
-	hyphen/hyphen.h \
-	hyphen/hnjalloc.h
+	QUStringSupport.h
 
 SOURCES += main.cpp \
 	QUMainWindow.cpp \
@@ -55,9 +53,7 @@ SOURCES += main.cpp \
 	song/QUSongLine.cpp \
 	song/QUSongFile.cpp \
 	song/QUSongDatabase.cpp \
-	QUStringSupport.cpp \
-	hyphen/hyphen.c \
-	hyphen/hnjalloc.c
+	QUStringSupport.cpp
 
 FORMS += QUMainWindow.ui \
 	QUAboutDialog.ui \
