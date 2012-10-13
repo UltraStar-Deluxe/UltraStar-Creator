@@ -101,12 +101,14 @@ macx {
 }
 
 unix:!macx {
-	INCLUDEPATH += /usr/include/taglib \
-		/usr/local/include/libbass
-	LIBS += -L"/usr/local/lib/libbass" \
-		-ltag \
-		-lbass \
-		-lbass_fx
+    INCLUDEPATH += ../include/taglib \
+        ../include/taglib/toolkit \
+        ../include/bass \
+        ../include/bass_fx
+    LIBS += -L"../lib" \
+        -ltag64 \
+        -lbass64 \
+        -lbass_fx64
 }
 
 win32 {
