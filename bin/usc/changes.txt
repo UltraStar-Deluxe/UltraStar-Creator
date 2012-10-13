@@ -1,0 +1,52 @@
+<---------------------------->
+< Changelog (1.0.0 to 1.1.0) >
+<---------------------------->
+
+~#~#~#~#~#~#~#~#~#~#~#~#~#~#  NEW FEATURES  #~#~#~#~#~#~#~#~#~#~#~#~#~#~
+
+MONTY
+* Monty is now available in UltraStar Creator as well. He will give you hints and tips from time to time.
+
+MENU
+* Ribbon style menu is now available in UltraStar Creator as well.
+
+WIDGET LAYOUT
+* Three main columns can be resized in width according to personal preference.
+
+SAVING
+* When tapping is complete, the save file dialog pops up automatically.
+
+~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#  CHANGES  ~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~
+
+QT
+* based on Qt 4.8.2 now
+
+BASS/BASS FX
+* updated to BASS 2.4.9
+* updated to BASS FX 2.4.8
+
+TAGLIB
+* updated to TagLib 1.8.0
+
+SONG HEADER
+* Cover, Background, and Video files may not be browsed for anymore. Once an MP3 file is selected, the according dropdown menus are filled with
+  supported files in the same folder (and one is automatically assigned)
+
+INPUT LYRICS
+* Automatic line capitalization upon tapping can be toggled with a little toolbutton below the input lyrics
+
+SHORTCUTS
+* Changed shortcut for Play/Pause from CTRL+P to P.
+* Changed shortcut for Stop from CTRL+S to S.
+* Changed shortcut for Restart from CTRL+R to R.
+
+PROGRESS BAR
+* Size extended to entire bottom
+* In addition to a progress percentage, the number of completed and total taps are shown
+
+~#~#~#~#~#~#~#~#~#~#~#~#~#~#~  BUG FIXES  #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~
+
+SONG HEADER
+* Lookup on swisscharts now works correctly with umlauts and other symbols that need to be url-encoded
+
+~#~#~#~#~#~#~#~#~#~#~#~#~#~#  KNOWN BUGS  #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~
