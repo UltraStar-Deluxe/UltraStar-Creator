@@ -65,8 +65,7 @@ FORMS += QUMainWindow.ui \
 	ribbon/QURibbonBar.ui \
 	monty/QUMontyArea.ui
 
-RESOURCES += \
-	resources/usc.qrc
+RESOURCES += resources/usc.qrc
 
 TRANSLATIONS = resources/usc.de.ts \
 	resources/usc.es.ts \
