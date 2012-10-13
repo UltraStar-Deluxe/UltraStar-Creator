@@ -1392,7 +1392,7 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
         <location filename="../QUMainWindow.cpp" line="58"/>
         <location filename="../QUMainWindow.cpp" line="1699"/>
         <source>This tool enables you to &lt;b&gt;rapidly&lt;/b&gt; create UltraStar text files &lt;b&gt;from scratch&lt;/b&gt;.&lt;br&gt;&lt;br&gt;To get started, simply chose a &lt;b&gt;song file&lt;/b&gt; in MP3 or OGG format, insert the &lt;b&gt;song lyrics&lt;/b&gt; from a file or the clipboard and divide them into syllables with &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Important song meta information&lt;/b&gt; such as &lt;b&gt;BPM&lt;/b&gt; and &lt;b&gt;GAP&lt;/b&gt; are determined &lt;b&gt;automatically&lt;/b&gt; while the &lt;b&gt;ID3 tag&lt;/b&gt; is used to fill in additional song details, if available.&lt;br&gt;&lt;br&gt;To &lt;b&gt;start tapping&lt;/b&gt;, hit the play/pause button (Keyboard: CTRL-P). Keep the &lt;b&gt;tap button&lt;/b&gt; (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. &lt;b&gt;Undo&lt;/b&gt; the last tap with the undo button (Keyboard: x), &lt;b&gt;stop tapping&lt;/b&gt; with the stop button (Keyboard: CTRL-S), &lt;b&gt;restart&lt;/b&gt; from the beginning with the reset button (Keyboard: CTRL-R). When finished, &lt;b&gt;save&lt;/b&gt; the tapped song using the save button (CTRL-S).&lt;br&gt;&lt;br&gt;Having successfully tapped a song, use the UltraStar internal editor for &lt;b&gt;finetuning the timings&lt;/b&gt;, setting &lt;b&gt;note pitches&lt;/b&gt; and &lt;b&gt;golden&lt;/b&gt; or &lt;b&gt;freestyle notes&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Happy creating!&lt;/b&gt;</source>
-        <translation>To narzędzie pozwala na &lt;b&gt;szybkie&lt;/b&gt; tworzenie &lt;b&gt;od podstaw&lt;/b&gt; plików tekstowych do gry UltraStar.&lt;br&gt;&lt;br&gt;Aby rozpocząć, wystarczy wybrać &lt;b&gt;plik piosenki&lt;/b&gt; w formacie MP3 lub OGG, wstawić &lt;b&gt;tekst piosenki&lt;/b&gt; z pliku lub schowka i podzielić go na sylaby rozdzielając je &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Podstawowe informacje o piosence&lt;/b&gt; niezbędne do powstania pliku czyli &lt;b&gt;BPM&lt;/b&gt; i &lt;b&gt;GAP&lt;/b&gt; są generowane &lt;b&gt;automatycznie&lt;/b&gt;. Również automatycznie wypełniane są odpowiednie tagi informacjami zawartymi w tagach &lt;b&gt;ID3&lt;/b&gt; pliku audio, oczywiście jeżeli plik je zawiera.&lt;br&gt;&lt;br&gt;Aby &lt;b&gt;rozpocząć&lt;/b&gt; proces tworzenia, naciśnij przycisk Play / Pauza (CTRL-P). Nuty tworzymy naciskając i przytrzymując &lt;b&gt;przycisk w polu edycji&lt;/b&gt; (Spacja) . Przycisk należy naciskać w rytm sylab śpiewanych przez wykonawcę i trzymać naciśnięty tak długo jak długo dana sylaba jest śpiewana. Przycisk &lt;b&gt;Cofnij&lt;/b&gt; (X) usuwa ostatnio stworzoną nutę , &lt;b&gt;Stop&lt;/b&gt; (CTRL-S) kończy, a &lt;b&gt;Reset &amp; restart&lt;/b&gt; (CTRL-R) rozpoczyna proces od początku. Po zakończeniu &quot;klikania&quot; plik zapisujemy klawiszem &lt;b&gt;Zapisz&lt;/b&gt; (CTRL-S).&lt;br&gt;&lt;br&gt;Dalszą część edycji, czyli &lt;b&gt;korekty synchronizacji&lt;/b&gt;, ustawienie &lt;b&gt;wysokości nut&lt;/b&gt;, dodanie nut &lt;b&gt;złotych&lt;/b&gt; i &lt;b&gt;freestyle&apos;owych&lt;/b&gt; należy przeprowadzić w wewnętrznym edytorze programu UltraStar lub w programie YASS.&lt;br&gt;&lt;br&gt;&lt;b&gt;Uwaga!&lt;/b&gt; Plik wynikowy USC zapisuje używając kodowania &lt;b&gt;UTF-8&lt;/b&gt;, który jest kompatybilny tylko z USDX 1.1. Jeżeli korzystasz z innej wersji UltraStar&apos;a, plik należy przekonwertować do &lt;b&gt;ANSI&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Powodzenia w tworzeniu piosenek!&lt;/b&gt;</translation>
+        <translation>To narzędzie pozwala na &lt;b&gt;szybkie&lt;/b&gt; tworzenie &lt;b&gt;od podstaw&lt;/b&gt; plików tekstowych do gry UltraStar.&lt;br&gt;&lt;br&gt;Aby rozpocząć, wystarczy wybrać &lt;b&gt;plik piosenki&lt;/b&gt; w formacie MP3 lub OGG, wstawić &lt;b&gt;tekst piosenki&lt;/b&gt; z pliku lub schowka i podzielić go na sylaby rozdzielając je &apos;+&apos;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Podstawowe informacje o piosence&lt;/b&gt; niezbędne do powstania pliku czyli &lt;b&gt;BPM&lt;/b&gt; i &lt;b&gt;GAP&lt;/b&gt; są generowane &lt;b&gt;automatycznie&lt;/b&gt;. Również automatycznie wypełniane są odpowiednie tagi informacjami zawartymi w tagach &lt;b&gt;ID3&lt;/b&gt; pliku audio, oczywiście jeżeli plik je zawiera.&lt;br&gt;&lt;br&gt;Aby &lt;b&gt;rozpocząć&lt;/b&gt; proces tworzenia, naciśnij przycisk Play / Pauza (CTRL-P). Nuty tworzymy naciskając i przytrzymując &lt;b&gt;przycisk w polu edycji&lt;/b&gt; (Spacja) . Przycisk należy naciskać w rytm sylab śpiewanych przez wykonawcę i trzymać naciśnięty tak długo jak długo dana sylaba jest śpiewana. Przycisk &lt;b&gt;Cofnij&lt;/b&gt; (X) usuwa ostatnio stworzoną nutę , &lt;b&gt;Stop&lt;/b&gt; (CTRL-S) kończy, a &lt;b&gt;Reset &amp; restart&lt;/b&gt; (CTRL-R) rozpoczyna proces od początku. Po zakończeniu edycji plik zapisujemy klawiszem &lt;b&gt;Zapisz&lt;/b&gt; (CTRL-S).&lt;br&gt;&lt;br&gt;Dalszą część edycji, czyli &lt;b&gt;korekty synchronizacji&lt;/b&gt;, ustawienie &lt;b&gt;wysokości nut&lt;/b&gt;, dodanie nut &lt;b&gt;złotych&lt;/b&gt; i &lt;b&gt;freestyle&apos;owych&lt;/b&gt; należy przeprowadzić w wewnętrznym edytorze programu UltraStar lub w programie YASS.&lt;br&gt;&lt;br&gt;&lt;b&gt;Uwaga!&lt;/b&gt; Plik wynikowy USC zapisuje używając kodowania &lt;b&gt;UTF-8&lt;/b&gt;, który jest kompatybilny tylko z USDX 1.1. Jeżeli korzystasz z innej wersji UltraStar&apos;a, plik należy przekonwertować do &lt;b&gt;ANSI&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Powodzenia w tworzeniu piosenek!&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="59"/>
@@ -1671,17 +1671,17 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
     <message>
         <location filename="../QUMonty.cpp" line="22"/>
         <source>Do you want me to say something else? Tell everybody about your requests on our &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;project page&lt;/a&gt;.</source>
-        <translation>Chcesz mi coś jeszcze powiedzieć? Powiedz wszystkim o swoich wnioskach na &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;stronie naszego projektu&lt;/a&gt;.</translation>
+        <translation>Chcesz mi coś jeszcze powiedzieć? Powiedz wszystkim o swoich pomysłach na &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;stronie naszego projektu&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="23"/>
         <source>The BPM tag is not editable? Yeah, that&apos;s right. The BPM is automatically determined! If you use an external program for BPM detection (e.g. &lt;a href=&quot;http://www.mixmeister.com/bpmanalyzer/bpmanalyzer.asp&quot;&gt;Mixmeister BPM Analyzer&lt;/a&gt;), you can click on the little padlock to be able to edit a custom value.</source>
-        <translation>Nie możesz edytować tagu BPM? Tak właśnie jest. BPM jest ustawiany automatycznie! Gdy do detekcji BPM użyjesz zewnętrznego programu (np. &lt;a href=&quot;http://www.mixmeister.com/bpmanalyzer/bpmanalyzer.asp&quot;&gt;Mixmeister BPM Analyzer&lt;/a&gt;,możesz klikając kłudeczkę wpisać własną wartość.</translation>
+        <translation>Nie możesz edytować tagu BPM? Tak właśnie jest. BPM jest ustawiany automatycznie! Gdy do detekcji BPM użyjesz zewnętrznego programu (np. &lt;a href=&quot;http://www.mixmeister.com/bpmanalyzer/bpmanalyzer.asp&quot;&gt;Mixmeister BPM Analyzer&lt;/a&gt;, możesz &quot;otwierając&quot; kłudeczkę wpisać własną wartość.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="24"/>
         <source>Did I hear you correctly? A missing feature?! Just click &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;here&lt;/a&gt; and let everybody know - especially the developers!</source>
-        <translation>Czy ja dobrze słyszę?Brakuje jakiekś funkcji? Poprostu kliknij &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;tutaj&lt;/a&gt; i niech wszyscy o tym wiedzą - zwłaszcza programiści!</translation>
+        <translation>Czy ja dobrze słyszę? Brakuje jakiekś funkcji? Poprostu kliknij &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;tutaj&lt;/a&gt; i niech wszyscy o tym wiedzą - zwłaszcza programiści!</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="25"/>
@@ -1691,7 +1691,7 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
     <message>
         <location filename="../QUMonty.cpp" line="26"/>
         <source>I shall be quiet? Then click on &lt;i&gt;Hide&lt;/i&gt; next to my speech bubble and I will disappear. To let me talk again, simply click the little button with the question mark in the upper right corner or simply hit &lt;i&gt;F1&lt;/i&gt;.</source>
-        <translation>Mam być cicho? Kliknij&lt;i&gt;Ukryj&lt;/i&gt;obok mojego dymki i zniknę.Aby pozwolić mi mówić, wystarczy kliknąć mały przycisk ze znakiem zapytania w prawym górnym rogu lub po prostu naciśnij &lt;i&gt; F1 &lt;/ i&gt;.</translation>
+        <translation>Mam być cicho? Kliknij &lt;i&gt;Ukryj&lt;/i&gt; obok mojego dymki i zniknę. Aby pozwolić mi mówić, wystarczy kliknąć mały przycisk ze znakiem zapytania w prawym górnym rogu lub po prostu naciśnij &lt;i&gt; F1 &lt;/ i&gt;.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="27"/>
@@ -1711,12 +1711,12 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
     <message>
         <location filename="../QUMonty.cpp" line="30"/>
         <source>You are not sure in which year your favorite song was released? Well, why don&apos;t you look it up on &lt;a href=&quot;swisscharts.com&quot;&gt;swisscharts.com&lt;/a&gt; using the little globe icon on the left? Just make sure &lt;i&gt;Artist&lt;/i&gt; and &lt;i&gt;Title&lt;/i&gt; fields contain valid entries.</source>
-        <translation>Nie jesteś pewien w którym roku została wydana twoja ulubione piosenka? Cóż czemu nie wyszukasz jej w &lt;a href=&quot;swisscharts.com&quot;&gt;swisscharts.com&lt;/a&gt; używając ikonki przedstawiającej mała kulę po lewej stronie ? Tylko upewnij się czy pola&lt;i&gt;Artysta&lt;/i&gt; i &lt;i&gt;tytuł&lt;/i&gt; zawierają właściwą treści.</translation>
+        <translation>Nie jesteś pewien w którym roku została wydana twoja ulubiona piosenka? Czemu nie wyszukasz jej w &lt;a href=&quot;swisscharts.com&quot;&gt;swisscharts.com&lt;/a&gt; używając ikonki przedstawiającej mała kulę po lewej stronie ? Tylko upewnij się czy pola&lt;i&gt;Artysta&lt;/i&gt; i &lt;i&gt;tytuł&lt;/i&gt; zawierają właściwą treści.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="31"/>
         <source>The song is too fast for you and you can&apos;t keep up with the tapping?? Don&apos;t worry, you can change the playback speed under &lt;i&gt;Options &amp;rarr; Playback speed&lt;/i&gt;, even after the tapping has already started.</source>
-        <translation>Utwór jest dla ciebie za szybki i nie nadążasz z klikaniem? Nie martw się możesz zmienic prędkość odtwarzania w panelu &lt;i&gt;Opcje &amp;rarr; Prędkość odtwarzania&lt;/i&gt; nawet po rozpoczęciu klikania.</translation>
+        <translation>Utwór jest dla ciebie za szybki i nie nadążasz z klikaniem? Nie martw się, możesz zmienic prędkość odtwarzania w panelu &lt;i&gt;Opcje &amp;rarr; Prędkość odsłuchu&lt;/i&gt; nawet po rozpoczęciu edycji.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="32"/>
@@ -1726,12 +1726,12 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
     <message>
         <location filename="../QUMonty.cpp" line="33"/>
         <source>You finished tapping your song and saved it successfully? Now you need to finetune your song by setting correct pitches, adjusting note lengths and timings in the Ultrastar Editor or Yass Editor using the little icons below the &lt;i&gt;Generated Ultrastar file&lt;/i&gt; box.</source>
-        <translation>Skończyłeś pomyślnie klikać swoją piosenkę i zapisałeś wynik swojej pracy do pliku?Teraz za pomocą ikonek znajdujących się pod wygenerowanym plikiem txt, możesz bezpośrednio uruchomić program UltraStar lub YassEditor w celu dokonania niezbędnych poprawek synchronizacji nut, ich czasu trwania oraz wysokości każdej z nich, zgodnie z linią melodyczną piosenki.</translation>
+        <translation>Skończyłeś pomyślnie edytować swoją piosenkę i zapisałeś wynik swojej pracy do pliku? Teraz za pomocą ikonek znajdujących się pod wygenerowanym plikiem txt, możesz bezpośrednio uruchomić program UltraStar lub YassEditor w celu dokonania niezbędnych poprawek synchronizacji nut, ich czasu trwania oraz wysokości każdej z nich, zgodnie z linią melodyczną piosenki.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="34"/>
         <source>UltraStar Creator is not available in your language? Well, if you are interested in translating, just get in touch with one of the developers at the &lt;a href=&quot;http://sourceforge.net/projects/usc&quot;&gt;project site&lt;/a&gt;.</source>
-        <translation>UltraStar Creator nie jest dostępny w twoim języku? Cóż, jeśli jesteś zainteresowany tłumaczeniem po prostu zgłoś się do jednym z twórców programu na &lt;a href=&quot;http://sourceforge.net/projects/usc&quot;&gt;stronie projektu&lt;/a&gt;.</translation>
+        <translation>UltraStar Creator nie jest dostępny w twoim języku? Jeśli jesteś zainteresowany tłumaczeniem po prostu zgłoś się do jednego z twórców programu na &lt;a href=&quot;http://sourceforge.net/projects/usc&quot;&gt;stronie projektu&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="35"/>
@@ -1751,43 +1751,42 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
     <message>
         <location filename="../QUMonty.cpp" line="38"/>
         <source>Once the song header information is filled out and the song lyrics are properly split into syllables, you are ready to tap the song. Simply hit the green Play button or press &lt;i&gt;P&lt;/i&gt;.</source>
-        <translation>Gdy informacje w nagłówku piosenki są wypełniane, a tekst piosenki jest prawidłowo podzielony na sylaby, jesteś gotowy by rozpocząć klikanie. Wystarczy wcisnąć zielony przycisk Play lub klawisz &lt;i&gt;P&lt;/i&gt;.</translation>
+        <translation>Gdy informacje w nagłówku piosenki są wypełniane, a tekst piosenki jest prawidłowo podzielony na sylaby, jesteś gotowy by rozpocząć proces tworzenia pliku txt. Wystarczy wcisnąć zielony przycisk Play lub klawisz &lt;i&gt;P&lt;/i&gt;.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="39"/>
         <source>UltraStar Creator offers automatic syllabification for English, German, and Spanish songs. Just make sure a proper language is set in the song header before clicking on the little syllabification icon below the input lyrics. Although this feature is not perfect, it can save you a lot of time and you only need to change the result here and there.</source>
-        <translation>UltraStar Creator oferuje automatyczny podział na sylaby angielskich, niemieckich i hiszpańskich piosenek. Wystarczy upewnić się, że wybrałeś właściwy język w nagłówku piosenki zanim klikniesz na ikonkę podziału na sylaby znajdującą się poniżej wprowadzonego tekstu. Chociaż funkcja ta nie jest doskonała i trzeba zmienić wynik tu i tam, to może zaoszczędzić sporo czasu.</translation>
+        <translation>UltraStar Creator oferuje automatyczny podział na sylaby tekstu angielskich, niemieckich i hiszpańskich piosenek. Wystarczy upewnić się, że wybrałeś właściwy język w nagłówku piosenki zanim klikniesz na ikonkę podziału na sylaby znajdującą się poniżej wprowadzonego tekstu. Chociaż funkcja ta nie jest doskonała i trzeba zmienić wynik tu i tam, to może zaoszczędzić sporo czasu.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="40"/>
         <source>Did you tap a few syllables too much? No problem, just hit the little undo arrow to the left of the tap button or simply press &lt;i&gt;X&lt;/i&gt; to undo the last tap while simultaneously rewinding the audio by one second.</source>
-        <translation>Czy klianąłeś kilka sylab za dużo? Nie ma problemu, po prostu naciśnij małą strzałkę po lewej stronie przycisku klikania lub naciśnij &lt;i&gt; X &lt;/ &gt;, aby cofnąć ostatnią wyklikaną sylabę, jednocześnie cofając dźwięk o jedną sekundę.</translation>
+        <translation>Czy kliknąłeś kilka sylab za dużo? Nie ma problemu, po prostu naciśnij małą strzałkę po lewej stronie przycisku klikania lub naciśnij &lt;i&gt; X &lt;/ &gt;, aby cofnąć ostatnią wyklikaną sylabę, jednocześnie cofając dźwięk o jedną sekundę.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="41"/>
         <source>The tapping process can be paused and resumed by clicking the Pause/Play button or by simply pressing &lt;i&gt;P&lt;/i&gt;.</source>
-        <translation>Proces moższ wstrzymać i wznowić klikając przycisk Pause / Play lub poprzez naciśnięcie klawisza &lt;i&gt;P&lt;/i&gt;.</translation>
+        <translation>Proces tworzenia pliku txt możesz wstrzymać i wznowić klikając przycisk Pause / Play lub poprzez naciśnięcie klawisza &lt;i&gt;P&lt;/i&gt;.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="42"/>
         <source>Messed up and want to start over? Just stop tapping by clicking on the Stop button and then on the Rewind button. Or simply press &lt;i&gt;S&lt;/i&gt; and then &lt;i&gt;R&lt;/i&gt;&lt;br&gt;&lt;br&gt;Practice does indeed make perfect!</source>
-        <translation>
-Pomieszało Ci się i chcesz zacząć od początku? Aby zatrzymać, kliknij przycisk Stop a następnie przycisk przewijania lub po prostu naciśnij &lt;i&gt;S&lt;/i&gt; oraz &lt;i&gt;R&lt;/i&gt;&lt;br&gt;&lt;br&gt; Częste powtórki prowadzą do doskonałości!</translation>
+        <translation>Pomieszało Ci się i chcesz zacząć od początku? Aby zatrzymać edycję, kliknij przycisk Stop a następnie przycisk przewijania lub po prostu naciśnij &lt;i&gt;S&lt;/i&gt; oraz &lt;i&gt;R&lt;/i&gt;&lt;br&gt;&lt;br&gt; Nie bój się częstego powtarzania. Trening czyni mistrza!</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="43"/>
         <source>To tap a syllable, simply click on the tap button as long as the syllable is sung. Alternatively, you can use the &lt;i&gt;Space&lt;/i&gt; bar.</source>
-        <translation>Aby kliknąć sylabę przyciśnij przycisk klikania i przytrzymaj go tak długo jak długo sylaba jest śpiewana. Alternatywnie  możesz użyć &lt;i&gt;Spacji&lt;/i&gt;.</translation>
+        <translation>Aby kliknąć sylabę przyciśnij przycisk w polu edycji i przytrzymaj go tak długo jak długo sylaba jest śpiewana. Alternatywnie  możesz użyć &lt;i&gt;Spacji&lt;/i&gt;.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="44"/>
         <source>Superfluous empty lines and whitespace will be removed from the input lyrics automatically once you start tapping.</source>
-        <translation>Zbędne puste linie i spacje zostaną usunięte z tekstu wejściowego automatycznie po uruchomieniu klikania.</translation>
+        <translation>Zbędne puste linie i spacje zostaną usunięte z tekstu wejściowego automatycznie po rozpoczęciu edycji.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="45"/>
         <source>Automatic capitalization of beginnings of lyric lines can be toggled through the little toolbutton below the input lyrics. All line beginnings will be capitalized when you start tapping.</source>
-        <translation>Automatyczne ustawienie wielkich liter na początku tekstu można włączyć za pomocą małych przycisków poniżej pola wprowadzania tekstu. Na początku wszystkich linii zostaną ustawione duże litery po rozpoczęciu klikania.</translation>
+        <translation>Automatyczne ustawienie wielkich liter na początku tekstu można włączyć za pomocą małego przycisku poniżej pola wprowadzania tekstu. Zmiany zostaną wprowadzone po rozpoczęciu edycji.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="46"/>
@@ -1797,7 +1796,7 @@ Pomieszało Ci się i chcesz zacząć od początku? Aby zatrzymać, kliknij przy
     <message>
         <location filename="../QUMonty.cpp" line="47"/>
         <source>Unfortunately, I can&apos;t help you set the note pitches for the tapped syllables, but at least the default pitch for every note can be configured under &lt;i&gt;Options &amp;rarr; Default pitch&lt;/i&gt;.</source>
-        <translation>Niestety, nie mogę pomóc Ci ustawić wysokości nuty każdej z sylab z osobna, ale przynajmniej możesz ustawić domyślną wysokość wszystkich nut w &lt;i&gt;Opcje &amp;rarr; Domyślna wysokość&lt;/i&gt;.</translation>
+        <translation>Niestety, nie mogę Ci pomóc ustawić wysokości nuty każdej sylaby z osobna, ale przynajmniej możesz ustawić domyślną wysokość wszystkich nut w &lt;i&gt;Opcje &amp;rarr; Domyślna wysokość nut&lt;/i&gt;.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="48"/>
@@ -1807,7 +1806,7 @@ Pomieszało Ci się i chcesz zacząć od początku? Aby zatrzymać, kliknij przy
     <message>
         <location filename="../QUMonty.cpp" line="49"/>
         <source>Freestyle text files??? Well, point me to a folder full of your favorite songs files and I will generate UltraStar compatible text files (without any lyrics) for them. Each MP3 will be moved into a separate subfolder. If the audio files follow an &apos;Artist - Title.mp3&apos; naming scheme, they will be correctly mapped in the resulting song file.</source>
-        <translation>Co to są freestyle&apos;owe pliki txt?? Cóż, wskaż mi folder z twoimi ulubionymi utworami a ja wygeneruję kompatybilne z Ultrastar&apos;em pliki txt (bez tekstu piosenek) dla każdego z nich. Każdy plik MP3 zostanie przeniesiony do osobnego podkatalogu. Jeśli pliki audio będą się nazywały zgodnie ze schematem: &quot;Wykonawca - Tytuł.mp3&quot; , będą prawidłowo odwzorowane w wynikowym pliku txt piosenki.</translation>
+        <translation>Co to są freestyle&apos;owe pliki txt?? Otóż, wskaż mi folder z twoimi ulubionymi utworami a ja wygeneruję kompatybilne z Ultrastar&apos;em pliki txt (bez tekstu piosenek) dla każdego z nich. Każdy plik MP3 zostanie przeniesiony do osobnego podkatalogu. Jeśli pliki audio będą się nazywały zgodnie ze schematem: &quot;Wykonawca - Tytuł.mp3&quot; , będą prawidłowo odwzorowane w wynikowym pliku txt piosenki.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="76"/>
@@ -2008,12 +2007,12 @@ Głównym celem wprowadzenia tego tagu było wyróżnienie piosenek wydanych w k
     <message>
         <location filename="../QUMainWindow.ui" line="1295"/>
         <source>C&amp;over</source>
-        <translation>C&amp;over</translation>
+        <translation>&amp;Okładka</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.ui" line="1349"/>
         <source>&amp;Background</source>
-        <translation>&amp;Background</translation>
+        <translation>&amp;Tło</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.ui" line="1400"/>
@@ -2413,37 +2412,37 @@ Za pomocą myszki (lub spacji) naciśnij i przytrzymaj ten przycisk, gdy wokalis
     <message>
         <location filename="../QUMainWindow.ui" line="143"/>
         <source>&amp;Title</source>
-        <translation>&amp;Title</translation>
+        <translation>&amp;Tytuł</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.ui" line="234"/>
         <source>&amp;Artist</source>
-        <translation>&amp;Artist</translation>
+        <translation>&amp;Wykonawca</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.ui" line="313"/>
         <source>&amp;Language</source>
-        <translation>&amp;Language</translation>
+        <translation>&amp;Język</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.ui" line="412"/>
         <source>&amp;Edition</source>
-        <translation>&amp;Edition</translation>
+        <translation>&amp;Edycja</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.ui" line="488"/>
         <source>&amp;Genre</source>
-        <translation>&amp;Genre</translation>
+        <translation>&amp;Gatunek</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.ui" line="567"/>
         <source>&amp;Year</source>
-        <translation>&amp;Year</translation>
+        <translation>&amp;Rok</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.ui" line="1222"/>
         <source>&amp;Creator</source>
-        <translation>&amp;Creator</translation>
+        <translation>&amp;Twórca</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.ui" line="1457"/>
@@ -2758,12 +2757,12 @@ Mia+~+~+~+~+u.</translation>
     <message>
         <location filename="../QUMainWindow.cpp" line="588"/>
         <source>Tapping finished</source>
-        <translation>Klikanie zakończone</translation>
+        <translation>Edycja zakończona</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="589"/>
         <source>Congratulations! You successfully tapped this song.</source>
-        <translation>Gratulacje!Pomyślnie wyklikałeś tę piosenkę.</translation>
+        <translation>Gratulacje! Pomyślnie &quot;wyklikałeś&quot; tą piosenkę.</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="590"/>
@@ -3035,7 +3034,7 @@ Mia+~+~+~+~+u.</translation>
     <message>
         <location filename="../QUMainWindow.cpp" line="2441"/>
         <source>Update check failed. Host unreachable.</source>
-        <translation>Sprawdzenie aktualizacji zakończone niepowodzeniem.Host nieosiągalny.</translation>
+        <translation>Sprawdzanie aktualizacji zakończone niepowodzeniem.Host nieosiągalny.</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="2450"/>
@@ -3045,33 +3044,33 @@ Mia+~+~+~+~+u.</translation>
     <message>
         <location filename="../QUMainWindow.cpp" line="2454"/>
         <source>Update check failed. No permission to write file %1.</source>
-        <translation>Sprawdzenie aktualizacji zakończone niepowodzeniem.Nie masz uprawnień do zapisu pliku %1.</translation>
+        <translation>Sprawdzanie aktualizacji zakończone niepowodzeniem.Nie masz uprawnień do zapisu pliku %1.</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="2468"/>
         <location filename="../QUMainWindow.cpp" line="2481"/>
         <source>Update check successful.</source>
-        <translation>Sprawdzenie aktualizacji zakończone powodzeniem.</translation>
+        <translation>Sprawdzanie aktualizacji zakończone powodzeniem.</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="2469"/>
         <source>UltraStar Creator %1.%2.%3 is &lt;b&gt;outdated&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Download the most recent UltraStar Creator %4 &lt;a href=&apos;http://sourceforge.net/projects/usc/&apos;&gt;here&lt;/a&gt;.</source>
-        <translation>UltraStar Creator %1.%2.%3 is &lt;b&gt;jest nieaktualny&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Pobierz %4 &lt;a href=&apos;http://sourceforge.net/projects/usc/&apos;&gt;stąd&lt;/a&gt;najnowszą wersjęprogramu.</translation>
+        <translation>UltraStar Creator %1.%2.%3 is &lt;b&gt;jest nieaktualny&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Pobierz %4 &lt;a href=&apos;http://sourceforge.net/projects/usc/&apos;&gt;stąd&lt;/a&gt;najnowszą wersję programu.</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="2475"/>
         <source>Update check successful. A new version of UltraStar Creator is available.</source>
-        <translation>Sprawdzenie aktualizacji zakończone powodzeniem. Nowa wersja UltraStar Creator&apos;a jest dostępna.</translation>
+        <translation>Sprawdzanie aktualizacji zakończone powodzeniem. Nowa wersja UltraStar Creator&apos;a jest dostępna.</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="2477"/>
         <source>Update check successful. UltraStar Creator is up to date.</source>
-        <translation>Sprawdzenie aktualizacji zakończone powodzeniem. UltraStar Creator został zaktualizowany.</translation>
+        <translation>Sprawdzanie aktualizacji zakończone powodzeniem. UltraStar Creator został zaktualizowany.</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="2482"/>
         <source>UltraStar Creator %1.%2.%3 is &lt;b&gt;up to date&lt;/b&gt;!</source>
-        <translation>UltraStar Creator %1.%2.%3 is &lt;b&gt;został zaktualizowany&lt;/b&gt;!</translation>
+        <translation>UltraStar Creator %1.%2.%3 jest &lt;b&gt;aktualny&lt;/b&gt;!</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="2484"/>
@@ -3096,7 +3095,7 @@ Mia+~+~+~+~+u.</translation>
     <message>
         <location filename="../QUMainWindow.cpp" line="2544"/>
         <source>You can ask me something if you put some keywords in the &lt;i&gt;line edit&lt;/i&gt; below and &lt;i&gt;accept&lt;/i&gt;.&lt;br&gt;&lt;br&gt;I&apos;ll try to understand and answer you. Multiple answers may be possible.</source>
-        <translation>Możesz mnie o coś zapytać wpisując słowa kluczowe w &lt;i&gt; linii edycji &lt;/i&gt; znajdującej się obok i naciskając&lt;i&gt; Akceptuję &lt;/i&gt;. &lt;br&gt;&lt;br&gt; Postaram się zrozumieć i odpowiedzieć na pytanie. Jednak nie spodziewaj się cudów.</translation>
+        <translation>Możesz mnie o coś zapytać wpisując słowa kluczowe w &lt;i&gt; linii edycji &lt;/i&gt; znajdującej się obok i naciskając&lt;i&gt; Odowiedz mi... &lt;/i&gt;. &lt;br&gt;&lt;br&gt; Postaram się zrozumieć i odpowiedzieć na pytanie. Jednak nie spodziewaj się cudów.</translation>
     </message>
 </context>
 <context>
@@ -3147,7 +3146,7 @@ Mia+~+~+~+~+u.</translation>
     <message>
         <location filename="../monty/QUMontyArea.ui" line="482"/>
         <source>What did you say just before?</source>
-        <translation>Co powiedziałeśprzedtem?</translation>
+        <translation>Co powiedziałeś przedtem?</translation>
     </message>
     <message>
         <location filename="../monty/QUMontyArea.ui" line="505"/>
@@ -3162,7 +3161,7 @@ Mia+~+~+~+~+u.</translation>
     <message>
         <location filename="../monty/QUMontyArea.ui" line="603"/>
         <source>Tell me...</source>
-        <translation>Powiedz...</translation>
+        <translation>Odowiedz mi...</translation>
     </message>
     <message>
         <location filename="../monty/QUMontyArea.ui" line="620"/>
@@ -3180,19 +3179,19 @@ Mia+~+~+~+~+u.</translation>
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="45"/>
         <source>&amp;Options</source>
-        <translation type="unfinished">&amp;Options</translation>
+        <translation>&amp;Opcje</translation>
     </message>
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="57"/>
         <location filename="../ribbon/QURibbonBar.ui" line="298"/>
         <location filename="../ribbon/QURibbonBar.ui" line="711"/>
         <source>General</source>
-        <translation type="unfinished">General</translation>
+        <translation>Ogólne</translation>
     </message>
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="105"/>
         <source>Default pitch:</source>
-        <translation>Wysokość nut:</translation>
+        <translation>Domyślna wysokość nut:</translation>
     </message>
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="130"/>
@@ -3206,7 +3205,7 @@ Mia+~+~+~+~+u.</translation>
 The pitch of each individual note needs to be set using the UltraStar internal editor or YASS after having successfully tapped the song.</source>
         <translation>W tym polu wybierasz domyślną wysokość wszystkich tworzonych nut.
 
-Dokładne ustawienie wysokości poszczególnych nut, należy przeprowadzić w wewnętrznym edytorze UltraStar&apos;a lub w programie YASS, po zakończonym procesie &quot;wyklikiwania&quot; piosenki.</translation>
+Dokładne ustawienie wysokości poszczególnych nut, należy przeprowadzić w wewnętrznym edytorze UltraStar&apos;a lub w programie YASS, po zakończonym procesie edycji piosenki.</translation>
     </message>
     <message>
         <source>0 (C4)</source>
@@ -3291,18 +3290,19 @@ Dokładne ustawienie wysokości poszczególnych nut, należy przeprowadzić w we
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="286"/>
         <source>E&amp;xtras</source>
-        <translation type="unfinished">E&amp;xtras</translation>
+        <translation>E&amp;xtra</translation>
     </message>
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="325"/>
         <source>Freestyle
 text files</source>
-        <translation>Freestyle&apos;owy plik txt</translation>
+        <translation>Freestyle&apos;owy
+plik txt</translation>
     </message>
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="418"/>
         <source>&amp;Language</source>
-        <translation type="unfinished">&amp;Język</translation>
+        <translation>&amp;Język</translation>
     </message>
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="430"/>
@@ -3347,12 +3347,12 @@ text files</source>
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="699"/>
         <source>&amp;About</source>
-        <translation type="unfinished">&amp;About</translation>
+        <translation>&amp;O programie</translation>
     </message>
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="785"/>
         <source>Third-Party Libs</source>
-        <translation type="unfinished">Third-Party Libs</translation>
+        <translation>Third-Party Libs</translation>
     </message>
     <message>
         <location filename="../ribbon/QURibbonBar.ui" line="346"/>
@@ -3368,7 +3368,8 @@ text files</source>
         <location filename="../ribbon/QURibbonBar.ui" line="381"/>
         <source>Check for
 Update</source>
-        <translation>Sprawdzenie dostępności aktualizacji</translation>
+        <translation>Sprawdzenie
+dostępności aktualizacji</translation>
     </message>
     <message>
         <location filename="../ribbon/QURibbonBar.cpp" line="21"/>
@@ -3383,12 +3384,12 @@ Update</source>
     <message>
         <location filename="../ribbon/QURibbonBar.cpp" line="79"/>
         <source>Show full menu.</source>
-        <translation>P</translation>
+        <translation>Pokaż pełne menu.</translation>
     </message>
     <message>
         <location filename="../ribbon/QURibbonBar.cpp" line="83"/>
         <source>Show small menu.</source>
-        <translation>Pokaż pełne menu.</translation>
+        <translation>Pokaż małe menu.</translation>
     </message>
 </context>
 </TS>
