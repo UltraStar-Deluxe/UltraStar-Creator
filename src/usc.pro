@@ -9,19 +9,19 @@ QT += core \
 #CONFIG += debug
 
 CONFIG(release, debug|release) {
-		TARGET = usc
-		DESTDIR = ../bin/usc
-		MOC_DIR = tmp/release
-		OBJECTS_DIR = tmp/release
-		RCC_DIR = tmp/release
+	TARGET = usc
+	DESTDIR = ../bin/usc
+	MOC_DIR = tmp/release
+	OBJECTS_DIR = tmp/release
+	RCC_DIR = tmp/release
 }
 
 CONFIG(debug, debug|release) {
-		TARGET = usc_debug
-		DESTDIR = ../bin/usc_debug
-		MOC_DIR = tmp/debug
-		OBJECTS_DIR = tmp/debug
-		RCC_DIR = tmp/debug
+	TARGET = usc_debug
+	DESTDIR = ../bin/usc_debug
+	MOC_DIR = tmp/debug
+	OBJECTS_DIR = tmp/debug
+	RCC_DIR = tmp/debug
 }
 
 HEADERS += main.h \
@@ -101,14 +101,14 @@ macx {
 }
 
 unix:!macx {
-    INCLUDEPATH += ../include/taglib \
-        ../include/taglib/toolkit \
-        ../include/bass \
-        ../include/bass_fx
-    LIBS += -L"../lib" \
-        -ltag64 \
-        -lbass64 \
-        -lbass_fx64
+	INCLUDEPATH += ../include/taglib \
+		../include/taglib/toolkit \
+		../include/bass \
+		../include/bass_fx
+	LIBS += -L"../lib" \
+		-ltag64 \
+		-lbass64 \
+		-lbass_fx64
 }
 
 win32 {
