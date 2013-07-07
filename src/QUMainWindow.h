@@ -56,7 +56,6 @@ private slots:
 
 	void on_pushButton_ShowWebSite_clicked();
 	void on_doubleSpinBox_BPM_valueChanged(double BPMValue);
-	void on_pushButton_EnableBPMEdit_toggled(bool checked);
 	void on_pushButton_SyllabificateTeX_clicked();
 	void on_comboBox_Year_activated(QString );
 	void on_actionHelp_triggered();
@@ -64,7 +63,7 @@ private slots:
 	void on_pushButton_SyllabificateRules_clicked();
 	void on_pushButton_startYass_clicked();
 	void on_pushButton_PreviewPlayPause_clicked();
-	void on_comboBox_Video_textChanged(QString );
+	void on_comboBox_Video_editTextChanged(QString video);
 	void on_pushButton_startUltraStar_clicked();
 	void on_horizontalSlider_MP3_sliderMoved(int position);
 	void on_pushButton_UndoTap_clicked();
@@ -76,7 +75,7 @@ private slots:
 	void on_pushButton_InputLyricsDecreaseFontSize_clicked();
 	void on_pushButton_InputLyricsIncreaseFontSize_clicked();
 	void on_pushButton_BrowseLyrics_clicked();
-	void on_comboBox_Genre_textChanged(QString );
+	void on_comboBox_Genre_editTextChanged(QString );
 	void on_lineEdit_Creator_textChanged(QString );
 	void on_lineEdit_Edition_textChanged(QString );
 	void on_comboBox_Language_currentIndexChanged(QString );

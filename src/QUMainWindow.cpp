@@ -12,6 +12,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QClipboard>
+#include <QMimeData>
 #include <QSettings>
 #include <QTimer>
 #include <QTextCodec>
@@ -25,7 +26,6 @@
 #include <QNetworkReply>
 #include <QTemporaryFile>
 
-//QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent) {
 QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUMainWindow) {
 	ui->setupUi(this);
 
@@ -38,7 +38,7 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	initMonty();
 
 	// deactivate TeX syllabification for now
-	//ui->pushButton_SyllabificateTeX->setVisible(false);
+	ui->pushButton_SyllabificateTeX->setVisible(false);
 
 	logSrv->add(tr("Ready."), QU::Information);
 	lyricsProgressBar = new QProgressBar;
@@ -344,7 +344,7 @@ void QUMainWindow::initStatusBar() {
 
 bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 {
-	QString suggestedAbsoluteFilePath = fileInfo_MP3->absolutePath() + "\\" + ui->lineEdit_Artist->text() + " - " + ui->lineEdit_Title->text() + ".txt";
+	QString suggestedAbsoluteFilePath = QDir::toNativeSeparators(fileInfo_MP3->absolutePath()).append(QDir::separator()).append("%1 - %2.txt").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text());
 	QString fileName = QFileDialog::getSaveFileName(this, tr("Please choose file"), suggestedAbsoluteFilePath, tr("Text files (*.txt)"));
 
 	if(fileName.isEmpty())
@@ -503,8 +503,8 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	// delete surplus blank lines...
 	rawLyricsString = rawLyricsString.replace(QRegExp("\\n{2,}"), "\n");
 
-	// replace misused accents (´,`) by the correct apostrophe (')
-	rawLyricsString = rawLyricsString.replace("´", "'");
+	// replace misused accents (Â´,`) by the correct apostrophe (')
+	rawLyricsString = rawLyricsString.replace("Â´", "'");
 	rawLyricsString = rawLyricsString.replace("`", "'");
 
 	// delete leading and trailing whitespace from each line, change line beginning to uppercase if selected
@@ -658,7 +658,7 @@ void QUMainWindow::on_pushButton_BrowseMP3_clicked()
 	}
 }
 
-void QUMainWindow::on_comboBox_Video_textChanged(QString video)
+void QUMainWindow::on_comboBox_Video_editTextChanged(QString video)
 {
 	if (!video.isEmpty())
 		ui->label_VideoSet->setPixmap(QPixmap(":/icons/path_ok.png"));
@@ -761,7 +761,7 @@ void QUMainWindow::on_lineEdit_Edition_textChanged(QString edition)
 	}
 }
 
-void QUMainWindow::on_comboBox_Genre_textChanged(QString genre)
+void QUMainWindow::on_comboBox_Genre_editTextChanged(QString genre)
 {
 	if(!genre.isEmpty()) {
 		ui->label_GenreSet->setPixmap(QPixmap(":/icons/path_ok.png"));
@@ -1034,10 +1034,16 @@ void QUMainWindow::handleMP3() {
 	// add all image files to cover/background combobox
 	QStringList imageFiles = QDir(defaultDir).entryList(QUSongSupport::allowedImageFiles());
 
+	ui->comboBox_Cover->clear();
+	ui->comboBox_Cover->addItem("");
 	ui->comboBox_Cover->addItems(imageFiles);
+	ui->comboBox_Background->clear();
+	ui->comboBox_Background->addItem("");
 	ui->comboBox_Background->addItems(imageFiles);
-	if (imageFiles.length() == 1)
+	if (imageFiles.length() == 1) {
 		ui->comboBox_Cover->setCurrentIndex(1);
+		ui->comboBox_Background->setCurrentIndex(1);
+	}
 	else {
 		ui->comboBox_Cover->setCurrentIndex(2);
 		ui->comboBox_Background->setCurrentIndex(1);
@@ -1045,14 +1051,21 @@ void QUMainWindow::handleMP3() {
 
 	// add all video files to video combobox
 	QStringList videoFiles = QDir(defaultDir).entryList(QUSongSupport::allowedVideoFiles());
+	ui->comboBox_Video->clear();
+	ui->comboBox_Video->addItem("");
 	ui->comboBox_Video->addItems(videoFiles);
-	if (videoFiles.length() > 0)
+	if (videoFiles.length() > 0) {
 		ui->comboBox_Video->setCurrentIndex(1);
+	}
 
 	BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, NULL, 0);
+	if (BPMFromMP3 == 0) {
+		BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 30, 60, 0, BASS_FX_BPM_BKGRND, NULL, 0);
+	}
+
 	BPM = BPMFromMP3;
 
-	if (BPM == 0) {
+	while (BPM == 0) {
 		BPM = 50;
 	}
 
@@ -1121,8 +1134,8 @@ void QUMainWindow::handleMP3() {
 	ui->comboBox_Video->setEnabled(enabled);
 	ui->label_VideoSet->setEnabled(enabled);
 	ui->label_BPMIcon->setEnabled(enabled);
+	ui->doubleSpinBox_BPM->setEnabled(enabled);
 	ui->label_BPM->setEnabled(enabled);
-	ui->pushButton_EnableBPMEdit->setEnabled(enabled);
 	ui->doubleSpinBox_BPM->setEnabled(enabled);
 	ui->label_BPMSet->setEnabled(enabled);
 
@@ -1742,7 +1755,7 @@ void QUMainWindow::on_pushButton_SyllabificateRules_clicked()
 	if (language == "English") {
 		lang = "en";
 
-		for (int i = 0; i < lyrics.length(); i++)
+		for (int i = 0; i < lyrics.length(); ++i)
 		{
 			QChar ch1 = lyrics.at(i);
 			QChar ch2 = lyrics.at(i+1);
@@ -1797,7 +1810,7 @@ void QUMainWindow::on_pushButton_SyllabificateRules_clicked()
 	else if (language == "German") {
 		lang = "de";
 
-		for (int i = 0; i < lyrics.length(); i++)
+		for (int i = 0; i < lyrics.length(); ++i)
 		{
 			QChar ch1 = lyrics.at(i);
 			QChar ch2 = lyrics.at(i+1);
@@ -2204,6 +2217,7 @@ bool QUMainWindow::isHiatus(QChar character1, QChar character2, QString lang)
 
 // end syllabification
 
+
 void QUMainWindow::on_pushButton_SyllabificateTeX_clicked()
 {
 	QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
@@ -2335,34 +2349,6 @@ void QUMainWindow::on_pushButton_SyllabificateTeX_clicked()
 			tr("Pattern file not available."));
 	}
 	*/
-}
-
-
-
-void QUMainWindow::on_pushButton_EnableBPMEdit_toggled(bool checked)
-{
-	ui->doubleSpinBox_BPM->setReadOnly(!checked);
-	if(checked){
-		ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/icons/lock-unlock.png"));
-	}
-	else {
-		ui->pushButton_EnableBPMEdit->setIcon(QIcon(":/icons/lock.png"));
-		BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, NULL, 0);
-		BPM = BPMFromMP3;
-
-		if (BPM == 0) {
-			BPM = 50;
-		}
-
-		while (BPM <= 200) {
-			BPM = BPM*2;
-		}
-
-		ui->doubleSpinBox_BPM->setValue(BPM);
-		ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
-	}
-
-	montyTalk();
 }
 
 void QUMainWindow::on_doubleSpinBox_BPM_valueChanged(double BPMValue)

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>952</width>
     <height>580</height>
    </rect>
   </property>
@@ -37,20 +37,14 @@
     <property name="spacing">
      <number>0</number>
     </property>
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>72</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
+    <property name="margin">
      <number>0</number>
     </property>
     <item>
      <widget class="QSplitter" name="splitter_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -58,7 +52,7 @@
        <bool>false</bool>
       </property>
       <widget class="QWidget" name="layoutWidget1">
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,0">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0">
         <property name="spacing">
          <number>0</number>
         </property>
@@ -600,6 +594,11 @@
                <item>
                 <property name="text">
                  <string/>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>2013</string>
                 </property>
                </item>
                <item>
@@ -1461,44 +1460,6 @@
                </property>
               </widget>
              </item>
-             <item row="12" column="2">
-              <widget class="QPushButton" name="pushButton_EnableBPMEdit">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string/>
-               </property>
-               <property name="statusTip">
-                <string/>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="resources/usc.qrc">
-                 <normaloff>:/icons/lock.png</normaloff>:/icons/lock.png</iconset>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
              <item row="12" column="3">
               <widget class="QDoubleSpinBox" name="doubleSpinBox_BPM">
                <property name="enabled">
@@ -1529,10 +1490,16 @@
                 <bool>true</bool>
                </property>
                <property name="readOnly">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::NoButtons</enum>
+                <enum>QAbstractSpinBox::UpDownArrows</enum>
+               </property>
+               <property name="accelerated">
+                <bool>true</bool>
+               </property>
+               <property name="correctionMode">
+                <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
                </property>
                <property name="suffix">
                 <string/>
@@ -1547,7 +1514,7 @@
                 <double>600.000000000000000</double>
                </property>
                <property name="value">
-                <double>1.000000000000000</double>
+                <double>400.000000000000000</double>
                </property>
               </widget>
              </item>
@@ -2506,15 +2473,6 @@ I'm ve+~+ry sure.</string>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
-                <property name="toolTip">
-                 <string/>
-                </property>
-                <property name="statusTip">
-                 <string/>
-                </property>
-                <property name="whatsThis">
-                 <string/>
-                </property>
                 <property name="text">
                  <string/>
                 </property>
@@ -3232,7 +3190,7 @@ I'm ve+~+ry sure.</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>952</width>
      <height>21</height>
     </rect>
    </property>
