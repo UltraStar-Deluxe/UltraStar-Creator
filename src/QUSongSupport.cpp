@@ -249,6 +249,7 @@ QStringList QUSongSupport::availableSongGenres() {
 	result << "Rock & Roll";
 	result << "Samba";
 	result << "Satire";
+	result << "Schlager";
 	result << "Showtunes";
 	result << "Ska";
 	result << "Slow Jam";
