@@ -72,10 +72,10 @@ QString QUStringSupport::withoutLeadingBlanks(const QString &text) {
 QString QUStringSupport::withoutAnyUmlaut(const QString &text) {
 	QString result = text;
 
-	result.replace("ä", "ae", Qt::CaseInsensitive);
-	result.replace("ö", "oe", Qt::CaseInsensitive);
-	result.replace("ü", "ue", Qt::CaseInsensitive);
-	result.replace("ß", "ss", Qt::CaseInsensitive);
+	result.replace("Ã¤", "ae", Qt::CaseInsensitive);
+	result.replace("Ã¶", "oe", Qt::CaseInsensitive);
+	result.replace("Ã¼", "ue", Qt::CaseInsensitive);
+	result.replace("ÃŸ", "ss", Qt::CaseInsensitive);
 
 	return result;
 }
@@ -83,14 +83,14 @@ QString QUStringSupport::withoutAnyUmlaut(const QString &text) {
 QString QUStringSupport::withoutAnyUmlautEx(const QString &text) {
 	QString result = text;
 
-	result.replace("ä", "ae", Qt::CaseInsensitive);
-	result.replace("ö", "oe", Qt::CaseInsensitive);
-	result.replace("ü", "ue", Qt::CaseInsensitive);
-	result.replace("ß", "ss", Qt::CaseInsensitive);
+	result.replace("Ã¤", "ae", Qt::CaseInsensitive);
+	result.replace("Ã¶", "oe", Qt::CaseInsensitive);
+	result.replace("Ã¼", "ue", Qt::CaseInsensitive);
+	result.replace("ÃŸ", "ss", Qt::CaseInsensitive);
 
-	result.replace("ô", "o", Qt::CaseInsensitive);
-	result.replace("é", "e", Qt::CaseInsensitive);
-	result.replace("è", "e", Qt::CaseInsensitive);
+	result.replace("Ã´", "o", Qt::CaseInsensitive);
+	result.replace("Ã©", "e", Qt::CaseInsensitive);
+	result.replace("Ã¨", "e", Qt::CaseInsensitive);
 
 	result.replace("_", " ");
 	result.replace("-", " ");
