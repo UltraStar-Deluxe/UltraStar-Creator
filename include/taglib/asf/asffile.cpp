@@ -29,6 +29,7 @@
 
 #include <tdebug.h>
 #include <tbytevectorlist.h>
+#include <tpropertymap.h>
 #include <tstring.h>
 #include "asffile.h"
 #include "asftag.h"
@@ -372,14 +373,16 @@ ASF::File::File(FileName file, bool readProperties, Properties::ReadStyle proper
   : TagLib::File(file)
 {
   d = new FilePrivate;
-  read(readProperties, propertiesStyle);
+  if(isOpen())
+    read(readProperties, propertiesStyle);
 }
 
 ASF::File::File(IOStream *stream, bool readProperties, Properties::ReadStyle propertiesStyle)
   : TagLib::File(stream)
 {
   d = new FilePrivate;
-  read(readProperties, propertiesStyle);
+  if(isOpen())
+    read(readProperties, propertiesStyle);
 }
 
 ASF::File::~File()
@@ -399,6 +402,21 @@ ASF::File::~File()
 ASF::Tag *ASF::File::tag() const
 {
   return d->tag;
+}
+
+PropertyMap ASF::File::properties() const
+{
+  return d->tag->properties();
+}
+
+void ASF::File::removeUnsupportedProperties(const StringList &properties)
+{
+  d->tag->removeUnsupportedProperties(properties);
+}
+
+PropertyMap ASF::File::setProperties(const PropertyMap &properties)
+{
+  return d->tag->setProperties(properties);
 }
 
 ASF::Properties *ASF::File::audioProperties() const

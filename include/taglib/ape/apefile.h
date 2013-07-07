@@ -128,10 +128,11 @@ namespace TagLib {
 
       /*!
        * Implements the unified property interface -- import function.
-       * As for the export, only one tag is taken into account. If the file
-       * has no tag at all, APE will be created.
+       * Creates an APEv2 tag if necessary. A pontentially existing ID3v1
+       * tag will be updated as well.
        */
       PropertyMap setProperties(const PropertyMap &);
+
       /*!
        * Returns the APE::Properties for this file.  If no audio properties
        * were read then this will return a null pointer.

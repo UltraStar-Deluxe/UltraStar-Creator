@@ -86,14 +86,16 @@ WavPack::File::File(FileName file, bool readProperties,
                 Properties::ReadStyle propertiesStyle) : TagLib::File(file)
 {
   d = new FilePrivate;
-  read(readProperties, propertiesStyle);
+  if(isOpen())
+    read(readProperties, propertiesStyle);
 }
 
 WavPack::File::File(IOStream *stream, bool readProperties,
                 Properties::ReadStyle propertiesStyle) : TagLib::File(stream)
 {
   d = new FilePrivate;
-  read(readProperties, propertiesStyle);
+  if(isOpen())
+    read(readProperties, propertiesStyle);
 }
 
 WavPack::File::~File()
@@ -115,14 +117,19 @@ PropertyMap WavPack::File::properties() const
   return PropertyMap();
 }
 
-PropertyMap WavPack::File::setProperties(const PropertyMap &properties)
+
+void WavPack::File::removeUnsupportedProperties(const StringList &unsupported)
 {
   if(d->hasAPE)
-    return d->tag.access<APE::Tag>(WavAPEIndex, false)->setProperties(properties);
-  else if(d->hasID3v1)
-    return d->tag.access<ID3v1::Tag>(WavID3v1Index, false)->setProperties(properties);
-  else
-    return d->tag.access<APE::Tag>(APE, true)->setProperties(properties);
+    d->tag.access<APE::Tag>(WavAPEIndex, false)->removeUnsupportedProperties(unsupported);
+}
+
+
+PropertyMap WavPack::File::setProperties(const PropertyMap &properties)
+{
+  if(d->hasID3v1)
+    d->tag.access<ID3v1::Tag>(WavID3v1Index, false)->setProperties(properties);
+  return d->tag.access<APE::Tag>(WavAPEIndex, true)->setProperties(properties);
 }
 
 WavPack::Properties *WavPack::File::audioProperties() const

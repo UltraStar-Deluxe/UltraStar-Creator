@@ -26,6 +26,7 @@
 #include <tbytevector.h>
 #include <tstring.h>
 #include <tdebug.h>
+#include <tpropertymap.h>
 
 #include <xiphcomment.h>
 #include "oggflacfile.h"
@@ -72,14 +73,16 @@ Ogg::FLAC::File::File(FileName file, bool readProperties,
                       Properties::ReadStyle propertiesStyle) : Ogg::File(file)
 {
   d = new FilePrivate;
-  read(readProperties, propertiesStyle);
+  if(isOpen())
+    read(readProperties, propertiesStyle);
 }
 
 Ogg::FLAC::File::File(IOStream *stream, bool readProperties,
                       Properties::ReadStyle propertiesStyle) : Ogg::File(stream)
 {
   d = new FilePrivate;
-  read(readProperties, propertiesStyle);
+  if(isOpen())
+    read(readProperties, propertiesStyle);
 }
 
 Ogg::FLAC::File::~File()
@@ -91,6 +94,16 @@ Ogg::XiphComment *Ogg::FLAC::File::tag() const
 {
   return d->comment;
 }
+
+PropertyMap Ogg::FLAC::File::properties() const
+{
+  return d->comment->properties();
+}
+
+PropertyMap Ogg::FLAC::File::setProperties(const PropertyMap &properties)
+{
+  return d->comment->setProperties(properties);
+}  
 
 Properties *Ogg::FLAC::File::audioProperties() const
 {

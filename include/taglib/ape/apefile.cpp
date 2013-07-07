@@ -90,14 +90,16 @@ APE::File::File(FileName file, bool readProperties,
                 Properties::ReadStyle propertiesStyle) : TagLib::File(file)
 {
   d = new FilePrivate;
-  read(readProperties, propertiesStyle);
+  if(isOpen())
+    read(readProperties, propertiesStyle);
 }
 
 APE::File::File(IOStream *stream, bool readProperties,
                 Properties::ReadStyle propertiesStyle) : TagLib::File(stream)
 {
   d = new FilePrivate;
-  read(readProperties, propertiesStyle);
+  if(isOpen())
+    read(readProperties, propertiesStyle);
 }
 
 APE::File::~File()
@@ -129,12 +131,9 @@ void APE::File::removeUnsupportedProperties(const StringList &properties)
 
 PropertyMap APE::File::setProperties(const PropertyMap &properties)
 {
-  if(d->hasAPE)
-    return d->tag.access<APE::Tag>(ApeAPEIndex, false)->setProperties(properties);
-  else if(d->hasID3v1)
-    return d->tag.access<ID3v1::Tag>(ApeID3v1Index, false)->setProperties(properties);
-  else
-    return d->tag.access<APE::Tag>(ApeAPEIndex, true)->setProperties(properties);
+  if(d->hasID3v1)
+    d->tag.access<ID3v1::Tag>(ApeID3v1Index, false)->setProperties(properties);
+  return d->tag.access<APE::Tag>(ApeAPEIndex, true)->setProperties(properties);
 }
 
 APE::Properties *APE::File::audioProperties() const
