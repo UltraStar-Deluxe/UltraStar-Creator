@@ -3,6 +3,7 @@ UI_DIR = ui
 
 QT += core \
 	gui \
+	widgets \
 	webkit \
 	network
 

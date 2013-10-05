@@ -21,6 +21,7 @@
 #include <QWhatsThis>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QUrlQuery>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
@@ -53,9 +54,12 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	bool firstRun = settings.value("firstRun", "true").toBool();
 
 	if (firstRun) {
-		QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
+		QUMessageBox::information(0,
+								  QObject::tr("Welcome to UltraStar Creator!"),
 								  QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL-P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL-S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL-R). When finished, <b>save</b> the tapped song using the save button (CTRL-S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
-								  BTN << ":/icons/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
+								  BTN << ":/icons/accept.png" << QObject::tr("Okay. Let's go!"),
+								  550,
+								  0);
 		firstRun = false;
 		settings.setValue("firstRun", firstRun);
 	}
@@ -920,11 +924,12 @@ void QUMainWindow::changeLanguage(QString language) {
 					tr("Change Language"),
 					tr("Application language changed to <b>%1</b>. You need to restart UltraStar Creator to take effect.").arg(translatedLanguage),
 					BTN << ":/icons/quit.png" << tr("Quit UltraStar Creator.")
-						<< ":/icons/accept.png" << tr("Continue."));
-	if(result == 0)
-			this->close();
+						<< ":/icons/accept.png" << tr("Continue."),
+					300);
+	if(result == 0) {
+		this->close();
+	}
 }
-
 
 void QUMainWindow::BASS_Stop() {
 		if(!_mediaStream)
@@ -935,7 +940,6 @@ void QUMainWindow::BASS_Stop() {
 			return;
 		}
 }
-#
 
 void QUMainWindow::BASS_Free() {
 		if(!_mediaStream)
@@ -1707,9 +1711,12 @@ void QUMainWindow::generateFreestyleTextFiles()
 
 void QUMainWindow::on_actionHelp_triggered()
 {
-	QUMessageBox::information(0, QObject::tr("Welcome to UltraStar Creator!"),
+	QUMessageBox::information(0,
+							  QObject::tr("Welcome to UltraStar Creator!"),
 							  QObject::tr("This tool enables you to <b>rapidly</b> create UltraStar text files <b>from scratch</b>.<br><br>To get started, simply chose a <b>song file</b> in MP3 or OGG format, insert the <b>song lyrics</b> from a file or the clipboard and divide them into syllables with '+'.<br><br><b>Important song meta information</b> such as <b>BPM</b> and <b>GAP</b> are determined <b>automatically</b> while the <b>ID3 tag</b> is used to fill in additional song details, if available.<br><br>To <b>start tapping</b>, hit the play/pause button (Keyboard: CTRL-P). Keep the <b>tap button</b> (keyboard: space bar) pressed for as long as the current syllable is sung to tap a note. <b>Undo</b> the last tap with the undo button (Keyboard: x), <b>stop tapping</b> with the stop button (Keyboard: CTRL-S), <b>restart</b> from the beginning with the reset button (Keyboard: CTRL-R). When finished, <b>save</b> the tapped song using the save button (CTRL-S).<br><br>Having successfully tapped a song, use the UltraStar internal editor for <b>finetuning the timings</b>, setting <b>note pitches</b> and <b>golden</b> or <b>freestyle notes</b>.<br><br><b>Happy creating!</b>"),
-							  BTN << ":/icons/accept.png" << QObject::tr("Okay. Let's go!"),550,0);
+							  BTN << ":/icons/accept.png" << QObject::tr("Okay. Let's go!"),
+							  550,
+							  0);
 }
 
 // begin syllabification --> thanks to Klafhor who provided the PHP code as a basis
@@ -2220,6 +2227,7 @@ bool QUMainWindow::isHiatus(QChar character1, QChar character2, QString lang)
 
 void QUMainWindow::on_pushButton_SyllabificateTeX_clicked()
 {
+	/*
 	QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
 	QChar sep = '+';
 	QFile patternFile;
@@ -2289,7 +2297,6 @@ void QUMainWindow::on_pushButton_SyllabificateTeX_clicked()
 		patternFile.setFileName("dict/tr_50K.dic");
 	}
 
-	/*
 	if (patternFile.exists())
 	{
 		if (patternFile.open(QFile::ReadOnly | QFile::Text))
@@ -2367,14 +2374,16 @@ void QUMainWindow::on_doubleSpinBox_BPM_valueChanged(double BPMValue)
 void QUMainWindow::on_pushButton_ShowWebSite_clicked()
 {
 	QUrl url("http://swisscharts.com/search.asp");
-	url.addQueryItem("cat", "s");
+	QUrlQuery urlQuery;
+	urlQuery.addQueryItem("cat", "s");
 	QString queryString = ui->lineEdit_Artist->text() + " " + ui->lineEdit_Title->text();
 	QStringList queryStrings = queryString.split(QRegExp("(\\s+)"));
 	QByteArray encodedQuery;
 	foreach(QString queryString, queryStrings) {
 		encodedQuery += queryString.toLatin1().toPercentEncoding() + QString("+").toLatin1();
 	}
-	url.addEncodedQueryItem("search", encodedQuery);
+	urlQuery.addQueryItem("search", encodedQuery);
+	url.setQuery(urlQuery);
 	QDesktopServices::openUrl(url);
 }
 

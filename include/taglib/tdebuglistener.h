@@ -1,6 +1,6 @@
 /***************************************************************************
-    copyright            : (C) 2002 - 2008 by Scott Wheeler
-    email                : wheeler@kde.org
+    copyright            : (C) 2013 by Tsuda Kageyu
+    email                : tsuda.kageyu@gmail.com
  ***************************************************************************/
 
 /***************************************************************************
@@ -23,21 +23,52 @@
  *   http://www.mozilla.org/MPL/                                           *
  ***************************************************************************/
 
-#ifndef TAGLIB_EXPORT_H
-#define TAGLIB_EXPORT_H
+#ifndef TAGLIB_DEBUGLISTENER_H
+#define TAGLIB_DEBUGLISTENER_H
 
-#if defined(TAGLIB_STATIC)
-#define TAGLIB_EXPORT
-#elif (defined(_WIN32) || defined(_WIN64))
-#ifdef MAKE_TAGLIB_LIB
-#define TAGLIB_EXPORT __declspec(dllexport)
-#else
-#define TAGLIB_EXPORT __declspec(dllimport)
-#endif
-#elif defined(__GNUC__) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ >= 1)
-#define TAGLIB_EXPORT __attribute__ ((visibility("default")))
-#else
-#define TAGLIB_EXPORT
-#endif
+#include "taglib_export.h"
+#include "tstring.h"
+
+namespace TagLib 
+{
+  //! An abstraction for the listener to the debug messages.
+
+  /*!
+   * This class enables you to handle the debug messages in your preferred 
+   * way by subclassing this class, reimplementing printMessage() and setting 
+   * your reimplementation as the default with setDebugListener().
+   *
+   * \see setDebugListener()
+   */  
+  class TAGLIB_EXPORT DebugListener
+  {
+  public:
+    DebugListener();
+    virtual ~DebugListener();
+
+    /*!
+     * When overridden in a derived class, redirects \a msg to your preferred
+     * channel such as stderr, Windows debugger or so forth.
+     */
+    virtual void printMessage(const String &msg) = 0;
+
+  private:
+    // Noncopyable
+    DebugListener(const DebugListener &);
+    DebugListener &operator=(const DebugListener &);
+  };
+
+  /*!
+   * Sets the listener that decides how the debug messages are redirected.
+   * If the parameter \a listener is null, the previous listener is released 
+   * and default stderr listener is restored.   
+   *
+   * \note The caller is responsible for deleting the previous listener
+   * as needed after it is released.
+   *
+   * \see DebugListener
+   */
+  TAGLIB_EXPORT void setDebugListener(DebugListener *listener);
+}
 
 #endif

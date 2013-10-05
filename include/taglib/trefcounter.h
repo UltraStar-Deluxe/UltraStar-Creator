@@ -1,6 +1,6 @@
 /***************************************************************************
-    copyright            : (C) 2002 - 2008 by Scott Wheeler
-    email                : wheeler@kde.org
+    copyright            : (C) 2013 by Tsuda Kageyu
+    email                : tsuda.kageyu@gmail.com
  ***************************************************************************/
 
 /***************************************************************************
@@ -23,21 +23,36 @@
  *   http://www.mozilla.org/MPL/                                           *
  ***************************************************************************/
 
-#ifndef TAGLIB_EXPORT_H
-#define TAGLIB_EXPORT_H
+#ifndef TAGLIB_REFCOUNTER_H
+#define TAGLIB_REFCOUNTER_H
 
-#if defined(TAGLIB_STATIC)
-#define TAGLIB_EXPORT
-#elif (defined(_WIN32) || defined(_WIN64))
-#ifdef MAKE_TAGLIB_LIB
-#define TAGLIB_EXPORT __declspec(dllexport)
-#else
-#define TAGLIB_EXPORT __declspec(dllimport)
-#endif
-#elif defined(__GNUC__) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ >= 1)
-#define TAGLIB_EXPORT __attribute__ ((visibility("default")))
-#else
-#define TAGLIB_EXPORT
-#endif
+#include "taglib_export.h"
+#include "taglib.h"
 
+#ifndef DO_NOT_DOCUMENT // Tell Doxygen to skip this class.
+/*!
+  * \internal
+  * This is just used as a base class for shared classes in TagLib.
+  *
+  * \warning This <b>is not</b> part of the TagLib public API!
+  */
+namespace TagLib
+{
+  class TAGLIB_EXPORT RefCounter
+  {
+  public:
+    RefCounter();
+    virtual ~RefCounter();
+
+    void ref();
+    bool deref();
+    int count() const;
+
+  private:
+    class RefCounterPrivate;
+    RefCounterPrivate *d;
+  };
+}
+
+#endif // DO_NOT_DOCUMENT
 #endif

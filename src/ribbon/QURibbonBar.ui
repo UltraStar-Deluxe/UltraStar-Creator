@@ -76,10 +76,13 @@
          <enum>QLayout::SetDefaultConstraint</enum>
         </property>
         <property name="leftMargin">
-         <number>8</number>
+         <number>4</number>
         </property>
         <property name="topMargin">
-         <number>8</number>
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>4</number>
         </property>
         <property name="spacing">
          <number>2</number>
