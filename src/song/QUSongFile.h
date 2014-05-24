@@ -35,28 +35,34 @@ public:
 	bool isValid();
 
 public slots:
-	QString artist() const		{return _info.value(ARTIST_TAG,			QString(N_A));}
-	QString title() const		{return _info.value(TITLE_TAG,			QString(N_A));}
-    QString mp3() const         {return _info.value(MP3_TAG,			QString(N_A));}
-    QString bpm() const         {return _info.value(BPM_TAG,			QString(N_A));}
-    QString gap() const         {return _info.value(GAP_TAG,			QString(N_A));}
-	QString video() const		{return _info.value(VIDEO_TAG,			QString(N_A));}
-	QString videogap() const	{return _info.value(VIDEOGAP_TAG,		QString(N_A));}
-	QString cover() const		{return _info.value(COVER_TAG,			QString(N_A));}
-	QString background() const	{return _info.value(BACKGROUND_TAG,		QString(N_A));}
-	QString start() const		{return _info.value(START_TAG,			QString(N_A));}
-	QString language() const	{return _info.value(LANGUAGE_TAG,		QString(N_A));}
-	QString relative() const	{return _info.value(RELATIVE_TAG,		QString(N_A));}
-	QString edition() const		{return _info.value(EDITION_TAG,		QString(N_A));}
-	QString genre() const		{return _info.value(GENRE_TAG,			QString(N_A));}
-	QString year() const		{return _info.value(YEAR_TAG,			QString(N_A));}
-	QString end() const		{return _info.value(END_TAG,			QString(N_A));}
-	QString creator() const		{return _info.value(CREATOR_TAG,		QString(N_A));}
-	QString encoding() const	{return _info.value(ENCODING_TAG,		QString(N_A));}
+	QString artist() const			{return _info.value(ARTIST_TAG,				QString(N_A));}
+	QString title() const			{return _info.value(TITLE_TAG,				QString(N_A));}
+	QString mp3() const				{return _info.value(MP3_TAG,				QString(N_A));}
+	QString bpm() const				{return _info.value(BPM_TAG,				QString(N_A));}
+	QString gap() const				{return _info.value(GAP_TAG,				QString(N_A));}
+	QString video() const			{return _info.value(VIDEO_TAG,				QString(N_A));}
+	QString videogap() const		{return _info.value(VIDEOGAP_TAG,			QString(N_A));}
+	QString cover() const			{return _info.value(COVER_TAG,				QString(N_A));}
+	QString background() const		{return _info.value(BACKGROUND_TAG,			QString(N_A));}
+	QString start() const			{return _info.value(START_TAG,				QString(N_A));}
+	QString language() const		{return _info.value(LANGUAGE_TAG,			QString(N_A));}
+	QString relative() const		{return _info.value(RELATIVE_TAG,			QString(N_A));}
+	QString edition() const			{return _info.value(EDITION_TAG,			QString(N_A));}
+	QString genre() const			{return _info.value(GENRE_TAG,				QString(N_A));}
+	QString year() const			{return _info.value(YEAR_TAG,				QString(N_A));}
+	QString end() const				{return _info.value(END_TAG,				QString(N_A));}
+	QString creator() const			{return _info.value(CREATOR_TAG,			QString(N_A));}
+	QString encoding() const		{return _info.value(ENCODING_TAG,			QString(N_A));}
 	QString previewstart() const	{return _info.value(PREVIEWSTART_TAG,		QString(N_A));}
-	QString calcmedley() const	{return _info.value(CALCMEDLEY_TAG,		QString(N_A));}
+	QString calcmedley() const		{return _info.value(CALCMEDLEY_TAG,			QString(N_A));}
 	QString medleystartbeat() const	{return _info.value(MEDLEYSTARTBEAT_TAG,	QString(N_A));}
 	QString medleyendbeat() const	{return _info.value(MEDLEYENDBEAT_TAG,		QString(N_A));}
+	QString album() const			{return _info.value(ALBUM_TAG,				QString(N_A));}
+	QString comment() const			{return _info.value(COMMENT_TAG,			QString(N_A));}
+	QString artistonsorting() const	{return _info.value(ARTISTONSORTING_TAG,	QString(N_A));}
+	QString titleonsorting() const	{return _info.value(TITLEONSORTING_TAG,		QString(N_A));}
+	QString p1() const				{return _info.value(P1_TAG,					QString(N_A));}
+	QString p2() const				{return _info.value(P2_TAG,					QString(N_A));}
 
 	QString customTag(const QString &tag) const {return _info.value(tag.toUpper(), QString(N_A));}
 

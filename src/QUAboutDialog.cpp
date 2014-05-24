@@ -88,7 +88,7 @@ QUAboutDialog::QUAboutDialog(QWidget *parent): QDialog(parent) {
 	creditsText += "<br>hamadad";
 	creditsText += "<br>Klafhor";
 	creditsText += "<br>Ying-Da<br><br><br><br><br>";
-	creditsText += "<b>Copyright © 2009-2012</b></center>";
+	creditsText += "<b>Copyright © 2009-2014</b></center>";
 
 	credits->setHtml(creditsText);
 

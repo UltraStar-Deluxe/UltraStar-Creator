@@ -1,4 +1,4 @@
-#include "main.h"
+ï»¿#include "main.h"
 
 #include "QUMainWindow.h"
 #include "QULogService.h"
@@ -507,8 +507,8 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	// delete surplus blank lines...
 	rawLyricsString = rawLyricsString.replace(QRegExp("\\n{2,}"), "\n");
 
-	// replace misused accents (Â´,`) by the correct apostrophe (')
-	rawLyricsString = rawLyricsString.replace("Â´", "'");
+	// replace misused accents (Ã‚Â´,`) by the correct apostrophe (')
+	rawLyricsString = rawLyricsString.replace("Ã‚Â´", "'");
 	rawLyricsString = rawLyricsString.replace("`", "'");
 
 	// delete leading and trailing whitespace from each line, change line beginning to uppercase if selected
@@ -1847,22 +1847,22 @@ void QUMainWindow::on_pushButton_SyllabificateRules_clicked()
 				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + ch4 + sep;
 				i = i + 3;
 			}
-			// Diminutiv 1: "äs+chen" or "ös+chen", e. g. "Hös+chen", "Mi+mös+chen", "Rös+chen", "Häs+chen", "Näs+chen"
-			else if ((ch1.toLower() == 'ä' || ch1.toLower() == 'ö') && ch2.toLower() == 's' && ch3.toLower() == 'c' && ch4.toLower() == 'h' && ch5.toLower() == 'e' && ch6.toLower() == 'n') {
+			// Diminutiv 1: "Ã¤s+chen" or "Ã¶s+chen", e. g. "HÃ¶s+chen", "Mi+mÃ¶s+chen", "RÃ¶s+chen", "HÃ¤s+chen", "NÃ¤s+chen"
+			else if ((ch1.toLower() == 'Ã¤' || ch1.toLower() == 'Ã¶') && ch2.toLower() == 's' && ch3.toLower() == 'c' && ch4.toLower() == 'h' && ch5.toLower() == 'e' && ch6.toLower() == 'n') {
 				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep + ch3 + ch4 + ch5 + ch6;
 				i = i + 5;
 			}
-			// Diminutiv 2: "äus+chen", e. g. "Mäus+chen", "Päus+chen", "Häus+chen"
-			else if (ch1.toLower() == 'ä' && ch2.toLower() == 'u' && ch3.toLower() == 's' && ch4.toLower() == 'c' && ch5.toLower() == 'h' && ch6.toLower() == 'e' && ch7.toLower() == 'n') {
+			// Diminutiv 2: "Ã¤us+chen", e. g. "MÃ¤us+chen", "PÃ¤us+chen", "HÃ¤us+chen"
+			else if (ch1.toLower() == 'Ã¤' && ch2.toLower() == 'u' && ch3.toLower() == 's' && ch4.toLower() == 'c' && ch5.toLower() == 'h' && ch6.toLower() == 'e' && ch7.toLower() == 'n') {
 				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep + ch4 + ch5 + ch6 + ch7;
 				i = i + 6;
 			}
-			// Diminutiv 3: Umlaut + "ss" + suffix "chen", e. g. "Fäss+chen", "Dös+chen", "Küss+chen", "Flüss+chen", "Nüss+chen"
+			// Diminutiv 3: Umlaut + "ss" + suffix "chen", e. g. "FÃ¤ss+chen", "DÃ¶s+chen", "KÃ¼ss+chen", "FlÃ¼ss+chen", "NÃ¼ss+chen"
 			else if (isUmlaut(ch1, lang) && ch2.toLower() == 's' && ch3.toLower() == 's' && ch4.toLower() == 'c' && ch5.toLower() == 'h' && ch6.toLower() == 'e' && ch7.toLower() == 'n') {
 				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep + ch4 + ch5 + ch6 + ch7;
 				i = i + 6;
 			}
-			// Diminutiv 4: Umlaut + "sch" + suffix "chen", e. g. "Fläsch+chen"
+			// Diminutiv 4: Umlaut + "sch" + suffix "chen", e. g. "FlÃ¤sch+chen"
 			else if (isUmlaut(ch1, lang) && ch2.toLower() == 's' && ch3.toLower() == 'c' && ch4.toLower() == 'h' && ch5.toLower() == 'c' && ch6.toLower() == 'h' && ch7.toLower() == 'e' && ch8.toLower() == 'n') {
 				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + ch4 + sep + ch5 + ch6 + ch7 + ch8;
 				i = i + 7;
@@ -1973,17 +1973,17 @@ void QUMainWindow::on_pushButton_SyllabificateRules_clicked()
 			}
 			// synalepha first word ending in a vowel
 			else if (isVowel(ch1, lang) && ch2 == ' ' && ((isVowel(ch3, lang) || (ch3.toLower() == 'y' && (!isVowel(ch4, lang) && !isConsonant(ch4, lang)))) || (ch3.toLower() == 'h' && isVowel(ch4, lang)))) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + "·";
+				syllabifiedLyrics = syllabifiedLyrics + ch1 + "Â·";
 				i = i + 1;
 			}
 			// synalepha first word being 'y'
 			else if ((ch1 == ' ') && ch2.toLower() == 'y' && ch3 == ' ' && (isVowel(ch4, lang) || ch4.toLower() == 'h')) {
-				syllabifiedLyrics = syllabifiedLyrics + " y·";
+				syllabifiedLyrics = syllabifiedLyrics + " yÂ·";
 				i = i + 2;
 			}
 			// synalepha and the beginning of the text
 			else if (i == 1 && ch1.toLower() == 'y' && ch2 == ' ' && (isVowel(ch3, lang) || ch3.toLower() == 'h')) {
-				syllabifiedLyrics = syllabifiedLyrics + "y·";
+				syllabifiedLyrics = syllabifiedLyrics + "yÂ·";
 				i = i + 1;
 			}
 			// all other cases
@@ -2012,7 +2012,7 @@ bool QUMainWindow::isVowel(QChar character, QString lang)
 	}
 	else if (lang == "de")
 	{
-		if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'ä' || ch == 'ö' || ch == 'ü')
+		if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'Ã¤' || ch == 'Ã¶' || ch == 'Ã¼')
 		{
 			return true;
 		}
@@ -2023,7 +2023,7 @@ bool QUMainWindow::isVowel(QChar character, QString lang)
 	}
 	else if (lang == "es")
 	{
-		if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'á' || ch == 'é' || ch == 'í' || ch == 'ó' || ch == 'ú' || ch == 'à' || ch == 'ì' || ch == 'ò' || ch == 'ù' || ch == 'â' || ch == 'ê' || ch == 'î' || ch == 'ô' || ch == 'û')
+		if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'Ã¡' || ch == 'Ã©' || ch == 'Ã­' || ch == 'Ã³' || ch == 'Ãº' || ch == 'Ã ' || ch == 'Ã¬' || ch == 'Ã²' || ch == 'Ã¹' || ch == 'Ã¢' || ch == 'Ãª' || ch == 'Ã®' || ch == 'Ã´' || ch == 'Ã»')
 		{
 			return true;
 		}
@@ -2048,7 +2048,7 @@ bool QUMainWindow::isUmlaut(QChar character, QString lang)
 	}
 	else if (lang == "de")
 	{
-		if (ch == 'ä' || ch == 'ö' || ch == 'ü')
+		if (ch == 'Ã¤' || ch == 'Ã¶' || ch == 'Ã¼')
 		{
 			return true;
 		}
@@ -2129,7 +2129,7 @@ bool QUMainWindow::isConsonant(QChar character, QString lang)
 	}
 	else if (lang == "de")
 	{
-		if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z' || ch == 'ß')
+		if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z' || ch == 'ÃŸ')
 		{
 			return true;
 		}
@@ -2140,7 +2140,7 @@ bool QUMainWindow::isConsonant(QChar character, QString lang)
 	}
 	else if (lang == "es")
 	{
-		if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == 'ñ' || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z')
+		if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == 'Ã±' || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z')
 		{
 			return true;
 		}
@@ -2184,7 +2184,7 @@ bool QUMainWindow::isStrongVowel(QChar character, QString lang)
 
 	if (lang == "es")
 	{
-		if (ch == 'a' || ch == 'e' || ch == 'o' || ch == 'á' || ch == 'é' || ch == 'ó')
+		if (ch == 'a' || ch == 'e' || ch == 'o' || ch == 'Ã¡' || ch == 'Ã©' || ch == 'Ã³')
 		{
 			return true;
 		}
@@ -2207,7 +2207,7 @@ bool QUMainWindow::isHiatus(QChar character1, QChar character2, QString lang)
 
 	if (lang == "es")
 	{
-		if ((isStrongVowel(ch1, lang) && isStrongVowel(ch2, lang)) || str == "íú" || str == "úí" || ch1 == ch2 || str == "aá" || str == "áa" || str == "eé" || str == "ée" || str == "ií" || str == "íi" || str == "oó" || str == "óo" || str == "uú" || str == "úu")
+		if ((isStrongVowel(ch1, lang) && isStrongVowel(ch2, lang)) || str == "Ã­Ãº" || str == "ÃºÃ­" || ch1 == ch2 || str == "aÃ¡" || str == "Ã¡a" || str == "eÃ©" || str == "Ã©e" || str == "iÃ­" || str == "Ã­i" || str == "oÃ³" || str == "Ã³o" || str == "uÃº" || str == "Ãºu")
 		{
 			return true;
 		}
@@ -2376,8 +2376,7 @@ void QUMainWindow::on_pushButton_ShowWebSite_clicked()
 	QUrl url("http://swisscharts.com/search.asp");
 	QUrlQuery urlQuery;
 	urlQuery.addQueryItem("cat", "s");
-	QString queryString = ui->lineEdit_Artist->text() + " " + ui->lineEdit_Title->text();
-	QStringList queryStrings = queryString.split(QRegExp("(\\s+)"));
+	QStringList queryStrings = QString(ui->lineEdit_Artist->text() + " " + ui->lineEdit_Title->text()).split(QRegExp("(\\s+)"));
 	QByteArray encodedQuery;
 	foreach(QString queryString, queryStrings) {
 		encodedQuery += queryString.toLatin1().toPercentEncoding() + QString("+").toLatin1();
