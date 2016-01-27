@@ -76,14 +76,12 @@ INCLUDEPATH += . \
 	song \
 	support \
 	ui
-
+INCLUDEPATH += ../include/taglib \
+                ../include/bass \
+                ../include/bass_fx
 win32 {
 	RC_FILE = usc.rc
-	INCLUDEPATH += ../include/taglib \
-		../include/taglib/toolkit \
-		../include/bass \
-		../include/bass_fx
-	LIBS += -L"../lib" \
+        LIBS += -L"../lib/Windows" \
 		-ltag \
 		-lbass \
 		-lbass_fx
@@ -91,44 +89,46 @@ win32 {
 
 macx {
 	#ICON = images/app.icns
-	#INCLUDEPATH += ../include/taglib \
-	#    ../include/bass \
-	#    ../include/bass_fx
-	#LIBS += -L"../lib" \
-	#    -ltag \
-	#    -lbass \
-	#    -lbass_fx
+        LIBS += -L"../lib/MacOS" \
+            -ltag \
+            -lbass \
+            -lbass_fx
+        CONFIG += app_bundle
 	#QMAKE_INFO_PLIST = min.us.Info.plist
 }
 
 unix:!macx {
-	INCLUDEPATH += ../include/taglib \
-		../include/taglib/toolkit \
-		../include/bass \
-		../include/bass_fx
-	LIBS += -L"../lib" \
+        LIBS += -L"../lib/Unix" \
 		-ltag64 \
 		-lbass64 \
 		-lbass_fx64
 }
 
-win32 {
 QMAKE_EXTRA_TARGETS += revtarget
 PRE_TARGETDEPS += version.h
 revtarget.target = version.h
+
+win32 {
 revtarget.commands = @echo \
 	"const char *revision = \"r$(shell svnversion .)\"; const char *date_time = \"$(shell date /T)$(shell time /T)\";" > $$revtarget.target
-revtarget.depends = $$SOURCES \
-	$$HEADERS \
-	$$FORMS
 }
 
 unix {
-QMAKE_EXTRA_TARGETS += revtarget
-PRE_TARGETDEPS += version.h
-revtarget.target = version.h
-revtarget.commands = @echo \"const char *revision = \\\"r$(shell svnversion .)\\\"; const char *date_time = \\\"$(shell date +%d.%m.%Y%6R)\\\";\" > $$revtarget.target
+revtarget.commands = @echo \
+        "const char *revision = \\\"rev`git rev-parse --short HEAD`\\\"\\; \
+        const char *date_time = \\\"`date`\\\"\\;" \
+        > $${PWD}/$$revtarget.target
+}
+
 revtarget.depends = $$SOURCES \
-	$$HEADERS \
-	$$FORMS
+        $$HEADERS \
+        $$FORMS
+
+mac {
+    dylibs.files = ../lib/MacOS/libbass.dylib \
+        ../lib/MacOS/libbass_fx.dylib \
+        ../lib/MacOS/libtag.1.15.1.dylib
+    dylibs.path = Contents/Frameworks
+    QMAKE_BUNDLE_DATA += dylibs
+    ICON = usc.icns
 }
