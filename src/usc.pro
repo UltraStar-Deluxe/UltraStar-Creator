@@ -102,6 +102,9 @@ unix:!macx {
 		-ltag64 \
 		-lbass64 \
 		-lbass_fx64
+#		-ltag \
+#		-lbass \
+#		-lbass_fx
 }
 
 QMAKE_EXTRA_TARGETS += revtarget
