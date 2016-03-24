@@ -1,1 +1,1 @@
-const char *revision = "r"; const char *date_time = "27.01.20166R";
+const char *revision = "r241M"; const char *date_time = "24.03.2016 16:27"; 

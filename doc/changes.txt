@@ -2,11 +2,19 @@
 < Changelog (1.1.1 to 1.2.0) >
 <---------------------------->
 ~#~#~#~#~#~#~#~#~#~#~#~#~#~#  NEW FEATURES  #~#~#~#~#~#~#~#~#~#~#~#~#~#~
+SONG HEADER
+* Year combo field is now filled until the current year (thanks to Francesco Montero for this tip)
 
 ~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#  CHANGES  ~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~
 
 QT
-* based on Qt 5.3.0 now
+* based on Qt 5.6.0 now
+
+BASS/BASS FX
+* updated to BASS 2.4.12
+* updated to BASS FX 2.4.11.1
+
+* updated to TagLib 1.9.1
 
 <---------------------------->
 < Changelog (1.0.0 to 1.1.1) >

@@ -159,7 +159,14 @@ void QUMainWindow::initWindow() {
 	ui->comboBox_Language->addItem(QIcon(":/languages/tr.png"),tr("Turkish"),"Turkish");
 	ui->comboBox_Language->addItem(QIcon(":/languages/wales.png"),tr("Welsh"),"Welsh");
 
-	ui->comboBox_Genre->addItem("");
+    // add year numbers from 1920 to current year - thanks for this tip to Francesco Montero
+    int currentYear = QDate::currentDate().year();
+    for (int year = currentYear; year >= 1920; year--)
+    {
+        ui->comboBox_Year->addItem(QString::number(year), year);
+    }
+
+    ui->comboBox_Genre->addItem("");
 	ui->comboBox_Genre->addItems(QUSongSupport::availableSongGenres());
 
 	/*
