@@ -9,16 +9,16 @@ QT += core \
 #CONFIG += debug
 
 CONFIG(release, debug|release) {
-	TARGET = usc
-	DESTDIR = ../bin/usc
+TARGET = UltraStarCreator
+	DESTDIR = ../bin/UltraStarCreator
 	MOC_DIR = tmp/release
 	OBJECTS_DIR = tmp/release
 	RCC_DIR = tmp/release
 }
 
 CONFIG(debug, debug|release) {
-	TARGET = usc_debug
-	DESTDIR = ../bin/usc_debug
+	TARGET = UltraStarCreator_debug
+	DESTDIR = ../bin/UltraStarCreator_debug
 	MOC_DIR = tmp/debug
 	OBJECTS_DIR = tmp/debug
 	RCC_DIR = tmp/debug
@@ -76,11 +76,11 @@ INCLUDEPATH += . \
 	support \
 	ui
 INCLUDEPATH += ../include/taglib \
-                ../include/bass \
-                ../include/bass_fx
+	../include/bass \
+	../include/bass_fx
 win32 {
 	RC_FILE = usc.rc
-        LIBS += -L"../lib/Windows" \
+	LIBS += -L"../lib/Windows" \
 		-ltag \
 		-lbass \
 		-lbass_fx
@@ -88,16 +88,16 @@ win32 {
 
 macx {
 	#ICON = images/app.icns
-        LIBS += -L"../lib/MacOS" \
-            -ltag \
-            -lbass \
-            -lbass_fx
-        CONFIG += app_bundle
+	LIBS += -L"../lib/MacOS" \
+		-ltag \
+		-lbass \
+		-lbass_fx
+	CONFIG += app_bundle
 	#QMAKE_INFO_PLIST = min.us.Info.plist
 }
 
 unix:!macx {
-        LIBS += -L"../lib/Unix" \
+	LIBS += -L"../lib/Unix" \
 		-ltag64 \
 		-lbass64 \
 		-lbass_fx64
@@ -117,20 +117,20 @@ revtarget.commands = @echo \
 
 unix {
 revtarget.commands = @echo \
-        "const char *revision = \\\"rev`git rev-parse --short HEAD`\\\"\\; \
-        const char *date_time = \\\"`date`\\\"\\;" \
-        > $${PWD}/$$revtarget.target
+	"const char *revision = \\\"rev`git rev-parse --short HEAD`\\\"\\; \
+	const char *date_time = \\\"`date`\\\"\\;" \
+	> $${PWD}/$$revtarget.target
 }
 
 revtarget.depends = $$SOURCES \
-        $$HEADERS \
-        $$FORMS
+	$$HEADERS \
+	$$FORMS
 
 mac {
-    dylibs.files = ../lib/MacOS/libbass.dylib \
-        ../lib/MacOS/libbass_fx.dylib \
-        ../lib/MacOS/libtag.1.15.1.dylib
-    dylibs.path = Contents/Frameworks
-    QMAKE_BUNDLE_DATA += dylibs
-    ICON = usc.icns
+	dylibs.files = ../lib/MacOS/libbass.dylib \
+		../lib/MacOS/libbass_fx.dylib \
+		../lib/MacOS/libtag.1.15.1.dylib
+	dylibs.path = Contents/Frameworks
+	QMAKE_BUNDLE_DATA += dylibs
+	ICON = usc.icns
 }

@@ -163,10 +163,10 @@ void QUMainWindow::initWindow() {
     int currentYear = QDate::currentDate().year();
     for (int year = currentYear; year >= 1920; year--)
     {
-        ui->comboBox_Year->addItem(QString::number(year), year);
-    }
+		ui->comboBox_Year->addItem(QString::number(year), year);
+	}
 
-    ui->comboBox_Genre->addItem("");
+	ui->comboBox_Genre->addItem("");
 	ui->comboBox_Genre->addItems(QUSongSupport::availableSongGenres());
 
 	/*
@@ -1747,10 +1747,10 @@ void QUMainWindow::on_pushButton_SyllabificateRules_clicked()
 		int result = QUMessageBox::question(0,
 						QObject::tr("Syllabification."),
 						QObject::tr("%1 Apply...").arg(infoString),
-						BTN << ":/languages/us.png"    << QObject::tr("English syllabification rules.")
-							<< ":/languages/de.png"    << QObject::tr("German syllabification rules.")
-							<< ":/languages/es.png"    << QObject::tr("Spanish syllabification rules.")
-							<< ":/icons/cancel.png"         << QObject::tr("Cancel."));
+						BTN << ":/languages/us.png"	<< QObject::tr("English syllabification rules.")
+							<< ":/languages/de.png"	<< QObject::tr("German syllabification rules.")
+							<< ":/languages/es.png"	<< QObject::tr("Spanish syllabification rules.")
+							<< ":/icons/cancel.png"	<< QObject::tr("Cancel."));
 
 		if (result == 0) {
 			language = "English";
@@ -1826,7 +1826,7 @@ void QUMainWindow::on_pushButton_SyllabificateRules_clicked()
 
 		for (int i = 0; i < lyrics.length(); ++i)
 		{
-            QChar ch1 = lyrics.at(i);
+			QChar ch1 = lyrics.at(i);
 			QChar ch2 = lyrics.at(i+1);
 			QChar ch3 = lyrics.at(i+2);
 			QChar ch4 = lyrics.at(i+3);
@@ -1855,12 +1855,12 @@ void QUMainWindow::on_pushButton_SyllabificateRules_clicked()
 				i = i + 3;
 			}
 			// Diminutiv 1: "äs+chen" or "ös+chen", e. g. "Hös+chen", "Mi+mös+chen", "Rös+chen", "Häs+chen", "Näs+chen"
-            else if ((ch1.toLower() == QString("ä").at(0) || ch1.toLower() == QString("ö").at(0)) && ch2.toLower() == 's' && ch3.toLower() == 'c' && ch4.toLower() == 'h' && ch5.toLower() == 'e' && ch6.toLower() == 'n') {
+			else if ((ch1.toLower() == QString("ä").at(0) || ch1.toLower() == QString("ö").at(0)) && ch2.toLower() == 's' && ch3.toLower() == 'c' && ch4.toLower() == 'h' && ch5.toLower() == 'e' && ch6.toLower() == 'n') {
 				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep + ch3 + ch4 + ch5 + ch6;
 				i = i + 5;
 			}
 			// Diminutiv 2: "äus+chen", e. g. "Mäus+chen", "Päus+chen", "Häus+chen"
-            else if (ch1.toLower() == QString("ä").at(0) && ch2.toLower() == 'u' && ch3.toLower() == 's' && ch4.toLower() == 'c' && ch5.toLower() == 'h' && ch6.toLower() == 'e' && ch7.toLower() == 'n') {
+			else if (ch1.toLower() == QString("ä").at(0) && ch2.toLower() == 'u' && ch3.toLower() == 's' && ch4.toLower() == 'c' && ch5.toLower() == 'h' && ch6.toLower() == 'e' && ch7.toLower() == 'n') {
 				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep + ch4 + ch5 + ch6 + ch7;
 				i = i + 6;
 			}
@@ -2019,7 +2019,7 @@ bool QUMainWindow::isVowel(QChar character, QString lang)
 	}
 	else if (lang == "de")
 	{
-        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == QString("ä").at(0) || ch == QString("ö") || ch == QString("ü"))
+		if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == QString("ä").at(0) || ch == QString("ö") || ch == QString("ü"))
 		{
 			return true;
 		}
@@ -2030,7 +2030,7 @@ bool QUMainWindow::isVowel(QChar character, QString lang)
 	}
 	else if (lang == "es")
 	{
-        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == QString("á").at(0) || ch == QString("é").at(0) || ch == QString("í").at(0) || ch == QString("ó").at(0) || ch == QString("ú").at(0) || ch == QString("à").at(0) || ch == QString("ì").at(0) || ch == QString("ò").at(0) || ch == QString("ù").at(0) || ch == QString("â").at(0) || ch == QString("ê").at(0) || ch == QString("î").at(0) || ch == QString("ô").at(0) || ch == QString("û").at(0))
+		if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == QString("á").at(0) || ch == QString("é").at(0) || ch == QString("í").at(0) || ch == QString("ó").at(0) || ch == QString("ú").at(0) || ch == QString("à").at(0) || ch == QString("ì").at(0) || ch == QString("ò").at(0) || ch == QString("ù").at(0) || ch == QString("â").at(0) || ch == QString("ê").at(0) || ch == QString("î").at(0) || ch == QString("ô").at(0) || ch == QString("û").at(0))
 		{
 			return true;
 		}
@@ -2055,7 +2055,7 @@ bool QUMainWindow::isUmlaut(QChar character, QString lang)
 	}
 	else if (lang == "de")
 	{
-        if (ch == QString("ä").at(0) || ch == QString("ö").at(0) || ch == QString("ü").at(0))
+		if (ch == QString("ä").at(0) || ch == QString("ö").at(0) || ch == QString("ü").at(0))
 		{
 			return true;
 		}
@@ -2136,7 +2136,7 @@ bool QUMainWindow::isConsonant(QChar character, QString lang)
 	}
 	else if (lang == "de")
 	{
-        if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z' || ch == QString("ß").at(0))
+		if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z' || ch == QString("ß").at(0))
 		{
 			return true;
 		}
@@ -2147,7 +2147,7 @@ bool QUMainWindow::isConsonant(QChar character, QString lang)
 	}
 	else if (lang == "es")
 	{
-        if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == QString("ñ").at(0) || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z')
+		if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == QString("ñ").at(0) || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z')
 		{
 			return true;
 		}
@@ -2191,7 +2191,7 @@ bool QUMainWindow::isStrongVowel(QChar character, QString lang)
 
 	if (lang == "es")
 	{
-        if (ch == 'a' || ch == 'e' || ch == 'o' || ch == QString("á").at(0) || ch == QString("é").at(0) || ch == QString("ó").at(0))
+		if (ch == 'a' || ch == 'e' || ch == 'o' || ch == QString("á").at(0) || ch == QString("é").at(0) || ch == QString("ó").at(0))
 		{
 			return true;
 		}
