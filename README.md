@@ -30,9 +30,12 @@ Download the Qt framework for your respective platform from https://www.qt.io/do
 4. Start creating new songs!
 
 #### Compiling on Linux
-1. Install the Qt framework: `sudo apt get install qt5-default qttools5-dev-tools`
-2. Compile UltraStar Creator (disable shadow build).
-3. Start creating new songs!
+1. Install the Qt framework: `sudo apt get install qt5-default qttools5-dev-tools qtbase5-dev-tools qt5-qmake`
+2. Install dependencies: `sudo apt get install libtag1-dev`
+3. Compile
+   * from command line: `cd src && qmake usc.pro && make` 
+   * using Qt Creator: open usc.pro in Qt Creator, disable shadow build in Project tab, compile and run
+4. Start creating new songs!
 
 #### Compiling on OS X
 (under construction)
