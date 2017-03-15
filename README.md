@@ -1,5 +1,8 @@
 # UltraStar Creator Development README
 
+[![Build Status](https://travis-ci.org/UltraStar-Deluxe/UltraStar-Creator.svg?branch=master)](https://travis-ci.org/UltraStar-Deluxe/UltraStar-Creator)
+[![License](https://img.shields.io/badge/license-GPLv2-blue.svg)](LICENSE)
+
 ![UltraStar Creator Logo](https://github.com/UltraStar-Deluxe/UltraStar-Creator/blob/master/src/resources/icons/bean.png)
 
 
