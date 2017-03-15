@@ -98,7 +98,7 @@ macx {
 
 unix:!macx {
 	LIBS += -L"../lib/Unix" \
-		-ltag64 \
+		-ltag \
 		-lbass64 \
 		-lbass_fx64
 #		-ltag \
