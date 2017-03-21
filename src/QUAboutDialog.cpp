@@ -88,17 +88,14 @@ QUAboutDialog::QUAboutDialog(QWidget *parent): QDialog(parent) {
 	creditsText += "<br>hamadad";
 	creditsText += "<br>Klafhor";
 	creditsText += "<br>Ying-Da<br><br><br><br><br>";
-    creditsText += "<b>Copyright © 2009-2016</b></center>";
+	creditsText += "<b>Copyright © 2009-2017</b></center>";
 
 	credits->setHtml(creditsText);
 
 	QDateTime dateTime = QDateTime::fromString(QString(date_time), "dd.MM.yyyy HH:mm");
 
-	versionLbl->setText(QString(tr("Version: <b>%1.%2.%3</b><br>SVN: #%4, %5"))
-			.arg(MAJOR_VERSION)
-			.arg(MINOR_VERSION)
-			.arg(PATCH_VERSION)
-			.arg(QString(revision).remove(QRegExp("(.*:)|\\D")))
+	versionLbl->setText(QString(tr("Version: <b>%1</b><br>Date: %2"))
+			.arg(QString(revision))
 			.arg(dateTime.toString("yyyy-MM-dd, HH:mm")));
 
 	resetText();
