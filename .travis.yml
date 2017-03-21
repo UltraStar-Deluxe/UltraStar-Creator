@@ -34,7 +34,7 @@ before_script:
 
 script:
     - cd src && qmake usc.pro && make
-    - cd ../bin/UltraStarCreator
+    - cd ../bin/release
     - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         if [ -r "UltraStarCreator.app" ]; then
             macdeployqt UltraStarCreator.app -dmg;

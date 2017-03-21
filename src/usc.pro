@@ -10,7 +10,7 @@ QT += core \
 
 CONFIG(release, debug|release) {
 TARGET = UltraStarCreator
-	DESTDIR = ../bin/UltraStarCreator
+    DESTDIR = ../bin/release
 	MOC_DIR = tmp/release
 	OBJECTS_DIR = tmp/release
 	RCC_DIR = tmp/release
@@ -18,7 +18,7 @@ TARGET = UltraStarCreator
 
 CONFIG(debug, debug|release) {
 	TARGET = UltraStarCreator_debug
-	DESTDIR = ../bin/UltraStarCreator_debug
+    DESTDIR = ../bin/debug
 	MOC_DIR = tmp/debug
 	OBJECTS_DIR = tmp/debug
 	RCC_DIR = tmp/debug
@@ -88,22 +88,22 @@ win32 {
 
 macx {
 	#ICON = images/app.icns
-	LIBS += -L"../lib/MacOS" \
-		-ltag \
+    #CONFIG += link_pkgconfig
+    #PKGCONFIG += taglib
+    LIBS += -L"../lib/MacOS" -L"/usr/local/lib" \
 		-lbass \
-		-lbass_fx
+        -lbass_fx \
+        -ltag
 	CONFIG += app_bundle
+    #QMAKE_RPATHDIR += @executable_path/../Frameworks
 	#QMAKE_INFO_PLIST = min.us.Info.plist
 }
 
 unix:!macx {
 	LIBS += -L"../lib/Unix" \
 		-ltag \
-		-lbass64 \
-		-lbass_fx64
-#		-ltag \
-#		-lbass \
-#		-lbass_fx
+		-lbass \
+		-lbass_fx
 }
 
 QMAKE_EXTRA_TARGETS += revtarget
@@ -128,9 +128,8 @@ revtarget.depends = $$SOURCES \
 
 mac {
 	dylibs.files = ../lib/MacOS/libbass.dylib \
-		../lib/MacOS/libbass_fx.dylib \
-		../lib/MacOS/libtag.1.15.1.dylib
-	dylibs.path = Contents/Frameworks
+		../lib/MacOS/libbass_fx.dylib
+    dylibs.path = Contents/MacOS
 	QMAKE_BUNDLE_DATA += dylibs
 	ICON = usc.icns
 }
