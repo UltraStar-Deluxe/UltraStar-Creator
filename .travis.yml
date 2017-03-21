@@ -1,12 +1,48 @@
-dist: trusty
-sudo: false
 language: cpp
-before_script: cd src/
-script: qmake usc.pro && make
-addons:
-  apt:
-    packages:
-      - qt5-default
-      - qtbase5-dev-tools
-      - qt5-qmake
-      - libtag1-dev
+
+matrix:
+    include:
+        - os: linux
+          dist: trusty
+          sudo: false
+          compiler: gcc
+          addons:
+            apt:
+              packages:
+                - qt5-default
+                - qtbase5-dev-tools
+                - qt5-qmake
+                - libtag1-dev
+        - os: osx
+          osx_image: xcode8.2
+          compiler: clang
+
+before_install:
+    - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
+        brew update;
+      fi
+
+install:
+    - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
+        brew update;
+        brew install qt5;
+        brew link --force qt5;
+        brew install taglib;
+      fi
+
+before_script:
+
+script:
+    - cd src && qmake usc.pro && make
+    - cd ../bin/UltraStarCreator
+    - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+        if [ -r "UltraStarCreator.app" ]; then
+            macdeployqt UltraStarCreator.app -dmg;
+            link=$(curl --upload-file 'UltraStarCreator.dmg' "https://transfer.sh/UltraStarCreator-$(git rev-parse --short HEAD).dmg");
+            echo "UltraStarCreator.dmg should be available at:";
+            echo "    $link";
+        fi
+      fi
+
+notifications:
+    email: false
