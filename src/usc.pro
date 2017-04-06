@@ -155,7 +155,7 @@ macx {
 		../lib/macx/libbass_fx.dylib
 	dylibs.path = Contents/Frameworks
 	QMAKE_BUNDLE_DATA += dylibs
-	#ICON = resources/usc.icns
+	ICON = resources/icons/usc.icns
 
 	QMAKE_POST_LINK += macdeployqt ../bin/release/UltraStarCreator.app $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += install_name_tool -change @loader_path/libbass.dylib @executable_path/../Frameworks/libbass.dylib ../bin/release/UltraStarCreator.app/Contents/MacOS/UltraStarCreator $$escape_expand(\\n\\t)
