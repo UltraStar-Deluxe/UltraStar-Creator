@@ -2397,7 +2397,7 @@ void QUMainWindow::checkForUpdate(bool silent)
 {
 	int currentVersion = MAJOR_VERSION*100 + MINOR_VERSION*10 + PATCH_VERSION;
 
-	QUrl url("http://usc.svn.sourceforge.net/viewvc/usc/src/latest_version.xml");
+	QUrl url("https://github.com/UltraStar-Deluxe/UltraStar-Creator/blob/master/src/latest_version.xml");
 	QNetworkAccessManager *m_NetworkMngr = new QNetworkAccessManager(this);
 	QNetworkReply *reply = m_NetworkMngr->get(QNetworkRequest(url));
 
@@ -2441,7 +2441,7 @@ void QUMainWindow::checkForUpdate(bool silent)
 		QUMessageBox::information(this,
 				tr("Update check successful."),
 				QString(tr("UltraStar Creator %1.%2.%3 is <b>outdated</b>.<br><br>"
-						"Download the most recent UltraStar Creator %4 <a href='http://sourceforge.net/projects/usc/'>here</a>."))
+						"Download the most recent UltraStar Creator %4 <a href='https://github.com/UltraStar-Deluxe/UltraStar-Creator'>here</a>."))
 						.arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION)
 						.arg(latestVersionString),
 				BTN << ":/icons/accept.png" << "OK",

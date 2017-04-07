@@ -19,9 +19,9 @@ QUMonty::~QUMonty() {
 }
 
 void QUMonty::initMessages() {
-	messages << QObject::tr("Do you want me to say something else? Tell everybody about your requests on our <a href=\"http://sourceforge.net/projects/usc/\">project page</a>.");
+	messages << QObject::tr("Do you want me to say something else? Tell everybody about your requests on our <a href=\"https://github.com/UltraStar-Deluxe/UltraStar-Creator/issues\">project page</a>.");
 	messages << QObject::tr("The BPM tag is not editable? Yeah, that's right. The BPM is automatically determined! If you use an external program for BPM detection (e.g. <a href=\"http://www.mixmeister.com/bpmanalyzer/bpmanalyzer.asp\">Mixmeister BPM Analyzer</a>), you can click on the little padlock to be able to edit a custom value.");
-	messages << QObject::tr("Did I hear you correctly? A missing feature?! Just click <a href=\"http://sourceforge.net/projects/usc/\">here</a> and let everybody know - especially the developers!");
+	messages << QObject::tr("Did I hear you correctly? A missing feature?! Just click <a href=\"https://github.com/UltraStar-Deluxe/UltraStar-Creator/issues\">here</a> and let everybody know - especially the developers!");
 	messages << QObject::tr("Did you notice that huge amount of default values for song genre? This list of genres originates from the good old ID3v1 specification as well as some custom Winamp extensions.");
 	messages << QObject::tr("I shall be quiet? Then click on <i>Hide</i> next to my speech bubble and I will disappear. To let me talk again, simply click the little button with the question mark in the upper right corner or simply hit <i>F1</i>.");
 	messages << QObject::tr("The default values for Artist, Title and Year in the <i>Song Header</i> are read from the ID3 tag, if available.");
@@ -31,7 +31,7 @@ void QUMonty::initMessages() {
 	messages << QObject::tr("The song is too fast for you and you can't keep up with the tapping?? Don't worry, you can change the playback speed under <i>Options &rarr; Playback speed</i>, even after the tapping has already started.");
 	messages << QObject::tr("Are you using the latest version of UltraStar Creator? Well, why don't you check by clicking <i>About &rarr; Check for Update</i>? You can enable an automatic update check at startup in the resulting dialog.");
 	messages << QObject::tr("You finished tapping your song and saved it successfully? Now you need to finetune your song by setting correct pitches, adjusting note lengths and timings in the Ultrastar Editor or Yass Editor using the little icons below the <i>Generated Ultrastar file</i> box.");
-	messages << QObject::tr("UltraStar Creator is not available in your language? Well, if you are interested in translating, just get in touch with one of the developers at the <a href=\"http://sourceforge.net/projects/usc\">project site</a>.");
+	messages << QObject::tr("UltraStar Creator is not available in your language? Well, if you are interested in translating, just get in touch with one of the developers at the <a href=\"https://github.com/UltraStar-Deluxe/UltraStar-Creator\">project site</a>.");
 	messages << QObject::tr("Did you remark that the state of the application window is saved on exit?");
 	messages << QObject::tr("By default, song files are saved with CP1252 encoding to keep compatibility with older versions of UltraStar. If this encoding is insufficient for encoding your song file due to some special characters, it will automatically be saved using UTF8 encoding.");
 	messages << QObject::tr("You can change the size of the three main columns of <i>Song Header</i>, <i>Song Lyrics</i>, and <i>UltraStar file</i> by clicking between adjacent columns and dragging to left or right.");
