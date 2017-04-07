@@ -25,35 +25,35 @@ void handleArguments();
  *
  */
 int main(int argc, char *argv[]) {
-    initApplication();
+	initApplication();
 
-    QApplication app(argc, argv);
-    QTranslator trContent;
-    QTranslator trQt;
+	QApplication app(argc, argv);
+	QTranslator trContent;
+	QTranslator trQt;
 
-    QSplashScreen splash(QPixmap(":/splash/splash.png"));
-    splash.show();
+	QSplashScreen splash(QPixmap(":/splash/splash.png"));
+	splash.show();
 
-    initLanguage(app, trContent, trQt, splash);
+	initLanguage(app, trContent, trQt, splash);
 
-    #ifdef WIP_VERSION
-    handleWipWarning();
-    #endif // WIP_VERSION
+	#ifdef WIP_VERSION
+	handleWipWarning();
+	#endif // WIP_VERSION
 
-    #ifdef RC_VERSION
-    handleReleaseCandidateInformation();
-    #endif // RC_VERSION
+	#ifdef RC_VERSION
+	handleReleaseCandidateInformation();
+	#endif // RC_VERSION
 
-    handlePreviousAppCrash();
-    handleArguments();
+	handlePreviousAppCrash();
+	handleArguments();
 
-    QUMainWindow mainWindow;
-    app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
+	QUMainWindow mainWindow;
+	app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
 
-    mainWindow.show();
-    splash.finish(&mainWindow);
+	mainWindow.show();
+	splash.finish(&mainWindow);
 
-    return app.exec();
+	return app.exec();
 }
 
 /*!
@@ -78,67 +78,67 @@ void initApplication() {
  * strings in the application source code is in english.
  */
 void initLanguage(QApplication &app, QTranslator &trContent, QTranslator &trQt, QSplashScreen &s) {
-        QSettings settings;
-        bool settingFound;
-        QLocale lang;
+	QSettings settings;
+	bool settingFound;
+	QLocale lang;
 
-        if(!settings.contains("language")) {
-                settingFound = false;
-                lang = QLocale::system();
-                settings.setValue("language", lang.name()); // remember this language (system local)
-        } else {
-                settingFound = true;
-                lang = QLocale(settings.value("language").toString());
-        }
+	if(!settings.contains("language")) {
+			settingFound = false;
+			lang = QLocale::system();
+			settings.setValue("language", lang.name()); // remember this language (system local)
+	} else {
+			settingFound = true;
+			lang = QLocale(settings.value("language").toString());
+	}
 
-        if (lang.language() == QLocale::French) {
-            if(trContent.load(":/usc.fr.qm")) {
-                app.installTranslator(&trContent);
-            }
-            if(trQt.load(":/qt_fr.qm")) {
-                app.installTranslator(&trQt);
-            }
-        } else if (lang.language() == QLocale::German) {
-            if(trContent.load(":/usc.de.qm")) {
-                app.installTranslator(&trContent);
-            }
-            if(trQt.load(":/qt_de.qm")) {
-                app.installTranslator(&trQt);
-            }
-        } else if (lang.language() == QLocale::Polish) {
-            if(trContent.load(":/usc.pl.qm")) {
-                app.installTranslator(&trContent);
-            }
-            if(trQt.load(":/qt_pl.qm")) {
-                app.installTranslator(&trQt);
-            }
-        } else if (lang.language() == QLocale::Spanish) {
-            if(trContent.load(":/usc.es.qm")) {
-                app.installTranslator(&trContent);
-            }
-            if(trQt.load(":/qt_es.qm")) {
-                app.installTranslator(&trQt);
-            }
-        } else if (lang.language() == QLocale::Portuguese) {
-            if(trContent.load(":/usc.pt.qm")) {
-                app.installTranslator(&trContent);
-            }
-            if(trQt.load(":/qt_pt.qm")) {
-                app.installTranslator(&trQt);
-            }
-        }
+	if (lang.language() == QLocale::French) {
+		if(trContent.load(":/usc.fr.qm")) {
+			app.installTranslator(&trContent);
+		}
+		if(trQt.load(":/qt_fr.qm")) {
+			app.installTranslator(&trQt);
+		}
+	} else if (lang.language() == QLocale::German) {
+		if(trContent.load(":/usc.de.qm")) {
+			app.installTranslator(&trContent);
+		}
+		if(trQt.load(":/qt_de.qm")) {
+			app.installTranslator(&trQt);
+		}
+	} else if (lang.language() == QLocale::Polish) {
+		if(trContent.load(":/usc.pl.qm")) {
+			app.installTranslator(&trContent);
+		}
+		if(trQt.load(":/qt_pl.qm")) {
+			app.installTranslator(&trQt);
+		}
+	} else if (lang.language() == QLocale::Spanish) {
+		if(trContent.load(":/usc.es.qm")) {
+			app.installTranslator(&trContent);
+		}
+		if(trQt.load(":/qt_es.qm")) {
+			app.installTranslator(&trQt);
+		}
+	} else if (lang.language() == QLocale::Portuguese) {
+		if(trContent.load(":/usc.pt.qm")) {
+			app.installTranslator(&trContent);
+		}
+		if(trQt.load(":/qt_pt.qm")) {
+			app.installTranslator(&trQt);
+		}
+	}
 
-        s.showMessage(QString(QObject::tr("%1.%2.%3 is loading...")).arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION), Qt::AlignBottom | Qt::AlignRight, Qt::white);
+	s.showMessage(QString(QObject::tr("%1.%2.%3 is loading...")).arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION), Qt::AlignBottom | Qt::AlignRight, Qt::white);
 
-        // message needs to be here because it can be translated only after installing the translator
-        if(!settingFound)
-                QUMessageBox::information(0,
-                                QObject::tr("Init Language"),
-                                QObject::tr("There was no configuration setting about your language. Your <b>system language</b> will be used if possible.<br>"
-                                                "<br>"
-                                                "Choose <b>Language</b> from the menu to change this."),
-                                BTN << ":/icons/accept.png" << QObject::tr("Continue."),
-                                270);
+	// message needs to be here because it can be translated only after installing the translator
+	if(!settingFound)
+			QUMessageBox::information(0,
+							QObject::tr("Init Language"),
+							QObject::tr("There was no configuration setting about your language. Your <b>system language</b> will be used if possible.<br>"
+											"<br>"
+											"Choose <b>Language</b> from the menu to change this."),
+							BTN << ":/icons/accept.png" << QObject::tr("Continue."),
+							270);
 }
 
 /*!
@@ -146,10 +146,10 @@ void initLanguage(QApplication &app, QTranslator &trContent, QTranslator &trQt, 
  * and that it should not be distributed.
  */
 void handleWipWarning() {
-        QUMessageBox::warning(0,
-                                QObject::tr("WIP version detected!"),
-                                QObject::tr("This version is still under development <b>and may not be very stable</b>. <br><br><b>Please</b> do not distribute this version."),
-                                BTN << ":/icons/accept.png" << QObject::tr("I will be careful."));
+	QUMessageBox::warning(0,
+							QObject::tr("WIP version detected!"),
+							QObject::tr("This version is still under development <b>and may not be very stable</b>. <br><br><b>Please</b> do not distribute this version."),
+							BTN << ":/icons/accept.png" << QObject::tr("I will be careful."));
 }
 
 /*!
@@ -157,11 +157,11 @@ void handleWipWarning() {
  *
  */
 void handleReleaseCandidateInformation() {
-        QUMessageBox::information(0,
-                                QObject::tr("Release Candidate Information"),
-                                QObject::tr("<b>Dear testing person,</b><br><br>this version is meant to be <b>almost bug-free</b>. Nevertheless, it might be possible that some errors are still remaining.<br> While testing all these cool new features of version %1.%2.%3, consider the following:<br><br>- xxx<br>- xxx<br>- xxx<br>- xxx<br>- xxx<br>- xxx<br><br>Send feedback and bug reports to: <a href=\"mailto:bohning@users.sourceforge.net\">bohning@users.sourceforge.net</a>").arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION),
-                                BTN << ":/icons/accept.png" << QObject::tr("Okay!"),
-                                400);
+	QUMessageBox::information(0,
+							QObject::tr("Release Candidate Information"),
+							QObject::tr("<b>Dear testing person,</b><br><br>this version is meant to be <b>almost bug-free</b>. Nevertheless, it might be possible that some errors are still remaining.<br> While testing all these cool new features of version %1.%2.%3, consider the following:<br><br>- xxx<br>- xxx<br>- xxx<br>- xxx<br>- xxx<br>- xxx<br><br>Provide feedback and bug reports at: <a href=\"https://github.com/UltraStar-Deluxe/UltraStar-Creator/issues\">GitHub</a>").arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION),
+							BTN << ":/icons/accept.png" << QObject::tr("Okay!"),
+							400);
 }
 
 /*!
@@ -169,20 +169,20 @@ void handleReleaseCandidateInformation() {
  * if the file 'running.app' exists in the working directory
  */
 void handlePreviousAppCrash() {
-        if(!QFile::exists("running.app")) {
-                QFile f("running.app");
-                f.open(QIODevice::WriteOnly);
-                f.close();
+	if(!QFile::exists("running.app")) {
+			QFile f("running.app");
+			f.open(QIODevice::WriteOnly);
+			f.close();
 
-                return; // everything is ok
-        }
+			return; // everything is ok
+	}
 
-        QUMessageBox::critical(0,
-            QObject::tr("Application Crash Detected"),
-            QObject::tr("The UltraStar Creator did not exit successfully last time. <br>"
-                            "<br>"
-                            "Please report this problem <a href=\"http://sourceforge.net/projects/usc/\">here</a>."),
-            BTN	<< ":/icons/accept.png"        << QObject::tr("Try again."));
+	QUMessageBox::critical(0,
+		QObject::tr("Application Crash Detected"),
+		QObject::tr("The UltraStar Creator did not exit successfully last time. <br>"
+						"<br>"
+						"Please report this problem <a href=\"https://github.com/UltraStar-Deluxe/UltraStar-Creator/issues\">here</a>."),
+		BTN	<< ":/icons/accept.png"		<< QObject::tr("Try again."));
 }
 
 /*!
@@ -190,24 +190,24 @@ void handlePreviousAppCrash() {
  * So far, an MP3 file can be passed to it as the song file to be tapped.
  */
 void handleArguments() {
-        QSettings settings;
-        foreach(QString arg, qApp->arguments()) {
-                QFileInfo fi(arg);
+	QSettings settings;
+	foreach(QString arg, qApp->arguments()) {
+			QFileInfo fi(arg);
 
-                if(fi.isFile() && (fi.fileName().endsWith(".mp3") || fi.fileName().endsWith(".ogg"))) {
-                    // use argument as audio file
-                    settings.setValue("songfile", fi.absoluteFilePath());
-                }
+			if(fi.isFile() && (fi.fileName().endsWith(".mp3") || fi.fileName().endsWith(".ogg"))) {
+				// use argument as audio file
+				settings.setValue("songfile", fi.absoluteFilePath());
+			}
 
-                if(fi.isFile() && fi.fileName().endsWith(".txt")) {
-                // use argument as input lyrics file
-                }
+			if(fi.isFile() && fi.fileName().endsWith(".txt")) {
+			// use argument as input lyrics file
+			}
 
-                // add cover/background and video files here
+			// add cover/background and video files here
 
-                if(fi.isDir() && fi.exists()) {
-                        settings.setValue("songPath", arg);
-                        break;
-                }
-        }
+			if(fi.isDir() && fi.exists()) {
+					settings.setValue("songPath", arg);
+					break;
+			}
+	}
 }
