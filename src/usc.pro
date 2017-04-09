@@ -73,6 +73,7 @@ INCLUDEPATH += . \
 	song \
 	support \
 	ui
+
 INCLUDEPATH += ../include/bass \
 	../include/bass_fx
 
@@ -90,7 +91,7 @@ win32 {
 macx {
 	LIBS += -L"../lib/macx" \
 		-lbass \
-		-lbass_fx \
+		-lbass_fx
 
 	CONFIG += link_pkgconfig
 	PKGCONFIG += taglib
@@ -99,7 +100,7 @@ macx {
 	QMAKE_RPATHDIR += @executable_path/../Frameworks
 	#QMAKE_INFO_PLIST = min.us.Info.plist
 
-	ICON = resources/icons/usc.icns
+	ICON = resources/usc.icns
 }
 
 unix:!macx {
