@@ -7,7 +7,7 @@ QT += core \
 	network
 
 CONFIG(release, debug|release) {
-TARGET = UltraStarCreator
+TARGET = UltraStar-Creator
 	DESTDIR = ../bin/release
 	MOC_DIR = tmp/release
 	OBJECTS_DIR = tmp/release
@@ -15,7 +15,7 @@ TARGET = UltraStarCreator
 }
 
 CONFIG(debug, debug|release) {
-	TARGET = UltraStarCreator_debug
+	TARGET = UltraStar-Creator_debug
 	DESTDIR = ../bin/debug
 	MOC_DIR = tmp/debug
 	OBJECTS_DIR = tmp/debug
@@ -85,7 +85,7 @@ win32 {
 		-lbass \
 		-lbass_fx
 
-	RC_FILE = usc.rc
+	RC_ICONS += usc.ico
 }
 
 macx {
