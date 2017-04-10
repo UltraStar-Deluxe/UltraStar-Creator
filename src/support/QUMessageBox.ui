@@ -23,7 +23,16 @@
    <property name="spacing">
     <number>0</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
@@ -117,7 +126,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="../resources/usc.qrc">:/icons/information.png</pixmap>
+         <pixmap resource="../resources/UltraStar-Creator.qrc">:/icons/information.png</pixmap>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -191,7 +200,7 @@
           <string>Okay, I get it.</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/usc.qrc">
+          <iconset resource="../resources/UltraStar-Creator.qrc">
            <normaloff>:/icons/accept.png</normaloff>:/icons/accept.png</iconset>
          </property>
         </widget>
@@ -202,7 +211,7 @@
           <string>What do you mean?</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/usc.qrc">
+          <iconset resource="../resources/UltraStar-Creator.qrc">
            <normaloff>:/icons/help.png</normaloff>:/icons/help.png</iconset>
          </property>
         </widget>
@@ -213,7 +222,7 @@
           <string>I'm outta here...</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/usc.qrc">
+          <iconset resource="../resources/UltraStar-Creator.qrc">
            <normaloff>:/icons/cancel.png</normaloff>:/icons/cancel.png</iconset>
          </property>
         </widget>
@@ -238,7 +247,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../resources/usc.qrc"/>
+  <include location="../resources/UltraStar-Creator.qrc"/>
  </resources>
  <connections/>
 </ui>

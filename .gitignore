@@ -7,3 +7,4 @@ Makefile
 src/tmp
 src/ui
 /src/version.h
+*.rc

@@ -2,16 +2,16 @@
     <qresource prefix="/">
         <file>NoBackground.jpg</file>
         <file>NoCover.jpg</file>
-        <file>usc.de.qm</file>
-        <file>usc.de.ts</file>
-        <file>usc.es.qm</file>
-        <file>usc.es.ts</file>
-        <file>usc.fr.qm</file>
-        <file>usc.fr.ts</file>
-        <file>usc.it.qm</file>
-        <file>usc.it.ts</file>
-        <file>usc.pl.qm</file>
-        <file>usc.pl.ts</file>
+        <file>UltraStar-Creator.de.qm</file>
+        <file>UltraStar-Creator.de.ts</file>
+        <file>UltraStar-Creator.es.qm</file>
+        <file>UltraStar-Creator.es.ts</file>
+        <file>UltraStar-Creator.fr.qm</file>
+        <file>UltraStar-Creator.fr.ts</file>
+        <file>UltraStar-Creator.it.qm</file>
+        <file>UltraStar-Creator.it.ts</file>
+        <file>UltraStar-Creator.pl.qm</file>
+        <file>UltraStar-Creator.pl.ts</file>
         <file>hyph/hyph_cs_CZ.dic</file>
         <file>hyph/hyph_da_DK.dic</file>
         <file>hyph/hyph_de_CH.dic</file>

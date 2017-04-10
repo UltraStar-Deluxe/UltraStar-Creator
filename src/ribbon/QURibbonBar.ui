@@ -48,7 +48,16 @@
     <property name="spacing">
      <number>0</number>
     </property>
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
@@ -233,7 +242,7 @@
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="../resources/usc.qrc">:/icons/time_mp3.png</pixmap>
+           <pixmap resource="../resources/UltraStar-Creator.qrc">:/icons/time_mp3.png</pixmap>
           </property>
          </widget>
         </item>
@@ -268,7 +277,7 @@
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="../resources/usc.qrc">:/icons/note.png</pixmap>
+           <pixmap resource="../resources/UltraStar-Creator.qrc">:/icons/note.png</pixmap>
           </property>
          </widget>
         </item>
@@ -285,7 +294,16 @@
        <property name="spacing">
         <number>0</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -317,7 +335,7 @@
             <string notr="true">English</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/usc.qrc">
+            <iconset resource="../resources/UltraStar-Creator.qrc">
              <normaloff>:/languages/us.png</normaloff>:/languages/us.png</iconset>
            </property>
            <property name="iconSize">
@@ -364,7 +382,7 @@
             <string notr="true">Español</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/usc.qrc">
+            <iconset resource="../resources/UltraStar-Creator.qrc">
              <normaloff>:/languages/es.png</normaloff>:/languages/es.png</iconset>
            </property>
            <property name="checkable">
@@ -402,7 +420,7 @@
             <string notr="true">Deutsch</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/usc.qrc">
+            <iconset resource="../resources/UltraStar-Creator.qrc">
              <normaloff>:/languages/de.png</normaloff>:/languages/de.png</iconset>
            </property>
            <property name="checkable">
@@ -440,7 +458,7 @@
             <string notr="true">Français</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/usc.qrc">
+            <iconset resource="../resources/UltraStar-Creator.qrc">
              <normaloff>:/languages/fr.png</normaloff>:/languages/fr.png</iconset>
            </property>
            <property name="checkable">
@@ -478,7 +496,7 @@
             <string notr="true">Português</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/usc.qrc">
+            <iconset resource="../resources/UltraStar-Creator.qrc">
              <normaloff>:/languages/pt.png</normaloff>:/languages/pt.png</iconset>
            </property>
            <property name="checkable">
@@ -516,7 +534,7 @@
             <string notr="true">Polski</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/usc.qrc">
+            <iconset resource="../resources/UltraStar-Creator.qrc">
              <normaloff>:/languages/pl.png</normaloff>:/languages/pl.png</iconset>
            </property>
            <property name="checkable">
@@ -547,7 +565,16 @@
        <property name="spacing">
         <number>0</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -575,7 +602,7 @@
 Update</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/usc.qrc">
+          <iconset resource="../resources/UltraStar-Creator.qrc">
            <normaloff>:/icons/check_for_update.png</normaloff>:/icons/check_for_update.png</iconset>
          </property>
          <property name="toolButtonStyle">
@@ -598,7 +625,16 @@ Update</string>
        <property name="spacing">
         <number>0</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -623,7 +659,7 @@ Update</string>
 text files</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/usc.qrc">
+          <iconset resource="../resources/UltraStar-Creator.qrc">
            <normaloff>:/icons/beans.png</normaloff>:/icons/beans.png</iconset>
          </property>
          <property name="toolButtonStyle">
@@ -646,7 +682,16 @@ text files</string>
        <property name="spacing">
         <number>0</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -673,7 +718,7 @@ text files</string>
 Creator...</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/usc.qrc">
+            <iconset resource="../resources/UltraStar-Creator.qrc">
              <normaloff>:/icons/bean.png</normaloff>:/icons/bean.png</iconset>
            </property>
            <property name="toolButtonStyle">
@@ -702,7 +747,7 @@ Creator...</string>
             <string notr="true">Qt...</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/usc.qrc">
+            <iconset resource="../resources/UltraStar-Creator.qrc">
              <normaloff>:/icons/qt.png</normaloff>:/icons/qt.png</iconset>
            </property>
            <property name="toolButtonStyle">
@@ -731,7 +776,7 @@ Creator...</string>
             <string notr="true">TagLib...</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/usc.qrc">
+            <iconset resource="../resources/UltraStar-Creator.qrc">
              <normaloff>:/icons/taglib.png</normaloff>:/icons/taglib.png</iconset>
            </property>
            <property name="iconSize">
@@ -769,7 +814,7 @@ Creator...</string>
             <string notr="true">BASS...</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/usc.qrc">
+            <iconset resource="../resources/UltraStar-Creator.qrc">
              <normaloff>:/icons/bass.png</normaloff>:/icons/bass.png</iconset>
            </property>
            <property name="iconSize">
@@ -808,7 +853,7 @@ Creator...</string>
   </widget>
  </widget>
  <resources>
-  <include location="../resources/usc.qrc"/>
+  <include location="../resources/UltraStar-Creator.qrc"/>
  </resources>
  <connections/>
 </ui>

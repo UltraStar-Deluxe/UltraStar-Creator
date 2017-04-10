@@ -1,22 +1,22 @@
 XPStyle on
 
-!define PRODUCTNAME "UltraStarCreator"
+!define PRODUCTNAME "UltraStar-Creator"
 !define PRODUCTVERSION "1.2.0"
 Name "${PRODUCTNAME} ${PRODUCTVERSION}"
 
 !include "MUI.nsh"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP "img\usc_installer_top.bmp"
-!define MUI_HEADERIMAGE_UNBITMAP "img\usc_installer_top.bmp"
+!define MUI_HEADERIMAGE_BITMAP "img\installer_top.bmp"
+!define MUI_HEADERIMAGE_UNBITMAP "img\installer_top.bmp"
 
-!define MUI_WELCOMEFINISHPAGE_BITMAP "img\usc_installer_side.bmp"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP "img\usc_installer_side.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "img\installer_side.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "img\installer_side.bmp"
 
 !define BASE_REGKEY "Software\HPI\${PRODUCTNAME}"
 !define UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCTNAME}"
 
-OutFile "..\UltraStarCreator-${PRODUCTVERSION}-win32-setup.exe"
+OutFile "..\UltraStar-Creator-${PRODUCTVERSION}-win32-setup.exe"
 InstallDir "$PROGRAMFILES\${PRODUCTNAME}"
 InstallDirRegKey HKCU "Software\HPI\${PRODUCTNAME}" ""
 
@@ -31,7 +31,7 @@ RequestExecutionLevel admin
 !define MUI_ABORTWARNING
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\changes.txt"
-!define MUI_FINISHPAGE_RUN "$INSTDIR\UltraStarCreator.exe"
+!define MUI_FINISHPAGE_RUN "$INSTDIR\UltraStar-Creator.exe"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 Var MUI_TEMP
@@ -71,7 +71,7 @@ Section "Application" SecCopyUI
 	File "Qt5Network.dll"
 	;;File "Qt5Svg.dll" ;; added via windeployqt, but not needed
 	File "Qt5Widgets.dll"
-	File "UltraStarCreator.exe"
+	File "UltraStar-Creator.exe"
 	SetOutPath "$INSTDIR\bearer"
 	File "bearer\qgenericbearer.dll"
 	File "bearer\qnativewifibearer.dll"
@@ -108,7 +108,7 @@ Section "Application" SecCopyUI
 	;; Start Menu
 	!insertmacro MUI_STARTMENU_WRITE_BEGIN Application
 	CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
-	CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\${PRODUCTNAME}.lnk" "$INSTDIR\UltraStarCreator.exe"
+	CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\${PRODUCTNAME}.lnk" "$INSTDIR\UltraStar-Creator.exe"
 	CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall ${PRODUCTNAME}.lnk" "$INSTDIR\Uninstall.exe"
 	!insertmacro MUI_STARTMENU_WRITE_END
 
@@ -116,8 +116,8 @@ Section "Application" SecCopyUI
 	WriteRegStr HKLM "${UNINST_KEY}" "DisplayName" "${PRODUCTNAME}"
 	WriteRegStr HKLM "${UNINST_KEY}" "UninstallString" '"$INSTDIR\Uninstall.exe"'
 	WriteRegStr HKLM "${UNINST_KEY}" "InstallLocation" $INSTDIR
-	WriteRegStr HKLM "${UNINST_KEY}" "DisplayIcon" "$INSTDIR\UltraStarCreator.exe,0"
-	WriteRegStr HKLM "${UNINST_KEY}" "Publisher" "UltraStarCreator Community"
+	WriteRegStr HKLM "${UNINST_KEY}" "DisplayIcon" "$INSTDIR\UltraStar-Creator.exe,0"
+	WriteRegStr HKLM "${UNINST_KEY}" "Publisher" "UltraStar-Creator Community"
 	WriteRegStr HKLM "${UNINST_KEY}" "DisplayVersion" "${PRODUCTVERSION}"
 	WriteRegDWORD HKLM "${UNINST_KEY}" "NoModify" 1
 	WriteRegDWORD HKLM "${UNINST_KEY}" "NoRepair" 1
@@ -159,7 +159,7 @@ Section "Uninstall"
 	Delete "$INSTDIR\Qt5Gui.dll"
 	Delete "$INSTDIR\Qt5Network.dll"
 	Delete "$INSTDIR\Qt5Widgets.dll"
-	Delete "$INSTDIR\UltraStarCreator.exe"
+	Delete "$INSTDIR\UltraStar-Creator.exe"
 	
 	Delete "$INSTDIR\Uninstall.exe"
 	

@@ -8,16 +8,16 @@ build_script:
   - cmd: >-
       cd src/
       
-      qmake usc.pro -spec win32-g++
+      qmake UltraStar-Creator.pro -spec win32-g++
       
       mingw32-make
 
 after_build:
   - cmd: >-
-      makensis ../setup/win32/usc.nsi
+      makensis ../setup/win32/UltraStar-Creator.nsi
 
 artifacts:
   - path: bin/release
     name: UltraStar-Creator-portable
     type: zip
-  - path: bin/UltraStarCreator*-setup.exe
+  - path: bin/UltraStar-Creator*-setup.exe

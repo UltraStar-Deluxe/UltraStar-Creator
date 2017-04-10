@@ -33,13 +33,13 @@ install:
 before_script:
 
 script:
-    - cd src && qmake usc.pro && make
+    - cd src && qmake UltraStar-Creator.pro && make
     - cd ../bin/release
     - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-        if [ -r "UltraStarCreator.app" ]; then
-            macdeployqt UltraStarCreator.app -dmg;
-            link=$(curl --upload-file 'UltraStarCreator.dmg' "https://transfer.sh/UltraStarCreator-$(git rev-parse --short HEAD).dmg");
-            echo "UltraStarCreator.dmg should be available at:";
+        if [ -r "UltraStar-Creator.app" ]; then
+            macdeployqt UltraStar-Creator.app -dmg;
+            link=$(curl --upload-file 'UltraStar-Creator.dmg' "https://transfer.sh/UltraStar-Creator-$(git rev-parse --short HEAD).dmg");
+            echo "UltraStar-Creator.dmg should be available at:";
             echo "    $link";
         fi
       fi

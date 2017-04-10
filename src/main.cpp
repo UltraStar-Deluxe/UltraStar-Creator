@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
  * random timers and registry setups.
  */
 void initApplication() {
-	Q_INIT_RESOURCE(usc);
+	Q_INIT_RESOURCE(UltraStar_Creator);
 
 	qsrand(QDateTime::currentDateTime().toTime_t());
 
@@ -92,35 +92,35 @@ void initLanguage(QApplication &app, QTranslator &trContent, QTranslator &trQt, 
 	}
 
 	if (lang.language() == QLocale::French) {
-		if(trContent.load(":/usc.fr.qm")) {
+		if(trContent.load(":/UltraStar-Creator.fr.qm")) {
 			app.installTranslator(&trContent);
 		}
 		if(trQt.load(":/qt_fr.qm")) {
 			app.installTranslator(&trQt);
 		}
 	} else if (lang.language() == QLocale::German) {
-		if(trContent.load(":/usc.de.qm")) {
+		if(trContent.load(":/UltraStar-Creator.de.qm")) {
 			app.installTranslator(&trContent);
 		}
 		if(trQt.load(":/qt_de.qm")) {
 			app.installTranslator(&trQt);
 		}
 	} else if (lang.language() == QLocale::Polish) {
-		if(trContent.load(":/usc.pl.qm")) {
+		if(trContent.load(":/UltraStar-Creator.pl.qm")) {
 			app.installTranslator(&trContent);
 		}
 		if(trQt.load(":/qt_pl.qm")) {
 			app.installTranslator(&trQt);
 		}
 	} else if (lang.language() == QLocale::Spanish) {
-		if(trContent.load(":/usc.es.qm")) {
+		if(trContent.load(":/UltraStar-Creator.es.qm")) {
 			app.installTranslator(&trContent);
 		}
 		if(trQt.load(":/qt_es.qm")) {
 			app.installTranslator(&trQt);
 		}
 	} else if (lang.language() == QLocale::Portuguese) {
-		if(trContent.load(":/usc.pt.qm")) {
+		if(trContent.load(":/UltraStar-Creator.pt.qm")) {
 			app.installTranslator(&trContent);
 		}
 		if(trQt.load(":/qt_pt.qm")) {

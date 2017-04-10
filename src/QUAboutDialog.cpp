@@ -21,10 +21,6 @@ QUAboutDialog::QUAboutDialog(QWidget *parent): QDialog(parent) {
 	creditsText += "<style>a { color: #4479D4; text-decoration: none;}</style>";
 	creditsText += "<center><br><br><br><br><br>";
 	creditsText += QObject::tr("<b>Thank you</b> for using UltraStar Creator!");
-	creditsText += "<br><br>";
-	creditsText += QObject::tr("This software is<br><b>Sing-Around-The-World-Ware</b>:");
-	creditsText += "<br><br>";
-	creditsText += QObject::tr("If you enjoy using this program, drop me a line at <a href=\"mailto:bohning@gmx.net?subject=UltraStar Creator feedback\">bohning@gmx.net</a> to provide valuable feedback and invite me to your next karaoke party ;-)");
 	creditsText += "<br><br>***<br><br>";
 	creditsText += QObject::tr("<b>Chief Programmer</b>");
 	creditsText += "<br>Markus B&ouml;hning<br>Marcel Taeumel<br><br>";

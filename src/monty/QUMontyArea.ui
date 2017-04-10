@@ -102,7 +102,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../resources/usc.qrc">:/monty/speech1.png</pixmap>
+          <pixmap resource="../resources/UltraStar-Creator.qrc">:/monty/speech1.png</pixmap>
          </property>
         </widget>
        </item>
@@ -118,7 +118,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../resources/usc.qrc">:/monty/speech2.png</pixmap>
+          <pixmap resource="../resources/UltraStar-Creator.qrc">:/monty/speech2.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -137,7 +137,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../resources/usc.qrc">:/monty/speech6.png</pixmap>
+          <pixmap resource="../resources/UltraStar-Creator.qrc">:/monty/speech6.png</pixmap>
          </property>
         </widget>
        </item>
@@ -160,7 +160,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../resources/usc.qrc">:/monty/speech4.png</pixmap>
+          <pixmap resource="../resources/UltraStar-Creator.qrc">:/monty/speech4.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -286,7 +286,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../resources/usc.qrc">:/monty/speech5.png</pixmap>
+          <pixmap resource="../resources/UltraStar-Creator.qrc">:/monty/speech5.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -312,7 +312,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../resources/usc.qrc">:/monty/speech8.png</pixmap>
+          <pixmap resource="../resources/UltraStar-Creator.qrc">:/monty/speech8.png</pixmap>
          </property>
         </widget>
        </item>
@@ -328,7 +328,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../resources/usc.qrc">:/monty/speech3.png</pixmap>
+          <pixmap resource="../resources/UltraStar-Creator.qrc">:/monty/speech3.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -347,7 +347,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../resources/usc.qrc">:/monty/speech7.png</pixmap>
+          <pixmap resource="../resources/UltraStar-Creator.qrc">:/monty/speech7.png</pixmap>
          </property>
         </widget>
        </item>
@@ -385,7 +385,7 @@
          <string>Ask</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/usc.qrc">
+         <iconset resource="../resources/UltraStar-Creator.qrc">
           <normaloff>:/icons/help.png</normaloff>:/icons/help.png</iconset>
         </property>
         <property name="toolButtonStyle">
@@ -402,7 +402,7 @@
          <string>Listen</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/usc.qrc">
+         <iconset resource="../resources/UltraStar-Creator.qrc">
           <normaloff>:/icons/comment.png</normaloff>:/icons/comment.png</iconset>
         </property>
         <property name="toolButtonStyle">
@@ -419,7 +419,7 @@
          <string>Hide</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/usc.qrc">
+         <iconset resource="../resources/UltraStar-Creator.qrc">
           <normaloff>:/icons/eye.png</normaloff>:/icons/eye.png</iconset>
         </property>
         <property name="toolButtonStyle">
@@ -482,7 +482,7 @@
          <string>What did you say just before?</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/usc.qrc">
+         <iconset resource="../resources/UltraStar-Creator.qrc">
           <normaloff>:/icons/help.png</normaloff>:/icons/help.png</iconset>
         </property>
         <property name="toolButtonStyle">
@@ -505,7 +505,7 @@
          <string>Tell me more...</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/usc.qrc">
+         <iconset resource="../resources/UltraStar-Creator.qrc">
           <normaloff>:/icons/comment.png</normaloff>:/icons/comment.png</iconset>
         </property>
         <property name="toolButtonStyle">
@@ -528,7 +528,7 @@
          <string>Thanks for your time.</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/usc.qrc">
+         <iconset resource="../resources/UltraStar-Creator.qrc">
           <normaloff>:/icons/quit.png</normaloff>:/icons/quit.png</iconset>
         </property>
         <property name="toolButtonStyle">
@@ -603,7 +603,7 @@
            <string>Tell me...</string>
           </property>
           <property name="icon">
-           <iconset resource="../resources/usc.qrc">
+           <iconset resource="../resources/UltraStar-Creator.qrc">
             <normaloff>:/icons/accept.png</normaloff>:/icons/accept.png</iconset>
           </property>
           <property name="toolButtonStyle">
@@ -620,7 +620,7 @@
            <string>Cancel</string>
           </property>
           <property name="icon">
-           <iconset resource="../resources/usc.qrc">
+           <iconset resource="../resources/UltraStar-Creator.qrc">
             <normaloff>:/icons/cancel.png</normaloff>:/icons/cancel.png</iconset>
           </property>
           <property name="toolButtonStyle">
@@ -652,7 +652,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../resources/usc.qrc"/>
+  <include location="../resources/UltraStar-Creator.qrc"/>
  </resources>
  <connections/>
 </ui>

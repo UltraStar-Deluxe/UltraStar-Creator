@@ -29,7 +29,7 @@
    <string notr="true">UltraStar Creator</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources/usc.qrc">
+   <iconset resource="resources/UltraStar-Creator.qrc">
     <normaloff>:/icons/bean.png</normaloff>:/icons/bean.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -127,7 +127,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/font.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/font.png</pixmap>
                </property>
               </widget>
              </item>
@@ -205,7 +205,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -218,7 +218,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/user.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/user.png</pixmap>
                </property>
               </widget>
              </item>
@@ -284,7 +284,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -297,7 +297,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/language.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/language.png</pixmap>
                </property>
               </widget>
              </item>
@@ -383,7 +383,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -396,7 +396,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/edition.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/edition.png</pixmap>
                </property>
               </widget>
              </item>
@@ -459,7 +459,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -472,7 +472,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/genre.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/genre.png</pixmap>
                </property>
               </widget>
              </item>
@@ -538,7 +538,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -551,7 +551,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/calendar.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/calendar.png</pixmap>
                </property>
               </widget>
              </item>
@@ -628,7 +628,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -641,7 +641,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/users.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/users.png</pixmap>
                </property>
               </widget>
              </item>
@@ -707,7 +707,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -720,7 +720,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/cover.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/cover.png</pixmap>
                </property>
               </widget>
              </item>
@@ -761,7 +761,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -774,7 +774,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/background.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/background.png</pixmap>
                </property>
               </widget>
              </item>
@@ -812,7 +812,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -825,7 +825,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/film.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/film.png</pixmap>
                </property>
               </widget>
              </item>
@@ -863,7 +863,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -876,7 +876,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/bpm.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/bpm.png</pixmap>
                </property>
               </widget>
              </item>
@@ -978,7 +978,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1009,7 +1009,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="resources/usc.qrc">
+                <iconset resource="resources/UltraStar-Creator.qrc">
                  <normaloff>:/icons/world.png</normaloff>:/icons/world.png</iconset>
                </property>
                <property name="flat">
@@ -1119,7 +1119,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/music.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/music.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1178,7 +1178,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="resources/usc.qrc">
+                <iconset resource="resources/UltraStar-Creator.qrc">
                  <normaloff>:/icons/folder-open-document-music.png</normaloff>:/icons/folder-open-document-music.png</iconset>
                </property>
                <property name="iconSize">
@@ -1235,7 +1235,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="resources/usc.qrc">:/icons/path_error.png</pixmap>
+                <pixmap resource="resources/UltraStar-Creator.qrc">:/icons/path_error.png</pixmap>
                </property>
               </widget>
              </item>
@@ -1269,7 +1269,7 @@
                 <string notr="true"/>
                </property>
                <property name="icon">
-                <iconset resource="resources/usc.qrc">
+                <iconset resource="resources/UltraStar-Creator.qrc">
                  <normaloff>:/icons/control_play_blue.png</normaloff>:/icons/control_play_blue.png</iconset>
                </property>
                <property name="flat">
@@ -1437,7 +1437,7 @@
                 <string notr="true">Play</string>
                </property>
                <property name="icon">
-                <iconset resource="resources/usc.qrc">
+                <iconset resource="resources/UltraStar-Creator.qrc">
                  <normaloff>:/player/play.png</normaloff>:/player/play.png</iconset>
                </property>
                <property name="iconSize">
@@ -1494,7 +1494,7 @@
                 <string notr="true">Stop</string>
                </property>
                <property name="icon">
-                <iconset resource="resources/usc.qrc">
+                <iconset resource="resources/UltraStar-Creator.qrc">
                  <normaloff>:/player/stop.png</normaloff>:/player/stop.png</iconset>
                </property>
                <property name="iconSize">
@@ -1551,7 +1551,7 @@
                 <string notr="true">Reset</string>
                </property>
                <property name="icon">
-                <iconset resource="resources/usc.qrc">
+                <iconset resource="resources/UltraStar-Creator.qrc">
                  <normaloff>:/player/prev.png</normaloff>:/player/prev.png</iconset>
                </property>
                <property name="iconSize">
@@ -1794,7 +1794,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/folder-open-document.png</normaloff>:/icons/folder-open-document.png</iconset>
                 </property>
                 <property name="flat">
@@ -1823,7 +1823,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/clipboard-paste-document-text.png</normaloff>:/icons/clipboard-paste-document-text.png</iconset>
                 </property>
                 <property name="flat">
@@ -1865,7 +1865,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/edit-size-up.png</normaloff>:/icons/edit-size-up.png</iconset>
                 </property>
                 <property name="flat">
@@ -1894,7 +1894,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/edit-size-down.png</normaloff>:/icons/edit-size-down.png</iconset>
                 </property>
                 <property name="flat">
@@ -1923,7 +1923,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/edit-hyphenation.png</normaloff>:/icons/edit-hyphenation.png</iconset>
                 </property>
                 <property name="flat">
@@ -1943,7 +1943,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/edit-hyphenation.png</normaloff>:/icons/edit-hyphenation.png</iconset>
                 </property>
                 <property name="flat">
@@ -1972,7 +1972,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/edit-uppercase.png</normaloff>:/icons/edit-uppercase.png</iconset>
                 </property>
                 <property name="checkable">
@@ -2066,7 +2066,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/save.png</normaloff>:/icons/save.png</iconset>
                 </property>
                 <property name="shortcut">
@@ -2111,7 +2111,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/edit-size-up.png</normaloff>:/icons/edit-size-up.png</iconset>
                 </property>
                 <property name="flat">
@@ -2140,7 +2140,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/edit-size-down.png</normaloff>:/icons/edit-size-down.png</iconset>
                 </property>
                 <property name="flat">
@@ -2172,7 +2172,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/usdx.png</normaloff>:/icons/usdx.png</iconset>
                 </property>
                 <property name="flat">
@@ -2204,7 +2204,7 @@ I'm ve+~+ry sure.</string>
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="resources/usc.qrc">
+                 <iconset resource="resources/UltraStar-Creator.qrc">
                   <normaloff>:/icons/yass.png</normaloff>:/icons/yass.png</iconset>
                 </property>
                 <property name="flat">
@@ -2343,7 +2343,7 @@ I'm ve+~+ry sure.</string>
             <string notr="true">Undo</string>
            </property>
            <property name="icon">
-            <iconset resource="resources/usc.qrc">
+            <iconset resource="resources/UltraStar-Creator.qrc">
              <normaloff>:/player/undo.png</normaloff>:/player/undo.png</iconset>
            </property>
            <property name="iconSize">
@@ -2682,7 +2682,7 @@ I'm ve+~+ry sure.</string>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/icons/bean.png</normaloff>:/icons/bean.png</iconset>
    </property>
    <property name="text">
@@ -2694,7 +2694,7 @@ I'm ve+~+ry sure.</string>
   </action>
   <action name="actionQuit_USC">
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/icons/quit.png</normaloff>:/icons/quit.png</iconset>
    </property>
    <property name="text">
@@ -2706,7 +2706,7 @@ I'm ve+~+ry sure.</string>
   </action>
   <action name="actionAbout_Qt">
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/icons/qt.png</normaloff>:/icons/qt.png</iconset>
    </property>
    <property name="text">
@@ -2727,7 +2727,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/languages/us.png</normaloff>:/languages/us.png</iconset>
    </property>
    <property name="text">
@@ -2748,7 +2748,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/languages/de.png</normaloff>:/languages/de.png</iconset>
    </property>
    <property name="text">
@@ -2775,7 +2775,7 @@ I'm ve+~+ry sure.</string>
   </action>
   <action name="actionAbout_TagLib">
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/icons/taglib.png</normaloff>:/icons/taglib.png</iconset>
    </property>
    <property name="text">
@@ -2793,7 +2793,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/languages/fr.png</normaloff>:/languages/fr.png</iconset>
    </property>
    <property name="text">
@@ -2811,7 +2811,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/languages/es.png</normaloff>:/languages/es.png</iconset>
    </property>
    <property name="text">
@@ -2829,7 +2829,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/languages/it.png</normaloff>:/languages/it.png</iconset>
    </property>
    <property name="text">
@@ -2847,7 +2847,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/languages/pl.png</normaloff>:/languages/pl.png</iconset>
    </property>
    <property name="text">
@@ -2862,7 +2862,7 @@ I'm ve+~+ry sure.</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/icons/beans.png</normaloff>:/icons/beans.png</iconset>
    </property>
    <property name="text">
@@ -2871,7 +2871,7 @@ I'm ve+~+ry sure.</string>
   </action>
   <action name="actionHelp">
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/icons/bean--plus.png</normaloff>:/icons/bean--plus.png</iconset>
    </property>
    <property name="text">
@@ -2883,7 +2883,7 @@ I'm ve+~+ry sure.</string>
   </action>
   <action name="actionWhats_This">
    <property name="icon">
-    <iconset resource="resources/usc.qrc">
+    <iconset resource="resources/UltraStar-Creator.qrc">
      <normaloff>:/icons/cursor-question.png</normaloff>:/icons/cursor-question.png</iconset>
    </property>
    <property name="text">
@@ -2929,7 +2929,7 @@ I'm ve+~+ry sure.</string>
   <tabstop>pushButton_OutputLyricsDecreaseFontSize</tabstop>
  </tabstops>
  <resources>
-  <include location="resources/usc.qrc"/>
+  <include location="resources/UltraStar-Creator.qrc"/>
  </resources>
  <connections/>
 </ui>

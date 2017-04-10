@@ -119,21 +119,23 @@ void QUMainWindow::closeEvent(QCloseEvent *event) {
 void QUMainWindow::initWindow() {
 	// create window icon
 	QIcon windowIcon;
-	windowIcon.addFile(":/icons/bean.png", QSize(16, 16));
-	/*
-	windowIcon.addFile(":/icons/bean32.png", QSize(32, 32));
-	windowIcon.addFile(":/icons/bean48.png", QSize(48, 48));
-	windowIcon.addFile(":/icons/bean64.png", QSize(64, 64));
-	windowIcon.addFile(":/icons/bean72.png", QSize(72, 72));
-	windowIcon.addFile(":/icons/bean96.png", QSize(96, 96));
-	windowIcon.addFile(":/icons/bean128.png", QSize(128, 128));*/
+	windowIcon.addFile(":/icons/UltraStar-Creator16.png", QSize(16, 16));
+	windowIcon.addFile(":/icons/UltraStar-Creator32.png", QSize(32, 32));
+	windowIcon.addFile(":/icons/UltraStar-Creator48.png", QSize(48, 48));
+	windowIcon.addFile(":/icons/UltraStar-Creator64.png", QSize(64, 64));
+	windowIcon.addFile(":/icons/UltraStar-Creator72.png", QSize(72, 72));
+	windowIcon.addFile(":/icons/UltraStar-Creator96.png", QSize(96, 96));
+	windowIcon.addFile(":/icons/UltraStar-Creator128.png", QSize(128, 128));
+	windowIcon.addFile(":/icons/UltraStar-Creator256.png", QSize(256, 256));
+	windowIcon.addFile(":/icons/UltraStar-Creator512.png", QSize(512, 512));
+	windowIcon.addFile(":/icons/UltraStar-Creator1024.png", QSize(1024, 1024));
 
 	setWindowIcon(windowIcon);
 	setWindowTitle(QString("%1%2").arg("UltraStar Creator").arg(WIP_TEXT));
 
 	// adding languages to language combobox as I did not find a way to add itemData within designer
 	// this way, foreign language names are displayed to the user while the UltraStar file will contain the
-	// english language name
+	// English language name
 	ui->comboBox_Language->addItem(QIcon(":/languages/cn.png"),tr("Chinese"),"Chinese");
 	ui->comboBox_Language->addItem(QIcon(":/languages/hr.png"),tr("Croatian"),"Croatian");
 	ui->comboBox_Language->addItem(QIcon(":/languages/cz.png"),tr("Czech"),"Czech");
@@ -159,10 +161,10 @@ void QUMainWindow::initWindow() {
 	ui->comboBox_Language->addItem(QIcon(":/languages/tr.png"),tr("Turkish"),"Turkish");
 	ui->comboBox_Language->addItem(QIcon(":/languages/wales.png"),tr("Welsh"),"Welsh");
 
-    // add year numbers from 1920 to current year - thanks for this tip to Francesco Montero
-    int currentYear = QDate::currentDate().year();
-    for (int year = currentYear; year >= 1920; year--)
-    {
+	// add year numbers from 1920 to current year - thanks for this tip to Francesco Montero
+	int currentYear = QDate::currentDate().year();
+	for (int year = currentYear; year >= 1920; year--)
+	{
 		ui->comboBox_Year->addItem(QString::number(year), year);
 	}
 
