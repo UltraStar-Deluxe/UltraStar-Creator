@@ -97,7 +97,8 @@ macx {
 	PKGCONFIG += taglib
 
 	CONFIG += app_bundle
-	QMAKE_RPATHDIR += @executable_path/../Frameworks
+	#QMAKE_RPATHDIR += @executable_path/../Frameworks
+	QMAKE_LFLAGS += -Wl,-rpath,@executable_path/../Frameworks/
 	#QMAKE_INFO_PLIST = min.us.Info.plist
 
 	ICON = resources/UltraStar-Creator.icns
