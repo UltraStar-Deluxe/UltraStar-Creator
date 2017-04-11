@@ -1,7 +1,7 @@
 # UltraStar-Creator Development README
 
 [![Unix/OSX build status](https://travis-ci.org/UltraStar-Deluxe/UltraStar-Creator.svg?branch=master)](https://travis-ci.org/UltraStar-Deluxe/UltraStar-Creator)
-[![Windows build status](https://ci.appveyor.com/api/projects/status/x1i5i0uqp2cf6xjv/branch/master?svg=true)](https://ci.appveyor.com/project/bohning/ultrastar-creator/branch/master)
+[![Windows build status](https://ci.appveyor.com/api/projects/status/w64gbadl1kn6s7dt/branch/master?svg=true)](https://ci.appveyor.com/project/bohning/ultrastar-creator/branch/master)
 [![License](https://img.shields.io/badge/license-GPLv2-blue.svg)](LICENSE)
 
 ![UltraStar-Creator Logo](https://github.com/UltraStar-Deluxe/UltraStar-Creator/blob/master/src/resources/icons/UltraStar-Creator128.png)
