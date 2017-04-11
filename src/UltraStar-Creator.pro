@@ -133,8 +133,9 @@ revtarget.depends = $$SOURCES \
 	$$FORMS
 
 unix:!macx {
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$IN_PWD/../lib/unix/libbass.so $$IN_PWD/../bin/release $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$IN_PWD/../lib/unix/libbass_fx.so $$IN_PWD/../bin/release $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $$sprintf($${QMAKE_MKDIR_CMD}, $$shell_path($${DESTDIR}/lib/)) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/unix/libbass.so) $$shell_path($${DESTDIR}/lib) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/unix/libbass_fx.so) $$shell_path($${DESTDIR}/lib) $$escape_expand(\\n\\t)
 }
 
 win32 {

@@ -43,6 +43,22 @@ script:
             echo "    $link";
         fi
       fi
+    - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+        if [ -r "UltraStar-Creator" ]; then
+          cp ../../setup/unix/UltraStar-Creator.png .
+          cp ../../setup/unix/UltraStar-Creator.desktop .
+          cp ../../setup/unix/qt.conf .
+          cd .. 
+          wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
+          chmod a+x linuxdeployqt*.AppImage
+          unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
+          ./linuxdeployqt*.AppImage ./release/* -bundle-non-qt-libs
+          ./linuxdeployqt*.AppImage ./release/* -appimage
+          link=$(curl --upload-file *.AppImage "https://transfer.sh/UltraStar-Creator-$(git rev-parse --short HEAD)-x86_64.AppImage");
+          echo "UltraStar-Creator.dmg should be available at:";
+          echo "    $link";
+        fi
+      fi
 
 notifications:
     email: false
