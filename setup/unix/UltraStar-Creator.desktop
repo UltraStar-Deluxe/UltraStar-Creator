@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=UltraStar-Creator
+Exec=UltraStar-Creator %F
+Icon=UltraStar-Creator
+Comment=Create new songs for UltraStar from scratch.
+Terminal=true
+Categories=Karaoke,UltraStar,Qt
+Name[en]=UltraStar-Creator.desktop
