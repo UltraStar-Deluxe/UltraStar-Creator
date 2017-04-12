@@ -33,7 +33,7 @@ install:
 before_script:
 
 script:
-    - cd src && qmake UltraStar-Creator.pro && make
+    - cd src && qmake UltraStar-Creator.pro && make -j4
     - cd ../bin/release
     - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         if [ -r "UltraStar-Creator.app" ]; then
