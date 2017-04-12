@@ -2,19 +2,15 @@ environment:
   QTDIR: C:\Qt\5.8\mingw53_32
 
 install:
-  - cmd: set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw530_32\bin;C:\Program Files (x86)\NSIS\;%PATH%
+  - set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw530_32\bin;C:\Program Files (x86)\NSIS\;%PATH%
 
 build_script:
-  - cmd: >-
-      cd src/
-      
-      qmake UltraStar-Creator.pro -spec win32-g++
-      
-      mingw32-make
+  - cd src/
+  - qmake UltraStar-Creator.pro -spec win32-g++
+  - mingw32-make -j4
 
 after_build:
-  - cmd: >-
-      makensis ../setup/win32/UltraStar-Creator.nsi
+  - makensis ../setup/win32/UltraStar-Creator.nsi
 
 artifacts:
   - path: bin/release
