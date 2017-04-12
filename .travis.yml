@@ -52,8 +52,8 @@ script:
           wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage";
           chmod a+x linuxdeployqt*.AppImage;
           unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH;
-          ./linuxdeployqt*.AppImage ./release/* -bundle-non-qt-libs;
-          ./linuxdeployqt*.AppImage ./release/* -appimage;
+          ./linuxdeployqt*.AppImage ./release/UltraStar-Creator.desktop -bundle-non-qt-libs;
+          ./linuxdeployqt*.AppImage ./release/UltraStar-Creator.desktop -appimage;
           link=$(curl --upload-file *.AppImage "https://transfer.sh/UltraStar-Creator-$(git rev-parse --short HEAD)-x86_64.AppImage");
           echo "UltraStar-Creator.AppImage should be available at:";
           echo "    $link";
