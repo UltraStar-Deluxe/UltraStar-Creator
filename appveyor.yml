@@ -1,5 +1,5 @@
 environment:
-  QTDIR: C:\Qt\5.8\mingw53_32
+  QTDIR: C:\Qt\5.9\mingw53_32
 
 install:
   - set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw530_32\bin;C:\Program Files (x86)\NSIS\;%PATH%
