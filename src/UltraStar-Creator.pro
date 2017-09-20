@@ -4,7 +4,8 @@ UI_DIR = ui
 QT += core \
 	gui \
 	widgets \
-	network
+	network \
+	multimedia
 
 CONFIG(release, debug|release) {
 TARGET = UltraStar-Creator
@@ -74,25 +75,16 @@ INCLUDEPATH += . \
 	support \
 	ui
 
-INCLUDEPATH += ../include/bass \
-	../include/bass_fx
-
 win32 {
-	INCLUDEPATH += ../include/taglib \
+	INCLUDEPATH += ../include/taglib
 
 	LIBS += -L"../lib/win32" \
-		-ltag \
-		-lbass \
-		-lbass_fx
+		-ltag
 
 	RC_ICONS += UltraStar-Creator.ico
 }
 
 macx {
-	LIBS += -L"../lib/macx" \
-		-lbass \
-		-lbass_fx
-
 	CONFIG += link_pkgconfig
 	PKGCONFIG += taglib
 
@@ -105,10 +97,6 @@ macx {
 }
 
 unix:!macx {
-	LIBS += -L"../lib/unix" \
-		-lbass \
-		-lbass_fx
-
 	CONFIG += link_pkgconfig
 	PKGCONFIG += taglib
 
@@ -132,12 +120,6 @@ revtarget.depends = $$SOURCES \
 	$$HEADERS \
 	$$FORMS
 
-unix:!macx {
-	QMAKE_POST_LINK += $$sprintf($${QMAKE_MKDIR_CMD}, $$shell_path($${DESTDIR}/lib/)) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/unix/libbass.so) $$shell_path($${DESTDIR}/lib) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/unix/libbass_fx.so) $$shell_path($${DESTDIR}/lib) $$escape_expand(\\n\\t)
-}
-
 win32 {
 	# Run windeployqt to bundle the required Qt libraries with the application
 	QMAKE_POST_LINK += windeployqt --release --no-translations --no-system-d3d-compiler --compiler-runtime --no-angle --no-opengl-sw ..\bin\release\UltraStar-Creator.exe $$escape_expand(\\n\\t)
@@ -154,9 +136,7 @@ win32 {
 	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwbmp.dll) $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwebp.dll) $$escape_expand(\\n\\t)
 
-	# Manually add bass, bass_fx and libtag libraries
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win32/bass.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win32/bass_fx.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+	# Manually add libtag library
 	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win32/libtag.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 
 	# Manually add changes.txt
@@ -167,18 +147,11 @@ win32 {
 }
 
 macx {
-	dylibs.files = ../lib/macx/libbass.dylib \
-		../lib/macx/libbass_fx.dylib
-	dylibs.path = Contents/Frameworks
-	QMAKE_BUNDLE_DATA += dylibs
-
 	# Run macdeployqt to bundle the required Qt libraries with the application
 	QMAKE_POST_LINK += macdeployqt ../bin/release/UltraStar-Creator.app $$escape_expand(\\n\\t)
 
 	# These manual path fixes are only necessary for the AppVeyor CI build, since Qt is installed via brew and only gets symlinked. Unfortunately, symlinks currently do not work with macdeployqt.
 	# For details, see https://bugreports.qt.io/browse/QTBUG-56814. This is issue is expected to be fixed in Qt 5.10.
-	QMAKE_POST_LINK += install_name_tool -change @loader_path/libbass.dylib @executable_path/../Frameworks/libbass.dylib ../bin/release/UltraStar-Creator.app/Contents/MacOS/UltraStar-Creator $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += install_name_tool -change @loader_path/libbass_fx.dylib @executable_path/../Frameworks/libbass_fx.dylib ../bin/release/UltraStar-Creator.app/Contents/MacOS/UltraStar-Creator $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += install_name_tool -change /usr/local/Cellar/qt5/5.8.0_1/lib/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui.framework/Versions/5/QtGui ../bin/release/UltraStar-Creator.app/Contents/Frameworks/QtWidgets.framework/Versions/5/QtWidgets $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += install_name_tool -change /usr/local/Cellar/qt5/5.8.0_1/lib/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore.framework/Versions/5/QtCore ../bin/release/UltraStar-Creator.app/Contents/Frameworks/QtWidgets.framework/Versions/5/QtWidgets $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += install_name_tool -change /usr/local/Cellar/qt5/5.8.0_1/lib/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore.framework/Versions/5/QtCore ../bin/release/UltraStar-Creator.app/Contents/Frameworks/QtGui.framework/Versions/5/QtGui $$escape_expand(\\n\\t)

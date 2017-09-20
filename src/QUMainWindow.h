@@ -2,8 +2,6 @@
 #define QCMAINWINDOW_H
 
 #include "ui_QUMainWindow.h"
-#include "bass.h"
-#include "bass_fx.h"
 
 #include "taglib.h"
 #include "fileref.h"
@@ -12,6 +10,7 @@
 #include <QTime>
 #include <QProgressBar>
 #include <QFileInfo>
+#include <QMediaPlayer>
 
 class QURibbonBar;
 
@@ -96,7 +95,6 @@ private slots:
 	void aboutQt();
 	void aboutUSC();
 	void aboutTagLib();
-	void aboutBASS();
 	void checkForUpdate(bool silent);
 
 	void on_comboBox_Cover_currentIndexChanged(const QString &cover);
@@ -125,15 +123,6 @@ private:
 	bool isFirstKeyPress;
 	QString cleanLyrics(QString);
 	void splitLyricsIntoSyllables();
-	HSTREAM _mediaStream;
-	void BASS_Stop();
-	void BASS_Free();
-	void BASS_StopAndFree();
-	void BASS_Play();
-	void BASS_Pause();
-	void BASS_Resume();
-	double BASS_Position();
-	void BASS_SetPosition(int seconds);
 	void handleMP3();
 	QFileInfo* fileInfo_MP3;
 	void keyPressEvent(QKeyEvent *event);
@@ -161,6 +150,7 @@ private:
 	QString defaultDir;
 	QMap<double, QString> timeLineMap;
 	void updateOutputLyrics();
+	QMediaPlayer* _player;
 };
 
 #endif // QCMAINWINDOW_H
