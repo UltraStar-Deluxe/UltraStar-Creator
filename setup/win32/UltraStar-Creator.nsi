@@ -59,8 +59,6 @@ Section "Application" SecCopyUI
 
 	;; Files
 	SetOutPath "$INSTDIR"
-	File "bass.dll"
-	File "bass_fx.dll"
 	File "changes.txt"
 	File "libgcc_s_dw2-1.dll"
 	File "libstdc++-6.dll"
@@ -148,8 +146,6 @@ Section "Uninstall"
 	Delete "$INSTDIR\platforms\qwindows.dll"
 	RMDir "$INSTDIR\platforms"
 	
-	Delete "$INSTDIR\bass.dll"
-	Delete "$INSTDIR\bass_fx.dll"
 	Delete "$INSTDIR\changes.txt"
 	Delete "$INSTDIR\libgcc_s_dw2-1.dll"
 	Delete "$INSTDIR\libstdc++-6.dll"

@@ -26,8 +26,10 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QTemporaryFile>
+#include <QDebug>
 
 QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUMainWindow) {
+	_player = new QMediaPlayer;
 	ui->setupUi(this);
 
 	initWindow();
@@ -45,10 +47,6 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	lyricsProgressBar = new QProgressBar;
 	lyricsProgressBar->setFormat("%v/%m (%p%)");
 	QMainWindow::statusBar()->addPermanentWidget(lyricsProgressBar, 1);
-
-	if (BASS_Init(-1, 44100, 0, 0, NULL)) {
-		QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
-	}
 
 	QSettings settings;
 	bool firstRun = settings.value("firstRun", "true").toBool();
@@ -208,8 +206,7 @@ void QUMainWindow::initRibbonBar() {
 	connect(_menu->aboutQtBtn, SIGNAL(clicked()), this, SLOT(aboutQt()));
 	connect(_menu->aboutUmanBtn, SIGNAL(clicked()), this, SLOT(aboutUSC()));
 	connect(_menu->aboutTagLibBtn, SIGNAL(clicked()), this, SLOT(aboutTagLib()));
-	connect(_menu->aboutBASSBtn, SIGNAL(clicked()), this, SLOT(aboutBASS()));
-	connect(_menu->checkForUpdateBtn, SIGNAL(clicked(bool)), this, SLOT(checkForUpdate(bool)));
+	//connect(_menu->checkForUpdateBtn, SIGNAL(clicked(bool)), this, SLOT(checkForUpdate(bool)));
 
 	// help menu
 	connect(_menu->helpBtn, SIGNAL(clicked()), ui->montyArea, SLOT(show()));
@@ -463,18 +460,10 @@ void QUMainWindow::on_pushButton_PlayPause_clicked()
 		updateSyllableButtons();
 
 		// reset from preview play
-		BASS_StopAndFree();
-		_mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->absoluteFilePath().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
-
-		_mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
-
-		// playing slower results in lower pitch, just like a record played at a lower speed
-		// playing slower while preserving pitch only works well for small changes in speed
-		BASS_ChannelGetAttribute(_mediaStream, BASS_ATTRIB_FREQ, &sampleRate);
-		if (BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO_FREQ, sampleRate*_menu->horizontalSlider_PlaybackSpeed->value()/100)) {
-			BASS_Play();
-			updateTime();
-		}
+		_player->setMedia(QUrl::fromLocalFile(fileInfo_MP3->absoluteFilePath()));
+		_player->setPlaybackRate(_menu->horizontalSlider_PlaybackSpeed->value()/100.0);
+		_player->play();
+		updateTime();
 
 		ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
 		setCursor(Qt::ArrowCursor);
@@ -488,7 +477,7 @@ void QUMainWindow::on_pushButton_PlayPause_clicked()
 		ui->pushButton_NextSyllable3->setDisabled(true);
 		ui->pushButton_NextSyllable4->setDisabled(true);
 		ui->pushButton_NextSyllable5->setDisabled(true);
-		BASS_Pause();
+		_player->pause();
 	}
 	else if (state == paused) {
 		state = QUMainWindow::playing;
@@ -500,7 +489,7 @@ void QUMainWindow::on_pushButton_PlayPause_clicked()
 		ui->pushButton_NextSyllable4->setEnabled(true);
 		ui->pushButton_NextSyllable5->setEnabled(true);
 		ui->pushButton_Tap->setFocus(Qt::OtherFocusReason);
-		BASS_Resume();
+		_player->play();
 	}
 	else {
 		// should not be possible
@@ -544,7 +533,7 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 
 void QUMainWindow::on_pushButton_Tap_pressed()
 {
-	currentNoteStartTime = BASS_Position()*1000; // milliseconds
+	currentNoteStartTime = _player->position(); // milliseconds
 
 	// conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPM [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
 	previousNoteEndBeat = currentNoteStartBeat + currentNoteBeatLength - firstNoteStartBeat;
@@ -555,7 +544,7 @@ void QUMainWindow::on_pushButton_Tap_pressed()
 
 void QUMainWindow::on_pushButton_Tap_released()
 {
-	double currentNoteTimeLength = BASS_Position()*1000 - currentNoteStartTime;
+	double currentNoteTimeLength = _player->position() - currentNoteStartTime;
 	ui->pushButton_Tap->setCursor(Qt::OpenHandCursor);
 	lyricsProgressBar->setValue(lyricsProgressBar->value()+1);
 	if (!ui->pushButton_UndoTap->isEnabled()) {
@@ -637,7 +626,7 @@ void QUMainWindow::on_pushButton_Stop_clicked()
 	if (state == playing || state == paused) {
 		state = QUMainWindow::stopped;
 		QMainWindow::statusBar()->showMessage(tr("State: stopped."));
-		BASS_StopAndFree();
+		_player->stop();
 		ui->label_TimeElapsed->setText("0:00");
 		ui->label_TimeToRun->setText("0:00");
 
@@ -940,99 +929,16 @@ void QUMainWindow::changeLanguage(QString language) {
 	}
 }
 
-void QUMainWindow::BASS_Stop() {
-		if(!_mediaStream)
-			return;
-
-		if(!BASS_ChannelStop(_mediaStream)) {
-			//logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
-			return;
-		}
-}
-
-void QUMainWindow::BASS_Free() {
-		if(!_mediaStream)
-			return;
-
-		if(!BASS_StreamFree(_mediaStream)) {
-			//logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
-			return;
-		}
-}
-
-void QUMainWindow::BASS_StopAndFree() {
-		if(!_mediaStream)
-			return;
-
-		if(!BASS_ChannelStop(_mediaStream)) {
-			return;
-		}
-
-		if(!BASS_StreamFree(_mediaStream)) {
-			return;
-		}
-}
-
-void QUMainWindow::BASS_Play() {
-		if(!_mediaStream) {
-			return;
-		}
-
-		if(!BASS_ChannelPlay(_mediaStream, TRUE)) {
-			return;
-		}
-}
-
-void QUMainWindow::BASS_Pause() {
-		if(!_mediaStream) {
-			return;
-		}
-
-		if(!BASS_ChannelPause(_mediaStream)) {
-			return;
-		}
-}
-
-void QUMainWindow::BASS_Resume() {
-		if(!_mediaStream) {
-			return;
-		}
-
-		if(!BASS_ChannelPlay(_mediaStream, FALSE)) {
-			return;
-		}
-}
-
-/*!
- * Get current position in seconds of the stream.
- */
-double QUMainWindow::BASS_Position() {
-	if(!_mediaStream)
-		return -1;
-
-	return BASS_ChannelBytes2Seconds(_mediaStream, BASS_ChannelGetPosition(_mediaStream, BASS_POS_BYTE));
-}
-
-void QUMainWindow::BASS_SetPosition(int seconds) {
-	if(!_mediaStream)
-		return;
-
-	QWORD pos = BASS_ChannelSeconds2Bytes(_mediaStream, (double)seconds);
-
-	if(!BASS_ChannelSetPosition(_mediaStream, pos, BASS_POS_BYTE)) {
-		//logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
-		return;
-	}
-}
-
 void QUMainWindow::handleMP3() {
 	setCursor(Qt::WaitCursor);
 
 	ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
-
-	_mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->absoluteFilePath().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
-	QWORD MP3LengthBytes = BASS_ChannelGetLength(_mediaStream, BASS_POS_BYTE); // the length in bytes
-	MP3LengthTime = BASS_ChannelBytes2Seconds(_mediaStream, MP3LengthBytes); // the length in seconds
+	_player->setMedia(QUrl::fromLocalFile(fileInfo_MP3->absoluteFilePath()));
+	TagLib::FileRef ref(fileInfo_MP3->absoluteFilePath().toLocal8Bit().data());
+	if(ref.isNull() || !ref.audioProperties())
+		MP3LengthTime = 0;
+	else
+		MP3LengthTime = ref.audioProperties()->length();
 	ui->horizontalSlider_MP3->setRange(0, (int)MP3LengthTime);
 	ui->horizontalSlider_PreviewMP3->setRange(0, (int)MP3LengthTime);
 	ui->horizontalSlider_MP3->setValue(0);
@@ -1071,25 +977,20 @@ void QUMainWindow::handleMP3() {
 		ui->comboBox_Video->setCurrentIndex(1);
 	}
 
-	BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, NULL, 0);
-	if (BPMFromMP3 == 0) {
-		BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 30, 60, 0, BASS_FX_BPM_BKGRND, NULL, 0);
-	}
-
+	// fixme/todo: determine BPM from MP3 with some open source library
+	BPMFromMP3 = 400;
 	BPM = BPMFromMP3;
-
-	while (BPM == 0) {
+	if(BPM == 0) {
 		BPM = 50;
 	}
 
-	while (BPM <= 200) {
+	while(BPM <= 200) {
 		BPM = BPM*2;
 	}
 
 	ui->doubleSpinBox_BPM->setValue(BPM);
 	ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
 
-	TagLib::FileRef ref(fileInfo_MP3->absoluteFilePath().toLocal8Bit().data());
 	ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
 	ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
 	ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
@@ -1175,33 +1076,8 @@ void QUMainWindow::setPlaybackSpeed(int value)
 	_menu->label_PlaybackSpeedPercentage->setText(QString("%1 \%").arg(QString::number(value)));
 
 	if (state == playing || state == paused) {
-		BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO_FREQ, sampleRate*_menu->horizontalSlider_PlaybackSpeed->value()/100);
+		_player->setPlaybackRate(_menu->horizontalSlider_PlaybackSpeed->value()/100.0);
 	}
-}
-
-void QUMainWindow::aboutBASS()
-{
-	BYTE BASS_MAJOR_VERSION   = (BASS_GetVersion()    >> 24) & 0xFF;
-	BYTE BASS_MINOR_VERSION   = (BASS_GetVersion()    >> 16) & 0xFF;
-	BYTE BASS_PATCH_VERSION   = (BASS_GetVersion()    >>  8) & 0xFF;
-	BYTE BASS_REVISION        = (BASS_GetVersion()         ) & 0xFF;
-	QString BASS_VERSION      = QString("%1.%2.%3.%4").arg(BASS_MAJOR_VERSION).arg(BASS_MINOR_VERSION).arg(BASS_PATCH_VERSION).arg(BASS_REVISION);
-	BYTE BASSFX_MAJOR_VERSION = (BASS_FX_GetVersion() >> 24) & 0xFF;
-	BYTE BASSFX_MINOR_VERSION = (BASS_FX_GetVersion() >> 16) & 0xFF;
-	BYTE BASSFX_PATCH_VERSION = (BASS_FX_GetVersion() >>  8) & 0xFF;
-	BYTE BASSFX_REVISION      = (BASS_FX_GetVersion()      ) & 0xFF;
-	QString BASSFX_VERSION    = QString("%1.%2.%3.%4").arg(BASSFX_MAJOR_VERSION).arg(BASSFX_MINOR_VERSION).arg(BASSFX_PATCH_VERSION).arg(BASSFX_REVISION);
-	QUMessageBox::information(this,
-							tr("About BASS"),
-							QString(tr("<b>BASS Audio Library</b><br><br>"
-											"BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, about 100KB in size.<br><br>"
-											"Version: <b>%1</b><br>"
-											"<br><br><b>BASS FX Effects Extension</b><br><br>"
-											"BASS FX is an extension providing several effects, including tempo & pitch control.<br><br>"
-											"Version: <b>%2</b><br><br><br>"
-									   "Copyright (c) 1999-2012<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved.")).arg(BASS_VERSION).arg(BASSFX_VERSION),
-							QStringList() << ":/icons/accept.png" << "OK",
-							330);
 }
 
 void QUMainWindow::aboutTagLib()
@@ -1218,39 +1094,41 @@ void QUMainWindow::aboutTagLib()
 }
 
 void QUMainWindow::updateTime() {
-		int posSec = (int)BASS_Position();
-		int minutesElapsed = posSec / 60;
-		int secondsElapsed = posSec % 60;
-		ui->label_TimeElapsed->setText(QString("%1:%2").arg(minutesElapsed).arg(secondsElapsed, 2, 10, QChar('0')));
-		int timeToRun = MP3LengthTime - posSec;
-		int minutesToRun = (timeToRun / 60);
-		int secondsToRun = (timeToRun % 60);
-		ui->label_TimeToRun->setText(QString("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
+	int posMSec = _player->position();
+	int posSec = posMSec / 1000;
+	int minutesElapsed = posSec / 60;
+	int secondsElapsed = posSec % 60;
+	ui->label_TimeElapsed->setText(QString("%1:%2").arg(minutesElapsed).arg(secondsElapsed, 2, 10, QChar('0')));
+	int timeToRun = MP3LengthTime - posSec;
+	int minutesToRun = (timeToRun / 60);
+	int secondsToRun = (timeToRun % 60);
+	ui->label_TimeToRun->setText(QString("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
 
-		if(!ui->horizontalSlider_MP3->isSliderDown())
-		{
-			ui->horizontalSlider_MP3->setValue(posSec);
-		}
+	if(!ui->horizontalSlider_MP3->isSliderDown())
+	{
+		ui->horizontalSlider_MP3->setValue(posSec);
+	}
 
-		if(posSec != -1) {
-			QTimer::singleShot(1000, this, SLOT(updateTime()));
-		}
+	if(posSec != -1) {
+		QTimer::singleShot(1000, this, SLOT(updateTime()));
+	}
 }
 
 void QUMainWindow::updatePreviewTime() {
-		int posSec = (int)BASS_Position();
-		int minutesElapsed = posSec / 60;
-		int secondsElapsed = posSec % 60;
-		ui->label_PreviewTimeElapsed->setText(QString("%1:%2").arg(minutesElapsed).arg(secondsElapsed, 2, 10, QChar('0')));
-		int timeToRun = MP3LengthTime - posSec;
-		int minutesToRun = (timeToRun / 60);
-		int secondsToRun = (timeToRun % 60);
-		ui->label_PreviewTimeToRun->setText(QString("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
-		ui->horizontalSlider_PreviewMP3->setValue(posSec);
+	int posMSec = _player->position();
+	int posSec = posMSec / 1000;
+	int minutesElapsed = posSec / 60;
+	int secondsElapsed = posSec % 60;
+	ui->label_PreviewTimeElapsed->setText(QString("%1:%2").arg(minutesElapsed).arg(secondsElapsed, 2, 10, QChar('0')));
+	int timeToRun = MP3LengthTime - posSec;
+	int minutesToRun = (timeToRun / 60);
+	int secondsToRun = (timeToRun % 60);
+	ui->label_PreviewTimeToRun->setText(QString("-%1:%2").arg(minutesToRun).arg(secondsToRun, 2, 10, QChar('0')));
+	ui->horizontalSlider_PreviewMP3->setValue(posSec);
 
-		if (posSec != -1) {
-			QTimer::singleShot(1000, this, SLOT(updatePreviewTime()));
-		}
+	if (posSec != -1) {
+		QTimer::singleShot(1000, this, SLOT(updatePreviewTime()));
+	}
 }
 
 void QUMainWindow::on_pushButton_Reset_clicked()
@@ -1285,7 +1163,7 @@ void QUMainWindow::on_pushButton_Reset_clicked()
 		ui->pushButton_PlayPause->setEnabled(true);
 		ui->pushButton_Stop->setDisabled(true);
 		ui->pushButton_Reset->setDisabled(true);
-		_mediaStream = BASS_StreamCreateFile(FALSE, fileInfo_MP3->absoluteFilePath().toLocal8Bit().data() , 0, 0, BASS_STREAM_DECODE);
+		_player->setMedia(QUrl::fromLocalFile(fileInfo_MP3->absoluteFilePath()));
 	}
 	else {
 		// should not be possible
@@ -1314,7 +1192,7 @@ void QUMainWindow::on_pushButton_UndoTap_clicked()
 		updateOutputLyrics();
 
 		double undoTime = 1.0; // step 1 second back in MP3
-		BASS_SetPosition(qMax(BASS_Position() - undoTime, 0.0));
+		_player->setPosition(qMax(_player->position()/1000 - undoTime, 0.0));
 	}
 }
 
@@ -1471,12 +1349,12 @@ void QUMainWindow::on_comboBox_Year_activated(QString year)
 
 void QUMainWindow::on_horizontalSlider_MP3_sliderMoved(int position)
 {
-	BASS_SetPosition(position);
+	_player->setPosition(position/1000);
 }
 
 void QUMainWindow::on_horizontalSlider_PreviewMP3_sliderMoved(int position)
 {
-	BASS_SetPosition(position);
+	_player->setPosition(position/1000);
 }
 
 void QUMainWindow::on_pushButton_startUltraStar_clicked()
@@ -1522,22 +1400,18 @@ void QUMainWindow::on_pushButton_PreviewPlayPause_clicked()
 {
 	if (previewState == QUMainWindow::initialized) {
 		previewState = QUMainWindow::playing;
-		_mediaStream = BASS_FX_TempoCreate(_mediaStream, BASS_FX_FREESOURCE);
-		bool result = BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO, 0);
-		if (result) {
-			BASS_Play();
-			updatePreviewTime();
-		}
+		_player->play();
+		updatePreviewTime();
 		ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/icons/control_pause_blue.png"));
 	}
 	else if (previewState == QUMainWindow::playing) {
 		previewState = QUMainWindow::paused;
-		BASS_Pause();
+		_player->pause();
 		ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/icons/control_play_blue.png"));
 	}
 	else if (previewState == QUMainWindow::paused) {
 		previewState = QUMainWindow::playing;
-		BASS_Resume();
+		_player->play();
 		ui->pushButton_PreviewPlayPause->setIcon(QIcon(":/icons/control_pause_blue.png"));
 	}
 	else {
