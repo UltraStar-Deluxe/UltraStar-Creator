@@ -32,7 +32,7 @@ public:
 	static QString defaultInputEncoding();
 	static QString defaultOutputEncoding();
 
-    static QStringList availableDefaultPitches();
+	static QStringList availableDefaultPitches();
 
 private:
 	static QStringList registryKey(const QString &key, const QString &defaultValue);

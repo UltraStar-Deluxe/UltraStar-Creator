@@ -34,7 +34,6 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	initRibbonBar();
 
 	//initStatusBar();
-	//initEventLog();
 	initConfig();
 	initMonty();
 
@@ -105,6 +104,7 @@ void QUMainWindow::closeEvent(QCloseEvent *event) {
 	settings.setValue("inputlyricsfontsize", ui->plainTextEdit_InputLyrics->fontInfo().pointSize());
 	settings.setValue("outputlyricsfontsize", ui->textEdit_OutputLyrics->fontInfo().pointSize());
 	settings.setValue("defaultPitch", _menu->comboBox_DefaultPitch->currentIndex());
+	settings.setValue("encoding", _menu->comboBox_Encoding->currentIndex());
 	settings.setValue("autoCapitalizeLyricLines", ui->toolButton_Capitalize->isChecked());
 
 	// everything should be fine from now on
@@ -191,6 +191,7 @@ void QUMainWindow::initRibbonBar() {
 
 	// settings menu
 	_menu->comboBox_DefaultPitch->addItems(QUSongSupport::availableDefaultPitches());
+	_menu->comboBox_Encoding->addItems(QUSongSupport::allowedEncodingTypes());
 	connect(_menu->horizontalSlider_PlaybackSpeed, SIGNAL(valueChanged(int)), this, SLOT(setPlaybackSpeed(int)));
 
 	// extras menu
@@ -255,39 +256,13 @@ void QUMainWindow::initConfig() {
 	// restore default pitch
 	_menu->comboBox_DefaultPitch->setCurrentIndex(settings.value("defaultPitch", 0).toInt());
 
+	// restore encoding
+	_menu->comboBox_Encoding->setCurrentIndex(settings.value("encoding", 0).toInt());
+
 	_menu->montyBtn->setChecked(settings.value("allowMonty", true).toBool());
 
 	// restore autoCapitalizeLyricLines
 	ui->toolButton_Capitalize->setChecked(settings.value("autoCapitalizeLyricLines", true).toBool());
-
-	/*
-	updateViewButtons();
-
-	connect(detailsDock, SIGNAL(visibilityChanged(bool)), this, SLOT(updateViewButtons()));
-	connect(tasksDock, SIGNAL(visibilityChanged(bool)), this, SLOT(updateViewButtons()));
-	connect(playlistDock, SIGNAL(visibilityChanged(bool)), this, SLOT(updateViewButtons()));
-	connect(mediaPlayerDock, SIGNAL(visibilityChanged(bool)), this, SLOT(updateViewButtons()));
-	connect(previewDock, SIGNAL(visibilityChanged(bool)), this, SLOT(updateViewButtons()));
-	connect(eventsDock, SIGNAL(visibilityChanged(bool)), this, SLOT(updateViewButtons()));
-	*/
-}
-
-/*!
- *
- *
- */
-void QUMainWindow::initEventLog() {
-	/*
-	QSettings settings;
-	showInfosBtn->setChecked(settings.value("showInfoMessages", true).toBool());
-	showHelpBtn->setChecked(settings.value("showHelpMessages", true).toBool());
-	showSaveHintsBtn->setChecked(settings.value("showSaveMessages", true).toBool());
-	showWarningsBtn->setChecked(settings.value("showWarningMessages", true).toBool());
-	showErrorsBtn->setChecked(settings.value("showErrorMessages", true).toBool());
-
-	connect(logClearBtn, SIGNAL(clicked()), this, SLOT(clearLog()));
-	connect(logSaveBtn, SIGNAL(clicked()), this, SLOT(saveLog()));
-	*/
 }
 
 /*!
@@ -373,7 +348,7 @@ bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 	}
 
 	QTextStream out(&file);
-	QTextCodec *codec = QTextCodec::codecForName("Windows-1252");
+	QTextCodec *codec = QTextCodec::codecForName(_menu->comboBox_Encoding->currentText().toStdString().c_str());
 	if (codec->canEncode(ui->textEdit_OutputLyrics->toPlainText())) {
 		out.setCodec(codec);
 	}
@@ -1660,9 +1635,7 @@ void QUMainWindow::generateFreestyleTextFiles()
 				}
 
 				QTextStream out(&file);
-				QTextCodec *codec = QTextCodec::codecForName("Windows-1252");
-				//QTextCodec *codec = QTextCodec::codecForName("UTF-8");
-				//out.setGenerateByteOrderMark(true); // BOM needed by UltraStar 1.1
+				QTextCodec *codec = QTextCodec::codecForName(_menu->comboBox_Encoding->currentText().toStdString().c_str());
 
 				out.setCodec(codec);
 				QString textString;

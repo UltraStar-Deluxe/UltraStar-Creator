@@ -97,9 +97,9 @@ QStringList QUSongSupport::allowedPlaylistFiles() {
 QStringList QUSongSupport::allowedEncodingTypes() {
 	QStringList result;
 
-	result << "CP1252"; // windows-1252 (Western European)
-	result << "CP1250"; // windows-1250 (Central/Eastern European)
-	result << "UTF8";   // UTF-8
+	result << "UTF-8";
+	result << "Windows-1252";
+	result << "Windows-1250";
 
 	return result;
 }

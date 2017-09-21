@@ -348,5 +348,6 @@
         <file>monty/speech7.png</file>
         <file>monty/speech8.png</file>
         <file>icons/edit-uppercase.png</file>
+        <file>icons/encoding.png</file>
     </qresource>
 </RCC>

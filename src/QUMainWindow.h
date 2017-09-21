@@ -34,7 +34,6 @@ private slots:
 	void initConfig();
 	void initWindow();
 	void initRibbonBar();
-	void initEventLog();
 	void initMonty();
 	void initStatusBar();
 
