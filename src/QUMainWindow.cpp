@@ -980,50 +980,60 @@ void QUMainWindow::handleMP3() {
 	}
 
 	// fixme/todo: determine BPM from MP3 with some open source library
-	bool use_aubio = true;
-	if(use_aubio) {
-		uint_t samplerate = 0;
-		uint_t win_size = 1024; // window size
-		uint_t hop_size = win_size / 4;
-		uint_t n_frames = 0, read = 0;
-		const char_t *source_path = fileInfo_MP3->fileName().toStdString().c_str();
-		aubio_source_t *source = new_aubio_source(source_path, samplerate, hop_size);
-		if(!source) {
-			qDebug() << "Error!";
-			aubio_cleanup();
-		} else {
-			samplerate = aubio_source_get_samplerate(source);
+	uint_t samplerate = 0;
+	uint_t win_size = 2048; // window size
+	uint_t hop_size = win_size / 2;
+	uint_t n_frames = 0;
+	uint_t read = 0;
+	smpl_t max_confidence = 0.;
+	smpl_t current_confidence = 0.;
+	smpl_t current_bpm = 0;
+	smpl_t bpm_with_max_confidence = 0;
 
-			// create some vectors
-			fvec_t *in = new_fvec(hop_size); // input audio buffer
-			fvec_t *out = new_fvec(1); // output position
-			// create tempo object
-			aubio_tempo_t *o = new_aubio_tempo("default", win_size, hop_size, samplerate);
-			do {
-				// put some fresh data in input vector
-				aubio_source_do(source, in, &read);
-				// execute tempo
-				aubio_tempo_do(o, in, out);
-				// do something with the beats
-				if (out->data[0] != 0) {
-					//PRINT_MSG("beat at %.3fms, %.3fs, frame %d, %.2fbpm with confidence %.2f\n", aubio_tempo_get_last_ms(o), aubio_tempo_get_last_s(o), aubio_tempo_get_last(o), aubio_tempo_get_bpm(o), aubio_tempo_get_confidence(o));
-					qDebug() << QString("beat at %1 ms, %2 s, frame %3, %4 bpm with confidence %5\n").arg(QString::number(aubio_tempo_get_last_ms(o), 'f', 3)).arg(QString::number(aubio_tempo_get_last_s(o), 'f', 3)).arg(QString::number(aubio_tempo_get_last(o))).arg(QString::number(aubio_tempo_get_bpm(o), 'f', 2)).arg(QString::number(aubio_tempo_get_confidence(o), 'f', 2));
+	aubio_source_t *source = new_aubio_source(fileInfo_MP3->absoluteFilePath().toStdString().c_str(), samplerate, hop_size);
+	if(source) {
+		samplerate = aubio_source_get_samplerate(source);
+
+		// create some vectors
+		fvec_t *in = new_fvec(hop_size); // input audio buffer
+		fvec_t *out = new_fvec(1); // output position
+		// create tempo object
+		aubio_tempo_t *o = new_aubio_tempo("default", win_size, hop_size, samplerate);
+		do {
+			// put some fresh data in input vector
+			aubio_source_do(source, in, &read);
+			// execute tempo
+			aubio_tempo_do(o, in, out);
+			// do something with the beats
+			if (out->data[0] != 0) {
+				current_confidence = aubio_tempo_get_confidence(o);
+				current_bpm = aubio_tempo_get_bpm(o);
+				if(current_confidence > max_confidence) {
+					max_confidence = current_confidence;
+					bpm_with_max_confidence = current_bpm;
 				}
-				n_frames += read;
-			} while (read == hop_size);
-			//PRINT_MSG("read %.2fs, %d frames at %dHz (%d blocks) from %s\n", n_frames * 1. / samplerate, n_frames, samplerate, n_frames / hop_size, source_path);
-			qDebug() << QString("read %1 s, %2 frames at %3 Hz (%4 blocks) from %5\n").arg(QString::number(n_frames * 1. / samplerate, 'f', 2)).arg(QString::number(n_frames)).arg(QString::number(samplerate)).arg(QString::number(n_frames / hop_size)).arg(QString(source_path));
+				//qDebug() << QString("beat at %1 s, frame %2, %3 bpm with confidence %4\n").arg(QString::number(aubio_tempo_get_last_s(o), 'f', 3)).arg(QString::number(aubio_tempo_get_last(o))).arg(QString::number(current_bpm, 'f', 2)).arg(QString::number(current_confidence, 'f', 2));
+			}
+			n_frames += read;
+		} while (read == hop_size);
+		//qDebug() << QString("read %1 s, %2 frames at %3 Hz (%4 blocks) from %5\n").arg(QString::number(n_frames * 1. / samplerate, 'f', 2)).arg(QString::number(n_frames)).arg(QString::number(samplerate)).arg(QString::number(n_frames / hop_size)).arg(QString(fileInfo_MP3->absoluteFilePath().toStdString().c_str()));
+		//qDebug() << QString("%1 bpm with confidence %2\n").arg(QString::number(bpm_with_max_confidence)).arg(QString::number(max_confidence));
 
-			// clean up memory
-			del_aubio_tempo(o);
-			del_fvec(in);
-			del_fvec(out);
-			del_aubio_source(source);
-		}
+		// clean up memory
+		del_aubio_tempo(o);
+		del_fvec(in);
+		del_fvec(out);
+		del_aubio_source(source);
 	} else {
-		BPMFromMP3 = 100;
-		BPM = BPMFromMP3*4; // quarter beats per minute
+		qDebug() << "Error opening audio file to determine BPM.";
+		aubio_cleanup();
 	}
+
+	BPMFromMP3 = bpm_with_max_confidence;
+	//qDebug() << "BPMFromMP3 = " << BPMFromMP3;
+	BPM = BPMFromMP3*4; // quarter beats per minute
+	//qDebug() << "BPM = " << BPM;
+
 
 	ui->doubleSpinBox_BPM->setValue(BPM);
 	ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
