@@ -28,6 +28,8 @@
 #include <QTemporaryFile>
 #include <QDebug>
 
+#include <aubio.h>
+
 QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUMainWindow) {
 	_player = new QMediaPlayer;
 	ui->setupUi(this);
@@ -978,14 +980,49 @@ void QUMainWindow::handleMP3() {
 	}
 
 	// fixme/todo: determine BPM from MP3 with some open source library
-	BPMFromMP3 = 400;
-	BPM = BPMFromMP3;
-	if(BPM == 0) {
-		BPM = 50;
-	}
+	bool use_aubio = true;
+	if(use_aubio) {
+		uint_t samplerate = 0;
+		uint_t win_size = 1024; // window size
+		uint_t hop_size = win_size / 4;
+		uint_t n_frames = 0, read = 0;
+		const char_t *source_path = fileInfo_MP3->fileName().toStdString().c_str();
+		aubio_source_t *source = new_aubio_source(source_path, samplerate, hop_size);
+		if(!source) {
+			qDebug() << "Error!";
+			aubio_cleanup();
+		} else {
+			samplerate = aubio_source_get_samplerate(source);
 
-	while(BPM <= 200) {
-		BPM = BPM*2;
+			// create some vectors
+			fvec_t *in = new_fvec(hop_size); // input audio buffer
+			fvec_t *out = new_fvec(1); // output position
+			// create tempo object
+			aubio_tempo_t *o = new_aubio_tempo("default", win_size, hop_size, samplerate);
+			do {
+				// put some fresh data in input vector
+				aubio_source_do(source, in, &read);
+				// execute tempo
+				aubio_tempo_do(o, in, out);
+				// do something with the beats
+				if (out->data[0] != 0) {
+					//PRINT_MSG("beat at %.3fms, %.3fs, frame %d, %.2fbpm with confidence %.2f\n", aubio_tempo_get_last_ms(o), aubio_tempo_get_last_s(o), aubio_tempo_get_last(o), aubio_tempo_get_bpm(o), aubio_tempo_get_confidence(o));
+					qDebug() << QString("beat at %1 ms, %2 s, frame %3, %4 bpm with confidence %5\n").arg(QString::number(aubio_tempo_get_last_ms(o), 'f', 3)).arg(QString::number(aubio_tempo_get_last_s(o), 'f', 3)).arg(QString::number(aubio_tempo_get_last(o))).arg(QString::number(aubio_tempo_get_bpm(o), 'f', 2)).arg(QString::number(aubio_tempo_get_confidence(o), 'f', 2));
+				}
+				n_frames += read;
+			} while (read == hop_size);
+			//PRINT_MSG("read %.2fs, %d frames at %dHz (%d blocks) from %s\n", n_frames * 1. / samplerate, n_frames, samplerate, n_frames / hop_size, source_path);
+			qDebug() << QString("read %1 s, %2 frames at %3 Hz (%4 blocks) from %5\n").arg(QString::number(n_frames * 1. / samplerate, 'f', 2)).arg(QString::number(n_frames)).arg(QString::number(samplerate)).arg(QString::number(n_frames / hop_size)).arg(QString(source_path));
+
+			// clean up memory
+			del_aubio_tempo(o);
+			del_fvec(in);
+			del_fvec(out);
+			del_aubio_source(source);
+		}
+	} else {
+		BPMFromMP3 = 100;
+		BPM = BPMFromMP3*4; // quarter beats per minute
 	}
 
 	ui->doubleSpinBox_BPM->setValue(BPM);
