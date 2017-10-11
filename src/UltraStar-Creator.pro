@@ -76,10 +76,12 @@ INCLUDEPATH += . \
 	ui
 
 win32 {
-	INCLUDEPATH += ../include/taglib
+	INCLUDEPATH += ../include/taglib \
+		../include/aubio
 
 	LIBS += -L"../lib/win32" \
-		-ltag
+		-ltag \
+		-laubio
 
 	RC_ICONS += UltraStar-Creator.ico
 }
