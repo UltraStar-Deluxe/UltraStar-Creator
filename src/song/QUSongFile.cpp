@@ -632,14 +632,10 @@ bool QUSongFile::save(bool force) {
 	if (codec->canEncode((QStringList(_info.values()) + _foundUnsupportedTags + _lyrics + _footer).join(""))) {
 		_out.setCodec(codec);
 		setInfo(ENCODING_TAG, QUSongSupport::defaultOutputEncoding());
-		if (QUSongSupport::defaultOutputEncoding() == ENCODING_UTF8) {
-			_out.setGenerateByteOrderMark(true); // BOM needed by UltraStar 1.1
-		}
 	} else {
 		// defaultOutputEncoding not sufficient, UTF-8 necessary
 		logSrv->add(QString("%1 output encoding NOT sufficient. Using UTF8 for song file: \"%2\".").arg(QUSongSupport::defaultOutputEncoding()).arg(_fi.filePath()), QU::Warning);
 		_out.setCodec(QTextCodec::codecForName("UTF-8"));
-		_out.setGenerateByteOrderMark(true); // BOM needed by UltraStar 1.1
 		setInfo(ENCODING_TAG, ENCODING_UTF8);
 	}
 

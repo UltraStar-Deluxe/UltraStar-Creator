@@ -354,7 +354,6 @@ bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 	}
 	else {
 		out.setCodec(QTextCodec::codecForName("UTF-8"));
-		out.setGenerateByteOrderMark(true);
 	}
 
 	QApplication::setOverrideCursor(Qt::WaitCursor);
