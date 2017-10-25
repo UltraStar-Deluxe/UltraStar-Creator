@@ -102,6 +102,8 @@ unix:!macx {
 	CONFIG += link_pkgconfig
 	PKGCONFIG += taglib
 
+    LIBS += -lSoundTouch
+
 	QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/lib\''
 }
 

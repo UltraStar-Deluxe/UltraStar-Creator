@@ -11,6 +11,8 @@
 #include <QProgressBar>
 #include <QFileInfo>
 #include <QMediaPlayer>
+#include <QAudioDecoder>
+#include <QAudioFormat>
 
 class QURibbonBar;
 
@@ -22,7 +24,7 @@ class QUMainWindow: public QMainWindow, private Ui::QUMainWindow {
 	Q_OBJECT
 
 public:
-	QUMainWindow(QWidget *parent = 0);
+    QUMainWindow(QWidget *parent = nullptr);
 
 protected:
 	virtual void closeEvent(QCloseEvent *event);
@@ -101,6 +103,9 @@ private slots:
 	void on_comboBox_Background_currentIndexChanged(const QString &background);
 	void on_comboBox_Video_currentIndexChanged(const QString &video);
 
+    //FIXME:Enetheru currently testing audio decoder things
+    void on_bufferReady();
+
 private:
 	QURibbonBar *_menu;
 	Ui::QUMainWindow *ui;
@@ -151,6 +156,8 @@ private:
 	QMap<double, QString> timeLineMap;
 	void updateOutputLyrics();
 	QMediaPlayer* _player;
+    QAudioFormat desiredFormat;
+    QAudioDecoder *decoder;
 };
 
 #endif // QCMAINWINDOW_H

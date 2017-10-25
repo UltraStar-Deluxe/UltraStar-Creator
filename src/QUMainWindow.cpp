@@ -28,7 +28,10 @@
 #include <QTemporaryFile>
 #include <QDebug>
 
-#include <aubio.h>
+#include <QMultimedia>
+#include <QAudioFormat>
+#include <QAudioDecoder>
+#include <soundtouch/BPMDetect.h>
 
 QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUMainWindow) {
 	_player = new QMediaPlayer;
@@ -979,61 +982,21 @@ void QUMainWindow::handleMP3() {
 		ui->comboBox_Video->setCurrentIndex(1);
 	}
 
-	// fixme/todo: determine BPM from MP3 with some open source library
-	uint_t samplerate = 0;
-	uint_t win_size = 2048; // window size
-	uint_t hop_size = win_size / 2;
-	uint_t n_frames = 0;
-	uint_t read = 0;
-	smpl_t max_confidence = 0.;
-	smpl_t current_confidence = 0.;
-	smpl_t current_bpm = 0;
-	smpl_t bpm_with_max_confidence = 0;
+    //FIXME:Enetheru determine BPM from MP3 with some open source library
+    desiredFormat.setChannelCount(2);
+    desiredFormat.setCodec("audio/x-raw");
+    desiredFormat.setSampleType(QAudioFormat::Float);
+    desiredFormat.setSampleRate(48000);
+    desiredFormat.setSampleSize(16);
 
-	aubio_source_t *source = new_aubio_source(fileInfo_MP3->absoluteFilePath().toStdString().c_str(), samplerate, hop_size);
-	if(source) {
-		samplerate = aubio_source_get_samplerate(source);
+    decoder = new QAudioDecoder(this);
+    decoder->setAudioFormat(desiredFormat);
+    decoder->setSourceFilename( fileInfo_MP3->filePath() );
 
-		// create some vectors
-		fvec_t *in = new_fvec(hop_size); // input audio buffer
-		fvec_t *out = new_fvec(1); // output position
-		// create tempo object
-		aubio_tempo_t *o = new_aubio_tempo("default", win_size, hop_size, samplerate);
-		do {
-			// put some fresh data in input vector
-			aubio_source_do(source, in, &read);
-			// execute tempo
-			aubio_tempo_do(o, in, out);
-			// do something with the beats
-			if (out->data[0] != 0) {
-				current_confidence = aubio_tempo_get_confidence(o);
-				current_bpm = aubio_tempo_get_bpm(o);
-				if(current_confidence > max_confidence) {
-					max_confidence = current_confidence;
-					bpm_with_max_confidence = current_bpm;
-				}
-				//qDebug() << QString("beat at %1 s, frame %2, %3 bpm with confidence %4\n").arg(QString::number(aubio_tempo_get_last_s(o), 'f', 3)).arg(QString::number(aubio_tempo_get_last(o))).arg(QString::number(current_bpm, 'f', 2)).arg(QString::number(current_confidence, 'f', 2));
-			}
-			n_frames += read;
-		} while (read == hop_size);
-		//qDebug() << QString("read %1 s, %2 frames at %3 Hz (%4 blocks) from %5\n").arg(QString::number(n_frames * 1. / samplerate, 'f', 2)).arg(QString::number(n_frames)).arg(QString::number(samplerate)).arg(QString::number(n_frames / hop_size)).arg(QString(fileInfo_MP3->absoluteFilePath().toStdString().c_str()));
-		//qDebug() << QString("%1 bpm with confidence %2\n").arg(QString::number(bpm_with_max_confidence)).arg(QString::number(max_confidence));
+    connect(decoder, SIGNAL( bufferReady() ), this, SLOT( on_bufferReady() ));
+    decoder->start();
 
-		// clean up memory
-		del_aubio_tempo(o);
-		del_fvec(in);
-		del_fvec(out);
-		del_aubio_source(source);
-	} else {
-		qDebug() << "Error opening audio file to determine BPM.";
-		aubio_cleanup();
-	}
-
-	BPMFromMP3 = bpm_with_max_confidence;
-	//qDebug() << "BPMFromMP3 = " << BPMFromMP3;
-	BPM = BPMFromMP3*4; // quarter beats per minute
-	//qDebug() << "BPM = " << BPM;
-
+    // Now wait for bufferReady() signal and call decoder->read()
 
 	ui->doubleSpinBox_BPM->setValue(BPM);
 	ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
@@ -2454,4 +2417,45 @@ void QUMainWindow::montyPrev() {
 
 void QUMainWindow::montyNext() {
 	monty->answer(ui->montyArea->montyLbl, ui->montyArea->helpLbl);
+}
+
+void
+QUMainWindow::on_bufferReady()
+{
+    using namespace soundtouch;
+
+    float bpmValue;
+    BPMDetect bpm( desiredFormat.channelCount(), desiredFormat.sampleRate() );
+
+    // Processing chunk size (size chosen to be divisible by 2, 4, 6, 8, 10, 12, 14, 16 channels ...)
+    //FIXME make sure this SAMPLETYPE and QAudioFormat match
+
+    // detect bpm rate
+    qDebug() << "Detecting BPM rate...";
+
+    // Process the 'inFile' in small blocks, repeat until whole file has
+    // been processed
+    while( decoder->bufferAvailable() )
+    {
+        // Read sample data from input file
+        auto buf = decoder->read();
+
+        // Enter the new samples to the bpm analyzer class
+        bpm.inputSamples( static_cast<float*>( buf.data() ), desiredFormat.sampleSize() );
+    }
+
+    // Now the whole song data has been analyzed. Read the resulting bpm.
+    bpmValue = bpm.getBpm();
+    qDebug() << "Done!\n";
+
+
+    if (bpmValue > 0)
+    {
+        qDebug( "Detected BPM rate %.1f\n\n", bpmValue );
+    }
+    else
+    {
+        qDebug("Couldn't detect BPM rate.\n\n");
+        return;
+    }
 }
