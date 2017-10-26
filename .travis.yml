@@ -11,6 +11,7 @@ matrix:
               packages:
                 - qt5-default
                 - qtbase5-dev-tools
+                - qtmultimedia5-dev
                 - qt5-qmake
                 - libtag1-dev
                 - libsoundtouch-dev
@@ -30,6 +31,7 @@ install:
         brew link --force qt5;
         brew install taglib;
         brew install sound-touch;
+        brew link sound-touch;
       fi
 
 before_script:
