@@ -5,12 +5,15 @@
 
 #include "taglib.h"
 #include "fileref.h"
+#include "bpmdetect.h"
 
 #include <QMainWindow>
 #include <QTime>
 #include <QProgressBar>
 #include <QFileInfo>
 #include <QMediaPlayer>
+#include <QAudioDecoder>
+#include <QAudioFormat>
 
 class QURibbonBar;
 
@@ -22,7 +25,7 @@ class QUMainWindow: public QMainWindow, private Ui::QUMainWindow {
 	Q_OBJECT
 
 public:
-	QUMainWindow(QWidget *parent = 0);
+    QUMainWindow(QWidget *parent = nullptr);
 
 protected:
 	virtual void closeEvent(QCloseEvent *event);
@@ -151,6 +154,7 @@ private:
 	QMap<double, QString> timeLineMap;
 	void updateOutputLyrics();
 	QMediaPlayer* _player;
+    BPMDetect bpm;
 };
 
 #endif // QCMAINWINDOW_H

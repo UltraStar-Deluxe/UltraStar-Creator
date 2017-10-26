@@ -11,8 +11,10 @@ matrix:
               packages:
                 - qt5-default
                 - qtbase5-dev-tools
+                - qtmultimedia5-dev
                 - qt5-qmake
                 - libtag1-dev
+                - libsoundtouch-dev
         - os: osx
           osx_image: xcode8.2
           compiler: clang
@@ -28,6 +30,8 @@ install:
         brew install qt5;
         brew link --force qt5;
         brew install taglib;
+        brew install sound-touch;
+        brew link sound-touch;
       fi
 
 before_script:
