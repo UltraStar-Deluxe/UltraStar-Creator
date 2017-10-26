@@ -5,6 +5,7 @@
 
 #include "taglib.h"
 #include "fileref.h"
+#include "bpmdetect.h"
 
 #include <QMainWindow>
 #include <QTime>
@@ -103,9 +104,6 @@ private slots:
 	void on_comboBox_Background_currentIndexChanged(const QString &background);
 	void on_comboBox_Video_currentIndexChanged(const QString &video);
 
-    //FIXME:Enetheru currently testing audio decoder things
-    void on_bufferReady();
-
 private:
 	QURibbonBar *_menu;
 	Ui::QUMainWindow *ui;
@@ -156,8 +154,7 @@ private:
 	QMap<double, QString> timeLineMap;
 	void updateOutputLyrics();
 	QMediaPlayer* _player;
-    QAudioFormat desiredFormat;
-    QAudioDecoder *decoder;
+    BPMDetect *bpm;
 };
 
 #endif // QCMAINWINDOW_H

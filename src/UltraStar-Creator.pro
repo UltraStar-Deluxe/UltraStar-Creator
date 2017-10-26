@@ -37,7 +37,8 @@ HEADERS += main.h \
 	song/QUSongInterface.h \
 	song/QUSongFile.h \
 	song/QUSongDatabase.h \
-	QUStringSupport.h
+    QUStringSupport.h \
+    bpmdetect.h
 
 SOURCES += main.cpp \
 	QUMainWindow.cpp \
@@ -52,7 +53,8 @@ SOURCES += main.cpp \
 	song/QUSongLine.cpp \
 	song/QUSongFile.cpp \
 	song/QUSongDatabase.cpp \
-	QUStringSupport.cpp
+    QUStringSupport.cpp \
+    bpmdetect.cpp
 
 FORMS += QUMainWindow.ui \
 	QUAboutDialog.ui \
