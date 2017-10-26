@@ -29,7 +29,7 @@ install:
         brew install qt5;
         brew link --force qt5;
         brew install taglib;
-        brew install sound-touch
+        brew install sound-touch;
       fi
 
 before_script:
