@@ -13,7 +13,7 @@ BPMDetect::BPMDetect( QObject *parent ) :
 
 BPMDetect::~BPMDetect()
 {
-    delete bpm;
+    if( bpm )delete bpm;
 }
 
 void
@@ -45,9 +45,12 @@ BPMDetect::on_finished()
 {
     qDebug() << "on_finished";
     auto bpmValue = bpm->getBpm();
-    //delete bpm;
+    delete bpm; bpm = nullptr;
 
-    if (bpmValue > 0) qDebug() << "Detected BPM rate: " << bpmValue;
+    if (bpmValue > 0){
+        qDebug() << "Detected BPM rate: " << bpmValue;
+        emit bpmDetected( bpmValue );
+    }
     else qDebug("Couldn't detect BPM rate.");
 
     return;

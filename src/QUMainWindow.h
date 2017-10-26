@@ -154,7 +154,7 @@ private:
 	QMap<double, QString> timeLineMap;
 	void updateOutputLyrics();
 	QMediaPlayer* _player;
-    BPMDetect *bpm;
+    BPMDetect bpm;
 };
 
 #endif // QCMAINWINDOW_H

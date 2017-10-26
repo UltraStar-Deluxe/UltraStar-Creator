@@ -32,8 +32,11 @@
 
 
 QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUMainWindow) {
-	_player = new QMediaPlayer;
+    _player = new QMediaPlayer;
 	ui->setupUi(this);
+
+    connect( &bpm, SIGNAL( bpmDetected( double ) ),
+             ui->doubleSpinBox_BPM , SLOT( setValue( double ) ) );
 
 	initWindow();
 	initRibbonBar();
@@ -988,10 +991,9 @@ void QUMainWindow::handleMP3() {
     format.setSampleRate( 48000 );
     format.setSampleSize( 32 );
 
-    bpm = new BPMDetect;
-    bpm->setAudioFormat( format );
-    bpm->setSourceFilename( fileInfo_MP3->filePath() );
-    bpm->start();
+    bpm.setAudioFormat( format );
+    bpm.setSourceFilename( fileInfo_MP3->filePath() );
+    bpm.start();
 
 
 	ui->doubleSpinBox_BPM->setValue(BPM);
