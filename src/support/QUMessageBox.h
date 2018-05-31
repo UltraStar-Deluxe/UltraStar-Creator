@@ -9,6 +9,7 @@
 #include <QStringList>
 #include <QPushButton>
 #include <QMessageBox>
+#include <QButtonGroup>
 
 #include "QU.h"
 

@@ -4,6 +4,7 @@
 #include <QTabWidget>
 #include <QSize>
 #include <QList>
+#include <QActionGroup>
 
 #include "ui_QURibbonBar.h"
 
