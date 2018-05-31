@@ -74,7 +74,6 @@ Section "Application" SecCopyUI
 	File "UltraStar-Creator.exe"
 	SetOutPath "$INSTDIR\bearer"
 	File "bearer\qgenericbearer.dll"
-	File "bearer\qnativewifibearer.dll"
 	;;SetOutPath "$INSTDIR\iconengines" ;; added via windeployqt, but not needed
 	;;File "iconengines\qsvgicon.dll" ;; added via windeployqt, but not needed
 	SetOutPath "$INSTDIR\imageformats"
@@ -128,7 +127,6 @@ SectionEnd
 Section "Uninstall"
 	;; Files
 	Delete "$INSTDIR\bearer\qgenericbearer.dll"
-	Delete "$INSTDIR\bearer\qnativewifibearer.dll"
 	RMDir "$INSTDIR\bearer"
 	
 	;;Delete "$INSTDIR\iconengines\qsvgicon.dll"
