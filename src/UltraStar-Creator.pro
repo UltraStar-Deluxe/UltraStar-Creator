@@ -80,12 +80,12 @@ INCLUDEPATH += ../include/bass \
 win32 {
 	INCLUDEPATH += ../include/taglib \
 
-	LIBS += -L"../lib/win32" \
-		-ltag \
-		-lbass \
-		-lbass_fx
+        LIBS += -L"../lib/win64" \
+                -ltag \
+                -lbass \
+                -lbass_fx
 
-	RC_ICONS += UltraStar-Creator.ico
+        RC_ICONS += UltraStar-Creator.ico
 }
 
 macx {
@@ -155,15 +155,15 @@ win32 {
 	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwebp.dll) $$escape_expand(\\n\\t)
 
 	# Manually add bass, bass_fx and libtag libraries
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win32/bass.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win32/bass_fx.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win32/libtag.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+        QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/bass.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+        QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/bass_fx.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+        QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/libtag.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 
 	# Manually add changes.txt
 	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../doc/changes.txt) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 
 	# Create a fancy Windows installer
-	#QMAKE_POST_LINK += $$shell_quote(C:\Program Files (x86)\NSIS\makensis.exe) $$shell_path(../setup/win32/UltraStar-Creator.nsi) $$escape_expand(\\n\\t)
+        QMAKE_POST_LINK += $$shell_quote(C:\Program Files (x86)\NSIS\makensis.exe) $$shell_path(../setup/win64/UltraStar-Creator.nsi) $$escape_expand(\\n\\t)
 }
 
 macx {

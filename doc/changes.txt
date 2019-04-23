@@ -8,11 +8,11 @@ SONG HEADER
 ~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#  CHANGES  ~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~
 
 QT
-* based on Qt 5.10.0 now
+* based on Qt 5.12.1 now
 
 BASS/BASS FX
-* updated to BASS 2.4.13.8
-* updated to BASS FX 2.4.11.1
+* updated to BASS 2.4.14.0
+* updated to BASS FX 2.4.12.1
 
 * updated to TagLib 1.11.1
 
