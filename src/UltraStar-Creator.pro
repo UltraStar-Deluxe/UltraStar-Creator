@@ -1,3 +1,4 @@
+CONFIG += c++11
 TEMPLATE = app
 UI_DIR = ui
 
