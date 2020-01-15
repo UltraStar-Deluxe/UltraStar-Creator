@@ -18,9 +18,9 @@ void QUSongNote::resetTrailingSpaces(int prefixCount, int suffixCount) {
 	if(prefixCount != -1 && suffixCount != -1) {
 		setSyllable(syllable().trimmed());
 
-		for(int i = 0; i < prefixCount; i++)
+		for(int i = 0; i < prefixCount; ++i)
 			_syllable.prepend(" ");
-		for(int i = 0; i < suffixCount; i++)
+		for(int i = 0; i < suffixCount; ++i)
 			_syllable.append(" ");
 
 		return;
@@ -30,28 +30,28 @@ void QUSongNote::resetTrailingSpaces(int prefixCount, int suffixCount) {
 	if(prefixCount == -1) {
 		// prefix unchanged
 
-		for(int i = 0; i < syllable().length(); i++) {
+		for(int i = 0; i < syllable().length(); ++i) {
 			if(!syllable().endsWith(" "))
 				break;
 
 			_syllable.remove(syllable().length() - 1, 1);
 		}
 
-		for(int i = 0; i < suffixCount; i++)
+		for(int i = 0; i < suffixCount; ++i)
 			_syllable.append(" ");
 	}
 
 	if(suffixCount == -1) {
 		// suffix unchanged
 
-		for(int i = 0; i < syllable().length(); i++) {
+		for(int i = 0; i < syllable().length(); ++i) {
 			if(!syllable().startsWith(" "))
 				break;
 
 			_syllable.remove(0, 1);
 		}
 
-		for(int i = 0; i < prefixCount; i++)
+		for(int i = 0; i < prefixCount; ++i)
 			_syllable.prepend(" ");
 	}
 }
@@ -97,10 +97,10 @@ void QUSongLine::setSyllables(const QStringList &s) {
 	QList<QUSongNoteInterface*> notes = this->notes();
 
 	if(notes.size() != s.size()) {
-		logSrv->add(QString("Cannot set syllables. Count does not match."), QU::Warning);
+		logSrv->add(tr("Cannot set syllables. Count does not match."), QU::Warning);
 		return;
 	}
 
-	for(int i = 0; i < s.size(); i++)
+	for(int i = 0; i < s.size(); ++i)
 		notes.at(i)->setSyllable(s.at(i));
 }

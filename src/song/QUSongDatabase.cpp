@@ -41,18 +41,18 @@ void QUSongDatabase::deleteSong(QUSongFile *song) {
 
 	foreach(QFileInfo fi, fiList) {
 		if(!QFile::remove(fi.filePath()))
-			logSrv->add(QString("Could NOT delete file: \"%1\"").arg(fi.filePath()), QU::Warning);
+			logSrv->add(QString(tr("Could NOT delete file: \"%1\"")).arg(fi.filePath()), QU::Warning);
 		else
-			logSrv->add(QString("File was deleted successfully: \"%1\"").arg(fi.filePath()), QU::Information);
+			logSrv->add(QString(tr("File was deleted successfully: \"%1\"")).arg(fi.filePath()), QU::Information);
 	}
 
 	QString dirName = dir.dirName();
 	dir.cdUp();
 
 	if(!dir.rmdir(dirName))
-		logSrv->add(QString("Could NOT delete directory: \"%1\". Maybe it is not empty.").arg(QDir::toNativeSeparators(song->songFileInfo().path())), QU::Warning);
+		logSrv->add(QString(tr("Could NOT delete directory: \"%1\". Maybe it is not empty.")).arg(QDir::toNativeSeparators(song->songFileInfo().path())), QU::Warning);
 	else
-		logSrv->add(QString("Directory was deleted successfully: \"%1\"").arg(QDir::toNativeSeparators(song->songFileInfo().path())), QU::Information);
+		logSrv->add(QString(tr("Directory was deleted successfully: \"%1\"")).arg(QDir::toNativeSeparators(song->songFileInfo().path())), QU::Information);
 
 	_songs.removeAll(song);
 
@@ -62,7 +62,7 @@ void QUSongDatabase::deleteSong(QUSongFile *song) {
 
 	delete song;
 
-	logSrv->add(QString("Song was deleted successfully: \"%1 - %2\"").arg(artist).arg(title), QU::Information);
+	logSrv->add(QString(tr("Song was deleted successfully: \"%1 - %2\"")).arg(artist).arg(title), QU::Information);
 }
 
 void QUSongDatabase::clear() {
