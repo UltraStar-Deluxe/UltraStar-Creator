@@ -24,9 +24,7 @@ before_install:
 
 install:
     - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
-        brew update;
-        brew install qt5;
-        brew link --force qt5;
+        brew upgrade qt5;
         brew install taglib;
         brew install create-dmg;
       fi
