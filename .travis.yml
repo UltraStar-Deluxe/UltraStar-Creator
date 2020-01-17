@@ -28,6 +28,7 @@ install:
         brew install qt5;
         brew link --force qt5;
         brew install taglib;
+        brew install create-dmg
       fi
 
 before_script:
