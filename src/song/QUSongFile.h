@@ -57,12 +57,13 @@ public slots:
 	QString calcmedley() const		{return _info.value(CALCMEDLEY_TAG,			QString(N_A));}
 	QString medleystartbeat() const	{return _info.value(MEDLEYSTARTBEAT_TAG,	QString(N_A));}
 	QString medleyendbeat() const	{return _info.value(MEDLEYENDBEAT_TAG,		QString(N_A));}
-	QString album() const			{return _info.value(ALBUM_TAG,				QString(N_A));}
-	QString comment() const			{return _info.value(COMMENT_TAG,			QString(N_A));}
-	QString artistonsorting() const	{return _info.value(ARTISTONSORTING_TAG,	QString(N_A));}
-	QString titleonsorting() const	{return _info.value(TITLEONSORTING_TAG,		QString(N_A));}
 	QString p1() const				{return _info.value(P1_TAG,					QString(N_A));}
 	QString p2() const				{return _info.value(P2_TAG,					QString(N_A));}
+	QString album() const			{return _info.value(ALBUM_TAG,				QString(N_A));}
+	QString comment() const			{return _info.value(COMMENT_TAG,			QString(N_A));}
+	QString source() const			{return _info.value(SOURCE_TAG,				QString(N_A));}
+	QString artistonsorting() const	{return _info.value(ARTISTONSORTING_TAG,	QString(N_A));}
+	QString titleonsorting() const	{return _info.value(TITLEONSORTING_TAG,		QString(N_A));}
 
 	QString customTag(const QString &tag) const {return _info.value(tag.toUpper(), QString(N_A));}
 
@@ -78,6 +79,7 @@ public slots:
 	bool hasVideo() const;
 	bool hasMedley() const;
 	bool hasGoldenNotes() const;
+	bool hasRapNotes() const;
 
 	bool isSongChecked() const; // for [SC]
 	bool isSingStar() const;
@@ -182,9 +184,9 @@ private:
 	QStringList _foundUnsupportedTags;
 	bool _hasUnsavedChanges;
 
-    mutable int     _songLengthCache;
+	mutable int		_songLengthCache;
 	mutable bool	_songLengthCacheValid;
-	mutable double  _songSpeedCache;
+	mutable double	_songSpeedCache;
 	mutable bool	_songSpeedCacheValid;
 
 	void invalidateCaches() const;

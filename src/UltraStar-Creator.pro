@@ -1,3 +1,4 @@
+CONFIG += c++11
 TEMPLATE = app
 UI_DIR = ui
 
@@ -140,30 +141,38 @@ unix:!macx {
 
 win32 {
 	# Run windeployqt to bundle the required Qt libraries with the application
-	QMAKE_POST_LINK += windeployqt --release --no-translations --no-system-d3d-compiler --compiler-runtime --no-angle --no-opengl-sw ..\bin\release\UltraStar-Creator.exe $$escape_expand(\\n\\t)
+	CONFIG(release, debug|release) {
+		QMAKE_POST_LINK += windeployqt --release --no-translations --no-system-d3d-compiler --compiler-runtime --no-angle --no-opengl-sw $$shell_path($${DESTDIR})/UltraStar-Creator.exe $$escape_expand(\\n\\t)
+	}
+
+	CONFIG(debug, debug|release) {
+		QMAKE_POST_LINK += windeployqt --debug --no-translations --no-system-d3d-compiler --compiler-runtime --no-angle --no-opengl-sw $$shell_path($${DESTDIR})/UltraStar-Creator_debug.exe $$escape_expand(\\n\\t)
+	}
 
 	# Clean up after running windeployqt, removing some superfluous Qt libraries
-	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/Qt5Svg.dll) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/iconengines/qsvgicon.dll) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/Qt5Svg*.dll) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/iconengines/qsvgicon*.dll) $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += $${QMAKE_DEL_DIR} $$shell_path($${DESTDIR}/iconengines) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qicns.dll) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qico.dll) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qsvg.dll) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qtga.dll) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qtiff.dll) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwbmp.dll) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwebp.dll) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qicns*.dll) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qico*.dll) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qsvg*.dll) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qtga*.dll) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qtiff*.dll) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwbmp*.dll) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwebp*.dll) $$escape_expand(\\n\\t)
 
 	# Manually add bass, bass_fx and libtag libraries
-        QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/bass.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
-        QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/bass_fx.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
-        QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/libtag.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/bass.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/bass_fx.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/libtag.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 
 	# Manually add changes.txt
 	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../doc/changes.txt) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 
-	# Create a fancy Windows installer
-        QMAKE_POST_LINK += $$shell_quote(C:\Program Files (x86)\NSIS\makensis.exe) $$shell_path(../setup/win64/UltraStar-Creator.nsi) $$escape_expand(\\n\\t)
+	CONFIG(release, debug|release) {
+		# Create a fancy Windows installer
+		QMAKE_POST_LINK += $$shell_quote(C:\Program Files (x86)\NSIS\makensis.exe) $$shell_path(../setup/win64/UltraStar-Creator.nsi) $$escape_expand(\\n\\t)
+	}
 }
 
 macx {

@@ -104,7 +104,6 @@ void QUMainWindow::closeEvent(QCloseEvent *event) {
 	settings.setValue("inputlyricsfontsize", ui->plainTextEdit_InputLyrics->fontInfo().pointSize());
 	settings.setValue("outputlyricsfontsize", ui->textEdit_OutputLyrics->fontInfo().pointSize());
 	settings.setValue("defaultPitch", _menu->comboBox_DefaultPitch->currentIndex());
-	settings.setValue("encoding", _menu->comboBox_Encoding->currentIndex());
 	settings.setValue("autoCapitalizeLyricLines", ui->toolButton_Capitalize->isChecked());
 
 	// everything should be fine from now on
@@ -191,7 +190,6 @@ void QUMainWindow::initRibbonBar() {
 
 	// settings menu
 	_menu->comboBox_DefaultPitch->addItems(QUSongSupport::availableDefaultPitches());
-	_menu->comboBox_Encoding->addItems(QUSongSupport::allowedEncodingTypes());
 	connect(_menu->horizontalSlider_PlaybackSpeed, SIGNAL(valueChanged(int)), this, SLOT(setPlaybackSpeed(int)));
 
 	// extras menu
@@ -255,9 +253,6 @@ void QUMainWindow::initConfig() {
 
 	// restore default pitch
 	_menu->comboBox_DefaultPitch->setCurrentIndex(settings.value("defaultPitch", 0).toInt());
-
-	// restore encoding
-	_menu->comboBox_Encoding->setCurrentIndex(settings.value("encoding", 0).toInt());
 
 	_menu->montyBtn->setChecked(settings.value("allowMonty", true).toBool());
 
@@ -348,13 +343,7 @@ bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 	}
 
 	QTextStream out(&file);
-	QTextCodec *codec = QTextCodec::codecForName(_menu->comboBox_Encoding->currentText().toStdString().c_str());
-	if (codec->canEncode(ui->textEdit_OutputLyrics->toPlainText())) {
-		out.setCodec(codec);
-	}
-	else {
-		out.setCodec(QTextCodec::codecForName("UTF-8"));
-	}
+	out.setCodec(QTextCodec::codecForName("UTF-8"));
 
 	QApplication::setOverrideCursor(Qt::WaitCursor);
 	out << ui->textEdit_OutputLyrics->toPlainText();
@@ -1422,10 +1411,10 @@ void QUMainWindow::keyReleaseEvent(QKeyEvent *event) {
 	if (state == QUMainWindow::playing && !isFirstKeyPress) {
 		isFirstKeyPress = true;
 		switch(event->key()) {
-		case Qt::Key_V:
-			event->ignore();
-			QUMainWindow::on_pushButton_Tap_released();
-		default: QWidget::keyPressEvent(event);
+			case Qt::Key_V:
+				event->ignore();
+				QUMainWindow::on_pushButton_Tap_released();
+			default: QWidget::keyPressEvent(event);
 		}
 	}
 	else {
@@ -1634,9 +1623,8 @@ void QUMainWindow::generateFreestyleTextFiles()
 				}
 
 				QTextStream out(&file);
-				QTextCodec *codec = QTextCodec::codecForName(_menu->comboBox_Encoding->currentText().toStdString().c_str());
+				out.setCodec(QTextCodec::codecForName("UTF-8"));
 
-				out.setCodec(codec);
 				QString textString;
 				if (separatorPos != -1) {
 					textString += QString("#TITLE:%1\n").arg(title);

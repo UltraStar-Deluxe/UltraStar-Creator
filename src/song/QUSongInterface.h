@@ -9,37 +9,41 @@ class QString;
 class QStringList;
 class QFileInfo;
 
-#define ENCODING_TAG		"ENCODING"
-#define TITLE_TAG			"TITLE"
-#define ARTIST_TAG			"ARTIST"
-#define LANGUAGE_TAG		"LANGUAGE"
-#define EDITION_TAG			"EDITION"
-#define GENRE_TAG			"GENRE"
-#define YEAR_TAG			"YEAR"
-#define CREATOR_TAG			"CREATOR"
-#define MP3_TAG				"MP3"
-#define COVER_TAG			"COVER"
-#define BACKGROUND_TAG		"BACKGROUND"
-#define VIDEO_TAG			"VIDEO"
-#define VIDEOGAP_TAG		"VIDEOGAP"
-#define START_TAG			"START"
-#define END_TAG				"END"
-#define RELATIVE_TAG		"RELATIVE"
-#define PREVIEWSTART_TAG	"PREVIEWSTART"
-#define CALCMEDLEY_TAG		"CALCMEDLEY"
-#define MEDLEYSTARTBEAT_TAG	"MEDLEYSTARTBEAT"
-#define MEDLEYENDBEAT_TAG	"MEDLEYENDBEAT"
-#define BPM_TAG				"BPM"
-#define GAP_TAG				"GAP"
-#define ALBUM_TAG			"ALBUM"
-#define COMMENT_TAG			"COMMENT"
-#define ARTISTONSORTING_TAG	"ARTIST-ON-SORTING"
-#define TITLEONSORTING_TAG	"TITLE-ON-SORTING"
-#define P1_TAG				"P1"
-#define P2_TAG				"P2"
+#define ENCODING_TAG			"ENCODING"
+#define TITLE_TAG				"TITLE"
+#define ARTIST_TAG				"ARTIST"
+#define LANGUAGE_TAG			"LANGUAGE"
+#define EDITION_TAG				"EDITION"
+#define GENRE_TAG				"GENRE"
+#define YEAR_TAG				"YEAR"
+#define CREATOR_TAG				"CREATOR"
+#define MP3_TAG					"MP3"
+#define COVER_TAG				"COVER"
+#define BACKGROUND_TAG			"BACKGROUND"
+#define VIDEO_TAG				"VIDEO"
+#define VIDEOGAP_TAG			"VIDEOGAP"
+#define START_TAG				"START"
+#define END_TAG					"END"
+#define RELATIVE_TAG			"RELATIVE"
+#define PREVIEWSTART_TAG		"PREVIEWSTART"
+#define CALCMEDLEY_TAG			"CALCMEDLEY"
+#define MEDLEYSTARTBEAT_TAG		"MEDLEYSTARTBEAT"
+#define MEDLEYENDBEAT_TAG		"MEDLEYENDBEAT"
+#define BPM_TAG					"BPM"
+#define GAP_TAG					"GAP"
+#define P1_TAG					"P1"
+#define P2_TAG					"P2"
+#define ALBUM_TAG				"ALBUM"
+#define COMMENT_TAG				"COMMENT"
+#define SOURCE_TAG				"SOURCE"
+#define ARTISTONSORTING_TAG		"ARTIST-ON-SORTING"
+#define TITLEONSORTING_TAG		"TITLE-ON-SORTING"
+// currently unsupported tags:
+//#VERSION, #SOURCE, #VIDEOASPECT, #PREVIEW (alias of PREVIEWSTART), #P4, #DUETSINGERP1, #DUETSINGERP2, ...
 
-#define MEDLEY_TAGS			"MEDLEYTAGS"
-#define GOLDEN_NOTES		"GOLDENNOTES"
+#define MEDLEY_TAGS				"MEDLEYTAGS"
+#define GOLDEN_NOTES			"GOLDENNOTES"
+#define RAP_NOTES				"RAPNOTES"
 
 class QUSongNoteInterface: public QObject {
 	Q_OBJECT
@@ -48,7 +52,9 @@ public:
 	enum Type {
 		normal,
 		golden,
-		freestyle
+		freestyle,
+		rap,
+		rapgolden
 	};
 	Q_DECLARE_FLAGS(Types, Type)
 
@@ -133,12 +139,13 @@ class QUSongInterface: public QObject {
 	Q_PROPERTY(QString calcmedley READ calcmedley)
 	Q_PROPERTY(QString medleystartbeat READ medleystartbeat)
 	Q_PROPERTY(QString medleyendbeat READ medleyendbeat)
-	Q_PROPERTY(QString album READ album)
-	Q_PROPERTY(QString comment READ comment)
-	Q_PROPERTY(QString artistonsorting READ artistonsorting)
-	Q_PROPERTY(QString titleonsorting READ titleonsorting)
 	Q_PROPERTY(QString p1 READ p1)
 	Q_PROPERTY(QString p2 READ p2)
+	Q_PROPERTY(QString album READ album)
+	Q_PROPERTY(QString comment READ comment)
+	Q_PROPERTY(QString source READ source)
+	Q_PROPERTY(QString artistonsorting READ artistonsorting)
+	Q_PROPERTY(QString titleonsorting READ titleonsorting)
 	// additional properties
 	Q_PROPERTY(QString dir READ dir)
 	Q_PROPERTY(QString path READ path)
@@ -155,6 +162,7 @@ class QUSongInterface: public QObject {
 	Q_PROPERTY(bool hasVideo READ hasVideo)
 	Q_PROPERTY(bool hasMedley READ hasMedley)
 	Q_PROPERTY(bool hasGoldenNotes READ hasGoldenNotes)
+	Q_PROPERTY(bool hasRapNotes READ hasRapNotes)
 	Q_PROPERTY(bool isSongChecked READ isSongChecked)
 	Q_PROPERTY(bool isDuet READ isDuet)
 	Q_PROPERTY(bool isKaraoke READ isKaraoke)
@@ -189,12 +197,13 @@ public:
 	virtual QString calcmedley() const = 0;
 	virtual QString medleystartbeat() const = 0;
 	virtual QString medleyendbeat() const = 0;
-	virtual QString album() const = 0;
-	virtual QString comment() const = 0;
-	virtual QString artistonsorting() const = 0;
-	virtual QString titleonsorting() const = 0;
 	virtual QString p1() const = 0;
 	virtual QString p2() const = 0;
+	virtual QString album() const = 0;
+	virtual QString comment() const = 0;
+	virtual QString source() const = 0;
+	virtual QString artistonsorting() const = 0;
+	virtual QString titleonsorting() const = 0;
 
 	virtual QString customTag(const QString &tag) const = 0;
 
@@ -210,6 +219,8 @@ public:
 	virtual bool hasVideo() const = 0;
 	virtual bool hasMedley() const = 0;
 	virtual bool hasGoldenNotes() const = 0;
+	virtual bool hasRapNotes() const = 0;
+
 	virtual bool isSongChecked() const = 0;
 	virtual bool isDuet() const = 0;
 	virtual bool isKaraoke() const = 0;
