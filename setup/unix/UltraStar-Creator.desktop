@@ -5,5 +5,5 @@ Exec=UltraStar-Creator %F
 Icon=UltraStar-Creator
 Comment=Create new songs for UltraStar from scratch.
 Terminal=true
-Categories=Qt;Game;Music;Karaoke;UltraStar;
+Categories=Qt;Game;Music;X-Karaoke;X-UltraStar;
 Name[en]=UltraStar-Creator.desktop
