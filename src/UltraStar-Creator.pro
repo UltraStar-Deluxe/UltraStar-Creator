@@ -90,9 +90,12 @@ win32 {
 }
 
 macx {
+	INCLUDEPATH += ../include/cld2/public
+
 	LIBS += -L"../lib/macx" \
 		-lbass \
-		-lbass_fx
+		-lbass_fx \
+		-lcld2
 
 	CONFIG += link_pkgconfig
 	PKGCONFIG += taglib
@@ -177,17 +180,23 @@ win32 {
 
 macx {
 	dylibs.files = ../lib/macx/libbass.dylib \
-		../lib/macx/libbass_fx.dylib
+		../lib/macx/libbass_fx.dylib \
+		../lib/macx/libcld2.dylib
 	dylibs.path = Contents/Frameworks
 	QMAKE_BUNDLE_DATA += dylibs
+	
+	syllabification.files = $$files(../syllabification/*.txt)
+	syllabification.path = Contents/Resources
+	QMAKE_BUNDLE_DATA += syllabification
 
 	# Run macdeployqt to bundle the required Qt libraries with the application
-	QMAKE_POST_LINK += macdeployqt ../bin/release/UltraStar-Creator.app $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += macdeployqt ../bin/release/UltraStar-Creator.app -libpath=../lib/macx $$escape_expand(\\n\\t)
 
 	# Fix path to external libraries in app bundle
 	QMAKE_POST_LINK += install_name_tool -change @loader_path/libbass.dylib @executable_path/../Frameworks/libbass.dylib ../bin/release/UltraStar-Creator.app/Contents/MacOS/UltraStar-Creator $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += install_name_tool -change @loader_path/libbass_fx.dylib @executable_path/../Frameworks/libbass_fx.dylib ../bin/release/UltraStar-Creator.app/Contents/MacOS/UltraStar-Creator $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += install_name_tool -change @loader_path/libcld2.dylib @executable_path/../Frameworks/libcld2.dylib ../bin/release/UltraStar-Creator.app/Contents/MacOS/UltraStar-Creator $$escape_expand(\\n\\t)
 
 	# Create a fancy Mac disk image
-	QMAKE_POST_LINK += create-dmg --volname UltraStar-Creator --volicon resources/UltraStar-Creator.icns --app-drop-link 350 170 --background ../setup/macx/img/UltraStar-Creator_bg.png --hide-extension UltraStar-Creator.app --window-size 500 300 --text-size 14 --icon-size 64 --icon UltraStar-Creator.app 150 170 --no-internet-enable "../bin/release/UltraStar-Creator.dmg" ../bin/release/UltraStar-Creator.app/
+	#QMAKE_POST_LINK += create-dmg --volname UltraStar-Creator --volicon resources/UltraStar-Creator.icns --app-drop-link 350 170 --background ../setup/macx/img/UltraStar-Creator_bg.png --hide-extension UltraStar-Creator.app --window-size 500 300 --text-size 14 --icon-size 64 --icon UltraStar-Creator.app 150 170 --no-internet-enable "../bin/release/UltraStar-Creator.dmg" ../bin/release/UltraStar-Creator.app/
 }
