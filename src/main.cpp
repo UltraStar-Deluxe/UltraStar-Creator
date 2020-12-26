@@ -12,6 +12,7 @@
 #include <QFile>
 #include <QLocale>
 #include <QFileInfo>
+//#include <QRandomGenerator>
 
 void initApplication();
 void initLanguage(QApplication&, QTranslator&, QTranslator&, QSplashScreen&);
@@ -63,7 +64,7 @@ int main(int argc, char *argv[]) {
 void initApplication() {
 	Q_INIT_RESOURCE(UltraStar_Creator);
 
-	qsrand(QDateTime::currentDateTime().toTime_t());
+	//QRandomGenerator(QDateTime::currentDateTime().toTime_t());
 
 	QCoreApplication::setOrganizationName("HPI");
 	QCoreApplication::setApplicationName("UltraStar Creator");

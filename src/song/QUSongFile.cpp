@@ -515,7 +515,7 @@ double QUSongFile::calculateSongSpeed() const {
 
 	foreach(QString line, _lyrics) {
 		if(line.trimmed().startsWith(":") || line.trimmed().startsWith("*")) { // only singable notes (normal, golden)
-			QStringList syllable = line.split(" ", QString::SkipEmptyParts);
+			QStringList syllable = line.split(" ", Qt::SkipEmptyParts);
 
 			// singable syllables have a duration as second number
 			if(syllable.size() < 3)
@@ -672,29 +672,29 @@ bool QUSongFile::save(bool force) {
 		if(tag == ENCODING_TAG) { // only write ENCODING tag if necessary (CP1250)
 			if (_info.value(tag.toUpper()) == ENCODING_CP1250) {
 				_out << "#" << tag.toUpper() << ":" << _info.value(tag.toUpper());
-				useSystemDefaultLineEndings ? _out << endl : _out << "\n" << flush;
+				useSystemDefaultLineEndings ? _out << Qt::endl : _out << "\n" << Qt::flush;
 			}
 		} else if (_info.value(tag.toUpper()) != "") { // do not write empty tags
 			_out << "#" << tag.toUpper() << ":" << _info.value(tag.toUpper());
-			useSystemDefaultLineEndings ? _out << endl : _out << "\n" << flush;
+			useSystemDefaultLineEndings ? _out << Qt::endl : _out << "\n" << Qt::flush;
 		}
 	}
 
 	// write unsupported tags
 	foreach(QString uTag, _foundUnsupportedTags) {
 		_out << "#" << uTag << ":" << _info.value(uTag);
-		useSystemDefaultLineEndings ? _out << endl : _out << "\n" << flush;
+		useSystemDefaultLineEndings ? _out << Qt::endl : _out << "\n" << Qt::flush;
 	}
 
 	// write lyrics
 	foreach(QString line, _lyrics) {
 		_out << line;
-		useSystemDefaultLineEndings ? _out << endl : _out << "\n" << flush;
+		useSystemDefaultLineEndings ? _out << Qt::endl : _out << "\n" << Qt::flush;
 	}
 
 	// write song ending
 	_out << "E";
-	useSystemDefaultLineEndings ? _out << endl : _out << "\n" << flush;
+	useSystemDefaultLineEndings ? _out << Qt::endl : _out << "\n" << Qt::flush;
 
 	// write footer
 	foreach(QString line, _footer) {
@@ -1468,7 +1468,7 @@ void QUSongFile::lyricsAddNote(QString line) {
 						.arg(title()), QU::Warning);
 		} else {
 			line.remove(0, 1);
-			QStringList lineSplit = line.trimmed().split(" ", QString::SkipEmptyParts);
+			QStringList lineSplit = line.trimmed().split(" ", Qt::SkipEmptyParts);
 
 			if(lineSplit.size() > 0) songLine->setOutTime(QVariant(lineSplit.at(0).trimmed()).toInt());
 			if(lineSplit.size() > 1) songLine->setInTime(QVariant(lineSplit.at(1).trimmed()).toInt());
@@ -1486,7 +1486,7 @@ void QUSongFile::lyricsAddNote(QString line) {
 		line.insert(1, " "); // to avoid: ":2345 10 90 foo "
 		line.remove("\n");
 
-		QStringList lineSplit = line.trimmed().split(" ", QString::SkipEmptyParts);
+		QStringList lineSplit = line.trimmed().split(" ", Qt::SkipEmptyParts);
 
 		if(lineSplit.size() < 4)
 			logSrv->add(QString(tr("Line too short: \"%1\"")).arg(line), QU::Warning);

@@ -59,7 +59,6 @@ private slots:
 	void on_comboBox_Year_activated(QString );
 	void on_actionHelp_triggered();
 	void on_horizontalSlider_PreviewMP3_sliderMoved(int position);
-	void on_pushButton_SyllabificateRules_clicked();
 	void on_pushButton_startYass_clicked();
 	void on_pushButton_PreviewPlayPause_clicked();
 	void on_comboBox_Video_editTextChanged(QString video);
@@ -122,6 +121,7 @@ private:
 	float sampleRate;
 	bool firstNote;
 	bool isFirstKeyPress;
+	bool addLinebreak = false;
 	QString cleanLyrics(QString);
 	void splitLyricsIntoSyllables();
 	HSTREAM _mediaStream;
@@ -144,6 +144,8 @@ private:
 	bool isInseparable(QChar character1, QChar character2, QString lang);
 	bool isStrongVowel(QChar character, QString lang);
 	bool isHiatus(QChar character1, QChar character2, QString lang);
+	QString getResourcesPath();
+	QString syllabifyLyrics(QString lyrics, QString language);
 
 	enum State {
 		uninitialized,

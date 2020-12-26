@@ -26,6 +26,9 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QTemporaryFile>
+#include <QRegularExpression>
+
+#include "compact_lang_det.h"
 
 QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUMainWindow) {
 	ui->setupUi(this);
@@ -36,9 +39,6 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	//initStatusBar();
 	initConfig();
 	initMonty();
-
-	// deactivate TeX syllabification for now
-	ui->pushButton_SyllabificateTeX->setVisible(false);
 
 	logSrv->add(tr("Ready."), QU::Information);
 	lyricsProgressBar = new QProgressBar;
@@ -360,7 +360,7 @@ void QUMainWindow::on_pushButton_PlayPause_clicked()
 		state = QUMainWindow::playing;
 		ui->pushButton_PlayPause->setIcon(QIcon(":/player/pause.png"));
 		QWidget::setAcceptDrops(false);
-		ui->groupBox_SongMetaInformationTags->setDisabled(true);
+		ui->groupBox_SongHeader->setDisabled(true);
 		ui->plainTextEdit_InputLyrics->setReadOnly(true);
 		ui->groupBox_OutputLyrics->setEnabled(true);
 		ui->pushButton_SaveToFile->setDisabled(true);
@@ -492,6 +492,7 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 		QString currentLine = lyricsLineIterator.next();
 		currentLine = currentLine.trimmed();
 		if(ui->toolButton_Capitalize->isChecked()) {
+			//todo: check if first character is a letter
 			currentLine.replace(0,1,currentLine.at(0).toUpper());
 		}
 		lyricsStringList.append(currentLine);
@@ -512,6 +513,7 @@ void QUMainWindow::on_pushButton_Tap_pressed()
 	// conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPM [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
 	previousNoteEndBeat = currentNoteStartBeat + currentNoteBeatLength - firstNoteStartBeat;
 	currentNoteStartBeat = currentNoteStartTime * (BPM / 15000);
+	
 	ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
 }
 
@@ -530,19 +532,24 @@ void QUMainWindow::on_pushButton_Tap_released()
 		timeLineMap.insert(-1, QString("#GAP:%1").arg(QString::number(currentNoteStartTime, 'f', 0)));
 		firstNote = false;
 	}
-	bool addLinebreak = false;
+	
 	QString linebreakString = "";
 
 	QString currentSyllable = lyricsSyllableList[currentSyllableIndex];
-	if (currentSyllable.startsWith("\n")) {
-		addLinebreak = true;
-		currentSyllable = currentSyllable.mid(1);
-	}
-
+	
 	if (addLinebreak)
 	{
 		qint32 linebreakBeat = previousNoteEndBeat + (currentNoteStartBeat - firstNoteStartBeat - previousNoteEndBeat)/2;
 		linebreakString = QString("- %1\n").arg(QString::number(linebreakBeat));
+		addLinebreak = false;
+	}
+	
+	if (currentSyllable.endsWith("\n")) {
+		addLinebreak = true;
+		currentSyllable.chop(1);
+	}
+	if (currentSyllable.endsWith("•")) {
+		currentSyllable.chop(1);
 	}
 
 	currentOutputTextLine = QString("%1: %2 %3 %4 %5").arg(linebreakString).arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(_menu->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
@@ -1064,6 +1071,7 @@ void QUMainWindow::handleMP3() {
 
 	// enable all widgets
 	bool enabled = true;
+	ui->groupBox_SongHeader->setEnabled(enabled);
 	ui->pushButton_PreviewPlayPause->setEnabled(enabled);
 	ui->label_PreviewTimeElapsed->setEnabled(enabled);
 	ui->horizontalSlider_PreviewMP3->setEnabled(enabled);
@@ -1090,13 +1098,17 @@ void QUMainWindow::handleMP3() {
 	ui->label_GenreSet->setEnabled(enabled);
 	ui->label_YearIcon->setEnabled(enabled);
 	ui->label_Year->setEnabled(enabled);
-	ui->pushButton_ShowWebSite->setEnabled(enabled);
+	ui->pushButton_searchLyrics->setEnabled(enabled);
 	ui->comboBox_Year->setEnabled(enabled);
 	ui->label_YearSet->setEnabled(enabled);
 	ui->label_CreatorIcon->setEnabled(enabled);
 	ui->label_Creator->setEnabled(enabled);
 	ui->lineEdit_Creator->setEnabled(enabled);
 	ui->label_CreatorSet->setEnabled(enabled);
+	ui->label_MP3Icon->setEnabled(enabled);
+	ui->label_MP3->setEnabled(enabled);
+	ui->lineEdit_MP3->setEnabled(enabled);
+	ui->label_MP3Set->setEnabled(enabled);
 	ui->label_CoverIcon->setEnabled(enabled);
 	ui->label_Cover->setEnabled(enabled);
 	ui->comboBox_Cover->setEnabled(enabled);
@@ -1117,7 +1129,113 @@ void QUMainWindow::handleMP3() {
 
 	ui->groupBox_Control->setEnabled(enabled);
 	ui->groupBox_InputLyrics->setEnabled(enabled);
+	
+	// view-source:https://www.musixmatch.com/de/search/lena%20boundaries
+	QUrl url("https://www.musixmatch.com/search/" + ui->lineEdit_Artist->text() + " " + ui->lineEdit_Title->text());
+	
+	QNetworkAccessManager *m_NetworkMngr = new QNetworkAccessManager(this);
+	QNetworkReply *reply = m_NetworkMngr->get(QNetworkRequest(url));
 
+	QEventLoop loop;
+	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+	loop.exec();
+	if(reply->error() != QNetworkReply::NoError) {
+		QUMessageBox::warning(this,
+			tr("Lyrics retrieval failed."),
+				QString(tr("Is your internet connection working?")),
+				BTN << ":/icons/accept.png" << "OK",
+				240);
+		logSrv->add(QString(tr("Lyrics retrieval failed. Host unreachable.")), QU::Error);
+		return;
+	}
+	
+	QString searchresult = reply->readAll();
+	
+	QRegularExpression re = QRegularExpression("<a class=\"title\" href=\"(.*)\"><span>", QRegularExpression::InvertedGreedinessOption);
+	QRegularExpressionMatch match = re.match(searchresult);
+	
+	QString lyr;
+	if (match.hasMatch()) {
+		QString relative_url = match.captured(1);
+		url.setUrl("https://www.musixmatch.com" + relative_url);
+		
+		reply = m_NetworkMngr->get(QNetworkRequest(url));
+		
+		QEventLoop loop;
+		connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+		loop.exec();
+		if(reply->error() != QNetworkReply::NoError) {
+			QUMessageBox::warning(this,
+				tr("Lyrics retrieval failed."),
+					QString(tr("Is your internet connection working?")),
+					BTN << ":/icons/accept.png" << "OK",
+					240);
+			logSrv->add(QString(tr("Lyrics retrieval failed. Host unreachable.")), QU::Error);
+			return;
+		}
+		
+		QString musixmatch_page = reply->readAll();
+		
+		re.setPattern("\"body\":\"(.*),\"language\":\"[a-z]+\",\"languageDescription\":\"(.*)\",");
+		match = re.match(musixmatch_page);
+		
+		if (match.hasMatch()) {
+			lyr = match.captured(1).replace("\\n","\n");
+			lyr.chop(1); //todo: change above regex to not include the final "
+			ui->plainTextEdit_InputLyrics->setPlainText(lyr);
+						
+			QString lang = match.captured(2);
+			//qDebug () << lang;
+		}
+	} else {
+		ui->plainTextEdit_InputLyrics->setPlainText("Lyrics could not be retrieved automatically. Please paste them in this field manually.");
+	}
+	
+	// determine language using compact language detector
+	int threshold = 10; // 10 % of song lyrics need to identified as a certain language to count
+	bool isReliable;
+	QString cld2_language;
+	QStringList cld2_languages;
+	QStringList cld2_percentages;
+	//CLD2::Language cld2_lang = CLD2::DetectLanguage(_song->lyrics().join("").remove(QChar('~'), Qt::CaseInsensitive).toStdString().c_str(), _song->lyrics().join("").toStdString().length(), false, &isReliable);
+	
+	CLD2::Language language3[3];
+	int percent3[3];
+	int text_bytes;
+	CLD2::Language cld2_lang = CLD2::DetectLanguageSummary(lyr.toStdString().c_str(), lyr.length(), false, language3, percent3, &text_bytes, &isReliable);
+	
+	if(isReliable) {
+		for(int i = 0; i < 3; ++i) {
+			if(language3[i] != CLD2::UNKNOWN_LANGUAGE && percent3[i] > threshold) {
+				cld2_language = QString::fromUtf8(CLD2::LanguageDeclaredName(language3[i])).toLower();
+				cld2_language[0] = cld2_language[0].toUpper();
+				cld2_languages.append(cld2_language);
+				cld2_percentages.append(QString("(%1 %)").arg(percent3[i]));
+			}
+		}
+		
+		int index = ui->comboBox_Language->findText(cld2_languages.at(0));
+		if(index != -1) {
+			ui->comboBox_Language->setCurrentIndex(index);
+		}
+		ui->comboBox_Language->addItem(cld2_languages.at(0),cld2_languages.at(0));
+		
+		if(cld2_languages.length() > 1) {
+			// warning, set to first language
+		}
+	} else {
+		// do not set language, too unreliable
+	}
+	
+	// clean lyrics
+	QString cleanedLyrics = cleanLyrics(lyr);
+	
+	// split lyrics into syllables
+	QString syllabifiedLyrics = syllabifyLyrics(cleanedLyrics, cld2_languages.at(0));
+	
+	ui->plainTextEdit_InputLyrics->setPlainText(syllabifiedLyrics);
+	
+	// update state
 	if (!ui->plainTextEdit_InputLyrics->toPlainText().isEmpty()) {
 		state = QUMainWindow::initialized;
 		QMainWindow::statusBar()->showMessage(tr("State: initialized."));
@@ -1162,7 +1280,7 @@ void QUMainWindow::aboutBASS()
 											"<br><br><b>BASS FX Effects Extension</b><br><br>"
 											"BASS FX is an extension providing several effects, including tempo & pitch control.<br><br>"
 											"Version: <b>%2</b><br><br><br>"
-									   "Copyright (c) 1999-2012<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved.")).arg(BASS_VERSION).arg(BASSFX_VERSION),
+									   "Copyright (c) 1999-2020<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved.")).arg(BASS_VERSION).arg(BASSFX_VERSION),
 							QStringList() << ":/icons/accept.png" << "OK",
 							330);
 }
@@ -1239,7 +1357,7 @@ void QUMainWindow::on_pushButton_Reset_clicked()
 		ui->pushButton_NextSyllable5->setText("");
 		ui->horizontalSlider_MP3->setValue(0);
 		lyricsProgressBar->setValue(0);
-		ui->groupBox_SongMetaInformationTags->setEnabled(true);
+		ui->groupBox_SongHeader->setEnabled(true);
 		ui->plainTextEdit_InputLyrics->setReadOnly(false);
 		ui->groupBox_OutputLyrics->setDisabled(true);
 		ui->groupBox_TapArea->setDisabled(true);
@@ -1283,24 +1401,12 @@ void QUMainWindow::on_pushButton_UndoTap_clicked()
 
 void QUMainWindow::updateSyllableButtons() {
 	QString syllable = lyricsSyllableList[currentSyllableIndex];
-	if (syllable.startsWith("\n")) {
-		syllable.replace("\n","");
-		ui->pushButton_Tap->setIcon(QIcon(":/icons/pilcrow.png"));
-	}
-	else {
-		ui->pushButton_Tap->setIcon(QIcon());
-	}
+	syllable.replace("\n", "¶");
 	ui->pushButton_Tap->setText(syllable);
 
 	if (currentSyllableIndex+1 < numSyllables) {
 		syllable = lyricsSyllableList[currentSyllableIndex+1];
-		if (syllable.startsWith("\n")) {
-			syllable.replace("\n","");
-		   ui->pushButton_NextSyllable1->setIcon(QIcon(":/icons/pilcrow.png"));
-		}
-		else {
-			ui->pushButton_NextSyllable1->setIcon(QIcon());
-		}
+		syllable.replace("\n", "¶");
 		ui->pushButton_NextSyllable1->setText(syllable);
 	}
 	else {
@@ -1308,13 +1414,7 @@ void QUMainWindow::updateSyllableButtons() {
 	}
 	if (currentSyllableIndex+2 < numSyllables) {
 		syllable = lyricsSyllableList[currentSyllableIndex+2];
-		if (syllable.startsWith("\n")) {
-			syllable.replace("\n","");
-			ui->pushButton_NextSyllable2->setIcon(QIcon(":/icons/pilcrow.png"));
-		}
-		else {
-			ui->pushButton_NextSyllable2->setIcon(QIcon());
-		}
+		syllable.replace("\n", "¶");
 		ui->pushButton_NextSyllable2->setText(syllable);
 	}
 	else {
@@ -1322,13 +1422,7 @@ void QUMainWindow::updateSyllableButtons() {
 	}
 	if (currentSyllableIndex+3 < numSyllables) {
 		syllable = lyricsSyllableList[currentSyllableIndex+3];
-		if (syllable.startsWith("\n")) {
-			syllable.replace("\n","");
-			ui->pushButton_NextSyllable3->setIcon(QIcon(":/icons/pilcrow.png"));
-		}
-		else {
-			ui->pushButton_NextSyllable3->setIcon(QIcon());
-		}
+		syllable.replace("\n", "¶");
 		ui->pushButton_NextSyllable3->setText(syllable);
 	}
 	else {
@@ -1336,13 +1430,7 @@ void QUMainWindow::updateSyllableButtons() {
 	}
 	if (currentSyllableIndex+4 < numSyllables) {
 		syllable = lyricsSyllableList[currentSyllableIndex+4];
-		if (syllable.startsWith("\n")) {
-			syllable.replace("\n","");
-			ui->pushButton_NextSyllable4->setIcon(QIcon(":/icons/pilcrow.png"));
-		}
-		else {
-			ui->pushButton_NextSyllable4->setIcon(QIcon());
-		}
+		syllable.replace("\n", "¶");
 		ui->pushButton_NextSyllable4->setText(syllable);
 	}
 	else {
@@ -1350,13 +1438,7 @@ void QUMainWindow::updateSyllableButtons() {
 	}
 	if (currentSyllableIndex+5 < numSyllables) {
 		syllable = lyricsSyllableList[currentSyllableIndex+5];
-		if (syllable.startsWith("\n")) {
-			syllable.replace("\n","");
-			ui->pushButton_NextSyllable5->setIcon(QIcon(":/icons/pilcrow.png"));
-		}
-		else {
-			ui->pushButton_NextSyllable5->setIcon(QIcon());
-		}
+		syllable.replace("\n", "¶");
 		ui->pushButton_NextSyllable5->setText(syllable);
 	}
 	else {
@@ -1366,24 +1448,14 @@ void QUMainWindow::updateSyllableButtons() {
 
 void QUMainWindow::splitLyricsIntoSyllables()
 {
-	int nextSeparatorIndex = lyricsString.mid(1).indexOf(QRegExp("[ +\\n]"));
-	QString currentSyllable = "";
-
-	while (nextSeparatorIndex != -1) {
-		currentSyllable = lyricsString.mid(0,nextSeparatorIndex+1);
-		if (currentSyllable.startsWith("+")) {
-			currentSyllable = currentSyllable.mid(1);
-		}
-		lyricsSyllableList.append(currentSyllable);
-		lyricsString = lyricsString.mid(nextSeparatorIndex+1);
-		nextSeparatorIndex = lyricsString.mid(1).indexOf(QRegExp("[ +\\n]"));
-		if (nextSeparatorIndex == -1) {
-			currentSyllable = lyricsString;
-			if (currentSyllable.startsWith("+")) {
-				currentSyllable = currentSyllable.mid(1);
-			}
-			lyricsSyllableList.append(currentSyllable);
-		}
+	QRegularExpression re("([^ •\n-]+[ •\n-]*)"); //todo: verify regular expression
+	QRegularExpressionMatchIterator i = re.globalMatch(lyricsString);
+	
+	while (i.hasNext()) {
+		QRegularExpressionMatch match = i.next();
+		QString syllable = match.captured(1);
+		
+		lyricsSyllableList << syllable;
 	}
 }
 
@@ -1688,643 +1760,75 @@ void QUMainWindow::on_actionHelp_triggered()
 							  0);
 }
 
-// begin syllabification --> thanks to Klafhor who provided the PHP code as a basis
-
-void QUMainWindow::on_pushButton_SyllabificateRules_clicked()
+void QUMainWindow::on_pushButton_SyllabificateTeX_clicked()
 {
-	QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
-	QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
-	QChar sep = '+';
-	QString syllabifiedLyrics = "";
-	QString lang;
-
-	if ((language != "English") && (language != "German") && (language != "Spanish")) {
-		QString infoString;
-		if (!ui->comboBox_Language->currentText().isEmpty()) {
-			infoString = tr("The automatic lyrics syllabification is not (yet) available for <b>%1</b>.").arg(ui->comboBox_Language->currentText());
-		}
-		else {
-			infoString = tr("The song language has not yet been set.");
-		}
-		int result = QUMessageBox::question(0,
-						QObject::tr("Syllabification."),
-						QObject::tr("%1 Apply...").arg(infoString),
-						BTN << ":/languages/us.png"	<< QObject::tr("English syllabification rules.")
-							<< ":/languages/de.png"	<< QObject::tr("German syllabification rules.")
-							<< ":/languages/es.png"	<< QObject::tr("Spanish syllabification rules.")
-							<< ":/icons/cancel.png"	<< QObject::tr("Cancel."));
-
-		if (result == 0) {
-			language = "English";
-		}
-		else if (result == 1) {
-			language = "German";
-		}
-		else if (result == 2) {
-			language = "Spanish";
-		}
-		else {
-			syllabifiedLyrics = lyrics;
-		}
-	}
-
-	if (language == "English") {
-		lang = "en";
-
-		for (int i = 0; i < lyrics.length(); ++i)
-		{
-			QChar ch1 = lyrics.at(i);
-			QChar ch2 = lyrics.at(i+1);
-			QChar ch3 = lyrics.at(i+2);
-			QChar ch4 = lyrics.at(i+3);
-			QChar ch5 = lyrics.at(i+4);
-
-			// "e" at the end of a word isn't considered a vowel, for example "case"
-			if (isVowel(ch1, lang) && isConsonant(ch2, lang) && ch3.toLower() == 'e' && ((!isConsonant(ch4, lang) && !isVowel(ch4, lang)) || (ch4.toLower() == 's' && (!isConsonant(ch5, lang) && !isVowel(ch5, lang))))) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3;
-				i = i + 2;
-			}
-			// "e" at the end of a word preceded by two consonants isn't considered a vowel, for example "table"
-			else if (isVowel(ch1, lang) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && ch4.toLower() == 'e' && ((!isConsonant(ch5, lang) && !isVowel(ch5, lang)) || ch5.toLower() == 's')) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + ch4;
-				i = i + 3;
-			}
-			// initial consonants
-			else if ((!isVowel(ch1, lang) && !isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || isConsonant(ch4, lang))) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3;
-				i = i + 2;
-			}
-			// a consonant between 2 vowels
-			else if (isVowel(ch1, lang) && isConsonant(ch2, lang) && ((isVowel(ch3, lang) && (ch3.toLower() != 'e')) || ch3.toLower() == 'y')) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
-			}
-			// inseparable consonants between vowels
-			else if ((isVowel(ch1, lang) || isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || ch4.toLower() == 'y') && isInseparable(ch2, ch3, lang)) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
-			}
-			// separable consonants between vowels
-			else if ((isVowel(ch1, lang) || isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || ch4.toLower() == 'y') && !isInseparable(ch2, ch3, lang)) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
-				i = i + 1;
-			}
-			// "qu" is inseparable
-			else if (ch1.toLower() == 'q' && ch2.toLower() == 'u') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2;
-				i = i + 1;
-			}
-			/*
-			// hiatus
-			else if (isVowel(ch1) && isVowel(ch2) && isHiatus(ch1, ch2)) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
-			}*/
-			// other options
-			else {
-				syllabifiedLyrics = syllabifiedLyrics + ch1;
-			}
-		}
-	}
-	else if (language == "German") {
-		lang = "de";
-
-		for (int i = 0; i < lyrics.length(); ++i)
-		{
-			QChar ch1 = lyrics.at(i);
-			QChar ch2 = lyrics.at(i+1);
-			QChar ch3 = lyrics.at(i+2);
-			QChar ch4 = lyrics.at(i+3);
-			QChar ch5 = lyrics.at(i+4);
-			QChar ch6 = lyrics.at(i+5);
-			QChar ch7 = lyrics.at(i+6);
-			QChar ch8 = lyrics.at(i+7);
-
-			// consonants at the beginning
-			if ((!isVowel(ch1, lang) && !isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || isConsonant(ch4, lang))) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3;
-				i = i + 2;
-			}
-			// consonant between two vowels
-			else if (isVowel(ch1, lang) && isConsonant(ch2, lang) && (isVowel(ch3, lang) || ch3.toLower() == 'y')) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
-			}
-			// double consonant isn't separated in german
-			else if ((isVowel(ch1, lang) || isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || ch4.toLower() == 'y') && ch2.toLower() == ch3.toLower()) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
-				i = i + 1;
-			}
-			// biss-chen is an exception where "sch" is separated
-			else if (ch1.toLower() == 'b' && ch2.toLower() == 'i' && ch3.toLower() == 's' && ch4.toLower() == 's' && ch5.toLower() == 'c') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + ch4 + sep;
-				i = i + 3;
-			}
-			// Diminutiv 1: "äs+chen" or "ös+chen", e. g. "Hös+chen", "Mi+mös+chen", "Rös+chen", "Häs+chen", "Näs+chen"
-			else if ((ch1.toLower() == QString("ä").at(0) || ch1.toLower() == QString("ö").at(0)) && ch2.toLower() == 's' && ch3.toLower() == 'c' && ch4.toLower() == 'h' && ch5.toLower() == 'e' && ch6.toLower() == 'n') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep + ch3 + ch4 + ch5 + ch6;
-				i = i + 5;
-			}
-			// Diminutiv 2: "äus+chen", e. g. "Mäus+chen", "Päus+chen", "Häus+chen"
-			else if (ch1.toLower() == QString("ä").at(0) && ch2.toLower() == 'u' && ch3.toLower() == 's' && ch4.toLower() == 'c' && ch5.toLower() == 'h' && ch6.toLower() == 'e' && ch7.toLower() == 'n') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep + ch4 + ch5 + ch6 + ch7;
-				i = i + 6;
-			}
-			// Diminutiv 3: Umlaut + "ss" + suffix "chen", e. g. "Fäss+chen", "Dös+chen", "Küss+chen", "Flüss+chen", "Nüss+chen"
-			else if (isUmlaut(ch1, lang) && ch2.toLower() == 's' && ch3.toLower() == 's' && ch4.toLower() == 'c' && ch5.toLower() == 'h' && ch6.toLower() == 'e' && ch7.toLower() == 'n') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep + ch4 + ch5 + ch6 + ch7;
-				i = i + 6;
-			}
-			// Diminutiv 4: Umlaut + "sch" + suffix "chen", e. g. "Fläsch+chen"
-			else if (isUmlaut(ch1, lang) && ch2.toLower() == 's' && ch3.toLower() == 'c' && ch4.toLower() == 'h' && ch5.toLower() == 'c' && ch6.toLower() == 'h' && ch7.toLower() == 'e' && ch8.toLower() == 'n') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + ch4 + sep + ch5 + ch6 + ch7 + ch8;
-				i = i + 7;
-			}
-			// "sch" is inseparable in all other cases
-			else if ((isVowel(ch1, lang) || isConsonant(ch1, lang)) && ch2.toLower() == 's' && ch3.toLower() == 'c' && ch4.toLower() == 'h') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + sep + ch2;
-				i = i + 1;
-			}
-			// prefix "ab"
-			else if (ch1.toLower() == 'a' && ch2.toLower() == 'b' && ch3.isLetter()) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
-				i = i + 1;
-			}
-			// prefix "auf"
-			else if (ch1.toLower() == 'a' && ch2.toLower() == 'u' && ch3.toLower() == 'f' && ch4.isLetter() && !((ch4.toLower() == 'e' && ch5.toLower() == 'n') || ch4.toLower() == 't')) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep;
-				i = i + 2;
-			}
-			// prefix "aus"
-			else if (ch1.toLower() == 'a' && ch2.toLower() == 'u' && ch3.toLower() == 's' && ch4.isLetter()) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep;
-				i = i + 2;
-			}
-			/* problem: abnabeln
-			// prefix "be"
-			else if (ch1.toLower() == 'b' && ch2.toLower() == 'e') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
-				i = i + 1;
-			}*/
-			// prefix "ver"
-			else if (ch1.toLower() == 'v' && ch2.toLower() == 'e' && ch3.toLower() == 'r' && ch4.isLetter()) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3 + sep;
-				i = i + 2;
-			}
-			// "eie" is separated into "ei-e", e. g. "Klei+e", "Fei+er"
-			else if (ch1.toLower() == 'e' && ch2.toLower() == 'i' && ch3.toLower() == 'e') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
-				i = i + 1;
-			}
-			// "eue" is separated into "eu-e", e. g. "Reu+e"
-			else if (ch1.toLower() == 'e' && ch2.toLower() == 'u' && ch3.toLower() == 'e') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
-				i = i + 1;
-			}
-			// inseparable consonants between vowels
-			else if ((isVowel(ch1, lang) || isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || ch4.toLower() == 'y') && isInseparable(ch2, ch3, lang)) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
-			}
-			// separable consonants between vowels
-			else if ((isVowel(ch1, lang) || isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || ch4.toLower() == 'y') && !isInseparable(ch2, ch3, lang)) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
-				i = i + 1;
-			}
-			// "qu" is inseparable
-			else if (ch1.toLower() == 'q' && ch2.toLower() == 'u') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2;
-				i = i + 1;
-			}
-			// all other cases
-			else {
-				syllabifiedLyrics = syllabifiedLyrics + ch1;
-			}
-			/* remaining Problems:
-				Situation   --> Si+tua+tion
-				weshalb     --> we+shalb
-				verschonen  --> ver+s+cho+nen
-				symmetrisch --> symme+tri+sch */
-		}
-	}
-	else if (language == "Spanish") {
-		lang = "es";
-
-		for (int i = 0; i < lyrics.length(); i++)
-		{
-			QChar ch1 = lyrics.at(i);
-			QChar ch2 = lyrics.at(i+1);
-			QChar ch3 = lyrics.at(i+2);
-			QChar ch4 = lyrics.at(i+3);
-
-			// initial consonants don't separate in a word, the syllable need a vowel, by example "t-X-ranslation
-			if ((!isVowel(ch1, lang) && !isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || isConsonant(ch4, lang)))
-			{
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + ch3;
-				i = i + 2;
-			}
-			// consonant between 2 vowels, we separate this, by example "e-xample"
-			else if (isVowel(ch1, lang) && isConsonant(ch2, lang) && (isVowel(ch3, lang) || ch3.toLower() == 'y')) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
-			}
-			// inseparable consonants between vowels, for example "hel-X-lo"
-			else if ((isVowel(ch1, lang) || isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || ch4.toLower() == 'y') && isInseparable(ch2, ch3, lang)) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
-			}
-			// separable consonants between vowels, for example "bet-ween"
-			else if ((isVowel(ch1, lang) || isConsonant(ch1, lang)) && isConsonant(ch2, lang) && isConsonant(ch3, lang) && (isVowel(ch4, lang) || ch4.toLower() == 'y') && !isInseparable(ch2, ch3, lang)) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2 + sep;
-				i = i + 1;
-			}
-			// the characters "qu" are inseparable "q-X-u"
-			else if (ch1.toLower() == 'q' && ch2.toLower() == 'u') {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + ch2;
-				i = i + 1;
-			}
-			// hiatus
-			else if (isVowel(ch1, lang) && isVowel(ch2, lang) && isHiatus(ch1, ch2, lang)) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + sep;
-			}
-			// synalepha first word ending in a vowel
-			else if (isVowel(ch1, lang) && ch2 == ' ' && ((isVowel(ch3, lang) || (ch3.toLower() == 'y' && (!isVowel(ch4, lang) && !isConsonant(ch4, lang)))) || (ch3.toLower() == 'h' && isVowel(ch4, lang)))) {
-				syllabifiedLyrics = syllabifiedLyrics + ch1 + "·";
-				i = i + 1;
-			}
-			// synalepha first word being 'y'
-			else if ((ch1 == ' ') && ch2.toLower() == 'y' && ch3 == ' ' && (isVowel(ch4, lang) || ch4.toLower() == 'h')) {
-				syllabifiedLyrics = syllabifiedLyrics + " y·";
-				i = i + 2;
-			}
-			// synalepha and the beginning of the text
-			else if (i == 1 && ch1.toLower() == 'y' && ch2 == ' ' && (isVowel(ch3, lang) || ch3.toLower() == 'h')) {
-				syllabifiedLyrics = syllabifiedLyrics + "y·";
-				i = i + 1;
-			}
-			// all other cases
-			else {
-				syllabifiedLyrics = syllabifiedLyrics + ch1;
-			}
-		}
-	}
+	QString syllabifiedLyrics = syllabifyLyrics(ui->plainTextEdit_InputLyrics->toPlainText(), ui->comboBox_Language->currentText());
 	ui->plainTextEdit_InputLyrics->setPlainText(syllabifiedLyrics);
 }
 
-bool QUMainWindow::isVowel(QChar character, QString lang)
+QString QUMainWindow::syllabifyLyrics(QString lyrics, QString language)
 {
-	QChar ch = character.toLower();
-
-	if (lang == "en")
-	{
-		if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else if (lang == "de")
-	{
-		if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == QString("ä").at(0) || ch == QString("ö") || ch == QString("ü"))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else if (lang == "es")
-	{
-		if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == QString("á").at(0) || ch == QString("é").at(0) || ch == QString("í").at(0) || ch == QString("ó").at(0) || ch == QString("ú").at(0) || ch == QString("à").at(0) || ch == QString("ì").at(0) || ch == QString("ò").at(0) || ch == QString("ù").at(0) || ch == QString("â").at(0) || ch == QString("ê").at(0) || ch == QString("î").at(0) || ch == QString("ô").at(0) || ch == QString("û").at(0))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool QUMainWindow::isUmlaut(QChar character, QString lang)
-{
-	QChar ch = character.toLower();
-
-	if (lang == "en")
-	{
-		return false;
-	}
-	else if (lang == "de")
-	{
-		if (ch == QString("ä").at(0) || ch == QString("ö").at(0) || ch == QString("ü").at(0))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else if (lang == "es")
-	{
-		return false;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool QUMainWindow::isDiphthong(QChar character1, QChar character2, QString lang)
-{
-	QChar ch1 = character1.toLower();
-	QChar ch2 = character2.toLower();
-	QString str = QString("%1%2").arg(ch1).arg(ch2);
-
-	if (lang == "en")
-	{
-		if (str == "ou" || str == "ie" || str == "oi" || str == "oo" || str == "ea" || str == "ee" || str == "ai")
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else if (lang == "de")
-	{
-		if (str == "au" || str == "ei" || str == "eu")
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else if (lang == "es")
-	{
-		if (str == "ey" || str == "ai" || str == "oy" || str == "eu" || str == "au" || str == "ou" || str == "ie" || str == "ia" || str == "io" || str == "iu" || str == "ui" || str == "ue" || str == "ua" || str == "uo")
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool QUMainWindow::isConsonant(QChar character, QString lang)
-{
-	QChar ch = character.toLower();
-
-	if (lang == "en")
-	{
-		if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z')
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else if (lang == "de")
-	{
-		if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z' || ch == QString("ß").at(0))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else if (lang == "es")
-	{
-		if (ch == 'b' || ch == 'c' || ch == 'd' || ch == 'f' || ch == 'g' || ch == 'h' || ch == 'j' || ch == 'k' || ch == 'l' || ch == 'm' || ch == 'n' || ch == QString("ñ").at(0) || ch == 'p' || ch == 'q' || ch == 'r' || ch == 's' || ch == 't' || ch == 'v' || ch == 'w' || ch == 'x' || ch == 'y' || ch == 'z')
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool QUMainWindow::isInseparable(QChar character1, QChar character2, QString lang)
-{
-	QChar ch1 = character1.toLower();
-	QChar ch2 = character2.toLower();
-	QString str = QString("%1%2").arg(ch1).arg(ch2);
-
-	if (lang == "en" || lang == "de" || lang == "es")
-	{
-		if (((ch1 == 'b' || ch1 == 'c' || ch1 == 'd' || ch1 == 'f' || ch1 == 'g' || ch1 == 'p' || ch1 == 't' || ch1 == 'w') && (ch2 == 'l' || ch2 == 'r')) || (str == "rr") || (str == "ll") || ((ch1 == 'c' || ch1 == 't' ||  ch1 == 'r' || ch1 == 's' || ch1 == 'p' || ch1 == 'w') && ch2 == 'h') || (str == "ck"))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool QUMainWindow::isStrongVowel(QChar character, QString lang)
-{
-	QChar ch = character.toLower();
-
-	if (lang == "es")
-	{
-		if (ch == 'a' || ch == 'e' || ch == 'o' || ch == QString("á").at(0) || ch == QString("é").at(0) || ch == QString("ó").at(0))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool QUMainWindow::isHiatus(QChar character1, QChar character2, QString lang)
-{
-	QChar ch1 = character1.toLower();
-	QChar ch2 = character2.toLower();
-	QString str = QString("%1%2").arg(ch1).arg(ch2);
-
-	if (lang == "es")
-	{
-		if ((isStrongVowel(ch1, lang) && isStrongVowel(ch2, lang)) || str == "íú" || str == "úí" || ch1 == ch2 || str == "aá" || str == "áa" || str == "eé" || str == "ée" || str == "ií" || str == "íi" || str == "oó" || str == "óo" || str == "uú" || str == "úu")
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		return false;
-	}
-}
-
-// end syllabification
-
-
-void QUMainWindow::on_pushButton_SyllabificateTeX_clicked()
-{
-	/*
-	QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
-	QChar sep = '+';
+	QString sep = "•";
 	QFile patternFile;
-
-	if (language.isEmpty()) {
-		QUMessageBox::warning(this, tr("Application"),
-			tr("Please choose the song's language first."));
-	}
-	else if (language == "Croatian") {
-		//patternFile.setFileName("dict/cr_50K.dic");
-	}
-	else if (language == "Czech") {
-		//patternFile.setFileName("dict/cz_50K.dic");
-	}
-	else if (language == "Danish") {
-		//patternFile.setFileName("dict/dk_50K.dic");
-	}
-	else if (language == "Dutch") {
-		patternFile.setFileName("dict/nl_50K.dic");
-	}
-	else if (language == "English") {
-		patternFile.setFileName("dict/hyph_en_US.dic");
-	}
-	else if (language == "Finnish") {
-		patternFile.setFileName("dict/fi_50K.dic");
-	}
-	else if (language == "French") {
-		patternFile.setFileName("dict/fr_50K.dic");
-	}
-	else if (language == "German") {
-		patternFile.setFileName("dict/top10000de.dic");
-	}
-	else if (language == "Hindi") {
-		//patternFile.setFileName("dict/hi_50K.dic");
-	}
-	else if (language == "Italian") {
-		patternFile.setFileName("dict/it_50K.dic");
-	}
-	else if (language == "Latin") {
-		//patternFile.setFileName("dict/.dic");
-	}
-	else if (language == "Norwegian") {
-		patternFile.setFileName("dict/no_50K.dic");
-	}
-	else if (language == "Polish") {
-		patternFile.setFileName("dict/pl_50K.dic");
-	}
-	else if (language == "Portuguese") {
-		patternFile.setFileName("dict/pt_50K.dic");
-	}
-	else if (language == "Russian") {
-		patternFile.setFileName("dict/ru_50K.dic");
-	}
-	else if (language == "Slovak") {
-		//patternFile.setFileName("dict/.dic");
-	}
-	else if (language == "Slowenian") {
-		//patternFile.setFileName("dict/.dic");
-	}
-	else if (language == "Spanish") {
-		patternFile.setFileName("dict/es_50K.dic");
-	}
-	else if (language == "Swedish") {
-		patternFile.setFileName("dict/sv_50K.dic");
-	}
-	else if (language == "Turkish") {
-		patternFile.setFileName("dict/tr_50K.dic");
-	}
+	
+	patternFile.setFileName(getResourcesPath() + language + ".txt");
 
 	if (patternFile.exists())
 	{
+		QMap<QString, QString> dictionary;
 		if (patternFile.open(QFile::ReadOnly | QFile::Text))
 		{
 			QTextStream in(&patternFile);
 			in.setCodec(QTextCodec::codecForName("UTF-8"));
-
-			QMap<QString, QString> syllabificationMap;
-			QString currentLine;
-			QStringList currentEntry;
-			do
+			
+			while (!in.atEnd())
 			{
-				currentLine = in.readLine();
-				currentEntry = currentLine.split(QRegExp("\\s"));
-				if (currentEntry.length() == 2)
+				QString syllabified = in.readLine();
+				QString unsyllabified = syllabified.toLower();
+				unsyllabified.remove(sep);
+				dictionary.insert(unsyllabified, syllabified);
+			}
+			patternFile.close();
+			
+			QRegularExpression rx("(?i)(?:(?![×Þ÷þ])[-'0-9a-zßøÀ-ÿ])+"); // match any word including accented characters
+			QRegularExpressionMatchIterator i = rx.globalMatch(lyrics);
+			
+			while (i.hasNext()) {
+				QRegularExpressionMatch match = i.next();
+				QString word = match.captured();
+				
+				QString syllabifiedWord;
+				if(dictionary.contains(word.toLower()))
 				{
-					syllabificationMap.insert(currentEntry.first().toLower(), currentEntry.last().toLower());
-				}
-			} while (!currentLine.isNull());
-
-
-			QString lyrics = ui->plainTextEdit_InputLyrics->toPlainText();
-			QRegExp rx("\\w{2,}"); // match any word with at least 2 characters
-			int pos = 0;
-			while (pos >= 0)
-			{
-				pos = rx.indexIn(lyrics, pos);
-				if (pos >= 0)
-				{
-					QString match = rx.cap(0);
-					bool b = syllabificationMap.contains(match.toLower());
-					QString test = match.toLower();
-					int test2 = syllabificationMap.size();
-					pos += rx.matchedLength();
-					QString syllabifiedMatch = syllabificationMap.value(match.toLower());
-					if (syllabifiedMatch.isNull())
-					{
-						syllabifiedMatch = match;
-					} else
-					{
-						syllabifiedMatch.replace('-', sep);
-						bool matchIsCapitalized = match.at(0).isUpper();
-						if (matchIsCapitalized)
-						{
-							syllabifiedMatch.replace(0,1, syllabifiedMatch.at(0).toUpper());
-						}
-						lyrics.replace(match, syllabifiedMatch);
-						pos += syllabifiedMatch.count(sep);
+					syllabifiedWord = dictionary.value(word.toLower());
+					if(word.at(0).isUpper()) {
+						syllabifiedWord.replace(0, 1, word.at(0).toUpper());
 					}
+					lyrics.replace(word, syllabifiedWord);
+				} else {
+					qDebug() << word;
 				}
 			}
-			ui->plainTextEdit_InputLyrics->setPlainText(lyrics);
 		}
+		return lyrics;
 	}
 	else {
 		QUMessageBox::warning(this, tr("Application"),
 			tr("Pattern file not available."));
+		return lyrics;
 	}
-	*/
+}
+
+QString QUMainWindow::getResourcesPath() {
+	#if defined(Q_OS_WIN)
+		return QApplication::applicationDirPath() + "/";
+	#elif defined(Q_OS_OSX)
+		return QApplication::applicationDirPath() + "/../Resources/";
+	#elif defined(Q_OS_LINUX)
+		return QApplication::applicationDirPath() + "/../share/yourapplication/";
+	#else
+		return QApplication::applicationDirPath() + "/";
+#endif
 }
 
 void QUMainWindow::on_doubleSpinBox_BPM_valueChanged(double BPMValue)

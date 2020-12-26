@@ -7,6 +7,7 @@
 #include <QPixmap>
 #include <QFileInfo>
 #include <QRegExp>
+#include <QRandomGenerator>
 
 QUMonty::QUMonty() {
 	initMessages();
@@ -33,7 +34,7 @@ void QUMonty::initMessages() {
 	messages << QObject::tr("You finished tapping your song and saved it successfully? Now you need to finetune your song by setting correct pitches, adjusting note lengths and timings in the Ultrastar Editor or Yass Editor using the little icons below the <i>Generated Ultrastar file</i> box.");
 	messages << QObject::tr("UltraStar Creator is not available in your language? Well, if you are interested in translating, just get in touch with one of the developers at the <a href=\"https://github.com/UltraStar-Deluxe/UltraStar-Creator\">project site</a>.");
 	messages << QObject::tr("Did you remark that the state of the application window is saved on exit?");
-    messages << QObject::tr("Resulting UltraStar files are saved with UTF-8 encoding. If you use older version of UltraStar, you might need to convert it to a different encoding such as CP1252.");
+	messages << QObject::tr("Resulting UltraStar files are saved with UTF-8 encoding. If you use older version of UltraStar, you might need to convert it to a different encoding such as CP1252.");
 	messages << QObject::tr("You can change the size of the three main columns of <i>Song Header</i>, <i>Song Lyrics</i>, and <i>UltraStar file</i> by clicking between adjacent columns and dragging to left or right.");
 	messages << QObject::tr("Once the song header information is filled out and the song lyrics are properly split into syllables, you are ready to tap the song. Simply hit the green Play button or press <i>P</i>.");
 	messages << QObject::tr("UltraStar Creator offers automatic syllabification for English, German, and Spanish songs. Just make sure a proper language is set in the song header before clicking on the little syllabification icon below the input lyrics. Although this feature is not perfect, it can save you a lot of time and you only need to change the result here and there.");
@@ -79,8 +80,8 @@ QString QUMonty::welcomeMsg() {
 }
 
 void QUMonty::talk(QLabel *montyLbl, QLabel *msgLbl) {
-	montyLbl->setPixmap(pic((QUMonty::Status)(qrand() % 4)));
-	QString message = messages[qrand() % messages.size()];
+	montyLbl->setPixmap(pic((QUMonty::Status)(QRandomGenerator::global()->bounded(0,4))));
+	QString message = messages[QRandomGenerator::global()->bounded(0,messages.size())];
 	msgLbl->setText(message);
 }
 
@@ -101,7 +102,7 @@ void QUMonty::answer(QLabel *montyLbl, QLabel *msgLbl, const QString &question, 
 	}
 
 	if(answers.isEmpty()) {
-		montyLbl->setPixmap(pic((QUMonty::Status)(qrand() % 4)));
+		montyLbl->setPixmap(pic((QUMonty::Status)(QRandomGenerator::global()->bounded(0,4))));
 		msgLbl->setText(QObject::tr("Sorry. I don't understand you."));
 		return;
 	}
@@ -116,7 +117,7 @@ void QUMonty::answer(QLabel *montyLbl, QLabel *msgLbl, const QString &question, 
 		answers.prepend(out);
 	}
 
-	montyLbl->setPixmap(pic((QUMonty::Status)(qrand() % 4)));
+	montyLbl->setPixmap(pic((QUMonty::Status)(QRandomGenerator::global()->bounded(0,4))));
 	msgLbl->setText(answers.first());
 }
 

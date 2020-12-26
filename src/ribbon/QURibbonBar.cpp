@@ -93,10 +93,18 @@ void QURibbonBar::toggleMenuHidden() {
 void QURibbonBar::useVisibleStyle() {
 	QStringList styles;
 
+	/*
 	styles << "QTabWidget::pane {border-bottom: 1px solid #C2C7CB; border-top: 1px solid #C2C7CB; margin-bottom: 3px; background-color: white}";
 	styles << "QTabBar::tab {background: transparent; padding: 0.2em 0.9em; color: #333333; border: 1px solid transparent}";
 //	styles << "QTabWidget::tab-bar {left: 5px}";
 	styles << "QTabBar::tab:selected {color: black; background: white; border-top-left-radius: 4px; border-top-right-radius: 4px; border: 1px solid #C4C4C3; border-bottom-color: white}";
+	styles << "QGroupBox {padding: 2px 3px 6px 3px; margin: 0 2px 4px 2px; border: 0; font-size: 7pt; border-bottom: 1px solid #C2C7CB; border-left: 1px solid #C2C7CB; border-right: 1px solid #C2C7CB; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; color: #C2C7CB}";
+	styles << "QGroupBox::title {subcontrol-position: bottom center; subcontrol-origin: margin}";
+	*/
+	styles << "QTabWidget::pane {border-bottom: 1px solid #C2C7CB; border-top: 1px solid #C2C7CB; margin-bottom: 3px}";
+//	styles << "QTabBar::tab {background: transparent; padding: 0.2em 0.9em; color: #333333; border: 1px solid transparent}";
+//	styles << "QTabWidget::tab-bar {left: 5px}";
+//	styles << "QTabBar::tab:selected {color: black; background: white; border-top-left-radius: 4px; border-top-right-radius: 4px; border: 1px solid #C4C4C3; border-bottom-color: white}";
 	styles << "QGroupBox {padding: 2px 3px 6px 3px; margin: 0 2px 4px 2px; border: 0; font-size: 7pt; border-bottom: 1px solid #C2C7CB; border-left: 1px solid #C2C7CB; border-right: 1px solid #C2C7CB; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; color: #C2C7CB}";
 	styles << "QGroupBox::title {subcontrol-position: bottom center; subcontrol-origin: margin}";
 
