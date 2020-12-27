@@ -1214,7 +1214,7 @@ void QUMainWindow::handleMP3() {
 			}
 		}
 		
-		int index = ui->comboBox_Language->findText(cld2_languages.at(0));
+		int index = ui->comboBox_Language->findData(cld2_languages.at(0));
 		if(index != -1) {
 			ui->comboBox_Language->setCurrentIndex(index);
 		}
@@ -1897,7 +1897,7 @@ void QUMainWindow::checkForUpdate(bool silent)
 
 	tmp.write(reply->readAll());
 	tmp.seek(0);
-	QString line =  QString(tmp.readLine());
+	QString line = QString(tmp.readLine());
 	QString latestVersionString = line;
 	int latestVersion = line.remove('.').toInt();
 	delete reply;
