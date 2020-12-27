@@ -76,22 +76,22 @@ INCLUDEPATH += . \
 	ui
 
 INCLUDEPATH += ../include/bass \
-	../include/bass_fx
+	../include/bass_fx \
+	../include/cld2/public
 
 win32 {
-	INCLUDEPATH += ../include/taglib \
+	INCLUDEPATH += ../include/taglib
 
 	LIBS += -L"../lib/win64" \
 		-ltag \
 		-lbass \
-		-lbass_fx
+		-lbass_fx \
+		-lcld2
 
 	RC_ICONS += UltraStar-Creator.ico
 }
 
 macx {
-	INCLUDEPATH += ../include/cld2/public
-
 	LIBS += -L"../lib/macx" \
 		-lbass \
 		-lbass_fx \
@@ -145,7 +145,7 @@ unix:!macx {
 win32 {
 	# Run windeployqt to bundle the required Qt libraries with the application
 	CONFIG(release, debug|release) {
-		QMAKE_POST_LINK += windeployqt --release --no-translations --no-system-d3d-compiler --compiler-runtime --no-angle --no-opengl-sw $$shell_path($${DESTDIR})/UltraStar-Creator.exe $$escape_expand(\\n\\t)
+		QMAKE_POST_LINK += windeployqt64releaseonly --release --no-translations --no-system-d3d-compiler --compiler-runtime --no-angle --no-opengl-sw $$shell_path($${DESTDIR})/UltraStar-Creator.exe $$escape_expand(\\n\\t)
 	}
 
 	CONFIG(debug, debug|release) {
@@ -164,10 +164,20 @@ win32 {
 	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwbmp*.dll) $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwebp*.dll) $$escape_expand(\\n\\t)
 
-	# Manually add bass, bass_fx and libtag libraries
+	# Manually add bass, bass_fx, libtag and libcld2 libraries
 	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/bass.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/bass_fx.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/libtag.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/libcld2.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+
+	# Copy SSL/TLS libraries
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/capi.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/dasync.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/libcrypto-1_1-x64.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/libssl-1_1-x64.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
+
+	# Add syllabification dictionaries
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../syllabification/*.txt) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 
 	# Manually add changes.txt
 	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../doc/changes.txt) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
