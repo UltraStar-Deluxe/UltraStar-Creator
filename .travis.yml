@@ -38,7 +38,7 @@ script:
     - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         if [ -r "UltraStar-Creator.app" ]; then
             macdeployqt UltraStar-Creator.app -dmg;
-            link=$(curl --upload-file 'UltraStar-Creator.dmg' "https://transfer.sh/UltraStar-Creator-$(git rev-parse --short HEAD).dmg");
+            link=$(curl -F'file=UltraStar-Creator.dmg' https://0x0.st); #link=$(curl --upload-file 'UltraStar-Creator.dmg' "https://transfer.sh/UltraStar-Creator-$(git rev-parse --short HEAD).dmg");
             echo "UltraStar-Creator.dmg should be available at:";
             echo "    $link";
         fi
