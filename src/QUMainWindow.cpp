@@ -1790,7 +1790,8 @@ QString QUMainWindow::syllabifyLyrics(QString lyrics, QString language)
 			}
 			patternFile.close();
 			
-			QRegularExpression rx("(?i)(?:(?![×Þ÷þ])[-'0-9a-zßøÀ-ÿ])+"); // match any word including accented characters
+			//QRegularExpression rx("(?i)(?:(?![×Þ÷þ])[-'0-9a-zßøÀ-ÿ])+"); // match any word including accented characters
+			QRegularExpression rx("([^ \n,!.\?\(\);:-]+)"); //todo: verify regular expression
 			QRegularExpressionMatchIterator i = rx.globalMatch(lyrics);
 			
 			while (i.hasNext()) {
