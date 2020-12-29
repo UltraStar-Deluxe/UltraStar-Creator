@@ -38,7 +38,8 @@ script:
     - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         if [ -r "UltraStar-Creator.app" ]; then
             macdeployqt UltraStar-Creator.app -dmg;
-            link=$(curl -F'file=@UltraStar-Creator.dmg' https://0x0.st); #link=$(curl --upload-file 'UltraStar-Creator.dmg' "https://transfer.sh/UltraStar-Creator-$(git rev-parse --short HEAD).dmg");
+            #link=$(curl --upload-file 'UltraStar-Creator.dmg' "https://transfer.sh/UltraStar-Creator-$(git rev-parse --short HEAD).dmg");
+            link=$(curl -F'file=@UltraStar-Creator.dmg' https://0x0.st);
             echo "UltraStar-Creator.dmg should be available at:";
             echo "    $link";
         fi
@@ -54,7 +55,8 @@ script:
           unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH;
           ./linuxdeployqt*.AppImage ./release/UltraStar-Creator.desktop -bundle-non-qt-libs;
           ./linuxdeployqt*.AppImage ./release/UltraStar-Creator.desktop -appimage;
-          link=$(curl -F'file=@*.AppImage' https://0x0.st); #link=$(curl --upload-file *.AppImage "https://transfer.sh/UltraStar-Creator-$(git rev-parse --short HEAD)-x86_64.AppImage");
+          #link=$(curl --upload-file *.AppImage "https://transfer.sh/UltraStar-Creator-$(git rev-parse --short HEAD)-x86_64.AppImage");
+          link=$(curl -F'file=@*.AppImage' https://0x0.st);
           echo "UltraStar-Creator.AppImage should be available at:";
           echo "    $link";
         fi
