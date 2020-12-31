@@ -479,8 +479,8 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	// delete surplus blank lines...
 	rawLyricsString = rawLyricsString.replace(QRegExp("\\n{2,}"), "\n");
 
-	// replace misused accents (Â´,`) by the correct apostrophe (')
-	rawLyricsString = rawLyricsString.replace("Â´", "'");
+	// replace misused accents (´,`) by the correct apostrophe (')
+	rawLyricsString = rawLyricsString.replace("´", "'");
 	rawLyricsString = rawLyricsString.replace("`", "'");
 
 	// delete leading and trailing whitespace from each line, change line beginning to uppercase if selected
@@ -1048,8 +1048,8 @@ void QUMainWindow::handleMP3() {
 
 	BPM = BPMFromMP3;
 
-	while (BPM == 0) {
-		BPM = 50;
+	if (BPM == 0) {
+		BPM = 400;
 	}
 
 	while (BPM <= 200) {
@@ -1060,11 +1060,35 @@ void QUMainWindow::handleMP3() {
 	ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
 
 	TagLib::FileRef ref(fileInfo_MP3->absoluteFilePath().toLocal8Bit().data());
-	ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
-	ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
-	ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
-	ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString(ref.tag()->year())));
+	if(!ref.tag()->artist().isEmpty()) {
+		ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
+	} else {
+		if(fileInfo_MP3->fileName().contains("-")) {
+			QString artist_guessed = fileInfo_MP3->baseName().left(fileInfo_MP3->fileName().indexOf("-")).trimmed();
+			ui->lineEdit_Artist->setText(artist_guessed);
+		} else {
+			ui->lineEdit_Artist->setText("unknown");
+		}
+	}
+	if(!ref.tag()->title().isEmpty()) {
+		ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
+	} else {
+		if(fileInfo_MP3->fileName().contains("-")) {
+			QString title_guessed = fileInfo_MP3->baseName().mid(fileInfo_MP3->fileName().indexOf("-") + 1).trimmed();
+			ui->lineEdit_Title->setText(title_guessed);
+		} else {
+			ui->lineEdit_Title->setText("unknown");
+		}
+	}
+	if(!ref.tag()->genre().isEmpty()) {
+		ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
+	}
+	if(!QString(ref.tag()->year()).isEmpty()) {
+		ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString(ref.tag()->year())));
+	}
 	// TODO: lyrics from mp3 lyrics-tag
+	
+	//Todo: get artist and title from filename, if retrieval from tags fails
 
 	ui->label_MP3Set->setPixmap(QPixmap(":/icons/path_ok.png"));
 	previewState = QUMainWindow::initialized;
@@ -1129,8 +1153,9 @@ void QUMainWindow::handleMP3() {
 
 	ui->groupBox_Control->setEnabled(enabled);
 	ui->groupBox_InputLyrics->setEnabled(enabled);
-	
-	// view-source:https://www.musixmatch.com/de/search/lena%20boundaries
+}
+
+void QUMainWindow::on_pushButton_GetLyrics_clicked() {
 	QUrl url("https://www.musixmatch.com/search/" + ui->lineEdit_Artist->text() + " " + ui->lineEdit_Title->text());
 	
 	QNetworkAccessManager *m_NetworkMngr = new QNetworkAccessManager(this);
@@ -1155,6 +1180,8 @@ void QUMainWindow::handleMP3() {
 	QRegularExpressionMatch match = re.match(searchresult);
 	
 	QString lyr;
+	bool lyricsFound = false;
+	
 	if (match.hasMatch()) {
 		QString relative_url = match.captured(1);
 		url.setUrl("https://www.musixmatch.com" + relative_url);
@@ -1183,12 +1210,14 @@ void QUMainWindow::handleMP3() {
 			lyr = match.captured(1).replace("\\n","\n");
 			lyr.chop(1); //todo: change above regex to not include the final "
 			ui->plainTextEdit_InputLyrics->setPlainText(lyr);
-						
-			QString lang = match.captured(2);
-			//qDebug () << lang;
+			lyricsFound = true;
 		}
 	} else {
-		ui->plainTextEdit_InputLyrics->setPlainText("Lyrics could not be retrieved automatically. Please paste them in this field manually.");
+		ui->plainTextEdit_InputLyrics->setPlainText("Lyrics could not be retrieved automatically. Please try to adjust artist/title or paste them in this field manually.");
+	}
+	
+	if(!lyricsFound) {
+		return;
 	}
 	
 	// determine language using compact language detector

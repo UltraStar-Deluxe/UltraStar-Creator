@@ -73,6 +73,7 @@ private slots:
 	void on_pushButton_InputLyricsDecreaseFontSize_clicked();
 	void on_pushButton_InputLyricsIncreaseFontSize_clicked();
 	void on_pushButton_BrowseLyrics_clicked();
+	void on_pushButton_GetLyrics_clicked();
 	void on_comboBox_Genre_editTextChanged(QString );
 	void on_lineEdit_Creator_textChanged(QString );
 	void on_lineEdit_Edition_textChanged(QString );

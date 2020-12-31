@@ -1465,7 +1465,7 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
             <item>
-             <widget class="QPushButton" name="pushButton_BrowseMP3_2">
+             <widget class="QPushButton" name="pushButton_GetLyrics">
               <property name="enabled">
                <bool>true</bool>
               </property>
