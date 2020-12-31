@@ -1153,9 +1153,15 @@ void QUMainWindow::handleMP3() {
 
 	ui->groupBox_Control->setEnabled(enabled);
 	ui->groupBox_InputLyrics->setEnabled(enabled);
+	
+	setCursor(Qt::ArrowCursor);
+
+	montyTalk();
 }
 
 void QUMainWindow::on_pushButton_GetLyrics_clicked() {
+	setCursor(Qt::WaitCursor);
+	
 	QUrl url("https://www.musixmatch.com/search/" + ui->lineEdit_Artist->text() + " " + ui->lineEdit_Title->text());
 	
 	QNetworkAccessManager *m_NetworkMngr = new QNetworkAccessManager(this);
