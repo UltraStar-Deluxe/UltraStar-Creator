@@ -408,6 +408,12 @@
       </property>
       <item>
        <widget class="QToolButton" name="askMontyBtn">
+        <property name="minimumSize">
+         <size>
+          <width>56</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string>Ask</string>
         </property>
@@ -426,28 +432,11 @@
       <item>
        <widget class="QToolButton" name="talkMontyBtn">
         <property name="text">
-         <string>Listen</string>
+         <string>Talk</string>
         </property>
         <property name="icon">
          <iconset resource="../resources/UltraStar-Creator.qrc">
           <normaloff>:/icons/comment.png</normaloff>:/icons/comment.png</iconset>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextBesideIcon</enum>
-        </property>
-        <property name="autoRaise">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="hideMontyBtn">
-        <property name="text">
-         <string>Hide</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../resources/UltraStar-Creator.qrc">
-          <normaloff>:/icons/eye.png</normaloff>:/icons/eye.png</iconset>
         </property>
         <property name="toolButtonStyle">
          <enum>Qt::ToolButtonTextBesideIcon</enum>
