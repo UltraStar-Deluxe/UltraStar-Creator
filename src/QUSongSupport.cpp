@@ -289,28 +289,28 @@ QStringList QUSongSupport::availableDefaultPitches() {
 	QStringList result;
 
 	result << "0 (C4)";
-	result << QString("1 (C#4, Db4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << QString("1 (C♯4, D♭4)");
 	result << "2 (D4)";
-	result << QString("3 (D#4, Eb4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << QString("3 (D♯4, E♭4)");
 	result << "4 (E4)";
 	result << "5 (F4)";
-	result << QString("6 (F#4, Gb4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << QString("6 (F♯4, G♭4)");
 	result << "7 (G4)";
-	result << QString("8 (G#4, Ab4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << QString("8 (G♯4, A♭4)");
 	result << "9 (A4)";
-	result << QString("10 (A#4, Bb4)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << QString("10 (A♯4, B♭4)");
 	result << "11 (B4)";
 	result << "12 (C5)";
-	result << QString("13 (C#5, Db5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << QString("13 (C♯5, D♭5)");
 	result << "14 (D5)";
-	result << QString("15 (D#5, Eb5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << QString("15 (D♯5, E♭5)");
 	result << "16 (E5)";
 	result << "17 (F5)";
-	result << QString("18 (F#5, Gb5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << QString("18 (F♯5, G♭5)");
 	result << "19 (G4)";
-	result << QString("20 (G#5, Ab5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << QString("20 (G♯5, A♭5)");
 	result << "21 (A5)";
-	result << QString("22 (A#5, Bb5)").replace('#',QString::fromUtf8(CHAR_UTF8_SHARP)).replace('b', QString::fromUtf8(CHAR_UTF8_FLAT));
+	result << QString("22 (A♯5, B♭5)");
 	result << "23 (B5)";
 	result << "24 (C6)";
 
