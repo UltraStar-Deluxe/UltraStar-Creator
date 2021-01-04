@@ -327,5 +327,6 @@
         <file>monty/speech8.png</file>
         <file>icons/edit-uppercase.png</file>
         <file>icons/encoding.png</file>
+        <file>icons/cld2.png</file>
     </qresource>
 </RCC>
