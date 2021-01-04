@@ -13,7 +13,7 @@
 #include <QProgressBar>
 #include <QFileInfo>
 
-class QURibbonBar;
+//class QURibbonBar;
 
 namespace Ui {
 	class QUMainWindow;
@@ -33,7 +33,7 @@ protected:
 private slots:
 	void initConfig();
 	void initWindow();
-	void initRibbonBar();
+	void initMenuBar();
 	void initMonty();
 	void initStatusBar();
 
@@ -93,17 +93,19 @@ private slots:
 	void updatePreviewTime();
 
 	void aboutQt();
-	void aboutUSC();
+	void aboutUltraStarCreator();
 	void aboutTagLib();
 	void aboutBASS();
+	void aboutCLD2();
 	void checkForUpdate(bool silent);
 
 	void on_comboBox_Cover_currentIndexChanged(const QString &cover);
 	void on_comboBox_Background_currentIndexChanged(const QString &background);
 	void on_comboBox_Video_currentIndexChanged(const QString &video);
+	
+	void setDefaultPitch(int pitch);
 
 private:
-	QURibbonBar *_menu;
 	Ui::QUMainWindow *ui;
 	qint32 numSyllables;
 	QString currentOutputTextLine;
@@ -147,6 +149,29 @@ private:
 	bool isHiatus(QChar character1, QChar character2, QString lang);
 	QString getResourcesPath();
 	QString syllabifyLyrics(QString lyrics, QString language);
+	void handleLyrics(QString lyrics);
+	bool determineLanguage(QString lyrics);
+	void cleanAndSyllabifyLyrics(QString lyrics);
+	
+	QActionGroup *uiLanguageGroup;
+	QAction *enableEnglishAction;
+	QAction *enableSpanishAction;
+	QAction *enableGermanAction;
+	QAction *enableFrenchAction;
+	QAction *enablePortugueseAction;
+	QAction *enablePolishAction;
+	QMenu *languageMenu;
+	QAction *aboutUltraStarCreatorAction;
+	QAction *aboutQtAction;
+	QAction *aboutTagLibAction;
+	QAction *aboutBASSAction;
+	QAction *aboutCLD2Action;
+	QAction *checkForUpdateAction;
+	QMenu *aboutMenu;
+	QAction *generateFreestyleTextFilesActions;
+	QMenu *extrasMenu;
+	QAction *showMontyAction;
+	QMenu *helpMenu;
 
 	enum State {
 		uninitialized,

@@ -29,7 +29,6 @@ HEADERS += main.h \
 	QUAboutDialog.h \
 	support/QUMessageBox.h \
 	support/QULogService.h \
-	ribbon/QURibbonBar.h \
 	QUMonty.h \
 	monty/QUMontyArea.h \
 	QUSongSupport.h \
@@ -45,7 +44,6 @@ SOURCES += main.cpp \
 	QUAboutDialog.cpp \
 	support/QUMessageBox.cpp \
 	support/QULogService.cpp \
-	ribbon/QURibbonBar.cpp \
 	QUMonty.cpp \
 	monty/QUMontyArea.cpp \
 	QUSongSupport.cpp \
@@ -57,7 +55,6 @@ SOURCES += main.cpp \
 FORMS += QUMainWindow.ui \
 	QUAboutDialog.ui \
 	support/QUMessageBox.ui \
-	ribbon/QURibbonBar.ui \
 	monty/QUMontyArea.ui
 
 RESOURCES += resources/UltraStar-Creator.qrc
@@ -70,7 +67,6 @@ TRANSLATIONS = resources/UltraStar-Creator.de.ts \
 
 INCLUDEPATH += . \
 	monty \
-	ribbon \
 	song \
 	support \
 	ui

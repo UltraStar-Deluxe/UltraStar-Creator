@@ -4,7 +4,6 @@
 #include "QULogService.h"
 #include "QUMessageBox.h"
 #include "QUAboutDialog.h"
-#include "QURibbonBar.h"
 #include "QUMonty.h"
 #include "QUSongSupport.h"
 
@@ -27,14 +26,17 @@
 #include <QNetworkReply>
 #include <QTemporaryFile>
 #include <QRegularExpression>
+#include <QMenuBar>
 
 #include "compact_lang_det.h"
 
 QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUMainWindow) {
 	ui->setupUi(this);
+	
+	connect(ui->horizontalSlider_PlaybackSpeed, SIGNAL(valueChanged(int)), this, SLOT(setPlaybackSpeed(int)));
 
 	initWindow();
-	initRibbonBar();
+	initMenuBar();
 
 	//initStatusBar();
 	initConfig();
@@ -97,14 +99,13 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 void QUMainWindow::closeEvent(QCloseEvent *event) {
 	QSettings settings;
 
-	settings.setValue("allowMonty", QVariant(_menu->montyBtn->isChecked()));
+	//settings.setValue("allowMonty", QVariant(_menu->montyBtn->isChecked()));
 	settings.setValue("geometry", saveGeometry());
 	settings.setValue("windowState", saveState());
 	settings.setValue("creator", ui->lineEdit_Creator->text());
 	settings.setValue("inputlyricsfontsize", ui->plainTextEdit_InputLyrics->fontInfo().pointSize());
 	settings.setValue("outputlyricsfontsize", ui->textEdit_OutputLyrics->fontInfo().pointSize());
-	settings.setValue("defaultPitch", _menu->comboBox_DefaultPitch->currentIndex());
-	settings.setValue("autoCapitalizeLyricLines", ui->toolButton_Capitalize->isChecked());
+	settings.setValue("defaultPitch", 0);
 
 	// everything should be fine from now on
 	QFile::remove("running.app");
@@ -130,7 +131,7 @@ void QUMainWindow::initWindow() {
 	windowIcon.addFile(":/icons/UltraStar-Creator1024.png", QSize(1024, 1024));
 
 	setWindowIcon(windowIcon);
-	setWindowTitle(QString("%1%2").arg("UltraStar Creator").arg(WIP_TEXT));
+	setWindowTitle(QString("%1%2").arg("UltraStar Creator", WIP_TEXT));
 
 	// adding languages to language combobox as I did not find a way to add itemData within designer
 	// this way, foreign language names are displayed to the user while the UltraStar file will contain the
@@ -182,61 +183,109 @@ void QUMainWindow::initWindow() {
 }
 
 /*!
- * Create an Office2007-like menu to reduce mouse clicks.
+ * Create the menu bar.
  */
-void QUMainWindow::initRibbonBar() {
-	_menu = new QURibbonBar(this);
-	this->setMenuWidget(_menu);
-
-	// settings menu
-	_menu->comboBox_DefaultPitch->addItems(QUSongSupport::availableDefaultPitches());
-	connect(_menu->horizontalSlider_PlaybackSpeed, SIGNAL(valueChanged(int)), this, SLOT(setPlaybackSpeed(int)));
-
-	// extras menu
-	connect(_menu->freestyleTextFilesBtn, SIGNAL(clicked()), this, SLOT(generateFreestyleTextFiles()));
-
+void QUMainWindow::initMenuBar() {
 	// language menu
-	connect(_menu->langUsBtn, SIGNAL(clicked()), this, SLOT(enableEnglish()));
-	connect(_menu->langDeBtn, SIGNAL(clicked()), this, SLOT(enableGerman()));
-	connect(_menu->langPlBtn, SIGNAL(clicked()), this, SLOT(enablePolish()));
-	connect(_menu->langFrBtn, SIGNAL(clicked()), this, SLOT(enableFrench()));
-	connect(_menu->langEsBtn, SIGNAL(clicked()), this, SLOT(enableSpanish()));
-	connect(_menu->langPtBtn, SIGNAL(clicked()), this, SLOT(enablePortuguese()));
-
+	enableEnglishAction = new QAction(QIcon(":/languages/us.png"), tr("&English"), this);
+	enableEnglishAction->setCheckable(true);
+	connect(enableEnglishAction, SIGNAL(triggered()), this, SLOT(enableEnglish()));
+	
+	enableSpanishAction = new QAction(QIcon(":/languages/es.png"), tr("&Spanish"), this);
+	enableSpanishAction->setCheckable(true);
+	connect(enableSpanishAction, SIGNAL(triggered()), this, SLOT(enableSpanish()));
+	
+	enableGermanAction = new QAction(QIcon(":/languages/de.png"), tr("&German"), this);
+	enableGermanAction->setCheckable(true);
+	connect(enableGermanAction, SIGNAL(triggered()), this, SLOT(enableGerman()));
+	
+	enableFrenchAction = new QAction(QIcon(":/languages/fr.png"), tr("&French"), this);
+	enableFrenchAction->setCheckable(true);
+	connect(enableFrenchAction, SIGNAL(triggered()), this, SLOT(enableFrench()));
+	
+	enablePortugueseAction = new QAction(QIcon(":/languages/pt.png"), tr("&Portuguese"), this);
+	enablePortugueseAction->setCheckable(true);
+	connect(enablePortugueseAction, SIGNAL(triggered()), this, SLOT(enablePortuguese()));
+	
+	enablePolishAction = new QAction(QIcon(":/languages/pl.png"), tr("&Polish"), this);
+	enablePolishAction->setCheckable(true);
+	connect(enablePolishAction, SIGNAL(triggered()), this, SLOT(enablePolish()));
+	
+	uiLanguageGroup = new QActionGroup(this);
+	uiLanguageGroup->addAction(enableEnglishAction);
+	uiLanguageGroup->addAction(enableSpanishAction);
+	uiLanguageGroup->addAction(enableGermanAction);
+	uiLanguageGroup->addAction(enableFrenchAction);
+	uiLanguageGroup->addAction(enablePortugueseAction);
+	uiLanguageGroup->addAction(enablePolishAction);
+	enableEnglishAction->setChecked(true);
+	
+	languageMenu = menuBar()->addMenu(tr("&Language"));
+	languageMenu->addAction(enableEnglishAction);
+	languageMenu->addAction(enableSpanishAction);
+	languageMenu->addAction(enableGermanAction);
+	languageMenu->addAction(enableFrenchAction);
+	languageMenu->addAction(enablePortugueseAction);
+	languageMenu->addAction(enablePolishAction);
+	
 	// about menu
-	connect(_menu->aboutQtBtn, SIGNAL(clicked()), this, SLOT(aboutQt()));
-	connect(_menu->aboutUmanBtn, SIGNAL(clicked()), this, SLOT(aboutUSC()));
-	connect(_menu->aboutTagLibBtn, SIGNAL(clicked()), this, SLOT(aboutTagLib()));
-	connect(_menu->aboutBASSBtn, SIGNAL(clicked()), this, SLOT(aboutBASS()));
-	connect(_menu->checkForUpdateBtn, SIGNAL(clicked(bool)), this, SLOT(checkForUpdate(bool)));
-
-	// help menu
-	connect(_menu->helpBtn, SIGNAL(clicked()), ui->montyArea, SLOT(show()));
-	_menu->setShortcut(_menu->helpBtn, Qt::Key_F1);
-	_menu->setShortcut(_menu->montyBtn, Qt::SHIFT + Qt::Key_F1);
-	_menu->setShortcut(_menu->hideBtn, Qt::CTRL + Qt::Key_F1);
+	aboutUltraStarCreatorAction = new QAction(QIcon(":/icons/bean.png"), tr("&About UltraStar Creator"), this);
+	aboutUltraStarCreatorAction->setMenuRole(QAction::AboutRole);
+	connect(aboutUltraStarCreatorAction, SIGNAL(triggered()), this, SLOT(aboutUltraStarCreator()));
+	
+	aboutQtAction = new QAction(QIcon(":/icons/qt.png"), tr("&About Qt"), this);
+	aboutQtAction->setMenuRole(QAction::AboutQtRole);
+	connect(aboutQtAction, SIGNAL(triggered()), this, SLOT(aboutQt()));
+	
+	aboutTagLibAction = new QAction(QIcon(":/icons/taglib.png"), tr("&About TagLib"), this);
+	aboutTagLibAction->setMenuRole(QAction::ApplicationSpecificRole);
+	connect(aboutTagLibAction, SIGNAL(triggered()), this, SLOT(aboutTagLib()));
+	
+	aboutBASSAction = new QAction(QIcon(":/icons/bass.png"), tr("&About BASS"), this);
+	aboutBASSAction->setMenuRole(QAction::ApplicationSpecificRole);
+	connect(aboutBASSAction, SIGNAL(triggered()), this, SLOT(aboutBASS()));
+	
+	aboutCLD2Action = new QAction(QIcon(":/icons/cld2.png"), tr("&About Compact Language Detector 2"), this);
+	aboutCLD2Action->setMenuRole(QAction::ApplicationSpecificRole);
+	connect(aboutCLD2Action, SIGNAL(triggered()), this, SLOT(aboutCLD2()));
+	
+	checkForUpdateAction = new QAction(QIcon(":/icons/check_for_update.png"), tr("&Check for update..."), this);
+	checkForUpdateAction->setMenuRole(QAction::ApplicationSpecificRole);
+	connect(checkForUpdateAction, SIGNAL(triggered()), this, SLOT(checkForUpdate(bool silent)));
+	
+	aboutMenu = menuBar()->addMenu(tr("&About"));
+	aboutMenu->addAction(aboutUltraStarCreatorAction);
+	aboutMenu->addAction(aboutQtAction);
+	aboutMenu->addAction(aboutTagLibAction);
+	aboutMenu->addAction(aboutBASSAction);
+	aboutMenu->addAction(aboutCLD2Action);
+	aboutMenu->addAction(checkForUpdateAction);
+	
+	generateFreestyleTextFilesActions = new QAction(QIcon(":/icons/beans.png"), tr("&Generate freestyle text files..."), this);
+	connect(generateFreestyleTextFilesActions, SIGNAL(triggered()), this, SLOT(generateFreestyleTextFiles()));
+	extrasMenu = menuBar()->addMenu(tr("&Extras"));
+	extrasMenu->addAction(generateFreestyleTextFilesActions);
 }
 
 /*!
- * Initializes the windows registry entry for uman. Lets the user
- * choose a path where the song files are located.
+ * Initializes the windows registry entry for UltraStar Creator.
  */
 void QUMainWindow::initConfig() {
 	QSettings settings;
 
 	QLocale::Language lang = QLocale(settings.value("language").toString()).language();
 	if (lang == QLocale::English)
-		 _menu->langUsBtn->setChecked(true);
+		;//_menu->langUsBtn->setChecked(true);
 	else if (lang == QLocale::French)
-		_menu->langFrBtn->setChecked(true);
+		;//_menu->langFrBtn->setChecked(true);
 	else if (lang == QLocale::German)
-		_menu->langDeBtn->setChecked(true);
+		;//_menu->langDeBtn->setChecked(true);
 	else if (lang == QLocale::Polish)
-		_menu->langPlBtn->setChecked(true);
+		;//_menu->langPlBtn->setChecked(true);
 	else if (lang == QLocale::Spanish)
-		_menu->langEsBtn->setChecked(true);
+		;//_menu->langEsBtn->setChecked(true);
 	else if (lang == QLocale::Portuguese)
-		_menu->langPtBtn->setChecked(true);
+		;//_menu->langPtBtn->setChecked(true);
 
 	restoreGeometry(settings.value("geometry").toByteArray());
 	restoreState(settings.value("windowState").toByteArray());
@@ -252,12 +301,9 @@ void QUMainWindow::initConfig() {
 	ui->textEdit_OutputLyrics->setFont(font);
 
 	// restore default pitch
-	_menu->comboBox_DefaultPitch->setCurrentIndex(settings.value("defaultPitch", 0).toInt());
+	//_menu->comboBox_DefaultPitch->setCurrentIndex(settings.value("defaultPitch", 0).toInt());
 
-	_menu->montyBtn->setChecked(settings.value("allowMonty", true).toBool());
-
-	// restore autoCapitalizeLyricLines
-	ui->toolButton_Capitalize->setChecked(settings.value("autoCapitalizeLyricLines", true).toBool());
+	//_menu->montyBtn->setChecked(settings.value("allowMonty", true).toBool());
 }
 
 /*!
@@ -269,11 +315,11 @@ void QUMainWindow::initMonty() {
 
 	ui->montyArea->helpLbl->setText(monty->welcomeMsg());
 
-	connect(ui->montyArea->hideMontyBtn, SIGNAL(clicked()), ui->montyArea, SLOT(hide()));
+	//connect(ui->montyArea->hideMontyBtn, SIGNAL(clicked()), ui->montyArea, SLOT(hide()));
 	connect(ui->montyArea->talkMontyBtn, SIGNAL(clicked()), this, SLOT(montyTalkNow()));
 
-	if(!_menu->montyBtn->isChecked())
-		ui->montyArea->hide();
+	//if(!_menu->montyBtn->isChecked())
+		//ui->montyArea->hide();
 
 	ui->montyArea->askFrame->hide();
 	ui->montyArea->answerFrame->hide();
@@ -336,9 +382,7 @@ bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 	QFile file(fileName);
 	if (!file.open(QFile::WriteOnly | QFile::Text)) {
 		QUMessageBox::warning(this, tr("Application"),
-			tr("Cannot write file %1:\n%2.")
-			.arg(fileName)
-			.arg(file.errorString()));
+			tr("Cannot write file %1:\n%2.").arg(fileName, file.errorString()));
 		return false;
 	}
 
@@ -434,7 +478,7 @@ void QUMainWindow::on_pushButton_PlayPause_clicked()
 		// playing slower results in lower pitch, just like a record played at a lower speed
 		// playing slower while preserving pitch only works well for small changes in speed
 		BASS_ChannelGetAttribute(_mediaStream, BASS_ATTRIB_FREQ, &sampleRate);
-		if (BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO_FREQ, sampleRate*_menu->horizontalSlider_PlaybackSpeed->value()/100)) {
+		if (BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO_FREQ, sampleRate*ui->horizontalSlider_PlaybackSpeed->value()/100)) {
 			BASS_Play();
 			updateTime();
 		}
@@ -472,6 +516,11 @@ void QUMainWindow::on_pushButton_PlayPause_clicked()
 	montyTalk();
 }
 
+void QUMainWindow::setDefaultPitch(int pitch) {
+	qDebug() << pitch;
+}
+
+
 QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	// delete surplus space characters
 	rawLyricsString = rawLyricsString.replace(QRegExp(" {2,}"), " ");
@@ -491,10 +540,8 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	while (lyricsLineIterator.hasNext()) {
 		QString currentLine = lyricsLineIterator.next();
 		currentLine = currentLine.trimmed();
-		if(ui->toolButton_Capitalize->isChecked()) {
-			//todo: check if first character is a letter
-			currentLine.replace(0,1,currentLine.at(0).toUpper());
-		}
+		//todo: check if first character is a letter
+		currentLine.replace(0,1,currentLine.at(0).toUpper());
 		lyricsStringList.append(currentLine);
 	}
 	rawLyricsString = lyricsStringList.join("\n");
@@ -548,11 +595,11 @@ void QUMainWindow::on_pushButton_Tap_released()
 		addLinebreak = true;
 		currentSyllable.chop(1);
 	}
-	if (currentSyllable.endsWith("•")) {
+	if ((currentSyllable.endsWith("•") || (currentSyllable.endsWith("+")))) {
 		currentSyllable.chop(1);
 	}
 
-	currentOutputTextLine = QString("%1: %2 %3 %4 %5").arg(linebreakString).arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(_menu->comboBox_DefaultPitch->currentIndex()).arg(currentSyllable);
+	currentOutputTextLine = QString("%1: %2 %3 %4 %5").arg(linebreakString).arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(0).arg(currentSyllable);
 
 	timeLineMap.insert(currentNoteStartTime, currentOutputTextLine);
 
@@ -597,6 +644,7 @@ void QUMainWindow::on_pushButton_PasteFromClipboard_clicked()
 {
 	if (clipboard->mimeData()->hasText()) {
 		ui->plainTextEdit_InputLyrics->setPlainText(clipboard->text());
+		handleLyrics(ui->plainTextEdit_InputLyrics->toPlainText());
 	}
 
 	montyTalk();
@@ -647,7 +695,7 @@ void QUMainWindow::on_comboBox_Video_editTextChanged(QString video)
 		ui->label_VideoSet->setPixmap(QPixmap(":/icons/path_ok.png"));
 }
 
-void QUMainWindow::aboutUSC()
+void QUMainWindow::aboutUltraStarCreator()
 {
 	QUAboutDialog(this).exec();
 }
@@ -773,6 +821,7 @@ void QUMainWindow::on_pushButton_BrowseLyrics_clicked()
 		if (file.open(QFile::ReadOnly | QFile::Text)) {
 			QTextStream lyrics(&file);
 			ui->plainTextEdit_InputLyrics->setPlainText(lyrics.readAll());
+			handleLyrics(ui->plainTextEdit_InputLyrics->toPlainText());
 		}
 	}
 }
@@ -1122,7 +1171,6 @@ void QUMainWindow::handleMP3() {
 	ui->label_GenreSet->setEnabled(enabled);
 	ui->label_YearIcon->setEnabled(enabled);
 	ui->label_Year->setEnabled(enabled);
-	ui->pushButton_searchLyrics->setEnabled(enabled);
 	ui->comboBox_Year->setEnabled(enabled);
 	ui->label_YearSet->setEnabled(enabled);
 	ui->label_CreatorIcon->setEnabled(enabled);
@@ -1223,9 +1271,20 @@ void QUMainWindow::on_pushButton_GetLyrics_clicked() {
 	}
 	
 	if(!lyricsFound) {
+		setCursor(Qt::ArrowCursor);
 		return;
+	} else {
+		handleLyrics(ui->plainTextEdit_InputLyrics->toPlainText());
 	}
-	
+}
+
+void QUMainWindow::handleLyrics(QString lyrics) {
+	if(determineLanguage(lyrics)) {
+		cleanAndSyllabifyLyrics(lyrics);
+	}
+}
+
+bool QUMainWindow::determineLanguage(QString lyrics) {
 	// determine language using compact language detector
 	int threshold = 10; // 10 % of song lyrics need to identified as a certain language to count
 	bool isReliable;
@@ -1237,7 +1296,7 @@ void QUMainWindow::on_pushButton_GetLyrics_clicked() {
 	CLD2::Language language3[3];
 	int percent3[3];
 	int text_bytes;
-	CLD2::Language cld2_lang = CLD2::DetectLanguageSummary(lyr.toStdString().c_str(), lyr.length(), false, language3, percent3, &text_bytes, &isReliable);
+	CLD2::Language cld2_lang = CLD2::DetectLanguageSummary(lyrics.toStdString().c_str(), lyrics.length(), false, language3, percent3, &text_bytes, &isReliable);
 	
 	if(isReliable) {
 		for(int i = 0; i < 3; ++i) {
@@ -1260,13 +1319,19 @@ void QUMainWindow::on_pushButton_GetLyrics_clicked() {
 		}
 	} else {
 		// do not set language, too unreliable
+		ui->comboBox_Language->setCurrentIndex(0);
+		// todo: warning
 	}
 	
+	return isReliable;
+}
+
+void QUMainWindow::cleanAndSyllabifyLyrics(QString lyrics) {
 	// clean lyrics
-	QString cleanedLyrics = cleanLyrics(lyr);
+	QString cleanedLyrics = cleanLyrics(lyrics);
 	
 	// split lyrics into syllables
-	QString syllabifiedLyrics = syllabifyLyrics(cleanedLyrics, cld2_languages.at(0));
+	QString syllabifiedLyrics = syllabifyLyrics(cleanedLyrics, ui->comboBox_Language->currentData().toString());
 	
 	ui->plainTextEdit_InputLyrics->setPlainText(syllabifiedLyrics);
 	
@@ -1288,10 +1353,10 @@ void QUMainWindow::on_pushButton_GetLyrics_clicked() {
 
 void QUMainWindow::setPlaybackSpeed(int value)
 {
-	_menu->label_PlaybackSpeedPercentage->setText(QString("%1 \%").arg(QString::number(value)));
+	ui->label_PlaybackSpeedPercentage->setText(QString("%1 \%").arg(QString::number(value)));
 
 	if (state == playing || state == paused) {
-		BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO_FREQ, sampleRate*_menu->horizontalSlider_PlaybackSpeed->value()/100);
+		BASS_ChannelSetAttribute(_mediaStream, BASS_ATTRIB_TEMPO_FREQ, sampleRate*ui->horizontalSlider_PlaybackSpeed->value()/100);
 	}
 }
 
@@ -1331,6 +1396,15 @@ void QUMainWindow::aboutTagLib()
 											.arg(TAGLIB_MAJOR_VERSION)
 											.arg(TAGLIB_MINOR_VERSION)
 											.arg(TAGLIB_PATCH_VERSION));
+}
+
+void QUMainWindow::aboutCLD2()
+{
+	QUMessageBox::information(this,
+							tr("About Compact Language Detector 2"),
+							QString(tr("<b>Compact Language Detector 2</b><br><br>"
+											"Compact Language Dectector 2 is a ....<br><br>"
+											"Visit: <a href=\"https://github.com/CLD2Owners/cld2\">CLD2 Github page</a>")));
 }
 
 void QUMainWindow::updateTime() {
@@ -1436,12 +1510,12 @@ void QUMainWindow::on_pushButton_UndoTap_clicked()
 
 void QUMainWindow::updateSyllableButtons() {
 	QString syllable = lyricsSyllableList[currentSyllableIndex];
-	syllable.replace("\n", "¶");
+	syllable.replace("\n", "¶").replace("•", "").replace("+", "");
 	ui->pushButton_Tap->setText(syllable);
 
 	if (currentSyllableIndex+1 < numSyllables) {
 		syllable = lyricsSyllableList[currentSyllableIndex+1];
-		syllable.replace("\n", "¶");
+		syllable.replace("\n", "¶").replace("•", "").replace("+", "");
 		ui->pushButton_NextSyllable1->setText(syllable);
 	}
 	else {
@@ -1449,7 +1523,7 @@ void QUMainWindow::updateSyllableButtons() {
 	}
 	if (currentSyllableIndex+2 < numSyllables) {
 		syllable = lyricsSyllableList[currentSyllableIndex+2];
-		syllable.replace("\n", "¶");
+		syllable.replace("\n", "¶").replace("•", "").replace("+", "");
 		ui->pushButton_NextSyllable2->setText(syllable);
 	}
 	else {
@@ -1457,7 +1531,7 @@ void QUMainWindow::updateSyllableButtons() {
 	}
 	if (currentSyllableIndex+3 < numSyllables) {
 		syllable = lyricsSyllableList[currentSyllableIndex+3];
-		syllable.replace("\n", "¶");
+		syllable.replace("\n", "¶").replace("•", "").replace("+", "");
 		ui->pushButton_NextSyllable3->setText(syllable);
 	}
 	else {
@@ -1465,7 +1539,7 @@ void QUMainWindow::updateSyllableButtons() {
 	}
 	if (currentSyllableIndex+4 < numSyllables) {
 		syllable = lyricsSyllableList[currentSyllableIndex+4];
-		syllable.replace("\n", "¶");
+		syllable.replace("\n", "¶").replace("•", "").replace("+", "");
 		ui->pushButton_NextSyllable4->setText(syllable);
 	}
 	else {
@@ -1473,7 +1547,7 @@ void QUMainWindow::updateSyllableButtons() {
 	}
 	if (currentSyllableIndex+5 < numSyllables) {
 		syllable = lyricsSyllableList[currentSyllableIndex+5];
-		syllable.replace("\n", "¶");
+		syllable.replace("\n", "¶").replace("•", "").replace("+", "");
 		ui->pushButton_NextSyllable5->setText(syllable);
 	}
 	else {
@@ -1483,7 +1557,7 @@ void QUMainWindow::updateSyllableButtons() {
 
 void QUMainWindow::splitLyricsIntoSyllables()
 {
-	QRegularExpression re("([^ •\n-]+[ •\n-]*)"); //todo: verify regular expression
+	QRegularExpression re("([^ •+\n-]+[ •+\n-]*)"); //todo: verify regular expression
 	QRegularExpressionMatchIterator i = re.globalMatch(lyricsString);
 	
 	while (i.hasNext()) {
@@ -1706,7 +1780,7 @@ void QUMainWindow::generateFreestyleTextFiles()
 					}
 					title = tokens.join(" ");
 
-					dirName = QString("%1 - %2").arg(artist).arg(title);
+					dirName = QString("%1 - %2").arg(artist, title);
 				}
 				else { // audio file does not follow "Artist - Title.*" naming scheme
 					artist = songInfo.completeBaseName();
@@ -1716,17 +1790,16 @@ void QUMainWindow::generateFreestyleTextFiles()
 				}
 
 				songInfo.dir().mkdir(dirName);
-				QString newFileName(QString("%1/%2/%3.%4").arg(songInfo.absolutePath()).arg(dirName).arg(dirName).arg(songInfo.suffix().toLower()));
+				QString newFileName(QString("%1/%2/%3.%4").arg(songInfo.absolutePath(), dirName, dirName).arg(songInfo.suffix().toLower()));
 				songFile.rename(newFileName);
 
 				// text file
-				QString textFilename(QString("%1/%2/%3.txt").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+				QString textFilename(QString("%1/%2/%3.txt").arg(songInfo.absolutePath(), dirName, dirName));
 				QFile file(textFilename);
 				if (!file.open(QFile::WriteOnly | QFile::Text)) {
 					QUMessageBox::warning(this, tr("Application"),
 										  tr("Cannot write file: %1\n%2.")
-										  .arg(textFilename)
-										  .arg(file.errorString()));
+										  .arg(textFilename, file.errorString()));
 				}
 
 				QTextStream out(&file);
@@ -1826,7 +1899,7 @@ QString QUMainWindow::syllabifyLyrics(QString lyrics, QString language)
 			patternFile.close();
 			
 			//QRegularExpression rx("(?i)(?:(?![×Þ÷þ])[-'0-9a-zßøÀ-ÿ])+"); // match any word including accented characters
-			QRegularExpression rx("([^ \n,!.\?\(\);:-]+)"); //todo: verify regular expression
+			QRegularExpression rx("([^ \n,!.\?();:-]+)"); //todo: verify regular expression
 			QRegularExpressionMatchIterator i = rx.globalMatch(lyrics);
 			
 			while (i.hasNext()) {
@@ -1976,18 +2049,24 @@ void QUMainWindow::checkForUpdate(bool silent)
 
 void QUMainWindow::on_comboBox_Cover_currentIndexChanged(const QString &cover)
 {
-	if(!cover.isEmpty())
+	if(!cover.isEmpty()) {
 		ui->label_CoverSet->setPixmap(QPixmap(":/icons/path_ok.png"));
-	else
+		ui->label_CoverPixmap->setPixmap(QPixmap(QFileInfo(defaultDir, ui->comboBox_Cover->currentText()).absoluteFilePath()).scaled(ui->label_CoverSet->width(),ui->label_CoverSet->height(),Qt::KeepAspectRatio));
+	}
+	else {
 		ui->label_CoverSet->setPixmap(QPixmap(":/icons/path_error.png"));
+	}
 }
 
 void QUMainWindow::on_comboBox_Background_currentIndexChanged(const QString &background)
 {
-	if(!background.isEmpty())
+	if(!background.isEmpty()) {
 		ui->label_BackgroundSet->setPixmap(QPixmap(":/icons/path_ok.png"));
-	else
+		ui->label_BackgroundPixmap->setPixmap(QPixmap(QFileInfo(defaultDir, ui->comboBox_Background->currentText()).absoluteFilePath()).scaled(ui->label_BackgroundSet->width(),ui->label_BackgroundSet->height(),Qt::KeepAspectRatio));
+	}
+	else {
 		ui->label_BackgroundSet->setPixmap(QPixmap(":/icons/path_error.png"));
+	}
 }
 
 void QUMainWindow::on_comboBox_Video_currentIndexChanged(const QString &video)
@@ -1999,8 +2078,8 @@ void QUMainWindow::on_comboBox_Video_currentIndexChanged(const QString &video)
 }
 
 void QUMainWindow::montyTalk(bool force) {
-	if(!force && !_menu->montyBtn->isChecked())
-		return;
+	//if(!force && !_menu->montyBtn->isChecked())
+	//	return;
 
 	ui->montyArea->show();
 	monty->talk(ui->montyArea->montyLbl, ui->montyArea->helpLbl);
