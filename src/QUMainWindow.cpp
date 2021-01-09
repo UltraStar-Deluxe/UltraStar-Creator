@@ -87,7 +87,7 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	defaultDir = QDir::homePath();
 
 	if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
-		this->checkForUpdate(true);
+		this->checkForUpdate();
 	}
 
 	this->show();
@@ -99,7 +99,6 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 void QUMainWindow::closeEvent(QCloseEvent *event) {
 	QSettings settings;
 
-	//settings.setValue("allowMonty", QVariant(_menu->montyBtn->isChecked()));
 	settings.setValue("geometry", saveGeometry());
 	settings.setValue("windowState", saveState());
 	settings.setValue("creator", ui->lineEdit_Creator->text());
@@ -218,7 +217,6 @@ void QUMainWindow::initMenuBar() {
 	uiLanguageGroup->addAction(enableFrenchAction);
 	uiLanguageGroup->addAction(enablePortugueseAction);
 	uiLanguageGroup->addAction(enablePolishAction);
-	enableEnglishAction->setChecked(true);
 	
 	languageMenu = menuBar()->addMenu(tr("&Language"));
 	languageMenu->addAction(enableEnglishAction);
@@ -251,7 +249,7 @@ void QUMainWindow::initMenuBar() {
 	
 	checkForUpdateAction = new QAction(QIcon(":/icons/check_for_update.png"), tr("&Check for update..."), this);
 	checkForUpdateAction->setMenuRole(QAction::ApplicationSpecificRole);
-	connect(checkForUpdateAction, SIGNAL(triggered()), this, SLOT(checkForUpdate(bool silent)));
+	connect(checkForUpdateAction, SIGNAL(triggered()), this, SLOT(checkForUpdate()));
 	
 	aboutMenu = menuBar()->addMenu(tr("&About"));
 	aboutMenu->addAction(aboutUltraStarCreatorAction);
@@ -881,6 +879,7 @@ void QUMainWindow::on_plainTextEdit_InputLyrics_textChanged()
  */
 void QUMainWindow::enableEnglish()
 {
+	enableEnglishAction->setChecked(true);
 	changeLanguage("English");
 }
 
@@ -889,6 +888,7 @@ void QUMainWindow::enableEnglish()
  */
 void QUMainWindow::enableFrench()
 {
+	enableFrenchAction->setChecked(true);
 	changeLanguage("French");
 }
 
@@ -897,6 +897,7 @@ void QUMainWindow::enableFrench()
  */
 void QUMainWindow::enableGerman()
 {
+	enableGermanAction->setChecked(true);
 	changeLanguage("German");
 }
 
@@ -905,6 +906,7 @@ void QUMainWindow::enableGerman()
  */
 void QUMainWindow::enablePolish()
 {
+	enablePolishAction->setChecked(true);
 	changeLanguage("Polish");
 }
 
@@ -913,6 +915,7 @@ void QUMainWindow::enablePolish()
  */
 void QUMainWindow::enableSpanish()
 {
+	enableSpanishAction->setChecked(true);
 	changeLanguage("Spanish");
 }
 
@@ -921,6 +924,7 @@ void QUMainWindow::enableSpanish()
  */
 void QUMainWindow::enablePortuguese()
 {
+	enablePortugueseAction->setChecked(true);
 	changeLanguage("Portuguese");
 }
 
@@ -1046,6 +1050,17 @@ void QUMainWindow::BASS_SetPosition(int seconds) {
 
 void QUMainWindow::handleMP3() {
 	setCursor(Qt::WaitCursor);
+	
+	// clear any previous entries
+	ui->lineEdit_Artist->clear();
+	ui->lineEdit_Title->clear();
+	ui->plainTextEdit_InputLyrics->clear();
+	ui->comboBox_Language->clear();
+	ui->comboBox_Genre->clear();
+	ui->comboBox_Cover->clear();
+	ui->comboBox_Background->clear();
+	ui->comboBox_Video->clear();
+	ui->doubleSpinBox_BPM->clear();
 
 	ui->lineEdit_MP3->setText(fileInfo_MP3->fileName());
 
@@ -1202,6 +1217,8 @@ void QUMainWindow::handleMP3() {
 	ui->groupBox_Control->setEnabled(enabled);
 	ui->groupBox_InputLyrics->setEnabled(enabled);
 	
+	getYear();
+	
 	setCursor(Qt::ArrowCursor);
 
 	montyTalk();
@@ -1261,7 +1278,7 @@ void QUMainWindow::on_pushButton_GetLyrics_clicked() {
 		match = re.match(musixmatch_page);
 		
 		if (match.hasMatch()) {
-			lyr = match.captured(1).replace("\\n","\n");
+			lyr = match.captured(1).replace("\\n","\n").replace("\\\"", "\"");
 			lyr.chop(1); //todo: change above regex to not include the final "
 			ui->plainTextEdit_InputLyrics->setPlainText(lyr);
 			lyricsFound = true;
@@ -1315,7 +1332,7 @@ bool QUMainWindow::determineLanguage(QString lyrics) {
 		ui->comboBox_Language->addItem(cld2_languages.at(0),cld2_languages.at(0));
 		
 		if(cld2_languages.length() > 1) {
-			// warning, set to first language
+			// todo: warning, set to first language
 		}
 	} else {
 		// do not set language, too unreliable
@@ -1868,12 +1885,6 @@ void QUMainWindow::on_actionHelp_triggered()
 							  0);
 }
 
-void QUMainWindow::on_pushButton_SyllabificateTeX_clicked()
-{
-	QString syllabifiedLyrics = syllabifyLyrics(ui->plainTextEdit_InputLyrics->toPlainText(), ui->comboBox_Language->currentText());
-	ui->plainTextEdit_InputLyrics->setPlainText(syllabifiedLyrics);
-}
-
 QString QUMainWindow::syllabifyLyrics(QString lyrics, QString language)
 {
 	QString sep = "•";
@@ -1899,8 +1910,10 @@ QString QUMainWindow::syllabifyLyrics(QString lyrics, QString language)
 			patternFile.close();
 			
 			//QRegularExpression rx("(?i)(?:(?![×Þ÷þ])[-'0-9a-zßøÀ-ÿ])+"); // match any word including accented characters
-			QRegularExpression rx("([^ \n,!.\?();:-]+)"); //todo: verify regular expression
+			QRegularExpression rx("([^ \n,!.\?();:-]+)"); //todo: verify regular expression (any character that is not a delimiter or a punctuation mark not belonging to a word)
 			QRegularExpressionMatchIterator i = rx.globalMatch(lyrics);
+			
+			int numSeparators = 0;
 			
 			while (i.hasNext()) {
 				QRegularExpressionMatch match = i.next();
@@ -1913,9 +1926,11 @@ QString QUMainWindow::syllabifyLyrics(QString lyrics, QString language)
 					if(word.at(0).isUpper()) {
 						syllabifiedWord.replace(0, 1, word.at(0).toUpper());
 					}
-					lyrics.replace(word, syllabifiedWord);
+					//lyrics.replace(word, syllabifiedWord); // this will replace every occurence of word by syllabifiedWord, which at first seems to be what we want, but then "ne•ver" in "whenever" is replaced, becoming "whene•ver", which is wrong
+					lyrics.replace(match.capturedStart() + numSeparators, match.capturedLength(), syllabifiedWord);
+					numSeparators += syllabifiedWord.count(sep);
 				} else {
-					qDebug() << word;
+					//qDebug() << word << " is not in the syllabification dictionary.";
 				}
 			}
 		}
@@ -1953,7 +1968,7 @@ void QUMainWindow::on_doubleSpinBox_BPM_valueChanged(double BPMValue)
 	}
 }
 
-void QUMainWindow::on_pushButton_ShowWebSite_clicked()
+void QUMainWindow::getYear()
 {
 	QUrl url("http://swisscharts.com/search.asp");
 	QUrlQuery urlQuery;
@@ -1965,13 +1980,46 @@ void QUMainWindow::on_pushButton_ShowWebSite_clicked()
 	}
 	urlQuery.addQueryItem("search", encodedQuery);
 	url.setQuery(urlQuery);
-	QDesktopServices::openUrl(url);
+	
+	//QDesktopServices::openUrl(url);
+	
+	QNetworkAccessManager *m_NetworkMngr = new QNetworkAccessManager(this);
+	QNetworkReply *reply = m_NetworkMngr->get(QNetworkRequest(url));
+
+	QEventLoop loop;
+	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+	loop.exec();
+	if(reply->error() != QNetworkReply::NoError) {
+		QUMessageBox::warning(this,
+			tr("Lyrics retrieval failed."),
+				QString(tr("Is your internet connection working?")),
+				BTN << ":/icons/accept.png" << "OK",
+				240);
+		logSrv->add(QString(tr("Lyrics retrieval failed. Host unreachable.")), QU::Error);
+		return;
+	}
+	
+	QString searchresult = reply->readAll();
+	
+	QRegularExpression re = QRegularExpression("<td class=\"text\">\r\n([12]{1}[0-9]{3})\r\n</td>", QRegularExpression::InvertedGreedinessOption);
+	QRegularExpressionMatch match = re.match(searchresult);
+	
+	if (match.hasMatch()) {
+		QString year = match.captured(1);
+		ui->comboBox_Year->setCurrentText(year);
+		ui->label_YearSet->setPixmap(QPixmap(":/icons/path_ok.png"));
+	} else {
+		// todo: warning that year could not be determined
+		//qDebug() << "No match found!";
+	}
 }
 
-void QUMainWindow::checkForUpdate(bool silent)
+void QUMainWindow::checkForUpdate()
 {
 	int currentVersion = MAJOR_VERSION*100 + MINOR_VERSION*10 + PATCH_VERSION;
 
+	QSettings settings;
+	
 	QUrl url("https://github.com/UltraStar-Deluxe/UltraStar-Creator/blob/master/src/latest_version.xml");
 	QNetworkAccessManager *m_NetworkMngr = new QNetworkAccessManager(this);
 	QNetworkReply *reply = m_NetworkMngr->get(QNetworkRequest(url));
@@ -1980,7 +2028,7 @@ void QUMainWindow::checkForUpdate(bool silent)
 	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
 	loop.exec();
 	if(reply->error() != QNetworkReply::NoError) {
-		if (!silent) {
+		if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
 			QUMessageBox::warning(this,
 					tr("Update check failed."),
 					QString(tr("Is your internet connection working?")),
@@ -1993,7 +2041,7 @@ void QUMainWindow::checkForUpdate(bool silent)
 
 	QTemporaryFile tmp;
 	if (!tmp.open()) {
-		if (!silent) {
+		if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
 			QUMessageBox::warning(this,
 					tr("Update check failed."),
 					QString(tr("No permission to write file %1.")).arg(tmp.fileName()),
@@ -2024,8 +2072,7 @@ void QUMainWindow::checkForUpdate(bool silent)
 		logSrv->add(QString(tr("Update check successful. A new version of UltraStar Creator is available.")), QU::Information);
 	} else {
 		logSrv->add(QString(tr("Update check successful. UltraStar Creator is up to date.")), QU::Information);
-		if (!silent) {
-			QSettings settings;
+		if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
 			int result = QUMessageBox::information(this,
 					tr("Update check successful."),
 					QString(tr("UltraStar Creator %1.%2.%3 is <b>up to date</b>!"))
@@ -2051,7 +2098,6 @@ void QUMainWindow::on_comboBox_Cover_currentIndexChanged(const QString &cover)
 {
 	if(!cover.isEmpty()) {
 		ui->label_CoverSet->setPixmap(QPixmap(":/icons/path_ok.png"));
-		ui->label_CoverPixmap->setPixmap(QPixmap(QFileInfo(defaultDir, ui->comboBox_Cover->currentText()).absoluteFilePath()).scaled(ui->label_CoverSet->width(),ui->label_CoverSet->height(),Qt::KeepAspectRatio));
 	}
 	else {
 		ui->label_CoverSet->setPixmap(QPixmap(":/icons/path_error.png"));
@@ -2062,7 +2108,6 @@ void QUMainWindow::on_comboBox_Background_currentIndexChanged(const QString &bac
 {
 	if(!background.isEmpty()) {
 		ui->label_BackgroundSet->setPixmap(QPixmap(":/icons/path_ok.png"));
-		ui->label_BackgroundPixmap->setPixmap(QPixmap(QFileInfo(defaultDir, ui->comboBox_Background->currentText()).absoluteFilePath()).scaled(ui->label_BackgroundSet->width(),ui->label_BackgroundSet->height(),Qt::KeepAspectRatio));
 	}
 	else {
 		ui->label_BackgroundSet->setPixmap(QPixmap(":/icons/path_error.png"));

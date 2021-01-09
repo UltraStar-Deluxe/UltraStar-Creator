@@ -53,9 +53,7 @@ private slots:
 	void montyPrev();
 	void montyNext();
 
-	void on_pushButton_ShowWebSite_clicked();
 	void on_doubleSpinBox_BPM_valueChanged(double BPMValue);
-	void on_pushButton_SyllabificateTeX_clicked();
 	void on_comboBox_Year_activated(QString );
 	void on_actionHelp_triggered();
 	void on_horizontalSlider_PreviewMP3_sliderMoved(int position);
@@ -97,7 +95,7 @@ private slots:
 	void aboutTagLib();
 	void aboutBASS();
 	void aboutCLD2();
-	void checkForUpdate(bool silent);
+	void checkForUpdate();
 
 	void on_comboBox_Cover_currentIndexChanged(const QString &cover);
 	void on_comboBox_Background_currentIndexChanged(const QString &background);
@@ -140,18 +138,12 @@ private:
 	QFileInfo* fileInfo_MP3;
 	void keyPressEvent(QKeyEvent *event);
 	void keyReleaseEvent(QKeyEvent *event);
-	bool isVowel(QChar character, QString lang);
-	bool isUmlaut(QChar character, QString lang);
-	bool isDiphthong(QChar character1, QChar character2, QString lang);
-	bool isConsonant(QChar character, QString lang);
-	bool isInseparable(QChar character1, QChar character2, QString lang);
-	bool isStrongVowel(QChar character, QString lang);
-	bool isHiatus(QChar character1, QChar character2, QString lang);
 	QString getResourcesPath();
 	QString syllabifyLyrics(QString lyrics, QString language);
 	void handleLyrics(QString lyrics);
 	bool determineLanguage(QString lyrics);
 	void cleanAndSyllabifyLyrics(QString lyrics);
+	void getYear();
 	
 	QActionGroup *uiLanguageGroup;
 	QAction *enableEnglishAction;
