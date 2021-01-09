@@ -420,8 +420,8 @@ re•gar•der
 re•li•er
 re•pré•sen•ter
 re•trouve
-re•trou•vé
 re•trou•ver
+re•trou•vé
 re•ven•di•ca•tion
 ri•vage
 ri•vi•ère
@@ -453,6 +453,7 @@ seg•ment
 sen•tir
 ser•vir
 seule•ment
+se•cret
 se•maine
 se•mence
 se•ra
@@ -476,6 +477,7 @@ sou•hai•ter
 sou•rire
 sou•ris
 sou•vent
+sou•viens
 so•leil
 so•lu•tion
 spé•cial
@@ -510,6 +512,8 @@ tou•jours
 to•tal
 tra•vail
 tra•ver•ser
+tris•tesse
+tris•tesses
 tri•an•gle
 troi•si•ème
 tron•çon
@@ -541,6 +545,7 @@ voy•elle
 vo•ler
 vo•lon•té
 vo•tre
+vrai•ment
 vé•ri•fi•er
 vê•tir
 é•chelle
