@@ -6,7 +6,7 @@ environment:
 install:
   - set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw810_64\bin;C:\Program Files (x86)\NSIS\;%PATH%
   - cmd: appveyor DownloadFile http://tripleboot.org/Uploads/windeployqt64releaseonly.zip
-  - cmd: 7z e windeployqt64releaseonly.zip -o %QTDIR%\..\..\Tools\mingw810_64\bin
+  - cmd: 7z e windeployqt64releaseonly.zip -o%QTDIR%\..\..\Tools\mingw810_64\bin
 
 build_script:
   - cd src/
