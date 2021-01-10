@@ -1,3 +1,4 @@
+Unicode True
 XPStyle on
 
 !define PRODUCTNAME "UltraStar-Creator"
