@@ -1,23 +1,160 @@
-image: Visual Studio 2019
+version: 1.2.{build}
+
+branches:
+  only:
+    - master
 
 environment:
-  QTDIR: C:\Qt\5.15.2\mingw81_64
+  global:
+    APPVEYOR_SAVE_CACHE_ON_ERROR: true
+    APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=4
+    APPVEYOR_RDP_PASSWORD: UltraStar-Creator!
+  matrix:
+    # Windows
+    - ARCH: x64
+      COMPILER: MinGW
+      QTDIR: C:\Qt\5.15.2\mingw81_64
+    # macOS
+    - ARCH: x64
+      COMPILER: Clang
+    # Ubuntu
+    - ARCH: x64
+      COMPILER: GCC
 
-install:
-  - set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw810_64\bin;C:\Program Files (x86)\NSIS\;%PATH%
-  - cmd: appveyor DownloadFile http://tripleboot.org/Uploads/windeployqt64releaseonly.zip
-  - cmd: 7z e windeployqt64releaseonly.zip -o%QTDIR%\..\..\Tools\mingw810_64\bin
+image:
+  # AppVeyor builds are ordered by the image list:
+  - Visual Studio 2019
+  - macos
+  - Ubuntu1804
 
-build_script:
-  - cd src/
-  - qmake UltraStar-Creator.pro -spec win32-g++
-  - mingw32-make -j4
+matrix:
+  exclude:
+    # Exclude invalid options
+    - image: Visual Studio 2019
+      COMPILER: Clang
+    - image: Visual Studio 2019
+      COMPILER: GCC
+    - image: macos
+      COMPILER: MinGW
+    - image: macos
+      COMPILER: GCC
+    - image: Ubuntu1804
+      COMPILER: MinGW
+    - image: Ubuntu1804
+      COMPILER: Clang
 
-after_build:
-  - makensis ../setup/win64/UltraStar-Creator.nsi
+for:
+  # Windows (MinGW)
+  -
+    matrix:
+      only:
+        - image: Visual Studio 2019
 
-artifacts:
-  - path: bin/release
-    name: UltraStar-Creator-portable
-    type: zip
-  - path: bin/UltraStar-Creator*-setup.exe
+    clone_folder: C:\UltraStar-Creator
+
+    init:
+      - cmd: git config --global core.autocrlf input
+      - cmd: echo NUMBER_OF_PROCESSORS=%NUMBER_OF_PROCESSORS%
+      - cmd: echo PROCESSOR_IDENTIFIER=%PROCESSOR_IDENTIFIER%
+      - cmd: echo QTDIR=%QTDIR%
+      - cmd: echo CMAKE_GENERATOR=%CMAKE_GENERATOR%
+
+    install:
+      - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
+      - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
+      # Qt 5.15.2 windeployqt has a bug, so use a custom version of windeployqt
+      - cmd: appveyor DownloadFile http://tripleboot.org/Uploads/windeployqt64releaseonly.zip
+      - cmd: 7z e windeployqt64releaseonly.zip -o%QTDIR%\..\..\Tools\mingw810_64\bin
+
+    before_build:
+      - cmd: set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw810_64\bin;C:\Program Files (x86)\NSIS\;%PATH%
+      - cmd: echo PATH=%PATH%
+
+    build_script:
+      - cmd: cd C:\UltraStar-Creator\src
+      - cmd: qmake UltraStar-Creator.pro -spec win32-g++
+      - cmd: mingw32-make -j%NUMBER_OF_PROCESSORS%
+
+    after_build:
+      - cmd: makensis ../setup/win64/UltraStar-Creator.nsi
+
+    artifacts:
+      - path: bin/release
+        name: UltraStar-Creator-portable
+        type: zip
+      - path: bin/UltraStar-Creator*-setup.exe
+        name: UltraStar-Creator-installer
+
+    on_failure:
+      # Change false to true to block build and investigate build failures
+      - ps: $blockRdp = $false; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+  # Mac
+  -
+    matrix:
+      only:
+        - image: macos
+
+    clone_folder: ~/UltraStar-Creator
+
+    init:
+      - sh: echo _NPROCESSORS_ONLN=$(getconf _NPROCESSORS_ONLN)
+      - sh: export PATH=$HOME/Qt/5.15.2/clang_64/bin:/usr/local/bin:$PATH
+      - sh: set PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig"
+
+    install:
+      - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
+      - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
+      - brew update
+      - brew install taglib
+      - brew install create-dmg
+
+    build_script:
+      - cd src
+      - qmake UltraStar-Creator.pro
+      - make -j$(getconf _NPROCESSORS_ONLN)
+      - cd ../bin/release
+      - macdeployqt UltraStar-Creator.app -dmg;
+
+    artifacts:
+      - path: bin/release
+        name: UltraStar-Creator-portable
+        type: zip
+      - path: bin/UltraStar-Creator*-setup.dmg
+        name: UltraStar-Creator-installer
+
+  # Ubuntu (AppImage)
+  -
+    matrix:
+      only:
+        - image: Ubuntu1804
+
+    clone_folder: ~/UltraStar-Creator
+
+    init:
+      - sh: echo _NPROCESSORS_ONLN=$(getconf _NPROCESSORS_ONLN)
+
+    install:
+      - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
+      - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
+      - sh: sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y
+      - sh: sudo apt update -qq
+      - sh: sudo apt install -y qt515base libtag1-dev libgl1-mesa-dev build-essential git zlib1g-dev libssl-dev wget fuse cmake libminiupnpc-dev
+      - sh: source /opt/qt*/bin/qt*-env.sh
+
+    build_script:
+      - sh: cd src
+      - sh: qmake UltraStar-Creator.pro
+      - sh: make -j$(getconf _NPROCESSORS_ONLN)
+      - sh: cd ../bin/release
+      # Build AppImage
+      - sh: wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+      - sh: chmod a+x linuxdeployqt*.AppImage
+      - sh: unset QTDIR
+      - sh: unset QT_PLUGIN_PATH
+      - sh: unset LD_LIBRARY_PATH
+      - sh: ./linuxdeployqt*.AppImage ./release/UltraStar-Creator.desktop -bundle-non-qt-libs -appimage
+
+    artifacts:
+      - path: bin/*.AppImage
+        name: UltraStar-Creator AppImage Package
