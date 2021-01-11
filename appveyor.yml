@@ -34,11 +34,11 @@ matrix:
       COMPILER: Clang
     - image: Visual Studio 2019
       COMPILER: GCC
-    - image: macos-mojave
+    - image: macos
       COMPILER: MinGW
-    - image: macos-mojave
+    - image: macos
       COMPILER: GCC
-    - image: Ubuntu2004
+    - image: Ubuntu1804
       COMPILER: MinGW
     - image: Ubuntu1804
       COMPILER: Clang
