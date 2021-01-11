@@ -99,13 +99,13 @@ for:
 
     init:
       - sh: echo _NPROCESSORS_ONLN=$(getconf _NPROCESSORS_ONLN)
-      - sh: export PATH=$HOME/Qt/5.15.2/clang_64/bin:$PATH
+      - sh: export PATH=$HOME/Qt/5.15.2/clang_64/bin:/usr/local/bin:$PATH
+      - sh: set PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig"
 
     install:
       - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
       - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
       - brew update
-      - brew install pkg-config
       - brew install taglib
       - brew install create-dmg
 
