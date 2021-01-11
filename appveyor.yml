@@ -114,14 +114,15 @@ for:
       - qmake UltraStar-Creator.pro
       - make -j$(getconf _NPROCESSORS_ONLN)
       - cd ../bin/release
-      - macdeployqt UltraStar-Creator.app -dmg;
+      - ls
+      #- macdeployqt UltraStar-Creator.app -dmg;
 
     artifacts:
       - path: bin/release
-        name: UltraStar-Creator-portable
+        name: UltraStar-Creator portable
         type: zip
-      - path: bin/UltraStar-Creator*-setup.dmg
-        name: UltraStar-Creator-installer
+      - path: bin/release/UltraStar-Creator.dmg
+        name: UltraStar-Creator disk image
 
   # Ubuntu (AppImage)
   -
