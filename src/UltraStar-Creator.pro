@@ -110,7 +110,8 @@ unix:!macx {
 		-lbass_fx
 
 	CONFIG += link_pkgconfig
-	PKGCONFIG += taglib
+	PKGCONFIG += taglib \
+		cld2
 
 	QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/lib\''
 }
