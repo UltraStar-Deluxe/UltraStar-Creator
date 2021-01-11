@@ -99,14 +99,12 @@ for:
 
     init:
       - sh: echo _NPROCESSORS_ONLN=$(getconf _NPROCESSORS_ONLN)
+      - sh: export PATH=$HOME/Qt/5.15.2/clang_64/bin:$PATH
 
     install:
       - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
       - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
       - brew update
-      - brew upgrade qt5
-      - brew link qt5 --force
-      - export PATH=/usr/local/opt/qt5/bin:$PATH
       - brew install taglib
       - brew install create-dmg
 
