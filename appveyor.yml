@@ -8,7 +8,7 @@ environment:
   global:
     APPVEYOR_SAVE_CACHE_ON_ERROR: true
     APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=4
-    APPVEYOR_RDP_PASSWORD: UltraStar
+    APPVEYOR_RDP_PASSWORD: UltraStar-Creator!
   matrix:
     # Windows
     - ARCH: x64
@@ -62,6 +62,9 @@ for:
     install:
       - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
       - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
+      # Qt 5.15.2 windeployqt has a bug, so use a custom version of windeployqt
+      - cmd: appveyor DownloadFile http://tripleboot.org/Uploads/windeployqt64releaseonly.zip
+      - cmd: 7z e windeployqt64releaseonly.zip -o%QTDIR%\..\..\Tools\mingw810_64\bin
 
     before_build:
       - cmd: set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw810_64\bin;C:\Program Files (x86)\NSIS\;%PATH%
