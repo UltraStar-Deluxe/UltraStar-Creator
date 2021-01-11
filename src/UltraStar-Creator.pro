@@ -204,5 +204,5 @@ macx {
 	QMAKE_POST_LINK += install_name_tool -change @loader_path/libcld2.dylib @executable_path/../Frameworks/libcld2.dylib ../bin/release/UltraStar-Creator.app/Contents/MacOS/UltraStar-Creator $$escape_expand(\\n\\t)
 
 	# Create a fancy Mac disk image
-	QMAKE_POST_LINK += create-dmg --volname UltraStar-Creator --volicon resources/UltraStar-Creator.icns --app-drop-link 350 170 --background ../setup/macx/img/UltraStar-Creator_bg.png --hide-extension UltraStar-Creator.app --window-size 500 300 --text-size 14 --icon-size 64 --icon UltraStar-Creator.app 150 170 --no-internet-enable "../bin/release/UltraStar-Creator.dmg" ../bin/release/UltraStar-Creator.app/
+	QMAKE_POST_LINK += create-dmg --volname UltraStar-Creator --volicon resources/UltraStar-Creator.icns --app-drop-link 350 170 --background ../setup/macx/img/UltraStar-Creator_bg.png --hide-extension UltraStar-Creator.app --window-size 500 300 --text-size 14 --icon-size 64 --icon UltraStar-Creator.app 150 170 --no-internet-enable --skip-jenkins "../bin/release/UltraStar-Creator.dmg" ../bin/release/UltraStar-Creator.app/
 }
