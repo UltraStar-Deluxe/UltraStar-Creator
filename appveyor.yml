@@ -105,6 +105,7 @@ for:
       - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
       - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
       - brew update
+      - brew install pkg-config
       - brew install taglib
       - brew install create-dmg
 
