@@ -145,7 +145,8 @@ for:
       #- sh: sudo apt install -y qt515base # if ppa:beineri is used
       - sh: sudo apt update -qq
       - sh: sudo apt install -y libtag1-dev libcld2-dev libgl1-mesa-dev build-essential git zlib1g-dev libssl-dev wget fuse cmake libminiupnpc-dev
-      - sh: source /opt/qt*/bin/qt*-env.sh
+      #- sh: source /opt/qt*/bin/qt*-env.sh # if ppa:beineri is used
+      - sh: source $HOME/Qt/latest/gcc_64/bin/qt*-env.sh
 
     build_script:
       - sh: cd src
