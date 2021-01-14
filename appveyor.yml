@@ -158,7 +158,7 @@ for:
       - sh: unset QTDIR
       - sh: unset QT_PLUGIN_PATH
       - sh: unset LD_LIBRARY_PATH
-      - sh: ./linuxdeployqt*.AppImage ./release/UltraStar-Creator.desktop -bundle-non-qt-libs -appimage
+      - sh: ./linuxdeployqt*.AppImage ../../setup/unix/release/UltraStar-Creator.desktop -bundle-non-qt-libs -appimage
 
     artifacts:
       - path: bin/*.AppImage
