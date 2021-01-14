@@ -142,7 +142,7 @@ for:
       - sh: sudo apt update -qq
       - sh: sudo apt install -y qt515base libtag1-dev libcld2-dev libgl1-mesa-dev build-essential git zlib1g-dev libssl-dev wget fuse cmake libminiupnpc-dev
       - sh: source /opt/qt*/bin/qt*-env.sh
-      - sh: [ ! -f /usr/lib/x86_64-linux-gnu/pkgconfig/cld2.pc ] && echo -e "prefix=/usr\nexec_prefix=/usr\nlibdir=/usr/lib/x86_64-linux-gnu\nincludedir=/usr/include\n\nName: cld2\nDescription: Compact Language Detector 2\nVersion: 0.0.0\nLibs: -L${libdir} -ltag\nCflags: -I${includedir}/cld2" > /usr/lib/x86_64-linux-gnu/pkgconfig/cld2.pc
+      - sh: '[ ! -f /usr/lib/x86_64-linux-gnu/pkgconfig/cld2.pc ] && echo -e "prefix=/usr\nexec_prefix=/usr\nlibdir=/usr/lib/x86_64-linux-gnu\nincludedir=/usr/include\n\nName: cld2\nDescription: Compact Language Detector 2\nVersion: 0.0.0\nLibs: -L${libdir} -ltag\nCflags: -I${includedir}/cld2" > /usr/lib/x86_64-linux-gnu/pkgconfig/cld2.pc'
 
     build_script:
       - sh: cd src
