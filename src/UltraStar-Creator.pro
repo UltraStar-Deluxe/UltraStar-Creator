@@ -109,10 +109,11 @@ unix:!macx {
 		-lbass \
 		-lbass_fx
 
-	QT_CONFIG -= no-pkg-config
+	LIBS += -L"/usr/lib/x86_64-linux-gnu" \
+		-lcld2
+
 	CONFIG += link_pkgconfig
-	PKGCONFIG += taglib \
-		cld2
+	PKGCONFIG += taglib
 
 	QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/lib\''
 }
