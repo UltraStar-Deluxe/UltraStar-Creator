@@ -25,7 +25,7 @@ image:
   # AppVeyor builds are ordered by the image list:
   - Visual Studio 2019
   - macos
-  - Ubuntu1804
+  - Ubuntu1604
 
 matrix:
   exclude:
@@ -40,7 +40,7 @@ matrix:
       COMPILER: GCC
     - image: Ubuntu1804
       COMPILER: MinGW
-    - image: Ubuntu1804
+    - image: Ubuntu1604
       COMPILER: Clang
 
 for:
@@ -128,7 +128,7 @@ for:
   -
     matrix:
       only:
-        - image: Ubuntu1804
+        - image: Ubuntu1604
 
     clone_folder: ~/UltraStar-Creator
 
@@ -138,7 +138,9 @@ for:
     install:
       - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
       - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
-      - sh: sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y
+      - sh: sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-xenial -y # for Ubuntu1604 Xenial Xerus
+      #- sh: sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y # for Ubuntu1804 Bionic Beaver
+      #- sh: sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y # for Ubuntu2004 Focal Fossa
       - sh: sudo apt update -qq
       - sh: sudo apt install -y qt515base libtag1-dev libcld2-dev libgl1-mesa-dev build-essential git zlib1g-dev libssl-dev wget fuse cmake libminiupnpc-dev
       - sh: source /opt/qt*/bin/qt*-env.sh
