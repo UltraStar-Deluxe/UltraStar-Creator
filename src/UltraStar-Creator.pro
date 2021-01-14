@@ -109,6 +109,7 @@ unix:!macx {
 		-lbass \
 		-lbass_fx
 
+	QT_CONFIG -= no-pkg-config
 	CONFIG += link_pkgconfig
 	PKGCONFIG += taglib \
 		cld2
