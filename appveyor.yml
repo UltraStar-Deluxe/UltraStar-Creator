@@ -142,8 +142,9 @@ for:
       #- sh: sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-xenial -y # for Ubuntu1604 Xenial Xerus
       #- sh: sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y # for Ubuntu1804 Bionic Beaver
       #- sh: sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y # for Ubuntu2004 Focal Fossa
+      #- sh: sudo apt install -y qt515base # if ppa:beineri is used
       - sh: sudo apt update -qq
-      - sh: sudo apt install -y qt515base libtag1-dev libcld2-dev libgl1-mesa-dev build-essential git zlib1g-dev libssl-dev wget fuse cmake libminiupnpc-dev
+      - sh: sudo apt install -y libtag1-dev libcld2-dev libgl1-mesa-dev build-essential git zlib1g-dev libssl-dev wget fuse cmake libminiupnpc-dev
       - sh: source /opt/qt*/bin/qt*-env.sh
 
     build_script:
