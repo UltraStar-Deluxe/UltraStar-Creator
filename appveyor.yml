@@ -164,5 +164,5 @@ for:
       - sh: ./linuxdeployqt*.AppImage UltraStar-Creator.desktop -bundle-non-qt-libs -appimage
 
     artifacts:
-      - path: bin/*.AppImage
+      - path: bin/release/*.AppImage
         name: UltraStar-Creator AppImage Package
