@@ -144,7 +144,7 @@ for:
       # UltraStar-Creator needs these:
       - sh: sudo apt install -y libtag1-dev libcld2-dev
       # linuxdeployqt needs these:
-      - sh: sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xkb-dev libxkbcommon-x11-0
+      - sh: sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xkb-dev libxkbcommon-x11-0 libgtk2.0-dev
 
     build_script:
       - sh: cd src
