@@ -140,7 +140,9 @@ for:
       - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
       - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
       - sh: sudo apt update -qq
-      - sh: sudo apt install -y libtag1-dev libcld2-dev build-essential libgl1-mesa-dev # zlib1g-dev libssl-dev fuse
+      - sh: sudo apt install -y libgl1-mesa-dev build-essential
+      # UltraStar-Creator needs these:
+      - sh: sudo apt install -y libtag1-dev libcld2-dev
       # linuxdeployqt needs these:
       - sh: sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xkb-dev libxkbcommon-x11-0
 
@@ -150,9 +152,9 @@ for:
       - sh: make -j$(getconf _NPROCESSORS_ONLN)
       - sh: cd ../bin/release
       # Build AppImage
-      #- sh: wget https://github.com/probonopd/linuxdeployqt/releases/download/5/linuxdeployqt-5-x86_64.AppImage
-      #- sh: wget https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage
-      #- sh: wget https://github.com/probonopd/linuxdeployqt/releases/download/7/linuxdeployqt-7-x86_64.AppImage
+      #- sh: wget https://github.com/probonopd/linuxdeployqt/releases/download/5/linuxdeployqt-5-x86_64.AppImage # linuxdeployqt 5
+      #- sh: wget https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage # linuxdeployqt 6
+      #- sh: wget https://github.com/probonopd/linuxdeployqt/releases/download/7/linuxdeployqt-7-x86_64.AppImage # linuxdeployqt 7
       - sh: wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
       - sh: chmod a+x linuxdeployqt*.AppImage
       - sh: unset QTDIR
