@@ -146,7 +146,7 @@ for:
       # linuxdeployqt needs these:
       - sh: sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xkb-dev libxkbcommon-x11-0 libgtk2.0-dev
       # build qtstyleplugins with gtk2.0
-      - sh: git clone http://code.qt.io/qt/qtstyleplugins.git && cd qtstyleplugins && qmake && make -j$(nproc) && sudo make install && cd -
+      #- sh: git clone https://code.qt.io/qt/qtstyleplugins.git && cd qtstyleplugins && qmake && make -j$(nproc) && sudo make install && cd -
 
     build_script:
       - sh: cd src
