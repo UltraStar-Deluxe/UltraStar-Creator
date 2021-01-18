@@ -90,8 +90,8 @@ al•can•zan
 al•can•zar
 al•can•za•ba
 al•can•za•do
-al•can•za•ré
 al•can•za•ron
+al•can•za•ré
 al•can•zó
 al•ca•lá
 al•co•ba
@@ -393,8 +393,8 @@ a•cep•ta•do
 a•cep•tó
 a•cer•ca
 a•cer•can
-a•cer•car
 a•cer•can•do
+a•cer•car
 a•cer•car•me
 a•cer•car•se
 a•cer•ca•ba
@@ -4461,9 +4461,9 @@ guar•da
 guar•dan
 guar•dar
 guar•da•ba
+guar•da•do
 guar•dia
 guar•dias
-guar•da•do
 guar•do
 gua•da•la•ja•ra
 gua•da•lu•pe
@@ -6951,6 +6951,8 @@ per•mi•ti•rá
 per•mi•ti•rí•a
 per•mi•tí•a
 per•pe•tua
+per•ro
+per•ros
 per•se•cu•ción
 per•si•gue
 per•so•na
@@ -7031,8 +7033,6 @@ pe•rio•dís•ti•ca
 pe•rió•di•co
 pe•rió•di•cos
 pe•ro
-pe•rro
-pe•rros
 pe•rua•na
 pe•rua•no
 pe•rua•nos
