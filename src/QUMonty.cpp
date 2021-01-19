@@ -6,7 +6,7 @@
 #include <QSettings>
 #include <QPixmap>
 #include <QFileInfo>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QRandomGenerator>
 
 QUMonty::QUMonty() {
@@ -95,7 +95,7 @@ void QUMonty::answer(QLabel *montyLbl, QLabel *msgLbl, const QString &question, 
 	if(!question.isEmpty()) {
 		answers.clear(); // process new question
 
-		QRegExp rx(question, Qt::CaseInsensitive);
+		QRegularExpression rx(question, QRegularExpression::CaseInsensitiveOption);
 		foreach(QString msg, messages) {
 			if(msg.contains(rx))
 				answers.append(msg);

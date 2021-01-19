@@ -1,6 +1,6 @@
 #include "QUStringSupport.h"
 
-#include <QRegExp>
+#include <QRegularExpression>
 
 QUStringSupport::QUStringSupport(QObject *parent): QObject(parent) {}
 
@@ -18,7 +18,7 @@ QString QUStringSupport::withoutUnsupportedCharacters(const QString &text) {
 	// replace colons by dashes
 	cleanText.replace(':', '-');
 	// remove everything else
-	cleanText.remove(QRegExp("[\\\\:\\*\\?\"\\|<>]"));
+	cleanText.remove(QRegularExpression("[\\\\:\\*\\?\"\\|<>]"));
 
 	/* MB: commented out as trailing and leading dots do not seem to pose problems in Windows
 	// remove trailing and leading dots
@@ -49,8 +49,7 @@ QString QUStringSupport::withoutPathDelimiters(const QString &text) {
  * Remove all "folder tags" like [SC], [VIDEO], a.s.o. from the given text.
  */
 QString QUStringSupport::withoutFolderTags(const QString &text) {
-	QRegExp rx("\\[.*\\]");
-	rx.setMinimal(true);
+	QRegularExpression rx("\\[.*\\]", QRegularExpression::InvertedGreedinessOption);
 	return QString(text).remove(rx).trimmed();
 }
 
@@ -101,13 +100,13 @@ QString QUStringSupport::withoutAnyUmlautEx(const QString &text) {
 }
 
 QStringList QUStringSupport::extractTags(const QString &text) {
-	QRegExp rx = QRegExp("\\[([^\\]]+)\\]");
-	QStringList tags;
-	int pos = 0;
+	QRegularExpression rx = QRegularExpression("\\[([^\\]]+)\\]");
+	QRegularExpressionMatchIterator i = rx.globalMatch(text);
 
-	while ((pos = rx.indexIn(text, pos)) != -1) {
-		tags << rx.cap(1).trimmed();
-		pos += rx.matchedLength();
+	QStringList tags;
+	while (i.hasNext()) {
+		QRegularExpressionMatch match = i.next();
+		tags << match.captured(1).trimmed();
 	}
 
 	if(text.contains("(kar)", Qt::CaseInsensitive))
