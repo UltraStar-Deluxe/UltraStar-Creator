@@ -7,6 +7,11 @@ QT += core \
 	widgets \
 	network
 
+# Starting with Qt 6, QTextCodec requires core5compat
+equals(QT_MAJOR_VERSION, 6) {
+	QT += core5compat
+}
+
 CONFIG(release, debug|release) {
 TARGET = UltraStar-Creator
 	DESTDIR = ../bin/release
