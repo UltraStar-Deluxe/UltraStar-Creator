@@ -27,6 +27,7 @@
 #include <QTemporaryFile>
 #include <QRegularExpression>
 #include <QMenuBar>
+#include <QDebug>
 
 #include "compact_lang_det.h"
 
@@ -515,23 +516,23 @@ void QUMainWindow::on_pushButton_PlayPause_clicked()
 }
 
 void QUMainWindow::setDefaultPitch(int pitch) {
-	qDebug() << pitch;
+	//
 }
 
 
 QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	// delete surplus space characters
-	rawLyricsString = rawLyricsString.replace(QRegExp(" {2,}"), " ");
+	rawLyricsString = rawLyricsString.replace(QRegularExpression(" {2,}"), " ");
 
 	// delete surplus blank lines...
-	rawLyricsString = rawLyricsString.replace(QRegExp("\\n{2,}"), "\n");
+	rawLyricsString = rawLyricsString.replace(QRegularExpression("\\n{2,}"), "\n");
 
 	// replace misused accents (´,`) by the correct apostrophe (')
 	rawLyricsString = rawLyricsString.replace("´", "'");
 	rawLyricsString = rawLyricsString.replace("`", "'");
 
 	// delete leading and trailing whitespace from each line, change line beginning to uppercase if selected
-	QStringList rawLyricsStringList = rawLyricsString.split(QRegExp("\\n"));
+	QStringList rawLyricsStringList = rawLyricsString.split(QRegularExpression("\\n"));
 	QStringList lyricsStringList;
 	rawLyricsString.clear();
 	QStringListIterator lyricsLineIterator(rawLyricsStringList);
@@ -1776,7 +1777,7 @@ void QUMainWindow::generateFreestyleTextFiles()
 				if (separatorPos != -1) {
 					artist = songInfo.completeBaseName().mid(0, separatorPos);
 					artist = artist.trimmed();
-					QStringList tokens = artist.split(QRegExp("(\\s+)"));
+					QStringList tokens = artist.split(QRegularExpression("(\\s+)"));
 					QList<QString>::iterator tokItr = tokens.begin();
 
 					for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
@@ -1789,7 +1790,7 @@ void QUMainWindow::generateFreestyleTextFiles()
 
 					title = songInfo.completeBaseName().mid(separatorPos + 3);
 					title = title.trimmed();
-					tokens = title.split(QRegExp("(\\s+)"));
+					tokens = title.split(QRegularExpression("(\\s+)"));
 					tokItr = tokens.begin();
 
 					for (tokItr = tokens.begin(); tokItr != tokens.end(); ++tokItr) {
@@ -1973,7 +1974,7 @@ void QUMainWindow::getYear()
 	QUrl url("http://swisscharts.com/search.asp");
 	QUrlQuery urlQuery;
 	urlQuery.addQueryItem("cat", "s");
-	QStringList queryStrings = QString(ui->lineEdit_Artist->text() + " " + ui->lineEdit_Title->text()).split(QRegExp("(\\s+)"));
+	QStringList queryStrings = QString(ui->lineEdit_Artist->text() + " " + ui->lineEdit_Title->text()).split(QRegularExpression("(\\s+)"));
 	QByteArray encodedQuery;
 	foreach(QString queryString, queryStrings) {
 		encodedQuery += queryString.toLatin1().toPercentEncoding() + QString("+").toLatin1();
@@ -2001,11 +2002,12 @@ void QUMainWindow::getYear()
 	
 	QString searchresult = reply->readAll();
 	
-	QRegularExpression re = QRegularExpression("<td class=\"text\">\r\n([12]{1}[0-9]{3})\r\n</td>", QRegularExpression::InvertedGreedinessOption);
+	//QRegularExpression re = QRegularExpression("<td class=\"text\">\r\n([12]{1}[0-9]{3})\r\n</td>", QRegularExpression::InvertedGreedinessOption);
+	QRegularExpression re = QRegularExpression("<td class=\"text\">\\s*<a href=\".*\">(.*)</a>\\s*</td>\\s*<td class=\"text\">\\s*<a href=\".*\">(.*)</a>\\s*.*\\s*</td>\\s*<td class=\"text\" style=\"border-right:0;\">\\s*(\\d{4}|&nbsp;|\\s*)\\s*</td>", QRegularExpression::InvertedGreedinessOption);
 	QRegularExpressionMatch match = re.match(searchresult);
 	
-	if (match.hasMatch()) {
-		QString year = match.captured(1);
+	if (match.hasMatch() && match.captured(3).toInt() != 0) {
+		QString year = match.captured(3);
 		ui->comboBox_Year->setCurrentText(year);
 		ui->label_YearSet->setPixmap(QPixmap(":/icons/path_ok.png"));
 	} else {
