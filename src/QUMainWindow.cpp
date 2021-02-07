@@ -372,7 +372,7 @@ void QUMainWindow::initStatusBar() {
 
 bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 {
-	QString suggestedAbsoluteFilePath = QDir::toNativeSeparators(fileInfo_MP3->absolutePath()).append(QDir::separator()).append("%1 - %2.txt").arg(ui->lineEdit_Artist->text()).arg(ui->lineEdit_Title->text());
+	QString suggestedAbsoluteFilePath = QDir::toNativeSeparators(fileInfo_MP3->absolutePath()).append(QDir::separator()).append("%1 - %2.txt").arg(ui->lineEdit_Artist->text(), ui->lineEdit_Title->text());
 	QString fileName = QFileDialog::getSaveFileName(this, tr("Please choose file"), suggestedAbsoluteFilePath, tr("Text files (*.txt)"));
 
 	if(fileName.isEmpty())
@@ -598,7 +598,7 @@ void QUMainWindow::on_pushButton_Tap_released()
 		currentSyllable.chop(1);
 	}
 
-	currentOutputTextLine = QString("%1: %2 %3 %4 %5").arg(linebreakString).arg(QString::number(currentNoteStartBeat - firstNoteStartBeat)).arg(QString::number(currentNoteBeatLength)).arg(0).arg(currentSyllable);
+	currentOutputTextLine = QString("%1: %2 %3 %4 %5").arg(linebreakString, QString::number(currentNoteStartBeat - firstNoteStartBeat), QString::number(currentNoteBeatLength), "0", currentSyllable);
 
 	timeLineMap.insert(currentNoteStartTime, currentOutputTextLine);
 
@@ -1037,11 +1037,11 @@ double QUMainWindow::BASS_Position() {
 	return BASS_ChannelBytes2Seconds(_mediaStream, BASS_ChannelGetPosition(_mediaStream, BASS_POS_BYTE));
 }
 
-void QUMainWindow::BASS_SetPosition(int seconds) {
+void QUMainWindow::BASS_SetPosition(double seconds) {
 	if(!_mediaStream)
 		return;
 
-	QWORD pos = BASS_ChannelSeconds2Bytes(_mediaStream, (double)seconds);
+	QWORD pos = BASS_ChannelSeconds2Bytes(_mediaStream, seconds);
 
 	if(!BASS_ChannelSetPosition(_mediaStream, pos, BASS_POS_BYTE)) {
 		//logSrv->add(QString("BASS ERROR: %1").arg(BASS_ErrorGetCode()), QU::Warning);
@@ -1398,7 +1398,7 @@ void QUMainWindow::aboutBASS()
 											"<br><br><b>BASS FX Effects Extension</b><br><br>"
 											"BASS FX is an extension providing several effects, including tempo & pitch control.<br><br>"
 											"Version: <b>%2</b><br><br><br>"
-									   "Copyright (c) 1999-2020<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved.")).arg(BASS_VERSION).arg(BASSFX_VERSION),
+											"Copyright (c) 1999-2020<br><a href=\"http://www.un4seen.com/bass.html\">Un4seen Developments Ltd.</a> All rights reserved.")).arg(BASS_VERSION, BASSFX_VERSION),
 							QStringList() << ":/icons/accept.png" << "OK",
 							330);
 }
@@ -1520,9 +1520,8 @@ void QUMainWindow::on_pushButton_UndoTap_clicked()
 		timeLineMap.remove(i.key());
 
 		updateOutputLyrics();
-
-		double undoTime = 1.0; // step 1 second back in MP3
-		BASS_SetPosition(qMax(BASS_Position() - undoTime, 0.0));
+		
+		BASS_SetPosition(timeLineMap.lastKey()/1000.0);
 	}
 }
 
@@ -1633,12 +1632,12 @@ void QUMainWindow::on_comboBox_Year_activated(QString year)
 
 void QUMainWindow::on_horizontalSlider_MP3_sliderMoved(int position)
 {
-	BASS_SetPosition(position);
+	BASS_SetPosition(double(position));
 }
 
 void QUMainWindow::on_horizontalSlider_PreviewMP3_sliderMoved(int position)
 {
-	BASS_SetPosition(position);
+	BASS_SetPosition(double(position));
 }
 
 void QUMainWindow::on_pushButton_startUltraStar_clicked()
@@ -1808,7 +1807,7 @@ void QUMainWindow::generateFreestyleTextFiles()
 				}
 
 				songInfo.dir().mkdir(dirName);
-				QString newFileName(QString("%1/%2/%3.%4").arg(songInfo.absolutePath(), dirName, dirName).arg(songInfo.suffix().toLower()));
+				QString newFileName(QString("%1/%2/%3.%4").arg(songInfo.absolutePath(), dirName, dirName, songInfo.suffix().toLower()));
 				songFile.rename(newFileName);
 
 				// text file
@@ -1836,12 +1835,12 @@ void QUMainWindow::generateFreestyleTextFiles()
 				textString += "#GENRE:\n";
 				textString += "#YEAR:\n";
 				if (separatorPos != -1) {
-					textString += QString("#MP3:%1 - %2.%3\n").arg(artist).arg(title).arg(songInfo.suffix().toLower());
-					textString += QString("#COVER:%1 - %2 [CO].jpg\n").arg(artist).arg(title);
-					textString += QString("#BACKGROUND:%1 - %2 [BG].jpg\n").arg(artist).arg(title);
+					textString += QString("#MP3:%1 - %2.%3\n").arg(artist, title, songInfo.suffix().toLower());
+					textString += QString("#COVER:%1 - %2 [CO].jpg\n").arg(artist, title);
+					textString += QString("#BACKGROUND:%1 - %2 [BG].jpg\n").arg(artist, title);
 				}
 				else {
-					textString += QString("#MP3:%1.%2\n").arg(artist).arg(songInfo.suffix().toLower());
+					textString += QString("#MP3:%1.%2\n").arg(artist, songInfo.suffix().toLower());
 					textString += QString("#COVER:%1 [CO].jpg\n").arg(artist);
 					textString += QString("#BACKGROUND:%1 [BG].jpg\n").arg(artist);
 				}
@@ -1854,12 +1853,12 @@ void QUMainWindow::generateFreestyleTextFiles()
 				out << textString;
 
 				// Cover
-				QString coverFilename(QString("%1/%2/%3 [CO].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+				QString coverFilename(QString("%1/%2/%3 [CO].jpg").arg(songInfo.absolutePath(), dirName, dirName));
 				QFile cover(":/NoCover.jpg");
 				cover.copy(coverFilename);
 
 				// Background
-				QString backgroundFilename(QString("%1/%2/%3 [BG].jpg").arg(songInfo.absolutePath()).arg(dirName).arg(dirName));
+				QString backgroundFilename(QString("%1/%2/%3 [BG].jpg").arg(songInfo.absolutePath(), dirName, dirName));
 				QFile background(":/NoBackground.jpg");
 				background.copy(backgroundFilename);
 

@@ -62,7 +62,7 @@ void QUSongDatabase::deleteSong(QUSongFile *song) {
 
 	delete song;
 
-	logSrv->add(QString(tr("Song was deleted successfully: \"%1 - %2\"")).arg(artist).arg(title), QU::Information);
+	logSrv->add(QString(tr("Song was deleted successfully: \"%1 - %2\"")).arg(artist, title), QU::Information);
 }
 
 void QUSongDatabase::clear() {

@@ -34,7 +34,6 @@ public:
 
 	bool isValid();
 
-public slots:
 	QString artist() const			{return _info.value(ARTIST_TAG,				QString(N_A));}
 	QString title() const			{return _info.value(TITLE_TAG,				QString(N_A));}
 	QString mp3() const				{return _info.value(MP3_TAG,				QString(N_A));}
@@ -107,6 +106,13 @@ public slots:
 	QFileInfo backgroundFileInfo() const {return QFileInfo(_fi.dir(), background());} //!< \returns a file info for the background file
 	QFileInfo videoFileInfo() const {return QFileInfo(_fi.dir(), video());} //!< \returns a file info for the video file
 
+	bool unsupportedTagsFound() const { return _foundUnsupportedTags.size() > 0; }
+	QString unsupportedTags() const { return _foundUnsupportedTags.join("\n#"); }
+	
+	QList<QUSongFile*> friends() const { return _friends; }
+	bool friendHasTag(const QString &tag, const QString &value) const;
+
+public slots:
 	void setInfo(const QString &key, const QString &value);
 
 	bool save(bool force = false);
@@ -124,8 +130,6 @@ public slots:
 
 	static void verifyTags(QStringList &tags);
 
-	bool unsupportedTagsFound() const { return _foundUnsupportedTags.size() > 0; }
-	QString unsupportedTags() const { return _foundUnsupportedTags.join("\n#"); }
 	void removeUnsupportedTags(const QStringList &filter, bool useFilter = true);
 
 	void useExternalFile(const QString &filePath);
@@ -160,11 +164,9 @@ public slots:
 	bool isFriend(QUSongFile *song);
 	QUSongFile* friendAt(const QFileInfo &fi);
 	QUSongFile* friendAt(const QString &fileName);
-	QList<QUSongFile*> friends() const { return _friends; }
 	void changeData(const QString &tag, const QString &value);
 	void renameSong(const QString &fileName);
 	void changeSongPath(const QString &filePath);
-	bool friendHasTag(const QString &tag, const QString &value) const;
 	bool swapWithFriend(QUSongFile *song);
 
 signals:

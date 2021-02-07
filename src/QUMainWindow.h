@@ -133,7 +133,7 @@ private:
 	void BASS_Pause();
 	void BASS_Resume();
 	double BASS_Position();
-	void BASS_SetPosition(int seconds);
+	void BASS_SetPosition(double seconds);
 	void handleMP3();
 	QFileInfo* fileInfo_MP3;
 	void keyPressEvent(QKeyEvent *event);
