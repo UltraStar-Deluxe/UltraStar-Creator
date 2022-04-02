@@ -14,7 +14,7 @@
 #include <QChar>
 #include <QMap>
 #include <QTextStream>
-#include <QTextCodec>
+#include <QStringConverter>
 #include <QRegularExpression>
 
 #include "audioproperties.h"
@@ -141,32 +141,32 @@ bool QUSongFile::updateCache() {
 	// if file contains valid UTF8 syntax (with or without BOM) -> assume UTF8 encoded file
 	if(isValidUTF8(_file)) {
 		setInfo(ENCODING_TAG, ENCODING_UTF8);
-		_in.setCodec(QTextCodec::codecForName("UTF-8"));
+		_in.setEncoding(QStringConverter::Utf8);
 		_in.seek(0);
 		logSrv->add(QString(tr("UTF8 detected in song file: \"%1\"")).arg(QDir::toNativeSeparators(_fi.filePath())), QU::Information);
 	} else {
 		// Check if #ENCODING tag is present
 		_in.seek(0);
-		_in.setCodec(QTextCodec::codecForName("windows-1252"));
+		_in.setEncoding(QStringConverter::Latin1);
 		QString firstLine = QUStringSupport::withoutLeadingBlanks(_in.readLine());
 
 		if(firstLine.startsWith("#ENCODING:", Qt::CaseInsensitive)) {
 			if (firstLine.endsWith(ENCODING_CP1252)) {
 				setInfo(ENCODING_TAG, ENCODING_CP1252);
-				_in.setCodec(QTextCodec::codecForName("windows-1252"));
+				_in.setEncoding(QStringConverter::Latin1);
 				logSrv->add(QString(tr("ENCODING:CP1252 found in song file: \"%1\"")).arg(_fi.filePath()), QU::Information);
 			} else if (firstLine.endsWith(ENCODING_CP1250)) {
 				setInfo(ENCODING_TAG, ENCODING_CP1250);
-				_in.setCodec(QTextCodec::codecForName("windows-1250"));
+				_in.setEncoding(QStringConverter::Latin1);
 				logSrv->add(QString(tr("ENCODING:CP1250 found in song file: \"%1\"")).arg(_fi.filePath()), QU::Information);
 			} else if (firstLine.endsWith(ENCODING_UTF8)) {
 				// isValidUTF8 check failed, so something must be wrong
 				setInfo(ENCODING_TAG, QUSongSupport::defaultInputEncoding());
-				_in.setCodec(QTextCodec::codecForName("windows-1252"));
+				_in.setEncoding(QStringConverter::Latin1);
 				logSrv->add(QString(tr("Encoding mismatch. Defaulting to %1 for song file: \"%2\"")).arg(encoding(), QDir::toNativeSeparators(_fi.filePath())), QU::Warning);
 			} else {
 				setInfo(ENCODING_TAG, QUSongSupport::defaultInputEncoding());
-				_in.setCodec(QTextCodec::codecForName("windows-1252"));
+				_in.setEncoding(QStringConverter::Latin1);
 				logSrv->add(QString(tr("\"%1\" unsupported. Defaulting to %2 for song file: \"%3\"")).arg(firstLine, encoding(), QDir::toNativeSeparators(_fi.filePath())), QU::Warning);
 			}
 		} else { // no #ENCODING tag present
@@ -174,7 +174,7 @@ bool QUSongFile::updateCache() {
 			_in.seek(0);
 
 			setInfo(ENCODING_TAG, QUSongSupport::defaultInputEncoding());
-			_in.setCodec(QTextCodec::codecForName("windows-1252"));
+			_in.setEncoding(QStringConverter::Latin1);
 			logSrv->add(QString(tr("Not a valid UTF8 file and ENCODING tag missing. Defaulting to %1 in song file: \"%2\"")).arg(encoding(), QDir::toNativeSeparators(_fi.filePath())), QU::Information);
 		}
 	}
@@ -248,11 +248,10 @@ bool QUSongFile::updateCache() {
  */
 bool QUSongFile::isValidUTF8(QFile &file) const {
 	QByteArray byteArray = file.readAll();
-	QTextCodec::ConverterState state;
-	QTextCodec *codec = QTextCodec::codecForName("UTF-8");
-	const QString text = codec->toUnicode(byteArray.constData(), byteArray.size(), &state);
+	auto toUtf16 = QStringDecoder(QStringDecoder::Utf8);
+	QString string = toUtf16(byteArray);
 	
-	return (state.invalidChars == 0);
+	return (toUtf16.hasError());
 }
 
 /*!
@@ -641,29 +640,9 @@ bool QUSongFile::save(bool force) {
 
 	QTextStream _out(&_file);
 	
-	// by default, encode the output with UTF-8...
-	QTextCodec *codec = QTextCodec::codecForName("UTF-8");
-	_out.setCodec(codec);
+	// encode the output with UTF-8
+	_out.setEncoding(QStringConverter::Utf8);
 	setInfo(ENCODING_TAG, ENCODING_UTF8);
-
-	// ... unless the user selected to not change the text encoding in settings AND the codec can encode the file
-	if (false) {
-		
-		if (this->encoding() == ENCODING_CP1252) {
-			codec = QTextCodec::codecForName("windows-1252");
-		}
-		else if (this->encoding() == ENCODING_CP1250) {
-			codec = QTextCodec::codecForName("windows-1250");
-		}
-		
-		// test if the codec can encode all the information
-		if (codec->canEncode((_info.values() + _foundUnsupportedTags + _lyrics + _footer).join(""))) {
-			_out.setCodec(codec);
-		} else {
-			// UTF-8 is used
-			logSrv->add(QString(tr("%1 output encoding NOT sufficient. Using UTF8 for song file: \"%2\".")).arg(this->encoding(), _fi.filePath()), QU::Warning);
-		}
-	}
 
 	// MB: fix/todo! add gui element to select this, save to registry, read from registry
 	// now set permanently to false in order to enforce CRLF as line endings even with MacOS/Unix

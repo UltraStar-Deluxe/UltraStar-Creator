@@ -72,6 +72,7 @@ private slots:
 	void on_pushButton_InputLyricsIncreaseFontSize_clicked();
 	void on_pushButton_BrowseLyrics_clicked();
 	void on_pushButton_GetLyrics_clicked();
+	void on_pushButton_BrowseSubtitles_clicked();
 	void on_comboBox_Genre_editTextChanged(QString );
 	void on_lineEdit_Creator_textChanged(QString );
 	void on_lineEdit_Edition_textChanged(QString );
@@ -136,6 +137,7 @@ private:
 	void BASS_SetPosition(double seconds);
 	void handleMP3();
 	QFileInfo* fileInfo_MP3;
+	QFileInfo* fileInfo_SRT;
 	void keyPressEvent(QKeyEvent *event);
 	void keyReleaseEvent(QKeyEvent *event);
 	QString getResourcesPath();

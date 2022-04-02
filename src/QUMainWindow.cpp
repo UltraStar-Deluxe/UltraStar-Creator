@@ -30,6 +30,7 @@
 #include <QDebug>
 
 #include "compact_lang_det.h"
+#include "srtparser.h"
 
 QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUMainWindow) {
 	ui->setupUi(this);
@@ -260,9 +261,10 @@ void QUMainWindow::initMenuBar() {
 	aboutMenu->addAction(aboutCLD2Action);
 	aboutMenu->addAction(checkForUpdateAction);
 	
+	extrasMenu = menuBar()->addMenu(tr("&Extras"));
+	
 	generateFreestyleTextFilesActions = new QAction(QIcon(":/icons/beans.png"), tr("&Generate freestyle text files..."), this);
 	connect(generateFreestyleTextFilesActions, SIGNAL(triggered()), this, SLOT(generateFreestyleTextFiles()));
-	extrasMenu = menuBar()->addMenu(tr("&Extras"));
 	extrasMenu->addAction(generateFreestyleTextFilesActions);
 }
 
@@ -386,7 +388,7 @@ bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 	}
 
 	QTextStream out(&file);
-	out.setCodec(QTextCodec::codecForName("UTF-8"));
+	out.setEncoding(QStringConverter::Utf8);
 
 	QApplication::setOverrideCursor(Qt::WaitCursor);
 	out << ui->textEdit_OutputLyrics->toPlainText();
@@ -819,9 +821,143 @@ void QUMainWindow::on_pushButton_BrowseLyrics_clicked()
 		QFile file(filename_Text);
 		if (file.open(QFile::ReadOnly | QFile::Text)) {
 			QTextStream lyrics(&file);
+			// TODO: determine language, fill language field
 			ui->plainTextEdit_InputLyrics->setPlainText(lyrics.readAll());
 			handleLyrics(ui->plainTextEdit_InputLyrics->toPlainText());
 		}
+	}
+}
+
+void QUMainWindow::on_pushButton_BrowseSubtitles_clicked()
+{
+	QString filename_SRT = QFileDialog::getOpenFileName ( 0, tr("Please choose subtitles file"), defaultDir, tr("Subtitles files (*.srt)"));
+	fileInfo_SRT = new QFileInfo(filename_SRT);
+	
+	if (!filename_SRT.isEmpty() && fileInfo_SRT->exists()) {
+		SubtitleParserFactory *subParserFactory = new SubtitleParserFactory(fileInfo_SRT->absoluteFilePath().toStdString());
+		SubtitleParser *parser = subParserFactory->getParser();
+		
+		std::vector<SubtitleItem*> sub = parser->getSubtitles();
+		
+		// determine language, fill language field
+		QStringList subLyricsList;
+		for(const auto& substring: sub) {
+			subLyricsList << QString::fromStdString(substring->getText());
+		}
+		QString subLyrics = subLyricsList.join(" ");
+		
+		int threshold = 10; // 10 % of song lyrics need to identified as a certain language to count
+		bool isReliable;
+		QString cld2_language;
+		QStringList cld2_languages;
+		QStringList cld2_percentages;
+		
+		CLD2::Language language3[3];
+		int percent3[3];
+		int text_bytes;
+		CLD2::Language cld2_lang = CLD2::DetectLanguageSummary(subLyrics.toStdString().c_str(), subLyrics.length(), false, language3, percent3, &text_bytes, &isReliable);
+		
+		if(isReliable) {
+			for(int i = 0; i < 3; ++i) {
+				if(language3[i] != CLD2::UNKNOWN_LANGUAGE && percent3[i] > threshold) {
+					cld2_language = QString::fromUtf8(CLD2::LanguageDeclaredName(language3[i])).toLower();
+					cld2_language[0] = cld2_language[0].toUpper();
+					cld2_languages.append(cld2_language);
+					cld2_percentages.append(QString("(%1 %)").arg(percent3[i]));
+				}
+			}
+			
+			int index = ui->comboBox_Language->findData(cld2_languages.at(0));
+			if(index != -1) {
+				ui->comboBox_Language->setCurrentIndex(index);
+			}
+			ui->comboBox_Language->addItem(cld2_languages.at(0),cld2_languages.at(0));
+			
+			if(cld2_languages.length() > 1) {
+				// todo: warning, set to first language
+			}
+		}
+		
+		// TODO: duplicate code from handleMP3, so refactor
+		if (ui->lineEdit_Title->text().isEmpty()) {
+			ui->lineEdit_Title->setText(tr("Unknown Title"));
+			ui->label_TitleSet->setPixmap(QPixmap(":/icons/path_ok.png"));
+		}
+		if (ui->lineEdit_Artist->text().isEmpty()) {
+			ui->lineEdit_Artist->setText(tr("Unknown Artist"));
+			ui->label_ArtistSet->setPixmap(QPixmap(":/icons/path_ok.png"));
+		}
+
+		timeLineMap.insert(-14, QString("#TITLE:%1").arg(ui->lineEdit_Title->text()));
+		timeLineMap.insert(-13, QString("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
+		if (!ui->comboBox_Language->currentText().isEmpty()) {
+			timeLineMap.insert(-12, QString("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));
+		}
+		if (!ui->lineEdit_Edition->text().isEmpty()) {
+			timeLineMap.insert(-11, QString("#EDITION:%1").arg(ui->lineEdit_Edition->text()));
+		}
+		if (!ui->comboBox_Genre->currentText().isEmpty()) {
+			timeLineMap.insert(-10, QString("#GENRE:%1").arg(ui->comboBox_Genre->currentText()));
+		}
+		if (!ui->comboBox_Year->currentText().isEmpty()) {
+			timeLineMap.insert(-9, QString("#YEAR:%1").arg(ui->comboBox_Year->currentText()));
+		}
+		if (!ui->lineEdit_Creator->text().isEmpty()) {
+			timeLineMap.insert(-8, QString("#CREATOR:%1").arg(ui->lineEdit_Creator->text()));
+		}
+		timeLineMap.insert(-7, QString("#MP3:%1").arg(ui->lineEdit_MP3->text()));
+		if (!ui->comboBox_Cover->currentText().isEmpty()) {
+			timeLineMap.insert(-6, QString("#COVER:%1").arg(ui->comboBox_Cover->currentText()));
+		}
+		if (!ui->comboBox_Background->currentText().isEmpty()) {
+			timeLineMap.insert(-5, QString("#BACKGROUND:%1").arg(ui->comboBox_Background->currentText()));
+		}
+		if (!ui->comboBox_Video->currentText().isEmpty()) {
+			timeLineMap.insert(-4, QString("#VIDEO:%1").arg(ui->comboBox_Video->currentText()));
+		}
+		timeLineMap.insert(-2, QString("#BPM:%1").arg(ui->doubleSpinBox_BPM->text()));
+		// BPM might have been changed manually
+		BPM = ui->doubleSpinBox_BPM->value();
+		// duplicate code from handleMP3, so refactor
+		
+		updateOutputLyrics();
+		
+		float GAP = 0;
+		bool GAPset = false;
+		int prevendbeat = 0;
+		
+		for(const auto& substring: sub) {
+			QString line = QString::fromStdString(substring->getText()).remove("♪").trimmed();
+			if(!line.isEmpty()) {
+				long starttime = substring->getStartTime();
+				if(!GAPset) {
+					GAP = starttime;
+					ui->textEdit_OutputLyrics->append("#GAP:" + QString::number(GAP));
+					GAPset = true;
+				}
+				long endtime = substring->getEndTime();
+				int startbeat = std::round((starttime - GAP) * BPM / 15000.0);
+				int endbeat = std::round((endtime - GAP) * BPM / 15000.0);
+				int duration = endbeat - startbeat;
+				int words = line.split(" ").length(); // TODO: split into syllables, get syllable count, calculate syllable_duration...
+				int word_duration = duration / words;
+				int beat = startbeat;
+				if(startbeat != 0) {
+					ui->textEdit_OutputLyrics->append("- " + QString::number(startbeat - 1));
+				}
+				for(const auto& word: substring->getIndividualWords()) {
+					QString qword = QString::fromStdString(word).remove("♪").trimmed();
+					if(!qword.isEmpty()) {
+						ui->textEdit_OutputLyrics->append("F " + QString::number(beat) + " " + QString::number(word_duration-1) + " 0 " + qword + " ");
+						beat += word_duration;
+					}
+				}
+			} else {
+				continue;
+			}
+		}
+		// TODO: suppress/remove last empty line break
+		ui->textEdit_OutputLyrics->append("E");
 	}
 }
 
@@ -1148,8 +1284,8 @@ void QUMainWindow::handleMP3() {
 	if(!ref.tag()->genre().isEmpty()) {
 		ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
 	}
-	if(!QString(ref.tag()->year()).isEmpty()) {
-		ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString(ref.tag()->year())));
+	if(!QString::number(ref.tag()->year()).isEmpty()) {
+		ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString::number(ref.tag()->year())));
 	}
 	// TODO: lyrics from mp3 lyrics-tag
 	
@@ -1279,7 +1415,7 @@ void QUMainWindow::on_pushButton_GetLyrics_clicked() {
 		match = re.match(musixmatch_page);
 		
 		if (match.hasMatch()) {
-			lyr = match.captured(1).replace("\\n","\n").replace("\\\"", "\"");
+			lyr = match.captured(1).replace("\\n","\n").replace("\\\"", "\"").replace("´", "'").replace("`", "'");
 			lyr.chop(1); //todo: change above regex to not include the final "
 			ui->plainTextEdit_InputLyrics->setPlainText(lyr);
 			lyricsFound = true;
@@ -1820,7 +1956,7 @@ void QUMainWindow::generateFreestyleTextFiles()
 				}
 
 				QTextStream out(&file);
-				out.setCodec(QTextCodec::codecForName("UTF-8"));
+				out.setEncoding(QStringConverter::Utf8);
 
 				QString textString;
 				if (separatorPos != -1) {
@@ -1898,7 +2034,7 @@ QString QUMainWindow::syllabifyLyrics(QString lyrics, QString language)
 		if (patternFile.open(QFile::ReadOnly | QFile::Text))
 		{
 			QTextStream in(&patternFile);
-			in.setCodec(QTextCodec::codecForName("UTF-8"));
+			in.setEncoding(QStringConverter::Utf8);
 			
 			while (!in.atEnd())
 			{
