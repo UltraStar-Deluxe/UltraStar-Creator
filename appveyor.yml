@@ -26,7 +26,7 @@ image:
   # AppVeyor builds are ordered by the image list:
   - Visual Studio 2022
   - macos
-  - Ubuntu1604
+  - Ubuntu1804
 
 matrix:
   exclude:
