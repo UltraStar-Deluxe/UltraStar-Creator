@@ -13,8 +13,8 @@ environment:
     # Windows
     - ARCH: x64
       COMPILER: MinGW
-      QTDIR: C:\Qt\5.15.2\mingw81_64
-      #QTDIR: C:\Qt\6.0.0\mingw81_64
+      #QTDIR: C:\Qt\5.15.2\mingw81_64
+      QTDIR: C:\Qt\6.2.2\mingw_64
     # macOS
     - ARCH: x64
       COMPILER: Clang
@@ -24,24 +24,24 @@ environment:
 
 image:
   # AppVeyor builds are ordered by the image list:
-  - Visual Studio 2019
+  - Visual Studio 2022
   - macos
   - Ubuntu1604
 
 matrix:
   exclude:
     # Exclude invalid options
-    - image: Visual Studio 2019
+    - image: Visual Studio 2022
       COMPILER: Clang
-    - image: Visual Studio 2019
+    - image: Visual Studio 2022
       COMPILER: GCC
     - image: macos
       COMPILER: MinGW
     - image: macos
       COMPILER: GCC
-    - image: Ubuntu1604
+    - image: Ubuntu1804
       COMPILER: MinGW
-    - image: Ubuntu1604
+    - image: Ubuntu1804
       COMPILER: Clang
 
 for:
@@ -49,7 +49,7 @@ for:
   -
     matrix:
       only:
-        - image: Visual Studio 2019
+        - image: Visual Studio 2022
 
     clone_folder: C:\UltraStar-Creator
 
@@ -128,7 +128,7 @@ for:
   -
     matrix:
       only:
-        - image: Ubuntu1604
+        - image: Ubuntu1804
 
     clone_folder: ~/UltraStar-Creator
 
