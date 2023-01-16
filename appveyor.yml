@@ -39,9 +39,9 @@ matrix:
       COMPILER: MinGW
     - image: macos
       COMPILER: GCC
-    - image: Ubuntu1804
+    - image: Ubuntu2004
       COMPILER: MinGW
-    - image: Ubuntu1804
+    - image: Ubuntu2004
       COMPILER: Clang
 
 for:
