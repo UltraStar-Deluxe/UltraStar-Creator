@@ -14,7 +14,7 @@ environment:
     - ARCH: x64
       COMPILER: MinGW
       #QTDIR: C:\Qt\5.15.2\mingw81_64
-      QTDIR: C:\Qt\6.2.2\mingw_64
+      QTDIR: C:\Qt\6.4.0\mingw_64
     # macOS
     - ARCH: x64
       COMPILER: Clang
@@ -26,7 +26,7 @@ image:
   # AppVeyor builds are ordered by the image list:
   - Visual Studio 2022
   - macos
-  - Ubuntu1804
+  - Ubuntu2004
 
 matrix:
   exclude:
@@ -63,8 +63,8 @@ for:
       - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
       - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
       # Qt 5.15.2 windeployqt has a bug, so use a custom version of windeployqt
-      - cmd: appveyor DownloadFile http://tripleboot.org/Uploads/windeployqt64releaseonly.zip
-      - cmd: 7z e windeployqt64releaseonly.zip -o%QTDIR%\..\..\Tools\mingw810_64\bin
+      #- cmd: appveyor DownloadFile http://tripleboot.org/Uploads/windeployqt64releaseonly.zip
+      #- cmd: 7z e windeployqt64releaseonly.zip -o%QTDIR%\..\..\Tools\mingw810_64\bin
 
     before_build:
       - cmd: set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw810_64\bin;C:\Program Files (x86)\NSIS\;%PATH%
@@ -128,7 +128,7 @@ for:
   -
     matrix:
       only:
-        - image: Ubuntu1804
+        - image: Ubuntu2004
 
     clone_folder: ~/UltraStar-Creator
 
