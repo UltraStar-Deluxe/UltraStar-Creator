@@ -14,7 +14,6 @@
 #include <QMimeData>
 #include <QSettings>
 #include <QTimer>
-#include <QTextCodec>
 #include <QProcess>
 #include <QDirIterator>
 #include <QWhatsThis>
