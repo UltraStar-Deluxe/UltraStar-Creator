@@ -195,7 +195,7 @@ void handleArguments() {
 	foreach(QString arg, qApp->arguments()) {
 			QFileInfo fi(arg);
 
-			if(fi.isFile() && (fi.fileName().endsWith(".mp3") || fi.fileName().endsWith(".ogg"))) {
+			if(fi.isFile() && (fi.fileName().endsWith(".mp3") || fi.fileName().endsWith(".ogg") || fi.fileName().endsWith(".m4a"))) {
 				// use argument as audio file
 				settings.setValue("songfile", fi.absoluteFilePath());
 			}

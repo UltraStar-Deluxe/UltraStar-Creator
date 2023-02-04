@@ -681,7 +681,7 @@ void QUMainWindow::on_pushButton_Stop_clicked()
 
 void QUMainWindow::on_pushButton_BrowseMP3_clicked()
 {
-	QString filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose MP3 file"), defaultDir, tr("Audio files (*.mp3 *.ogg)"));
+	QString filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose audio file"), defaultDir, tr("Audio files (*.m4a *.mp3 *.ogg)"));
 	fileInfo_MP3 = new QFileInfo(filename_MP3);
 	if (fileInfo_MP3->exists()) {
 		defaultDir = fileInfo_MP3->absolutePath();
