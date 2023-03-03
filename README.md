@@ -22,20 +22,16 @@ UltraStar-Creator (usc) is a free and open source song creation tool using Qt. I
 #### Compiling on Windows
 (under construction)
 
-1. Download the Qt Online Installer for Windows from [here](http://download.qt.io/official_releases/online_installers/qt-unified-windows-x86-online.exe).
-2. Install the Qt framework. The Qt Account login can be skipped.  
-   Select (at least)
-   * Qt -> Qt 5.8 -> MinGW 5.3.0 32 bit
-   * Qt -> Tools -> MinGW 5.3.0.
-3. Build UltraStar-Creator
+1. Install Qt6.
+2. Build UltraStar-Creator
    * from command line: `cd src && qmake UltraStar-Creator.pro && make` 
    * using Qt Creator: open `src\UltraStar-Creator.pro` in Qt Creator, disable shadow build in Project tab, then build (CTRL+B)
-4. Run `UltraStar-Creator.exe` in `bin\releease` and start creating new songs!
+3. Run `UltraStar-Creator.exe` in `bin\releease` and start creating new songs!
 
 #### Compiling on Linux
 (under construction)
 
-1. Install the Qt framework: `sudo apt-get install qt5-default qttools5-dev-tools qtbase5-dev-tools qt5-qmake`
+1. Install Qt6.
 2. Install dependencies: `sudo apt-get install libtag1-dev`
 3. `git clone https://github.com/UltraStar-Deluxe/UltraStar-Creator.git`
 4. `cd UltraStar-Creator`
@@ -48,7 +44,7 @@ UltraStar-Creator (usc) is a free and open source song creation tool using Qt. I
 (under construction)
 
 1. Install homebrew via `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-2. Install the Qt framework via `brew install qt5`.
+2. Install the Qt framework via `brew install qt`.
 3. Install external dependencies via `brew install taglib`
 4. Build UltraStar-Creator
    * from command line: `cd src && qmake UltraStar-Creator.pro && make` 
