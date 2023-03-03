@@ -104,6 +104,7 @@ for:
       - brew update
       - brew install taglib
       - brew install create-dmg
+      - brew install qt
 
     build_script:
       - cd src
