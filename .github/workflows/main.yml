@@ -1,0 +1,39 @@
+name: Build UltraStar-Creator
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-latest, macOS-latest, ubuntu-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: |
+        if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
+          sudo apt-get update
+          sudo apt-get install -y build-essential qt6-default
+        elif [ "${{ matrix.os }}" = "macOS-latest" ]; then
+          brew update
+          brew install qt6
+        elif [ "${{ matrix.os }}" = "windows-latest" ]; then
+          choco install qt6
+        fi
+    - name: Build
+      run: |
+        if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
+          qmake
+        elif [ "${{ matrix.os }}" = "macOS-latest" ]; then
+          /usr/local/opt/qt6/bin/qmake
+        elif [ "${{ matrix.os }}" = "windows-latest" ]; then
+          C:\Qt\Qt6.4.2\msvc2019_64\bin\qmake
+        fi
+        make
