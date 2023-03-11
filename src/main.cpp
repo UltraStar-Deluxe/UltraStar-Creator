@@ -188,7 +188,7 @@ void handlePreviousAppCrash() {
 
 /*!
  * This function handles the input arguments of the application.
- * So far, an MP3 file can be passed to it as the song file to be tapped.
+ * So far, an MP3/ogg/m4a file can be passed to it as the song file to be tapped.
  */
 void handleArguments() {
 	QSettings settings;
