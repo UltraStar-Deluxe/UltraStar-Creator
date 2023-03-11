@@ -576,7 +576,7 @@ void QUMainWindow::on_pushButton_Tap_released()
 	currentNoteBeatLength = qMax(1.0, currentNoteTimeLength * (BPM / 15000));
 	if (firstNote){
 		firstNoteStartBeat = currentNoteStartBeat;
-		timeLineMap.insert(-1, QString("#GAP:%1").arg(QString::number(currentNoteStartTime, 'f', 0)));
+		timeLineMap.insert(-1, QString("#GAP:%1").arg(QString::number(round(currentNoteStartTime/10)*10, 'f', 0)));
 		firstNote = false;
 	}
 	
