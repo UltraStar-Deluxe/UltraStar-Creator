@@ -101,6 +101,8 @@ macx {
 	#QMAKE_RPATHDIR += @executable_path/../Frameworks
 	QMAKE_LFLAGS += -Wl,-rpath,@executable_path/../Frameworks/
 	#QMAKE_INFO_PLIST = min.us.Info.plist
+	
+	QMAKE_MACOSX_DEPLOYMENT_TARGET = 12.0
 
 	ICON = resources/UltraStar-Creator.icns
 }
