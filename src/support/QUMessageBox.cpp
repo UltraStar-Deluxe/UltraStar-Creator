@@ -11,7 +11,7 @@ QUMessageBox::QUMessageBox(QWidget *parent): QDialog(parent) {
 
 	_choice = -1;
 
-	connect(&_buttonGroup, SIGNAL(buttonClicked(int)), this, SLOT(makeChoice(int)));
+	connect(&_buttonGroup, SIGNAL(idClicked(int)), this, SLOT(makeChoice(int)));
 }
 
 void QUMessageBox::closeEvent(QCloseEvent *event) {

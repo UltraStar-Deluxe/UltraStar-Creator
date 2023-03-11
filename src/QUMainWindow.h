@@ -54,7 +54,7 @@ private slots:
 	void montyNext();
 
 	void on_doubleSpinBox_BPM_valueChanged(double BPMValue);
-	void on_comboBox_Year_activated(QString );
+	void on_comboBox_Year_textActivated(QString );
 	void on_actionHelp_triggered();
 	void on_horizontalSlider_PreviewMP3_sliderMoved(int position);
 	void on_pushButton_startYass_clicked();
@@ -76,7 +76,7 @@ private slots:
 	void on_comboBox_Genre_editTextChanged(QString );
 	void on_lineEdit_Creator_textChanged(QString );
 	void on_lineEdit_Edition_textChanged(QString );
-	void on_comboBox_Language_currentIndexChanged(QString );
+	void on_comboBox_Language_currentTextChanged(QString );
 	void on_lineEdit_Title_textChanged(QString );
 	void on_lineEdit_Artist_textChanged(QString );
 
@@ -98,9 +98,9 @@ private slots:
 	void aboutCLD2();
 	void checkForUpdate();
 
-	void on_comboBox_Cover_currentIndexChanged(const QString &cover);
-	void on_comboBox_Background_currentIndexChanged(const QString &background);
-	void on_comboBox_Video_currentIndexChanged(const QString &video);
+	void on_comboBox_Cover_currentTextChanged(const QString &cover);
+	void on_comboBox_Background_currentTextChanged(const QString &background);
+	void on_comboBox_Video_currentTextChanged(const QString &video);
 	
 	void setDefaultPitch(int pitch);
 

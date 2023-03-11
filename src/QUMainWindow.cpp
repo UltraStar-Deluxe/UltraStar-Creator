@@ -619,10 +619,13 @@ void QUMainWindow::on_pushButton_Tap_released()
 							BTN << ":/icons/cancel.png" << tr("I can do better. Let me try again!")
 								<< ":/icons/accept.png" << tr("Great! Save the file."),
 							340);
-			if(result == 0)
-				on_pushButton_Reset_clicked();
-			else
-				on_pushButton_SaveToFile_clicked();
+		
+		qDebug() << result;
+		
+		if(result == 0)
+			on_pushButton_Reset_clicked();
+		else
+			on_pushButton_SaveToFile_clicked();
 	}
 }
 
@@ -772,7 +775,7 @@ void QUMainWindow::on_lineEdit_Artist_textChanged(QString artist)
 	}
 }
 
-void QUMainWindow::on_comboBox_Language_currentIndexChanged(QString language)
+void QUMainWindow::on_comboBox_Language_currentTextChanged(QString language)
 {
 	if(!language.isEmpty()) {
 		ui->label_LanguageSet->setPixmap(QPixmap(":/icons/path_ok.png"));
@@ -1755,7 +1758,7 @@ void QUMainWindow::keyReleaseEvent(QKeyEvent *event) {
 	}
 }
 
-void QUMainWindow::on_comboBox_Year_activated(QString year)
+void QUMainWindow::on_comboBox_Year_textActivated(QString year)
 {
 	if(!year.isEmpty()) {
 		ui->label_YearSet->setPixmap(QPixmap(":/icons/path_ok.png"));
@@ -2230,7 +2233,7 @@ void QUMainWindow::checkForUpdate()
 	montyTalk();
 }
 
-void QUMainWindow::on_comboBox_Cover_currentIndexChanged(const QString &cover)
+void QUMainWindow::on_comboBox_Cover_currentTextChanged(const QString &cover)
 {
 	if(!cover.isEmpty()) {
 		ui->label_CoverSet->setPixmap(QPixmap(":/icons/path_ok.png"));
@@ -2240,7 +2243,7 @@ void QUMainWindow::on_comboBox_Cover_currentIndexChanged(const QString &cover)
 	}
 }
 
-void QUMainWindow::on_comboBox_Background_currentIndexChanged(const QString &background)
+void QUMainWindow::on_comboBox_Background_currentTextChanged(const QString &background)
 {
 	if(!background.isEmpty()) {
 		ui->label_BackgroundSet->setPixmap(QPixmap(":/icons/path_ok.png"));
@@ -2250,7 +2253,7 @@ void QUMainWindow::on_comboBox_Background_currentIndexChanged(const QString &bac
 	}
 }
 
-void QUMainWindow::on_comboBox_Video_currentIndexChanged(const QString &video)
+void QUMainWindow::on_comboBox_Video_currentTextChanged(const QString &video)
 {
 	if(!video.isEmpty())
 		ui->label_VideoSet->setPixmap(QPixmap(":/icons/path_ok.png"));
