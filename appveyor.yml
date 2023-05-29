@@ -60,8 +60,8 @@ for:
       - call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
 
     install:
-      - $env:package_version = ("$(git describe --tags --always --long)").trim()
-      - Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
+      - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
+      - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
 
     before_build:
       - set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw810_64\bin;C:\Program Files (x86)\NSIS\;%PATH%
@@ -84,7 +84,7 @@ for:
 
     on_failure:
       # Change false to true to block build and investigate build failures
-      - $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+      - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
   # Mac
   -
