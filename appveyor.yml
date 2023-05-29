@@ -53,27 +53,27 @@ for:
     clone_folder: C:\UltraStar-Creator
 
     init:
-      - cmd: git config --global core.autocrlf input
-      - cmd: echo NUMBER_OF_PROCESSORS=%NUMBER_OF_PROCESSORS%
-      - cmd: echo PROCESSOR_IDENTIFIER=%PROCESSOR_IDENTIFIER%
-      - cmd: echo QTDIR=%QTDIR%
+      - git config --global core.autocrlf input
+      - echo NUMBER_OF_PROCESSORS=%NUMBER_OF_PROCESSORS%
+      - echo PROCESSOR_IDENTIFIER=%PROCESSOR_IDENTIFIER%
+      - echo QTDIR=%QTDIR%
+      - call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
 
     install:
-      - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
-      - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
+      - $env:package_version = ("$(git describe --tags --always --long)").trim()
+      - Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
 
     before_build:
-      - cmd: set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw810_64\bin;C:\Program Files (x86)\NSIS\;%PATH%
-      - cmd: echo PATH=%PATH%
+      - set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw810_64\bin;C:\Program Files (x86)\NSIS\;%PATH%
+      - echo PATH=%PATH%
 
     build_script:
-      - cmd: cd C:\UltraStar-Creator\src
-      - cmd: qmake UltraStar-Creator.pro -spec win32-msvc #win32-g++
-      - cmd: call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
-      - cmd: jom -j%NUMBER_OF_PROCESSORS% #mingw32-make -j%NUMBER_OF_PROCESSORS%
+      - cd C:\UltraStar-Creator\src
+      - qmake UltraStar-Creator.pro -spec win32-msvc #win32-g++
+      - jom -j%NUMBER_OF_PROCESSORS% #mingw32-make -j%NUMBER_OF_PROCESSORS%
 
     after_build:
-      - cmd: makensis ../setup/win64/UltraStar-Creator.nsi
+      - makensis ../setup/win64/UltraStar-Creator.nsi
 
     artifacts:
       - path: bin/release
@@ -84,7 +84,7 @@ for:
 
     on_failure:
       # Change false to true to block build and investigate build failures
-      - ps: $blockRdp = $false; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+      - $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
   # Mac
   -
