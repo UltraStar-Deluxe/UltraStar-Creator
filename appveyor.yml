@@ -70,7 +70,7 @@ for:
     build_script:
       - cd C:\UltraStar-Creator\src
       - qmake UltraStar-Creator.pro -spec win32-msvc #win32-g++
-      - jom -j%NUMBER_OF_PROCESSORS% #mingw32-make -j%NUMBER_OF_PROCESSORS%
+      - nmake #mingw32-make -j%NUMBER_OF_PROCESSORS%
 
     after_build:
       - makensis ../setup/win64/UltraStar-Creator.nsi
@@ -84,7 +84,7 @@ for:
 
     on_failure:
       # Change false to true to block build and investigate build failures
-      - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+      - ps: $blockRdp = $false; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
   # Mac
   -
