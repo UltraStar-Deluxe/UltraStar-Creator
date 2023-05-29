@@ -69,6 +69,7 @@ for:
     build_script:
       - cmd: cd C:\UltraStar-Creator\src
       - cmd: qmake UltraStar-Creator.pro -spec win32-msvc #win32-g++
+      - cmd: call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
       - cmd: jom -j%NUMBER_OF_PROCESSORS% #mingw32-make -j%NUMBER_OF_PROCESSORS%
 
     after_build:
