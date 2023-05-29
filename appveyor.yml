@@ -34,9 +34,9 @@ matrix:
       COMPILER: Clang
     - image: Visual Studio 2022
       COMPILER: GCC
-    - image: macos
+    - image: macos-monterey
       COMPILER: MinGW
-    - image: macos
+    - image: macos-monterey
       COMPILER: GCC
     - image: Ubuntu2004
       COMPILER: MinGW
@@ -89,7 +89,7 @@ for:
   -
     matrix:
       only:
-        - image: macos
+        - image: macos-monterey
 
     clone_folder: ~/UltraStar-Creator
 
