@@ -108,7 +108,8 @@ for:
 
     build_script:
       - cd src
-      - qmake UltraStar-Creator.pro
+      - which qmake
+      - /usr/local/opt/qt/bin/qmake UltraStar-Creator.pro
       - make -j$(getconf _NPROCESSORS_ONLN)
       - cd ../bin/release
       - ls
