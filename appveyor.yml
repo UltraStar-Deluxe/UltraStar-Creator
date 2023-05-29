@@ -68,13 +68,21 @@ for:
       - echo PATH=%PATH%
 
     build_script:
+      # build taglib
       - git clone https://github.com/taglib/taglib.git 
       - cd .\taglib
       - mkdir build
       - cd build
-      - cmake -DWITH_ZLIB=OFF -DBUILD_SHARED_LIBS=OFF -DENABLE_STATIC_RUNTIME=ON -DWITH_ASF=ON -DWITH_MP4=ON -DCMAKE_INSTALL_PREFIX=C:\UltraStar-Creator\lib\win64 ..
+      - cmake -DWITH_ZLIB=OFF -DBUILD_SHARED_LIBS=ON -DENABLE_STATIC_RUNTIME=OFF ..
       - msbuild all_build.vcxproj /p:Configuration=Release
       - copy .\taglib\Release\tag.lib ..\..\lib\win64 
+      # build cld2
+      - git clone https://github.com/CLD2Owners/cld2.git
+      - cd .\internal
+      - cl cldutil.cc cldutil_shared.cc compact_lang_det.cc compact_lang_det_hint_code.cc compact_lang_det_impl.cc debug.cc fixunicodevalue.cc generated_entities.cc generated_language.cc generated_ulscript.cc getonescriptspan.cc lang_script.cc offsetmap.cc scoreonescriptspan.cc tote.cc utf8statetable.cc cld_generated_cjk_uni_prop_80.cc cld2_generated_cjk_compatible.cc cld_generated_cjk_delta_bi_4.cc generated_distinct_bi_0.cc cld2_generated_quadchrome_2.cc cld2_generated_deltaoctachrome.cc cld2_generated_distinctoctachrome.cc  cld_generated_score_quad_octa_2.cc /TP /GR /EHsc /c
+      - link /lib /out:cld2.lib *.obj
+      - copy .\cld2.lib ..\..\lib\win64 
+      # build UltraStar Creator
       - cd C:\UltraStar-Creator\src
       - qmake UltraStar-Creator.pro -spec win32-msvc #win32-g++
       - nmake #mingw32-make -j%NUMBER_OF_PROCESSORS%
