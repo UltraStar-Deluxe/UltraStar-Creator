@@ -12,8 +12,8 @@ environment:
   matrix:
     # Windows
     - ARCH: x64
-      COMPILER: MinGW
-      QTDIR: C:\Qt\6.5.0\mingw_64
+      COMPILER: msvc2019 #MinGW
+      QTDIR: C:\Qt\6.5.0\msvc2019_64 #C:\Qt\6.5.0\mingw_64
     # macOS
     - ARCH: x64
       COMPILER: Clang
@@ -35,16 +35,16 @@ matrix:
     - image: Visual Studio 2022
       COMPILER: GCC
     - image: macos-monterey
-      COMPILER: MinGW
+      COMPILER: msvc2019 #MinGW
     - image: macos-monterey
       COMPILER: GCC
     - image: Ubuntu2004
-      COMPILER: MinGW
+      COMPILER: msvc2019 #MinGW
     - image: Ubuntu2004
       COMPILER: Clang
 
 for:
-  # Windows (MinGW)
+  # Windows (msvc2019 #MinGW)
   -
     matrix:
       only:
@@ -68,8 +68,8 @@ for:
 
     build_script:
       - cmd: cd C:\UltraStar-Creator\src
-      - cmd: qmake UltraStar-Creator.pro -spec win32-g++
-      - cmd: mingw32-make -j%NUMBER_OF_PROCESSORS%
+      - cmd: qmake UltraStar-Creator.pro -spec win32-mvsc #win32-g++
+      - cmd: jom -j%NUMBER_OF_PROCESSORS% #mingw32-make -j%NUMBER_OF_PROCESSORS%
 
     after_build:
       - cmd: makensis ../setup/win64/UltraStar-Creator.nsi
