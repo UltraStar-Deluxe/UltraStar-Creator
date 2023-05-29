@@ -68,7 +68,7 @@ for:
 
     build_script:
       - cmd: cd C:\UltraStar-Creator\src
-      - cmd: qmake UltraStar-Creator.pro -spec win32-mvsc #win32-g++
+      - cmd: qmake UltraStar-Creator.pro -spec win32-msvc #win32-g++
       - cmd: jom -j%NUMBER_OF_PROCESSORS% #mingw32-make -j%NUMBER_OF_PROCESSORS%
 
     after_build:
