@@ -70,7 +70,9 @@ for:
     build_script:
       - git clone https://github.com/taglib/taglib.git 
       - cd .\taglib
-      - cmake -G "Visual Studio 16 2019" -DCMAKE_INSTALL_PREFIX=C:\UltraStar-Creator\lib\win64
+      - mkdir build
+      - cd build
+      - cmake -DWITH_ZLIB=OFF -DBUILD_SHARED_LIBS=OFF -DENABLE_STATIC_RUNTIME=ON -DWITH_ASF=ON -DWITH_MP4=ON -DCMAKE_INSTALL_PREFIX=C:\UltraStar-Creator\lib\win64
       - msbuild all_build.vcxproj /p:Configuration=Release
       - cd C:\UltraStar-Creator\src
       - qmake UltraStar-Creator.pro -spec win32-msvc #win32-g++
