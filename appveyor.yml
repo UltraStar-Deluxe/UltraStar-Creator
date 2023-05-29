@@ -68,6 +68,10 @@ for:
       - echo PATH=%PATH%
 
     build_script:
+      - git clone https://github.com/taglib/taglib.git 
+      - cd .\taglib
+      - cmake -G "Visual Studio 16 2019" -DCMAKE_INSTALL_PREFIX=C:\UltraStar-Creator\lib\win64
+      - msbuild all_build.vcxproj /p:Configuration=Release
       - cd C:\UltraStar-Creator\src
       - qmake UltraStar-Creator.pro -spec win32-msvc #win32-g++
       - nmake #mingw32-make -j%NUMBER_OF_PROCESSORS%
