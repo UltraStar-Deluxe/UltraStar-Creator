@@ -24,7 +24,7 @@ environment:
 image:
   # AppVeyor builds are ordered by the image list:
   - Visual Studio 2022
-  - macos
+  - macos-monterey
   - Ubuntu2004
 
 matrix:
