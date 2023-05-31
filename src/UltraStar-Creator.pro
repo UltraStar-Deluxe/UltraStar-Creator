@@ -147,7 +147,7 @@ unix:!macx {
 win32 {
 	# Run windeployqt to bundle the required Qt libraries with the application
 	CONFIG(release, debug|release) {
-		QMAKE_POST_LINK += windeployqt64 --release --no-translations --no-system-d3d-compiler --compiler-runtime --no-angle --no-opengl-sw $$shell_path($${DESTDIR})/UltraStar-Creator.exe $$escape_expand(\\n\\t)
+		QMAKE_POST_LINK += windeployqt --release --no-translations --no-system-d3d-compiler --compiler-runtime --no-angle --no-opengl-sw $$shell_path($${DESTDIR})/UltraStar-Creator.exe $$escape_expand(\\n\\t)
 	}
 
 	CONFIG(debug, debug|release) {
