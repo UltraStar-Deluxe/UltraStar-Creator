@@ -82,8 +82,8 @@ for:
       - git clone https://github.com/CLD2Owners/cld2.git
       - cd .\cld2
       - cd .\internal
-      - cl *.cc /TP /GR /EHsc /c
-      - link /dll /out:cld2.dll *.obj
+      - cl /LD *.cc #cl *.cc /TP /GR /EHsc /c
+      #- link /dll /out:cld2.dll *.obj
       - copy .\cld2.dll ..\..\lib\win64 
       # build UltraStar Creator
       - cd C:\UltraStar-Creator\src
