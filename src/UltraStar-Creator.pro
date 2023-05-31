@@ -147,11 +147,11 @@ unix:!macx {
 win32 {
 	# Run windeployqt to bundle the required Qt libraries with the application
 	CONFIG(release, debug|release) {
-		QMAKE_POST_LINK += windeployqt --release --no-translations --no-system-d3d-compiler --compiler-runtime --no-angle --no-opengl-sw $$shell_path($${DESTDIR})/UltraStar-Creator.exe $$escape_expand(\\n\\t)
+		QMAKE_POST_LINK += windeployqt --release --no-translations --no-system-d3d-compiler --compiler-runtime --no-opengl-sw $$shell_path($${DESTDIR})/UltraStar-Creator.exe $$escape_expand(\\n\\t)
 	}
 
 	CONFIG(debug, debug|release) {
-		QMAKE_POST_LINK += windeployqt --debug --no-translations --no-system-d3d-compiler --compiler-runtime --no-angle --no-opengl-sw $$shell_path($${DESTDIR})/UltraStar-Creator_debug.exe $$escape_expand(\\n\\t)
+		QMAKE_POST_LINK += windeployqt --debug --no-translations --no-system-d3d-compiler --compiler-runtime --no-opengl-sw $$shell_path($${DESTDIR})/UltraStar-Creator_debug.exe $$escape_expand(\\n\\t)
 	}
 
 	# Clean up after running windeployqt, removing some superfluous Qt libraries
