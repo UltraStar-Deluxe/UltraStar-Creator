@@ -85,21 +85,30 @@ Section "Application" SecCopyUI
 	File "Swedish.txt"
 	File "tag.dll"
 	File "UltraStar-Creator.exe"
-	File "vc_redist.x64"
+	File "vc_redist.x64.exe"
 	;;SetOutPath "$INSTDIR\iconengines" ;; added via windeployqt, but not needed
 	;;File "iconengines\qsvgicon.dll" ;; added via windeployqt, but not needed
+	SetOutPath "$INSTDIR\generic"
+	File "qtuiotouchplugin.dll" ;; needed?
 	SetOutPath "$INSTDIR\imageformats"
 	File "imageformats\qgif.dll"
 	;;File "imageformats\qicns.dll" ;; added via windeployqt, but not needed
 	;;File "imageformats\qico.dll" ;; added via windeployqt, but not needed
 	File "imageformats\qjpeg.dll"
+	;;File "imageformats\qpdf.dll" ;; added via windeployqt, but not needed	
 	;;File "imageformats\qsvg.dll" ;; added via windeployqt, but not needed
 	;;File "imageformats\qtga.dll" ;; added via windeployqt, but not needed
 	;;File "imageformats\qtiff.dll" ;; added via windeployqt, but not needed
 	;;File "imageformats\qwbmp.dll" ;; added via windeployqt, but not needed
 	;;File "imageformats\qwebp.dll" ;; added via windeployqt, but not needed
+	SetOutPath "$INSTDIR\networkinformation"
+	File "qnetworklistmanager.dll" ;; needed?
 	SetOutPath "$INSTDIR\platforms"
 	File "platforms\qwindows.dll"
+	SetOutPath "$INSTDIR\tls" ;; needed?
+	File "qcertonlybackend.dll" ;; needed?
+	File "qopensslbackend.dll" ;; needed?
+	File "qschannelbackend.dll" ;; needed?
 
 	;; setup initial reg values
 	;; WriteRegStr HKCU "Software\HPI\${PRODUCTNAME}" "key" "value1 value2"
