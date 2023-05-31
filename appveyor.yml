@@ -64,7 +64,7 @@ for:
       - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
 
     before_build:
-      - set PATH=%QTDIR%\bin;%QTDIR%\..\..\Tools\mingw810_64\bin;C:\Program Files (x86)\NSIS\;%PATH%
+      - set PATH=%QTDIR%\bin;C:\Program Files (x86)\NSIS\;%PATH%
       - echo PATH=%PATH%
 
     build_script:
