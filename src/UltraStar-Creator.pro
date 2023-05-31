@@ -82,7 +82,8 @@ win32 {
 	LIBS += -L"../lib/win64" \
 		-ltag \
 		-lbass \
-		-lbass_fx
+		-lbass_fx \
+		-lcld2
 
 	RC_ICONS += UltraStar-Creator.ico
 }
