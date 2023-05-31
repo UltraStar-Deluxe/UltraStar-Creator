@@ -89,7 +89,7 @@ Section "Application" SecCopyUI
 	;;SetOutPath "$INSTDIR\iconengines" ;; added via windeployqt, but not needed
 	;;File "iconengines\qsvgicon.dll" ;; added via windeployqt, but not needed
 	SetOutPath "$INSTDIR\generic"
-	File "qtuiotouchplugin.dll" ;; needed?
+	File "generic\qtuiotouchplugin.dll" ;; needed?
 	SetOutPath "$INSTDIR\imageformats"
 	File "imageformats\qgif.dll"
 	;;File "imageformats\qicns.dll" ;; added via windeployqt, but not needed
@@ -101,14 +101,14 @@ Section "Application" SecCopyUI
 	;;File "imageformats\qtiff.dll" ;; added via windeployqt, but not needed
 	;;File "imageformats\qwbmp.dll" ;; added via windeployqt, but not needed
 	;;File "imageformats\qwebp.dll" ;; added via windeployqt, but not needed
-	SetOutPath "$INSTDIR\networkinformation"
-	File "qnetworklistmanager.dll" ;; needed?
+	SetOutPath "$INSTDIR\networkinformation" ;; needed?
+	File "networkinformation\qnetworklistmanager.dll" ;; needed?
 	SetOutPath "$INSTDIR\platforms"
 	File "platforms\qwindows.dll"
 	SetOutPath "$INSTDIR\tls" ;; needed?
-	File "qcertonlybackend.dll" ;; needed?
-	File "qopensslbackend.dll" ;; needed?
-	File "qschannelbackend.dll" ;; needed?
+	File "tls\qcertonlybackend.dll" ;; needed?
+	File "tls\qopensslbackend.dll" ;; needed?
+	File "tls\qschannelbackend.dll" ;; needed?
 
 	;; setup initial reg values
 	;; WriteRegStr HKCU "Software\HPI\${PRODUCTNAME}" "key" "value1 value2"
