@@ -73,7 +73,7 @@ for:
       - cd .\taglib
       - mkdir build
       - cd build
-      - cmake -DWITH_ZLIB=OFF -DBUILD_SHARED_LIBS=ON -DENABLE_STATIC_RUNTIME=ON -DBUILD_TESTING=OFF ..
+      - cmake -DWITH_ZLIB=OFF -DBUILD_SHARED_LIBS=ON -DENABLE_STATIC_RUNTIME=OFF -DBUILD_TESTING=OFF ..
       - msbuild all_build.vcxproj /p:Configuration=Release
       - copy .\taglib\Release\tag.lib ..\..\lib\win64
       - copy .\taglib\Release\tag.dll ..\..\lib\win64
