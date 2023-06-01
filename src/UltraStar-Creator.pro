@@ -203,7 +203,7 @@ macx {
 	QMAKE_BUNDLE_DATA += syllabification
 
 	# Run macdeployqt to bundle the required Qt libraries with the application
-	QMAKE_POST_LINK += macdeployqt ../bin/release/UltraStar-Creator.app -no-strip -always-overwrite -libpath=../lib/macx -verbose=3 $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += /usr/local/opt/qt@6/bin/macdeployqt6 ../bin/release/UltraStar-Creator.app -no-strip -always-overwrite -libpath=../lib/macx -verbose=3 $$escape_expand(\\n\\t)
 
 	# Fix path to external libraries in app bundle
 	QMAKE_POST_LINK += install_name_tool -change @loader_path/libbass.dylib @executable_path/../Frameworks/libbass.dylib ../bin/release/UltraStar-Creator.app/Contents/MacOS/UltraStar-Creator $$escape_expand(\\n\\t)
