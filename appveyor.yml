@@ -9,6 +9,7 @@ environment:
     APPVEYOR_SAVE_CACHE_ON_ERROR: true
     APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=4
     APPVEYOR_RDP_PASSWORD: UltraStar-Creator!
+    APPVEYOR_SSH_KEY: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLHaYiemdBNnlprzyU/pQrniL8Hg+Db7GyAGJfUABSDvcMgUKjKhoObt5/z64AcdXNzxPfT8QOrW0vkY6Bdf8TfRJFi32IxnxtiWsLx0Q7bs+0FUUu6woWSZuYnIwc4NdkVkVzTjy58YwO+731Wv5QHZG7ksnrwW5wZzqDTQhBrqb6ggmxJXGovwk10QCH88kGCXUgRP4MUpORF5uaDCXwIFVVLaD4K3FHHElishwWDU1tx6AYFDu3+7sLwnHkb37OSa5wAXl75FAHD7Kt1sRdzmRIC3WmM9dGjT+96eazTGdZ+hfhbDTtIds+LUY1YsEewk8a7mZ1ehElZZnkU0wXYyWnaO3MbSTNXvzfCfo9Ql3VAHEpwyRHBFoQTHJNKDdqFVPtJZoE9yJWbMqhBK3UY/+dg03E49TkZUeXZoHb9Ft7OM8VgcrvH+sXAITs3F/ML1OzEuvU7D3QzG5fkAZACzX/B04ArfBnjgBRHmCb+pXDOQ0UcW/vqGmuWL3tRn0= markus@Markuss-MBP.fritz.box
   matrix:
     # Windows
     - ARCH: x64
@@ -187,3 +188,8 @@ for:
     artifacts:
       - path: bin/release/UltraStar-Creator-*.AppImage
         name: UltraStar-Creator AppImage Package
+        
+    on_failure:
+      # Change false to true to block build and investigate build failures
+      - sh: export APPVEYOR_SSH_BLOCK=true
+      - sh: curl -sflL 'https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-ssh.sh' | bash -e -
