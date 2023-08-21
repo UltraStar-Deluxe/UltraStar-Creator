@@ -427,7 +427,11 @@ void QUMainWindow::on_pushButton_PlayPause_clicked()
 		timeLineMap.insert(-14, QString("#TITLE:%1").arg(ui->lineEdit_Title->text()));
 		timeLineMap.insert(-13, QString("#ARTIST:%1").arg(ui->lineEdit_Artist->text()));
 		if (!ui->comboBox_Language->currentText().isEmpty()) {
-			timeLineMap.insert(-12, QString("#LANGUAGE:%1").arg(ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString()));
+			QString language = ui->comboBox_Language->itemData(ui->comboBox_Language->currentIndex()).toString();
+			if(language.isEmpty()){
+				language = ui->comboBox_Language->currentText();
+			}
+			timeLineMap.insert(-12, QString("#LANGUAGE:%1").arg(language));
 		}
 		if (!ui->lineEdit_Edition->text().isEmpty()) {
 			timeLineMap.insert(-11, QString("#EDITION:%1").arg(ui->lineEdit_Edition->text()));
@@ -1194,8 +1198,6 @@ void QUMainWindow::handleMP3() {
 	ui->lineEdit_Artist->clear();
 	ui->lineEdit_Title->clear();
 	ui->plainTextEdit_InputLyrics->clear();
-	ui->comboBox_Language->clear();
-	ui->comboBox_Genre->clear();
 	ui->comboBox_Cover->clear();
 	ui->comboBox_Background->clear();
 	ui->comboBox_Video->clear();
