@@ -36,7 +36,7 @@ UltraStar-Creator (usc) is a free and open source song creation tool using Qt. I
 3. `git clone https://github.com/UltraStar-Deluxe/UltraStar-Creator.git`
 4. `cd UltraStar-Creator`
 5. Build UltraStar-Creator
-   * from command line: `cd src && qmake UltraStar-Creator.pro && make` 
+   * from command line: `cd src && qmake6 UltraStar-Creator.pro && make` 
    * using Qt Creator: open `src/UltraStar-Creator.pro` in Qt Creator, disable shadow build in Project tab, then build (CTRL+B)
 6. Run `UltraStar-Creator` in `bin/release` and start creating new songs!
 
