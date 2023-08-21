@@ -3432,6 +3432,18 @@ Before tapping, the lyrics need to meet the following requirements:
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>lineEdit_Title</tabstop>
+  <tabstop>lineEdit_Artist</tabstop>
+  <tabstop>comboBox_Language</tabstop>
+  <tabstop>lineEdit_Edition</tabstop>
+  <tabstop>comboBox_Genre</tabstop>
+  <tabstop>comboBox_Year</tabstop>
+  <tabstop>lineEdit_Creator</tabstop>
+  <tabstop>lineEdit_MP3</tabstop>
+  <tabstop>comboBox_Cover</tabstop>
+  <tabstop>comboBox_Background</tabstop>
+  <tabstop>comboBox_Video</tabstop>
+  <tabstop>doubleSpinBox_BPM</tabstop>
   <tabstop>pushButton_PlayPause</tabstop>
   <tabstop>pushButton_Stop</tabstop>
   <tabstop>pushButton_Reset</tabstop>
