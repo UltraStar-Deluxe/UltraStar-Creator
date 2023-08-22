@@ -81,7 +81,7 @@ for:
       - copy .\taglib\Release\tag.lib ..\..\lib\win64
       - copy .\taglib\Release\tag.dll ..\..\lib\win64
       - cd ..\..
-      - rmdir /s "include\taglib"
+      - rmdir /s /q "include\taglib"
       - Xcopy /E /I C:\taglib\include\taglib include\taglib
       # build cld2
       - git clone https://github.com/CLD2Owners/cld2.git
