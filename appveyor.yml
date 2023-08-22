@@ -90,7 +90,7 @@ for:
       - copy .\cld2.dll ..\..\lib\win64
       # build UltraStar Creator
       - cd C:\UltraStar-Creator\src
-      - qmake UltraStar-Creator.pro -spec win32-msvc #win32-g++
+      - qmake6 UltraStar-Creator.pro -spec win32-msvc #win32-g++
       - nmake #mingw32-make -j%NUMBER_OF_PROCESSORS%
 
     after_build:
@@ -169,7 +169,7 @@ for:
 
     build_script:
       - sh: cd src
-      - sh: qmake UltraStar-Creator.pro
+      - sh: qmake6 UltraStar-Creator.pro
       - sh: make -j$(getconf _NPROCESSORS_ONLN)
       - sh: cd ../bin/release
       # Build AppImage
