@@ -21,6 +21,7 @@ environment:
     # Ubuntu
     - ARCH: x64
       COMPILER: GCC
+      QTDIR: Qt/6.4/gcc_64
 
 image:
   # AppVeyor builds are ordered by the image list:
@@ -153,7 +154,8 @@ for:
 
     init:
       - sh: echo _NPROCESSORS_ONLN=$(getconf _NPROCESSORS_ONLN)
-      - sh: export PATH=$HOME/Qt/latest/gcc_64/bin:$PATH
+      - sh: export PATH=$HOME/$QTDIR/bin:$PATH
+      - sh: echo PATH=$PATH
 
     install:
       - ps: $env:package_version = ("$(git describe --tags --always --long)").trim()
