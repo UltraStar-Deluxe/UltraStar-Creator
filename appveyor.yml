@@ -14,7 +14,7 @@ environment:
     # Windows
     - ARCH: x64
       COMPILER: msvc2019 #MinGW
-      QTDIR: C:\Qt\6.5.0\msvc2019_64 #C:\Qt\6.5.0\mingw_64
+      QTDIR: C:\Qt\6.5.1\msvc2019_64 #C:\Qt\6.5.0\mingw_64
     # macOS
     - ARCH: x64
       COMPILER: Clang
