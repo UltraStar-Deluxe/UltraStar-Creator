@@ -34,9 +34,7 @@
 #include "modproperties.h"
 
 namespace TagLib {
-
   namespace Mod {
-
     class TAGLIB_EXPORT File : public TagLib::Mod::FileBase
     {
     public:
@@ -68,26 +66,29 @@ namespace TagLib {
       /*!
        * Destroys this instance of the File.
        */
-      virtual ~File();
+      ~File() override;
 
-      Mod::Tag *tag() const;
+      File(const File &) = delete;
+      File &operator=(const File &) = delete;
+
+      Mod::Tag *tag() const override;
 
       /*!
        * Implements the unified property interface -- export function.
        * Forwards to Mod::Tag::properties().
        */
-      PropertyMap properties() const;
+      PropertyMap properties() const override;
 
       /*!
        * Implements the unified property interface -- import function.
        * Forwards to Mod::Tag::setProperties().
        */
-      PropertyMap setProperties(const PropertyMap &);
+      PropertyMap setProperties(const PropertyMap &) override;
       /*!
        * Returns the Mod::Properties for this file. If no audio properties
        * were read then this will return a null pointer.
        */
-      Mod::Properties *audioProperties() const;
+      Mod::Properties *audioProperties() const override;
 
       /*!
        * Save the file.
@@ -95,20 +96,14 @@ namespace TagLib {
        *
        * \note Saving Protracker tags is not supported.
        */
-      bool save();
+      bool save() override;
 
     private:
-      File(const File &);
-      File &operator=(const File &);
-
       void read(bool readProperties);
 
       class FilePrivate;
-      FilePrivate *d;
+      std::unique_ptr<FilePrivate> d;
     };
-
-  }
-
-}
-
+  }  // namespace Mod
+}  // namespace TagLib
 #endif

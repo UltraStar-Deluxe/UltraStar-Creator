@@ -1,4 +1,5 @@
 /***************************************************************************
+ *
     copyright            : (C) 2008 by Lukas Lalinsky
     email                : lalinsky@gmail.com
  ***************************************************************************/
@@ -58,14 +59,17 @@ namespace TagLib {
       /*!
        * Destroys this PopularimeterFrame instance.
        */
-      virtual ~PopularimeterFrame();
+      ~PopularimeterFrame() override;
+
+      PopularimeterFrame(const PopularimeterFrame &) = delete;
+      PopularimeterFrame &operator=(const PopularimeterFrame &) = delete;
 
       /*!
        * Returns the text of this popularimeter.
        *
        * \see text()
        */
-      virtual String toString() const;
+      String toString() const override;
 
       /*!
        * Returns the email.
@@ -112,21 +116,19 @@ namespace TagLib {
     protected:
       // Reimplementations.
 
-      virtual void parseFields(const ByteVector &data);
-      virtual ByteVector renderFields() const;
+      void parseFields(const ByteVector &data) override;
+      ByteVector renderFields() const override;
 
     private:
       /*!
        * The constructor used by the FrameFactory.
        */
       PopularimeterFrame(const ByteVector &data, Header *h);
-      PopularimeterFrame(const PopularimeterFrame &);
-      PopularimeterFrame &operator=(const PopularimeterFrame &);
 
       class PopularimeterFramePrivate;
-      PopularimeterFramePrivate *d;
+      std::unique_ptr<PopularimeterFramePrivate> d;
     };
 
-  }
-}
+  }  // namespace ID3v2
+}  // namespace TagLib
 #endif

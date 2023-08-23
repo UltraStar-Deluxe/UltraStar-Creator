@@ -46,7 +46,7 @@ namespace TagLib {
      *
      * Reimplementing this factory is the key to adding support for frame types
      * not directly supported by TagLib to your application.  To do so you would
-     * subclass this factory reimplement createFrame().  Then by setting your
+     * subclass this factory and reimplement createFrame().  Then by setting your
      * factory to be the default factory in ID3v2::Tag constructor you can
      * implement behavior that will allow for new ID3v2::Frame subclasses (also
      * provided by you) to be used.
@@ -65,41 +65,23 @@ namespace TagLib {
     class TAGLIB_EXPORT FrameFactory
     {
     public:
-      static FrameFactory *instance();
-      /*!
-       * Create a frame based on \a data.  \a synchSafeInts should only be set
-       * false if we are parsing an old tag (v2.3 or older) that does not support
-       * synchsafe ints.
-       *
-       * \deprecated Please use the method below that accepts a ID3v2::Header
-       * instance in new code.
-       */
-      Frame *createFrame(const ByteVector &data, bool synchSafeInts) const;
+      FrameFactory(const FrameFactory &) = delete;
+      FrameFactory &operator=(const FrameFactory &) = delete;
 
-      /*!
-       * Create a frame based on \a data.  \a version should indicate the ID3v2
-       * version of the tag.  As ID3v2.4 is the most current version of the
-       * standard 4 is the default.
-       *
-       * \deprecated Please use the method below that accepts a ID3v2::Header
-       * instance in new code.
-       */
-      Frame *createFrame(const ByteVector &data, unsigned int version = 4) const;
+      static FrameFactory *instance();
 
       /*!
        * Create a frame based on \a data.  \a tagHeader should be a valid
        * ID3v2::Header instance.
        */
-      // BIC: make virtual
-      Frame *createFrame(const ByteVector &data, Header *tagHeader) const;
+      virtual Frame *createFrame(const ByteVector &data, const Header *tagHeader) const;
 
       /*!
        * After a tag has been read, this tries to rebuild some of them
        * information, most notably the recording date, from frames that
        * have been deprecated and can't be upgraded directly.
        */
-      // BIC: Make virtual
-      void rebuildAggregateFrames(ID3v2::Tag *tag) const;
+      virtual void rebuildAggregateFrames(ID3v2::Tag *tag) const;
 
       /*!
        * Returns the default text encoding for text frames.  If setTextEncoding()
@@ -148,17 +130,39 @@ namespace TagLib {
        */
       virtual bool updateFrame(Frame::Header *header) const;
 
-    private:
-      FrameFactory(const FrameFactory &);
-      FrameFactory &operator=(const FrameFactory &);
+      /*!
+       * Creates and prepares the frame header for createFrame().
+       *
+       * \param data data of the frame (might be modified)
+       * \param tagHeader the tag header
+       * \param header reference to frame header pointer, will be set to
+       *               nullptr if the frame is invalid
+       * \return {header, ok}: header is a created frame header or nullptr
+       *         if the frame is invalid; ok is true if the frame is supported.
+       */
+      std::pair<Frame::Header *, bool> prepareFrameHeader(
+          ByteVector &data, const Header *tagHeader) const;
 
+      /*!
+       * Create a frame based on \a data.  \a header should be a valid frame
+       * header and \a tagHeader a valid ID3v2::Header instance.
+       *
+       * This method is called by the public overloaded method
+       * createFrame(const ByteVector &, const Header *) after creating
+       * \a header from verified \a data using prepareFrameHeader(), so
+       * this method is provided to be reimplemented in derived classes.
+       */
+      virtual Frame *createFrame(const ByteVector &data, Frame::Header *header,
+                                 const Header *tagHeader) const;
+
+    private:
       static FrameFactory factory;
 
       class FrameFactoryPrivate;
-      FrameFactoryPrivate *d;
+      std::unique_ptr<FrameFactoryPrivate> d;
     };
 
-  }
-}
+  }  // namespace ID3v2
+}  // namespace TagLib
 
 #endif

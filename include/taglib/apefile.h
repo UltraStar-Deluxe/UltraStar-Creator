@@ -107,39 +107,42 @@ namespace TagLib {
       /*!
        * Destroys this instance of the File.
        */
-      virtual ~File();
+      ~File() override;
+
+      File(const File &) = delete;
+      File &operator=(const File &) = delete;
 
       /*!
        * Returns the Tag for this file.  This will be an APE tag, an ID3v1 tag
        * or a combination of the two.
        */
-      virtual TagLib::Tag *tag() const;
+      TagLib::Tag *tag() const override;
 
       /*!
        * Implements the unified property interface -- export function.
        * If the file contains both an APE and an ID3v1 tag, only APE
        * will be converted to the PropertyMap.
        */
-      PropertyMap properties() const;
+      PropertyMap properties() const override;
 
       /*!
        * Removes unsupported properties. Forwards to the actual Tag's
        * removeUnsupportedProperties() function.
        */
-      void removeUnsupportedProperties(const StringList &properties);
+      void removeUnsupportedProperties(const StringList &properties) override;
 
       /*!
        * Implements the unified property interface -- import function.
        * Creates an APEv2 tag if necessary. A potentially existing ID3v1
        * tag will be updated as well.
        */
-      PropertyMap setProperties(const PropertyMap &);
+      PropertyMap setProperties(const PropertyMap &) override;
 
       /*!
        * Returns the APE::Properties for this file.  If no audio properties
        * were read then this will return a null pointer.
        */
-      virtual Properties *audioProperties() const;
+      Properties *audioProperties() const override;
 
       /*!
        * Saves the file.
@@ -147,7 +150,7 @@ namespace TagLib {
        * \note According to the official Monkey's Audio SDK, an APE file
        * can only have either ID3V1 or APE tags, so a parameter is used here.
        */
-      virtual bool save();
+      bool save() override;
 
       /*!
        * Returns a pointer to the ID3v1 tag of the file.
@@ -211,16 +214,22 @@ namespace TagLib {
        */
       bool hasID3v1Tag() const;
 
-    private:
-      File(const File &);
-      File &operator=(const File &);
+      /*!
+       * Returns whether or not the given \a stream can be opened as an APE
+       * file.
+       *
+       * \note This method is designed to do a quick check.  The result may
+       * not necessarily be correct.
+       */
+      static bool isSupported(IOStream *stream);
 
+    private:
       void read(bool readProperties);
 
       class FilePrivate;
-      FilePrivate *d;
+      std::unique_ptr<FilePrivate> d;
     };
-  }
-}
+  }  // namespace APE
+}  // namespace TagLib
 
 #endif

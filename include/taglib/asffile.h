@@ -33,10 +33,8 @@
 #include "asftag.h"
 
 namespace TagLib {
-
   //! An implementation of ASF (WMA) metadata
   namespace ASF {
-
     /*!
      * This implements and provides an interface for ASF files to the
      * TagLib::Tag and TagLib::AudioProperties interfaces by way of implementing
@@ -73,7 +71,10 @@ namespace TagLib {
       /*!
        * Destroys this instance of the File.
        */
-      virtual ~File();
+      ~File() override;
+
+      File(const File &) = delete;
+      File &operator=(const File &) = delete;
 
       /*!
        * Returns a pointer to the ASF tag of the file.
@@ -85,45 +86,52 @@ namespace TagLib {
        * deleted by the user.  It will be deleted when the file (object) is
        * destroyed.
        */
-      virtual Tag *tag() const;
+      Tag *tag() const override;
 
       /*!
        * Implements the unified property interface -- export function.
        */
-      PropertyMap properties() const;
+      PropertyMap properties() const override;
 
       /*!
        * Removes unsupported properties. Forwards to the actual Tag's
        * removeUnsupportedProperties() function.
        */
-      void removeUnsupportedProperties(const StringList &properties);
+      void removeUnsupportedProperties(const StringList &properties) override;
 
       /*!
        * Implements the unified property interface -- import function.
        */
-      PropertyMap setProperties(const PropertyMap &);
+      PropertyMap setProperties(const PropertyMap &) override;
 
       /*!
        * Returns the ASF audio properties for this file.
        */
-      virtual Properties *audioProperties() const;
+      Properties *audioProperties() const override;
 
       /*!
        * Save the file.
        *
        * This returns true if the save was successful.
        */
-      virtual bool save();
+      bool save() override;
+
+      /*!
+       * Returns whether or not the given \a stream can be opened as an ASF
+       * file.
+       *
+       * \note This method is designed to do a quick check.  The result may
+       * not necessarily be correct.
+       */
+      static bool isSupported(IOStream *stream);
 
     private:
       void read();
 
       class FilePrivate;
-      FilePrivate *d;
+      std::unique_ptr<FilePrivate> d;
     };
-
-  }
-
-}
+  }  // namespace ASF
+}  // namespace TagLib
 
 #endif

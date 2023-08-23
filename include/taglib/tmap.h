@@ -27,6 +27,7 @@
 #define TAGLIB_MAP_H
 
 #include <map>
+#include <memory>
 
 #include "taglib.h"
 
@@ -76,7 +77,7 @@ namespace TagLib {
     /*!
      * Destroys this instance of the Map.
      */
-    virtual ~Map();
+    ~Map();
 
     /*!
      * Returns an STL style iterator to the beginning of the map.  See
@@ -91,6 +92,12 @@ namespace TagLib {
     ConstIterator begin() const;
 
     /*!
+     * Returns an STL style iterator to the beginning of the map.  See
+     * std::map::const_iterator for the semantics.
+     */
+    ConstIterator cbegin() const;
+
+    /*!
      * Returns an STL style iterator to the end of the map.  See
      * std::map::iterator for the semantics.
      */
@@ -101,6 +108,12 @@ namespace TagLib {
      * std::map::const_iterator for the semantics.
      */
     ConstIterator end() const;
+
+    /*!
+     * Returns an STL style iterator to the end of the map.  See
+     * std::map::const_iterator for the semantics.
+     */
+    ConstIterator cend() const;
 
     /*!
      * Inserts \a value under \a key in the map.  If a value for \a key already
@@ -154,6 +167,14 @@ namespace TagLib {
     Map<Key, T> &erase(const Key &key);
 
     /*!
+     * Returns the value associated with \a key.
+     *
+     * If the map does not contain \a key, it returns defaultValue.
+     * If no defaultValue is specified, it returns a default-constructed value.
+     */
+    T value(const Key &key, const T &defaultValue = T()) const;
+
+    /*!
      * Returns a reference to the value associated with \a key.
      *
      * \note This has undefined behavior if the key is not present in the map.
@@ -174,6 +195,11 @@ namespace TagLib {
      */
     Map<Key, T> &operator=(const Map<Key, T> &m);
 
+    /*!
+     * Exchanges the content of this map by the content of \a m.
+     */
+    void swap(Map<Key, T> &m);
+
   protected:
     /*
      * If this List is being shared via implicit sharing, do a deep copy of the
@@ -185,11 +211,11 @@ namespace TagLib {
   private:
 #ifndef DO_NOT_DOCUMENT
     template <class KeyP, class TP> class MapPrivate;
-    MapPrivate<Key, T> *d;
+    std::shared_ptr<MapPrivate<Key, T>> d;
 #endif
   };
 
-}
+}  // namespace TagLib
 
 // Since GCC doesn't support the "export" keyword, we have to include the
 // implementation.

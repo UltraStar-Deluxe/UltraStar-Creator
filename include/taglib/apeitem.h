@@ -31,9 +31,7 @@
 #include "tstringlist.h"
 
 namespace TagLib {
-
   namespace APE {
-
     //! An implementation of APE-items
 
     /*!
@@ -57,12 +55,6 @@ namespace TagLib {
        * Constructs an empty item.
        */
       Item();
-
-      /*!
-       * Constructs a text item with \a key and \a value.
-       */
-      // BIC: Remove this, StringList has a constructor from a single string
-      Item(const String &key, const String &value);
 
       /*!
        * Constructs a text item with \a key and \a values.
@@ -213,12 +205,9 @@ namespace TagLib {
 
     private:
       class ItemPrivate;
-      ItemPrivate *d;
+      std::unique_ptr<ItemPrivate> d;
     };
-  }
-
-}
+  }  // namespace APE
+}  // namespace TagLib
 
 #endif
-
-

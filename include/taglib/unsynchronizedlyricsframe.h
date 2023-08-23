@@ -57,14 +57,17 @@ namespace TagLib {
       /*!
        * Destroys this UnsynchronizedLyricsFrame instance.
        */
-      virtual ~UnsynchronizedLyricsFrame();
+      ~UnsynchronizedLyricsFrame() override;
+
+      UnsynchronizedLyricsFrame(const UnsynchronizedLyricsFrame &) = delete;
+      UnsynchronizedLyricsFrame &operator=(const UnsynchronizedLyricsFrame &) = delete;
 
       /*!
        * Returns the text of this unsynchronized lyrics frame.
        *
        * \see text()
        */
-      virtual String toString() const;
+      String toString() const override;
 
       /*!
        * Returns the language encoding as a 3 byte encoding as specified by
@@ -113,7 +116,7 @@ namespace TagLib {
        *
        * \see text()
        */
-      virtual void setText(const String &s);
+      void setText(const String &s) override;
 
       /*!
        * Returns the text encoding that will be used in rendering this frame.
@@ -145,7 +148,7 @@ namespace TagLib {
        * Note that currently the language() field is not supported by the PropertyMap
        * interface.
        */
-      PropertyMap asProperties() const;
+      PropertyMap asProperties() const override;
 
       /*!
        * LyricsFrames each have a unique description.  This searches for a lyrics
@@ -159,21 +162,19 @@ namespace TagLib {
     protected:
       // Reimplementations.
 
-      virtual void parseFields(const ByteVector &data);
-      virtual ByteVector renderFields() const;
+      void parseFields(const ByteVector &data) override;
+      ByteVector renderFields() const override;
 
     private:
       /*!
        * The constructor used by the FrameFactory.
        */
       UnsynchronizedLyricsFrame(const ByteVector &data, Header *h);
-      UnsynchronizedLyricsFrame(const UnsynchronizedLyricsFrame &);
-      UnsynchronizedLyricsFrame &operator=(const UnsynchronizedLyricsFrame &);
 
       class UnsynchronizedLyricsFramePrivate;
-      UnsynchronizedLyricsFramePrivate *d;
+      std::unique_ptr<UnsynchronizedLyricsFramePrivate> d;
     };
 
-  }
-}
+  }  // namespace ID3v2
+}  // namespace TagLib
 #endif

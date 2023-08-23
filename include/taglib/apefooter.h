@@ -61,6 +61,9 @@ namespace TagLib {
        */
       virtual ~Footer();
 
+      Footer(const Footer &) = delete;
+      Footer &operator=(const Footer &) = delete;
+
       /*!
        * Returns the version number.  (Note: This is the 1000 or 2000.)
        */
@@ -160,14 +163,11 @@ namespace TagLib {
       ByteVector render(bool isHeader) const;
 
     private:
-      Footer(const Footer &);
-      Footer &operator=(const Footer &);
-
       class FooterPrivate;
-      FooterPrivate *d;
+      std::unique_ptr<FooterPrivate> d;
     };
 
-  }
-}
+  }  // namespace APE
+}  // namespace TagLib
 
 #endif

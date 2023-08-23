@@ -50,7 +50,7 @@ namespace TagLib {
     /*!
      * Destroys this ByteVectorList instance.
      */
-    virtual ~ByteVectorList();
+    ~ByteVectorList();
 
     /*!
      * Make a shallow, implicitly shared, copy of \a l.  Because this is
@@ -58,6 +58,8 @@ namespace TagLib {
      * pass-by-value usage.
      */
     ByteVectorList(const ByteVectorList &l);
+
+    ByteVectorList &operator=(const ByteVectorList &);
 
     /*!
      * Convert the ByteVectorList to a ByteVector separated by \a separator.  By
@@ -67,25 +69,18 @@ namespace TagLib {
 
     /*!
      * Splits the ByteVector \a v into several strings at \a pattern.  This will
-     * not include the pattern in the returned ByteVectors.
-     */
-    static ByteVectorList split(const ByteVector &v, const ByteVector &pattern,
-                                int byteAlign = 1);
-    /*!
-     * Splits the ByteVector \a v into several strings at \a pattern.  This will
      * not include the pattern in the returned ByteVectors.  \a max is the
      * maximum number of entries that will be separated.  If \a max for instance
      * is 2 then a maximum of 1 match will be found and the vector will be split
      * on that match.
      */
-    // BIC: merge with the function above
     static ByteVectorList split(const ByteVector &v, const ByteVector &pattern,
-                                int byteAlign, int max);
+                                int byteAlign = 1, int max = 0);
   private:
     class ByteVectorListPrivate;
-    ByteVectorListPrivate *d;
+    std::unique_ptr<ByteVectorListPrivate> d;
   };
 
-}
+}  // namespace TagLib
 
 #endif

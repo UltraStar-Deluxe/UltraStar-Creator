@@ -26,17 +26,15 @@
 #ifndef TAGLIB_MP4FILE_H
 #define TAGLIB_MP4FILE_H
 
+#include "mp4tag.h"
 #include "tag.h"
 #include "tfile.h"
 #include "taglib_export.h"
 #include "mp4properties.h"
-#include "mp4tag.h"
 
 namespace TagLib {
-
   //! An implementation of MP4 (AAC, ALAC, ...) metadata
   namespace MP4 {
-
     class Atoms;
 
     /*!
@@ -48,6 +46,19 @@ namespace TagLib {
     class TAGLIB_EXPORT File : public TagLib::File
     {
     public:
+      /*!
+       * This set of flags is used for strip() and is suitable for
+       * being OR-ed together.
+       */
+      enum TagTypes {
+        //! Empty set.  Matches no tag types.
+        NoTags  = 0x0000,
+        //! Matches MP4 tags.
+        MP4     = 0x0001,
+        //! Matches all tag types.
+        AllTags = 0xffff
+      };
+
       /*!
        * Constructs an MP4 file from \a file.  If \a readProperties is true the
        * file's audio properties will also be read.
@@ -72,7 +83,10 @@ namespace TagLib {
       /*!
        * Destroys this instance of the File.
        */
-      virtual ~File();
+      ~File() override;
+
+      File(const File &) = delete;
+      File &operator=(const File &) = delete;
 
       /*!
        * Returns a pointer to the MP4 tag of the file.
@@ -84,35 +98,44 @@ namespace TagLib {
        * deleted by the user.  It will be deleted when the file (object) is
        * destroyed.
        */
-      Tag *tag() const;
+      Tag *tag() const override;
 
       /*!
        * Implements the unified property interface -- export function.
        */
-      PropertyMap properties() const;
+      PropertyMap properties() const override;
 
       /*!
        * Removes unsupported properties. Forwards to the actual Tag's
        * removeUnsupportedProperties() function.
        */
-      void removeUnsupportedProperties(const StringList &properties);
+      void removeUnsupportedProperties(const StringList &properties) override;
 
       /*!
        * Implements the unified property interface -- import function.
        */
-      PropertyMap setProperties(const PropertyMap &);
+      PropertyMap setProperties(const PropertyMap &) override;
 
       /*!
        * Returns the MP4 audio properties for this file.
        */
-      Properties *audioProperties() const;
+      Properties *audioProperties() const override;
 
       /*!
        * Save the file.
        *
        * This returns true if the save was successful.
        */
-      bool save();
+      bool save() override;
+
+      /*!
+       * This will strip the tags that match the OR-ed together TagTypes from the
+       * file.  By default it strips all tags.  It returns true if the tags are
+       * successfully stripped.
+       *
+       * \note This will update the file immediately.
+       */
+      bool strip(int tags = AllTags);
 
       /*!
        * Returns whether or not the file on disk actually has an MP4 tag, or the
@@ -120,15 +143,21 @@ namespace TagLib {
        */
       bool hasMP4Tag() const;
 
+      /*!
+       * Returns whether or not the given \a stream can be opened as an ASF
+       * file.
+       *
+       * \note This method is designed to do a quick check.  The result may
+       * not necessarily be correct.
+       */
+      static bool isSupported(IOStream *stream);
+
     private:
       void read(bool readProperties);
 
       class FilePrivate;
-      FilePrivate *d;
+      std::unique_ptr<FilePrivate> d;
     };
-
-  }
-
-}
-
+  }  // namespace MP4
+}  // namespace TagLib
 #endif

@@ -214,9 +214,9 @@ namespace TagLib
 
       private:
         class PicturePrivate;
-        PicturePrivate *d;
+        std::shared_ptr<PicturePrivate> d;
       };
-  }
-}
+  }  // namespace ASF
+}  // namespace TagLib
 
 #endif // ASFPICTURE_H

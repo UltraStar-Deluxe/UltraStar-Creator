@@ -33,7 +33,6 @@
 namespace TagLib {
   namespace XM {
     class TAGLIB_EXPORT Properties : public AudioProperties {
-      friend class File;
     public:
       /*! Flag bits. */
       enum {
@@ -41,24 +40,22 @@ namespace TagLib {
       };
 
       Properties(AudioProperties::ReadStyle propertiesStyle);
-      virtual ~Properties();
+      ~Properties() override;
 
-      int length()               const;
-      int lengthInSeconds()      const;
-      int lengthInMilliseconds() const;
-      int bitrate()              const;
-      int sampleRate()           const;
-      int channels()             const;
+      Properties(const Properties &) = delete;
+      Properties &operator=(const Properties &) = delete;
+
+      int channels() const override;
 
       unsigned short lengthInPatterns() const;
-      unsigned short version()          const;
-      unsigned short restartPosition()  const;
-      unsigned short patternCount()     const;
-      unsigned short instrumentCount()  const;
-      unsigned int   sampleCount()      const;
-      unsigned short flags()            const;
-      unsigned short tempo()            const;
-      unsigned short bpmSpeed()         const;
+      unsigned short version() const;
+      unsigned short restartPosition() const;
+      unsigned short patternCount() const;
+      unsigned short instrumentCount() const;
+      unsigned int sampleCount() const;
+      unsigned short flags() const;
+      unsigned short tempo() const;
+      unsigned short bpmSpeed() const;
 
       void setChannels(int channels);
 
@@ -73,13 +70,10 @@ namespace TagLib {
       void setBpmSpeed(unsigned short bpmSpeed);
 
     private:
-      Properties(const Properties&);
-      Properties &operator=(const Properties&);
-
       class PropertiesPrivate;
-      PropertiesPrivate *d;
+      std::unique_ptr<PropertiesPrivate> d;
     };
-  }
-}
+  }  // namespace XM
+}  // namespace TagLib
 
 #endif

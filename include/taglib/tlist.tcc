@@ -24,7 +24,7 @@
  ***************************************************************************/
 
 #include <algorithm>
-#include "trefcounter.h"
+#include <memory>
 
 namespace TagLib {
 
@@ -39,12 +39,10 @@ namespace TagLib {
 // A base for the generic and specialized private class types.  New
 // non-templatized members should be added here.
 
-// BIC change to RefCounter
-class ListPrivateBase : public RefCounterOld
+class ListPrivateBase
 {
 public:
-  ListPrivateBase() : autoDelete(false) {}
-  bool autoDelete;
+  bool autoDelete{};
 };
 
 // A generic implementation
@@ -73,11 +71,12 @@ public:
   ~ListPrivate() {
     clear();
   }
+  ListPrivate(const ListPrivate &) = delete;
+  ListPrivate &operator=(const ListPrivate &) = delete;
   void clear() {
     if(autoDelete) {
-      typename std::list<TP *>::const_iterator it = list.begin();
-      for(; it != list.end(); ++it)
-        delete *it;
+      for(auto &m : list)
+        delete m;
     }
     list.clear();
   }
@@ -89,23 +88,18 @@ public:
 ////////////////////////////////////////////////////////////////////////////////
 
 template <class T>
-List<T>::List()
+List<T>::List() :
+  d(std::make_shared<ListPrivate<T>>())
 {
-  d = new ListPrivate<T>;
 }
 
 template <class T>
 List<T>::List(const List<T> &l) : d(l.d)
 {
-  d->ref();
 }
 
 template <class T>
-List<T>::~List()
-{
-  if(d->deref())
-    delete d;
-}
+List<T>::~List() = default;
 
 template <class T>
 typename List<T>::Iterator List<T>::begin()
@@ -121,6 +115,12 @@ typename List<T>::ConstIterator List<T>::begin() const
 }
 
 template <class T>
+typename List<T>::ConstIterator List<T>::cbegin() const
+{
+  return d->list.cbegin();
+}
+
+template <class T>
 typename List<T>::Iterator List<T>::end()
 {
   detach();
@@ -131,6 +131,12 @@ template <class T>
 typename List<T>::ConstIterator List<T>::end() const
 {
   return d->list.end();
+}
+
+template <class T>
+typename List<T>::ConstIterator List<T>::cend() const
+{
+  return d->list.cend();
 }
 
 template <class T>
@@ -194,9 +200,9 @@ List<T> &List<T>::clear()
 }
 
 template <class T>
-TagLib::uint List<T>::size() const
+unsigned int List<T>::size() const
 {
-  return d->list.size();
+  return static_cast<unsigned int>(d->list.size());
 }
 
 template <class T>
@@ -216,6 +222,12 @@ template <class T>
 typename List<T>::ConstIterator List<T>::find(const T &value) const
 {
   return std::find(d->list.begin(), d->list.end(), value);
+}
+
+template <class T>
+typename List<T>::ConstIterator List<T>::cfind(const T &value) const
+{
+  return std::find(d->list.cbegin(), d->list.cend(), value);
 }
 
 template <class T>
@@ -263,34 +275,32 @@ T &List<T>::back()
 }
 
 template <class T>
-T &List<T>::operator[](uint i)
+T &List<T>::operator[](unsigned int i)
 {
-  Iterator it = d->list.begin();
+  auto it = d->list.begin();
   std::advance(it, i);
 
   return *it;
 }
 
 template <class T>
-const T &List<T>::operator[](uint i) const
+const T &List<T>::operator[](unsigned int i) const
 {
-  ConstIterator it = d->list.begin();
+  auto it = d->list.begin();
   std::advance(it, i);
 
   return *it;
 }
 
 template <class T>
-List<T> &List<T>::operator=(const List<T> &l)
-{
-  if(&l == this)
-    return *this;
+List<T> &List<T>::operator=(const List<T> &) = default;
 
-  if(d->deref())
-    delete d;
-  d = l.d;
-  d->ref();
-  return *this;
+template <class T>
+void List<T>::swap(List<T> &l)
+{
+  using std::swap;
+
+  swap(d, l.d);
 }
 
 template <class T>
@@ -312,9 +322,8 @@ bool List<T>::operator!=(const List<T> &l) const
 template <class T>
 void List<T>::detach()
 {
-  if(d->count() > 1) {
-    d->deref();
-    d = new ListPrivate<T>(d->list);
+  if(d.use_count() > 1) {
+    d = std::make_shared<ListPrivate<T>>(d->list);
   }
 }
 

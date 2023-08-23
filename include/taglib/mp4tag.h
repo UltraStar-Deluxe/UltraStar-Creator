@@ -36,13 +36,7 @@
 #include "mp4item.h"
 
 namespace TagLib {
-
   namespace MP4 {
-
-    /*!
-     * \deprecated
-     */
-    typedef TagLib::Map<String, Item> ItemListMap;
     typedef TagLib::Map<String, Item> ItemMap;
 
     class TAGLIB_EXPORT Tag: public TagLib::Tag
@@ -50,31 +44,28 @@ namespace TagLib {
     public:
         Tag();
         Tag(TagLib::File *file, Atoms *atoms);
-        virtual ~Tag();
+        ~Tag() override;
+        Tag(const Tag &) = delete;
+        Tag &operator=(const Tag &) = delete;
         bool save();
 
-        virtual String title() const;
-        virtual String artist() const;
-        virtual String album() const;
-        virtual String comment() const;
-        virtual String genre() const;
-        virtual unsigned int year() const;
-        virtual unsigned int track() const;
+        String title() const override;
+        String artist() const override;
+        String album() const override;
+        String comment() const override;
+        String genre() const override;
+        unsigned int year() const override;
+        unsigned int track() const override;
 
-        virtual void setTitle(const String &value);
-        virtual void setArtist(const String &value);
-        virtual void setAlbum(const String &value);
-        virtual void setComment(const String &value);
-        virtual void setGenre(const String &value);
-        virtual void setYear(unsigned int value);
-        virtual void setTrack(unsigned int value);
+        void setTitle(const String &value) override;
+        void setArtist(const String &value) override;
+        void setAlbum(const String &value) override;
+        void setComment(const String &value) override;
+        void setGenre(const String &value) override;
+        void setYear(unsigned int value) override;
+        void setTrack(unsigned int value) override;
 
-        virtual bool isEmpty() const;
-
-        /*!
-         * \deprecated Use the item() and setItem() API instead
-         */
-        ItemMap &itemListMap();
+        bool isEmpty() const override;
 
         /*!
          * Returns a string-keyed map of the MP4::Items for this tag.
@@ -102,9 +93,21 @@ namespace TagLib {
          */
         bool contains(const String &key) const;
 
-        PropertyMap properties() const;
-        void removeUnsupportedProperties(const StringList& properties);
-        PropertyMap setProperties(const PropertyMap &properties);
+        /*!
+         * Saves the associated file with the tag stripped.
+         */
+        bool strip();
+
+        PropertyMap properties() const override;
+        void removeUnsupportedProperties(const StringList& properties) override;
+        PropertyMap setProperties(const PropertyMap &properties) override;
+
+    protected:
+        /*!
+         * Sets the value of \a key to \a value, overwriting any previous value.
+         * If \a value is empty, the item is removed.
+         */
+        void setTextItem(const String &key, const String &value);
 
     private:
         AtomDataList parseData2(const Atom *atom, int expectedFlags = -1,
@@ -138,8 +141,8 @@ namespace TagLib {
         ByteVector renderIntPairNoTrailing(const ByteVector &name, const Item &item) const;
         ByteVector renderCovr(const ByteVector &name, const Item &item) const;
 
-        void updateParents(const AtomList &path, long delta, int ignore = 0);
-        void updateOffsets(long delta, long offset);
+        void updateParents(const AtomList &path, offset_t delta, int ignore = 0);
+        void updateOffsets(offset_t delta, offset_t offset);
 
         void saveNew(ByteVector data);
         void saveExisting(ByteVector data, const AtomList &path);
@@ -147,11 +150,8 @@ namespace TagLib {
         void addItem(const String &name, const Item &value);
 
         class TagPrivate;
-        TagPrivate *d;
+        std::unique_ptr<TagPrivate> d;
     };
-
-  }
-
-}
-
+  }  // namespace MP4
+}  // namespace TagLib
 #endif

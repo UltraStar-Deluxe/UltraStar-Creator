@@ -87,7 +87,10 @@ namespace TagLib {
       /*!
        * Destroys this instance of the File.
        */
-      virtual ~File();
+      ~File() override;
+
+      File(const File &) = delete;
+      File &operator=(const File &) = delete;
 
       /*!
        * Returns the Tag for this file.  This will always be a XiphComment.
@@ -102,42 +105,39 @@ namespace TagLib {
        *
        * \see hasXiphComment()
        */
-      virtual XiphComment *tag() const;
+      XiphComment *tag() const override;
 
       /*!
        * Returns the FLAC::Properties for this file.  If no audio properties
        * were read then this will return a null pointer.
        */
-      virtual Properties *audioProperties() const;
+      Properties *audioProperties() const override;
 
 
       /*!
        * Implements the unified property interface -- export function.
        * This forwards directly to XiphComment::properties().
        */
-      PropertyMap properties() const;
+      PropertyMap properties() const override;
 
       /*!
        * Implements the unified tag dictionary interface -- import function.
        * Like properties(), this is a forwarder to the file's XiphComment.
        */
-      PropertyMap setProperties(const PropertyMap &);
+      PropertyMap setProperties(const PropertyMap &) override;
 
 
       /*!
        * Save the file.  This will primarily save and update the XiphComment.
        * Returns true if the save is successful.
-       *
-       * \warning In the current implementation, it's dangerous to call save()
-       * repeatedly.  It leads to a segfault.
        */
-      virtual bool save();
+      bool save() override;
 
       /*!
        * Returns the length of the audio-stream, used by FLAC::Properties for
        * calculating the bitrate.
        */
-      long streamLength();
+      offset_t streamLength();
 
       /*!
        * Returns whether or not the file on disk actually has a XiphComment.
@@ -146,17 +146,22 @@ namespace TagLib {
        */
       bool hasXiphComment() const;
 
-    private:
-      File(const File &);
-      File &operator=(const File &);
+      /*!
+       * Check if the given \a stream can be opened as an Ogg FLAC file.
+       *
+       * \note This method is designed to do a quick check.  The result may
+       * not necessarily be correct.
+       */
+      static bool isSupported(IOStream *stream);
 
+    private:
       void read(bool readProperties, Properties::ReadStyle propertiesStyle);
       void scan();
       ByteVector streamInfoData();
       ByteVector xiphCommentData();
 
       class FilePrivate;
-      FilePrivate *d;
+      std::unique_ptr<FilePrivate> d;
     };
   } // namespace FLAC
   } // namespace Ogg

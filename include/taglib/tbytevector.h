@@ -29,8 +29,9 @@
 #include "taglib.h"
 #include "taglib_export.h"
 
-#include <vector>
 #include <iostream>
+#include <memory>
+#include <vector>
 
 namespace TagLib {
 
@@ -95,7 +96,7 @@ namespace TagLib {
     /*!
      * Destroys this ByteVector instance.
      */
-    virtual ~ByteVector();
+    ~ByteVector();
 
     /*!
      * Sets the data for the byte array using the first \a length bytes of \a data
@@ -241,6 +242,11 @@ namespace TagLib {
     ConstIterator begin() const;
 
     /*!
+     * Returns a ConstIterator that points to the front of the vector.
+     */
+    ConstIterator cbegin() const;
+
+    /*!
      * Returns an Iterator that points to the back of the vector.
      */
     Iterator end();
@@ -249,6 +255,11 @@ namespace TagLib {
      * Returns a ConstIterator that points to the back of the vector.
      */
     ConstIterator end() const;
+
+    /*!
+     * Returns a ConstIterator that points to the back of the vector.
+     */
+    ConstIterator cend() const;
 
     /*!
      * Returns a ReverseIterator that points to the front of the vector.
@@ -271,33 +282,11 @@ namespace TagLib {
     ConstReverseIterator rend() const;
 
     /*!
-     * Returns true if the vector is null.
-     *
-     * \note A vector may be empty without being null.  So do not use this
-     * method to check if the vector is empty.
-     *
-     * \see isEmpty()
-     *
-     * \deprecated
-     */
-     // BIC: remove
-    bool isNull() const;
-
-    /*!
      * Returns true if the ByteVector is empty.
      *
      * \see size()
-     * \see isNull()
      */
     bool isEmpty() const;
-
-    /*!
-     * Returns a CRC checksum of the byte vector's data.
-     *
-     * \note This uses an uncommon variant of CRC32 specializes in Ogg.
-     */
-    // BIC: Remove or make generic.
-    unsigned int checksum() const;
 
     /*!
      * Converts the first 4 bytes of the vector to an unsigned integer.
@@ -586,18 +575,6 @@ namespace TagLib {
     void swap(ByteVector &v);
 
     /*!
-     * A static, empty ByteVector which is convenient and fast (since returning
-     * an empty or "null" value does not require instantiating a new ByteVector).
-     *
-     * \warning Do not modify this variable.  It will mess up the internal state
-     * of TagLib.
-     *
-     * \deprecated
-     */
-    // BIC: remove
-    static ByteVector null;
-
-    /*!
      * Returns a hex-encoded copy of the byte vector.
      */
     ByteVector toHex() const;
@@ -622,9 +599,9 @@ namespace TagLib {
 
   private:
     class ByteVectorPrivate;
-    ByteVectorPrivate *d;
+    std::unique_ptr<ByteVectorPrivate> d;
   };
-}
+}  // namespace TagLib
 
 /*!
  * \relates TagLib::ByteVector

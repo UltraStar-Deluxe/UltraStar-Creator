@@ -55,14 +55,17 @@ namespace TagLib {
       /*!
        * Read an Ogg page from the \a file at the position \a pageOffset.
        */
-      Page(File *file, long pageOffset);
+      Page(File *file, offset_t pageOffset);
 
       virtual ~Page();
+
+      Page(const Page &) = delete;
+      Page &operator=(const Page &) = delete;
 
       /*!
        * Returns the page's position within the file (in bytes).
        */
-      long fileOffset() const;
+      offset_t fileOffset() const;
 
       /*!
        * Returns a pointer to the header for this page.  This pointer will become
@@ -84,16 +87,6 @@ namespace TagLib {
        * \see pageSequenceNumber()
        */
       void setPageSequenceNumber(int sequenceNumber);
-
-      /*!
-       * Returns a copy of the page with \a sequenceNumber set as sequence number.
-       *
-       * \see header()
-       * \see PageHeader::setPageSequenceNumber()
-       *
-       * \deprecated Always returns null.
-       */
-      Page* getCopyWithNewPageSequenceNumber(int sequenceNumber);
 
       /*!
        * Returns the index of the first packet wholly or partially contained in
@@ -217,12 +210,9 @@ namespace TagLib {
            bool containsLastPacket = false);
 
     private:
-      Page(const Page &);
-      Page &operator=(const Page &);
-
       class PagePrivate;
-      PagePrivate *d;
+      std::unique_ptr<PagePrivate> d;
     };
-  }
-}
+  }  // namespace Ogg
+}  // namespace TagLib
 #endif

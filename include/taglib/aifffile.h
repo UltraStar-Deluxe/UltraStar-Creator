@@ -81,7 +81,10 @@ namespace TagLib {
         /*!
          * Destroys this instance of the File.
          */
-        virtual ~File();
+        ~File() override;
+
+        File(const File &) = delete;
+        File &operator=(const File &) = delete;
 
         /*!
          * Returns the Tag for this file.
@@ -92,32 +95,37 @@ namespace TagLib {
          *
          * \see hasID3v2Tag()
          */
-        virtual ID3v2::Tag *tag() const;
+        ID3v2::Tag *tag() const override;
 
         /*!
          * Implements the unified property interface -- export function.
          * This method forwards to ID3v2::Tag::properties().
          */
-        PropertyMap properties() const;
+        PropertyMap properties() const override;
 
-        void removeUnsupportedProperties(const StringList &properties);
+        void removeUnsupportedProperties(const StringList &properties) override;
 
         /*!
          * Implements the unified property interface -- import function.
          * This method forwards to ID3v2::Tag::setProperties().
          */
-        PropertyMap setProperties(const PropertyMap &);
+        PropertyMap setProperties(const PropertyMap &) override;
 
         /*!
          * Returns the AIFF::Properties for this file.  If no audio properties
          * were read then this will return a null pointer.
          */
-        virtual Properties *audioProperties() const;
+        Properties *audioProperties() const override;
 
         /*!
          * Saves the file.
          */
-        virtual bool save();
+        bool save() override;
+
+        /*!
+         * Save using a specific ID3v2 version (e.g. v3)
+         */
+        bool save(ID3v2::Version version);
 
         /*!
          * Returns whether or not the file on disk actually has an ID3v2 tag.
@@ -126,19 +134,24 @@ namespace TagLib {
          */
         bool hasID3v2Tag() const;
 
-      private:
-        File(const File &);
-        File &operator=(const File &);
+        /*!
+         * Check if the given \a stream can be opened as an AIFF file.
+         *
+         * \note This method is designed to do a quick check.  The result may
+         * not necessarily be correct.
+         */
+        static bool isSupported(IOStream *stream);
 
+      private:
         void read(bool readProperties);
 
         friend class Properties;
 
         class FilePrivate;
-        FilePrivate *d;
+        std::unique_ptr<FilePrivate> d;
       };
-    }
-  }
-}
+    }  // namespace AIFF
+  }  // namespace RIFF
+}  // namespace TagLib
 
 #endif

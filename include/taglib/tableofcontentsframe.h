@@ -29,6 +29,8 @@
 #include "id3v2tag.h"
 #include "id3v2frame.h"
 
+#include "tbytevectorlist.h"
+
 namespace TagLib {
 
   namespace ID3v2 {
@@ -63,7 +65,10 @@ namespace TagLib {
       /*!
        * Destroys the frame.
        */
-      ~TableOfContentsFrame();
+      ~TableOfContentsFrame() override;
+
+      TableOfContentsFrame(const TableOfContentsFrame &) = delete;
+      TableOfContentsFrame &operator=(const TableOfContentsFrame &) = delete;
 
       /*!
        * Returns the elementID of the frame. Element ID
@@ -218,9 +223,9 @@ namespace TagLib {
        */
       void removeEmbeddedFrames(const ByteVector &id);
 
-      virtual String toString() const;
+      String toString() const override;
 
-      PropertyMap asProperties() const;
+      PropertyMap asProperties() const override;
 
       /*!
        * CTOC frames each have a unique element ID. This searches for a CTOC
@@ -241,18 +246,16 @@ namespace TagLib {
       static TableOfContentsFrame *findTopLevel(const Tag *tag);
 
     protected:
-      virtual void parseFields(const ByteVector &data);
-      virtual ByteVector renderFields() const;
+      void parseFields(const ByteVector &data) override;
+      ByteVector renderFields() const override;
 
     private:
       TableOfContentsFrame(const ID3v2::Header *tagHeader, const ByteVector &data, Header *h);
-      TableOfContentsFrame(const TableOfContentsFrame &);
-      TableOfContentsFrame &operator=(const TableOfContentsFrame &);
 
       class TableOfContentsFramePrivate;
-      TableOfContentsFramePrivate *d;
+      std::unique_ptr<TableOfContentsFramePrivate> d;
     };
-  }
-}
+  }  // namespace ID3v2
+}  // namespace TagLib
 
 #endif

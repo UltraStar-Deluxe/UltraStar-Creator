@@ -23,11 +23,16 @@
  *   http://www.mozilla.org/MPL/                                           *
  ***************************************************************************/
 
-#ifndef TAGLIB_PROPERTYMAP_H_
-#define TAGLIB_PROPERTYMAP_H_
+#ifndef TAGLIB_PROPERTYMAP_H
+#define TAGLIB_PROPERTYMAP_H
 
 #include "tmap.h"
 #include "tstringlist.h"
+
+#ifdef _MSC_VER
+// Explained at end of tpropertymap.cpp
+extern template class TAGLIB_EXPORT TagLib::Map<TagLib::String, TagLib::StringList>;
+#endif
 
 namespace TagLib {
 
@@ -68,6 +73,7 @@ namespace TagLib {
    *  - ALBUMSORT
    *  - ARTISTSORT
    *  - ALBUMARTISTSORT
+   *  - COMPOSERSORT
    *
    * Credits:
    *
@@ -75,7 +81,7 @@ namespace TagLib {
    *  - LYRICIST
    *  - CONDUCTOR
    *  - REMIXER
-   *  - PERFORMER:<XXXX>
+   *  - PERFORMER:\<XXXX>
    *
    * Other tags:
    *
@@ -90,12 +96,16 @@ namespace TagLib {
    *  - LABEL
    *  - CATALOGNUMBER
    *  - BARCODE
+   *  - RELEASECOUNTRY
+   *  - RELEASESTATUS
+   *  - RELEASETYPE
    *
    * MusicBrainz identifiers:
    *
    *  - MUSICBRAINZ_TRACKID
    *  - MUSICBRAINZ_ALBUMID
    *  - MUSICBRAINZ_RELEASEGROUPID
+   *  - MUSICBRAINZ_RELEASETRACKID
    *  - MUSICBRAINZ_WORKID
    *  - MUSICBRAINZ_ARTISTID
    *  - MUSICBRAINZ_ALBUMARTISTID
@@ -116,6 +126,8 @@ namespace TagLib {
 
     PropertyMap(const PropertyMap &m);
 
+    PropertyMap &operator=(const PropertyMap &other);
+
     /*!
      * Creates a PropertyMap initialized from a SimplePropertyMap. Copies all
      * entries from \a m that have valid keys.
@@ -123,7 +135,7 @@ namespace TagLib {
      */
     PropertyMap(const SimplePropertyMap &m);
 
-    virtual ~PropertyMap();
+    ~PropertyMap();
 
     /*!
      * Inserts \a values under \a key in the map.  If \a key already exists,
@@ -182,6 +194,15 @@ namespace TagLib {
     PropertyMap &merge(const PropertyMap &other);
 
     /*!
+     * Returns the value associated with \a key.
+     *
+     * If the map does not contain \a key, it returns defaultValue.
+     * If no defaultValue is specified, it returns an empty string list.
+     */
+    StringList value(const String &key,
+                     const StringList &defaultValue = StringList()) const;
+
+    /*!
      * Returns a reference to the value associated with \a key.
      *
      * \note: If \a key is not contained in the map, an empty
@@ -199,12 +220,12 @@ namespace TagLib {
     StringList &operator[](const String &key);
 
     /*!
-     * Returns true if and only if \other has the same contents as this map.
+     * Returns true if and only if \a other has the same contents as this map.
      */
     bool operator==(const PropertyMap &other) const;
 
     /*!
-     * Returns false if and only \other has the same contents as this map.
+     * Returns false if and only \a other has the same contents as this map.
      */
     bool operator!=(const PropertyMap &other) const;
 
@@ -216,9 +237,11 @@ namespace TagLib {
      * You can remove items from the returned list, which tells TagLib to remove
      * those unsupported elements if you call File::setProperties() with the
      * same PropertyMap as argument.
+     *
+     * \deprecated
      */
+    // TODO: Returning mutable references to internal data structures is a bad idea.
     StringList &unsupportedData();
-    const StringList &unsupportedData() const;
 
     /*!
      * Removes all entries which have an empty value list.
@@ -228,10 +251,9 @@ namespace TagLib {
     String toString() const;
 
   private:
-
-
-    StringList unsupported;
+    class PropertyMapPrivate;
+    std::unique_ptr<PropertyMapPrivate> d;
   };
 
-}
-#endif /* TAGLIB_PROPERTYMAP_H_ */
+}  // namespace TagLib
+#endif /* TAGLIB_PROPERTYMAP_H */

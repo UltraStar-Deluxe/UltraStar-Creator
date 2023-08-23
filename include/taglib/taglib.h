@@ -28,20 +28,28 @@
 
 #include "taglib_config.h"
 
-#define TAGLIB_MAJOR_VERSION 1
-#define TAGLIB_MINOR_VERSION 11
-#define TAGLIB_PATCH_VERSION 1
-
-#if defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 1)) || defined(__clang__)
-#define TAGLIB_IGNORE_MISSING_DESTRUCTOR _Pragma("GCC diagnostic ignored \"-Wnon-virtual-dtor\"")
-#else
-#define TAGLIB_IGNORE_MISSING_DESTRUCTOR
-#endif
+#define TAGLIB_MAJOR_VERSION 2
+#define TAGLIB_MINOR_VERSION 0
+#define TAGLIB_PATCH_VERSION 0
 
 #if (defined(_MSC_VER) && _MSC_VER >= 1600)
 #define TAGLIB_CONSTRUCT_BITSET(x) static_cast<unsigned long long>(x)
 #else
 #define TAGLIB_CONSTRUCT_BITSET(x) static_cast<unsigned long>(x)
+#endif
+
+#if __cplusplus >= 201402
+#define TAGLIB_DEPRECATED [[deprecated]]
+#elif defined(__GNUC__) || defined(__clang__)
+#define TAGLIB_DEPRECATED __attribute__((deprecated))
+#elif defined(_MSC_VER)
+#define TAGLIB_DEPRECATED __declspec(deprecated)
+#else
+#define TAGLIB_DEPRECATED
+#endif
+
+#ifndef _WIN32
+#include <sys/types.h>
 #endif
 
 #include <string>
@@ -69,12 +77,20 @@ namespace TagLib {
   typedef unsigned long      ulong;
   typedef unsigned long long ulonglong;
 
+  // Offset or length type for I/O streams.
+  // In Win32, always 64bit. Otherwise, equivalent to off_t.
+#ifdef _WIN32
+  typedef long long offset_t;
+#else
+  typedef off_t     offset_t;
+#endif
+
   /*!
    * Unfortunately std::wstring isn't defined on some systems, (i.e. GCC < 3)
    * so I'm providing something here that should be constant.
    */
   typedef std::basic_string<wchar_t> wstring;
-}
+}  // namespace TagLib
 
 /*!
  * \mainpage TagLib
@@ -115,7 +131,7 @@ namespace TagLib {
  *
  * \section installing Installing TagLib
  *
- * Please see the <a href="http://developer.kde.org/~wheeler/taglib.html">TagLib website</a> for the latest
+ * Please see the <a href="http://taglib.org/">TagLib website</a> for the latest
  * downloads.
  *
  * TagLib can be built using the CMake build system. TagLib installs a taglib-config and pkg-config file to
@@ -160,11 +176,10 @@ namespace TagLib {
  *
  * Questions about TagLib should be directed to the TagLib mailing list, not directly to the author.
  *
- *  - <a href="http://developer.kde.org/~wheeler/taglib/">TagLib Homepage</a>
+ *  - <a href="http://taglib.org/">TagLib Homepage</a>
  *  - <a href="https://mail.kde.org/mailman/listinfo/taglib-devel">TagLib Mailing List (taglib-devel@kde.org)</a>
  *
- * \author Scott Wheeler <wheeler@kde.org> et al.
- *
+ * \author <a href="https://github.com/taglib/taglib/blob/master/AUTHORS">TagLib authors</a>.
  */
 
 #endif

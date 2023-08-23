@@ -38,7 +38,7 @@ namespace TagLib {
 
     /*!
      * This class implements ID3v2 extended headers.  It attempts to follow,
-     * both semantically and programatically, the structure specified in
+     * both semantically and programmatically, the structure specified in
      * the ID3v2 standard.  The API is based on the properties of ID3v2 extended
      * headers specified there.  If any of the terms used in this documentation
      * are unclear please check the specification in the linked section.
@@ -57,6 +57,9 @@ namespace TagLib {
        * Destroys the extended header.
        */
       virtual ~ExtendedHeader();
+
+      ExtendedHeader(const ExtendedHeader &) = delete;
+      ExtendedHeader &operator=(const ExtendedHeader &) = delete;
 
       /*!
        * Returns the size of the extended header.  This is variable for the
@@ -81,13 +84,10 @@ namespace TagLib {
       void parse(const ByteVector &data);
 
     private:
-      ExtendedHeader(const ExtendedHeader &);
-      ExtendedHeader &operator=(const ExtendedHeader &);
-
       class ExtendedHeaderPrivate;
-      ExtendedHeaderPrivate *d;
+      std::unique_ptr<ExtendedHeaderPrivate> d;
     };
 
-  }
-}
+  }  // namespace ID3v2
+}  // namespace TagLib
 #endif

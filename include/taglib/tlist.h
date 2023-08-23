@@ -29,6 +29,7 @@
 #include "taglib.h"
 
 #include <list>
+#include <memory>
 
 namespace TagLib {
 
@@ -74,7 +75,7 @@ namespace TagLib {
      * Destroys this List instance.  If auto deletion is enabled and this list
      * contains a pointer type all of the members are also deleted.
      */
-    virtual ~List();
+    ~List();
 
     /*!
      * Returns an STL style iterator to the beginning of the list.  See
@@ -89,6 +90,12 @@ namespace TagLib {
     ConstIterator begin() const;
 
     /*!
+     * Returns an STL style constant iterator to the beginning of the list.  See
+     * std::list::iterator for the semantics.
+     */
+    ConstIterator cbegin() const;
+
+    /*!
      * Returns an STL style iterator to the end of the list.  See
      * std::list::iterator for the semantics.
      */
@@ -99,6 +106,12 @@ namespace TagLib {
      * std::list::const_iterator for the semantics.
      */
     ConstIterator end() const;
+
+    /*!
+     * Returns an STL style constant iterator to the end of the list.  See
+     * std::list::const_iterator for the semantics.
+     */
+    ConstIterator cend() const;
 
     /*!
      * Inserts a copy of \a value before \a it.
@@ -169,6 +182,11 @@ namespace TagLib {
     ConstIterator find(const T &value) const;
 
     /*!
+     * Find the first occurrence of \a value.
+     */
+    ConstIterator cfind(const T &value) const;
+
+    /*!
      * Returns true if the list contains \a value.
      */
     bool contains(const T &value) const;
@@ -230,6 +248,11 @@ namespace TagLib {
     List<T> &operator=(const List<T> &l);
 
     /*!
+     * Exchanges the content of this list by the content of \a l.
+     */
+    void swap(List<T> &l);
+
+    /*!
      * Compares this list with \a l and returns true if all of the elements are
      * the same.
      */
@@ -251,11 +274,11 @@ namespace TagLib {
   private:
 #ifndef DO_NOT_DOCUMENT
     template <class TP> class ListPrivate;
-    ListPrivate<T> *d;
+    std::shared_ptr<ListPrivate<T>> d;
 #endif
   };
 
-}
+}  // namespace TagLib
 
 // Since GCC doesn't support the "export" keyword, we have to include the
 // implementation.

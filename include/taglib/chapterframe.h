@@ -57,7 +57,7 @@ namespace TagLib {
        * \a startTime, end time \a endTime, start offset \a startOffset,
        * end offset \a endOffset and optionally a list of embedded frames,
        * whose ownership will then be taken over by this Frame, in
-       * \a embeededFrames;
+       * \a embeddedFrames;
        *
        * All times are in milliseconds.
        */
@@ -69,7 +69,10 @@ namespace TagLib {
       /*!
        * Destroys the frame.
        */
-      virtual ~ChapterFrame();
+      ~ChapterFrame() override;
+
+      ChapterFrame(const ChapterFrame &) = delete;
+      ChapterFrame &operator=(const ChapterFrame &) = delete;
 
       /*!
        * Returns the element ID of the frame. Element ID
@@ -218,9 +221,9 @@ namespace TagLib {
        */
       void removeEmbeddedFrames(const ByteVector &id);
 
-      virtual String toString() const;
+      String toString() const override;
 
-      PropertyMap asProperties() const;
+      PropertyMap asProperties() const override;
 
       /*!
        * CHAP frames each have a unique element ID. This searches for a CHAP
@@ -232,18 +235,16 @@ namespace TagLib {
       static ChapterFrame *findByElementID(const Tag *tag, const ByteVector &eID);
 
     protected:
-      virtual void parseFields(const ByteVector &data);
-      virtual ByteVector renderFields() const;
+      void parseFields(const ByteVector &data) override;
+      ByteVector renderFields() const override;
 
     private:
       ChapterFrame(const ID3v2::Header *tagHeader, const ByteVector &data, Header *h);
-      ChapterFrame(const ChapterFrame &);
-      ChapterFrame &operator=(const ChapterFrame &);
 
       class ChapterFramePrivate;
-      ChapterFramePrivate *d;
+      std::unique_ptr<ChapterFramePrivate> d;
     };
-  }
-}
+  }  // namespace ID3v2
+}  // namespace TagLib
 
 #endif

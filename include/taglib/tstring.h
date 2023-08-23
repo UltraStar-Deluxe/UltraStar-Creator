@@ -30,8 +30,8 @@
 #include "taglib.h"
 #include "tbytevector.h"
 
-#include <string>
 #include <iostream>
+#include <string>
 
 /*!
  * \relates TagLib::String
@@ -45,7 +45,7 @@
 #if defined(QT_VERSION) && (QT_VERSION >= 0x040000)
 #define QStringToTString(s) TagLib::String(s.toUtf8().data(), TagLib::String::UTF8)
 #else
-#define QStringToTString(s) TagLib::String(s.utf8().data(), TagLib::String::UTF8)
+#define QStringToTString(s) TagLib::String((s).utf8().data(), TagLib::String::UTF8)
 #endif
 
 /*!
@@ -58,7 +58,7 @@
  *
  */
 
-#define TStringToQString(s) QString::fromUtf8(s.toCString(true))
+#define TStringToQString(s) QString::fromUtf8((s).toCString(true))
 
 namespace TagLib {
 
@@ -185,7 +185,7 @@ namespace TagLib {
     /*!
      * Destroys this String instance.
      */
-    virtual ~String();
+    ~String();
 
     /*!
      * Returns a deep copy of this String as an std::string.  The returned string
@@ -253,6 +253,11 @@ namespace TagLib {
     ConstIterator begin() const;
 
     /*!
+     * Returns a const iterator pointing to the beginning of the string.
+     */
+    ConstIterator cbegin() const;
+
+    /*!
      * Returns an iterator pointing to the end of the string (the position
      * after the last character).
      */
@@ -263,6 +268,12 @@ namespace TagLib {
      * after the last character).
      */
     ConstIterator end() const;
+
+    /*!
+     * Returns a const iterator pointing to the end of the string (the position
+     * after the last character).
+     */
+    ConstIterator cend() const;
 
     /*!
      * Finds the first occurrence of pattern \a s in this string starting from
@@ -323,24 +334,8 @@ namespace TagLib {
 
     /*!
      * Returns true if the string is empty.
-     *
-     * \see isNull()
      */
     bool isEmpty() const;
-
-    /*!
-     * Returns true if this string is null -- i.e. it is a copy of the
-     * String::null string.
-     *
-     * \note A string can be empty and not null.  So do not use this method to
-     * check if the string is empty.
-     *
-     * \see isEmpty()
-     *
-     * \deprecated
-     */
-     // BIC: remove
-    bool isNull() const;
 
     /*!
      * Returns a ByteVector containing the string's data.  If \a t is Latin1 or
@@ -357,20 +352,11 @@ namespace TagLib {
     /*!
      * Convert the string to an integer.
      *
-     * Returns the integer if the conversion was successful or 0 if the
-     * string does not represent a number.
-     */
-    // BIC: merge with the method below
-    int toInt() const;
-
-    /*!
-     * Convert the string to an integer.
-     *
      * If the conversion was successful, it sets the value of \a *ok to
      * true and returns the integer. Otherwise it sets \a *ok to false
      * and the result is undefined.
      */
-    int toInt(bool *ok) const;
+    int toInt(bool *ok = nullptr) const;
 
     /*!
      * Returns a string with the leading and trailing whitespace stripped.
@@ -516,17 +502,6 @@ namespace TagLib {
      */
     bool operator<(const String &s) const;
 
-    /*!
-     * A null string provided for convenience.
-     *
-     * \warning Do not modify this variable.  It will mess up the internal state
-     * of TagLib.
-     *
-     * \deprecated
-     */
-     // BIC: remove
-    static String null;
-
   protected:
     /*!
      * If this String is being shared via implicit sharing, do a deep copy of the
@@ -536,38 +511,31 @@ namespace TagLib {
     void detach();
 
   private:
-    /*!
-     * \deprecated This variable is no longer used, but NEVER remove this. It
-     * may lead to a linkage error.
-     */
-     // BIC: remove
-    static const Type WCharByteOrder;
-
     class StringPrivate;
-    StringPrivate *d;
+    std::shared_ptr<StringPrivate> d;
   };
-}
+}  // namespace TagLib
 
 /*!
  * \relates TagLib::String
  *
  * Concatenates \a s1 and \a s2 and returns the result as a string.
  */
-TAGLIB_EXPORT const TagLib::String operator+(const TagLib::String &s1, const TagLib::String &s2);
+TAGLIB_EXPORT TagLib::String operator+(const TagLib::String &s1, const TagLib::String &s2);
 
 /*!
  * \relates TagLib::String
  *
  * Concatenates \a s1 and \a s2 and returns the result as a string.
  */
-TAGLIB_EXPORT const TagLib::String operator+(const char *s1, const TagLib::String &s2);
+TAGLIB_EXPORT TagLib::String operator+(const char *s1, const TagLib::String &s2);
 
 /*!
  * \relates TagLib::String
  *
  * Concatenates \a s1 and \a s2 and returns the result as a string.
  */
-TAGLIB_EXPORT const TagLib::String operator+(const TagLib::String &s1, const char *s2);
+TAGLIB_EXPORT TagLib::String operator+(const TagLib::String &s1, const char *s2);
 
 
 /*!

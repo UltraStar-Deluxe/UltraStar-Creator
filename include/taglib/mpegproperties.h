@@ -57,49 +57,32 @@ namespace TagLib {
       /*!
        * Destroys this MPEG Properties instance.
        */
-      virtual ~Properties();
+      ~Properties() override;
 
-      /*!
-       * Returns the length of the file in seconds.  The length is rounded down to
-       * the nearest whole second.
-       *
-       * \note This method is just an alias of lengthInSeconds().
-       *
-       * \deprecated
-       */
-      virtual int length() const;
-
-      /*!
-       * Returns the length of the file in seconds.  The length is rounded down to
-       * the nearest whole second.
-       *
-       * \see lengthInMilliseconds()
-       */
-      // BIC: make virtual
-      int lengthInSeconds() const;
+      Properties(const Properties &) = delete;
+      Properties &operator=(const Properties &) = delete;
 
       /*!
        * Returns the length of the file in milliseconds.
        *
        * \see lengthInSeconds()
        */
-      // BIC: make virtual
-      int lengthInMilliseconds() const;
+      int lengthInMilliseconds() const override;
 
       /*!
        * Returns the average bit rate of the file in kb/s.
        */
-      virtual int bitrate() const;
+      int bitrate() const override;
 
       /*!
        * Returns the sample rate in Hz.
        */
-      virtual int sampleRate() const;
+      int sampleRate() const override;
 
       /*!
        * Returns the number of audio channels.
        */
-      virtual int channels() const;
+      int channels() const override;
 
       /*!
        * Returns a pointer to the Xing/VBRI header if one exists or null if no
@@ -138,15 +121,12 @@ namespace TagLib {
       bool isOriginal() const;
 
     private:
-      Properties(const Properties &);
-      Properties &operator=(const Properties &);
-
       void read(File *file);
 
       class PropertiesPrivate;
-      PropertiesPrivate *d;
+      std::unique_ptr<PropertiesPrivate> d;
     };
-  }
-}
+  }  // namespace MPEG
+}  // namespace TagLib
 
 #endif

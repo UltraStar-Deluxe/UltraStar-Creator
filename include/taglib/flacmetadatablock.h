@@ -31,14 +31,15 @@
 #include "taglib_export.h"
 
 namespace TagLib {
-
   namespace FLAC {
-
     class TAGLIB_EXPORT MetadataBlock
     {
     public:
       MetadataBlock();
       virtual ~MetadataBlock();
+
+      MetadataBlock(const MetadataBlock &item) = delete;
+      MetadataBlock &operator=(const MetadataBlock &item) = delete;
 
       enum BlockType {
         StreamInfo = 0,
@@ -61,15 +62,9 @@ namespace TagLib {
       virtual ByteVector render() const = 0;
 
     private:
-      MetadataBlock(const MetadataBlock &item);
-      MetadataBlock &operator=(const MetadataBlock &item);
-
       class MetadataBlockPrivate;
-      MetadataBlockPrivate *d;
+      std::unique_ptr<MetadataBlockPrivate> d;
     };
-
-  }
-
-}
-
+  }  // namespace FLAC
+}  // namespace TagLib
 #endif

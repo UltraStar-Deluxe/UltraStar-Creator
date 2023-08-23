@@ -28,6 +28,7 @@
 
 #include "tbytevector.h"
 #include "taglib_export.h"
+#include "id3v2.h"
 
 namespace TagLib {
 
@@ -62,6 +63,9 @@ namespace TagLib {
        * Destroys the header.
        */
       virtual ~Header();
+
+      Header(const Header &) = delete;
+      Header &operator=(const Header &) = delete;
 
       /*!
        * Returns the major version number.  (Note: This is the 4, not the 2 in
@@ -162,14 +166,11 @@ namespace TagLib {
       void parse(const ByteVector &data);
 
     private:
-      Header(const Header &);
-      Header &operator=(const Header &);
-
       class HeaderPrivate;
-      HeaderPrivate *d;
+      std::unique_ptr<HeaderPrivate> d;
     };
 
-  }
-}
+  }  // namespace ID3v2
+}  // namespace TagLib
 
 #endif

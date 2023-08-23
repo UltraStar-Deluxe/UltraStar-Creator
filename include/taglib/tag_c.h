@@ -124,7 +124,7 @@ TAGLIB_C_EXPORT TagLib_File *taglib_file_new_type(const char *filename, TagLib_F
 TAGLIB_C_EXPORT void taglib_file_free(TagLib_File *file);
 
 /*!
- * Returns true if the file is open and readble and valid information for
+ * Returns true if the file is open and readable and valid information for
  * the Tag and / or AudioProperties was found.
  */
 
@@ -137,7 +137,7 @@ TAGLIB_C_EXPORT BOOL taglib_file_is_valid(const TagLib_File *file);
 TAGLIB_C_EXPORT TagLib_Tag *taglib_file_tag(const TagLib_File *file);
 
 /*!
- * Returns a pointer to the the audio properties associated with this file.  This
+ * Returns a pointer to the audio properties associated with this file.  This
  * will be freed automatically when the file is freed.
  */
 TAGLIB_C_EXPORT const TagLib_AudioProperties *taglib_file_audioproperties(const TagLib_File *file);
@@ -291,6 +291,43 @@ typedef enum {
  */
 
 TAGLIB_C_EXPORT void taglib_id3v2_set_default_text_encoding(TagLib_ID3v2_Encoding encoding);
+
+/******************************************************************************
+ * Properties API
+ ******************************************************************************/
+
+/*!
+ * Sets the property \a prop with \a value.  Use \a value = NULL to remove
+ * the property, otherwise it will be replaced.
+ */
+TAGLIB_C_EXPORT void taglib_property_set(TagLib_File *file, const char *prop, const char *value);
+
+/*!
+ * Appends \a value to the property \a prop (sets it if non-existing).
+ * Use \a value = NULL to remove all values associated with the property.
+ */
+TAGLIB_C_EXPORT void taglib_property_set_append(TagLib_File *file, const char *prop, const char *value);
+
+/*!
+ * Get the keys of the property map.
+ *
+ * \return NULL terminated array of C-strings (char *), only NULL if empty.
+ * It must be freed by the client using taglib_property_free().
+ */
+TAGLIB_C_EXPORT char** taglib_property_keys(TagLib_File *file);
+
+/*!
+ * Get value(s) of property \a prop.
+ *
+ * \return NULL terminated array of C-strings (char *), only NULL if empty.
+   It must be freed by the client using taglib_property_free().
+ */
+TAGLIB_C_EXPORT char** taglib_property_get(TagLib_File *file, const char *prop);
+
+/*!
+ * Frees the NULL terminated array \a props and the C-strings it contains.
+ */
+TAGLIB_C_EXPORT void taglib_property_free(char **props);
 
 #ifdef __cplusplus
 }

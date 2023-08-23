@@ -49,7 +49,10 @@ namespace TagLib {
       /*!
        * Destroys this instance of the File.
        */
-      virtual ~File();
+      ~File() override;
+
+      File(const File &) = delete;
+      File &operator=(const File &) = delete;
 
     protected:
 
@@ -71,7 +74,7 @@ namespace TagLib {
       /*!
        * \return The offset within the file for the selected chunk number.
        */
-      unsigned int chunkOffset(unsigned int i) const;
+      offset_t chunkOffset(unsigned int i) const;
 
       /*!
        * \return The size of the chunk data.
@@ -140,12 +143,9 @@ namespace TagLib {
       void removeChunk(const ByteVector &name);
 
     private:
-      File(const File &);
-      File &operator=(const File &);
-
       void read();
       void writeChunk(const ByteVector &name, const ByteVector &data,
-                      unsigned long offset, unsigned long replace = 0);
+                      offset_t offset, unsigned long replace = 0);
 
       /*!
        * Update the global RIFF size based on the current internal structure.
@@ -153,9 +153,9 @@ namespace TagLib {
       void updateGlobalSize();
 
       class FilePrivate;
-      FilePrivate *d;
+      std::unique_ptr<FilePrivate> d;
     };
-  }
-}
+  }  // namespace RIFF
+}  // namespace TagLib
 
 #endif

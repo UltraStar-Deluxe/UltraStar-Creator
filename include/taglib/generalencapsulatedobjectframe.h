@@ -72,12 +72,15 @@ namespace TagLib {
       /*!
        * Destroys the GeneralEncapsulatedObjectFrame instance.
        */
-      virtual ~GeneralEncapsulatedObjectFrame();
+      ~GeneralEncapsulatedObjectFrame() override;
+
+      GeneralEncapsulatedObjectFrame(const GeneralEncapsulatedObjectFrame &) = delete;
+      GeneralEncapsulatedObjectFrame &operator=(const GeneralEncapsulatedObjectFrame &) = delete;
 
       /*!
        * Returns a string containing the description, file name and mime-type
        */
-      virtual String toString() const;
+      String toString() const override;
 
       /*!
        * Returns the text encoding used for the description and file name.
@@ -162,18 +165,16 @@ namespace TagLib {
       void setObject(const ByteVector &object);
 
     protected:
-      virtual void parseFields(const ByteVector &data);
-      virtual ByteVector renderFields() const;
+      void parseFields(const ByteVector &data) override;
+      ByteVector renderFields() const override;
 
     private:
       GeneralEncapsulatedObjectFrame(const ByteVector &data, Header *h);
-      GeneralEncapsulatedObjectFrame(const GeneralEncapsulatedObjectFrame &);
-      GeneralEncapsulatedObjectFrame &operator=(const GeneralEncapsulatedObjectFrame &);
 
       class GeneralEncapsulatedObjectFramePrivate;
-      GeneralEncapsulatedObjectFramePrivate *d;
+      std::unique_ptr<GeneralEncapsulatedObjectFramePrivate> d;
     };
-  }
-}
+  }  // namespace ID3v2
+}  // namespace TagLib
 
 #endif
