@@ -77,6 +77,8 @@ INCLUDEPATH += ../include/bass \
 	../include/srtparser
 
 win32 {
+	INCLUDEPATH += C:/Program Files/taglib/include/taglib
+
 	LIBS += -L"../lib/win64" \
 		-ltag \
 		-lbass \
