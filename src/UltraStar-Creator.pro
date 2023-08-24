@@ -77,8 +77,6 @@ INCLUDEPATH += ../include/bass \
 	../include/srtparser
 
 win32 {
-	INCLUDEPATH += ../include/taglib
-
 	LIBS += -L"../lib/win64" \
 		-ltag \
 		-lbass \
@@ -167,10 +165,9 @@ win32 {
 	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwbmp*.dll) $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += $${QMAKE_DEL_FILE} $$shell_path($${DESTDIR}/imageformats/qwebp*.dll) $$escape_expand(\\n\\t)
 
-	# Manually add bass, bass_fx, tag and libcld2 libraries
+	# Manually add bass, bass_fx and libcld2 libraries
 	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/bass.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/bass_fx.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/tag.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/win64/cld2.dll) $$shell_path($${DESTDIR}) $$escape_expand(\\n\\t)
 
 	# Copy SSL/TLS libraries

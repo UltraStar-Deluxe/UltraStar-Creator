@@ -70,6 +70,15 @@ for:
       - echo PATH=%PATH%
 
     build_script:
+      # build taglib
+      - git clone https://github.com/taglib/taglib.git 
+      - cd .\taglib
+      - mkdir build
+      - cd build
+      - cmake -G "Visual Studio 17 2022" -A x64 -DWITH_ZLIB=OFF -DBUILD_SHARED_LIBS=ON -DENABLE_STATIC_RUNTIME=OFF -DBUILD_TESTING=OFF ..
+      - msbuild all_build.vcxproj /p:Configuration=Release
+      - msbuild install.vcxproj
+      - cd ..\..
       # build cld2
       - git clone https://github.com/CLD2Owners/cld2.git
       - cd .\cld2
