@@ -83,7 +83,6 @@ Section "Application" SecCopyUI
 	File "Qt6Widgets.dll"
 	File "Spanish.txt"
 	File "Swedish.txt"
-	File "tag.dll"
 	File "UltraStar-Creator.exe"
 	File "vc_redist.x64.exe"
 	;;SetOutPath "$INSTDIR\iconengines" ;; added via windeployqt, but not needed
