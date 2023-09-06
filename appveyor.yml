@@ -3,6 +3,7 @@ version: 1.2.{build}
 branches:
   only:
     - master
+    - /\d+\.\d+\.\d+/
 
 environment:
   global:
@@ -98,10 +99,10 @@ for:
 
     artifacts:
       - path: bin/release
-        name: UltraStar-Creator-portable
+        name: WIN64-UltraStar-Creator-portable
         type: zip
-      - path: bin/UltraStar-Creator*-setup.exe
-        name: UltraStar-Creator-installer
+      - path: bin/WIN64-UltraStar-Creator*-setup.exe
+        name: WIN64-UltraStar-Creator-installer
 
     on_failure:
       # Change false to true to block build and investigate build failures
@@ -133,15 +134,16 @@ for:
       - /usr/local/opt/qt/bin/qmake6 UltraStar-Creator.pro
       - make -j$(getconf _NPROCESSORS_ONLN)
       - cd ../bin/release
+      - mv UltraStar-Creator.dmg MAC-UltraStar-Creator.dmg
       - ls
       #- macdeployqt UltraStar-Creator.app -dmg;
 
     artifacts:
       - path: bin/release
-        name: UltraStar-Creator portable
+        name: MAC-UltraStar-Creator-portable
         type: zip
-      - path: bin/release/UltraStar-Creator.dmg
-        name: UltraStar-Creator disk image
+      - path: bin/release/MAC-UltraStar-Creator.dmg
+        name: MAC-UltraStar-Creator-image
 
   # Ubuntu (AppImage)
   -
@@ -183,13 +185,25 @@ for:
       - sh: unset LD_LIBRARY_PATH
       - sh: cp ../../setup/unix/UltraStar-Creator.desktop .
       - sh: cp ../../setup/unix/UltraStar-Creator.png .
+      - sh: sed -i "s/Name=UltraStar-Creator/Name=LINUX-UltraStar-Creator/g" UltraStar-Creator.desktop 
       - sh: ./linuxdeployqt*.AppImage UltraStar-Creator.desktop -bundle-non-qt-libs -appimage
 
     artifacts:
-      - path: bin/release/UltraStar-Creator-*.AppImage
-        name: UltraStar-Creator AppImage Package
+      - path: bin/release/LINUX-UltraStar-Creator-*.AppImage
+        name: LINUX-UltraStar-Creator-appimage
         
     on_failure:
       # Change false to true to block build and investigate build failures
       - sh: export APPVEYOR_SSH_BLOCK=true
       - sh: curl -sflL 'https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-ssh.sh' | bash -e -
+
+deploy:
+  description: ''
+  provider: GitHub
+  draft: true
+  auth_token:
+    secure: ykwnM89TZTiQ/nmI5ijPtlekJ3BgzaT37M/hYeMNYnUvPO1U+JoYIWLXjHcZCSyL
+  artifact: WIN64-UltraStar-Creator-portable,WIN64-UltraStar-Creator-installer,MAC-UltraStar-Creator-portable,MAC-UltraStar-Creator-image,LINUX-UltraStar-Creator-appimage
+  on:
+    # deploy on tag push only
+    APPVEYOR_REPO_TAG: true
