@@ -202,7 +202,7 @@ deploy:
   provider: GitHub
   draft: true
   auth_token:
-    secure: ykwnM89TZTiQ/nmI5ijPtlekJ3BgzaT37M/hYeMNYnUvPO1U+JoYIWLXjHcZCSyL
+    secure: KM1pcikmRxD8Sm3b/KQK2qB+tnHMoo718HELocKPpCwuaE349q7poSMzA3kmvcVU
   artifact: WIN64-UltraStar-Creator-portable,WIN64-UltraStar-Creator-installer,MAC-UltraStar-Creator-portable,MAC-UltraStar-Creator-image,LINUX-UltraStar-Creator-appimage
   on:
     # deploy on tag push only
