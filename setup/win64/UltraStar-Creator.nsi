@@ -17,7 +17,7 @@ Name "${PRODUCTNAME} ${PRODUCTVERSION}"
 !define BASE_REGKEY "Software\HPI\${PRODUCTNAME}"
 !define UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCTNAME}"
 
-OutFile "..\UltraStar-Creator-${PRODUCTVERSION}-win64-setup.exe"
+OutFile "..\WIN64-UltraStar-Creator-${PRODUCTVERSION}-setup.exe"
 InstallDir "$PROGRAMFILES\${PRODUCTNAME}"
 InstallDirRegKey HKCU "Software\HPI\${PRODUCTNAME}" ""
 
