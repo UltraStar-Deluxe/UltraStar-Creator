@@ -15,7 +15,7 @@ environment:
     # Windows
     - ARCH: x64
       COMPILER: msvc2019 #MinGW
-      QTDIR: C:\Qt\6.5.1\msvc2019_64 #C:\Qt\6.5.0\mingw_64
+      QTDIR: C:\Qt\6.5\msvc2019_64 #C:\Qt\6.5.0\mingw_64
     # macOS
     - ARCH: x64
       COMPILER: Clang
@@ -72,7 +72,7 @@ for:
 
     build_script:
       # build taglib
-      - git clone https://github.com/taglib/taglib.git 
+      - git clone --recurse-submodules https://github.com/taglib/taglib.git 
       - cd .\taglib
       - mkdir build
       - cd build

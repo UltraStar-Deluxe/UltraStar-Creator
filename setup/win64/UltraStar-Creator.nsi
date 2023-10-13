@@ -108,6 +108,8 @@ Section "Application" SecCopyUI
 	File "tls\qcertonlybackend.dll" ;; needed?
 	File "tls\qopensslbackend.dll" ;; needed?
 	File "tls\qschannelbackend.dll" ;; needed?
+	SetOutPath "C:\Program Files\taglib\lib"
+	File "tag.dll"
 
 	;; setup initial reg values
 	;; WriteRegStr HKCU "Software\HPI\${PRODUCTNAME}" "key" "value1 value2"
