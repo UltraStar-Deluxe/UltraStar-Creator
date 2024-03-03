@@ -67,7 +67,6 @@
            </property>
            <property name="font">
             <font>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -146,7 +145,6 @@
            </property>
            <property name="font">
             <font>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -198,7 +196,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -226,7 +223,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -307,7 +303,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -335,7 +330,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -394,7 +388,6 @@
            </property>
            <property name="font">
             <font>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -449,7 +442,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -474,7 +466,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -524,7 +515,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -552,7 +542,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -596,7 +585,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -632,7 +620,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -657,7 +644,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -805,7 +791,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -843,7 +828,7 @@
                <string/>
               </property>
               <property name="decimals">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="minimum">
                <double>1.000000000000000</double>
@@ -891,7 +876,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -951,7 +935,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -1015,7 +998,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -1045,7 +1027,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1139,7 +1120,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1161,7 +1141,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -1247,7 +1226,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1294,7 +1272,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -1313,7 +1290,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1335,7 +1311,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1363,7 +1338,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1404,7 +1378,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -1453,7 +1426,6 @@
            </property>
            <property name="font">
             <font>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -1619,7 +1591,6 @@
            </property>
            <property name="font">
             <font>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -1680,7 +1651,6 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1706,7 +1676,6 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1737,7 +1706,6 @@
               <property name="font">
                <font>
                 <pointsize>10</pointsize>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -1891,7 +1859,6 @@ Before tapping, the lyrics need to meet the following requirements:
         </property>
         <property name="font">
          <font>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -1921,7 +1888,6 @@ Before tapping, the lyrics need to meet the following requirements:
            </property>
            <property name="font">
             <font>
-             <weight>50</weight>
              <bold>false</bold>
             </font>
            </property>
@@ -2150,7 +2116,6 @@ Before tapping, the lyrics need to meet the following requirements:
         </property>
         <property name="font">
          <font>
-          <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -2192,7 +2157,6 @@ Before tapping, the lyrics need to meet the following requirements:
              </property>
              <property name="font">
               <font>
-               <weight>50</weight>
                <bold>false</bold>
               </font>
              </property>
@@ -2217,7 +2181,6 @@ Before tapping, the lyrics need to meet the following requirements:
              </property>
              <property name="font">
               <font>
-               <weight>50</weight>
                <bold>false</bold>
               </font>
              </property>
@@ -2511,7 +2474,6 @@ Before tapping, the lyrics need to meet the following requirements:
              </property>
              <property name="font">
               <font>
-               <weight>50</weight>
                <bold>false</bold>
               </font>
              </property>
@@ -2546,7 +2508,6 @@ Before tapping, the lyrics need to meet the following requirements:
              </property>
              <property name="font">
               <font>
-               <weight>50</weight>
                <bold>false</bold>
               </font>
              </property>
@@ -2595,7 +2556,6 @@ Before tapping, the lyrics need to meet the following requirements:
        </property>
        <property name="font">
         <font>
-         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -2693,7 +2653,6 @@ Before tapping, the lyrics need to meet the following requirements:
             <property name="font">
              <font>
               <pointsize>14</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -2762,7 +2721,6 @@ Before tapping, the lyrics need to meet the following requirements:
             <property name="font">
              <font>
               <pointsize>14</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -2819,7 +2777,6 @@ Before tapping, the lyrics need to meet the following requirements:
             <property name="font">
              <font>
               <pointsize>14</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -2876,7 +2833,6 @@ Before tapping, the lyrics need to meet the following requirements:
             <property name="font">
              <font>
               <pointsize>14</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -2933,7 +2889,6 @@ Before tapping, the lyrics need to meet the following requirements:
             <property name="font">
              <font>
               <pointsize>14</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -2990,7 +2945,6 @@ Before tapping, the lyrics need to meet the following requirements:
             <property name="font">
              <font>
               <pointsize>14</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>

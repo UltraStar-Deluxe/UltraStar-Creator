@@ -1251,7 +1251,8 @@ void QUMainWindow::handleMP3() {
 		BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 30, 60, 0, BASS_FX_BPM_BKGRND, NULL, 0);
 	}
 
-	BPM = BPMFromMP3;
+    // round to nearest half integer
+    BPM = std::round(BPMFromMP3*2)/2;
 
 	if (BPM == 0) {
 		BPM = 400;
