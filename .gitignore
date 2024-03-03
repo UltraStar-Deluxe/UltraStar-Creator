@@ -8,3 +8,6 @@ src/tmp
 src/ui
 /src/version.h
 *.rc
+.DS_Store
+**/.DS_Store
+.qtc_clangd/
