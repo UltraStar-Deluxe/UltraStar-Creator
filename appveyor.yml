@@ -128,6 +128,19 @@ for:
       - brew install taglib
       - brew install create-dmg
       - brew install qt
+      # fix qt libs installed via brew (see: https://github.com/orgs/Homebrew/discussions/2823#discussioncomment-2010340)
+      - install_name_tool -id '@rpath/QtCore.framework/Versions/A/QtCore' /usr/local/lib/QtCore.framework/Versions/A/QtCore
+      - install_name_tool -id '@rpath/QtGui.framework/Versions/A/QtGui' /usr/local/lib/QtGui.framework/Versions/A/QtGui
+      - install_name_tool -id '@rpath/QtNetwork.framework/Versions/A/QtNetwork' /usr/local/lib/QtNetwork.framework/Versions/A/QtNetwork
+      - install_name_tool -id '@rpath/QtWidgets.framework/Versions/A/QtWidgets' /usr/local/lib/QtWidgets.framework/Versions/A/QtWidgets
+      - install_name_tool -id '@rpath/QtPdf.framework/Versions/A/QtPdf' /usr/local/lib/QtPdf.framework/Versions/A/QtPdf
+      - install_name_tool -id '@rpath/QtSvg.framework/Versions/A/QtSvg' /usr/local/lib/QtSvg.framework/Versions/A/QtSvg
+      - install_name_tool -id '@rpath/QtVirtualKeyboard.framework/Versions/A/QtVirtualKeyboard' /usr/local/lib/QtVirtualKeyboard.framework/Versions/A/QtVirtualKeyboard
+      - install_name_tool -id '@rpath/QtQuick.framework/Versions/A/QtQuick' /usr/local/lib/QtQuick.framework/Versions/A/QtQuick
+      - install_name_tool -id '@rpath/QtQmlModels.framework/Versions/A/QtQmlModels' /usr/local/lib/QtQmlModels.framework/Versions/A/QtQmlModels
+      - install_name_tool -id '@rpath/QtQml.framework/Versions/A/QtQml' /usr/local/lib/QtQml.framework/Versions/A/QtQml
+      - install_name_tool -id '@rpath/QtOpenGL.framework/Versions/A/QtOpenGL' /usr/local/lib/QtOpenGL.framework/Versions/A/QtOpenGL
+      - install_name_tool -id '@rpath/QtMultimedia.framework/Versions/A/QtMultimedia' /usr/local/lib/QtMultimedia.framework/Versions/A/QtMultimedia
 
     build_script:
       - cd src
