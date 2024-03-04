@@ -2,7 +2,7 @@ Unicode True
 XPStyle on
 
 !define PRODUCTNAME "UltraStar-Creator"
-!define PRODUCTVERSION "1.2.0"
+!define PRODUCTVERSION "1.3.1"
 Name "${PRODUCTNAME} ${PRODUCTVERSION}"
 
 !include "MUI.nsh"
