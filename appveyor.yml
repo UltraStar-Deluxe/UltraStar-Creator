@@ -22,7 +22,7 @@ environment:
     # Ubuntu
     - ARCH: x64
       COMPILER: GCC
-      QTDIR: Qt/6.4/gcc_64
+      QTDIR: Qt/6.5/gcc_64
 
 image:
   # AppVeyor builds are ordered by the image list:
