@@ -22,7 +22,7 @@ environment:
     # Ubuntu
     - ARCH: x64
       COMPILER: GCC
-      QTDIR: Qt/6.4/gcc_64
+      QTDIR: Qt/6.5/gcc_64
 
 image:
   # AppVeyor builds are ordered by the image list:
@@ -178,7 +178,7 @@ for:
       # UltraStar-Creator needs these:
       - sh: sudo apt install -y libtag1-dev libcld2-dev
       # linuxdeployqt needs these:
-      - sh: sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xkb-dev libxkbcommon-x11-0 libgtk2.0-dev
+      - sh: sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xkb-dev libxkbcommon-x11-0 libxcb-cursor0 libgtk2.0-dev
       # build qtstyleplugins with gtk2.0
       #- sh: git clone https://code.qt.io/qt/qtstyleplugins.git && cd qtstyleplugins && qmake && make -j$(nproc) && sudo make install && cd -
 
