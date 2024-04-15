@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Set up MSVC Environment
-        uses: seanmiddleditch/gha-setup-vsdevenv@master
+        uses: compnerd/gha-setup-vsdevenv@main
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Install Qt
