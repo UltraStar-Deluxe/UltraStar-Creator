@@ -1,6 +1,6 @@
 # UltraStar-Creator Development README
 
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/w64gbadl1kn6s7dt/branch/master?svg=true)](https://ci.appveyor.com/project/bohning/ultrastar-creator/branch/master)
+[![Build](https://github.com/UltraStar-Deluxe/UltraStar-Creator/actions/workflows/main.yml/badge.svg)](https://github.com/UltraStar-Deluxe/UltraStar-Creator/actions/workflows/main.yml)
 [![License](https://img.shields.io/badge/license-GPLv2-blue.svg)](LICENSE)
 
 ![UltraStar-Creator Logo](https://github.com/UltraStar-Deluxe/UltraStar-Creator/blob/master/src/resources/icons/UltraStar-Creator128.png)
