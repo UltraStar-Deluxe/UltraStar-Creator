@@ -59,7 +59,7 @@ jobs:
 
   build_mac:
     name: Build for MacOS
-    runs-on: macos-latest
+    runs-on: macos-13
 
     steps:
       - name: Get Number of CPU Cores
