@@ -58,34 +58,56 @@ jobs:
           if-no-files-found: error
 
   build_mac:
-    name: Build for MacOS
-    runs-on: macos-13
-
+    name: Build for MacOS (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-13, macos-14]
+      fail-fast: false
     steps:
       - name: Get Number of CPU Cores
         uses: SimenB/github-actions-cpu-cores@v2
         id: cpu-cores
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Determine Arch
+        run: |
+          if [ "${{ matrix.os }}" = "macos-13" ]; then
+            echo "arch=x86" >> $GITHUB_ENV
+          else
+            echo "arch=ARM" >> $GITHUB_ENV
+          fi
       - name: Install Dependencies
         run: |
           brew install taglib
           brew install create-dmg
           brew install qt
+      - name: Install cld2
+        run: |
+          git clone https://github.com/CLD2Owners/cld2.git
+          cd cld2/internal/
+          export CFLAGS="-Wno-narrowing -O3"
+          sed -i '' "s/soname=/install_name,/g" compile_libs.sh
+          sed -i '' "s/-shared/-dynamiclib/g" compile_libs.sh
+          sed -i '' "s/libcld2.so/libcld2.dylib/g" compile_libs.sh
+          sed -i '' "s/libcld2_full.so/libcld2_full.dylib/g" compile_libs.sh
+          cat compile_libs.sh
+          ./compile_libs.sh
+          cp libcld2.dylib ../../lib/macx
       - name: Fix Qt lib rpaths # see: https://github.com/orgs/Homebrew/discussions/2823#discussioncomment-2010340)
         run: |
-          install_name_tool -id '@rpath/QtCore.framework/Versions/A/QtCore' /usr/local/lib/QtCore.framework/Versions/A/QtCore
-          install_name_tool -id '@rpath/QtGui.framework/Versions/A/QtGui' /usr/local/lib/QtGui.framework/Versions/A/QtGui
-          install_name_tool -id '@rpath/QtNetwork.framework/Versions/A/QtNetwork' /usr/local/lib/QtNetwork.framework/Versions/A/QtNetwork
-          install_name_tool -id '@rpath/QtWidgets.framework/Versions/A/QtWidgets' /usr/local/lib/QtWidgets.framework/Versions/A/QtWidgets
-          install_name_tool -id '@rpath/QtPdf.framework/Versions/A/QtPdf' /usr/local/lib/QtPdf.framework/Versions/A/QtPdf
-          install_name_tool -id '@rpath/QtSvg.framework/Versions/A/QtSvg' /usr/local/lib/QtSvg.framework/Versions/A/QtSvg
-          install_name_tool -id '@rpath/QtVirtualKeyboard.framework/Versions/A/QtVirtualKeyboard' /usr/local/lib/QtVirtualKeyboard.framework/Versions/A/QtVirtualKeyboard
-          install_name_tool -id '@rpath/QtQuick.framework/Versions/A/QtQuick' /usr/local/lib/QtQuick.framework/Versions/A/QtQuick
-          install_name_tool -id '@rpath/QtQmlModels.framework/Versions/A/QtQmlModels' /usr/local/lib/QtQmlModels.framework/Versions/A/QtQmlModels
-          install_name_tool -id '@rpath/QtQml.framework/Versions/A/QtQml' /usr/local/lib/QtQml.framework/Versions/A/QtQml
-          install_name_tool -id '@rpath/QtOpenGL.framework/Versions/A/QtOpenGL' /usr/local/lib/QtOpenGL.framework/Versions/A/QtOpenGL
-          install_name_tool -id '@rpath/QtMultimedia.framework/Versions/A/QtMultimedia' /usr/local/lib/QtMultimedia.framework/Versions/A/QtMultimedia
+          install_name_tool -id '@rpath/QtCore.framework/Versions/A/QtCore' $(brew --prefix)/lib/QtCore.framework/Versions/A/QtCore
+          install_name_tool -id '@rpath/QtGui.framework/Versions/A/QtGui' $(brew --prefix)/lib/QtGui.framework/Versions/A/QtGui
+          install_name_tool -id '@rpath/QtNetwork.framework/Versions/A/QtNetwork' $(brew --prefix)/lib/QtNetwork.framework/Versions/A/QtNetwork
+          install_name_tool -id '@rpath/QtWidgets.framework/Versions/A/QtWidgets' $(brew --prefix)/lib/QtWidgets.framework/Versions/A/QtWidgets
+          install_name_tool -id '@rpath/QtPdf.framework/Versions/A/QtPdf' $(brew --prefix)/lib/QtPdf.framework/Versions/A/QtPdf
+          install_name_tool -id '@rpath/QtSvg.framework/Versions/A/QtSvg' $(brew --prefix)/lib/QtSvg.framework/Versions/A/QtSvg
+          install_name_tool -id '@rpath/QtVirtualKeyboard.framework/Versions/A/QtVirtualKeyboard' $(brew --prefix)/lib/QtVirtualKeyboard.framework/Versions/A/QtVirtualKeyboard
+          install_name_tool -id '@rpath/QtQuick.framework/Versions/A/QtQuick' $(brew --prefix)/lib/QtQuick.framework/Versions/A/QtQuick
+          install_name_tool -id '@rpath/QtQmlModels.framework/Versions/A/QtQmlModels' $(brew --prefix)/lib/QtQmlModels.framework/Versions/A/QtQmlModels
+          install_name_tool -id '@rpath/QtQml.framework/Versions/A/QtQml' $(brew --prefix)/lib/QtQml.framework/Versions/A/QtQml
+          install_name_tool -id '@rpath/QtOpenGL.framework/Versions/A/QtOpenGL' $(brew --prefix)/lib/QtOpenGL.framework/Versions/A/QtOpenGL
+          install_name_tool -id '@rpath/QtMultimedia.framework/Versions/A/QtMultimedia' $(brew --prefix)/lib/QtMultimedia.framework/Versions/A/QtMultimedia
       - name: Build
         run: |
           cd src
@@ -96,13 +118,13 @@ jobs:
       - name: Upload Portable Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MAC-UltraStar-Creator-portable
+          name: MAC-${{ env.arch }}-UltraStar-Creator-portable
           path: bin/release
           if-no-files-found: error
       - name: Upload Image Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MAC-UltraStar-Creator-image
+          name: MAC-${{ env.arch }}-UltraStar-Creator-image
           path: bin/release/MAC-UltraStar-Creator.dmg
           if-no-files-found: error
 
