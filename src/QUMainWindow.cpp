@@ -1662,7 +1662,9 @@ void QUMainWindow::on_pushButton_UndoTap_clicked()
 
 		updateOutputLyrics();
 		
-		BASS_SetPosition(timeLineMap.lastKey()/1000.0);
+		//BASS_SetPosition(timeLineMap.lastKey()/1000.0);
+		double undoTime = 1.0; // step 1 second back in MP3
+		BASS_SetPosition(qMax(BASS_Position() - undoTime, 0.0));
 	}
 }
 
@@ -2087,7 +2089,7 @@ QString QUMainWindow::syllabifyLyrics(QString lyrics, QString language)
 QString QUMainWindow::getResourcesPath() {
 	#if defined(Q_OS_WIN)
 		return QApplication::applicationDirPath() + "/";
-	#elif defined(Q_OS_OSX)
+	#elif defined(Q_OS_MACOS)
 		return QApplication::applicationDirPath() + "/../Resources/";
 	#elif defined(Q_OS_LINUX)
 		return QApplication::applicationDirPath() + "/../share/yourapplication/";
@@ -2132,11 +2134,11 @@ void QUMainWindow::getYear()
 	loop.exec();
 	if(reply->error() != QNetworkReply::NoError) {
 		QUMessageBox::warning(this,
-			tr("Lyrics retrieval failed."),
+			tr("Year retrieval failed."),
 				QString(tr("Is your internet connection working?")),
 				BTN << ":/icons/accept.png" << "OK",
 				240);
-		logSrv->add(QString(tr("Lyrics retrieval failed. Host unreachable.")), QU::Error);
+		logSrv->add(QString(tr("Year retrieval failed. Host unreachable.")), QU::Error);
 		return;
 	}
 	
