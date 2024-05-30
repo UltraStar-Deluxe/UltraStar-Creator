@@ -65,6 +65,7 @@ Section "Application" SecCopyUI
 	File "capi.dll"
 	File "changes.txt"
 	File "cld2.dll"
+	File "tag.dll"
 	File "dasync.dll"
 	File "English.txt"
 	File "French.txt"
@@ -108,8 +109,6 @@ Section "Application" SecCopyUI
 	File "tls\qcertonlybackend.dll" ;; needed?
 	File "tls\qopensslbackend.dll" ;; needed?
 	File "tls\qschannelbackend.dll" ;; needed?
-	SetOutPath "C:\Program Files\taglib\lib"
-	File "tag.dll"
 
 	;; setup initial reg values
 	;; WriteRegStr HKCU "Software\HPI\${PRODUCTNAME}" "key" "value1 value2"
@@ -170,6 +169,7 @@ Section "Uninstall"
 	
 	Delete "$INSTDIR\bass.dll"
 	Delete "$INSTDIR\bass_fx.dll"
+	Delete "$INSTDIR\tag.dll"
 	Delete "$INSTDIR\changes.txt"
 	Delete "$INSTDIR\libgcc_s_seh-1.dll"
 	Delete "$INSTDIR\libstdc++-6.dll"
