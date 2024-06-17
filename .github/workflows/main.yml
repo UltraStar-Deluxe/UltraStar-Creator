@@ -26,6 +26,9 @@ jobs:
           cd taglib
           cmake -B build -G "Visual Studio 17 2022" -A x64 -DWITH_ZLIB=OFF -DBUILD_SHARED_LIBS=ON -DENABLE_STATIC_RUNTIME=OFF -DBUILD_TESTING=OFF
           msbuild build/install.vcxproj -p:Configuration=Release
+          cp -r "C:/Program Files/taglib/include/taglib" ../include
+          copy build/taglib/Release/tag.dll ../lib/win64
+          copy build/taglib/Release/tag.lib ../lib/win64
       - name: Install cld2
         run: |
           git clone https://github.com/CLD2Owners/cld2.git
