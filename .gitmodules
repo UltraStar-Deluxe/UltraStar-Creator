@@ -1,0 +1,3 @@
+[submodule "include/cld2"]
+	path = include/cld2
+	url = https://github.com/CLD2Owners/cld2.git
