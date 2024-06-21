@@ -62,17 +62,13 @@ Section "Application" SecCopyUI
 	SetOutPath "$INSTDIR"
 	File "bass.dll"
 	File "bass_fx.dll"
-	File "capi.dll"
 	File "changes.txt"
 	File "cld2.dll"
 	File "tag.dll"
-	File "dasync.dll"
 	File "English.txt"
 	File "French.txt"
 	File "German.txt"
 	File "Italian.txt"
-	File "libcrypto-1_1-x64.dll"
-	File "libssl-1_1-x64.dll"
 	File "Polish.txt"
 	File "Portuguese.txt"
 	File "Qt6Core.dll"
@@ -85,11 +81,8 @@ Section "Application" SecCopyUI
 	File "Spanish.txt"
 	File "Swedish.txt"
 	File "UltraStar-Creator.exe"
-	File "vc_redist.x64.exe"
 	;;SetOutPath "$INSTDIR\iconengines" ;; added via windeployqt, but not needed
 	;;File "iconengines\qsvgicon.dll" ;; added via windeployqt, but not needed
-	SetOutPath "$INSTDIR\generic"
-	File "generic\qtuiotouchplugin.dll" ;; needed?
 	SetOutPath "$INSTDIR\imageformats"
 	File "imageformats\qgif.dll"
 	;;File "imageformats\qicns.dll" ;; added via windeployqt, but not needed
@@ -101,14 +94,8 @@ Section "Application" SecCopyUI
 	;;File "imageformats\qtiff.dll" ;; added via windeployqt, but not needed
 	;;File "imageformats\qwbmp.dll" ;; added via windeployqt, but not needed
 	;;File "imageformats\qwebp.dll" ;; added via windeployqt, but not needed
-	SetOutPath "$INSTDIR\networkinformation" ;; needed?
-	File "networkinformation\qnetworklistmanager.dll" ;; needed?
 	SetOutPath "$INSTDIR\platforms"
 	File "platforms\qwindows.dll"
-	SetOutPath "$INSTDIR\tls" ;; needed?
-	File "tls\qcertonlybackend.dll" ;; needed?
-	File "tls\qopensslbackend.dll" ;; needed?
-	File "tls\qschannelbackend.dll" ;; needed?
 
 	;; setup initial reg values
 	;; WriteRegStr HKCU "Software\HPI\${PRODUCTNAME}" "key" "value1 value2"
@@ -169,17 +156,22 @@ Section "Uninstall"
 	
 	Delete "$INSTDIR\bass.dll"
 	Delete "$INSTDIR\bass_fx.dll"
+	Delete "$INSTDIR\cld2.dll"
 	Delete "$INSTDIR\tag.dll"
+	Delete "$INSTDIR\Qt6Core.dll"
+	Delete "$INSTDIR\Qt6Gui.dll"
+	Delete "$INSTDIR\Qt6Network.dll"
+	Delete "$INSTDIR\Qt6Widgets.dll"
+	Delete "$INSTDIR\English.txt"
+	Delete "$INSTDIR\French.txt"
+	Delete "$INSTDIR\German.txt"
+	Delete "$INSTDIR\Italian.txt"
+	Delete "$INSTDIR\Polish.txt"
+	Delete "$INSTDIR\Portuguese.txt"
+	Delete "$INSTDIR\Spanish.txt"
+	Delete "$INSTDIR\Swedish.txt"
 	Delete "$INSTDIR\changes.txt"
-	Delete "$INSTDIR\libgcc_s_seh-1.dll"
-	Delete "$INSTDIR\libstdc++-6.dll"
-	Delete "$INSTDIR\libwinpthread-1.dll"
-	Delete "$INSTDIR\Qt5Core.dll"
-	Delete "$INSTDIR\Qt5Gui.dll"
-	Delete "$INSTDIR\Qt5Network.dll"
-	Delete "$INSTDIR\Qt5Widgets.dll"
 	Delete "$INSTDIR\UltraStar-Creator.exe"
-	
 	Delete "$INSTDIR\Uninstall.exe"
 	
 	RMDir "$INSTDIR"
