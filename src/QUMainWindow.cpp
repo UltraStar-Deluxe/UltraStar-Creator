@@ -153,10 +153,12 @@ void QUMainWindow::initWindow() {
 	ui->comboBox_Language->addItem(QIcon(":/languages/no.png"),tr("Norwegian"),"Norwegian");
 	ui->comboBox_Language->addItem(QIcon(":/languages/pl.png"),tr("Polish"),"Polish");
 	ui->comboBox_Language->addItem(QIcon(":/languages/pt.png"),tr("Portuguese"),"Portuguese");
+	ui->comboBox_Language->addItem(QIcon(":/languages/pt.png"),tr("Portuguese (Brazil)"),"Portuguese (Brazil)");
 	ui->comboBox_Language->addItem(QIcon(":/languages/ru.png"),tr("Russian"),"Russian");
 	ui->comboBox_Language->addItem(QIcon(":/languages/sk.png"),tr("Slovak"),"Slovak");
 	ui->comboBox_Language->addItem(QIcon(":/languages/si.png"),tr("Slowenian"),"Slowenian");
 	ui->comboBox_Language->addItem(QIcon(":/languages/es.png"),tr("Spanish"),"Spanish");
+	ui->comboBox_Language->addItem(QIcon(":/languages/es.png"),tr("Spanish (Latino)"),"Spanish (Latino)");
 	ui->comboBox_Language->addItem(QIcon(":/languages/se.png"),tr("Swedish"),"Swedish");
 	ui->comboBox_Language->addItem(QIcon(":/languages/tr.png"),tr("Turkish"),"Turkish");
 	ui->comboBox_Language->addItem(QIcon(":/languages/wales.png"),tr("Welsh"),"Welsh");

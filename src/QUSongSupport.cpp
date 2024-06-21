@@ -125,11 +125,13 @@ QStringList QUSongSupport::availableSongLanguages() {
 	result << "Norwegian";
 	result << "Polish";
 	result << "Portuguese";
+	result << "Portuguese (Brazil)";
 	result << "Romanian";
 	result << "Russian";
 	result << "Slovak";
 	result << "Slowenian";
 	result << "Spanish";
+	result << "Spanish (Latino)";
 	result << "Swedish";
 	result << "Turkish";
 
