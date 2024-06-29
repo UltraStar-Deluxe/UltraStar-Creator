@@ -90,13 +90,10 @@ jobs:
           brew install qt
       - name: Install cld2
         run: |
-          cd include/cld2/internal/
+          cd include
+          patch cld2/internal/compile_libs.sh cld2-mac-compile.patch
+          cd cld2/internal/
           export CFLAGS="-Wno-narrowing -O3"
-          sed -i '' "s/soname=/install_name,/g" compile_libs.sh
-          sed -i '' "s/-shared/-dynamiclib/g" compile_libs.sh
-          sed -i '' "s/libcld2.so/libcld2.dylib/g" compile_libs.sh
-          sed -i '' "s/libcld2_full.so/libcld2_full.dylib/g" compile_libs.sh
-          cat compile_libs.sh
           ./compile_libs.sh
           cp libcld2.dylib ../../../lib/macx
       - name: Fix Qt lib rpaths # see: https://github.com/orgs/Homebrew/discussions/2823#discussioncomment-2010340)
