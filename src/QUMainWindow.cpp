@@ -547,6 +547,7 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	// replace misused accents (´,`) by the correct apostrophe (')
 	rawLyricsString = rawLyricsString.replace("´", "'");
 	rawLyricsString = rawLyricsString.replace("`", "'");
+	rawLyricsString = rawLyricsString.replace("'", "’");
 
 	// delete leading and trailing whitespace from each line, change line beginning to uppercase if selected
 	QStringList rawLyricsStringList = rawLyricsString.split(QRegularExpression("\\n"));
