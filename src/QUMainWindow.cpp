@@ -31,6 +31,12 @@
 #include "compact_lang_det.h"
 #include "srtparser.h"
 
+std::vector<std::pair<std::string, const char *>> FILENAME_REPLACEMENTS{
+	std::make_pair(std::string("?:\""), ""),
+	std::make_pair(std::string("<"), "("),
+	std::make_pair(std::string(">"), ")"),
+	std::make_pair(std::string("/\\|*"), "-")};
+
 QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUMainWindow) {
 	ui->setupUi(this);
 	
@@ -375,7 +381,11 @@ void QUMainWindow::initStatusBar() {
 
 bool QUMainWindow::on_pushButton_SaveToFile_clicked()
 {
-	QString suggestedAbsoluteFilePath = QDir::toNativeSeparators(fileInfo_MP3->absolutePath()).append(QDir::separator()).append("%1 - %2.txt").arg(ui->lineEdit_Artist->text(), ui->lineEdit_Title->text());
+	QString suggestedFileName = QString("%1 - %2.txt").arg(ui->lineEdit_Artist->text(), ui->lineEdit_Title->text());
+	for (auto repl : FILENAME_REPLACEMENTS)
+		for (auto in_char : repl.first)
+			suggestedFileName.replace(in_char, repl.second);
+	QString suggestedAbsoluteFilePath = QDir::toNativeSeparators(fileInfo_MP3->absolutePath()).append(QDir::separator()).append(suggestedFileName);
 	QString fileName = QFileDialog::getSaveFileName(this, tr("Please choose file"), suggestedAbsoluteFilePath, tr("Text files (*.txt)"));
 
 	if(fileName.isEmpty())
