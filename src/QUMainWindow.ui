@@ -1485,10 +1485,10 @@
                  </sizepolicy>
                 </property>
                 <property name="toolTip">
-                 <string>fetch lyrics from musixmatch.com</string>
+                 <string>Search lyrics on Google</string>
                 </property>
                 <property name="text">
-                 <string>web</string>
+                 <string>Google Search</string>
                 </property>
                 <property name="icon">
                  <iconset resource="resources/UltraStar-Creator.qrc">

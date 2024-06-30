@@ -547,6 +547,7 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	// replace misused accents (´,`) by the correct apostrophe (')
 	rawLyricsString = rawLyricsString.replace("´", "'");
 	rawLyricsString = rawLyricsString.replace("`", "'");
+	rawLyricsString = rawLyricsString.replace("'", "’");
 
 	// delete leading and trailing whitespace from each line, change line beginning to uppercase if selected
 	QStringList rawLyricsStringList = rawLyricsString.split(QRegularExpression("\\n"));
@@ -1380,73 +1381,19 @@ void QUMainWindow::handleMP3() {
 
 void QUMainWindow::on_pushButton_GetLyrics_clicked() {
 	setCursor(Qt::WaitCursor);
-	
-	QUrl url("https://www.musixmatch.com/search/" + ui->lineEdit_Artist->text() + " " + ui->lineEdit_Title->text());
-	
-	QNetworkAccessManager *m_NetworkMngr = new QNetworkAccessManager(this);
-	QNetworkReply *reply = m_NetworkMngr->get(QNetworkRequest(url));
+	QUrl url("https://www.google.com/search");
+	QUrlQuery urlQuery;
+	QRegularExpression whitespace = QRegularExpression("(\\s+)");
+	QStringList queryStrings;
+	queryStrings << ui->lineEdit_Artist->text().split(whitespace) << ui->lineEdit_Title->text().split(whitespace) << "lyrics";
+	QByteArray encodedQuery;
+	foreach (QString queryString, queryStrings)
+		encodedQuery += QUrl::toPercentEncoding(queryString + " ", QString("+").toLatin1());
+	urlQuery.addQueryItem("q", encodedQuery);
+	url.setQuery(urlQuery);
 
-	QEventLoop loop;
-	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
-	loop.exec();
-	if(reply->error() != QNetworkReply::NoError) {
-		QUMessageBox::warning(this,
-			tr("Lyrics retrieval failed."),
-				QString(tr("Is your internet connection working?")),
-				BTN << ":/icons/accept.png" << "OK",
-				240);
-		logSrv->add(QString(tr("Lyrics retrieval failed. Host unreachable.")), QU::Error);
-		return;
-	}
-	
-	QString searchresult = reply->readAll();
-	
-	QRegularExpression re = QRegularExpression("<a class=\"title\" href=\"(.*)\"><span>", QRegularExpression::InvertedGreedinessOption);
-	QRegularExpressionMatch match = re.match(searchresult);
-	
-	QString lyr;
-	bool lyricsFound = false;
-	
-	if (match.hasMatch()) {
-		QString relative_url = match.captured(1);
-		url.setUrl("https://www.musixmatch.com" + relative_url);
-		
-		reply = m_NetworkMngr->get(QNetworkRequest(url));
-		
-		QEventLoop loop;
-		connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
-		loop.exec();
-		if(reply->error() != QNetworkReply::NoError) {
-			QUMessageBox::warning(this,
-				tr("Lyrics retrieval failed."),
-					QString(tr("Is your internet connection working?")),
-					BTN << ":/icons/accept.png" << "OK",
-					240);
-			logSrv->add(QString(tr("Lyrics retrieval failed. Host unreachable.")), QU::Error);
-			return;
-		}
-		
-		QString musixmatch_page = reply->readAll();
-		
-		re.setPattern("\"body\":\"(.*),\"language\":\"[a-z]+\",\"languageDescription\":\"(.*)\",");
-		match = re.match(musixmatch_page);
-		
-		if (match.hasMatch()) {
-			lyr = match.captured(1).replace("\\n","\n").replace("\\\"", "\"").replace("´", "'").replace("`", "'");
-			lyr.chop(1); //todo: change above regex to not include the final "
-			ui->plainTextEdit_InputLyrics->setPlainText(lyr);
-			lyricsFound = true;
-		}
-	} else {
-		ui->plainTextEdit_InputLyrics->setPlainText("Lyrics could not be retrieved automatically. Please try to adjust artist/title or paste them in this field manually.");
-	}
-	
-	if(!lyricsFound) {
-		setCursor(Qt::ArrowCursor);
-		return;
-	} else {
-		handleLyrics(ui->plainTextEdit_InputLyrics->toPlainText());
-	}
+	QDesktopServices::openUrl(url);
+	setCursor(Qt::ArrowCursor);
 }
 
 void QUMainWindow::handleLyrics(QString lyrics) {
