@@ -54,10 +54,6 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	lyricsProgressBar->setFormat("%v/%m (%p%)");
 	QMainWindow::statusBar()->addPermanentWidget(lyricsProgressBar, 1);
 
-	if (BASS_Init(-1, 44100, 0, 0, NULL)) {
-		QMainWindow::statusBar()->showMessage(tr("BASS initialized."));
-	}
-
 	QSettings settings;
 	bool firstRun = settings.value("firstRun", "true").toBool();
 

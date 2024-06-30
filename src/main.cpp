@@ -15,6 +15,7 @@
 //#include <QRandomGenerator>
 
 void initApplication();
+void initBASS();
 void initLanguage(QApplication&, QTranslator&, QTranslator&, QSplashScreen&);
 void handlePreviousAppCrash();
 void handleWipWarning();
@@ -49,6 +50,7 @@ int main(int argc, char *argv[]) {
 	handleArguments();
 
 	QUMainWindow mainWindow;
+	initBASS();
 	app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
 
 	mainWindow.show();
@@ -68,6 +70,22 @@ void initApplication() {
 
 	QCoreApplication::setOrganizationName("HPI");
 	QCoreApplication::setApplicationName("UltraStar Creator");
+}
+
+void initBASS()
+{
+	if (!BASS_Init(-1, 44100, 0, 0, NULL))
+	{
+		QPushButton *quitButton = new QPushButton();
+		QMessageBox dlg;
+		dlg.setWindowTitle("BASS could not be initialized");
+		dlg.setText("BASS audio library could not initialize the audio device.\nThe application will quit now.");
+		dlg.setDefaultButton(quitButton);
+		dlg.setIcon(QMessageBox::Critical);
+
+		QObject::connect(&dlg, &QMessageBox::accepted, qApp, &QCoreApplication::quit, Qt::QueuedConnection);
+		dlg.exec();
+	}
 }
 
 /*!
