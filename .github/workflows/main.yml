@@ -35,7 +35,8 @@ jobs:
             lib/win64
             include/taglib
           key: win-deps-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
-      - name: Install Taglib via vcpkg
+      - name: Fetch TagLib library
+        if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
           vcpkg --vcpkg-root=C:\vcpkg install taglib:x64-windows
           vcpkg integrate install
@@ -46,6 +47,26 @@ jobs:
           Copy-Item "C:\vcpkg\installed\x64-windows\bin\tag.dll" "$repoRoot\bin\release" -Force
           Copy-Item "C:\vcpkg\installed\x64-windows\lib\tag.lib" "$repoRoot\lib\win64" -Force
           Copy-Item "C:\vcpkg\installed\x64-windows\include\taglib\*" "$repoRoot\include\taglib" -Force -Recurse
+      - name: Fetch BASS library
+        if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
+        run: |
+          $repoRoot = "${{ github.workspace }}"
+          curl -L -o bass.zip https://www.un4seen.com/files/bass24.zip
+          unzip bass.zip -d bass-tmp
+          Copy-Item "$repoRoot\bass-tmp\c\bass.h" "$repoRoot\include\bass\" -Force
+          Copy-Item "$repoRoot\bass-tmp\c\x64\bass.lib" "$repoRoot\lib\win64\" -Force
+          Copy-Item "$repoRoot\bass-tmp\x64\bass.dll" "$repoRoot\bin\release" -Force
+          Remove-Item -Recurse -Force bass.zip,bass-tmp
+      - name: Fetch BASS_FX library
+        if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
+        run: |
+          $repoRoot = "${{ github.workspace }}"
+          curl -L -o bass_fx.zip https://www.un4seen.com/files/z/0/bass_fx24.zip
+          unzip bass_fx.zip -d bass_fx-tmp
+          Copy-Item "$repoRoot\bass_fx-tmp\C\bass_fx.h" "$repoRoot\include\bass\" -Force
+          Copy-Item "$repoRoot\bass_fx-tmp\C\x64\bass_fx.lib" "$repoRoot\lib\win64\" -Force
+          Copy-Item "$repoRoot\bass_fx-tmp\x64\bass_fx.dll" "$repoRoot\bin\release" -Force
+          Remove-Item -Recurse -Force bass_fx.zip,bass_fx-tmp
       - name: Install cld2
         if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
