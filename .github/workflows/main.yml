@@ -136,6 +136,15 @@ jobs:
         run: |
           brew update
           brew install taglib create-dmg qt
+      - name: Fetch BASS library
+        run: |
+          $repoRoot = "${{ github.workspace }}"
+          curl -L -o bass.zip https://www.un4seen.com/files/bass24.zip
+          unzip bass.zip -d bass-tmp
+          mkdir -p "$repoRoot/include/bass"
+          cp bass-tmp/c/bass.h "$repoRoot/include/bass/"
+          mkdir -p "$repoRoot/lib/macos"
+          cp bass-tmp/libbass.dylib "$repoRoot/lib/macos/"
       - name: Install cld2
         run: |
           cd include
@@ -143,7 +152,7 @@ jobs:
           cd cld2/internal/
           export CFLAGS="-Wno-narrowing -O3"
           ./compile_libs.sh
-          cp libcld2.dylib ../../../lib/macx
+          cp libcld2.dylib ../../../lib/macos
       - name: Fix Qt lib rpaths # see: https://github.com/orgs/Homebrew/discussions/2823#discussioncomment-2010340)
         run: |
           install_name_tool -id '@rpath/QtCore.framework/Versions/A/QtCore' $(brew --prefix)/lib/QtCore.framework/Versions/A/QtCore
