@@ -12,6 +12,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Get Number of CPU Cores
+        id: cpu-cores
+        run: echo "count=$(node -e 'console.log(require("os").availableParallelism())')" >> $GITHUB_OUTPUT
       - name: Set up MSVC Environment
         uses: compnerd/gha-setup-vsdevenv@v6
       - name: Checkout Repository
@@ -56,6 +59,7 @@ jobs:
         run: |
           cd src
           qmake6 UltraStar-Creator.pro -spec win32-msvc
+          set CL=/MP${{ steps.cpu-cores.outputs.count }}
           nmake
       - name: Install NSIS
         uses: negrutiu/nsis-install@v2
@@ -86,8 +90,8 @@ jobs:
       fail-fast: false
     steps:
       - name: Get Number of CPU Cores
-        uses: SimenB/github-actions-cpu-cores@v2
         id: cpu-cores
+        run: echo "count=$(node -e 'console.log(require("os").availableParallelism())')" >> $GITHUB_OUTPUT
       - name: Checkout Repository
         uses: actions/checkout@v6
         with:
@@ -174,8 +178,8 @@ jobs:
 
     steps:
       - name: Get Number of CPU Cores
-        uses: SimenB/github-actions-cpu-cores@v2
         id: cpu-cores
+        run: echo "count=$(node -e 'console.log(require("os").availableParallelism())')" >> $GITHUB_OUTPUT
       - name: Checkout Repository
         uses: actions/checkout@v6
         with:
