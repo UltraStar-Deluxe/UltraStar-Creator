@@ -36,12 +36,23 @@ jobs:
         run: |
           vcpkg --vcpkg-root=C:\vcpkg install taglib:x64-windows
           vcpkg integrate install
-          mkdir -Force ..\bin\release
-          mkdir -Force ..\include\taglib
-          mkdir -Force ..\lib\win64
-          Copy-Item "C:\vcpkg\installed\x64-windows\bin\tag.dll" "..\bin\release" -Force
-          Copy-Item "C:\vcpkg\installed\x64-windows\lib\tag.lib" "..\lib\win64" -Force
-          Copy-Item "C:\vcpkg\installed\x64-windows\include\taglib\*" "..\include\taglib" -Force -Recurse
+          
+          # Show what vcpkg actually installed
+          Get-ChildItem "C:\vcpkg\installed\x64-windows\include\taglib" | Select-Object Name
+          Get-ChildItem "C:\vcpkg\installed\x64-windows\lib\tag*"
+          
+          $repoRoot = "${{ github.workspace }}"
+          New-Item -Force -ItemType Directory "$repoRoot\bin\release"
+          New-Item -Force -ItemType Directory "$repoRoot\include\taglib"
+          New-Item -Force -ItemType Directory "$repoRoot\lib\win64"
+          
+          Copy-Item "C:\vcpkg\installed\x64-windows\bin\tag.dll" "$repoRoot\bin\release" -Force
+          Copy-Item "C:\vcpkg\installed\x64-windows\lib\tag.lib" "$repoRoot\lib\win64" -Force
+          Copy-Item "C:\vcpkg\installed\x64-windows\include\taglib\*" "$repoRoot\include\taglib" -Force -Recurse
+          
+          # Verify copies succeeded
+          Get-ChildItem "$repoRoot\include\taglib" | Select-Object Name
+          Get-ChildItem "$repoRoot\lib\win64"
       - name: Install cld2
         if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
