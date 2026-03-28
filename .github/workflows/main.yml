@@ -15,13 +15,13 @@ jobs:
       - name: Set up MSVC Environment
         uses: compnerd/gha-setup-vsdevenv@main
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: true
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
-          version: "6.5.*"
+          version: "6.11.*"
       - name: Install Taglib
         run: |
           git clone --recurse-submodules https://github.com/taglib/taglib.git
@@ -45,17 +45,17 @@ jobs:
           qmake6 UltraStar-Creator.pro -spec win32-msvc
           nmake
       - name: Create installer
-        uses: joncloud/makensis-action@v4.1
+        uses: joncloud/makensis-action@v5.0
         with:
           script-file: setup/win64/UltraStar-Creator.nsi
       - name: Upload Portable Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: WIN64-UltraStar-Creator-portable
           path: bin/release
           if-no-files-found: error
       - name: Upload Installer Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: WIN64-UltraStar-Creator-installer
           path: bin/WIN64-UltraStar-Creator*-setup.exe
@@ -66,14 +66,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-13, macos-14]
+        os: [macos-latest, macos-15-intel]
       fail-fast: false
     steps:
       - name: Get Number of CPU Cores
         uses: SimenB/github-actions-cpu-cores@v2
         id: cpu-cores
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: true
       - name: Determine Arch
@@ -118,13 +118,13 @@ jobs:
           cd ../bin/release
           mv UltraStar-Creator.dmg MAC-${{ env.arch }}-UltraStar-Creator.dmg
       - name: Upload Portable Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: MAC-${{ env.arch }}-UltraStar-Creator-portable
           path: bin/release
           if-no-files-found: error
       - name: Upload Image Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: MAC-${{ env.arch }}-UltraStar-Creator-image
           path: bin/release/MAC-${{ env.arch }}-UltraStar-Creator.dmg
@@ -139,13 +139,13 @@ jobs:
         uses: SimenB/github-actions-cpu-cores@v2
         id: cpu-cores
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: true
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
-          version: "6.5.*"
+          version: "6.11.*"
       - name: Install Dependencies
         run: |
           sudo apt update -qq
@@ -168,7 +168,7 @@ jobs:
           ./linuxdeployqt*.AppImage UltraStar-Creator.desktop -bundle-non-qt-libs -appimage
           mv LINUX-UltraStar-Creator-*.AppImage LINUX-UltraStar-Creator.AppImage
       - name: Upload AppImage Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: LINUX-UltraStar-Creator-appimage
           path: bin/release/LINUX-UltraStar-Creator.AppImage
@@ -181,7 +181,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Download Artifacts from Build Jobs
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           path: .
           pattern: "*"
