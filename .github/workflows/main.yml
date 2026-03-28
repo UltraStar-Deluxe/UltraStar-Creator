@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Set up MSVC Environment
-        uses: compnerd/gha-setup-vsdevenv@main
+        uses: compnerd/gha-setup-vsdevenv@v6
       - name: Checkout Repository
         uses: actions/checkout@v6
         with:
@@ -25,7 +25,7 @@ jobs:
           arch: "win64_msvc2022_64"
           cache: true
       - name: Cache Windows dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             lib/win64
@@ -99,7 +99,7 @@ jobs:
             echo "arch=ARM" >> $GITHUB_ENV
           fi
       - name: Cache Homebrew
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ~/Library/Caches/Homebrew
@@ -180,7 +180,7 @@ jobs:
         with:
           submodules: true
       - name: Cache Qt
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/Qt
           key: qt-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
