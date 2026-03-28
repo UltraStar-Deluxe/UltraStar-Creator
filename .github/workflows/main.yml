@@ -36,6 +36,7 @@ jobs:
         run: |
           vcpkg --vcpkg-root=C:\vcpkg install taglib:x64-windows
           vcpkg integrate install
+          mkdir "..\bin\release" -Force
           Copy-Item "C:\vcpkg\installed\x64-windows\bin\tag.dll" "..\bin\release" -Force
           Copy-Item "C:\vcpkg\installed\x64-windows\lib\tag.lib" "..\lib\win64" -Force
           Copy-Item "C:\vcpkg\installed\x64-windows\include\taglib" "..\include\taglib" -Recurse -Force
