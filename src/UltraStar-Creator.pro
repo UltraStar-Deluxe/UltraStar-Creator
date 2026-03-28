@@ -82,8 +82,9 @@ win32 {
 	LIBS += -L"../lib/win64" \
 		-lbass \
 		-lbass_fx \
-		-lcld2 \
-		-ltag
+		-lcld2
+	LIBS += -LC:/vcpkg/installed/x64-windows/lib
+	LIBS += C:/vcpkg/installed/x64-windows/lib/tag.lib
 
 	RC_ICONS += UltraStar-Creator.ico
 }
