@@ -34,7 +34,7 @@ jobs:
           key: win-deps-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
       - name: Install Taglib via vcpkg
         run: |
-          vcpkg install taglib:x64-windows --retry 3 --downloads-clean-after
+          vcpkg --vcpkg-root=C:\vcpkg install taglib:x64-windows --retry 3 --downloads-clean-after
           vcpkg integrate install
           Copy-Item "C:\vcpkg\installed\x64-windows\bin\tag.dll" "..\bin\release" -Force
           Copy-Item "C:\vcpkg\installed\x64-windows\lib\tag.lib" "..\lib\win64" -Force
