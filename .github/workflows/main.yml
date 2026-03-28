@@ -34,6 +34,8 @@ jobs:
           path: |
             lib/win64
             include/taglib
+            include/bass
+            include/bass_fx
           key: win-deps-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
       - name: Fetch TagLib library
         if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
@@ -48,27 +50,26 @@ jobs:
           Copy-Item "C:\vcpkg\installed\x64-windows\lib\tag.lib" "$repoRoot\lib\win64" -Force
           Copy-Item "C:\vcpkg\installed\x64-windows\include\taglib\*" "$repoRoot\include\taglib" -Force -Recurse
       - name: Fetch BASS library
-        if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
           $repoRoot = "${{ github.workspace }}"
           curl -L -o bass.zip https://www.un4seen.com/files/bass24.zip
           unzip bass.zip -d bass-tmp
+          New-Item -Force -ItemType Directory "$repoRoot\include\bass"
           Copy-Item "$repoRoot\bass-tmp\c\bass.h" "$repoRoot\include\bass\" -Force
           Copy-Item "$repoRoot\bass-tmp\c\x64\bass.lib" "$repoRoot\lib\win64\" -Force
-          Copy-Item "$repoRoot\bass-tmp\x64\bass.dll" "$repoRoot\bin\release" -Force
+          Copy-Item "$repoRoot\bass-tmp\x64\bass.dll" "$repoRoot\bin\release\" -Force
           Remove-Item -Recurse -Force bass.zip,bass-tmp
       - name: Fetch BASS_FX library
-        if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
           $repoRoot = "${{ github.workspace }}"
           curl -L -o bass_fx.zip https://www.un4seen.com/files/z/0/bass_fx24.zip
           unzip bass_fx.zip -d bass_fx-tmp
-          Copy-Item "$repoRoot\bass_fx-tmp\C\bass_fx.h" "$repoRoot\include\bass\" -Force
+          New-Item -Force -ItemType Directory "$repoRoot\include\bass_fx"
+          Copy-Item "$repoRoot\bass_fx-tmp\C\bass_fx.h" "$repoRoot\include\bass_fx\" -Force
           Copy-Item "$repoRoot\bass_fx-tmp\C\x64\bass_fx.lib" "$repoRoot\lib\win64\" -Force
-          Copy-Item "$repoRoot\bass_fx-tmp\x64\bass_fx.dll" "$repoRoot\bin\release" -Force
+          Copy-Item "$repoRoot\bass_fx-tmp\x64\bass_fx.dll" "$repoRoot\bin\release\" -Force
           Remove-Item -Recurse -Force bass_fx.zip,bass_fx-tmp
       - name: Install cld2
-        if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
           cd include/cld2/internal
           cl /TP /GR /EHsc /c /MD cldutil.cc cldutil_shared.cc compact_lang_det.cc compact_lang_det_hint_code.cc compact_lang_det_impl.cc debug.cc fixunicodevalue.cc generated_entities.cc generated_language.cc generated_ulscript.cc getonescriptspan.cc lang_script.cc offsetmap.cc scoreonescriptspan.cc tote.cc utf8statetable.cc cld_generated_cjk_uni_prop_80.cc cld2_generated_cjk_compatible.cc cld_generated_cjk_delta_bi_32.cc generated_distinct_bi_0.cc cld2_generated_quad0122.cc cld2_generated_deltaocta0122.cc cld2_generated_distinctocta0122.cc cld_generated_score_quad_octa_0122.cc
