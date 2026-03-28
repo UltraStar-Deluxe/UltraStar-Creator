@@ -55,6 +55,9 @@ jobs:
           cd src
           qmake6 UltraStar-Creator.pro -spec win32-msvc
           nmake
+      - name: Install NSIS
+        uses: negrutiu/nsis-install@v2
+        id: nsis
       - name: Create installer
         uses: joncloud/makensis-action@v5.0
         with:
@@ -138,7 +141,7 @@ jobs:
           cd bin/release
           create-dmg \
             --volname "UltraStar-Creator" \
-            --volicon ../../resources/UltraStar-Creator.icns \
+            --volicon ../../src/resources/UltraStar-Creator.icns \
             --app-drop-link 350 170 \
             --background ../../setup/macx/img/UltraStar-Creator_bg.png \
             --hide-extension UltraStar-Creator.app \
