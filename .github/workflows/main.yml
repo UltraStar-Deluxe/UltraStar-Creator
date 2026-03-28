@@ -32,16 +32,11 @@ jobs:
             lib/win64
             include/taglib
           key: win-deps-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
-      - name: Install Taglib
+      - name: Install Taglib via vcpkg
         if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
-          git clone --recurse-submodules https://github.com/taglib/taglib.git
-          cd taglib
-          cmake -B build -G "Visual Studio 17 2022" -A x64 -DWITH_ZLIB=OFF -DBUILD_SHARED_LIBS=ON -DENABLE_STATIC_RUNTIME=OFF -DBUILD_TESTING=OFF
-          msbuild build/install.vcxproj -p:Configuration=Release
-          Copy-Item "C:/Program Files/taglib/include/taglib" ../include -Recurse -Force
-          copy build/taglib/Release/tag.dll ../lib/win64
-          copy build/taglib/Release/tag.lib ../lib/win64
+          vcpkg install taglib:x64-windows
+          vcpkg integrate install
       - name: Install cld2
         if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
@@ -109,7 +104,6 @@ jobs:
         run: |
           brew update
           brew install taglib create-dmg qt
-
       - name: Install cld2
         run: |
           cd include
