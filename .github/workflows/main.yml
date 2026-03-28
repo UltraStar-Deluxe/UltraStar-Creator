@@ -33,7 +33,6 @@ jobs:
             include/taglib
           key: win-deps-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
       - name: Install Taglib via vcpkg
-        if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
           vcpkg install taglib:x64-windows
           vcpkg integrate install
