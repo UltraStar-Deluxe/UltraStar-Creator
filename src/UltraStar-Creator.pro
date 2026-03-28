@@ -77,14 +77,13 @@ INCLUDEPATH += ../include/bass \
 	../include/srtparser
 
 win32 {
-	INCLUDEPATH += C:/vcpkg/installed/x64-windows/include/taglib
+	INCLUDEPATH += ../include/taglib
 
 	LIBS += -L"../lib/win64" \
 		-lbass \
 		-lbass_fx \
-		-lcld2
-	LIBS += -LC:/vcpkg/installed/x64-windows/lib
-	LIBS += C:/vcpkg/installed/x64-windows/lib/tag.lib
+		-lcld2 \
+		-ltag
 
 	RC_ICONS += UltraStar-Creator.ico
 }
