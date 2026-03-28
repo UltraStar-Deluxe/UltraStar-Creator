@@ -139,12 +139,21 @@ jobs:
       - name: Fetch BASS library
         run: |
           $repoRoot = "${{ github.workspace }}"
-          curl -L -o bass.zip https://www.un4seen.com/files/bass24.zip
+          curl -L -o bass.zip https://www.un4seen.com/files/bass24-osx.zip
           unzip bass.zip -d bass-tmp
           mkdir -p "$repoRoot/include/bass"
           cp bass-tmp/c/bass.h "$repoRoot/include/bass/"
           mkdir -p "$repoRoot/lib/macos"
           cp bass-tmp/libbass.dylib "$repoRoot/lib/macos/"
+          rm -rf bass.zip bass-tmp
+      - name: Fetch BASS_FX library
+        run: |
+          $repoRoot = "${{ github.workspace }}"
+          curl -L -o bass_fx.zip https://www.un4seen.com/files/z/0/bass_fx24-osx.zip
+          unzip bass_fx.zip -d bass_fx-tmp
+          mkdir -p "$repoRoot/include/bass_fx"
+          cp bass_fx-tmp/bass_fx.h "$repoRoot/include/bass_fx/"
+          cp bass_fx-tmp/libbass_fx.dylib "$repoRoot/lib/macos/"
       - name: Install cld2
         run: |
           cd include
