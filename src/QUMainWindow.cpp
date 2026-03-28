@@ -1858,7 +1858,7 @@ void QUMainWindow::generateFreestyleTextFiles()
 		QDirIterator it(SongCollectionPath, QDirIterator::Subdirectories);
 		while (it.hasNext()) {
 			it.next();
-			if (it.fileInfo().suffix().toLower() == tr("mp3") || it.fileInfo().suffix().toLower() == tr("ogg")) {
+			if (it.fileInfo().suffix().toLower() == tr("m4a") || it.fileInfo().suffix().toLower() == tr("mp3") || it.fileInfo().suffix().toLower() == tr("ogg")) {
 
 				QMainWindow::statusBar()->showMessage(tr("Creating %1").arg(it.fileInfo().completeBaseName()));
 

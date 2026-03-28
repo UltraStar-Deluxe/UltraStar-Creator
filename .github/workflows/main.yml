@@ -13,28 +13,36 @@ jobs:
 
     steps:
       - name: Set up MSVC Environment
-        uses: compnerd/gha-setup-vsdevenv@main
+        uses: compnerd/gha-setup-vsdevenv@v6
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: true
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
-          version: "6.5.*"
-      - name: Install Taglib
+          version: "6.8.3"
+          arch: "win64_msvc2022_64"
+          cache: true
+      - name: Cache Windows dependencies
+        id: cache-windows-dependencies
+        uses: actions/cache@v5
+        with:
+          path: |
+            lib/win64
+            include/taglib
+          key: win-deps-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
+      - name: Install Taglib via vcpkg
         run: |
-          git clone --recurse-submodules https://github.com/taglib/taglib.git
-          cd taglib
-          cmake -B build -G "Visual Studio 17 2022" -A x64 -DWITH_ZLIB=OFF -DBUILD_SHARED_LIBS=ON -DENABLE_STATIC_RUNTIME=OFF -DBUILD_TESTING=OFF
-          msbuild build/install.vcxproj -p:Configuration=Release
-          cp -r "C:/Program Files/taglib/include/taglib" ../include
-          copy build/taglib/Release/tag.dll ../lib/win64
-          copy build/taglib/Release/tag.lib ../lib/win64
+          vcpkg --vcpkg-root=C:\vcpkg install taglib:x64-windows
+          vcpkg integrate install
+          mkdir "..\bin\release" -Force
+          Copy-Item "C:\vcpkg\installed\x64-windows\bin\tag.dll" "..\bin\release" -Force
       - name: Install cld2
+        if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
           cd include/cld2/internal
-          cl /TP /GR /EHsc /c /MD cldutil.cc cldutil_shared.cc compact_lang_det.cc compact_lang_det_hint_code.cc compact_lang_det_impl.cc  debug.cc fixunicodevalue.cc generated_entities.cc  generated_language.cc generated_ulscript.cc getonescriptspan.cc lang_script.cc offsetmap.cc  scoreonescriptspan.cc tote.cc utf8statetable.cc cld_generated_cjk_uni_prop_80.cc cld2_generated_cjk_compatible.cc cld_generated_cjk_delta_bi_32.cc generated_distinct_bi_0.cc cld2_generated_quad0122.cc cld2_generated_deltaocta0122.cc cld2_generated_distinctocta0122.cc cld_generated_score_quad_octa_0122.cc
+          cl /TP /GR /EHsc /c /MD cldutil.cc cldutil_shared.cc compact_lang_det.cc compact_lang_det_hint_code.cc compact_lang_det_impl.cc debug.cc fixunicodevalue.cc generated_entities.cc generated_language.cc generated_ulscript.cc getonescriptspan.cc lang_script.cc offsetmap.cc scoreonescriptspan.cc tote.cc utf8statetable.cc cld_generated_cjk_uni_prop_80.cc cld2_generated_cjk_compatible.cc cld_generated_cjk_delta_bi_32.cc generated_distinct_bi_0.cc cld2_generated_quad0122.cc cld2_generated_deltaocta0122.cc cld2_generated_distinctocta0122.cc cld_generated_score_quad_octa_0122.cc
           link /dll /out:cld2.dll *.obj
           lib /out:cld2.lib *.obj
           copy .\cld2.lib ..\..\..\lib\win64
@@ -44,18 +52,21 @@ jobs:
           cd src
           qmake6 UltraStar-Creator.pro -spec win32-msvc
           nmake
+      - name: Install NSIS
+        uses: negrutiu/nsis-install@v2
+        id: nsis
       - name: Create installer
-        uses: joncloud/makensis-action@v4.1
+        uses: joncloud/makensis-action@v5.0
         with:
           script-file: setup/win64/UltraStar-Creator.nsi
       - name: Upload Portable Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: WIN64-UltraStar-Creator-portable
           path: bin/release
           if-no-files-found: error
       - name: Upload Installer Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: WIN64-UltraStar-Creator-installer
           path: bin/WIN64-UltraStar-Creator*-setup.exe
@@ -66,32 +77,38 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-13, macos-14]
+        os: [macos-latest, macos-15-intel]
       fail-fast: false
     steps:
       - name: Get Number of CPU Cores
         uses: SimenB/github-actions-cpu-cores@v2
         id: cpu-cores
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: true
       - name: Determine Arch
         run: |
-          if [ "${{ matrix.os }}" = "macos-13" ]; then
+          ARCH=$(uname -m)
+          if [[ "$ARCH" == "x86_64" ]]; then
             echo "arch=x86" >> $GITHUB_ENV
           else
             echo "arch=ARM" >> $GITHUB_ENV
           fi
+      - name: Cache Homebrew
+        uses: actions/cache@v5
+        with:
+          path: |
+            ~/Library/Caches/Homebrew
+          key: brew-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
       - name: Install Dependencies
         run: |
-          brew install taglib
-          brew install create-dmg
-          brew install qt
+          brew update
+          brew install taglib create-dmg qt
       - name: Install cld2
         run: |
           cd include
-          patch cld2/internal/compile_libs.sh cld2-mac-compile.patch
+          patch cld2/internal/compile_libs.sh cld2-mac-compile.patch || true
           cd cld2/internal/
           export CFLAGS="-Wno-narrowing -O3"
           ./compile_libs.sh
@@ -114,17 +131,33 @@ jobs:
         run: |
           cd src
           qmake6 UltraStar-Creator.pro
-          make -j$${{ steps.cpu-cores.outputs.count }}
-          cd ../bin/release
-          mv UltraStar-Creator.dmg MAC-${{ env.arch }}-UltraStar-Creator.dmg
+          make -j${{ steps.cpu-cores.outputs.count }}
+      - name: Create DMG
+        run: |
+          cd bin/release
+          create-dmg \
+            --volname "UltraStar-Creator" \
+            --volicon ../../src/resources/UltraStar-Creator.icns \
+            --app-drop-link 350 170 \
+            --background ../../setup/macx/img/UltraStar-Creator_bg.png \
+            --hide-extension UltraStar-Creator.app \
+            --window-size 500 300 \
+            --text-size 14 \
+            --icon-size 64 \
+            --icon UltraStar-Creator.app 150 170 \
+            --no-internet-enable \
+            --skip-jenkins \
+            UltraStar-Creator.dmg \
+            UltraStar-Creator.app
+            mv UltraStar-Creator.dmg MAC-${{ env.arch }}-UltraStar-Creator.dmg
       - name: Upload Portable Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: MAC-${{ env.arch }}-UltraStar-Creator-portable
           path: bin/release
           if-no-files-found: error
       - name: Upload Image Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: MAC-${{ env.arch }}-UltraStar-Creator-image
           path: bin/release/MAC-${{ env.arch }}-UltraStar-Creator.dmg
@@ -139,13 +172,19 @@ jobs:
         uses: SimenB/github-actions-cpu-cores@v2
         id: cpu-cores
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: true
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+      - name: Cache Qt
+        uses: actions/cache@v5
         with:
-          version: "6.5.*"
+          path: ~/.cache/Qt
+          key: qt-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: "6.8.3"
       - name: Install Dependencies
         run: |
           sudo apt update -qq
@@ -168,7 +207,7 @@ jobs:
           ./linuxdeployqt*.AppImage UltraStar-Creator.desktop -bundle-non-qt-libs -appimage
           mv LINUX-UltraStar-Creator-*.AppImage LINUX-UltraStar-Creator.AppImage
       - name: Upload AppImage Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: LINUX-UltraStar-Creator-appimage
           path: bin/release/LINUX-UltraStar-Creator.AppImage
@@ -181,7 +220,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Download Artifacts from Build Jobs
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           path: .
           pattern: "*"
