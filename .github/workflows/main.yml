@@ -21,8 +21,18 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: "6.11.*"
+          version: "6.8.3"
+          arch: "win64_msvc2022_64"
+          cache: true
+      - name: Cache Windows dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            lib/win64
+            include/taglib
+          key: win-deps-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
       - name: Install Taglib
+        if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
           git clone --recurse-submodules https://github.com/taglib/taglib.git
           cd taglib
@@ -32,9 +42,10 @@ jobs:
           copy build/taglib/Release/tag.dll ../lib/win64
           copy build/taglib/Release/tag.lib ../lib/win64
       - name: Install cld2
+        if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         run: |
           cd include/cld2/internal
-          cl /TP /GR /EHsc /c /MD cldutil.cc cldutil_shared.cc compact_lang_det.cc compact_lang_det_hint_code.cc compact_lang_det_impl.cc  debug.cc fixunicodevalue.cc generated_entities.cc  generated_language.cc generated_ulscript.cc getonescriptspan.cc lang_script.cc offsetmap.cc  scoreonescriptspan.cc tote.cc utf8statetable.cc cld_generated_cjk_uni_prop_80.cc cld2_generated_cjk_compatible.cc cld_generated_cjk_delta_bi_32.cc generated_distinct_bi_0.cc cld2_generated_quad0122.cc cld2_generated_deltaocta0122.cc cld2_generated_distinctocta0122.cc cld_generated_score_quad_octa_0122.cc
+          cl /TP /GR /EHsc /c /MD cldutil.cc cldutil_shared.cc compact_lang_det.cc compact_lang_det_hint_code.cc compact_lang_det_impl.cc debug.cc fixunicodevalue.cc generated_entities.cc generated_language.cc generated_ulscript.cc getonescriptspan.cc lang_script.cc offsetmap.cc scoreonescriptspan.cc tote.cc utf8statetable.cc cld_generated_cjk_uni_prop_80.cc cld2_generated_cjk_compatible.cc cld_generated_cjk_delta_bi_32.cc generated_distinct_bi_0.cc cld2_generated_quad0122.cc cld2_generated_deltaocta0122.cc cld2_generated_distinctocta0122.cc cld_generated_score_quad_octa_0122.cc
           link /dll /out:cld2.dll *.obj
           lib /out:cld2.lib *.obj
           copy .\cld2.lib ..\..\..\lib\win64
@@ -78,20 +89,27 @@ jobs:
           submodules: true
       - name: Determine Arch
         run: |
-          if [ "${{ matrix.os }}" = "macos-13" ]; then
+          ARCH=$(uname -m)
+          if [[ "$ARCH" == "x86_64" ]]; then
             echo "arch=x86" >> $GITHUB_ENV
           else
             echo "arch=ARM" >> $GITHUB_ENV
           fi
+      - name: Cache Homebrew
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/Homebrew
+          key: brew-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
       - name: Install Dependencies
         run: |
-          brew install taglib
-          brew install create-dmg
-          brew install qt
+          brew update
+          brew install taglib create-dmg qt
+
       - name: Install cld2
         run: |
           cd include
-          patch cld2/internal/compile_libs.sh cld2-mac-compile.patch
+          patch cld2/internal/compile_libs.sh cld2-mac-compile.patch || true
           cd cld2/internal/
           export CFLAGS="-Wno-narrowing -O3"
           ./compile_libs.sh
@@ -114,7 +132,7 @@ jobs:
         run: |
           cd src
           qmake6 UltraStar-Creator.pro
-          make -j$${{ steps.cpu-cores.outputs.count }}
+          make -j${{ steps.cpu-cores.outputs.count }}
           cd ../bin/release
           mv UltraStar-Creator.dmg MAC-${{ env.arch }}-UltraStar-Creator.dmg
       - name: Upload Portable Artifact
@@ -142,10 +160,16 @@ jobs:
         uses: actions/checkout@v6
         with:
           submodules: true
+      - name: Cache Qt
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Qt
+          key: qt-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
+
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: "6.11.*"
+          version: "6.8.3"
       - name: Install Dependencies
         run: |
           sudo apt update -qq
