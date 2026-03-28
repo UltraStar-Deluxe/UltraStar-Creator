@@ -133,8 +133,24 @@ jobs:
           cd src
           qmake6 UltraStar-Creator.pro
           make -j${{ steps.cpu-cores.outputs.count }}
-          cd ../bin/release
-          mv UltraStar-Creator.dmg MAC-${{ env.arch }}-UltraStar-Creator.dmg
+      - name: Create DMG
+        run: |
+          cd bin/release
+          create-dmg \
+            --volname "UltraStar-Creator" \
+            --volicon ../../resources/UltraStar-Creator.icns \
+            --app-drop-link 350 170 \
+            --background ../../setup/macx/img/UltraStar-Creator_bg.png \
+            --hide-extension UltraStar-Creator.app \
+            --window-size 500 300 \
+            --text-size 14 \
+            --icon-size 64 \
+            --icon UltraStar-Creator.app 150 170 \
+            --no-internet-enable \
+            --skip-jenkins \
+            UltraStar-Creator.dmg \
+            UltraStar-Creator.app
+            mv UltraStar-Creator.dmg MAC-${{ env.arch }}-UltraStar-Creator.dmg
       - name: Upload Portable Artifact
         uses: actions/upload-artifact@v6
         with:
