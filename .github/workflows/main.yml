@@ -139,22 +139,23 @@ jobs:
           brew install taglib create-dmg qt
       - name: Fetch BASS library
         run: |
-          $repoRoot = "${{ github.workspace }}"
+          REPO_ROOT="${{ github.workspace }}"
           curl -L -o bass.zip https://www.un4seen.com/files/bass24-osx.zip
-          unzip bass.zip -d bass-tmp
-          mkdir -p "$repoRoot/include/bass"
-          cp bass-tmp/c/bass.h "$repoRoot/include/bass/"
-          mkdir -p "$repoRoot/lib/macos"
-          cp bass-tmp/libbass.dylib "$repoRoot/lib/macos/"
+          unzip -q bass.zip -d bass-tmp
+          mkdir -p "$REPO_ROOT/include/bass"
+          cp bass-tmp/c/bass.h "$REPO_ROOT/include/bass/"
+          mkdir -p "$REPO_ROOT/lib/macos"
+          cp bass-tmp/libbass.dylib "$REPO_ROOT/lib/macos/"
           rm -rf bass.zip bass-tmp
       - name: Fetch BASS_FX library
         run: |
-          $repoRoot = "${{ github.workspace }}"
+          REPO_ROOT="${{ github.workspace }}"
           curl -L -o bass_fx.zip https://www.un4seen.com/files/z/0/bass_fx24-osx.zip
-          unzip bass_fx.zip -d bass_fx-tmp
-          mkdir -p "$repoRoot/include/bass_fx"
-          cp bass_fx-tmp/bass_fx.h "$repoRoot/include/bass_fx/"
-          cp bass_fx-tmp/libbass_fx.dylib "$repoRoot/lib/macos/"
+          unzip -q bass_fx.zip -d bass_fx-tmp
+          mkdir -p "$REPO_ROOT/include/bass_fx"
+          cp bass_fx-tmp/bass_fx.h "$REPO_ROOT/include/bass_fx/"
+          cp bass_fx-tmp/libbass_fx.dylib "$REPO_ROOT/lib/macos/"
+          rm -rf bass_fx.zip bass_fx-tmp
       - name: Install cld2
         run: |
           cd include
