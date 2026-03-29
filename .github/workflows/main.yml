@@ -190,7 +190,7 @@ jobs:
             --volname "UltraStar-Creator" \
             --volicon ../../src/resources/UltraStar-Creator.icns \
             --app-drop-link 350 170 \
-            --background ../../setup/macx/img/UltraStar-Creator_bg.png \
+            --background ../../setup/macos/img/UltraStar-Creator_bg.png \
             --hide-extension UltraStar-Creator.app \
             --window-size 500 300 \
             --text-size 14 \
