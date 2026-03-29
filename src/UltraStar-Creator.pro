@@ -108,7 +108,7 @@ macx {
 }
 
 unix:!macx {
-	LIBS += -L"../lib/unix" \
+	LIBS += -L"../lib/linux" \
 		-lbass \
 		-lbass_fx
 
@@ -140,8 +140,8 @@ revtarget.depends = $$SOURCES \
 
 unix:!macx {
 	QMAKE_POST_LINK += $$sprintf($${QMAKE_MKDIR_CMD}, $$shell_path($${DESTDIR}/lib/)) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/unix/libbass.so) $$shell_path($${DESTDIR}/lib) $$escape_expand(\\n\\t)
-	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/unix/libbass_fx.so) $$shell_path($${DESTDIR}/lib) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/linux/libbass.so) $$shell_path($${DESTDIR}/lib) $$escape_expand(\\n\\t)
+	QMAKE_POST_LINK += $${QMAKE_COPY} $$shell_path(../lib/linux/libbass_fx.so) $$shell_path($${DESTDIR}/lib) $$escape_expand(\\n\\t)
 }
 
 win32 {
