@@ -90,6 +90,11 @@ jobs:
         uses: negrutiu/nsis-install@v2
         id: nsis
       - name: Create installer
+        shell: pwsh
+        run: |
+          cd setup/windows
+          makensis /V4 /DPRODUCTVERSION=1.3.1 UltraStar-Creator.nsi
+      - name: Create installer
         uses: joncloud/makensis-action@v5.0
         with:
           script-file: setup/windows/UltraStar-Creator.nsi
