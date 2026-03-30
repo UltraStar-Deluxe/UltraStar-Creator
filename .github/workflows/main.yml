@@ -39,6 +39,8 @@ jobs:
           key: win-deps-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
       - name: Fetch TagLib library
         if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
+        env:
+          VCPKG_BUILD_TYPE: release
         run: |
           vcpkg --vcpkg-root=C:\vcpkg install taglib:x64-windows
           vcpkg integrate install
@@ -164,7 +166,7 @@ jobs:
           cd cld2/internal/
           export CFLAGS="-Wno-narrowing -O3"
           ./compile_libs.sh
-          install_name_tool -id @executable_path/lib$LIB_NAME.dylib lib$LIB_NAME.dylib
+          install_name_tool -id @executable_path/libcld2.dylib libcld2.dylib
           cp libcld2.dylib ../../../lib/macos
       - name: Fix Qt lib rpaths # see: https://github.com/orgs/Homebrew/discussions/2823#discussioncomment-2010340)
         run: |
