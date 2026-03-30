@@ -43,6 +43,8 @@ jobs:
           $env:VCPKG_BUILD_TYPE = "release"
           vcpkg --vcpkg-root=C:\vcpkg install taglib:x64-windows
           vcpkg integrate install
+          $tagDll = Get-ChildItem -Path "C:\vcpkg\installed\x64-windows\bin\tag*.dll" | Select-Object -First 1
+          echo "tagDll=$($tagDll.FullName)" >> $GITHUB_OUTPUT
           $repoRoot = "${{ github.workspace }}"
           New-Item -Force -ItemType Directory "$repoRoot\include\taglib"
           New-Item -Force -ItemType Directory "$repoRoot\lib\windows"
