@@ -37,7 +37,7 @@ jobs:
             include/bass
             include/bass_fx
           key: win-deps-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
-      - name: Fetch TagLib library
+      - name: Compile and copy taglib library via vcpkg
         if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
         env:
           VCPKG_BUILD_TYPE: release
@@ -51,7 +51,7 @@ jobs:
           Copy-Item "C:\vcpkg\installed\x64-windows\bin\tag.dll" "$repoRoot\bin\release" -Force
           Copy-Item "C:\vcpkg\installed\x64-windows\lib\tag.lib" "$repoRoot\lib\windows" -Force
           Copy-Item "C:\vcpkg\installed\x64-windows\include\taglib\*" "$repoRoot\include\taglib" -Force -Recurse
-      - name: Fetch BASS library
+      - name: Download, extract and copy BASS library
         run: |
           $repoRoot = "${{ github.workspace }}"
           curl -L -o bass.zip https://www.un4seen.com/files/bass24.zip
@@ -61,7 +61,7 @@ jobs:
           Copy-Item "$repoRoot\bass-tmp\c\x64\bass.lib" "$repoRoot\lib\windows\" -Force
           Copy-Item "$repoRoot\bass-tmp\x64\bass.dll" "$repoRoot\bin\release\" -Force
           Remove-Item -Recurse -Force bass.zip,bass-tmp
-      - name: Fetch BASS_FX library
+      - name: Download, extract and copy BASS_FX library
         run: |
           $repoRoot = "${{ github.workspace }}"
           curl -L -o bass_fx.zip https://www.un4seen.com/files/z/0/bass_fx24.zip
@@ -71,7 +71,7 @@ jobs:
           Copy-Item "$repoRoot\bass_fx-tmp\C\x64\bass_fx.lib" "$repoRoot\lib\windows\" -Force
           Copy-Item "$repoRoot\bass_fx-tmp\x64\bass_fx.dll" "$repoRoot\bin\release\" -Force
           Remove-Item -Recurse -Force bass_fx.zip,bass_fx-tmp
-      - name: Install cld2
+      - name: Clone build and copy cld2 library
         run: |
           $repoRoot = "${{ github.workspace }}"  
           cd include
@@ -139,7 +139,7 @@ jobs:
         run: |
           brew update
           brew install taglib create-dmg qt
-      - name: Fetch BASS library
+      - name: Download, extract and copy BASS library
         run: |
           REPO_ROOT="${{ github.workspace }}"
           curl -L -o bass.zip https://www.un4seen.com/files/bass24-osx.zip
@@ -149,7 +149,7 @@ jobs:
           mkdir -p "$REPO_ROOT/lib/macos"
           cp bass-tmp/libbass.dylib "$REPO_ROOT/lib/macos/"
           rm -rf bass.zip bass-tmp
-      - name: Fetch BASS_FX library
+      - name: Download, extract and copy BASS_FX library
         run: |
           REPO_ROOT="${{ github.workspace }}"
           curl -L -o bass_fx.zip https://www.un4seen.com/files/z/0/bass_fx24-osx.zip
@@ -158,7 +158,7 @@ jobs:
           cp bass_fx-tmp/bass_fx.h "$REPO_ROOT/include/bass_fx/"
           cp bass_fx-tmp/libbass_fx.dylib "$REPO_ROOT/lib/macos/"
           rm -rf bass_fx.zip bass_fx-tmp
-      - name: Fetch, patch and build cld2
+      - name: Clone, patch, build and copy cld2 library
         run: |
           cd include
           git clone --depth 1 https://github.com/CLD2Owners/cld2.git
@@ -220,7 +220,7 @@ jobs:
 
   build_linux:
     name: Build for Linux
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Get Number of CPU Cores
@@ -302,7 +302,7 @@ jobs:
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
     name: Draft a Release
     needs: [build_windows, build_mac, build_linux]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Download Artifacts from Build Jobs
         uses: actions/download-artifact@v8
