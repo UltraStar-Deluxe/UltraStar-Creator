@@ -48,8 +48,6 @@ echo "==> Platform: $PLATFORM"
 
 TEMP_DIR="./.tmp"
 mkdir -p "$TEMP_DIR"
-INCLUDE_DIR="./include"
-mkdir -p "$INCLUDE_DIR"
 LIB_DIR="./lib/$PLATFORM"
 mkdir -p "$LIB_DIR"
 
@@ -163,6 +161,17 @@ fi
 log "Setting up cld2..."
 LIB_NAME="cld2"
 
+CLD2_PATH="include/$LIB_NAME"
+CLD2_URL="https://github.com/CLD2Owners/cld2.git"
+
+if [ ! -d "$CLD2_PATH/.git" ]; then
+    echo "Cloning cld2..."
+    git clone --depth 1 $CLD2_URL $CLD2_PATH
+else
+    echo "cld2 already exists, updating..."
+    cd $CLD2_PATH && git pull && cd -
+fi
+
 if [[ "$PLATFORM" == "windows" ]]; then
     if [[ -f "$LIB_DIR/$PLATFORM/$LIB_NAME.lib" && -f "$LIB_DIR/$PLATFORM/$LIB_NAME.dll" ]]; then
         log "$LIB_NAME already built (Windows)"
@@ -207,7 +216,8 @@ elif [[ "$PLATFORM" == "macos" ]]; then
         log "Compiling $LIB_NAME..."
 
         pushd "$INCLUDE_DIR/$LIB_NAME/internal/" > /dev/null
-        patch compile_libs.sh $LIB_NAME-mac-compile.patch 2>/dev/null || true
+        log "Patching cld for macOS..."
+        patch compile_libs.sh ../../$LIB_NAME-mac-compile.patch
         export CFLAGS="-Wno-narrowing -O3"
         ./compile_libs.sh
 

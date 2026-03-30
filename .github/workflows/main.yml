@@ -32,7 +32,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: |
-            lib/win64
+            lib/windows
             include/taglib
             include/bass
             include/bass_fx
@@ -45,9 +45,9 @@ jobs:
           $repoRoot = "${{ github.workspace }}"
           New-Item -Force -ItemType Directory "$repoRoot\bin\release"
           New-Item -Force -ItemType Directory "$repoRoot\include\taglib"
-          New-Item -Force -ItemType Directory "$repoRoot\lib\win64"
+          New-Item -Force -ItemType Directory "$repoRoot\lib\windows"
           Copy-Item "C:\vcpkg\installed\x64-windows\bin\tag.dll" "$repoRoot\bin\release" -Force
-          Copy-Item "C:\vcpkg\installed\x64-windows\lib\tag.lib" "$repoRoot\lib\win64" -Force
+          Copy-Item "C:\vcpkg\installed\x64-windows\lib\tag.lib" "$repoRoot\lib\windows" -Force
           Copy-Item "C:\vcpkg\installed\x64-windows\include\taglib\*" "$repoRoot\include\taglib" -Force -Recurse
       - name: Fetch BASS library
         run: |
@@ -56,7 +56,7 @@ jobs:
           unzip bass.zip -d bass-tmp
           New-Item -Force -ItemType Directory "$repoRoot\include\bass"
           Copy-Item "$repoRoot\bass-tmp\c\bass.h" "$repoRoot\include\bass\" -Force
-          Copy-Item "$repoRoot\bass-tmp\c\x64\bass.lib" "$repoRoot\lib\win64\" -Force
+          Copy-Item "$repoRoot\bass-tmp\c\x64\bass.lib" "$repoRoot\lib\windows\" -Force
           Copy-Item "$repoRoot\bass-tmp\x64\bass.dll" "$repoRoot\bin\release\" -Force
           Remove-Item -Recurse -Force bass.zip,bass-tmp
       - name: Fetch BASS_FX library
@@ -66,7 +66,7 @@ jobs:
           unzip bass_fx.zip -d bass_fx-tmp
           New-Item -Force -ItemType Directory "$repoRoot\include\bass_fx"
           Copy-Item "$repoRoot\bass_fx-tmp\C\bass_fx.h" "$repoRoot\include\bass_fx\" -Force
-          Copy-Item "$repoRoot\bass_fx-tmp\C\x64\bass_fx.lib" "$repoRoot\lib\win64\" -Force
+          Copy-Item "$repoRoot\bass_fx-tmp\C\x64\bass_fx.lib" "$repoRoot\lib\windows\" -Force
           Copy-Item "$repoRoot\bass_fx-tmp\x64\bass_fx.dll" "$repoRoot\bin\release\" -Force
           Remove-Item -Recurse -Force bass_fx.zip,bass_fx-tmp
       - name: Install cld2
@@ -76,7 +76,7 @@ jobs:
           cl /TP /GR /EHsc /c /MD cldutil.cc cldutil_shared.cc compact_lang_det.cc compact_lang_det_hint_code.cc compact_lang_det_impl.cc debug.cc fixunicodevalue.cc generated_entities.cc generated_language.cc generated_ulscript.cc getonescriptspan.cc lang_script.cc offsetmap.cc scoreonescriptspan.cc tote.cc utf8statetable.cc cld_generated_cjk_uni_prop_80.cc cld2_generated_cjk_compatible.cc cld_generated_cjk_delta_bi_32.cc generated_distinct_bi_0.cc cld2_generated_quad0122.cc cld2_generated_deltaocta0122.cc cld2_generated_distinctocta0122.cc cld_generated_score_quad_octa_0122.cc
           link /dll /out:cld2.dll *.obj
           lib /out:cld2.lib *.obj
-          Copy-Item "$repoRoot\include\cld2\internal\cld2.lib" "$repoRoot\lib\win64" -Force
+          Copy-Item "$repoRoot\include\cld2\internal\cld2.lib" "$repoRoot\lib\windows" -Force
           Copy-Item "$repoRoot\include\cld2\internal\cld2.dll" "$repoRoot\bin\release" -Force
       - name: Build
         run: |
@@ -90,7 +90,7 @@ jobs:
       - name: Create installer
         uses: joncloud/makensis-action@v5.0
         with:
-          script-file: setup/win64/UltraStar-Creator.nsi
+          script-file: setup/windows/UltraStar-Creator.nsi
       - name: Upload Portable Artifact
         uses: actions/upload-artifact@v6
         with:
