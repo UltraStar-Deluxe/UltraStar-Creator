@@ -254,11 +254,11 @@ jobs:
           cp bass-tmp/c/bass.h "$REPO_ROOT/include/bass/"
           mkdir -p "$REPO_ROOT/lib/linux"
           if [ "$(uname -m)" = "aarch64" ]; then
-            cp bass-tmp/aarch64/libbass.so "$REPO_ROOT/lib/linux/"
+            cp bass-tmp/libs/aarch64/libbass.so "$REPO_ROOT/lib/linux/"
           elif [ "$(uname -m)" = "armv7l" ]; then
-            cp bass-tmp/armhf/libbass.so "$REPO_ROOT/lib/linux/"
+            cp bass-tmp/libs/armhf/libbass.so "$REPO_ROOT/lib/linux/"
           elif [ "$(uname -m)" = "x86_64" ]; then
-            cp bass-tmp/x86_64/libbass.so "$REPO_ROOT/lib/linux/"
+            cp bass-tmp/libs/x86_64/libbass.so "$REPO_ROOT/lib/linux/"
           fi
           rm -rf bass.zip bass-tmp
       - name: Fetch BASS_FX library
@@ -269,11 +269,11 @@ jobs:
           mkdir -p "$REPO_ROOT/include/bass_fx"
           cp bass_fx-tmp/c/bass_fx.h "$REPO_ROOT/include/bass_fx/"
           if [ "$(uname -m)" = "aarch64" ]; then
-            cp bass_fx-tmp/aarch64/libbass_fx.so "$REPO_ROOT/lib/linux/"
+            cp bass_fx-tmp/libs/aarch64/libbass_fx.so "$REPO_ROOT/lib/linux/"
           elif [ "$(uname -m)" = "armv7l" ]; then
             cp bass_fx-tmp/armhf/libbass_fx.so "$REPO_ROOT/lib/linux/"
           elif [ "$(uname -m)" = "x86_64" ]; then
-            cp bass_fx-tmp/x86_64/libbass_fx.so "$REPO_ROOT/lib/linux/"
+            cp bass_fx-tmp/libs/x86_64/libbass_fx.so "$REPO_ROOT/lib/linux/"
           fi
           rm -rf bass_fx.zip bass_fx-tmp
       - name: Build
