@@ -39,9 +39,8 @@ jobs:
           key: win-deps-${{ runner.os }}-${{ hashFiles('**/*.pro') }}
       - name: Compile and copy taglib library via vcpkg
         if: steps.cache-windows-dependencies.outputs.cache-hit != 'true'
-        env:
-          VCPKG_BUILD_TYPE: release
         run: |
+          $env:VCPKG_BUILD_TYPE = "release"
           vcpkg --vcpkg-root=C:\vcpkg install taglib:x64-windows
           vcpkg integrate install
           $repoRoot = "${{ github.workspace }}"
@@ -94,6 +93,7 @@ jobs:
         uses: joncloud/makensis-action@v5.0
         with:
           script-file: setup/windows/UltraStar-Creator.nsi
+          arguments: "/V4"
       - name: Upload Portable Artifact
         uses: actions/upload-artifact@v6
         with:
