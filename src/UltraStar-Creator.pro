@@ -73,11 +73,11 @@ INCLUDEPATH += . \
 
 INCLUDEPATH += ../include/bass \
 	../include/bass_fx \
-	../include/cld2/public \
 	../include/srtparser
 
 win32 {
-	INCLUDEPATH += ../include/taglib
+	INCLUDEPATH += ../include/taglib \
+		../include/cld2/public
 
 	LIBS += -L"../lib/windows" \
 		-lbass \
@@ -89,6 +89,8 @@ win32 {
 }
 
 macx {
+	INCLUDEPATH += ../include/cld2/public
+
 	LIBS += -L"../lib/macos" \
 		-lbass \
 		-lbass_fx \
@@ -109,7 +111,7 @@ macx {
 
 unix:!macx {
 	INCLUDEPATH += /usr/include/cld2
-	
+
 	LIBS += -L"../lib/linux" \
 		-lbass \
 		-lbass_fx
