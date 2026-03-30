@@ -108,6 +108,8 @@ macx {
 }
 
 unix:!macx {
+	INCLUDEPATH += /usr/include/cld2
+	
 	LIBS += -L"../lib/linux" \
 		-lbass \
 		-lbass_fx
