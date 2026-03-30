@@ -110,7 +110,7 @@ macx {
 }
 
 unix:!macx {
-	INCLUDEPATH += /usr/include/cld2
+	INCLUDEPATH += /usr/include/cld2/public
 
 	LIBS += -L"../lib/linux" \
 		-lbass \
