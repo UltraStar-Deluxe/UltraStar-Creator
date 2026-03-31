@@ -48,6 +48,7 @@ echo "==> Platform: $PLATFORM"
 
 TEMP_DIR="./.tmp"
 mkdir -p "$TEMP_DIR"
+INCLUDE_DIR="./include"
 LIB_DIR="./lib/$PLATFORM"
 mkdir -p "$LIB_DIR"
 
@@ -62,11 +63,10 @@ if [[ "$PLATFORM" == "windows" ]]; then
 elif [[ "$PLATFORM" == "macos" ]]; then
     echo "==> Installing Homebrew dependencies..."
     brew update
-    brew bundle --file=- --no-upgrade <<EOF
-brew "taglib"
-brew "create-dmg"
-brew "qt"
-EOF
+    brew install --quiet --no-cache \
+         taglib \
+         create-dmg \
+         qt
 
 elif [[ "$PLATFORM" == "linux" ]]; then
     echo "==> Installing apt dependencies..."
@@ -74,6 +74,9 @@ elif [[ "$PLATFORM" == "linux" ]]; then
     sudo apt install -y \
         libgl1-mesa-dev \
         build-essential \
+        qt6-base-dev \
+        qt6-tools-dev \
+        qt6-tools-dev-tools \
         libtag1-dev \
         libcld2-dev \
         libxcb-icccm4 \
@@ -116,9 +119,18 @@ cp -n "$TEMP_DIR/$LIB_NAME-tmp/c/$LIB_NAME.h" "$INCLUDE_DIR/$LIB_NAME/" || true
 
 if [[ "$PLATFORM" == "windows" ]]; then
     cp -n "$TEMP_DIR/$LIB_NAME-tmp/x64/$LIB_NAME.dll" "$LIB_DIR/" || true
-    cp -n "$TEMP_DIR/$LIB_NAME-tmp/x64/$LIB_NAME.lib" "$LIB_DIR/" || true
-else
+    cp -n "$TEMP_DIR/$LIB_NAME-tmp/c/x64/$LIB_NAME.lib" "$LIB_DIR/" || true
+elif [[ "$PLATFORM" == "macos" ]]; then
     cp -n "$TEMP_DIR/$LIB_NAME-tmp/$LIB_FILE" "$LIB_DIR/" || true
+elif [[ "$PLATFORM" == "linux" ]]; then
+    ARCH="$(uname -m)"
+    if [[ "$ARCH" == "aarch64" ]]; then
+        cp -n "$TEMP_DIR/$LIB_NAME-tmp/libs/aarch64/$LIB_FILE" "$LIB_DIR/" || true
+    elif [[ "$ARCH" == "armv7l" ]]; then
+        cp -n "$TEMP_DIR/$LIB_NAME-tmp/libs/armhf/$LIB_FILE" "$LIB_DIR/" || true
+    elif [[ "$ARCH" == "x86_64" ]]; then
+        cp -n "$TEMP_DIR/$LIB_NAME-tmp/libs/x86_64/$LIB_FILE" "$LIB_DIR/" || true
+    fi
 fi
 
 # --------------------------------------------------
@@ -150,8 +162,17 @@ cp -n "$TEMP_DIR/$LIB_NAME-tmp/bass_fx.h" "$INCLUDE_DIR/$LIB_NAME/" || true
 if [[ "$PLATFORM" == "windows" ]]; then
     cp -n "$TEMP_DIR/$LIB_NAME-tmp/x64/$LIB_NAME.dll" "$LIB_DIR/" || true
     cp -n "$TEMP_DIR/$LIB_NAME-tmp/x64/$LIB_NAME.lib" "$LIB_DIR/" || true
-else
+elif [[ "$PLATFORM" == "macos" ]]; then
     cp -n "$TEMP_DIR/$LIB_NAME-tmp/$LIB_FILE" "$LIB_DIR/" || true
+elif [[ "$PLATFORM" == "linux" ]]; then
+    ARCH="$(uname -m)"
+    if [[ "$ARCH" == "aarch64" ]]; then
+        cp -n "$TEMP_DIR/$LIB_NAME-tmp/libs/aarch64/$LIB_FILE" "$LIB_DIR/" || true
+    elif [[ "$ARCH" == "armv7l" ]]; then
+        cp -n "$TEMP_DIR/$LIB_NAME-tmp/libs/armhf/$LIB_FILE" "$LIB_DIR/" || true
+    elif [[ "$ARCH" == "x86_64" ]]; then
+        cp -n "$TEMP_DIR/$LIB_NAME-tmp/libs/x86_64/$LIB_FILE" "$LIB_DIR/" || true
+    fi
 fi
 
 # --------------------------------------------------
@@ -161,7 +182,7 @@ fi
 log "Setting up cld2..."
 LIB_NAME="cld2"
 
-CLD2_PATH="include/$LIB_NAME"
+CLD2_PATH="$INCLUDE_DIR/$LIB_NAME"
 CLD2_URL="https://github.com/CLD2Owners/cld2.git"
 
 if [ ! -d "$CLD2_PATH/.git" ]; then
@@ -277,7 +298,7 @@ if [[ "$PLATFORM" == "windows" ]]; then
         if [[ -f "$VCPKG_INSTALLED/bin/tag.dll" ]]; then
             mkdir -p "$INCLUDE_DIR/$LIB_NAME"
             cp -r "$VCPKG_INSTALLED/include/taglib/"* "$INCLUDE_DIR/$LIB_NAME/"
-            
+
             cp -f "$VCPKG_INSTALLED/bin/tag.dll" "$LIB_DIR/"
             cp -f "$VCPKG_INSTALLED/lib/tag.lib" "$LIB_DIR/"
             
