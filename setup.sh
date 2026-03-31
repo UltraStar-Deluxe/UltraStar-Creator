@@ -257,61 +257,43 @@ log "Setting up taglib..."
 LIB_NAME="taglib"
 
 if [[ "$PLATFORM" == "windows" ]]; then
-    if [[ -f "$LIB_DIR/tag.lib" && -f "$LIB_DIR/tag.dll" ]]; then
-        log "$LIB_NAME already built"
+    if [[ -n "$VCPKG_INSTALLATION_ROOT" ]]; then
+        VCPKG_ROOT="$VCPKG_INSTALLATION_ROOT"
+    elif command -v vcpkg &> /dev/null; then
+        VCPKG_ROOT=$(dirname $(which vcpkg))
+        VCPKG_ROOT="${VCPKG_ROOT%/bin}" 
     else
-        log "Building $LIB_NAME (Windows)..."
-
-        # Clone only if missing
-        if [[ ! -d "$TEMP_DIR/$LIB_NAME" ]]; then
-            git clone --recurse-submodules https://github.com/taglib/taglib.git "$TEMP_DIR/$LIB_NAME"
-        else
-            log "$LIB_NAME repo already present"
-        fi
-
-        pushd "$TEMP_DIR/$LIB_NAME" > /dev/null
-
-        # Configure only if build dir missing
-        if [[ ! -d build ]]; then
-            cmake -B build \
-                -G "Visual Studio 17 2022" \
-                -A x64 \
-                -DWITH_ZLIB=OFF \
-                -DBUILD_SHARED_LIBS=ON \
-                -DENABLE_STATIC_RUNTIME=OFF \
-                -DBUILD_TESTING=OFF
-        else
-            log "CMake already configured"
-        fi
-
-        # Build (safe to rerun)
-        cmake --build build --config Release
-
-        popd > /dev/null
-
-        # --------------------------------------------------
-        # Copy headers
-        # --------------------------------------------------
-
-        mkdir -p "$INCLUDE_DIR/$LIB_NAME"
-
-        if [[ ! -f "$INCLUDE_DIR/$LIB_NAME/$LIB_NAME.h" ]]; then
-            cp -r "$TEMP_DIR/$LIB_NAME/$LIB_NAME/"* "$INCLUDE_DIR/$LIB_NAME/"
-        else
-            log "$LIB_NAME headers already present"
-        fi
-
-        # --------------------------------------------------
-        # Copy binaries
-        # --------------------------------------------------
-
-        mkdir -p "$LIB_DIR/"
-
-        cp -f "$TEMP_DIR/$LIB_NAME/build/$LIB_NAME/Release/tag.dll" "$LIB_DIR/"
-        cp -f "$TEMP_DIR/$LIB_NAME/build/$LIB_NAME/Release/tag.lib" "$LIB_DIR/"
+        VCPKG_ROOT="C:/vcpkg"
     fi
+
+    VCPKG_INSTALLED="$VCPKG_ROOT/installed/x64-windows"
+    log "Using vcpkg from: $VCPKG_ROOT"
+
+    if [[ ! -f "$LIB_DIR/tag.lib" || ! -f "$LIB_DIR/tag.dll" ]]; then
+        log "Installing $LIB_NAME via vcpkg..."
+        
+        VCPKG_BUILD_TYPE=release "$VCPKG_ROOT/vcpkg" install taglib:x64-windows
+
+        if [[ -f "$VCPKG_INSTALLED/bin/tag.dll" ]]; then
+            mkdir -p "$INCLUDE_DIR/$LIB_NAME"
+            cp -r "$VCPKG_INSTALLED/include/taglib/"* "$INCLUDE_DIR/$LIB_NAME/"
+            
+            cp -f "$VCPKG_INSTALLED/bin/tag.dll" "$LIB_DIR/"
+            cp -f "$VCPKG_INSTALLED/lib/tag.lib" "$LIB_DIR/"
+            
+            log "TagLib successfully copied from vcpkg."
+        else
+            log "ERROR: TagLib DLL not found at $VCPKG_INSTALLED/bin/tag.dll"
+            exit 1
+        fi
+    else
+        log "$LIB_NAME already present in $LIB_DIR"
+    fi
+fi
+
 elif [[ "$PLATFORM" == "macos" ]]; then
     log "Using brew installation of taglib"
+
 elif [[ "$PLATFORM" == "linux" ]]; then
     log "Using system installation of taglib"
 fi
