@@ -213,7 +213,7 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: MAC-${{ env.arch }}-UltraStar-Creator-portable
-          path: bin/release
+          path: bin/release/UltraStar-Creator.app
           if-no-files-found: error
       - name: Upload Image Artifact
         uses: actions/upload-artifact@v6
