@@ -209,11 +209,15 @@ jobs:
             UltraStar-Creator.dmg \
             UltraStar-Creator.app
             mv UltraStar-Creator.dmg MAC-${{ env.arch }}-UltraStar-Creator.dmg
+      - name: Compress Portable App
+        run: |
+          cd bin/release
+          zip -r MAC-${{ env.arch }}-UltraStar-Creator-portable.zip UltraStar-Creator.app
       - name: Upload Portable Artifact
         uses: actions/upload-artifact@v6
         with:
           name: MAC-${{ env.arch }}-UltraStar-Creator-portable
-          path: bin/release/UltraStar-Creator.app
+          path: bin/release/MAC-${{ env.arch }}-UltraStar-Creator-portable.zip
           if-no-files-found: error
       - name: Upload Image Artifact
         uses: actions/upload-artifact@v6
@@ -315,12 +319,10 @@ jobs:
           pattern: "*"
       - name: Compress Portable Folders
         run: |
-          zip -r MAC-x86-UltraStar-Creator-portable.zip MAC-x86-UltraStar-Creator-portable
-          zip -r MAC-ARM-UltraStar-Creator-portable.zip MAC-ARM-UltraStar-Creator-portable
           zip -r WIN64-UltraStar-Creator-portable.zip WIN64-UltraStar-Creator-portable
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "LINUX-UltraStar-Creator-appimage/*, MAC-x86-UltraStar-Creator-image/*, MAC-x86-UltraStar-Creator-portable.zip, MAC-ARM-UltraStar-Creator-image/*, MAC-ARM-UltraStar-Creator-portable.zip, WIN64-UltraStar-Creator-installer/*, WIN64-UltraStar-Creator-portable.zip"
+          artifacts: "LINUX-UltraStar-Creator-appimage/*, MAC-x86-UltraStar-Creator-portable/*, MAC-ARM-UltraStar-Creator-portable/*, MAC-x86-UltraStar-Creator-image/*, MAC-ARM-UltraStar-Creator-image/*, WIN64-UltraStar-Creator-installer/*, WIN64-UltraStar-Creator-portable.zip"
           draft: true
           artifactErrorsFailBuild: true
