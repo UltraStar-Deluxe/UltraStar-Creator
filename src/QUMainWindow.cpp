@@ -553,8 +553,6 @@ QString QUMainWindow::cleanLyrics(QString rawLyricsString) {
 	while (lyricsLineIterator.hasNext()) {
 		QString currentLine = lyricsLineIterator.next();
 		currentLine = currentLine.trimmed();
-		//todo: check if first character is a letter
-		currentLine.replace(0,1,currentLine.at(0).toUpper());
 		lyricsStringList.append(currentLine);
 	}
 	rawLyricsString = lyricsStringList.join("\n");
