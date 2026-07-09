@@ -308,7 +308,7 @@ Die Tonhöhe jeder einzelnen Note muss dann später mittels des UltraStar-intern
         <translation type="obsolete">Der #VIDEO Tag ist nicht gesetzt.</translation>
     </message>
     <message>
-        <source>#VIDEOGAP tag is set.</source>
+        <source>#VIDEOGAP tag is not set.</source>
         <translation type="obsolete">Der #VIDEOGAP Tag ist nicht gesetzt.</translation>
     </message>
     <message>
