@@ -481,8 +481,7 @@ Die Tonhöhe jeder einzelnen Note muss dann später mittels des UltraStar-intern
     </message>
     <message>
         <source>F2</source>
-        <translation type="obsolete">F2
-</translation>
+        <translation type="obsolete">F2</translation>
     </message>
     <message>
         <source>1 (C#4 | Db4)</source>
@@ -645,7 +644,8 @@ Dich spür&apos;n, Dich ver+mis+sen
 Dich ein+fach zu küs+sen
 Fühl&apos; dass Du da bist
 Auch wenn Du weit weg bist
-Der Him+mel ist na+~h.</translation>
+Der Him+mel ist na+~h.
+</translation>
     </message>
     <message>
         <source>Launch UltraStar with current song folder for finetuning.</source>
@@ -781,8 +781,7 @@ Der Him+mel ist na+~h.</translation>
         <translation type="obsolete">Anwendung</translation>
     </message>
     <message>
-        <source>Cannot write file %1:
-%2.</source>
+        <source>Cannot write file %1: %2.</source>
         <translation type="obsolete">Kann Datei %1 nicht schreiben: %2.</translation>
     </message>
     <message>
@@ -799,11 +798,11 @@ Der Him+mel ist na+~h.</translation>
     </message>
     <message>
         <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, about 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX is an extension providing several effects, including tempo &amp; pitch control.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.7.1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
-        <translation type="obsolete">&lt;b&gt;BASS Audiobibliothek.&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS ist eine Audiobibliothek für die Verwendung in Windows und MacOSX Software. Ihre Zielsetzung ist es, die mächtigsten und effizientesten (und gleichzeitig einfach anzuwendenden) Funktionen für das Sampling, das Streaming und die Aufnahme bereitzustellen. Alles in einer winzigen DLL von etwa 100KB Größe.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 1999-2008&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Alle Rechte vorbehalten.</translation>
+        <translation type="obsolete">&lt;b&gt;BASS Audiobibliothek&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS ist eine Audiobibliothek für die Verwendung in Windows- und MacOSX-Software. Ihr Zweck ist es, leistungsstarke und effiziente (aber dennoch einfach zu verwendende) Funktionen für Sampling, Streaming, MOD-Musik und Audioaufnahmen bereitzustellen. Alles in einer winzigen DLL mit einer Größe von etwa 100 KB.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effekterweiterung&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX ist eine Erweiterung, die verschiedene Effekte bereitstellt, darunter Tempo- und Tonhöhensteuerung.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.7.1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Alle Rechte vorbehalten.</translation>
     </message>
     <message>
         <source>&lt;b&gt;BASS Audio Library&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS is an audio library for use in Windows and MacOSX software. Its purpose is to provide the most powerful and efficient (yet easy to use), sample, stream, MOD music, and recording functions. All in a tiny DLL, under 100KB in size.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effects Extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX is an extension providing several effects, including tempo &amp; pitch control.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.7.1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; All rights reserved.</source>
-        <translation type="obsolete">&lt;b&gt;BASS Audiobibliothek.&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS ist eine Audiobibliothek für die Verwendung in Windows und MacOSX Software. Ihre Zielsetzung ist es, die mächtigsten und effizientesten (und gleichzeitig einfach anzuwendenden) Funktionen für das Sampling, das Streaming und die Aufnahme bereitzustellen. Alles in einer winzigen DLL unter 100KB Größe.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 1999-2008&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Alle Rechte vorbehalten. {100K?} {1&lt;?} {2.4.7.1&lt;?} {2003-2010&lt;?} {4s?} {4s?}</translation>
+        <translation type="obsolete">&lt;b&gt;BASS Audiobibliothek&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS ist eine Audiobibliothek für die Verwendung in Windows- und MacOSX-Software. Ihr Zweck ist es, leistungsstarke und effiziente (aber dennoch einfach zu verwendende) Funktionen für Sampling, Streaming, MOD-Musik und Audioaufnahmen bereitzustellen. Alles in einer winzigen DLL mit einer Größe von unter 100 KB.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;BASS FX Effekterweiterung&lt;/b&gt;&lt;br&gt;&lt;br&gt;BASS FX ist eine Erweiterung, die verschiedene Effekte bereitstellt, darunter Tempo- und Tonhöhensteuerung.&lt;br&gt;&lt;br&gt;Version: &lt;b&gt;2.4.7.1&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (c) 2003-2010&lt;br&gt;&lt;a href=&quot;http://www.un4seen.com/bass.html&quot;&gt;Un4seen Developments Ltd.&lt;/a&gt; Alle Rechte vorbehalten.</translation>
     </message>
     <message>
         <source>Lock to determine #BPM automatically.</source>
@@ -978,58 +977,40 @@ Der Him+mel ist na+~h.</translation>
         <translation type="obsolete">%1/%2/%3.txt</translation>
     </message>
     <message>
-        <source>#TITLE:%1
-</source>
-        <translation type="obsolete">#TITLE:%1
-</translation>
+        <source>#TITLE:%1</source>
+        <translation type="obsolete">#TITLE:%1</translation>
     </message>
     <message>
-        <source>#TITLE:?
-</source>
-        <translation type="obsolete">#TITLE:?
-</translation>
+        <source>#TITLE:?</source>
+        <translation type="obsolete">#TITLE:?</translation>
     </message>
     <message>
-        <source>#ARTIST:%1
-</source>
-        <translation type="obsolete">#ARTIST:%1
-</translation>
+        <source>#ARTIST:%1</source>
+        <translation type="obsolete">#ARTIST:%1</translation>
     </message>
     <message>
-        <source>#MP3:%1 - %2.%3
-</source>
-        <translation type="obsolete">#MP3:%1 - %2.%3
-</translation>
+        <source>#MP3:%1 - %2.%3</source>
+        <translation type="obsolete">#MP3:%1 - %2.%3</translation>
     </message>
     <message>
-        <source>#COVER:%1 - %2 [CO].jpg
-</source>
-        <translation type="obsolete">#COVER:%1 - %2 [CO].jpg
-</translation>
+        <source>#COVER:%1 - %2 [CO].jpg</source>
+        <translation type="obsolete">#COVER:%1 - %2 [CO].jpg</translation>
     </message>
     <message>
-        <source>#BACKGROUND:%1 - %2 [BG].jpg
-</source>
-        <translation type="obsolete">#BACKGROUND:%1 - %2 [BG].jpg
-</translation>
+        <source>#BACKGROUND:%1 - %2 [BG].jpg</source>
+        <translation type="obsolete">#BACKGROUND:%1 - %2 [BG].jpg</translation>
     </message>
     <message>
-        <source>#MP3:%1.%2
-</source>
-        <translation type="obsolete">#MP3:%1.%2
-</translation>
+        <source>#MP3:%1.%2</source>
+        <translation type="obsolete">#MP3:%1.%2</translation>
     </message>
     <message>
-        <source>#COVER:%1 [CO].jpg
-</source>
-        <translation type="obsolete">#COVER:%1 [CO].jpg
-</translation>
+        <source>#COVER:%1 [CO].jpg</source>
+        <translation type="obsolete">#COVER:%1 [CO].jpg</translation>
     </message>
     <message>
-        <source>#BACKGROUND:%1 [BG].jpg
-</source>
-        <translation type="obsolete">#BACKGROUND:%1 [BG].jpg
-</translation>
+        <source>#BACKGROUND:%1 [BG].jpg</source>
+        <translation type="obsolete">#BACKGROUND:%1 [BG].jpg</translation>
     </message>
     <message>
         <source>%1/%2/%3 [CO].jpg</source>
@@ -1260,17 +1241,17 @@ Der Him+mel ist na+~h.</translation>
     <message>
         <location filename="../main.cpp" line="162"/>
         <source>&lt;b&gt;Dear testing person,&lt;/b&gt;&lt;br&gt;&lt;br&gt;this version is meant to be &lt;b&gt;almost bug-free&lt;/b&gt;. Nevertheless, it might be possible that some errors are still remaining.&lt;br&gt; While testing all these cool new features of version %1.%2.%3, consider the following:&lt;br&gt;&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;&lt;br&gt;Send feedback and bug reports to: &lt;a href=&quot;mailto:bohning@users.sourceforge.net&quot;&gt;bohning@users.sourceforge.net&lt;/a&gt;</source>
-        <translation>&lt;b&gt;Lieber Tester,&lt;/b&gt;&lt;br&gt;&lt;br&gt;diese Version sollte &lt;b&gt;vollständig in Bezug auf Features und fast fehlerfrei&lt;/b&gt; sein. Dennoch ist es möglich, dass Fehler noch vorhanden sind.&lt;br&gt;Beachte beim Testen der Version %1.%2.%3 insbesondere folgende Features:&lt;br&gt;&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;&lt;br&gt;Feedback und Fehlerberichte an: &lt;a href=&quot;bohning:xxx@users.sourceforge.net&quot;&gt;bohningx@users.sourceforge.net&lt;/a&gt;</translation>
+        <translation>&lt;b&gt;Lieber Tester,&lt;/b&gt;&lt;br&gt;&lt;br&gt;diese Version sollte &lt;b&gt;weitgehend fehlerfrei&lt;/b&gt; sein. Dennoch ist es möglich, dass noch einige Fehler vorhanden sind.&lt;br&gt;Achte beim Testen der neuen Funktionen der Version %1.%2.%3 insbesondere auf Folgendes:&lt;br&gt;&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;&lt;br&gt;Feedback und Fehlerberichte an: &lt;a href=&quot;mailto:bohning@users.sourceforge.net&quot;&gt;bohning@users.sourceforge.net&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="182"/>
         <source>The UltraStar Creator did not exit successfully last time. &lt;br&gt;&lt;br&gt;Please report this problem &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;here&lt;/a&gt;.</source>
-        <translation>Der UltraStar Creator wurde beim letzten Mal nicht richtig geschlossen. &lt;br&gt;&lt;br&gt;Bitte melde dieses Problem &lt;a href=&quot;http://usc.sf.net&quot;&gt;hier&lt;/a&gt;.</translation>
+        <translation>Der UltraStar Creator wurde beim letzten Mal nicht ordnungsgemäß beendet. &lt;br&gt;&lt;br&gt;Bitte melde dieses Problem &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;hier&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>&lt;b&gt;Dear testing person,&lt;/b&gt;&lt;br&gt;&lt;br&gt;this version is meant to be &lt;b&gt;feature-complete and almost bug-free&lt;/b&gt;. Nevertheless, it might be possible that some errors are still remaining.&lt;br&gt; While testing all these cool new features of version 0.1.0, consider the following:&lt;br&gt;&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;&lt;br&gt;Send feedback and bug reports to: &lt;a href=&quot;mailto:xxx@users.sourceforge.net&quot;&gt;xxx@users.sourceforge.net&lt;/a&gt;</source>
-        <translation type="obsolete">&lt;b&gt;Lieber Tester,&lt;/b&gt;&lt;br&gt;&lt;br&gt;diese Version sollte &lt;b&gt;vollständig in Bezug auf Features und fast fehlerfrei&lt;/b&gt; sein. Dennoch ist es möglich, dass Fehler noch vorhanden sind.&lt;br&gt; Beim Testen der Version 1.0.0, beachte insbesondere folgende Features:&lt;br&gt;&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;&lt;br&gt;Feedback und Fehlerberichte an: &lt;a href=&quot;mailto:xxx@users.sourceforge.net&quot;&gt;xxx@users.sourceforge.net&lt;/a&gt;</translation>
-    </message>
+        <translation type="obsolete">&lt;b&gt;Lieber Tester,&lt;/b&gt;&lt;br&gt;&lt;br&gt;diese Version sollte &lt;b&gt;funktionsvollständig und weitgehend fehlerfrei&lt;/b&gt; sein. Dennoch ist es möglich, dass noch einige Fehler vorhanden sind.&lt;br&gt;Achte beim Testen der neuen Funktionen der Version 0.1.0 insbesondere auf Folgendes:&lt;br&gt;&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;- xxx&lt;br&gt;&lt;br&gt;Feedback und Fehlerberichte an: &lt;a href=&quot;mailto:xxx@users.sourceforge.net&quot;&gt;xxx@users.sourceforge.net&lt;/a&gt;</translation>
+	</message>
     <message>
         <location filename="../main.cpp" line="163"/>
         <source>Okay!</source>
@@ -1303,7 +1284,7 @@ Der Him+mel ist na+~h.</translation>
     <message>
         <location filename="../QUAboutDialog.cpp" line="27"/>
         <source>If you enjoy using this program, drop me a line at &lt;a href=&quot;mailto:bohning@gmx.net?subject=UltraStar Creator feedback&quot;&gt;bohning@gmx.net&lt;/a&gt; to provide valuable feedback and invite me to your next karaoke party ;-)</source>
-        <translation>Wenn dir das Programm gefällt, schreib&apos; mir ein paar Zeilen an &lt;a href=&quot;mailto:bohning@gmx.net?subject=UltraStar Creator Feedback&quot;&gt;bohning@gmx.net&lt;/a&gt; mit wertvollem Feedback und lade mich zu deiner nächsten Karaokeparty ein ;-)</translation>
+        <translation>Wenn dir dieses Programm gefällt, schreib&apos; mir doch ein paar Zeilen an &lt;a href=&quot;mailto:bohning@gmx.net?subject=UltraStar Creator feedback&quot;&gt;bohning@gmx.net&lt;/a&gt;, gib mir wertvolles Feedback und lade mich zu deiner nächsten Karaokeparty ein ;-)</translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.cpp" line="29"/>
@@ -1407,7 +1388,7 @@ Der Him+mel ist na+~h.</translation>
     <message>
         <location filename="../QUMonty.cpp" line="22"/>
         <source>Do you want me to say something else? Tell everybody about your requests on our &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;project page&lt;/a&gt;.</source>
-        <translation>Soll ich irgendwas anderes sagen? Anregungen und Wünsche wirst du jederzeit in unserem &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;Projektforum&lt;/a&gt; los.</translation>
+        <translation>Soll ich irgendetwas anderes sagen? Teile deine Wünsche auf unserer &lt;a href=&quot;http://sourceforge.net/projects/usc/&quot;&gt;Projektseite&lt;/a&gt; mit allen.</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="23"/>
@@ -1524,13 +1505,11 @@ Der Him+mel ist na+~h.</translation>
     <message>
         <location filename="../QUMonty.cpp" line="41"/>
         <source>The tapping process can be paused and resumed by clicking the Pause/Play button or by simply pressing &lt;i&gt;P&lt;/i&gt;.</source>
-        <translation>Das Tappen kann pausiert und fortgeführt werden mit dem Pause/Play-Button oder einfach mittels &lt;i&gt;P&lt;i&gt;.</translation>
+        <translation>Das Tappen kann pausiert und fortgeführt werden mit dem Pause/Play-Button oder einfach mittels &lt;i&gt;P&lt;/i&gt;.</translation>
     </message>
     <message>
         <source>Screwed up and want to start over? Just stop tapping by clicking on the Stop button and then on the Rewind button. Or simply press &lt;i&gt;S&lt;/i&gt; and then &lt;i&gt;R&lt;/i&gt;.</source>
-        <translation type="obsolete">Das Tappen hat nicht so geklappt, wie du dir das vorgestellt hast? Du möchstest von vorne beginnen? Halte das Tappen einfach mittels des Stop-Buttons an, dann kannst Du mit dem Reset-Button die Ausgangssituation wiederherstellen. Schneller geht&apos;s mit den Tasten &lt;i&gt;S&lt;/i&gt; und &lt;i&gt;R&lt;/i&gt;.
-
-Übung macht bekanntlich den Meister!</translation>
+        <translation type="obsolete">Das Tappen hat nicht so geklappt, wie du dir das vorgestellt hast? Du möchstest von vorne beginnen? Halte das Tappen einfach mittels des Stop-Buttons an, dann kannst Du mit dem Reset-Button die Ausgangssituation wiederherstellen. Schneller geht&apos;s mit den Tasten &lt;i&gt;S&lt;/i&gt; und &lt;i&gt;R&lt;/i&gt;. Übung macht bekanntlich den Meister!</translation>
     </message>
     <message>
         <location filename="../QUMonty.cpp" line="43"/>
@@ -1588,12 +1567,13 @@ Der Him+mel ist na+~h.</translation>
         <location filename="../QUAboutDialog.ui" line="49"/>
         <source>background-image: url();
 color: rgb(255, 255, 255);</source>
-        <translation></translation>
+        <translation>background-image: url();
+color: rgb(255, 255, 255);</translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.ui" line="53"/>
         <source>Version:</source>
-        <translation></translation>
+        <translation>Version:</translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.ui" line="129"/>
@@ -1602,13 +1582,18 @@ background-color: rgba(255, 255, 255, 20);
 color: rgb(255, 255, 255);
 border-radius: 8px;
 padding: 10px;</source>
-        <translation></translation>
+        <translation>background-image: url();
+background-color: rgba(255, 255, 255, 20);
+color: rgb(255, 255, 255);
+border-radius: 8px;
+padding: 10px;</translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.ui" line="185"/>
         <source>color: rgb(255, 255, 255);
 background-image: url();</source>
-        <translation></translation>
+        <translation>color: rgb(255, 255, 255);
+background-image: url();</translation>
     </message>
     <message>
         <location filename="../QUAboutDialog.ui" line="189"/>
@@ -1618,7 +1603,7 @@ background-image: url();</source>
     <message>
         <location filename="../QUAboutDialog.cpp" line="102"/>
         <source>Version: &lt;b&gt;%1.%2.%3&lt;/b&gt;&lt;br&gt;SVN: #%4, %5</source>
-        <translation></translation>
+        <translation>Version: &lt;b&gt;%1.%2.%3&lt;/b&gt;&lt;br&gt;SVN: #%4, %5</translation>
     </message>
 </context>
 <context>
@@ -2104,8 +2089,7 @@ Der Him+mel ist na+~h.</translation>
     <message>
         <location filename="../QUMainWindow.ui" line="3451"/>
         <source>F2</source>
-        <translation>F2
-</translation>
+        <translation>F2</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="45"/>
@@ -2220,7 +2204,7 @@ Der Him+mel ist na+~h.</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="153"/>
-        <source>Slowenian</source>
+        <source>Slovenian</source>
         <translation>Slowenisch</translation>
     </message>
     <message>
@@ -2266,8 +2250,7 @@ Der Him+mel ist na+~h.</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="357"/>
-        <source>Cannot write file %1:
-%2.</source>
+        <source>Cannot write file %1: %2.</source>
         <translation>Kann Datei %1 nicht schreiben: %2.</translation>
     </message>
     <message>
@@ -2462,8 +2445,7 @@ Der Him+mel ist na+~h.</translation>
     </message>
     <message>
         <location filename="../QUMainWindow.cpp" line="1632"/>
-        <source>Cannot write file: %1
-%2.</source>
+        <source>Cannot write file: %1 %2.</source>
         <translation>Kann Datei nicht schreiben: %1 %2.</translation>
     </message>
     <message>
