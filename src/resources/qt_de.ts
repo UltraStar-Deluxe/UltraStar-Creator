@@ -11,8 +11,8 @@
 <context>
     <name>FakeReply</name>
     <message>
-        <source>Fake error !</source>
-        <translation>Fake error !</translation>
+        <source>Fake error!</source>
+        <translation>Fake error!</translation>
     </message>
     <message>
         <source>Invalid URL</source>
@@ -120,7 +120,8 @@ Check your GStreamer installation and make sure you
 have libgstreamer-plugins-base installed.</source>
         <translation>Das Abspielen konnte nicht gestartet werden.
 
-Bitte überprüfen Sie Ihre GStreamer-Installation und stellen Sie sicher, dass das Paket libgstreamer-plugins-base installiert ist.</translation>
+Bitte überprüfen Sie Ihre GStreamer-Installation und stellen Sie sicher,
+dass das Paket libgstreamer-plugins-base installiert ist.</translation>
     </message>
     <message>
         <source>Missing codec helper script assistant.</source>
@@ -152,7 +153,7 @@ Bitte überprüfen Sie Ihre GStreamer-Installation und stellen Sie sicher, dass 
     </message>
     <message>
         <source>Could not decode media source.</source>
-        <translation>Die Medienquelle konnte nicht gefunden werden.</translation>
+        <translation>Die Medienquelle konnte nicht dekodiert werden.</translation>
     </message>
 </context>
 <context>
@@ -1705,7 +1706,7 @@ nach
     </message>
     <message>
         <source>IDs must contain only letters, numbers, and underscores</source>
-        <translation>Id-Werte dürfen nur Buchstaben oder Unterstriche enthalten</translation>
+        <translation>Id-Werte dürfen nur Buchstaben, Zahlen und Unterstriche enthalten</translation>
     </message>
     <message>
         <source>ID illegally masks global JavaScript property</source>
@@ -2687,7 +2688,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <message>
         <source>Folder</source>
         <comment>All other platforms</comment>
-        <translation>Order</translation>
+        <translation>Ordner</translation>
     </message>
     <message>
         <source>Alias</source>
@@ -3874,7 +3875,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     </message>
     <message>
         <source>Unsupported socket operation</source>
-        <translation> Socket-Kommando nicht unterstützt</translation>
+        <translation>Socket-Operation wird nicht unterstützt</translation>
     </message>
     <message>
         <source>Protocol type not supported</source>
@@ -4002,7 +4003,7 @@ Möchten Sie die Datei trotzdem löschen?</translation>
     <name>QNetworkAccessFileBackend</name>
     <message>
         <source>Request for opening non-local file %1</source>
-        <translation>Anforderung zum Öffnen einer Datei über Netzwerk %1</translation>
+        <translation>Anforderung zum Öffnen der nicht-lokalen Datei %1</translation>
     </message>
     <message>
         <source>Error opening %1: %2</source>
@@ -4936,7 +4937,7 @@ Bitte wählen Sie einen anderen Dateinamen.</translation>
     </message>
     <message>
         <source>Current Page</source>
-        <translation></translation>
+        <translation>Aktuelle Seite</translation>
     </message>
 </context>
 <context>
@@ -5162,7 +5163,7 @@ Bitte wählen Sie einen anderen Dateinamen.</translation>
     </message>
     <message>
         <source>No query</source>
-        <translation>Kein Abfrage</translation>
+        <translation>Keine Abfrage</translation>
     </message>
 </context>
 <context>
@@ -5496,7 +5497,7 @@ Bitte wählen Sie einen anderen Dateinamen.</translation>
     </message>
     <message>
         <source>Line up</source>
-        <translation>Ausrichten</translation>
+        <translation>Eine Zeile nach oben</translation>
     </message>
     <message>
         <source>Position</source>
@@ -6241,19 +6242,19 @@ Bitte wählen Sie einen anderen Dateinamen.</translation>
     </message>
     <message>
         <source>Insert</source>
-        <translation>Einfügen</translation>
+        <translation>Einfg</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Löschen</translation>
+        <translation>Entf</translation>
     </message>
     <message>
         <source>Escape</source>
-        <translation>Escape</translation>
+        <translation>Esc</translation>
     </message>
     <message>
         <source>System Request</source>
-        <translation>System Request</translation>
+        <translation>Druck/S-Abf</translation>
     </message>
     <message>
         <source>Select</source>
@@ -6286,7 +6287,7 @@ Bitte wählen Sie einen anderen Dateinamen.</translation>
     <message>
         <source>Call</source>
         <extracomment>Button to start a call (note: a separate button is used to end the call)</extracomment>
-        <translation>Anruf</translation>
+        <translation>Anrufen</translation>
     </message>
     <message>
         <source>Hangup</source>
@@ -6296,7 +6297,7 @@ Bitte wählen Sie einen anderen Dateinamen.</translation>
     <message>
         <source>Toggle Call/Hangup</source>
         <extracomment>Button that will hang up if we&apos;re in call, or make a call if we&apos;re not.</extracomment>
-        <translation>Anrufen/Aufhängen</translation>
+        <translation>Anrufen/Anruf beenden</translation>
     </message>
     <message>
         <source>Flip</source>
@@ -6315,12 +6316,12 @@ Bitte wählen Sie einen anderen Dateinamen.</translation>
     <message>
         <source>Camera Shutter</source>
         <extracomment>Button to trigger the camera shutter (take a picture)</extracomment>
-        <translation>Auslöser</translation>
+        <translation>Kameraauslöser</translation>
     </message>
     <message>
         <source>Camera Focus</source>
         <extracomment>Button to focus the camera</extracomment>
-        <translation>Scharfstellen</translation>
+        <translation>Kamera fokussieren</translation>
     </message>
     <message>
         <source>Kanji</source>
