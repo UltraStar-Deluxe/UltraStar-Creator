@@ -214,6 +214,10 @@ void QUMainWindow::initMenuBar() {
 	enablePolishAction = new QAction(QIcon(":/languages/pl.png"), tr("&Polish"), this);
 	enablePolishAction->setCheckable(true);
 	connect(enablePolishAction, SIGNAL(triggered()), this, SLOT(enablePolish()));
+
+	enableItalianAction = new QAction(QIcon(":/languages/it.png"), tr("&Italian"), this);
+	enableItalianAction->setCheckable(true);
+	connect(enableItalianAction, SIGNAL(triggered()), this, SLOT(enableItalian()));
 	
 	uiLanguageGroup = new QActionGroup(this);
 	uiLanguageGroup->addAction(enableEnglishAction);
@@ -222,6 +226,7 @@ void QUMainWindow::initMenuBar() {
 	uiLanguageGroup->addAction(enableFrenchAction);
 	uiLanguageGroup->addAction(enablePortugueseAction);
 	uiLanguageGroup->addAction(enablePolishAction);
+	uiLanguageGroup->addAction(enableItalianAction);
 	
 	languageMenu = menuBar()->addMenu(tr("&Language"));
 	languageMenu->addAction(enableEnglishAction);
@@ -230,6 +235,7 @@ void QUMainWindow::initMenuBar() {
 	languageMenu->addAction(enableFrenchAction);
 	languageMenu->addAction(enablePortugueseAction);
 	languageMenu->addAction(enablePolishAction);
+	languageMenu->addAction(enableItalianAction);
 	
 	// about menu
 	aboutUltraStarCreatorAction = new QAction(QIcon(":/icons/bean.png"), tr("&About UltraStar Creator"), this);
@@ -289,6 +295,10 @@ void QUMainWindow::initConfig() {
 	else if (lang == QLocale::Spanish)
 		;//_menu->langEsBtn->setChecked(true);
 	else if (lang == QLocale::Portuguese)
+		;//_menu->langPtBtn->setChecked(true);
+	else if (lang == QLocale::Polish)
+		;//_menu->langPtBtn->setChecked(true);
+	else if (lang == QLocale::Italian)
 		;//_menu->langPtBtn->setChecked(true);
 
 	restoreGeometry(settings.value("geometry").toByteArray());
@@ -1078,6 +1088,15 @@ void QUMainWindow::enablePortuguese()
 	changeLanguage("Portuguese");
 }
 
+/*!
+ * Changes the application language to Italian.
+ */
+void QUMainWindow::enableItalian()
+{
+	enableItalianAction->setChecked(true);
+	changeLanguage("Italian");
+}
+
 void QUMainWindow::changeLanguage(QString language) {
 	QSettings settings;
 	QString translatedLanguage;
@@ -1100,6 +1119,9 @@ void QUMainWindow::changeLanguage(QString language) {
 	} else if (language == "Portuguese") {
 		settings.setValue("language", QLocale(QLocale::Portuguese, QLocale::Portugal).name());
 		translatedLanguage = tr("Portuguese");
+	} else if (language == "Italian") {
+		settings.setValue("language", QLocale(QLocale::Italian, QLocale::Italy).name());
+		translatedLanguage = tr("Italian");
 	}
 
 	int result = QUMessageBox::information(this,
