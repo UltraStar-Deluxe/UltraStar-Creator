@@ -891,18 +891,21 @@ void QUMainWindow::on_pushButton_BrowseSubtitles_clicked()
 					cld2_percentages.append(QString("(%1 %)").arg(percent3[i]));
 				}
 			}
-			
+		}
+
+		// no language may exceed the threshold even if the result is reliable
+		if(isReliable && !cld2_languages.isEmpty()) {
 			int index = ui->comboBox_Language->findData(cld2_languages.at(0));
 			if(index != -1) {
 				ui->comboBox_Language->setCurrentIndex(index);
 			}
 			ui->comboBox_Language->addItem(cld2_languages.at(0),cld2_languages.at(0));
-			
+
 			if(cld2_languages.length() > 1) {
 				// todo: warning, set to first language
 			}
 		}
-		
+
 		// TODO: duplicate code from handleMP3, so refactor
 		if (ui->lineEdit_Title->text().isEmpty()) {
 			ui->lineEdit_Title->setText(tr("Unknown Title"));
@@ -1447,13 +1450,20 @@ bool QUMainWindow::determineLanguage(QString lyrics) {
 				cld2_percentages.append(QString("(%1 %)").arg(percent3[i]));
 			}
 		}
-		
+	}
+
+	// no language may exceed the threshold even if the result is reliable
+	if(isReliable && cld2_languages.isEmpty()) {
+		isReliable = false;
+	}
+
+	if(isReliable) {
 		int index = ui->comboBox_Language->findData(cld2_languages.at(0));
 		if(index != -1) {
 			ui->comboBox_Language->setCurrentIndex(index);
 		}
 		ui->comboBox_Language->addItem(cld2_languages.at(0),cld2_languages.at(0));
-		
+
 		if(cld2_languages.length() > 1) {
 			// todo: warning, set to first language
 		}
