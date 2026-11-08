@@ -127,7 +127,7 @@ private:
 	bool addLinebreak = false;
 	QString cleanLyrics(QString);
 	void splitLyricsIntoSyllables();
-	HSTREAM _mediaStream;
+	HSTREAM _mediaStream = 0;
 	void BASS_Stop();
 	void BASS_Free();
 	void BASS_StopAndFree();
@@ -137,8 +137,8 @@ private:
 	double BASS_Position();
 	void BASS_SetPosition(double seconds);
 	void handleMP3();
-	QFileInfo* fileInfo_MP3;
-	QFileInfo* fileInfo_SRT;
+	QFileInfo* fileInfo_MP3 = nullptr;
+	QFileInfo* fileInfo_SRT = nullptr;
 	void keyPressEvent(QKeyEvent *event);
 	void keyReleaseEvent(QKeyEvent *event);
 	QString getResourcesPath();

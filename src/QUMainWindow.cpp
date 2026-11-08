@@ -68,14 +68,6 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 		settings.setValue("firstRun", firstRun);
 	}
 
-	//
-	QFileInfo fi(settings.value("songfile").toString());
-	if (fi.exists()) {
-		settings.remove("songfile");
-		fileInfo_MP3 = &fi;
-		handleMP3();
-	}
-
 	// init
 	numSyllables = 0;
 	firstNoteStartBeat = 0;
@@ -88,6 +80,16 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	state = QUMainWindow::uninitialized;
 	previewState = QUMainWindow::uninitialized;
 	defaultDir = QDir::homePath();
+
+	// audio file passed as command line argument (see handleArguments() in main.cpp)
+	QFileInfo fi(settings.value("songfile").toString());
+	if (fi.exists()) {
+		settings.remove("songfile");
+		// fileInfo_MP3 is used long after the constructor returns, so it must not point to the local fi
+		fileInfo_MP3 = new QFileInfo(fi);
+		defaultDir = fileInfo_MP3->absolutePath();
+		handleMP3();
+	}
 
 	if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
 		this->checkForUpdate();
