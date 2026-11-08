@@ -1278,14 +1278,16 @@ void QUMainWindow::handleMP3() {
 	}
 
 	BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, NULL, 0);
-	if (BPMFromMP3 == 0) {
+	// BASS_FX_BPM_DecodeGet returns -1 on error (e.g. the file could not be decoded)
+	if (BPMFromMP3 <= 0) {
 		BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 30, 60, 0, BASS_FX_BPM_BKGRND, NULL, 0);
 	}
 
     // round to nearest half integer
     BPM = std::round(BPMFromMP3*2)/2;
 
-	if (BPM == 0) {
+	// a non-positive BPM would make the doubling loop below run forever
+	if (BPM <= 0) {
 		BPM = 400;
 	}
 
