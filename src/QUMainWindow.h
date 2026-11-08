@@ -43,6 +43,7 @@ private slots:
 	void enableFrench();
 	void enablePolish();
 	void enablePortuguese();
+	void enableItalian();
 
 	void generateFreestyleTextFiles();
 
@@ -96,7 +97,7 @@ private slots:
 	void aboutTagLib();
 	void aboutBASS();
 	void aboutCLD2();
-	void checkForUpdate();
+	void checkForUpdate(bool automatic = false);
 
 	void on_comboBox_Cover_currentTextChanged(const QString &cover);
 	void on_comboBox_Background_currentTextChanged(const QString &background);
@@ -114,7 +115,7 @@ private:
 	double currentNoteStartTime;
 	qint32 currentNoteStartBeat;
 	qint32 currentNoteBeatLength;
-	qint32 previousNoteEndBeat;
+	QList<qint32> tappedNoteEndBeats; // end beat of each tapped note relative to the first note, used for line breaks
 	QString lyricsString;
 	QStringList lyricsStringList;
 	QClipboard *clipboard;
@@ -123,10 +124,9 @@ private:
 	float sampleRate;
 	bool firstNote;
 	bool isFirstKeyPress;
-	bool addLinebreak = false;
 	QString cleanLyrics(QString);
 	void splitLyricsIntoSyllables();
-	HSTREAM _mediaStream;
+	HSTREAM _mediaStream = 0;
 	void BASS_Stop();
 	void BASS_Free();
 	void BASS_StopAndFree();
@@ -136,8 +136,8 @@ private:
 	double BASS_Position();
 	void BASS_SetPosition(double seconds);
 	void handleMP3();
-	QFileInfo* fileInfo_MP3;
-	QFileInfo* fileInfo_SRT;
+	QFileInfo* fileInfo_MP3 = nullptr;
+	QFileInfo* fileInfo_SRT = nullptr;
 	void keyPressEvent(QKeyEvent *event);
 	void keyReleaseEvent(QKeyEvent *event);
 	QString getResourcesPath();
@@ -154,6 +154,7 @@ private:
 	QAction *enableFrenchAction;
 	QAction *enablePortugueseAction;
 	QAction *enablePolishAction;
+	QAction *enableItalianAction;
 	QMenu *languageMenu;
 	QAction *aboutUltraStarCreatorAction;
 	QAction *aboutQtAction;

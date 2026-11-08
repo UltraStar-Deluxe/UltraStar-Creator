@@ -23,7 +23,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
-#include <QTemporaryFile>
+#include <QVersionNumber>
 #include <QRegularExpression>
 #include <QMenuBar>
 #include <QDebug>
@@ -68,14 +68,6 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 		settings.setValue("firstRun", firstRun);
 	}
 
-	//
-	QFileInfo fi(settings.value("songfile").toString());
-	if (fi.exists()) {
-		settings.remove("songfile");
-		fileInfo_MP3 = &fi;
-		handleMP3();
-	}
-
 	// init
 	numSyllables = 0;
 	firstNoteStartBeat = 0;
@@ -89,8 +81,18 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	previewState = QUMainWindow::uninitialized;
 	defaultDir = QDir::homePath();
 
+	// audio file passed as command line argument (see handleArguments() in main.cpp)
+	QFileInfo fi(settings.value("songfile").toString());
+	if (fi.exists()) {
+		settings.remove("songfile");
+		// fileInfo_MP3 is used long after the constructor returns, so it must not point to the local fi
+		fileInfo_MP3 = new QFileInfo(fi);
+		defaultDir = fileInfo_MP3->absolutePath();
+		handleMP3();
+	}
+
 	if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
-		this->checkForUpdate();
+		this->checkForUpdate(true);
 	}
 
 	this->show();
@@ -579,7 +581,6 @@ void QUMainWindow::on_pushButton_Tap_pressed()
 	currentNoteStartTime = BASS_Position()*1000; // milliseconds
 
 	// conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPM [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
-	previousNoteEndBeat = currentNoteStartBeat + currentNoteBeatLength - firstNoteStartBeat;
 	currentNoteStartBeat = currentNoteStartTime * (BPM / 15000);
 	
 	ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
@@ -604,25 +605,31 @@ void QUMainWindow::on_pushButton_Tap_released()
 	QString linebreakString = "";
 
 	QString currentSyllable = lyricsSyllableList[currentSyllableIndex];
-	
+	qint32 currentNoteRelativeStartBeat = currentNoteStartBeat - firstNoteStartBeat;
+
+	// A line break belongs before this note if the previous syllable ends a line.
+	// This is derived from the lyrics instead of a flag, so it stays correct after undo and reset.
+	bool addLinebreak = currentSyllableIndex > 0
+			&& lyricsSyllableList[currentSyllableIndex-1].endsWith("\n")
+			&& !tappedNoteEndBeats.isEmpty();
 	if (addLinebreak)
 	{
-		qint32 linebreakBeat = previousNoteEndBeat + (currentNoteStartBeat - firstNoteStartBeat - previousNoteEndBeat)/2;
+		qint32 previousNoteEndBeat = tappedNoteEndBeats.last();
+		qint32 linebreakBeat = previousNoteEndBeat + (currentNoteRelativeStartBeat - previousNoteEndBeat)/2;
 		linebreakString = QString("- %1\n").arg(QString::number(linebreakBeat));
-		addLinebreak = false;
 	}
-	
+
 	if (currentSyllable.endsWith("\n")) {
-		addLinebreak = true;
 		currentSyllable.chop(1);
 	}
 	if ((currentSyllable.endsWith("•") || (currentSyllable.endsWith("+")))) {
 		currentSyllable.chop(1);
 	}
 
-	currentOutputTextLine = QString("%1: %2 %3 %4 %5").arg(linebreakString, QString::number(currentNoteStartBeat - firstNoteStartBeat), QString::number(currentNoteBeatLength), "0", currentSyllable);
+	currentOutputTextLine = QString("%1: %2 %3 %4 %5").arg(linebreakString, QString::number(currentNoteRelativeStartBeat), QString::number(currentNoteBeatLength), "0", currentSyllable);
 
 	timeLineMap.insert(currentNoteStartTime, currentOutputTextLine);
+	tappedNoteEndBeats.append(currentNoteRelativeStartBeat + currentNoteBeatLength);
 
 	updateOutputLyrics();
 
@@ -706,11 +713,14 @@ void QUMainWindow::on_pushButton_Stop_clicked()
 void QUMainWindow::on_pushButton_BrowseMP3_clicked()
 {
 	QString filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose audio file"), defaultDir, tr("Audio files (*.m4a *.mp3 *.ogg)"));
-	fileInfo_MP3 = new QFileInfo(filename_MP3);
-	if (fileInfo_MP3->exists()) {
-		defaultDir = fileInfo_MP3->absolutePath();
-		handleMP3();
+	// keep the current audio file if the dialog was cancelled
+	if (filename_MP3.isEmpty() || !QFileInfo::exists(filename_MP3)) {
+		return;
 	}
+	delete fileInfo_MP3;
+	fileInfo_MP3 = new QFileInfo(filename_MP3);
+	defaultDir = fileInfo_MP3->absolutePath();
+	handleMP3();
 }
 
 void QUMainWindow::on_comboBox_Video_editTextChanged(QString video)
@@ -757,6 +767,7 @@ void QUMainWindow::dropEvent( QDropEvent* event ) {
 					else if(QUSongSupport::allowedAudioFiles().contains(fileScheme, Qt::CaseInsensitive)) {
 						if (fileInfo.exists()) {
 							defaultDir = fileInfo.absolutePath();
+							delete fileInfo_MP3;
 							fileInfo_MP3 = new QFileInfo(fileName);
 
 							handleMP3();
@@ -889,18 +900,21 @@ void QUMainWindow::on_pushButton_BrowseSubtitles_clicked()
 					cld2_percentages.append(QString("(%1 %)").arg(percent3[i]));
 				}
 			}
-			
+		}
+
+		// no language may exceed the threshold even if the result is reliable
+		if(isReliable && !cld2_languages.isEmpty()) {
 			int index = ui->comboBox_Language->findData(cld2_languages.at(0));
 			if(index != -1) {
 				ui->comboBox_Language->setCurrentIndex(index);
 			}
 			ui->comboBox_Language->addItem(cld2_languages.at(0),cld2_languages.at(0));
-			
+
 			if(cld2_languages.length() > 1) {
 				// todo: warning, set to first language
 			}
 		}
-		
+
 		// TODO: duplicate code from handleMP3, so refactor
 		if (ui->lineEdit_Title->text().isEmpty()) {
 			ui->lineEdit_Title->setText(tr("Unknown Title"));
@@ -1276,14 +1290,16 @@ void QUMainWindow::handleMP3() {
 	}
 
 	BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 0, MP3LengthTime, 0, BASS_FX_BPM_BKGRND, NULL, 0);
-	if (BPMFromMP3 == 0) {
+	// BASS_FX_BPM_DecodeGet returns -1 on error (e.g. the file could not be decoded)
+	if (BPMFromMP3 <= 0) {
 		BPMFromMP3 = BASS_FX_BPM_DecodeGet(_mediaStream, 30, 60, 0, BASS_FX_BPM_BKGRND, NULL, 0);
 	}
 
     // round to nearest half integer
     BPM = std::round(BPMFromMP3*2)/2;
 
-	if (BPM == 0) {
+	// a non-positive BPM would make the doubling loop below run forever
+	if (BPM <= 0) {
 		BPM = 400;
 	}
 
@@ -1295,8 +1311,10 @@ void QUMainWindow::handleMP3() {
 	ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
 
 	TagLib::FileRef ref(fileInfo_MP3->absoluteFilePath().toLocal8Bit().data());
-	if(!ref.tag()->artist().isEmpty()) {
-		ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
+	// tag() returns a null pointer if TagLib cannot read the file
+	TagLib::Tag *tag = ref.isNull() ? nullptr : ref.tag();
+	if(tag && !tag->artist().isEmpty()) {
+		ui->lineEdit_Artist->setText(TStringToQString(tag->artist()));
 	} else {
 		if(fileInfo_MP3->fileName().contains("-")) {
 			QString artist_guessed = fileInfo_MP3->baseName().left(fileInfo_MP3->fileName().indexOf("-")).trimmed();
@@ -1305,8 +1323,8 @@ void QUMainWindow::handleMP3() {
 			ui->lineEdit_Artist->setText("unknown");
 		}
 	}
-	if(!ref.tag()->title().isEmpty()) {
-		ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
+	if(tag && !tag->title().isEmpty()) {
+		ui->lineEdit_Title->setText(TStringToQString(tag->title()));
 	} else {
 		if(fileInfo_MP3->fileName().contains("-")) {
 			QString title_guessed = fileInfo_MP3->baseName().mid(fileInfo_MP3->fileName().indexOf("-") + 1).trimmed();
@@ -1315,11 +1333,11 @@ void QUMainWindow::handleMP3() {
 			ui->lineEdit_Title->setText("unknown");
 		}
 	}
-	if(!ref.tag()->genre().isEmpty()) {
-		ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
+	if(tag && !tag->genre().isEmpty()) {
+		ui->comboBox_Genre->setEditText(TStringToQString(tag->genre()));
 	}
-	if(!QString::number(ref.tag()->year()).isEmpty()) {
-		ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString::number(ref.tag()->year())));
+	if(tag && tag->year() > 0) {
+		ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString::number(tag->year())));
 	}
 	// TODO: lyrics from mp3 lyrics-tag
 	
@@ -1441,13 +1459,20 @@ bool QUMainWindow::determineLanguage(QString lyrics) {
 				cld2_percentages.append(QString("(%1 %)").arg(percent3[i]));
 			}
 		}
-		
+	}
+
+	// no language may exceed the threshold even if the result is reliable
+	if(isReliable && cld2_languages.isEmpty()) {
+		isReliable = false;
+	}
+
+	if(isReliable) {
 		int index = ui->comboBox_Language->findData(cld2_languages.at(0));
 		if(index != -1) {
 			ui->comboBox_Language->setCurrentIndex(index);
 		}
 		ui->comboBox_Language->addItem(cld2_languages.at(0),cld2_languages.at(0));
-		
+
 		if(cld2_languages.length() > 1) {
 			// todo: warning, set to first language
 		}
@@ -1590,6 +1615,7 @@ void QUMainWindow::on_pushButton_Reset_clicked()
 		currentSyllableIndex = 0;
 		currentCharacterIndex = 0;
 		firstNote = true;
+		tappedNoteEndBeats.clear();
 		lyricsSyllableList.clear();
 		ui->textEdit_OutputLyrics->clear();
 		ui->pushButton_Tap->setText("");
@@ -1634,6 +1660,9 @@ void QUMainWindow::on_pushButton_UndoTap_clicked()
 		i.toBack();
 		i.previous();
 		timeLineMap.remove(i.key());
+		if (!tappedNoteEndBeats.isEmpty()) {
+			tappedNoteEndBeats.removeLast();
+		}
 
 		updateOutputLyrics();
 		
@@ -2133,21 +2162,32 @@ void QUMainWindow::getYear()
 	}
 }
 
-void QUMainWindow::checkForUpdate()
+/*!
+ * Checks online whether a newer version of UltraStar Creator is available.
+ * \param automatic true for the check on startup, which only reports a newer
+ * version and stays silent otherwise. A manual check (menu) always gives feedback.
+ */
+void QUMainWindow::checkForUpdate(bool automatic)
 {
-	int currentVersion = MAJOR_VERSION*100 + MINOR_VERSION*10 + PATCH_VERSION;
+	const QVersionNumber currentVersion(MAJOR_VERSION, MINOR_VERSION, PATCH_VERSION);
 
 	QSettings settings;
-	
-	QUrl url("https://github.com/UltraStar-Deluxe/UltraStar-Creator/blob/master/src/latest_version.xml");
-	QNetworkAccessManager *m_NetworkMngr = new QNetworkAccessManager(this);
-	QNetworkReply *reply = m_NetworkMngr->get(QNetworkRequest(url));
+
+	// the raw file is needed, the GitHub "blob" page only returns HTML
+	QUrl url("https://raw.githubusercontent.com/UltraStar-Deluxe/UltraStar-Creator/master/src/latest_version.xml");
+	QNetworkAccessManager networkManager;
+	QNetworkReply *reply = networkManager.get(QNetworkRequest(url));
 
 	QEventLoop loop;
 	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
 	loop.exec();
-	if(reply->error() != QNetworkReply::NoError) {
-		if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
+
+	const bool requestFailed = reply->error() != QNetworkReply::NoError;
+	const QString latestVersionString = QString::fromUtf8(reply->readAll()).trimmed().section('\n', 0, 0).trimmed();
+	delete reply;
+
+	if(requestFailed) {
+		if (!automatic) {
 			QUMessageBox::warning(this,
 					tr("Update check failed."),
 					QString(tr("Is your internet connection working?")),
@@ -2158,26 +2198,18 @@ void QUMainWindow::checkForUpdate()
 		return;
 	}
 
-	QTemporaryFile tmp;
-	if (!tmp.open()) {
-		if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
+	const QVersionNumber latestVersion = QVersionNumber::fromString(latestVersionString);
+	if (latestVersion.isNull()) {
+		if (!automatic) {
 			QUMessageBox::warning(this,
 					tr("Update check failed."),
-					QString(tr("No permission to write file %1.")).arg(tmp.fileName()),
+					QString(tr("The latest version could not be determined.")),
 					BTN << ":/icons/accept.png" << "OK",
 					240);
 		}
-		logSrv->add(QString(tr("Update check failed. No permission to write file %1.")).arg(tmp.fileName()), QU::Error);
+		logSrv->add(QString(tr("Update check failed. Invalid version information.")), QU::Error);
 		return;
 	}
-
-	tmp.write(reply->readAll());
-	tmp.seek(0);
-	QString line = QString(tmp.readLine());
-	QString latestVersionString = line;
-	int latestVersion = line.remove('.').toInt();
-	delete reply;
-	tmp.remove();
 
 	if (currentVersion < latestVersion) {
 		QUMessageBox::information(this,
@@ -2185,13 +2217,13 @@ void QUMainWindow::checkForUpdate()
 				QString(tr("UltraStar Creator %1.%2.%3 is <b>outdated</b>.<br><br>"
 						"Download the most recent UltraStar Creator %4 <a href='https://github.com/UltraStar-Deluxe/UltraStar-Creator'>here</a>."))
 						.arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION)
-						.arg(latestVersionString),
+						.arg(latestVersion.toString()),
 				BTN << ":/icons/accept.png" << "OK",
 				240);
 		logSrv->add(QString(tr("Update check successful. A new version of UltraStar Creator is available.")), QU::Information);
 	} else {
 		logSrv->add(QString(tr("Update check successful. UltraStar Creator is up to date.")), QU::Information);
-		if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
+		if (!automatic) {
 			int result = QUMessageBox::information(this,
 					tr("Update check successful."),
 					QString(tr("UltraStar Creator %1.%2.%3 is <b>up to date</b>!"))
@@ -2203,7 +2235,7 @@ void QUMainWindow::checkForUpdate()
 			if(result == 0) {
 				settings.setValue("allowUpdateCheck", QVariant(false));
 				logSrv->add(QString(tr("Automatic check for updates disabled.")), QU::Information);
-			} else {
+			} else if(result == 1) {
 				settings.setValue("allowUpdateCheck", QVariant(true));
 				logSrv->add(QString(tr("Automatic check for updates enabled.")), QU::Information);
 			}
