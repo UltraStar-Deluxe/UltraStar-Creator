@@ -115,7 +115,7 @@ private:
 	double currentNoteStartTime;
 	qint32 currentNoteStartBeat;
 	qint32 currentNoteBeatLength;
-	qint32 previousNoteEndBeat;
+	QList<qint32> tappedNoteEndBeats; // end beat of each tapped note relative to the first note, used for line breaks
 	QString lyricsString;
 	QStringList lyricsStringList;
 	QClipboard *clipboard;
@@ -124,7 +124,6 @@ private:
 	float sampleRate;
 	bool firstNote;
 	bool isFirstKeyPress;
-	bool addLinebreak = false;
 	QString cleanLyrics(QString);
 	void splitLyricsIntoSyllables();
 	HSTREAM _mediaStream = 0;

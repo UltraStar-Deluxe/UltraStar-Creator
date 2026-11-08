@@ -581,7 +581,6 @@ void QUMainWindow::on_pushButton_Tap_pressed()
 	currentNoteStartTime = BASS_Position()*1000; // milliseconds
 
 	// conversion from milliseconds [ms] to quarter beats [qb]: time [ms] * BPM [qb/min] * 1/60 [min/s] * 1/1000 [s/ms]
-	previousNoteEndBeat = currentNoteStartBeat + currentNoteBeatLength - firstNoteStartBeat;
 	currentNoteStartBeat = currentNoteStartTime * (BPM / 15000);
 	
 	ui->pushButton_Tap->setCursor(Qt::ClosedHandCursor);
@@ -606,25 +605,31 @@ void QUMainWindow::on_pushButton_Tap_released()
 	QString linebreakString = "";
 
 	QString currentSyllable = lyricsSyllableList[currentSyllableIndex];
-	
+	qint32 currentNoteRelativeStartBeat = currentNoteStartBeat - firstNoteStartBeat;
+
+	// A line break belongs before this note if the previous syllable ends a line.
+	// This is derived from the lyrics instead of a flag, so it stays correct after undo and reset.
+	bool addLinebreak = currentSyllableIndex > 0
+			&& lyricsSyllableList[currentSyllableIndex-1].endsWith("\n")
+			&& !tappedNoteEndBeats.isEmpty();
 	if (addLinebreak)
 	{
-		qint32 linebreakBeat = previousNoteEndBeat + (currentNoteStartBeat - firstNoteStartBeat - previousNoteEndBeat)/2;
+		qint32 previousNoteEndBeat = tappedNoteEndBeats.last();
+		qint32 linebreakBeat = previousNoteEndBeat + (currentNoteRelativeStartBeat - previousNoteEndBeat)/2;
 		linebreakString = QString("- %1\n").arg(QString::number(linebreakBeat));
-		addLinebreak = false;
 	}
-	
+
 	if (currentSyllable.endsWith("\n")) {
-		addLinebreak = true;
 		currentSyllable.chop(1);
 	}
 	if ((currentSyllable.endsWith("•") || (currentSyllable.endsWith("+")))) {
 		currentSyllable.chop(1);
 	}
 
-	currentOutputTextLine = QString("%1: %2 %3 %4 %5").arg(linebreakString, QString::number(currentNoteStartBeat - firstNoteStartBeat), QString::number(currentNoteBeatLength), "0", currentSyllable);
+	currentOutputTextLine = QString("%1: %2 %3 %4 %5").arg(linebreakString, QString::number(currentNoteRelativeStartBeat), QString::number(currentNoteBeatLength), "0", currentSyllable);
 
 	timeLineMap.insert(currentNoteStartTime, currentOutputTextLine);
+	tappedNoteEndBeats.append(currentNoteRelativeStartBeat + currentNoteBeatLength);
 
 	updateOutputLyrics();
 
@@ -1610,6 +1615,7 @@ void QUMainWindow::on_pushButton_Reset_clicked()
 		currentSyllableIndex = 0;
 		currentCharacterIndex = 0;
 		firstNote = true;
+		tappedNoteEndBeats.clear();
 		lyricsSyllableList.clear();
 		ui->textEdit_OutputLyrics->clear();
 		ui->pushButton_Tap->setText("");
@@ -1654,6 +1660,9 @@ void QUMainWindow::on_pushButton_UndoTap_clicked()
 		i.toBack();
 		i.previous();
 		timeLineMap.remove(i.key());
+		if (!tappedNoteEndBeats.isEmpty()) {
+			tappedNoteEndBeats.removeLast();
+		}
 
 		updateOutputLyrics();
 		
