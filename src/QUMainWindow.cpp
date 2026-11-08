@@ -23,7 +23,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
-#include <QTemporaryFile>
+#include <QVersionNumber>
 #include <QRegularExpression>
 #include <QMenuBar>
 #include <QDebug>
@@ -92,7 +92,7 @@ QUMainWindow::QUMainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::QUM
 	}
 
 	if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
-		this->checkForUpdate();
+		this->checkForUpdate(true);
 	}
 
 	this->show();
@@ -2153,21 +2153,32 @@ void QUMainWindow::getYear()
 	}
 }
 
-void QUMainWindow::checkForUpdate()
+/*!
+ * Checks online whether a newer version of UltraStar Creator is available.
+ * \param automatic true for the check on startup, which only reports a newer
+ * version and stays silent otherwise. A manual check (menu) always gives feedback.
+ */
+void QUMainWindow::checkForUpdate(bool automatic)
 {
-	int currentVersion = MAJOR_VERSION*100 + MINOR_VERSION*10 + PATCH_VERSION;
+	const QVersionNumber currentVersion(MAJOR_VERSION, MINOR_VERSION, PATCH_VERSION);
 
 	QSettings settings;
-	
-	QUrl url("https://github.com/UltraStar-Deluxe/UltraStar-Creator/blob/master/src/latest_version.xml");
-	QNetworkAccessManager *m_NetworkMngr = new QNetworkAccessManager(this);
-	QNetworkReply *reply = m_NetworkMngr->get(QNetworkRequest(url));
+
+	// the raw file is needed, the GitHub "blob" page only returns HTML
+	QUrl url("https://raw.githubusercontent.com/UltraStar-Deluxe/UltraStar-Creator/master/src/latest_version.xml");
+	QNetworkAccessManager networkManager;
+	QNetworkReply *reply = networkManager.get(QNetworkRequest(url));
 
 	QEventLoop loop;
 	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
 	loop.exec();
-	if(reply->error() != QNetworkReply::NoError) {
-		if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
+
+	const bool requestFailed = reply->error() != QNetworkReply::NoError;
+	const QString latestVersionString = QString::fromUtf8(reply->readAll()).trimmed().section('\n', 0, 0).trimmed();
+	delete reply;
+
+	if(requestFailed) {
+		if (!automatic) {
 			QUMessageBox::warning(this,
 					tr("Update check failed."),
 					QString(tr("Is your internet connection working?")),
@@ -2178,26 +2189,18 @@ void QUMainWindow::checkForUpdate()
 		return;
 	}
 
-	QTemporaryFile tmp;
-	if (!tmp.open()) {
-		if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
+	const QVersionNumber latestVersion = QVersionNumber::fromString(latestVersionString);
+	if (latestVersion.isNull()) {
+		if (!automatic) {
 			QUMessageBox::warning(this,
 					tr("Update check failed."),
-					QString(tr("No permission to write file %1.")).arg(tmp.fileName()),
+					QString(tr("The latest version could not be determined.")),
 					BTN << ":/icons/accept.png" << "OK",
 					240);
 		}
-		logSrv->add(QString(tr("Update check failed. No permission to write file %1.")).arg(tmp.fileName()), QU::Error);
+		logSrv->add(QString(tr("Update check failed. Invalid version information.")), QU::Error);
 		return;
 	}
-
-	tmp.write(reply->readAll());
-	tmp.seek(0);
-	QString line = QString(tmp.readLine());
-	QString latestVersionString = line;
-	int latestVersion = line.remove('.').toInt();
-	delete reply;
-	tmp.remove();
 
 	if (currentVersion < latestVersion) {
 		QUMessageBox::information(this,
@@ -2205,13 +2208,13 @@ void QUMainWindow::checkForUpdate()
 				QString(tr("UltraStar Creator %1.%2.%3 is <b>outdated</b>.<br><br>"
 						"Download the most recent UltraStar Creator %4 <a href='https://github.com/UltraStar-Deluxe/UltraStar-Creator'>here</a>."))
 						.arg(MAJOR_VERSION).arg(MINOR_VERSION).arg(PATCH_VERSION)
-						.arg(latestVersionString),
+						.arg(latestVersion.toString()),
 				BTN << ":/icons/accept.png" << "OK",
 				240);
 		logSrv->add(QString(tr("Update check successful. A new version of UltraStar Creator is available.")), QU::Information);
 	} else {
 		logSrv->add(QString(tr("Update check successful. UltraStar Creator is up to date.")), QU::Information);
-		if (settings.value("allowUpdateCheck", QVariant(false)).toBool()) {
+		if (!automatic) {
 			int result = QUMessageBox::information(this,
 					tr("Update check successful."),
 					QString(tr("UltraStar Creator %1.%2.%3 is <b>up to date</b>!"))
@@ -2223,7 +2226,7 @@ void QUMainWindow::checkForUpdate()
 			if(result == 0) {
 				settings.setValue("allowUpdateCheck", QVariant(false));
 				logSrv->add(QString(tr("Automatic check for updates disabled.")), QU::Information);
-			} else {
+			} else if(result == 1) {
 				settings.setValue("allowUpdateCheck", QVariant(true));
 				logSrv->add(QString(tr("Automatic check for updates enabled.")), QU::Information);
 			}

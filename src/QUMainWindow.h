@@ -97,7 +97,7 @@ private slots:
 	void aboutTagLib();
 	void aboutBASS();
 	void aboutCLD2();
-	void checkForUpdate();
+	void checkForUpdate(bool automatic = false);
 
 	void on_comboBox_Cover_currentTextChanged(const QString &cover);
 	void on_comboBox_Background_currentTextChanged(const QString &background);
