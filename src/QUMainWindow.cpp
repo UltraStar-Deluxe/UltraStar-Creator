@@ -1299,8 +1299,10 @@ void QUMainWindow::handleMP3() {
 	ui->label_BPMSet->setPixmap(QPixmap(":/icons/path_ok.png"));
 
 	TagLib::FileRef ref(fileInfo_MP3->absoluteFilePath().toLocal8Bit().data());
-	if(!ref.tag()->artist().isEmpty()) {
-		ui->lineEdit_Artist->setText(TStringToQString(ref.tag()->artist()));
+	// tag() returns a null pointer if TagLib cannot read the file
+	TagLib::Tag *tag = ref.isNull() ? nullptr : ref.tag();
+	if(tag && !tag->artist().isEmpty()) {
+		ui->lineEdit_Artist->setText(TStringToQString(tag->artist()));
 	} else {
 		if(fileInfo_MP3->fileName().contains("-")) {
 			QString artist_guessed = fileInfo_MP3->baseName().left(fileInfo_MP3->fileName().indexOf("-")).trimmed();
@@ -1309,8 +1311,8 @@ void QUMainWindow::handleMP3() {
 			ui->lineEdit_Artist->setText("unknown");
 		}
 	}
-	if(!ref.tag()->title().isEmpty()) {
-		ui->lineEdit_Title->setText(TStringToQString(ref.tag()->title()));
+	if(tag && !tag->title().isEmpty()) {
+		ui->lineEdit_Title->setText(TStringToQString(tag->title()));
 	} else {
 		if(fileInfo_MP3->fileName().contains("-")) {
 			QString title_guessed = fileInfo_MP3->baseName().mid(fileInfo_MP3->fileName().indexOf("-") + 1).trimmed();
@@ -1319,11 +1321,11 @@ void QUMainWindow::handleMP3() {
 			ui->lineEdit_Title->setText("unknown");
 		}
 	}
-	if(!ref.tag()->genre().isEmpty()) {
-		ui->comboBox_Genre->setEditText(TStringToQString(ref.tag()->genre()));
+	if(tag && !tag->genre().isEmpty()) {
+		ui->comboBox_Genre->setEditText(TStringToQString(tag->genre()));
 	}
-	if(!QString::number(ref.tag()->year()).isEmpty()) {
-		ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString::number(ref.tag()->year())));
+	if(tag && tag->year() > 0) {
+		ui->comboBox_Year->setCurrentIndex(ui->comboBox_Year->findText(QString::number(tag->year())));
 	}
 	// TODO: lyrics from mp3 lyrics-tag
 	
