@@ -708,11 +708,14 @@ void QUMainWindow::on_pushButton_Stop_clicked()
 void QUMainWindow::on_pushButton_BrowseMP3_clicked()
 {
 	QString filename_MP3 = QFileDialog::getOpenFileName ( 0, tr("Please choose audio file"), defaultDir, tr("Audio files (*.m4a *.mp3 *.ogg)"));
-	fileInfo_MP3 = new QFileInfo(filename_MP3);
-	if (fileInfo_MP3->exists()) {
-		defaultDir = fileInfo_MP3->absolutePath();
-		handleMP3();
+	// keep the current audio file if the dialog was cancelled
+	if (filename_MP3.isEmpty() || !QFileInfo::exists(filename_MP3)) {
+		return;
 	}
+	delete fileInfo_MP3;
+	fileInfo_MP3 = new QFileInfo(filename_MP3);
+	defaultDir = fileInfo_MP3->absolutePath();
+	handleMP3();
 }
 
 void QUMainWindow::on_comboBox_Video_editTextChanged(QString video)
@@ -759,6 +762,7 @@ void QUMainWindow::dropEvent( QDropEvent* event ) {
 					else if(QUSongSupport::allowedAudioFiles().contains(fileScheme, Qt::CaseInsensitive)) {
 						if (fileInfo.exists()) {
 							defaultDir = fileInfo.absolutePath();
+							delete fileInfo_MP3;
 							fileInfo_MP3 = new QFileInfo(fileName);
 
 							handleMP3();
